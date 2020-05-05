@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace E2_JacoboG
 {
@@ -6,7 +7,7 @@ namespace E2_JacoboG
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Program Vacio hasta Implementacion Menu");
         }
     }
 }
