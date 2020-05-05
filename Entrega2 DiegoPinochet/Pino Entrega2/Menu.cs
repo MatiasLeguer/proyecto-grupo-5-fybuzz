@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Pino_Entrega2
 {
     class Menu
     {
+        private List<String> filters { get;set }
         public bool DisplayLogin()
         {
             bool x = false;
@@ -58,7 +60,9 @@ namespace Pino_Entrega2
             string dec = Console.ReadLine();
             if(dec == "I")
             {
-                //Método de buscar
+                //Método de buscar, una vez buscada la canción y elegida.
+                SearchEngine();
+                Reproduction(1,false);
             }
             else if(dec == "II")
             {
@@ -70,19 +74,54 @@ namespace Pino_Entrega2
                 string play = Console.ReadLine();
                 if(play == "FavoritePlayList")
                 {
-                   //Método de reproducción. 
+                    Console.WriteLine("Random or select a song?");
+                    string rand = Console.ReadLine();
+                    if(rand == "Random")
+                    {
+                        Reproduction(4,true);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Selet a song...");
+                        //Obtendra una canción y le pondra play
+                        Reproduction(1,true);
+                    }
                 }
                 else if(play == "GlobalPlayList")
                 {
                     Console.WriteLine("Please select the number...");
                     string num = Console.ReadLine();
-                    //Método de reproducción segun el número que te dan.
+                    //Elegir la playlist que te dan y según eso lo siguiente.
+                    Console.WriteLine("Random or select a song?");
+                    string rand = Console.ReadLine();
+                    if (rand == "Random")
+                    {
+                        Reproduction(4,true);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Selet a song...");
+                        //Obtendra una canción y le pondra play
+                        Reproduction(1,true);
+                    }
                 }
                 else if(play == "FollowedPlaylist")
                 {
                     Console.WriteLine("Please select the number...");
                     string num = Console.ReadLine();
-                    
+                    //Elegir la playlist que te dan y según eso lo siguiente.
+                    Console.WriteLine("Random or select a song?");
+                    string rand = Console.ReadLine();
+                    if (rand == "Random")
+                    {
+                        Reproduction(4,true);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Selet a song...");
+                        //Obtendra una canción y le pondra play
+                        Reproduction(1,true);
+                    }
                 }
             }
         }
@@ -99,30 +138,41 @@ namespace Pino_Entrega2
         {
             for(int i = 0; i < user.AccountSettings().Count(); i++)
             {
-                Console.WriteLine("Username: ");
-                Console.WriteLine(user.AccountSettings()[?]);
-                Console.WriteLine("Password: ");
-                Console.WriteLine(user.AccountSettings()[?]);
-                Console.WriteLine("Email: ");
-                Console.WriteLine(user.AccountSettings()[?]);
-                Console.WriteLine("Account type: ");
-                Console.WriteLine(user.AccountSettings()[?]);
+                Console.WriteLine("Username: " + user.AccountSettings()[?] + "\n");
+                Console.WriteLine("Password: " + user.AccountSettings()[?] + "\n");
+                Console.WriteLine("Email: " + user.AccountSettings()[?] + "\n");
+                Console.WriteLine("Account type: " + user.AccountSettings()[?] + "\n");
             }
         }
 
-        public void Reproduction()
+        public void Reproduction(int verif, bool ver) // Si viene de una playlist y se decide poner aleatorio verif sera 4, si se elige una canción sera 1.
         {
             Player player = new Player();
-
-            //Cuando entre a un mutlimedia utilizar este evento.
-            player.Play();
-            player.Stop();
-            player.Skip();
-            player.Previous();
-            player.Random();
-            //Obtener algun archivo multimedia.
-
+            
+            if (verif == 1)
+            {
+                int x = 0;
+                int cont = 0;
+                while (cont != -1)
+                {
+                    cont = player.Play(cont, multimedia, ver, x); //Devuelve el tiempo en el que se para la canción
+                    if (cont != -1) player.Stop(cont); // devuelve el contador cuando se detiene para empezar de nuevo.
+                }
+            }
+            else
+            {
+                player.Random();
+                //Ponerle Play a cualquier canción en la Playlist
+            }
         }
 
+    }
+    public void SearchEngine()
+    {
+        for(int i = 1; i <= filters.count(); i++)
+        {
+            Console.WriteLine(i + ") " + filters[i]); //imprime todos los filtros que tengamos.
+        }
+        //No se como identificar que filtro esta usando de una manera ninja.
     }
 }
