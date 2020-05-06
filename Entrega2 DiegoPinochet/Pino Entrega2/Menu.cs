@@ -11,7 +11,9 @@ namespace Pino_Entrega2
 {
     class Menu
     {
-        private List<String> filters { get;set }
+        private List<String> filters;
+        public List<Song> searchedSongs;
+        public List<Videos> searchedVideos;
         public bool DisplayLogin()
         {
             bool x = false;
@@ -61,8 +63,19 @@ namespace Pino_Entrega2
             if(dec == "I")
             {
                 //Método de buscar, una vez buscada la canción y elegida.
-                SearchEngine();
-                Reproduction(1,false);
+                Console.WriteLine("What would you like to search?");
+                string search = Console.ReadLine();
+                if(search == "Songs")
+                {
+                    SongsSearchEngine(searchedSongs);
+                    Reproduction(1, false);
+                }
+                else
+                {
+                    VideosSearchEngine(searchedVideos);
+                    Reproduction(1, false);
+                }
+                
             }
             else if(dec == "II")
             {
@@ -167,12 +180,66 @@ namespace Pino_Entrega2
         }
 
     }
-    public void SearchEngine()
+    public void SongsSearchEngine(List<String> songsSearched)//No se si meter parametros, si es asi, serian las listas de profile preference
     {
-        for(int i = 1; i <= filters.count(); i++)
+        ProfilePreferences profilePreferences = new ProfilePreferences();
+        for (int i = 1; i <= filters.count(); i++)
         {
             Console.WriteLine(i + ") " + filters[i]); //imprime todos los filtros que tengamos.
         }
-        //No se como identificar que filtro esta usando de una manera ninja.
+        //Console.WriteLine("Type the filters you will use separated by space: (use filter from above)");
+        //string user_filters = Console.ReadLine();
+        //No se como ver que filtros habrian en la busqueda
+        //Buscar el archivo multimedia y agregarlo a una variable llamada multimedia que se diferecniarar segun el ipo del archivo. Este se ira a el BrowserHistory
+        
+        List<Song> searchedStorySongs = profilePreferences.BrowserHistorySongs(multimedia);
+        
+        Displayistory(searchedStorySongs, searchedStoryVideos);
+        //podria llamar al método displayhistory en este metodo y hacer una clase que se vaya modificando cada 10 busquedas, y esta entregarsela al metodo history para que la use y la ponga. 
+    }
+    public void VideosSearchEngine(List<String> videosSearched)//No se si meter parametros, si es asi, serian las listas de profile preference
+    {
+        ProfilePreferences profilePreferences = new ProfilePreferences();
+
+        for (int i = 1; i <= filters.count(); i++)
+        {
+            Console.WriteLine(i + ") " + filters[i]); //imprime todos los filtros que tengamos.
+        }
+        //Console.WriteLine("Type the filters you will use separated by space: (use filter from above)");
+        //string user_filters = Console.ReadLine();
+        //No se como ver que filtros habrian en la busqueda
+        //De alguna manera tengo que acceder a la lista de canciones en database.
+        // Si se encuentra la video esat se agregará a la lista ed canciones, 
+        
+        List<Video> searchedStoryVideos = profilePreferences.BrowserHistoryVideos(multimedia);
+        Displayistory(searchedStorySongs, searchedStoryVideos);
+
+
+        //podria llamar al método displayhistory en este metodo y hacer una clase que se vaya modificando cada 10 busquedas, y esta entregarsela al metodo history para que la use y la ponga. 
+    }
+    public void DisplayHistory(List<Song> searchStorySongs, List<Video> searchStoryVideos)
+    {
+        if(searchStorySongs.Count() < 5 || searchStoryVideos.Count() < 5)
+        {
+            for(int i = 0; i < searchStorySongs.Count(); i++)
+            {
+                Console.WriteLine(searchStorySongs[i]); //Recordar que cada eleemento de estas listas van a ser la información de cada archivo multimedia.
+            }
+            for (int i = 0; i < searchStoryVideos.Count(); i++)
+            {
+                Console.WriteLine(searchStoryVideos[i]);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(searchStorySongs[i]);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(searchStoryVideos[i]);
+            }
+        }
     }
 }
