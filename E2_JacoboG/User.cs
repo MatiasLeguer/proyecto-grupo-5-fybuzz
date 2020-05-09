@@ -16,15 +16,23 @@ namespace E2_JacoboG
         private bool adsOn;
         private bool privacy;
 
+        private Dictionary<int, Profile> perfiles;
+        
+        public string Username { get => username; set => username = value; }
+        public string Password { get => password; set => password = value; }
+        public string Email { get => email; set => email = value; }
+        public Dictionary<int,Profile> Perfiles { get => perfiles; set => perfiles = value; }
+
         // Constructor
         public User()
         {
             
         }
-
-        public void CreateProfile(string pname, string ppic, string ptype, string pgender, int page)
+        
+        public void CreateProfile(string pname, string ppic, string ptype,string pmail, string pgender, int page, int cont)
         {
-            Profile profileX = new Profile(pname, ppic, ptype, pgender, page);
+            Profile profileX = new Profile(pname, ppic, ptype, pmail, pgender, page);
+            Perfiles.Add(cont,profileX);
         }
 
         public List<string> AccountSettings()
@@ -32,6 +40,8 @@ namespace E2_JacoboG
             // Metodo que entrega la lista de informacion del usuario seleccionado
             List<string> Settings = new List<string>() { username, password, email, accountType };
             return Settings;
+
+            // ver si efectivamente esta informacion proviene del usuario o si se adquiere de database.
 
         }
 
@@ -55,6 +65,10 @@ namespace E2_JacoboG
         {
             // if y fors para borrar la informacion del usuario
             // acceder al diccionario con la clave key
+            if (key == registerNumber)
+            {
+                data.Remove(key);
+            }
             
         }
 

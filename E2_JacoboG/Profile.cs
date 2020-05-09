@@ -9,6 +9,7 @@ namespace E2_JacoboG
         private string profileName;
         private string profilePic;
         private string profileType;
+        private string profileMail;
         private List<Song> playlistEnColaSongs;
         private List<Song> playlistFavoritosSongs;
         private List<Video> playlistEnColaVideos;
@@ -16,11 +17,18 @@ namespace E2_JacoboG
         private string gender;
         private int age;
 
-        public Profile(string pn, string pp, string pt, string pg, int pa)
+
+        public string ProfileName { get => profileName; set => profileName = value; }
+        public string ProfileType { get => profileType; set => profileType = value; }
+        public string Gender { get => gender; set => gender = value; }
+        public int Age { get => age; set => age = value; }
+
+        public Profile(string pn, string pp, string pt, string pm, string pg, int pa)
         {
             profileName = pn;
             profilePic = pp;
             profileType = pt;
+            profileMail = pm;
             gender = pg;
             age = pa;
         }
@@ -83,10 +91,10 @@ namespace E2_JacoboG
             Thread.Sleep(5000);
             Console.WriteLine("Se ha descargado la cancion" );
         }
-        public void LikeSong(Cancion cancion)
+        public void LikeSong(Song song)
         {
             // Conexion con multimedia / Likes +1
-            cancion.Likes();
+            song.Likes();
 
         }
         public void LikeVideo(Video video)
