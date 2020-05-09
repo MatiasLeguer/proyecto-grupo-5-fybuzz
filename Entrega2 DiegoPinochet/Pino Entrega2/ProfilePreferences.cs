@@ -8,12 +8,22 @@ namespace Pino_Entrega2
 {
     class ProfilePreferences:DataBase
     {
-        protected List<Song> searchHistorySongs;
-        protected List<Video> searchHistoryVideos;
+        protected List<Song> searchHistorySongs { get; set; }
+        protected List<Video> searchHistoryVideos { get; set; }
 
         //No incorporaré en DisplayHistory(), pq eso debe ser parte de la clase de inputs y outpust según yo.
-        public List<string> BrowserHistory() //Tengo dudas si es solo las palabra y estan haran la conexión con la canción mediante algun evento o algo que ponga play a la wea, o hacemos 2 histrial de búsqueda(cancion y vids)
+        public List<Song> BrowserHistorySongs(Song multimedia) //Tengo dudas si es solo las palabra y estan haran la conexión con la canción mediante algun evento o algo que ponga play a la wea, o hacemos 2 histrial de búsqueda(cancion y vids)
         {
+            searchHistorySongs.Add(multimedia); //atributo de profilepreference tal vez se podria hacer un evento que agregue canciones
+            return searchHistorySongs;
+              
+        }
+        public List<Video> BrowserHistoryVideos(Video multimedia) //Tengo dudas si es solo las palabra y estan haran la conexión con la canción mediante algun evento o algo que ponga play a la wea, o hacemos 2 histrial de búsqueda(cancion y vids)
+        {
+            // Una vez que busca el archivo multimedia y lo igualaré a una variable de tipo string que sera el metodo InfoSong o InfoVideo dependiendo su formato.
+            
+            searchHistoryVideos.Add(multimedia); //atributo profilepreference tal vez se podria hacer un evento que agregue videos
+            return searchHistoryVideos;
             
         }
         public string ProfilePreferencesSongs(List<Song> multimedia, int preferencia) //seria la lista de canciones que esuchó el usuario y el parametro del que s equiere la preferncia.

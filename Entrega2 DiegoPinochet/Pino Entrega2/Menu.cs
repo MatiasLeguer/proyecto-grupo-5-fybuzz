@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -10,6 +11,9 @@ namespace Pino_Entrega2
 {
     class Menu
     {
+        private List<String> filters;
+        public List<Song> searchedSongs;
+        public List<Videos> searchedVideos;
         public bool DisplayLogin()
         {
             bool x = false;
@@ -58,7 +62,20 @@ namespace Pino_Entrega2
             string dec = Console.ReadLine();
             if(dec == "I")
             {
-                //Método de buscar
+                //Método de buscar, una vez buscada la canción y elegida.
+                Console.WriteLine("What would you like to search?");
+                string search = Console.ReadLine();
+                if(search == "Songs")
+                {
+                    SongsSearchEngine(searchedSongs);
+                    Reproduction(1, false);
+                }
+                else
+                {
+                    VideosSearchEngine(searchedVideos);
+                    Reproduction(1, false);
+                }
+                
             }
             else if(dec == "II")
             {
@@ -70,19 +87,54 @@ namespace Pino_Entrega2
                 string play = Console.ReadLine();
                 if(play == "FavoritePlayList")
                 {
-                   //Método de reproducción. 
+                    Console.WriteLine("Random or select a song?");
+                    string rand = Console.ReadLine();
+                    if(rand == "Random")
+                    {
+                        Reproduction(4,true);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Selet a song...");
+                        //Obtendra una canción y le pondra play
+                        Reproduction(1,true);
+                    }
                 }
                 else if(play == "GlobalPlayList")
                 {
                     Console.WriteLine("Please select the number...");
                     string num = Console.ReadLine();
-                    //Método de reproducción segun el número que te dan.
+                    //Elegir la playlist que te dan y según eso lo siguiente.
+                    Console.WriteLine("Random or select a song?");
+                    string rand = Console.ReadLine();
+                    if (rand == "Random")
+                    {
+                        Reproduction(4,true);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Selet a song...");
+                        //Obtendra una canción y le pondra play
+                        Reproduction(1,true);
+                    }
                 }
                 else if(play == "FollowedPlaylist")
                 {
                     Console.WriteLine("Please select the number...");
                     string num = Console.ReadLine();
-                    
+                    //Elegir la playlist que te dan y según eso lo siguiente.
+                    Console.WriteLine("Random or select a song?");
+                    string rand = Console.ReadLine();
+                    if (rand == "Random")
+                    {
+                        Reproduction(4,true);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Selet a song...");
+                        //Obtendra una canción y le pondra play
+                        Reproduction(1,true);
+                    }
                 }
             }
         }
@@ -99,30 +151,95 @@ namespace Pino_Entrega2
         {
             for(int i = 0; i < user.AccountSettings().Count(); i++)
             {
-                Console.WriteLine("Username: ");
-                Console.WriteLine(user.AccountSettings()[?]);
-                Console.WriteLine("Password: ");
-                Console.WriteLine(user.AccountSettings()[?]);
-                Console.WriteLine("Email: ");
-                Console.WriteLine(user.AccountSettings()[?]);
-                Console.WriteLine("Account type: ");
-                Console.WriteLine(user.AccountSettings()[?]);
+                Console.WriteLine("Username: " + user.AccountSettings()[?] + "\n");
+                Console.WriteLine("Password: " + user.AccountSettings()[?] + "\n");
+                Console.WriteLine("Email: " + user.AccountSettings()[?] + "\n");
+                Console.WriteLine("Account type: " + user.AccountSettings()[?] + "\n");
             }
         }
 
-        public void Reproduction()
+        public void Reproduction(int verif, bool ver) // Si viene de una playlist y se decide poner aleatorio verif sera 4, si se elige una canción sera 1.
         {
             Player player = new Player();
-
-            //Cuando entre a un mutlimedia utilizar este evento.
-            player.Play();
-            player.Stop();
-            player.Skip();
-            player.Previous();
-            player.Random();
-            //Obtener algun archivo multimedia.
-
+            
+            if (verif == 1)
+            {
+                int x = 0;
+                int cont = 0;
+                while (cont != -1)
+                {
+                    cont = player.Play(cont, multimedia, ver, x); //Devuelve el tiempo en el que se para la canción
+                    if (cont != -1) player.Stop(cont); // devuelve el contador cuando se detiene para empezar de nuevo.
+                }
+            }
+            else
+            {
+                player.Random();
+                //Ponerle Play a cualquier canción en la Playlist
+            }
         }
 
+    }
+    public void SongsSearchEngine(List<String> songsSearched)//No se si meter parametros, si es asi, serian las listas de profile preference
+    {
+        ProfilePreferences profilePreferences = new ProfilePreferences();
+        for (int i = 1; i <= filters.count(); i++)
+        {
+            Console.WriteLine(i + ") " + filters[i]); //imprime todos los filtros que tengamos.
+        }
+        //Console.WriteLine("Type the filters you will use separated by space: (use filter from above)");
+        //string user_filters = Console.ReadLine();
+        //No se como ver que filtros habrian en la busqueda
+        //Buscar el archivo multimedia y agregarlo a una variable llamada multimedia que se diferecniarar segun el ipo del archivo. Este se ira a el BrowserHistory
+        
+        List<Song> searchedStorySongs = profilePreferences.BrowserHistorySongs(multimedia);
+        
+        Displayistory(searchedStorySongs, searchedStoryVideos);
+        //podria llamar al método displayhistory en este metodo y hacer una clase que se vaya modificando cada 10 busquedas, y esta entregarsela al metodo history para que la use y la ponga. 
+    }
+    public void VideosSearchEngine(List<String> videosSearched)//No se si meter parametros, si es asi, serian las listas de profile preference
+    {
+        ProfilePreferences profilePreferences = new ProfilePreferences();
+
+        for (int i = 1; i <= filters.count(); i++)
+        {
+            Console.WriteLine(i + ") " + filters[i]); //imprime todos los filtros que tengamos.
+        }
+        //Console.WriteLine("Type the filters you will use separated by space: (use filter from above)");
+        //string user_filters = Console.ReadLine();
+        //No se como ver que filtros habrian en la busqueda
+        //De alguna manera tengo que acceder a la lista de canciones en database.
+        // Si se encuentra la video esat se agregará a la lista ed canciones, 
+        
+        List<Video> searchedStoryVideos = profilePreferences.BrowserHistoryVideos(multimedia);
+        Displayistory(searchedStorySongs, searchedStoryVideos);
+
+
+        //podria llamar al método displayhistory en este metodo y hacer una clase que se vaya modificando cada 10 busquedas, y esta entregarsela al metodo history para que la use y la ponga. 
+    }
+    public void DisplayHistory(List<Song> searchStorySongs, List<Video> searchStoryVideos)
+    {
+        if(searchStorySongs.Count() < 5 || searchStoryVideos.Count() < 5)
+        {
+            for(int i = 0; i < searchStorySongs.Count(); i++)
+            {
+                Console.WriteLine(searchStorySongs[i]); //Recordar que cada eleemento de estas listas van a ser la información de cada archivo multimedia.
+            }
+            for (int i = 0; i < searchStoryVideos.Count(); i++)
+            {
+                Console.WriteLine(searchStoryVideos[i]);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(searchStorySongs[i]);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(searchStoryVideos[i]);
+            }
+        }
     }
 }
