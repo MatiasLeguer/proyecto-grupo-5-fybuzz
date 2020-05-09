@@ -28,7 +28,7 @@ namespace Pino_Entrega2
                     if (loginsuccesfull)
                     {
                         Console.WriteLine("Login Succesfull.");
-                        return true;
+                        x = true;
                     }
                 }
                 else
@@ -37,13 +37,16 @@ namespace Pino_Entrega2
                     //verificar mail.
                     if (todo ok)
                     {
-                        Console.WriteLine("Account created, now log in.")
-                        return false;
+                        Console.WriteLine("Account created, now log in.");
+                        x = false;
                     }
                 }
             }
+            return x;
         }
-        public void DisplayStart() // solo funciona si DisplayLogIn() retorna true
+
+        
+        public void DisplayStart() // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
             Console.WriteLine("------------Welcome to FyBuZz--------------");
             // mostrará todas las playlist del usuario, si es primera vez que ingresa estara la playlist general y la favorita(esta sin nada)
