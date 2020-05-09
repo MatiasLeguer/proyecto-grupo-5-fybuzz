@@ -212,7 +212,7 @@ namespace Pino_Entrega2
         // Si se encuentra la video esat se agregará a la lista ed canciones, 
         
         List<Video> searchedStoryVideos = profilePreferences.BrowserHistoryVideos(multimedia);
-        Displayistory(searchedStorySongs, searchedStoryVideos);
+        Displayhistory(searchedStorySongs, searchedStoryVideos);
 
 
         //podria llamar al método displayhistory en este metodo y hacer una clase que se vaya modificando cada 10 busquedas, y esta entregarsela al metodo history para que la use y la ponga. 
