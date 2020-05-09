@@ -14,8 +14,11 @@ namespace Pino_Entrega2
         private List<String> filters;
         public List<Song> searchedSongs;
         public List<Videos> searchedVideos;
+        User user = new User();
         public bool DisplayLogin()
         {
+            DataBase database = new DataBase();
+
             bool x = false;
             while (x == false) {
                 Console.WriteLine("------------Welcome to FyBuZz--------------");
@@ -25,7 +28,7 @@ namespace Pino_Entrega2
                 if (dec == "I")
                 {
                     //poner el metodo de server o algo.
-                    if (loginsuccesfull)
+                    if (database.LogIn(user.Username, user.Password) == null) //tengo que obtener mediante un get el nombre de usuario y password
                     {
                         Console.WriteLine("Login Succesfull.");
                         x = true;
@@ -44,7 +47,33 @@ namespace Pino_Entrega2
             }
             return x;
         }
+        public void DisplayProfiles()
+        {
+            Dictionary<int, Profile> dicprofile = new Dictionary<int, Profile>();
+            List<Profile> profilelist = new List<Profile>();
+            Console.WriteLine("---------Profiles----------");
+            Console.WriteLine("Choose a profile or Create Profile");
+            string dec = Console.ReadLine();
+            if (dec == "Choose a profile") 
+            {
+                Console.WriteLine("Choose a profile:");
+                dicprofile = user.Perfiles;
+                foreach (Profile profile in dicprofile.Values)
+                {
+                    Console.WriteLine(profile.ProfileName);
+                    profilelist.Add(profile);
+                }
+                string perfil = Console.ReadLine();
+                for(int i = 0;i < profilelist.Count(); i++)
+                {
+                    if (perfil == profilelist[i].ProfileName)
+                    {
+                        return profilelist[i];
+                    }
+                }
 
+            }
+        }
         
         public void DisplayStart() // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
@@ -59,85 +88,128 @@ namespace Pino_Entrega2
             {
                 Console.WriteLine(DisplayPlaylist(PlaylistSeguidos));
             }
-            Console.WriteLine("I) Search Songs or Videos.");
-            Console.WriteLine("II) Account Settings.");
-            Console.WriteLine("III) Play a Playlist.");
-            string dec = Console.ReadLine();
-            if(dec == "I")
+            bool x = true;
+            while (x == true)
             {
-                //Método de buscar, una vez buscada la canción y elegida.
-                Console.WriteLine("What would you like to search?");
-                string search = Console.ReadLine();
-                if(search == "Songs")
+                Console.WriteLine("I) Search Songs or Videos.");
+                Console.WriteLine("II) Account Settings.");
+                Console.WriteLine("III) Play a Playlist.");
+                Console.WriteLine("IV) LogOut.");
+                Console.WriteLine("V) CloseApp.");
+                string dec = Console.ReadLine();
+                switch (dec)
                 {
-                    SongsSearchEngine(searchedSongs);
-                    Reproduction(1, false);
-                }
-                else
-                {
-                    VideosSearchEngine(searchedVideos);
-                    Reproduction(1, false);
-                }
-                
-            }
-            else if(dec == "II")
-            {
-                AccountSettings(); // incorporar el usuario.
-            }
-            else
-            {
-                Console.WriteLine("What playlist do you want to play?(GlobalPlayLists, FollowedPlaylists or FavoritePlayList)");
-                string play = Console.ReadLine();
-                if(play == "FavoritePlayList")
-                {
-                    Console.WriteLine("Random or select a song?");
-                    string rand = Console.ReadLine();
-                    if(rand == "Random")
-                    {
-                        Reproduction(4,true);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Selet a song...");
-                        //Obtendra una canción y le pondra play
-                        Reproduction(1,true);
-                    }
-                }
-                else if(play == "GlobalPlayList")
-                {
-                    Console.WriteLine("Please select the number...");
-                    string num = Console.ReadLine();
-                    //Elegir la playlist que te dan y según eso lo siguiente.
-                    Console.WriteLine("Random or select a song?");
-                    string rand = Console.ReadLine();
-                    if (rand == "Random")
-                    {
-                        Reproduction(4,true);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Selet a song...");
-                        //Obtendra una canción y le pondra play
-                        Reproduction(1,true);
-                    }
-                }
-                else if(play == "FollowedPlaylist")
-                {
-                    Console.WriteLine("Please select the number...");
-                    string num = Console.ReadLine();
-                    //Elegir la playlist que te dan y según eso lo siguiente.
-                    Console.WriteLine("Random or select a song?");
-                    string rand = Console.ReadLine();
-                    if (rand == "Random")
-                    {
-                        Reproduction(4,true);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Selet a song...");
-                        //Obtendra una canción y le pondra play
-                        Reproduction(1,true);
-                    }
+                    case "I":
+                        //Método de buscar, una vez buscada la canción y elegida.
+                        Console.WriteLine("What would you like to search?");
+                        string search = Console.ReadLine();
+                        if (search == "Songs")
+                        {
+                            SongsSearchEngine(searchedSongs);
+                            Reproduction(1, 0, false);
+                        }
+                        else
+                        {
+                            VideosSearchEngine(searchedVideos);
+                            Reproduction(1, 1, false);
+                        }
+                        break;
+
+                    case "II":
+                        AccountSettings(user); // incorporar el usuario.
+
+                        break;
+
+                    case "III":
+                        Console.WriteLine("What playlist do you want to play?(GlobalPlayLists, FollowedPlaylists or FavoritePlayList)");
+                        string play = Console.ReadLine();
+                        if (play == "FavoritePlayList")
+                        {
+                            Console.WriteLine("Random or select a song/video?");
+                            string rand = Console.ReadLine();
+                            if (rand == "Random")
+                            {
+                                Reproduction(4, true);
+                            }
+                            else
+                            {
+                                Console.WriteLine("What would you like to play?");
+                                string mult = Console.ReadLine();
+                                if (mult == "Songs")
+                                {
+                                    SongsSearchEngine(searchedSongs);
+                                    Reproduction(1, 0, false);
+                                }
+                                else
+                                {
+                                    VideosSearchEngine(searchedVideos);
+                                    Reproduction(1, 1, false);
+                                }
+                            }
+                        }
+                        else if (play == "GlobalPlayList")
+                        {
+                            Console.WriteLine("Please select the number...");
+                            string num = Console.ReadLine();
+                            //Elegir la playlist que te dan y según eso lo siguiente.
+                            Console.WriteLine("Random or select a song?");
+                            string rand = Console.ReadLine();
+                            if (rand == "Random")
+                            {
+                                Reproduction(4, true);
+                            }
+                            else
+                            {
+                                Console.WriteLine("What would you like to play?");
+                                string mult = Console.ReadLine();
+                                if (mult == "Songs")
+                                {
+                                    SongsSearchEngine(searchedSongs);
+                                    Reproduction(1, 0, false);
+                                }
+                                else
+                                {
+                                    VideosSearchEngine(searchedVideos);
+                                    Reproduction(1, 1, false);
+                                }
+                            }
+                        }
+                        else if (play == "FollowedPlaylist")
+                        {
+                            Console.WriteLine("Please select the number...");
+                            string num = Console.ReadLine();
+                            //Elegir la playlist que te dan y según eso lo siguiente.
+                            Console.WriteLine("Random or select a song?");
+                            string rand = Console.ReadLine();
+                            if (rand == "Random")
+                            {
+                                Reproduction(4, true);
+                            }
+                            else
+                            {
+                                Console.WriteLine("What would you like to play?");
+                                string mult = Console.ReadLine();
+                                if (mult == "Songs")
+                                {
+                                    SongsSearchEngine(searchedSongs);
+                                    Reproduction(1, 0, false);
+                                }
+                                else
+                                {
+                                    VideosSearchEngine(searchedVideos);
+                                    Reproduction(1, 1, false);
+                                }
+                            }
+                        }
+                        break;
+                    case "IV":
+                        //termina el método y llamaria al metodo de inicio en program.
+                        Console.WriteLine("LoggedOut");
+                        x = false;
+                        break;
+                    case "V":
+                        x = false;
+                        break;
                 }
             }
         }
@@ -154,14 +226,14 @@ namespace Pino_Entrega2
         {
             for(int i = 0; i < user.AccountSettings().Count(); i++)
             {
-                Console.WriteLine("Username: " + user.AccountSettings()[?] + "\n");
-                Console.WriteLine("Password: " + user.AccountSettings()[?] + "\n");
-                Console.WriteLine("Email: " + user.AccountSettings()[?] + "\n");
-                Console.WriteLine("Account type: " + user.AccountSettings()[?] + "\n");
+                Console.WriteLine("Username: " + user.AccountSettings()[0] + "\n");
+                Console.WriteLine("Password: " + user.AccountSettings()[1] + "\n");
+                Console.WriteLine("Email: " + user.AccountSettings()[2] + "\n");
+                Console.WriteLine("Account type: " + user.AccountSettings()[3] + "\n");
             }
         }
 
-        public void Reproduction(int verif, bool ver) // Si viene de una playlist y se decide poner aleatorio verif sera 4, si se elige una canción sera 1.
+        public void Reproduction(int verif, int multimediafile, bool ver) // Si viene de una playlist y se decide poner aleatorio verif sera 4, si se elige una canción sera 1.
         {
             Player player = new Player();
             
@@ -171,7 +243,7 @@ namespace Pino_Entrega2
                 int cont = 0;
                 while (cont != -1)
                 {
-                    cont = player.Play(cont, multimedia, ver, x); //Devuelve el tiempo en el que se para la canción
+                    cont = player.Play(cont, multimediafile, ver, x); //Devuelve el tiempo en el que se para la canción
                     if (cont != -1) player.Stop(cont); // devuelve el contador cuando se detiene para empezar de nuevo.
                 }
             }
@@ -181,8 +253,8 @@ namespace Pino_Entrega2
                 //Ponerle Play a cualquier canción en la Playlist
             }
         }
-
     }
+
     public void SongsSearchEngine(List<String> songsSearched)//No se si meter parametros, si es asi, serian las listas de profile preference
     {
         ProfilePreferences profilePreferences = new ProfilePreferences();

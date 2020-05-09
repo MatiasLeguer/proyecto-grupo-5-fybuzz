@@ -11,9 +11,17 @@ namespace Pino_Entrega2
     class Player //Ncesito obtener la duración del archivo multimedia....
     {
         //Hay que usar eventos que vengan desde menú y triguereen los métodos de aca con las canciones de Database.
-        Multimedia multimedia = new Multimedia(); // hacer un get a la duracion y al nombre
-        public int Play(int cont, multimedia...., bool playlist,int x)
+        // hacer un get a la duracion y al nombre
+        public int Play(int cont, int multimediafile, bool playlist,int x)
         {
+            if(multimediafile == 0)
+            {
+
+            }
+            else
+            {
+
+            }
             //Si es menor de tal edad no puede ver esta pelicula;
             int seconds = 60 * duration; //duration viene de multimedia y es la cantidad de minutos como decimal, hay que establecer una relacion
             Console.WriteLine("Playing: " + name); //name tambien viene de multimedia.
