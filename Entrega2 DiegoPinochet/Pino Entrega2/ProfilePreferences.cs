@@ -25,14 +25,14 @@ namespace Pino_Entrega2
             return searchHistoryVideos;
             
         }
-        //REVISAR ESTOS METODOS CON LEGUER MAÑANA!!!!!!!!!
+        
         public string ProfilePreferencesSongs(List<Song> multimedia, int preferencia) //seria la lista de canciones que esuchó el usuario y el parametro del que s equiere la preferncia.
         {
             List<Song> pref = new List<Song>();
             int cont = 0;
             for(int i = 0; i < multimedia.Count(); i++)
             {
-                if (multimedia[i].InfoRep() > cont) //Cada cancion con ese metodo entregara una lista que en una posición específica
+                if (multimedia[i].InfoRep()[1] > cont) //Cada cancion con ese metodo entregara una lista que en una posición específica
                 {
                     cont = multimedia[i].InfoRep();
                     pref = multimedia[i].InfoSong(); //Recordar que infosongs es una lista, luego la preferencia seria la posicion de la palabra que se busca.
@@ -54,10 +54,11 @@ namespace Pino_Entrega2
             }
             return pref[preferencia];
         }
-        public string ProfilePreferencesPlaylists(List<Playlist> multimedia, int preferencia)
-        { 
+        //Podria sacar...
+        //public string ProfilePreferencesPlaylists(List<Playlist> multimedia, int preferencia)
+        //{ 
             //mismo metodo que arriba, pero tengo que cachar los diccionarios de jacobo
-        }
+        //}
 
     }
 }
