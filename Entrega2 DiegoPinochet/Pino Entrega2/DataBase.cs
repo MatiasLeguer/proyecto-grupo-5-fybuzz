@@ -20,6 +20,8 @@ namespace Pino_Entrega2
         protected List<Video> listVideosGlobal = new List<Video>();
         protected List<Playlist> listPLsGlobal = new List<Playlist>();
 
+        public Dictionary<int,List<string>> UserDataBase { get => userDataBase; }
+
         public DataBase()
         {
             userDataBase = new Dictionary<int, List<string>>();
@@ -64,7 +66,7 @@ namespace Pino_Entrega2
         static private void Save_PLs(List<Playlist> listPLsGlobal)
         {
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("AllSongs.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            Stream stream = new FileStream("AllPlayLists.bin", FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, listPLsGlobal);
             stream.Close();
         }
@@ -77,4 +79,6 @@ namespace Pino_Entrega2
             return listPLsGlobal;
         }
     }
+
+    //Algun método para acceder al diccionario.
 }

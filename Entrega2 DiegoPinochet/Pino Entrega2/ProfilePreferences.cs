@@ -8,8 +8,8 @@ namespace Pino_Entrega2
 {
     class ProfilePreferences:DataBase
     {
-        protected List<Song> searchHistorySongs { get; set; }
-        protected List<Video> searchHistoryVideos { get; set; }
+        protected List<Song> searchHistorySongs;
+        protected List<Video> searchHistoryVideos;
 
         //No incorporaré en DisplayHistory(), pq eso debe ser parte de la clase de inputs y outpust según yo.
         public List<Song> BrowserHistorySongs(Song multimedia) //Tengo dudas si es solo las palabra y estan haran la conexión con la canción mediante algun evento o algo que ponga play a la wea, o hacemos 2 histrial de búsqueda(cancion y vids)
@@ -44,7 +44,7 @@ namespace Pino_Entrega2
         {
             //Mismo metodo que antes
         }
-        public List<Playlist> ProfilePreferencesPlaylists(List<Playlist> multimedia) //seria la lista de canciones que esuchó el usuario.
+        public List<Playlist> ProfilePreferencesPlaylists(List<Playlist> multimedia)
         {
             //Mismo metodo que antes
         }

@@ -13,6 +13,7 @@ namespace Pino_Entrega2
         //Hay que usar eventos que vengan desde menú y triguereen los métodos de aca con las canciones de Database.
         public int Play(int cont, multimedia...., bool playlist,int x)
         {
+            //Si es menor de tal edad no puede ver esta pelicula;
             int seconds = 60 * duration; //duration viene de multimedia y es la cantidad de minutos como decimal, hay que establecer una relacion
             Console.WriteLine("Playing: " + name); //name tambien viene de multimedia.
             Console.WriteLine("To stop press 0.\n");
