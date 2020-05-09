@@ -11,6 +11,7 @@ namespace Pino_Entrega2
     class Player //Ncesito obtener la duración del archivo multimedia....
     {
         //Hay que usar eventos que vengan desde menú y triguereen los métodos de aca con las canciones de Database.
+        Multimedia multimedia = new Multimedia(); // hacer un get a la duracion y al nombre
         public int Play(int cont, multimedia...., bool playlist,int x)
         {
             //Si es menor de tal edad no puede ver esta pelicula;
@@ -50,20 +51,20 @@ namespace Pino_Entrega2
             }
             return cont;
         }
-        public void Skip(List<> list,int i)
+        public void Skip(List<Playlist> PLlist,int i)
         {
             int cont = 0;
             //Aumentar 1 espacio en la playlist o lista de canciones o videos
-            if (i < list.Count()) Play(cont, multimedia, true); // play la canción sgte
+            if (i < PLlist.Count()) Play(cont, multimedia, true); // play la canción sgte
             else Console.WriteLine("Last multimedia archive in the playlist. Error");
 
         }
-        public int Previous(int cont,List<> list, int i)
+        public int Previous(int cont, List<Playlist> PLlist, int i)
         {
             if(cont == 0)
             {
                 //Disminuir un espacio en al playlist o lista
-                if (i < list.Count()) Play(cont, multimedia, true); // play la canción anterior
+                if (i < PLlist.Count()) Play(cont, multimedia, true); // play la canción anterior
                 else Console.WriteLine("First multimedia archive in the playlist. Error");
             }
             else cont = 0;

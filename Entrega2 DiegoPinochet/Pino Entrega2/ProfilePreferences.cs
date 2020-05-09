@@ -11,14 +11,13 @@ namespace Pino_Entrega2
         protected List<Song> searchHistorySongs;
         protected List<Video> searchHistoryVideos;
 
-        //No incorporaré en DisplayHistory(), pq eso debe ser parte de la clase de inputs y outpust según yo.
         public List<Song> BrowserHistorySongs(Song multimedia) //Tengo dudas si es solo las palabra y estan haran la conexión con la canción mediante algun evento o algo que ponga play a la wea, o hacemos 2 histrial de búsqueda(cancion y vids)
         {
             searchHistorySongs.Add(multimedia); //atributo de profilepreference tal vez se podria hacer un evento que agregue canciones
             return searchHistorySongs;
               
         }
-        public List<Video> BrowserHistoryVideos(Video multimedia) //Tengo dudas si es solo las palabra y estan haran la conexión con la canción mediante algun evento o algo que ponga play a la wea, o hacemos 2 histrial de búsqueda(cancion y vids)
+        public List<Video> BrowserHistoryVideos(Video multimedia)
         {
             // Una vez que busca el archivo multimedia y lo igualaré a una variable de tipo string que sera el metodo InfoSong o InfoVideo dependiendo su formato.
             
@@ -26,27 +25,38 @@ namespace Pino_Entrega2
             return searchHistoryVideos;
             
         }
+        //REVISAR ESTOS METODOS CON LEGUER MAÑANA!!!!!!!!!
         public string ProfilePreferencesSongs(List<Song> multimedia, int preferencia) //seria la lista de canciones que esuchó el usuario y el parametro del que s equiere la preferncia.
         {
-            string pref = "";
+            List<Song> pref = new List<Song>();
             int cont = 0;
             for(int i = 0; i < multimedia.Count(); i++)
             {
-                if (multimedia[i].InfoRep()[?] > cont) //Cada cancion con ese metodo entregara una lista que en una posición específica
+                if (multimedia[i].InfoRep() > cont) //Cada cancion con ese metodo entregara una lista que en una posición específica
                 {
-                    cont = multimedia[i].InfoRep(?);
-                    pref = multimedia[i].InfoSong(?);
+                    cont = multimedia[i].InfoRep();
+                    pref = multimedia[i].InfoSong(); //Recordar que infosongs es una lista, luego la preferencia seria la posicion de la palabra que se busca.
                 }
             }
-            return pref;
+            return pref[preferencia]; //Seria la preferencia (string) que se estaba buscando.
         }
-        public List<Video> ProfilePreferencesVideos(List<Video> multimedia) //seria la lista de canciones que esuchó el usuario.
+        public string ProfilePreferencesVideos(List<Video> multimedia, int preferencia) //Entrega la preferencia según el parametro que se quiera.
         {
-            //Mismo metodo que antes
+            List<Video> pref = new List<Video>();
+            int cont = 0;
+            for (int i = 0; i < multimedia.Count(); i++)
+            {
+                if (multimedia[i].InfoRep() > cont) //Cada cancion con ese metodo entregara una lista que en una posición específica
+                {
+                    cont = multimedia[i].InfoRep();
+                    pref = multimedia[i].InfoVideo(); //Recordar que infosongs es una lista, luego la preferencia seria la posicion de la palabra que se busca.
+                }
+            }
+            return pref[preferencia];
         }
-        public List<Playlist> ProfilePreferencesPlaylists(List<Playlist> multimedia)
-        {
-            //Mismo metodo que antes
+        public string ProfilePreferencesPlaylists(List<Playlist> multimedia, int preferencia)
+        { 
+            //mismo metodo que arriba, pero tengo que cachar los diccionarios de jacobo
         }
 
     }
