@@ -5,9 +5,10 @@ namespace E2_JacoboG
 {
     public class User 
     {
+        private int registerNumber;
         private string username;
         private string password;
-        private string accountType;
+        private string accountType; // Premium,Standard
         private string email;
         private int followers;
         private int following;
@@ -48,14 +49,22 @@ namespace E2_JacoboG
                 return verified;
             }
         }
-        public void AdminDeleteUser()
+        public DataBase data { get; }
+        // Diccionario de usuarios {key int, lista de palabras}
+        public void AdminDeleteUser(DataBase data, int key)
         {
             // if y fors para borrar la informacion del usuario
-
+            // acceder al diccionario con la clave key
+            
         }
 
         public void AdminBanUser()
         {
+            // Cambiar el account tyoe a uno menor
+            if (accountType=="Premium")
+            {
+                accountType.Replace("Premium", "Standard");
+            }
 
         }
         // Encontrar mas metodos para admin +Admin...

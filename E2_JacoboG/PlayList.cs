@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace E2_JacoboG
 {
+    [Serializable]
     public class PlayList
     {
         private List<Song> Songs;
         private List<Video> Videos;
         private string NamePlayList;
         private string Format;
-        
-        
-        
+
+        private Dictionary<string,List<Song>> DicCanciones;
+        private Dictionary<string, List<Video>> DicVideos;
 
         public PlayList(string Formato, string Nombre)
         {
@@ -23,13 +25,13 @@ namespace E2_JacoboG
 
         public void AddToPlayList()
         {
-            if (Format == "mp3")
+            if (Format == ".mp3" || Format == ".wav")
             {
-                .Add(Songs)
+                DicCanciones.Add(NamePlayList, Songs);
             }
-            if (Format == "mp4")
+            if (Format == ".mp4" || Format == ".mov")
             {
-                .Add(Videos)
+                DicVideos.Add(NamePlayList, Videos);
             }
         }
 
