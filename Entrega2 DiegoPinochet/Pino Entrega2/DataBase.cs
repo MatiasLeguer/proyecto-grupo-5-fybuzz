@@ -6,21 +6,24 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Pino_Entrega2
 {
     class DataBase : IOperationMult
     {
-        protected List<Song> listSongsGlobal;
-        protected List<Video> listVideoGlobal; //get y un set
-        protected List<Playlist> listPlaylistGlobal;
         protected List<String> gender;
 
         private Dictionary<int, List<string>> userDataBase;
 
-        List<Song> listSongsGlobal = new List<Song>();
-        List<Video> listSongsGlobal = new List<Video>();
-        List<Playlist> listPLsGlobal = new List<Playlist>();
+        protected List<Song> listSongsGlobal = new List<Song>();
+        protected List<Video> listVideosGlobal = new List<Video>();
+        protected List<Playlist> listPLsGlobal = new List<Playlist>();
+
+        public DataBase()
+        {
+            userDataBase = new Dictionary<int, List<string>>();
+        }
 
         //Crear la cancion o obtenerla de algun lugar;
 
@@ -46,7 +49,7 @@ namespace Pino_Entrega2
         static private void Save_Videos(List<Video> listVideosGlobal)
         {
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("AllSongs.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            Stream stream = new FileStream("AllVideos.bin", FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, listVideosGlobal);
             stream.Close();
         }
