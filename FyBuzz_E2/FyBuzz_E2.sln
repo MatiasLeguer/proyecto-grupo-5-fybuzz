@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FyBuzz_E2", "FyBuzz_E2.csproj", "{44700482-6FE6-4276-9935-275DCB4CF9E6}"
 EndProject
 Global
@@ -9,9 +10,15 @@ Global
 		Release|anycpu = Release|anycpu
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{44700482-6FE6-4276-9935-275DCB4CF9E6}.Debug|anycpu.ActiveCfg = Debug|anycpu
-		{44700482-6FE6-4276-9935-275DCB4CF9E6}.Debug|anycpu.Build.0 = Debug|anycpu
-		{44700482-6FE6-4276-9935-275DCB4CF9E6}.Release|anycpu.ActiveCfg = Release|anycpu
-		{44700482-6FE6-4276-9935-275DCB4CF9E6}.Release|anycpu.Build.0 = Release|anycpu
+		{44700482-6FE6-4276-9935-275DCB4CF9E6}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{44700482-6FE6-4276-9935-275DCB4CF9E6}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{44700482-6FE6-4276-9935-275DCB4CF9E6}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{44700482-6FE6-4276-9935-275DCB4CF9E6}.Release|anycpu.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3EC8CC5D-29C7-44F5-B1DD-BCDDC0339E44}
 	EndGlobalSection
 EndGlobal
