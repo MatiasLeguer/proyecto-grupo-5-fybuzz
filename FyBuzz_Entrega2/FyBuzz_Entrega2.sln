@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FyBuzz_Entrega2", "FyBuzz_Entrega2.csproj", "{D7D22295-C783-4AE8-B2E5-5A6E8211EC57}"
 EndProject
 Global
@@ -9,9 +10,15 @@ Global
 		Release|anycpu = Release|anycpu
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D7D22295-C783-4AE8-B2E5-5A6E8211EC57}.Debug|anycpu.ActiveCfg = Debug|anycpu
-		{D7D22295-C783-4AE8-B2E5-5A6E8211EC57}.Debug|anycpu.Build.0 = Debug|anycpu
-		{D7D22295-C783-4AE8-B2E5-5A6E8211EC57}.Release|anycpu.ActiveCfg = Release|anycpu
-		{D7D22295-C783-4AE8-B2E5-5A6E8211EC57}.Release|anycpu.Build.0 = Release|anycpu
+		{D7D22295-C783-4AE8-B2E5-5A6E8211EC57}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{D7D22295-C783-4AE8-B2E5-5A6E8211EC57}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{D7D22295-C783-4AE8-B2E5-5A6E8211EC57}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{D7D22295-C783-4AE8-B2E5-5A6E8211EC57}.Release|anycpu.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ABBCBA4F-266B-4484-BAB3-D1BD2F2ABCE3}
 	EndGlobalSection
 EndGlobal
