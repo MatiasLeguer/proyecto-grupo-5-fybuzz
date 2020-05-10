@@ -35,6 +35,17 @@
     <Compile Include="Profile.cs" />
     <Compile Include="User.cs" />
     <Compile Include="PlayList.cs" />
+    <Compile Include="ProfilePreferences.cs" />
+    <Compile Include="DataBase.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="Server.cs" />
+    <Compile Include="Multimedia.cs" />
+    <Compile Include="Song.cs" />
+    <Compile Include="Video.cs" />
+    <Compile Include="ChangePasswordEventArgs.cs" />
+    <Compile Include="RegisterEventArgs.cs" />
+    <Compile Include="IOperationMult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
