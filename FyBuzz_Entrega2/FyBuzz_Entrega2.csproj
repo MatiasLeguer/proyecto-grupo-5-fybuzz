@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -30,10 +30,15 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Playlist.cs" />
+    <Compile Include="Profile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="Profile.cs" />
     <Compile Include="PlayList.cs" />
+=======
+>>>>>>> 2afe7783dc0da7be17bdbf32b2c8bfbe996ed015
     <Compile Include="ProfilePreferences.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="Player.cs" />
@@ -41,6 +46,7 @@
     <Compile Include="Server.cs" />
     <Compile Include="Multimedia.cs" />
     <Compile Include="Song.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="Video.cs" />
     <Compile Include="ChangePasswordEventArgs.cs" />
     <Compile Include="RegisterEventArgs.cs" />
