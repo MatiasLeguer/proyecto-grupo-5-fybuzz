@@ -17,6 +17,7 @@ namespace FyBuzz_E2
         private List<Song> playlistFavoritosSongs;
         private List<Video> playlistEnColaVideos;
         private List<Video> playlistFavoritosVideos;
+        private List<PlayList> followedPlayList;
         private string gender;
         private int age;
 
@@ -25,6 +26,11 @@ namespace FyBuzz_E2
         public string ProfileType { get => profileType; set => profileType = value; }
         public string Gender { get => gender; set => gender = value; }
         public int Age { get => age; set => age = value; }
+        public List<Song> PlaylistFavoritosSongs { get => playlistFavoritosSongs; set => playlistFavoritosSongs = value; }
+        public List<Song> PlaylistEnColaSongs { get => playlistEnColaSongs; set => playlistEnColaSongs = value; }
+        public List<Video> PlaylistFavoritosVideos { get => playlistFavoritosVideos; set => playlistFavoritosVideos = value; }
+        public List<Video> PlaylistEnColaVideos { get => playlistEnColaVideos; set => playlistEnColaVideos = value; }
+        public List<PlayList> FollowedPlayList { get => followedPlayList; set => followedPlayList = value; }
 
         public Profile(string pn, string pp, string pt, string pm, string pg, int pa)
         {

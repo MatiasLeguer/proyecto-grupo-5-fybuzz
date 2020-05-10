@@ -28,7 +28,7 @@ namespace FyBuzz_E2
         static private void Save_Users(Dictionary<int, List<string>> userDic)
         {
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("AllUsers.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            Stream stream = new FileStream("AllUsers.bin", FileMode.Append, FileAccess.Write, FileShare.None); //Puse append para abrir o crear el archivo y ponerle cosas.
             formatter.Serialize(stream, userDic);
             stream.Close();
         }
@@ -124,7 +124,7 @@ namespace FyBuzz_E2
             formatter.Serialize(stream, listSongsGlobal);
             stream.Close();
         }
-        static private List<Song> Load_Songs()
+        public List<Song> Load_Songs()
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllSongs.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -139,7 +139,7 @@ namespace FyBuzz_E2
             formatter.Serialize(stream, listVideosGlobal);
             stream.Close();
         }
-        static private List<Video> Load_Videos()
+        public List<Video> Load_Videos()
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllVideos.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -154,7 +154,7 @@ namespace FyBuzz_E2
             formatter.Serialize(stream, listPLsGlobal);
             stream.Close();
         }
-        static private List<PlayList> Load_PLs()
+        public List<PlayList> Load_PLs()
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllPlayLists.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
