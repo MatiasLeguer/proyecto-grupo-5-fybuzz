@@ -28,13 +28,13 @@ namespace FyBuzz_E2
 
         public string ProfilePreferencesSongs(List<Song> multimedia, int preferencia) //seria la lista de canciones que esuchó el usuario y el parametro del que s equiere la preferncia.
         {
-            List<Song> pref = new List<Song>();
+            List<string> pref = new List<string>();
             int cont = 0;
             for (int i = 0; i < multimedia.Count(); i++)
             {
                 if (multimedia[i].InfoRep()[1] > cont) //Cada cancion con ese metodo entregara una lista que en una posición específica
                 {
-                    cont = multimedia[i].InfoRep();
+                    cont = multimedia[i].InfoRep()[1];
                     pref = multimedia[i].InfoSong(); //Recordar que infosongs es una lista, luego la preferencia seria la posicion de la palabra que se busca.
                 }
             }
@@ -42,13 +42,13 @@ namespace FyBuzz_E2
         }
         public string ProfilePreferencesVideos(List<Video> multimedia, int preferencia) //Entrega la preferencia según el parametro que se quiera.
         {
-            List<Video> pref = new List<Video>();
+            List<string> pref = new List<string>();
             int cont = 0;
             for (int i = 0; i < multimedia.Count(); i++)
             {
-                if (multimedia[i].InfoRep() > cont) //Cada cancion con ese metodo entregara una lista que en una posición específica
+                if (multimedia[i].InfoRep()[1] > cont) //Cada cancion con ese metodo entregara una lista que en una posición específica
                 {
-                    cont = multimedia[i].InfoRep();
+                    cont = multimedia[i].InfoRep()[1];
                     pref = multimedia[i].InfoVideo(); //Recordar que infosongs es una lista, luego la preferencia seria la posicion de la palabra que se busca.
                 }
             }
