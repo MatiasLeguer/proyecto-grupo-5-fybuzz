@@ -11,7 +11,7 @@ namespace FyBuzz_E2
         private int registerNumber;
         private string username;
         private string password;
-        private string accountType; // Premium,Standard
+        private string accountType; // Premium,Standard //Yo le pondria un 0 y un 1, asi es mas facil
         private string email;
         private int followers;
         private int following;

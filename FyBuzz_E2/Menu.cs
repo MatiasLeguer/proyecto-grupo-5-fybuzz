@@ -18,6 +18,7 @@ namespace FyBuzz_E2
         public bool DisplayLogin()
         {
             DataBase database = new DataBase();
+            Server server = new Server(database);
 
             bool x = false;
             while (x == false)
@@ -37,13 +38,8 @@ namespace FyBuzz_E2
                 }
                 else
                 {
-                    //poner le metodo de register
-                    //verificar mail.
-                    if (todo ok)
-                    {
-                        Console.WriteLine("Account created, now log in.");
-                        x = false;
-                    }
+                    server.Register(); //Agregue el metodo de server register.
+                    x = false;
                 }
             }
             return x;
@@ -69,7 +65,7 @@ namespace FyBuzz_E2
                 {
                     if (perfil == profilelist[i].ProfileName)
                     {
-                        return profilelist[i];
+                        return profilelist[i]; // tengo que devolver algun perfil
                     }
                 }
 
@@ -78,6 +74,8 @@ namespace FyBuzz_E2
 
         public void DisplayStart() // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
+            //Hay que abrir el archivo de playlist globales.
+
             Console.WriteLine("------------Welcome to FyBuZz--------------");
             // mostrará todas las playlist del usuario, si es primera vez que ingresa estara la playlist general y la favorita(esta sin nada)
             DisplayPlaylist(listPlaylistGlobal); // es la lista global de playlist que viene de database, pero hay que conectarla
@@ -180,7 +178,7 @@ namespace FyBuzz_E2
                             Console.WriteLine("Please select the number...");
                             string num = Console.ReadLine();
                             //Elegir la playlist que te dan y según eso lo siguiente.
-                            Console.WriteLine("Random or select a song?");
+                            Console.WriteLine("Random or select multimedia?");
                             string rand = Console.ReadLine();
                             if (rand == "Random")
                             {
@@ -220,7 +218,7 @@ namespace FyBuzz_E2
         {
             for (int i = 0; i < playlist.Count(); i++)
             {
-                Console.WriteLine(i + ") " + playlist[i].InfoPlaylist());
+                Console.WriteLine(i + ") " + playlist[i].InfoPlaylist()); //Falta un metodo de info playlist
             }
         }
         public void AccountSettings(User user)
