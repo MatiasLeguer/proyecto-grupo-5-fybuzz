@@ -7,20 +7,21 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pino_Entrega2
+namespace FyBuzz_E2
 {
-    class Menu
+    public class Menu
     {
         private List<String> filters;
         public List<Song> searchedSongs;
-        public List<Videos> searchedVideos;
+        public List<Video> searchedVideos;
         User user = new User();
         public bool DisplayLogin()
         {
             DataBase database = new DataBase();
 
             bool x = false;
-            while (x == false) {
+            while (x == false)
+            {
                 Console.WriteLine("------------Welcome to FyBuZz--------------");
                 Console.WriteLine("I) Log-In with a existing account.");
                 Console.WriteLine("II) Register.");
@@ -54,7 +55,7 @@ namespace Pino_Entrega2
             Console.WriteLine("---------Profiles----------");
             Console.WriteLine("Choose a profile or Create Profile");
             string dec = Console.ReadLine();
-            if (dec == "Choose a profile") 
+            if (dec == "Choose a profile")
             {
                 Console.WriteLine("Choose a profile:");
                 dicprofile = user.Perfiles;
@@ -64,7 +65,7 @@ namespace Pino_Entrega2
                     profilelist.Add(profile);
                 }
                 string perfil = Console.ReadLine();
-                for(int i = 0;i < profilelist.Count(); i++)
+                for (int i = 0; i < profilelist.Count(); i++)
                 {
                     if (perfil == profilelist[i].ProfileName)
                     {
@@ -74,17 +75,17 @@ namespace Pino_Entrega2
 
             }
         }
-        
+
         public void DisplayStart() // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
             Console.WriteLine("------------Welcome to FyBuZz--------------");
             // mostrará todas las playlist del usuario, si es primera vez que ingresa estara la playlist general y la favorita(esta sin nada)
             DisplayPlaylist(listPlaylistGlobal); // es la lista global de playlist que viene de database, pero hay que conectarla
-            if(PlaylistFav().Count() != 0)
+            if (PlaylistFav().Count() != 0)
             {
-                Console.WriteLine(PlaylistFav().InfoPlaylist()); 
+                Console.WriteLine(PlaylistFav().InfoPlaylist());
             }
-            if(Playlistseguidos.Count() != 0)
+            if (Playlistseguidos.Count() != 0)
             {
                 Console.WriteLine(DisplayPlaylist(PlaylistSeguidos));
             }
@@ -215,16 +216,16 @@ namespace Pino_Entrega2
         }
 
         //tenemos que decidir si esta clase sera de inputs y outputs, o la que hace de reproductor.
-        public void DisplayPlaylist(List<Playist> playlist)
+        public void DisplayPlaylist(List<PlayList> playlist)
         {
-            for(int i = 0; i < playlist.Count(); i++)
+            for (int i = 0; i < playlist.Count(); i++)
             {
                 Console.WriteLine(i + ") " + playlist[i].InfoPlaylist());
             }
         }
         public void AccountSettings(User user)
         {
-            for(int i = 0; i < user.AccountSettings().Count(); i++)
+            for (int i = 0; i < user.AccountSettings().Count(); i++)
             {
                 Console.WriteLine("Username: " + user.AccountSettings()[0] + "\n");
                 Console.WriteLine("Password: " + user.AccountSettings()[1] + "\n");
@@ -236,7 +237,7 @@ namespace Pino_Entrega2
         public void Reproduction(int verif, int multimediafile, bool ver) // Si viene de una playlist y se decide poner aleatorio verif sera 4, si se elige una canción sera 1.
         {
             Player player = new Player();
-            
+
             if (verif == 1)
             {
                 int x = 0;
@@ -266,9 +267,9 @@ namespace Pino_Entrega2
         //string user_filters = Console.ReadLine();
         //No se como ver que filtros habrian en la busqueda
         //Buscar el archivo multimedia y agregarlo a una variable llamada multimedia que se diferecniarar segun el ipo del archivo. Este se ira a el BrowserHistory
-        
+
         List<Song> searchedStorySongs = profilePreferences.BrowserHistorySongs(multimedia);
-        
+
         Displayistory(searchedStorySongs, searchedStoryVideos);
         //podria llamar al método displayhistory en este metodo y hacer una clase que se vaya modificando cada 10 busquedas, y esta entregarsela al metodo history para que la use y la ponga. 
     }
@@ -285,7 +286,7 @@ namespace Pino_Entrega2
         //No se como ver que filtros habrian en la busqueda
         //De alguna manera tengo que acceder a la lista de canciones en database.
         // Si se encuentra la video esat se agregará a la lista ed canciones, 
-        
+
         List<Video> searchedStoryVideos = profilePreferences.BrowserHistoryVideos(multimedia);
         Displayhistory(searchedStorySongs, searchedStoryVideos);
 
@@ -294,9 +295,9 @@ namespace Pino_Entrega2
     }
     public void DisplayHistory(List<Song> searchStorySongs, List<Video> searchStoryVideos)
     {
-        if(searchStorySongs.Count() < 5 || searchStoryVideos.Count() < 5)
+        if (searchStorySongs.Count() < 5 || searchStoryVideos.Count() < 5)
         {
-            for(int i = 0; i < searchStorySongs.Count(); i++)
+            for (int i = 0; i < searchStorySongs.Count(); i++)
             {
                 Console.WriteLine(searchStorySongs[i]); //Recordar que cada eleemento de estas listas van a ser la información de cada archivo multimedia.
             }
@@ -318,3 +319,4 @@ namespace Pino_Entrega2
         }
     }
 }
+

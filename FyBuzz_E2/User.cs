@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace E2_JacoboG
+namespace FyBuzz_E2
 {
-    public class User 
+    public class User
     {
         private int registerNumber;
         private string username;
@@ -17,22 +20,23 @@ namespace E2_JacoboG
         private bool privacy;
 
         private Dictionary<int, Profile> perfiles;
-        
+
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
         public string Email { get => email; set => email = value; }
-        public Dictionary<int,Profile> Perfiles { get => perfiles; set => perfiles = value; }
+
+        public Dictionary<int, Profile> Perfiles { get => perfiles; set => perfiles = value; }
 
         // Constructor
         public User()
         {
-            
+
         }
-        
-        public void CreateProfile(string pname, string ppic, string ptype,string pmail, string pgender, int page, int cont)
+
+        public void CreateProfile(string pname, string ppic, string ptype, string pmail, string pgender, int page, int cont)
         {
             Profile profileX = new Profile(pname, ppic, ptype, pmail, pgender, page);
-            Perfiles.Add(cont,profileX);
+            Perfiles.Add(cont, profileX);
         }
 
         public List<string> AccountSettings()
@@ -48,7 +52,7 @@ namespace E2_JacoboG
         public bool GetVerification()
         {
             // Decide si tiene o no verificacion a partir de sus seguidores
-            if (followers > 100000) 
+            if (followers > 100000)
             {
                 verified = true;
                 return verified;
@@ -69,23 +73,19 @@ namespace E2_JacoboG
             {
                 data.Remove(key);
             }
-            
+
         }
 
         public void AdminBanUser()
         {
             // Cambiar el account tyoe a uno menor
-            if (accountType=="Premium")
+            if (accountType == "Premium")
             {
                 accountType.Replace("Premium", "Standard");
             }
 
         }
         // Encontrar mas metodos para admin +Admin...
-
-
-
-
 
     }
 }

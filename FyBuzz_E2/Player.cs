@@ -6,15 +6,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Pino_Entrega2
+namespace FyBuzz_E2
 {
-    class Player //Ncesito obtener la duración del archivo multimedia....
+    public class Player
     {
         //Hay que usar eventos que vengan desde menú y triguereen los métodos de aca con las canciones de Database.
         // hacer un get a la duracion y al nombre
-        public int Play(int cont, int multimediafile, bool playlist,int x)
+        public int Play(int cont, int multimediafile, bool playlist, int x)
         {
-            if(multimediafile == 0)
+            if (multimediafile == 0)
             {
 
             }
@@ -33,12 +33,12 @@ namespace Pino_Entrega2
                 cont++;
                 int verif = int.Parse(Console.ReadLine());
                 if (verif == 0) break;
-                else if(verif == 2 && playlist == true) // Solo se podra saltar si se encuentra en una playlist, si no no.
+                else if (verif == 2 && playlist == true) // Solo se podra saltar si se encuentra en una playlist, si no no.
                 {
                     Skip(List, x);
                     break;
                 }
-                else if(verif == 3 && playlist == true)
+                else if (verif == 3 && playlist == true)
                 {
                     Previous(cont, List, x);
                     break;
@@ -52,14 +52,15 @@ namespace Pino_Entrega2
         {
             Console.WriteLine("To play press 1.\n");
             int play = 0;
-            while (play != 1) {
+            while (play != 1)
+            {
                 play = int.Parse(Console.ReadLine());
                 if (play == 1) return cont;
                 else continue;
             }
             return cont;
         }
-        public void Skip(List<Playlist> PLlist,int i)
+        public void Skip(List<PlayList> PLlist, int i)
         {
             int cont = 0;
             //Aumentar 1 espacio en la playlist o lista de canciones o videos
@@ -67,9 +68,9 @@ namespace Pino_Entrega2
             else Console.WriteLine("Last multimedia archive in the playlist. Error");
 
         }
-        public int Previous(int cont, List<Playlist> PLlist, int i)
+        public int Previous(int cont, List<PlayList> PLlist, int i)
         {
-            if(cont == 0)
+            if (cont == 0)
             {
                 //Disminuir un espacio en al playlist o lista
                 if (i < PLlist.Count()) Play(cont, multimedia, true); // play la canción anterior
@@ -90,3 +91,4 @@ namespace Pino_Entrega2
         }
     }
 }
+

@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pino_Entrega2
+namespace FyBuzz_E2
 {
-
-    public class ProfilePreferences:DataBase
-
+    public class ProfilePreferences
     {
         protected List<Song> searchHistorySongs;
         protected List<Video> searchHistoryVideos;
@@ -17,22 +15,22 @@ namespace Pino_Entrega2
         {
             searchHistorySongs.Add(multimedia); //atributo de profilepreference tal vez se podria hacer un evento que agregue canciones
             return searchHistorySongs;
-              
+
         }
         public List<Video> BrowserHistoryVideos(Video multimedia)
         {
             // Una vez que busca el archivo multimedia y lo igualaré a una variable de tipo string que sera el metodo InfoSong o InfoVideo dependiendo su formato.
-            
+
             searchHistoryVideos.Add(multimedia); //atributo profilepreference tal vez se podria hacer un evento que agregue videos
             return searchHistoryVideos;
-            
+
         }
-        
+
         public string ProfilePreferencesSongs(List<Song> multimedia, int preferencia) //seria la lista de canciones que esuchó el usuario y el parametro del que s equiere la preferncia.
         {
             List<Song> pref = new List<Song>();
             int cont = 0;
-            for(int i = 0; i < multimedia.Count(); i++)
+            for (int i = 0; i < multimedia.Count(); i++)
             {
                 if (multimedia[i].InfoRep()[1] > cont) //Cada cancion con ese metodo entregara una lista que en una posición específica
                 {
@@ -59,7 +57,7 @@ namespace Pino_Entrega2
         //Podria sacar...
         //public string ProfilePreferencesPlaylists(List<Playlist> multimedia, int preferencia)
         //{ 
-            //mismo metodo que arriba, pero tengo que cachar los diccionarios de jacobo
+        //mismo metodo que arriba, pero tengo que cachar los diccionarios de jacobo
         //}
 
     }

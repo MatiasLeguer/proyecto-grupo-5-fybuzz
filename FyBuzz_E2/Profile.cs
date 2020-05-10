@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Threading;
 
-namespace E2_JacoboG
+namespace FyBuzz_E2
 {
-    public class Profile : User
+    public class Profile:User
     {
         private string profileName;
         private string profilePic;
@@ -43,13 +46,13 @@ namespace E2_JacoboG
         }
         public void ChangeProfileType()
         {
-            if (profileType== "public")
+            if (profileType == "public")
             {
                 profileType.Replace(profileType, "private");
             }
             if (profileType == "private")
             {
-                profileType.Replace(profileType,"public");
+                profileType.Replace(profileType, "public");
             }
         }
         public void Follow()
@@ -61,7 +64,7 @@ namespace E2_JacoboG
             List<string> InfoPro = new List<string>() { profileName, profileType, gender, age.ToString() };
             return InfoPro;
         }
-        
+
         public int RankingMultimedia()
         {
 
@@ -89,7 +92,7 @@ namespace E2_JacoboG
         public void DownloadSong()
         {
             Thread.Sleep(5000);
-            Console.WriteLine("Se ha descargado la cancion" );
+            Console.WriteLine("Se ha descargado la cancion");
         }
         public void LikeSong(Song song)
         {
@@ -100,22 +103,13 @@ namespace E2_JacoboG
         public void LikeVideo(Video video)
         {
             // Conexion con multimedia / Likes +1
-            video.Likes(); 
+            video.Likes();
 
         }
 
         // En videos o canciones (seria mejor en multimedia) deberia haber un metodo
         // que permita sumarle uno al contador de likes de cancion o video, de lo
         // contrario no se le podria sumar algo al atributo desde esta clase
-
-
-
-
-
-
-
-
-
 
 
     }

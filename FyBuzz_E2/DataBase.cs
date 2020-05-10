@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Threading;
 using Microsoft.Win32;
 
-namespace Pino_Entrega2
+namespace FyBuzz_E2
 {
-    class DataBase : IOperationMult //Hasta ahora la interfaz no la hemos usado...
+    public class DataBase
     {
         protected List<String> gender;
 
@@ -19,7 +19,7 @@ namespace Pino_Entrega2
 
         protected List<Song> listSongsGlobal = new List<Song>();
         protected List<Video> listVideosGlobal = new List<Video>();
-        protected List<Playlist> listPLsGlobal = new List<Playlist>();
+        protected List<PlayList> listPLsGlobal = new List<PlayList>();
 
         //Guarda usuarios en archivos, pero necesito el diccionario.
         static private void Save_Users(Dictionary<int, List<string>> userDic)
@@ -92,11 +92,11 @@ namespace Pino_Entrega2
         //Metodo que viene de evento que verifica y agrega elementos a las listas especificas.
         public void OnSongSent(object source, Song s)
         {
-            foreach(Song song in listSongsGlobal)
+            foreach (Song song in listSongsGlobal)
             {
                 if (song != s) listSongsGlobal.Add(s);
-            } 
-            
+            }
+
         }
         public void OnVideoSent(object source, Video v)
         {
@@ -107,7 +107,7 @@ namespace Pino_Entrega2
         }
         public void OnPlaylistSent(object source, PlayList p)
         {
-            foreach (Playlist pl in listPLsGlobal)
+            foreach (PlayList pl in listPLsGlobal)
             {
                 if (pl != p) listPLsGlobal.Add(p);
             }
@@ -144,18 +144,18 @@ namespace Pino_Entrega2
             stream.Close();
             return listVideosGlobal;
         }
-        static private void Save_PLs(List<Playlist> listPLsGlobal)
+        static private void Save_PLs(List<PlayList> listPLsGlobal)
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllPlayLists.bin", FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, listPLsGlobal);
             stream.Close();
         }
-        static private List<Playlist> Load_PLs()
+        static private List<PlayList> Load_PLs()
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllPlayLists.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            List<Playlist> listPLsGlobal = (List<Playlist>)formatter.Deserialize(stream);
+            List<PlayList> listPLsGlobal = (List<PlayList>)formatter.Deserialize(stream);
             stream.Close();
             return listPLsGlobal;
         }
@@ -164,3 +164,4 @@ namespace Pino_Entrega2
 
     //Algun método para acceder al diccionario.
 }
+
