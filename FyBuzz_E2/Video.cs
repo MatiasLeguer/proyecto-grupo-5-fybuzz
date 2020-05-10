@@ -52,6 +52,10 @@ namespace FyBuzz_E2
         {
             return new List<string>() { name, quality, category, rated, ranking }; //Agregar más atributos?
         }
+        public List<int> InfoRep()
+        {
+            return new List<int>() { generalRep, profileRep };
+        }
 
         //Ver que más métodos podemos poner? o que sea solo clase constructora.
     }
