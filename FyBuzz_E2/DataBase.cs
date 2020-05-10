@@ -17,6 +17,9 @@ namespace FyBuzz_E2
 
         private Dictionary<int, List<string>> userDataBase;
 
+        // get/set para acceder al diccionario desde user y asi poder borrar un usuario
+        public Dictionary<int,List<string>> UserDataBase { get => userDataBase; set => userDataBase = value; }
+
         protected List<Song> listSongsGlobal = new List<Song>();
         protected List<Video> listVideosGlobal = new List<Video>();
         protected List<PlayList> listPLsGlobal = new List<PlayList>();
