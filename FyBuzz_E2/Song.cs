@@ -44,7 +44,6 @@ namespace FyBuzz_E2
             }
         }
 
-
         public List<string> InfoSong()
         {
             return new List<string>() { name, artist, album, discography, studio, gender, ranking };
@@ -53,6 +52,10 @@ namespace FyBuzz_E2
         public List<int> InfoRep()
         {
             return new List<int>() { generalRep, profileRep };
+        }
+        public string SearchedInfoSong()
+        {
+            return "Cancion: " + name + "\tArtista: " + artist;
         }
 
         //Necesitaremos agragar más métodos??
