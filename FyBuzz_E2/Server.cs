@@ -25,7 +25,6 @@ namespace FyBuzz_E2
             if (Registered != null)
             {
                 Registered(this, new RegisterEventArgs() { Username = username, Password = password, Email = email });
-                Console.WriteLine("Registered Succesful.");
             }
         }
 
@@ -45,7 +44,7 @@ namespace FyBuzz_E2
         public void Register()
         {
             // Pedimos todos los datos necesarios
-            Console.Write("Bienvenido! Ingrese sus datos de registro en PlusCorporation\nUsuario: ");
+            Console.Write("Bienvenido! Ingrese sus datos de registro en FyBuZz\nUsuario: ");
             string usr = Console.ReadLine();
             Console.Write("Correo: ");
             string email = Console.ReadLine();
