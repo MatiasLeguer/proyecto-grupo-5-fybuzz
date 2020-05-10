@@ -148,7 +148,7 @@ namespace FyBuzz_E2
                                 Console.WriteLine((i+1) + ") " + searchEngine[i][0]);
                             }
                             int indice = int.Parse(Console.ReadLine())-1;
-                            Song song = listSongsGlobal[indice]; //La cancion a la que querria escuchar
+                            Song song = listSongsGlobal[indexglobal[indice]]; //La cancion a la que querria escuchar
 
                             Reproduction(1, 0, false); //Falta arreglar el método de reproduccion
                         }
@@ -167,7 +167,7 @@ namespace FyBuzz_E2
                                 Console.WriteLine((i + 1) + ") " + searchEngine[i][0]);
                             }
                             int indice = int.Parse(Console.ReadLine()) - 1;
-                            Video video = listVideosGlobal[indice]; //La video a la que querria escuchar
+                            Video video = listVideosGlobal[indexglobal[indice]]; //La video a la que querria escuchar
 
                             Reproduction(1, 0, false); //Falta arreglar el método de reproduccion
                         }
