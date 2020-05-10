@@ -44,41 +44,58 @@ namespace FyBuzz_E2
             }
             return x;
         }
-        public void DisplayProfiles()
+        //if DisplayLogin == true:
+        public Profile DisplayProfiles()
         {
             Dictionary<int, Profile> dicprofile = new Dictionary<int, Profile>();
             List<Profile> profilelist = new List<Profile>();
+            Profile profile_n = new Profile("","","","","",0);
             Console.WriteLine("---------Profiles----------");
             Console.WriteLine("Choose a profile or Create Profile");
             string dec = Console.ReadLine();
-            if (dec == "Choose a profile")
+            bool x = true;
+            while (x == true)
             {
-                Console.WriteLine("Choose a profile:");
-                dicprofile = user.Perfiles;
-                foreach (Profile profile in dicprofile.Values)
+                if (dec == "Choose a profile")
                 {
-                    Console.WriteLine(profile.ProfileName);
-                    profilelist.Add(profile);
-                }
-                string perfil = Console.ReadLine();
-                for (int i = 0; i < profilelist.Count(); i++)
-                {
-                    if (perfil == profilelist[i].ProfileName)
+                    Console.WriteLine("Choose a profile:");
+                    dicprofile = user.Perfiles;
+                    foreach (Profile profile in dicprofile.Values)
                     {
-                        return profilelist[i]; // tengo que devolver algun perfil
+                        Console.WriteLine(profile.ProfileName);
+                        profilelist.Add(profile);
+                    }
+                    string perfil = Console.ReadLine();
+                    for (int i = 0; i < profilelist.Count(); i++)
+                    {
+                        if (perfil == profilelist[i].ProfileName)
+                        {
+                            profile_n = profilelist[i]; // tengo que devolver algun perfil
+                            x = false;
+                        }
                     }
                 }
-
+                else
+                {
+                    Console.WriteLine("Create a profile:");
+                    //Metodo de crear perfil y agregarlo al diccionario del usuario.
+                    //Vuelves de nuevo a la decision si escoges o creas un perfil...
+                }
             }
+            return profile_n;
         }
 
-        public void DisplayStart() // solo funciona si DisplayLogIn() retorna true se ve en program.
+        //Se necesita el perfil con el que quiere acceder
+        public void DisplayStart(Profile profile) // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
             //Hay que abrir el archivo de playlist globales.
 
             Console.WriteLine("------------Welcome to FyBuZz--------------");
             // mostrará todas las playlist del usuario, si es primera vez que ingresa estara la playlist general y la favorita(esta sin nada)
             DisplayPlaylist(listPlaylistGlobal); // es la lista global de playlist que viene de database, pero hay que conectarla
+
+            PlayList playList = profile.PlaylistFav; // Si hacemos esto obtenemos las playlis de cada perfiiiiiiil
+
             if (PlaylistFav().Count() != 0)
             {
                 Console.WriteLine(PlaylistFav().InfoPlaylist());
@@ -218,7 +235,7 @@ namespace FyBuzz_E2
         {
             for (int i = 0; i < playlist.Count(); i++)
             {
-                Console.WriteLine(i + ") " + playlist[i].InfoPlaylist()); //Falta un metodo de info playlist
+                Console.WriteLine(i + ") " + playlist[i].InfoPlayList()); //Falta un metodo de info playlist
             }
         }
         public void AccountSettings(User user)
