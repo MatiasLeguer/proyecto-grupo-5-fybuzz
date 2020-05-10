@@ -9,31 +9,34 @@ namespace FyBuzz_E2
     [Serializable]
     public class PlayList
     {
-        private List<Song> Songs;
-        private List<Video> Videos;
-        private string NamePlayList;
-        private string Format;
+        private List<Song> songs;
+        private List<Video> videos;
+        private string namePlayList;
+        private string format;
 
-        private Dictionary<string, List<Song>> DicCanciones;
-        private Dictionary<string, List<Video>> DicVideos;
+        private Dictionary<string, List<Song>> dicCanciones;
+        private Dictionary<string, List<Video>> dicVideos;
+
+        public Dictionary<string, List<Song>> DicCanciones { get => dicCanciones; }
+        public Dictionary<string, List<Video>> DicVideos { get => dicVideos; }
 
         public PlayList(string Formato, string Nombre)
         {
-            Format = Formato;
-            NamePlayList = Nombre;
+            format = Formato;
+            namePlayList = Nombre;
 
         }
 
 
         public void AddToPlayList()
         {
-            if (Format == ".mp3" || Format == ".wav")
+            if (format == ".mp3" || format == ".wav")
             {
-                DicCanciones.Add(NamePlayList, Songs);
+                dicCanciones.Add(namePlayList, songs);
             }
-            if (Format == ".mp4" || Format == ".mov")
+            if (format == ".mp4" || format == ".mov")
             {
-                DicVideos.Add(NamePlayList, Videos);
+                dicVideos.Add(namePlayList, videos);
             }
         }
 
@@ -41,8 +44,8 @@ namespace FyBuzz_E2
         public string InfoPlayList()
         {
             string str = "";
-            str += "PlayList Name: " + NamePlayList + "\n";
-            str += "Play List Format: " + Format + "\n";
+            str += "PlayList Name: " + namePlayList + "\n";
+            str += "Play List Format: " + format + "\n";
 
             return str;
         }

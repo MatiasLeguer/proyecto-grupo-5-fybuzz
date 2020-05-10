@@ -15,9 +15,11 @@ namespace FyBuzz_E2
         public List<Song> searchedSongs;
         public List<Video> searchedVideos;
         User user = new User();
+        DataBase database = new DataBase();
+        Player player = new Player();
+
         public bool DisplayLogin()
         {
-            DataBase database = new DataBase();
             Server server = new Server(database);
 
             bool x = false;
@@ -49,7 +51,8 @@ namespace FyBuzz_E2
         {
             Dictionary<int, Profile> dicprofile = new Dictionary<int, Profile>();
             List<Profile> profilelist = new List<Profile>();
-            Profile profile_n = new Profile("","","","","",0);
+            Profile profile_n = new Profile("", "", "", "", "", 0);
+
             Console.WriteLine("---------Profiles----------");
             Console.WriteLine("Choose a profile or Create Profile");
             string dec = Console.ReadLine();
@@ -88,55 +91,109 @@ namespace FyBuzz_E2
         //Se necesita el perfil con el que quiere acceder
         public void DisplayStart(Profile profile) // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
-            //Hay que abrir el archivo de playlist globales.
+            
 
-            Console.WriteLine("------------Welcome to FyBuZz--------------");
+            List<PlayList> listPlayListGlobal = new List<PlayList>();
+            listPlayListGlobal = database.Load_PLs();
+
+            List<Video> listVideosGlobal = new List<Video>();
+            listVideosGlobal = database.Load_Videos();
+
+            List<Song> listSongsGlobal = new List<Song>();
+            listSongsGlobal = database.Load_Songs();
+
+            
             // mostrará todas las playlist del usuario, si es primera vez que ingresa estara la playlist general y la favorita(esta sin nada)
-            DisplayPlaylist(listPlaylistGlobal); // es la lista global de playlist que viene de database, pero hay que conectarla
+            DisplayPlaylist(listPlayListGlobal); // es la lista global de playlist que viene de database, pero hay que conectarla
 
-            PlayList playList = profile.PlaylistFav; // Si hacemos esto obtenemos las playlis de cada perfiiiiiiil
+            PlayList favSongs = new PlayList(".mp3", "FavoriteSongs");
+            Dictionary<string, List<Song>> playlistFavSongs = favSongs.DicCanciones; //Playlist de favoritos que su nombre es el de arriba.
 
-            if (PlaylistFav().Count() != 0)
-            {
-                Console.WriteLine(PlaylistFav().InfoPlaylist());
-            }
-            if (Playlistseguidos.Count() != 0)
-            {
-                Console.WriteLine(DisplayPlaylist(PlaylistSeguidos));
-            }
+            PlayList favVideos = new PlayList(".mp3", "FavoriteVideos");
+            Dictionary<string, List<Video>> playlistFavVideos = favVideos.DicVideos; //Playlist de favoritos que su nombre es el de arriba.
+
+            List<PlayList> followedPL = profile.FollowedPlayList; //una lista de todas las playlist, discos, usuarios, etc.
+            //Si seguimos la usuario seguiremos todas sus playlist (REVISAR ESTO)
+
+            Console.WriteLine("------------Welcome to FyBuZz--------------"); //Se inicia el menu en si.
             bool x = true;
             while (x == true)
             {
-                Console.WriteLine("I) Search Songs or Videos.");
-                Console.WriteLine("II) Account Settings.");
-                Console.WriteLine("III) Play a Playlist.");
-                Console.WriteLine("IV) LogOut.");
-                Console.WriteLine("V) CloseApp.");
+                Console.WriteLine("I) Search Songs or Videos."); //Faltaria la bsuqueda de gente.
+                Console.WriteLine("II) Display all Playlists.");
+                Console.WriteLine("III) Account Settings.");
+                Console.WriteLine("IV) Play a Playlist.");
+                Console.WriteLine("V) LogOut.");
+                Console.WriteLine("VI) CloseApp.");
                 string dec = Console.ReadLine();
                 switch (dec)
-                {
+                { //(REVISAR DESPUES)Mejorar el metodo de busqueda para que busque canciones que se parezca
                     case "I":
                         //Método de buscar, una vez buscada la canción y elegida.
-                        Console.WriteLine("What would you like to search?");
-                        string search = Console.ReadLine();
-                        if (search == "Songs")
+                        
+                        Console.WriteLine("What would you like to search? (Songs/Videos)");
+                        string type = Console.ReadLine();
+                        if (type == "Songs")
                         {
-                            SongsSearchEngine(searchedSongs);
-                            Reproduction(1, 0, false);
+                            Console.WriteLine("Type what you want to search...");
+                            string search = Console.ReadLine();
+                            List<string> searchEngine = SearchEngine(search, type);
+                            List<int> indexglobal = new List<int>();
+                            Console.WriteLine("Searched Songs, choose one...");
+                            for(int i = 0; i < searchEngine.Count(); i++)
+                            {
+                                searchEngine[i].Split('>'); // [[Bad Bunny Safaera etc],[12]]
+                                indexglobal.Add(searchEngine[i][1]);
+
+                                Console.WriteLine((i+1) + ") " + searchEngine[i][0]);
+                            }
+                            int indice = int.Parse(Console.ReadLine())-1;
+                            Song song = listSongsGlobal[indice]; //La cancion a la que querria escuchar
+
+                            Reproduction(1, 0, false); //Falta arreglar el método de reproduccion
                         }
                         else
                         {
-                            VideosSearchEngine(searchedVideos);
-                            Reproduction(1, 1, false);
+                            Console.WriteLine("Type what you want to search...");
+                            string search = Console.ReadLine();
+                            List<string> searchEngine = SearchEngine(search, type);
+                            List<int> indexglobal = new List<int>();
+                            Console.WriteLine("Searched Videos, choose one...");
+                            for (int i = 0; i < searchEngine.Count(); i++)
+                            {
+                                searchEngine[i].Split('>'); // [[Bad Bunny Safaera etc],[12]]
+                                indexglobal.Add(searchEngine[i][1]);
+
+                                Console.WriteLine((i + 1) + ") " + searchEngine[i][0]);
+                            }
+                            int indice = int.Parse(Console.ReadLine()) - 1;
+                            Video video = listVideosGlobal[indice]; //La video a la que querria escuchar
+
+                            Reproduction(1, 0, false); //Falta arreglar el método de reproduccion
                         }
                         break;
-
                     case "II":
+                        if (playlistFavSongs.Count() != 0)
+                        {
+                            Console.WriteLine(favSongs.InfoPlayList());
+                        }
+                        if (playlistFavVideos.Count() != 0)
+                        {
+                            Console.WriteLine(favSongs.InfoPlayList());
+                        }
+                        if (followedPL.Count() != 0)
+                        {
+                            DisplayPlaylist(followedPL);
+                        }
+                        DisplayPlaylist(listPlayListGlobal);
+
+                        break;
+                    case "III":
                         AccountSettings(user); // incorporar el usuario.
 
                         break;
 
-                    case "III":
+                    case "IV":
                         Console.WriteLine("What playlist do you want to play?(GlobalPlayLists, FollowedPlaylists or FavoritePlayList)");
                         string play = Console.ReadLine();
                         if (play == "FavoritePlayList")
@@ -218,12 +275,12 @@ namespace FyBuzz_E2
                             }
                         }
                         break;
-                    case "IV":
+                    case "V":
                         //termina el método y llamaria al metodo de inicio en program.
                         Console.WriteLine("LoggedOut");
                         x = false;
                         break;
-                    case "V":
+                    case "VI":
                         x = false;
                         break;
                 }
@@ -235,7 +292,7 @@ namespace FyBuzz_E2
         {
             for (int i = 0; i < playlist.Count(); i++)
             {
-                Console.WriteLine(i + ") " + playlist[i].InfoPlayList()); //Falta un metodo de info playlist
+                Console.WriteLine(i + ") " + playlist[i].InfoPlayList());
             }
         }
         public void AccountSettings(User user)
@@ -251,8 +308,6 @@ namespace FyBuzz_E2
 
         public void Reproduction(int verif, int multimediafile, bool ver) // Si viene de una playlist y se decide poner aleatorio verif sera 4, si se elige una canción sera 1.
         {
-            Player player = new Player();
-
             if (verif == 1)
             {
                 int x = 0;
@@ -269,67 +324,76 @@ namespace FyBuzz_E2
                 //Ponerle Play a cualquier canción en la Playlist
             }
         }
-    }
 
-    public void SongsSearchEngine(List<String> songsSearched)//No se si meter parametros, si es asi, serian las listas de profile preference
-    {
-        ProfilePreferences profilePreferences = new ProfilePreferences();
-        for (int i = 1; i <= filters.count(); i++)
+        public List<string> SearchEngine(string searching, string type)
         {
-            Console.WriteLine(i + ") " + filters[i]); //imprime todos los filtros que tengamos.
-        }
-        //Console.WriteLine("Type the filters you will use separated by space: (use filter from above)");
-        //string user_filters = Console.ReadLine();
-        //No se como ver que filtros habrian en la busqueda
-        //Buscar el archivo multimedia y agregarlo a una variable llamada multimedia que se diferecniarar segun el ipo del archivo. Este se ira a el BrowserHistory
+            List<Video> listVideosGlobal = new List<Video>();
+            listVideosGlobal = database.Load_Videos();
 
-        List<Song> searchedStorySongs = profilePreferences.BrowserHistorySongs(multimedia);
+            List<Song> listSongsGlobal = new List<Song>();
+            listSongsGlobal = database.Load_Songs();
 
-        Displayistory(searchedStorySongs, searchedStoryVideos);
-        //podria llamar al método displayhistory en este metodo y hacer una clase que se vaya modificando cada 10 busquedas, y esta entregarsela al metodo history para que la use y la ponga. 
-    }
-    public void VideosSearchEngine(List<String> videosSearched)//No se si meter parametros, si es asi, serian las listas de profile preference
-    {
-        ProfilePreferences profilePreferences = new ProfilePreferences();
-
-        for (int i = 1; i <= filters.count(); i++)
-        {
-            Console.WriteLine(i + ") " + filters[i]); //imprime todos los filtros que tengamos.
-        }
-        //Console.WriteLine("Type the filters you will use separated by space: (use filter from above)");
-        //string user_filters = Console.ReadLine();
-        //No se como ver que filtros habrian en la busqueda
-        //De alguna manera tengo que acceder a la lista de canciones en database.
-        // Si se encuentra la video esat se agregará a la lista ed canciones, 
-
-        List<Video> searchedStoryVideos = profilePreferences.BrowserHistoryVideos(multimedia);
-        Displayhistory(searchedStorySongs, searchedStoryVideos);
+            List<string> searchEngine = new List<string>();
+            int num_s = 0;
+            int num_v = 0;
 
 
-        //podria llamar al método displayhistory en este metodo y hacer una clase que se vaya modificando cada 10 busquedas, y esta entregarsela al metodo history para que la use y la ponga. 
-    }
-    public void DisplayHistory(List<Song> searchStorySongs, List<Video> searchStoryVideos)
-    {
-        if (searchStorySongs.Count() < 5 || searchStoryVideos.Count() < 5)
-        {
-            for (int i = 0; i < searchStorySongs.Count(); i++)
+            if (type == "Songs")
             {
-                Console.WriteLine(searchStorySongs[i]); //Recordar que cada eleemento de estas listas van a ser la información de cada archivo multimedia.
+                foreach (Song song in listSongsGlobal)
+                {
+                    for (int i = 0; i < song.InfoSong().Count(); i++)
+                    {
+                        if (song.InfoSong()[i] == searching)
+                        {
+                            searchEngine.Add(song.SearchedInfoSong() + ">" + num_s); //num_s es un int y no me patalea, si tira error es aca. Usar remove leguer
+                        }
+                    }
+                    num_s++;
+                }
             }
-            for (int i = 0; i < searchStoryVideos.Count(); i++)
+            else
             {
-                Console.WriteLine(searchStoryVideos[i]);
+                foreach (Video video in listVideosGlobal)
+                {
+                    for (int i = 0; i < video.InfoVideo().Count(); i++)
+                    {
+                        if (video.InfoVideo()[i] == searching)
+                        {
+                            searchEngine.Add(video.SearchedInfoVideo() + ">" + num_v);
+                        }
+                        
+                    }
+                    num_v++;
+                }
             }
+            if (searchEngine.Count() == 0) Console.WriteLine("No match found...");
+            return searchEngine;
         }
-        else
+
+        public void DisplayHistory(List<Song> searchStorySongs, List<Video> searchStoryVideos)
         {
-            for (int i = 0; i < 5; i++)
+            if (searchStorySongs.Count() < 5 || searchStoryVideos.Count() < 5)
             {
-                Console.WriteLine(searchStorySongs[i]);
+                for (int i = 0; i < searchStorySongs.Count(); i++)
+                {
+                    Console.WriteLine(searchStorySongs[i]); //Recordar que cada eleemento de estas listas van a ser la información de cada archivo multimedia.
+                }
+                for (int i = 0; i < searchStoryVideos.Count(); i++)
+                {
+                    Console.WriteLine(searchStoryVideos[i]);
+                }
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                Console.WriteLine(searchStoryVideos[i]);
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.WriteLine(searchStorySongs[i]);
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.WriteLine(searchStoryVideos[i]);
+                }
             }
         }
     }
