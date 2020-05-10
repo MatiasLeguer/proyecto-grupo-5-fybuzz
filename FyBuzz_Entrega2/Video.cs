@@ -56,7 +56,10 @@ namespace FyBuzz_Entrega2
         {
             return new List<int>() { generalRep, profileRep };
         }
+<<<<<<< HEAD
+=======
 
+>>>>>>> c84d1c5bf7aff8a9fee073e3e0ffaa5623b43f3e
         //Ver que más métodos podemos poner? o que sea solo clase constructora.
 
     }
