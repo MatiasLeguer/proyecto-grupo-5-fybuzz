@@ -24,7 +24,8 @@ namespace FyBuzz_E2
         {
             if (Registered != null)
             {
-                Registered(this, new RegisterEventArgs() { Username = username, Password = password, Email = email }); ;
+                Registered(this, new RegisterEventArgs() { Username = username, Password = password, Email = email });
+                Console.WriteLine("Registered Succesful.");
             }
         }
 
@@ -60,6 +61,7 @@ namespace FyBuzz_E2
             {
                 // Disparamos el evento
                 OnRegistered(usr, psswd,/* verificationlink: verificationLink,*/ email: email);
+                
             }
             else
             {
