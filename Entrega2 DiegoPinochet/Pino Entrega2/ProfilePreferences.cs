@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Pino_Entrega2
 {
+<<<<<<< HEAD
     class ProfilePreferences:DataBase
+=======
+    public class ProfilePreferences
+>>>>>>> 205623f4593f0b5a78690f519d3a12d46c810905
     {
         protected List<Song> searchHistorySongs;
         protected List<Video> searchHistoryVideos;
