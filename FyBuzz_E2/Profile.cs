@@ -17,6 +17,7 @@ namespace FyBuzz_E2
         private List<Song> playlistFavoritosSongs;
         private List<Video> playlistEnColaVideos;
         private List<Video> playlistFavoritosVideos;
+        private List<PlayList> followedPlayList;
         private string gender;
         private int age;
 
@@ -25,6 +26,11 @@ namespace FyBuzz_E2
         public string ProfileType { get => profileType; set => profileType = value; }
         public string Gender { get => gender; set => gender = value; }
         public int Age { get => age; set => age = value; }
+        public List<Song> PlaylistFavoritosSongs { get => playlistFavoritosSongs; set => playlistFavoritosSongs = value; }
+        public List<Song> PlaylistEnColaSongs { get => playlistEnColaSongs; set => playlistEnColaSongs = value; }
+        public List<Video> PlaylistFavoritosVideos { get => playlistFavoritosVideos; set => playlistFavoritosVideos = value; }
+        public List<Video> PlaylistEnColaVideos { get => playlistEnColaVideos; set => playlistEnColaVideos = value; }
+        public List<PlayList> FollowedPlayList { get => followedPlayList; set => followedPlayList = value; }
 
         public Profile(string pn, string pp, string pt, string pm, string pg, int pa)
         {
@@ -64,8 +70,8 @@ namespace FyBuzz_E2
             List<string> InfoPro = new List<string>() { profileName, profileType, gender, age.ToString() };
             return InfoPro;
         }
-
-        public int RankingMultimedia()
+        
+        public void RankingMultimedia()
         {
 
         }
@@ -94,6 +100,7 @@ namespace FyBuzz_E2
             Thread.Sleep(5000);
             Console.WriteLine("Se ha descargado la cancion");
         }
+        /*
         public void LikeSong(Song song)
         {
             // Conexion con multimedia / Likes +1
@@ -106,7 +113,7 @@ namespace FyBuzz_E2
             video.Likes();
 
         }
-
+        */
         // En videos o canciones (seria mejor en multimedia) deberia haber un metodo
         // que permita sumarle uno al contador de likes de cancion o video, de lo
         // contrario no se le podria sumar algo al atributo desde esta clase

@@ -11,7 +11,7 @@ namespace FyBuzz_E2
         private int registerNumber;
         private string username;
         private string password;
-        private string accountType; // Premium,Standard
+        private string accountType; // Premium,Standard //Yo le pondria un 0 y un 1, asi es mas facil
         private string email;
         private int followers;
         private int following;
@@ -19,7 +19,7 @@ namespace FyBuzz_E2
         private bool adsOn;
         private bool privacy;
 
-        private Dictionary<int, Profile> perfiles;
+        private Dictionary<int, Profile> perfiles = new Dictionary<int, Profile>(); //Agregar perfiles a el archivo de usuario para que no s epierdan cuando se cierrre el program
 
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
@@ -36,7 +36,7 @@ namespace FyBuzz_E2
         public void CreateProfile(string pname, string ppic, string ptype, string pmail, string pgender, int page, int cont)
         {
             Profile profileX = new Profile(pname, ppic, ptype, pmail, pgender, page);
-            Perfiles.Add(cont, profileX);
+            perfiles.Add(cont, profileX);
         }
 
         public List<string> AccountSettings()
@@ -63,7 +63,8 @@ namespace FyBuzz_E2
                 return verified;
             }
         }
-        public DataBase data { get; }
+
+
         // Diccionario de usuarios {key int, lista de palabras}
         public void AdminDeleteUser(DataBase data, int key)
         {
@@ -71,7 +72,7 @@ namespace FyBuzz_E2
             // acceder al diccionario con la clave key
             if (key == registerNumber)
             {
-                data.Remove(key);
+                data.Load_Users().Remove(key);
             }
 
         }

@@ -16,9 +16,13 @@ namespace FyBuzz_E2
         protected string rated;
         protected string image;
         protected bool subtitles; // 
+        protected string actors;
+        protected string directors;
 
 
-        public Video(string name, string date, int videoDimension, string quality, string category, string description, string rated, string image, string ranking, double duration, bool subtitles, string format)
+
+        public Video(string name,string actors, string directors ,string date, int videoDimension, string quality, string category, string description, string rated, string image, string ranking, double duration, bool subtitles, string format)
+
         {
             this.name = name;
             this.date = date;
@@ -32,6 +36,8 @@ namespace FyBuzz_E2
             this.duration = duration;
             this.subtitles = subtitles;
             this.format = format;
+            this.actors = actors;
+            this.directors = directors;
 
         }
 
@@ -55,6 +61,10 @@ namespace FyBuzz_E2
         public List<int> InfoRep()
         {
             return new List<int>() { generalRep, profileRep };
+        }
+        public string SearchedInfoVideo()
+        {
+            return "Video: " + name + "\tActors: " + actors + "\tDirectors: " + directors;
         }
 
         //Ver que más métodos podemos poner? o que sea solo clase constructora.

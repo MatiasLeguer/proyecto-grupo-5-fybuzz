@@ -6,7 +6,17 @@ namespace FyBuzz_E2
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Menu menu = new Menu();
+            DataBase database = new DataBase();
+            Server server = new Server(database);
+
+            bool LogIn = menu.DisplayLogin();
+            if(LogIn == true)
+            {
+                Profile profile = menu.DisplayProfiles();
+                menu.DisplayStart(profile);
+            }
+            
         }
     }
 }

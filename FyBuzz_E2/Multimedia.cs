@@ -19,7 +19,8 @@ namespace FyBuzz_E2
         protected double presentTime;
         protected string format;
 
-
+        public double Duration { get => duration; }
+        public string Name { get => name; }
 
         public string AddMult()
         {
