@@ -68,7 +68,7 @@ namespace FyBuzz_E2
             int pcont = 01;
             while (x == true)
             {
-                Console.WriteLine("Choose a profile(0) or Create Profile(1)");
+                Console.WriteLine("Choose a profile(0) or Create Profile(1) or Add Mult (2) or Display Mult (3)");
                 string dec = Console.ReadLine();
                 if (dec == "0")
                 {
@@ -90,7 +90,7 @@ namespace FyBuzz_E2
                         }
                     }
                 }
-                else
+                else if(dec == "1")
                 {
                     Console.WriteLine("Create a profile:");
                     Console.Write("Profile name: ");
@@ -109,6 +109,21 @@ namespace FyBuzz_E2
                     pcont++;
                     
                 }
+                else if(dec == "2")
+                {
+                    Console.Write("Que desea agregar? (cancion(0), video(1), Playlist(2)): ");
+                    int opc = int.Parse(Console.ReadLine());
+                    List<string> infoMult = AskInfoMult(opc);
+                    string description = database.AddMult(opc, infoMult);
+                    if (description == null) Console.WriteLine("Se ha ingresado la multimedia!");
+                    else Console.WriteLine("ERROR[!] ~{0}", description);
+                }
+                else if(dec == "3")
+                {
+                    Console.WriteLine("Que lista desea observar? (cancion(0), video(1), Playlist(2)): ");
+                    int opc = int.Parse(Console.ReadLine());
+                    DisplayGlobalMult(opc, database);
+                }
             }
             return profile_n;
         }
@@ -116,13 +131,13 @@ namespace FyBuzz_E2
         //Se necesita el perfil con el que quiere acceder
         public void DisplayStart(Profile profile) // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
-            database.createFiles(); //crea los archivos necesarios.
+            //database.createFiles(); //crea los archivos necesarios.
 
             List<PlayList> listPlayListGlobal = new List<PlayList>();
             listPlayListGlobal = database.Load_PLs();
             if(listPlayListGlobal != null)
             {
-                DisplayPlaylist(listPlayListGlobal);
+                DisplayPlaylists(listPlayListGlobal);
             }
             
             List<Video> listVideosGlobal = new List<Video>();
@@ -213,9 +228,9 @@ namespace FyBuzz_E2
                         }
                         if (followedPL.Count() != 0)
                         {
-                            DisplayPlaylist(followedPL);
+                            DisplayPlaylists(followedPL);
                         }
-                        DisplayPlaylist(listPlayListGlobal);
+                        DisplayPlaylists(listPlayListGlobal);
 
                         break;
                     case "III":
@@ -327,7 +342,36 @@ namespace FyBuzz_E2
         }
 
         //tenemos que decidir si esta clase sera de inputs y outputs, o la que hace de reproductor.
-        public void DisplayPlaylist(List<PlayList> playlist)
+        public void DisplayGlobalMult(int typeMult, DataBase database)
+        {
+            if(typeMult == 0)
+            {
+                for (int i = 0; i < database.ListSongsGlobal.Count(); i++)
+                {
+                    Console.WriteLine("Cancion {0}", i);
+                    Console.WriteLine(database.ListSongsGlobal[i].DisplayInfoSong());
+                }
+            }
+            else if(typeMult == 1)
+            {
+                for (int i = 0; i < database.ListVideosGlobal.Count(); i++)
+                {
+                    Console.WriteLine("Video {0}", i);
+                    Console.WriteLine(database.ListVideosGlobal[i].DisplayInfoVideo());
+                }
+            }
+            else if(typeMult == 2)
+            {
+                for (int i = 0; i < database.ListPLsGlobal.Count(); i++)
+                {
+                    Console.WriteLine("Playlist {0}", i);
+                    Console.WriteLine(i + ") " + database.ListPLsGlobal[i].DisplayInfoPlayList());
+                }
+            }
+
+        }
+
+        public void DisplayPlaylists(List<PlayList> playlist)
         {
             for (int i = 0; i < playlist.Count(); i++)
             {
@@ -452,6 +496,78 @@ namespace FyBuzz_E2
                     Console.WriteLine(searchStoryVideos[i]);
                 }
             }
+        }
+
+        public List<string> AskInfoMult(int type)
+        {
+            List<string> infoMult = new List<string>();
+            if(type == 0)
+            {
+                Console.Write("Escriba el nombre de la cancion: ");                                    string n = Console.ReadLine();
+                Console.Write("Escriba su nombre de artista: ");                                       string art = Console.ReadLine();
+                Console.Write("Escriba el album en donde se encontrará la cancion: ");                 string alb = Console.ReadLine();
+                Console.Write("Escriba la discografia: ");                                             string disc = Console.ReadLine();
+                Console.Write("Escriba el genero de la cancion: ");                                    string gen = Console.ReadLine();
+                Console.Write("Escriba la fecha de publicación (fecha actual en formato dd/mm/aa): "); string date = Console.ReadLine();
+                Console.Write("Escriba el studio: ");                                                  string std = Console.ReadLine();
+                Console.Write("Escriba la duración de la cancion (formato: min.seg): ");               string dur = Console.ReadLine();
+                Console.Write("Escriba el formato de la cancion (.mp3 || .wav): ");                    string format = Console.ReadLine();
+                Console.Write("su cancion tiene lyrics?: ");
+                
+                string lyr;
+                if ((Console.ReadLine() == "y") || (Console.ReadLine() == "Y"))
+                    lyr = "true";
+                else 
+                    lyr = "false";
+
+                infoMult = new List<string>() { n, art, alb, disc, gen, date, std, dur, lyr, format };
+            }
+            else if(type == 1)
+            {
+                Console.Write("Escriba el nombre del video: ");                                        string n = Console.ReadLine();
+                Console.Write("Escriba el nombre de el/los actores: ");                                string act = Console.ReadLine();
+                Console.Write("Escriba el nombre de el/los directores: ");                             string dir = Console.ReadLine();
+                Console.Write("Escriba la fecha de publicación (fecha actual en formato dd/mm/aa): "); string date = Console.ReadLine();
+                Console.Write("Escriba la dimension del video (numero): ");                            string dim = Console.ReadLine();
+                Console.Write("Escriba la calidad del video: ");                                       string cal = Console.ReadLine();
+                Console.Write("Escriba la categoria del video: ");                                     string cat = Console.ReadLine();
+                Console.Write("Escriba la descripción del video: ");                                   string des = Console.ReadLine();
+                Console.Write("Escriba la duración de la cancion (formato: min.seg)(double): ");       string dur = Console.ReadLine();
+                Console.Write("Escriba el formato de la video (.mp4 || .mov): ");                      string format = Console.ReadLine();
+                Console.Write("Confirme si es que tiene una imagen para agregar (y/n): ");             string im = Console.ReadLine();
+                Console.Write("Confirme si es que tiene subtitulos para su video: ");                  string sub = Console.ReadLine();
+                if ((im == "y") || (im == "Y"))
+                    im = "true";
+                else
+                    im = "false";
+
+                if ((sub== "y") || (sub == "Y"))
+                    sub = "true";
+                else
+                    sub = "false";
+
+                infoMult = new List<string>() { n, act, dir, date, dim, cal, cat, des, im, dur, sub, format };
+            }
+            else if(type == 2)
+            {
+                Console.Write("Escriba el nombre de la playlist: ");                     string n = Console.ReadLine();
+                Console.Write("Quiere que su playlist sea de cancion o video? (c/v): "); string format = null;
+
+                if (Console.ReadLine() == "c" || Console.ReadLine() == "C")
+                {
+                    Console.Write("Escriba el formato de la playlist de cancion (.mp3|.wav): ");
+                    format = Console.ReadLine();
+                }
+                else if (Console.ReadLine() == "v" || Console.ReadLine() == "V")
+                {
+                    Console.Write("Escriba el formato de la playlist de video (.mp4|.mov): ");
+                    format = Console.ReadLine();
+                }
+
+                    infoMult = new List<string>() { n, format};
+            }
+            return infoMult;
+            
         }
     }
 }

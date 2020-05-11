@@ -13,15 +13,15 @@ namespace FyBuzz_E2
         protected int memorySize; //No se si colocarlo o no en el constructor ya que nadie pone el peso de su video youtube. Se pone solo
         protected string category;
         protected string description;
-        protected string rated;
-        protected string image;
+        protected int rated;
+        protected bool image;
         protected bool subtitles; // 
         protected string actors;
         protected string directors;
 
 
 
-        public Video(string name,string actors, string directors ,string date, int videoDimension, string quality, string category, string description, string rated, string image, string ranking, double duration, bool subtitles, string format)
+        public Video(string name, string actors, string directors ,string date, int videoDimension, string quality, string category, string description, bool image, double duration, bool subtitles, string format)
 
         {
             this.name = name;
@@ -30,9 +30,9 @@ namespace FyBuzz_E2
             this.quality = quality;
             this.category = category;
             this.description = description;
-            this.rated = rated;
+            this.rated = 0;
             this.image = image;
-            this.ranking = ranking;
+            this.ranking = 0;
             this.duration = duration;
             this.subtitles = subtitles;
             this.format = format;
@@ -56,7 +56,11 @@ namespace FyBuzz_E2
 
         public List<string> InfoVideo()
         {
-            return new List<string>() { name, quality, category, rated, ranking }; //Agregar más atributos?
+            return new List<string>() { name, actors, directors, quality, category, rated.ToString(), ranking.ToString() }; //Agregar más atributos?
+        }
+        public string DisplayInfoVideo()
+        {
+            return "Nombre: " + name + "\tActores: " + actors + "\nDirectores: " + directors + "\tCalidad: " + quality + "\nCategoria: " + rated + "\tRating: " + rated + "\nRanking: " + ranking;
         }
         public List<int> InfoRep()
         {
