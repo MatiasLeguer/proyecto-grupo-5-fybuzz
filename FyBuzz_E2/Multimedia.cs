@@ -11,7 +11,7 @@ namespace FyBuzz_E2
     {
         protected string name;
         protected string date;
-        protected string ranking;
+        protected int ranking;
         protected int likes;
         protected int generalRep;
         protected int profileRep;
