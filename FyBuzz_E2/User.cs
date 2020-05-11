@@ -71,7 +71,7 @@ namespace FyBuzz_E2
             // acceder al diccionario con la clave key
             if (key == registerNumber)
             {
-                data.Remove(key);
+                data.UserDataBase.Remove(key);
             }
 
         }

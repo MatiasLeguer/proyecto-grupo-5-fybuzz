@@ -19,6 +19,7 @@ namespace FyBuzz_E2
 
         public Dictionary<string, List<Song>> DicCanciones { get => dicCanciones; }
         public Dictionary<string, List<Video>> DicVideos { get => dicVideos; }
+        public string Format { get => format; }
 
         public PlayList(string Formato, string Nombre)
         {

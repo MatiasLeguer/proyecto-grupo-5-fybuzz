@@ -150,7 +150,7 @@ namespace FyBuzz_E2
                             int indice = int.Parse(Console.ReadLine())-1;
                             Song song = listSongsGlobal[indexglobal[indice]]; //La cancion a la que querria escuchar
 
-                            Reproduction(1, 0, false); //Falta arreglar el método de reproduccion
+                            Reproduction(1, type,indexglobal[indice] , false); //Falta arreglar el método de reproduccion
                         }
                         else
                         {
@@ -169,7 +169,7 @@ namespace FyBuzz_E2
                             int indice = int.Parse(Console.ReadLine()) - 1;
                             Video video = listVideosGlobal[indexglobal[indice]]; //La video a la que querria escuchar
 
-                            Reproduction(1, 0, false); //Falta arreglar el método de reproduccion
+                            Reproduction(1,type, indexglobal[indice], false); //Falta arreglar el método de reproduccion
                         }
                         break;
                     case "II":
@@ -202,7 +202,8 @@ namespace FyBuzz_E2
                             string rand = Console.ReadLine();
                             if (rand == "Random")
                             {
-                                Reproduction(4, true);
+                                //Reproduction(0, true);
+                                Console.WriteLine("Aca se esta reproduciendo la playlist favorita.");
                             }
                             else
                             {
@@ -210,13 +211,15 @@ namespace FyBuzz_E2
                                 string mult = Console.ReadLine();
                                 if (mult == "Songs")
                                 {
-                                    SongsSearchEngine(searchedSongs);
-                                    Reproduction(1, 0, false);
+                                    //SongsSearchEngine(searchedSongs);
+                                    //Reproduction(1, mult, indexofmultimedia, false);
+                                    Console.WriteLine("Aca se esta reproduciendo la cancion de playlist favorita.");
                                 }
                                 else
                                 {
-                                    VideosSearchEngine(searchedVideos);
-                                    Reproduction(1, 1, false);
+                                    //VideosSearchEngine(searchedVideos);
+                                    //Reproduction(1, 1, false);
+                                    Console.WriteLine("Aca se esta reproduciendo la Video de playlist favorita.");
                                 }
                             }
                         }
@@ -229,7 +232,8 @@ namespace FyBuzz_E2
                             string rand = Console.ReadLine();
                             if (rand == "Random")
                             {
-                                Reproduction(4, true);
+                                //Reproduction(4, true);
+                                Console.WriteLine("Aca se esta reproduciendo la playlist " + num + " global.");
                             }
                             else
                             {
@@ -237,13 +241,15 @@ namespace FyBuzz_E2
                                 string mult = Console.ReadLine();
                                 if (mult == "Songs")
                                 {
-                                    SongsSearchEngine(searchedSongs);
-                                    Reproduction(1, 0, false);
+                                    //ongsSearchEngine(searchedSongs);
+                                    //Reproduction(1, 0, false);
+                                    Console.WriteLine("Aca se esta reproduciendo la cancion de playlist " + num + " global.");
                                 }
                                 else
                                 {
-                                    VideosSearchEngine(searchedVideos);
-                                    Reproduction(1, 1, false);
+                                    //VideosSearchEngine(searchedVideos);
+                                    //Reproduction(1, 1, false);
+                                    Console.WriteLine("Aca se esta reproduciendo la video de playlist " + num + " global.");
                                 }
                             }
                         }
@@ -256,7 +262,8 @@ namespace FyBuzz_E2
                             string rand = Console.ReadLine();
                             if (rand == "Random")
                             {
-                                Reproduction(4, true);
+                                //Reproduction(4, true);
+                                Console.WriteLine("Aca se esta reproduciendo la playlist " + num + " followed.");
                             }
                             else
                             {
@@ -264,13 +271,15 @@ namespace FyBuzz_E2
                                 string mult = Console.ReadLine();
                                 if (mult == "Songs")
                                 {
-                                    SongsSearchEngine(searchedSongs);
-                                    Reproduction(1, 0, false);
+                                    //SongsSearchEngine(searchedSongs);
+                                    //Reproduction(1, 0, false);
+                                    Console.WriteLine("Aca se esta reproduciendo la cancion de playlist " + num + " followed.");
                                 }
                                 else
                                 {
-                                    VideosSearchEngine(searchedVideos);
-                                    Reproduction(1, 1, false);
+                                    //VideosSearchEngine(searchedVideos);
+                                    //Reproduction(1, 1, false);
+                                    Console.WriteLine("Aca se esta reproduciendo la video de playlist " + num + " followed.");
                                 }
                             }
                         }
@@ -306,22 +315,40 @@ namespace FyBuzz_E2
             }
         }
 
-        public void Reproduction(int verif, int multimediafile, bool ver) // Si viene de una playlist y se decide poner aleatorio verif sera 4, si se elige una canción sera 1.
+        public void Reproduction(int inplaylist, string type, int indexofmultimedia, bool ver) // Si viene de una playlist y se decide poner aleatorio verif sera 4, si se elige una canción sera 1.
         {
-            if (verif == 1)
+            List<Video> listVideosGlobal = new List<Video>();
+            listVideosGlobal = database.Load_Videos();
+
+            List<Song> listSongsGlobal = new List<Song>();
+            listSongsGlobal = database.Load_Songs();
+
+            if (inplaylist == 1)
             {
                 int x = 0;
                 int cont = 0;
-                while (cont != -1)
-                {
-                    cont = player.Play(cont, multimediafile, ver, x); //Devuelve el tiempo en el que se para la canción
-                    if (cont != -1) player.Stop(cont); // devuelve el contador cuando se detiene para empezar de nuevo.
+                if (type == "Song") {
+                    while (cont != -1)
+                    {
+                        cont = player.PlaySong(cont, listSongsGlobal[indexofmultimedia], ver); //Devuelve el tiempo en el que se para la canción
+                        if (cont != -1) cont = player.Stop(cont); // devuelve el contador cuando se detiene para empezar de nuevo.
+                    }
                 }
+                else
+                {
+                    while (cont != -1)
+                    {
+                        cont = player.PlayVideo(cont, listVideosGlobal[indexofmultimedia], ver); //Devuelve el tiempo en el que se para la canción
+                        if (cont != -1) cont = player.Stop(cont); // devuelve el contador cuando se detiene para empezar de nuevo.
+                    }
+                }
+                
             }
             else
             {
-                player.Random();
-                //Ponerle Play a cualquier canción en la Playlist
+                //player.Random(playlist);
+                Console.WriteLine("Reproduce cancion random de la playlist");
+                
             }
         }
 

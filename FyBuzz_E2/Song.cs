@@ -14,7 +14,7 @@ namespace FyBuzz_E2
         protected string discography;
         protected string gender;
         protected string studio;
-        protected bool lyrics;//
+        protected bool lyrics;
 
         //Ver si el constructor está adecuado, o si hay que sacar algo.
         public Song(string name, string artist, string album, string discography, string gender, string date, string studio, string ranking, double duration, bool lyrics, string format)
