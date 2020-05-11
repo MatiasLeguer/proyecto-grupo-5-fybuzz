@@ -9,17 +9,17 @@ namespace FyBuzz_E2
 {
     public class Profile:User
     {
-        private string profileName;
-        private string profilePic;
-        private string profileType;
-        private string profileMail;
-        private List<Song> playlistEnColaSongs;
-        private List<Song> playlistFavoritosSongs;
-        private List<Video> playlistEnColaVideos;
-        private List<Video> playlistFavoritosVideos;
-        private List<PlayList> followedPlayList;
-        private string gender;
-        private int age;
+        protected string profileName;
+        protected string profilePic;
+        protected string profileType;
+        protected string profileMail;
+        protected List<Song> playlistEnColaSongs;
+        protected List<Song> playlistFavoritosSongs;
+        protected List<Video> playlistEnColaVideos;
+        protected List<Video> playlistFavoritosVideos;
+        protected List<PlayList> followedPlayList;
+        protected string gender;
+        protected int age;
 
 
         public string ProfileName { get => profileName; set => profileName = value; }
