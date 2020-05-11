@@ -63,7 +63,8 @@ namespace FyBuzz_E2
                 return verified;
             }
         }
-        public DataBase data { get; }
+
+
         // Diccionario de usuarios {key int, lista de palabras}
         public void AdminDeleteUser(DataBase data, int key)
         {
@@ -71,7 +72,7 @@ namespace FyBuzz_E2
             // acceder al diccionario con la clave key
             if (key == registerNumber)
             {
-                data.UserDataBase.Remove(key);
+                data.Load_Users().Remove(key);
             }
 
         }
