@@ -13,7 +13,7 @@ namespace FyBuzz_E2
 {
     public class DataBase
     {
-        protected List<String> gender;
+        protected List<string> gender;
 
         private Dictionary<int, User> userDataBase=  new Dictionary<int, User>();
 

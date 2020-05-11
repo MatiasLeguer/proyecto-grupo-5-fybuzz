@@ -12,7 +12,7 @@ namespace FyBuzz_E2
 {
     public class Menu
     {
-        private List<String> filters;
+        protected List<string> filters;
         public List<Song> searchedSongs;
         public List<Video> searchedVideos;
         User user = new User();
