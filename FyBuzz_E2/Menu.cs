@@ -31,17 +31,27 @@ namespace FyBuzz_E2
                 string dec = Console.ReadLine();
                 if (dec == "I")
                 {
-                    //poner el metodo de server o algo.
-                    if (database.LogIn(user.Username, user.Password) == null) //tengo que obtener mediante un get el nombre de usuario y password
+                    Console.Write("Username: ");
+                    string username = Console.ReadLine();
+                    Console.Write("Password: ");
+                    string password = Console.ReadLine();
+                    if (database.LogIn(username, password) == null) //tengo que obtener mediante un get el nombre de usuario y password
                     {
+                        user.Username = username;
+                        user.Password = password;
                         Console.WriteLine("Login Succesfull.");
                         x = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("ERROR[!]");
                     }
                 }
                 else
                 {
                     server.Register(); //Agregue el metodo de server register.
                     x = false;
+                    //Dar todas las caracteriscas del usaurio aca.
                 }
             }
             return x;
@@ -54,20 +64,22 @@ namespace FyBuzz_E2
             Profile profile_n = new Profile("", "", "", "", "", 0);
 
             Console.WriteLine("---------Profiles----------");
-            Console.WriteLine("Choose a profile or Create Profile");
-            string dec = Console.ReadLine();
             bool x = true;
+            int pcont = 01;
             while (x == true)
             {
-                if (dec == "Choose a profile")
+                Console.WriteLine("Choose a profile(0) or Create Profile(1)");
+                string dec = Console.ReadLine();
+                if (dec == "0")
                 {
-                    Console.WriteLine("Choose a profile:");
+                    Console.WriteLine("List of profiles:");
                     dicprofile = user.Perfiles;
                     foreach (Profile profile in dicprofile.Values)
                     {
                         Console.WriteLine(profile.ProfileName);
                         profilelist.Add(profile);
                     }
+                    Console.WriteLine("Choose a profile:");
                     string perfil = Console.ReadLine();
                     for (int i = 0; i < profilelist.Count(); i++)
                     {
@@ -81,8 +93,21 @@ namespace FyBuzz_E2
                 else
                 {
                     Console.WriteLine("Create a profile:");
-                    //Metodo de crear perfil y agregarlo al diccionario del usuario.
-                    //Vuelves de nuevo a la decision si escoges o creas un perfil...
+                    Console.Write("Profile name: ");
+                    string pname = Console.ReadLine();
+                    Console.Write("Profile pic: ");
+                    string ppic = Console.ReadLine();
+                    Console.Write("Profile type(public/private): ");
+                    string ptype = Console.ReadLine();
+                    //string pmail = user.Email; Esto deberia ser....
+                    string pmail = "diego@gmail.com";
+                    Console.Write("Profile gender (M/F): ");
+                    string pgender = Console.ReadLine();
+                    Console.Write("Profile age: ");
+                    int page = int.Parse(Console.ReadLine());
+                    user.CreateProfile(pname, ppic, ptype, pmail, pgender, page, pcont);
+                    pcont++;
+                    
                 }
             }
             return profile_n;
@@ -91,20 +116,25 @@ namespace FyBuzz_E2
         //Se necesita el perfil con el que quiere acceder
         public void DisplayStart(Profile profile) // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
-            
+            database.createFiles(); //crea los archivos necesarios.
 
             List<PlayList> listPlayListGlobal = new List<PlayList>();
             listPlayListGlobal = database.Load_PLs();
-
+            if(listPlayListGlobal != null)
+            {
+                DisplayPlaylist(listPlayListGlobal);
+            }
+            
             List<Video> listVideosGlobal = new List<Video>();
             listVideosGlobal = database.Load_Videos();
-
+            
             List<Song> listSongsGlobal = new List<Song>();
             listSongsGlobal = database.Load_Songs();
-
             
+
+
             // mostrará todas las playlist del usuario, si es primera vez que ingresa estara la playlist general y la favorita(esta sin nada)
-            DisplayPlaylist(listPlayListGlobal); // es la lista global de playlist que viene de database, pero hay que conectarla
+            // es la lista global de playlist que viene de database, pero hay que conectarla
 
             PlayList favSongs = new PlayList(".mp3", "FavoriteSongs");
             Dictionary<string, List<Song>> playlistFavSongs = favSongs.DicCanciones; //Playlist de favoritos que su nombre es el de arriba.

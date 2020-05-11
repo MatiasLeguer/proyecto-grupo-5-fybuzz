@@ -70,8 +70,8 @@ namespace FyBuzz_E2
             List<string> InfoPro = new List<string>() { profileName, profileType, gender, age.ToString() };
             return InfoPro;
         }
-
-        public int RankingMultimedia()
+        
+        public void RankingMultimedia()
         {
 
         }
@@ -100,6 +100,7 @@ namespace FyBuzz_E2
             Thread.Sleep(5000);
             Console.WriteLine("Se ha descargado la cancion");
         }
+        /*
         public void LikeSong(Song song)
         {
             // Conexion con multimedia / Likes +1
@@ -112,7 +113,7 @@ namespace FyBuzz_E2
             video.Likes();
 
         }
-
+        */
         // En videos o canciones (seria mejor en multimedia) deberia haber un metodo
         // que permita sumarle uno al contador de likes de cancion o video, de lo
         // contrario no se le podria sumar algo al atributo desde esta clase

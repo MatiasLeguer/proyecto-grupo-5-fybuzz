@@ -19,7 +19,7 @@ namespace FyBuzz_E2
         private bool adsOn;
         private bool privacy;
 
-        private Dictionary<int, Profile> perfiles;
+        private Dictionary<int, Profile> perfiles = new Dictionary<int, Profile>(); //Agregar perfiles a el archivo de usuario para que no s epierdan cuando se cierrre el program
 
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
@@ -36,7 +36,7 @@ namespace FyBuzz_E2
         public void CreateProfile(string pname, string ppic, string ptype, string pmail, string pgender, int page, int cont)
         {
             Profile profileX = new Profile(pname, ppic, ptype, pmail, pgender, page);
-            Perfiles.Add(cont, profileX);
+            perfiles.Add(cont, profileX);
         }
 
         public List<string> AccountSettings()
