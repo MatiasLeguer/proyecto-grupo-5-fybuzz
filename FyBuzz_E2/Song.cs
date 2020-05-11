@@ -17,7 +17,7 @@ namespace FyBuzz_E2
         protected bool lyrics;
 
         //Ver si el constructor está adecuado, o si hay que sacar algo.
-        public Song(string name, string artist, string album, string discography, string gender, string date, string studio, string ranking, double duration, bool lyrics, string format)
+        public Song(string name, string artist, string album, string discography, string gender, string date, string studio, double duration, bool lyrics, string format)
         {
             this.name = name;
             this.artist = artist;
@@ -26,7 +26,7 @@ namespace FyBuzz_E2
             this.gender = gender;
             this.date = date;
             this.studio = studio;
-            this.ranking = ranking;
+            this.ranking = 0;
             this.duration = duration;
             this.lyrics = lyrics;
             this.format = format;
@@ -46,7 +46,12 @@ namespace FyBuzz_E2
 
         public List<string> InfoSong()
         {
-            return new List<string>() { name, artist, album, discography, studio, gender, ranking };
+            return new List<string>() { name, artist, album, discography, studio, gender, ranking.ToString() };
+        }
+
+        public string DisplayInfoSong()
+        {
+            return "Nombre: " + name + "\tArtista: " + artist + "\nAlbum: " + album + "\tDiscografía: " + discography + "\nStudio: " + studio + "\tGenero: " + gender + "\nRanking: " + ranking;
         }
 
         public List<int> InfoRep()
