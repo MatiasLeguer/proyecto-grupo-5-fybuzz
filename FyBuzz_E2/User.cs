@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FyBuzz_E2
 {
+    [Serializable]
     public class User
     {
         protected int registerNumber;

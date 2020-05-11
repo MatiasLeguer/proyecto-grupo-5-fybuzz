@@ -9,12 +9,11 @@ namespace FyBuzz_E2
             Menu menu = new Menu();
             DataBase database = new DataBase();
             Server server = new Server(database);
-            //database.createFiles();
             bool LogIn = menu.DisplayLogin();
             if(LogIn == true)
             {
                 Profile profile = menu.DisplayProfiles();
-                menu.DisplayStart(profile);
+                //menu.DisplayStart(profile);
             }
             
         }
