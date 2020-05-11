@@ -20,7 +20,11 @@ namespace FyBuzz_E2
         protected string directors;
 
 
+<<<<<<< HEAD
         public Video(string name,string actors, string directors ,string date, int videoDimension, string quality, string category, string description, string rated, string image, string ranking, double duration, bool subtitles, string format,)
+=======
+        public Video(string name,string actors, string directors, string date, int videoDimension, string quality, string category, string description, string rated, string image, string ranking, double duration, bool subtitles, string format)
+>>>>>>> 89b196d2fd38eae7fdf1717acb3e481964b19f52
         {
             this.name = name;
             this.date = date;
