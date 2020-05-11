@@ -11,7 +11,7 @@ namespace FyBuzz_E2
     {
         private string profileName;
         private string profilePic;
-        private string profileType;
+        private string profileType; //creador o viewer
         private string profileMail;
         private List<Song> playlistEnColaSongs;
         private List<Song> playlistFavoritosSongs;
