@@ -34,7 +34,7 @@ namespace FyBuzz_E2
         }
 
         //Muestra el archivo de todos los usuarios existentes.
-        static private Dictionary<int, List<string>> Load_Users()
+        public Dictionary<int, List<string>> Load_Users()
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllUsers.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
