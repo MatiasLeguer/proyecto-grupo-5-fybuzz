@@ -20,6 +20,7 @@ namespace FyBuzz_E2
         public Dictionary<string, List<Song>> DicCanciones { get => dicCanciones; }
         public Dictionary<string, List<Video>> DicVideos { get => dicVideos; }
         public string Format { get => format; }
+        public string NamePlayList { get => namePlayList; }
 
         public PlayList(string Formato, string Nombre)
         {
@@ -42,13 +43,18 @@ namespace FyBuzz_E2
         }
 
 
-        public string InfoPlayList()
+        public List<string> InfoPlayList()
         {
-            string str = "";
+            return new List<string>() {NamePlayList, Format};
+            /*string str = "";
             str += "PlayList Name: " + namePlayList + "\n";
             str += "Play List Format: " + format + "\n";
 
-            return str;
+            return str;*/
+        }
+        public string DisplayInfoPlayList()
+        {
+            return "PlayList Name: " + namePlayList + "\t Formato: " + format;
         }
     }
 }
