@@ -106,6 +106,11 @@ namespace FyBuzz_E2
             Thread.Sleep(5000);
             Console.WriteLine("Se ha descargado la cancion");
         }
+        public List<string> ProfileSettings()
+        {
+            List<string> Settings = new List<string>() { profileName, profileType, profilePic, gender, age.ToString()};
+            return Settings;
+        }
         /*
         public void LikeSong(Song song)
         {

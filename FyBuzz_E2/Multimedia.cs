@@ -21,6 +21,7 @@ namespace FyBuzz_E2
 
         public double Duration { get => duration; }
         public string Name { get => name; }
+        public int Likes { get => likes; }
 
         public string AddMult()
         {
