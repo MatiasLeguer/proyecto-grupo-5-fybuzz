@@ -557,7 +557,7 @@ namespace FyBuzz_E2
         }
 
         //Cada vez que termine el ciclo de algun archivo multimedia consultar al perfil si se le da like o no.
-        public void Reproduction(int inplaylist, string type, int indexofmultimedia, bool ver, DataBase dataBase) // Si viene de una playlist y se decide poner aleatorio verif sera 4, si se elige una canción sera 1.
+        /*public void Reproduction(int inplaylist, string type, int indexofmultimedia, bool ver, DataBase dataBase) // Si viene de una playlist y se decide poner aleatorio verif sera 4, si se elige una canción sera 1.
         {
             if (inplaylist == 1)
             {
@@ -588,7 +588,7 @@ namespace FyBuzz_E2
                 //player.Random(playlist);
                 Console.WriteLine("Reproduce cancion random de la playlist"); 
             }
-        }
+        }*/
 
         public List<string> SearchEngine(string searching, string type, DataBase dataBase)
         {
