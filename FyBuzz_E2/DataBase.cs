@@ -15,40 +15,47 @@ namespace FyBuzz_E2
     {
         protected List<string> gender;
 
-        private Dictionary<int, User> userDataBase=  new Dictionary<int, User>();
+        private List<User> userDataBase = new List<User>();
 
         protected List<Song> listSongsGlobal = new List<Song>();
         protected List<Video> listVideosGlobal = new List<Video>();
         protected List<PlayList> listPLsGlobal = new List<PlayList>();
 
-        public List<Song> ListSongsGlobal{ get => listSongsGlobal; }
+        public List<Song> ListSongsGlobal
+        {
+            get
+            {
+                return listSongsGlobal;
+            }
+            set
+            {
+                if (File.Exists("AllSongs.bin") == true) listSongsGlobal = Load_Songs();
+                else listSongsGlobal = new List<Song>();
+
+            }
+
+        }
         public List<Video> ListVideosGlobal { get => listVideosGlobal; }
         public List<PlayList> ListPLsGlobal { get => listPLsGlobal; }
+        public List<User> UserDataBase { get => userDataBase; }
 
 
         //Guarda usuarios en archivos, pero necesito el diccionario.
-        public void Save_Users(User user)
+        public void Save_Users(List<User> user)
         {
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("AllUsers.bin", FileMode.Append, FileAccess.Write, FileShare.None); //Puse append para abrir o crear el archivo y ponerle cosas.
+            Stream stream = new FileStream("AllUsers.bin", FileMode.Create, FileAccess.Write, FileShare.None); //Puse append para abrir o crear el archivo y ponerle cosas.
             formatter.Serialize(stream, user);
             formatter.Serialize(stream, "\n");
             stream.Close();
         }
 
         //Muestra el archivo de todos los usuarios existentes.
-        public Dictionary<int, User> Load_Users()
+        public List<User> Load_Users()
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllUsers.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            Dictionary<int, User> userdatabase = new Dictionary<int, User>();
-            int lines = File.ReadAllLines("AllUsers.bin").Length;
-            string sep;
-            for (int i = 0; i < (lines- 1)/19; i++)
-            {
-                userdatabase.Add(i, (User)formatter.Deserialize(stream));
-                sep = (string)formatter.Deserialize(stream);
-            }
+            List<User> userdatabase = (List<User>)formatter.Deserialize(stream);
             stream.Close();
             return userdatabase;
         }
@@ -56,12 +63,13 @@ namespace FyBuzz_E2
         // Metodo para agregar un nuevo usuario, verificando ademas que no exista
         public string AddUser(User userdata)
         {
-            string description = null;
+            string description;
             // No funciona revisar los usuarios del archivo AllUsers.bin
             if (File.Exists("AllUsers.bin") == true)
             {
-                Dictionary<int, User> userdic = Load_Users();
-                foreach (User value in userdic.Values)
+                userDataBase = Load_Users();
+                description = null;
+                foreach (User value in userDataBase)
                 {
                     if (userdata.Username == value.Username)
                     {
@@ -75,13 +83,13 @@ namespace FyBuzz_E2
 
                 if (description == null)
                 {
-                    this.userDataBase.Add(userDataBase.Count + 1, userdata);
-                    Save_Users(userdata);
+                    userDataBase.Add(userdata);
                 }
             }
             else
             {
-                foreach (User value in userDataBase.Values)
+                description = null;
+                foreach (User value in userDataBase)
                 {
                     if (userdata.Username == value.Username)
                     {
@@ -95,8 +103,8 @@ namespace FyBuzz_E2
 
                 if (description == null)
                 {
-                    this.userDataBase.Add(userDataBase.Count + 1, userdata);
-                    Save_Users(userdata);
+                    userDataBase.Add(userdata);
+                    Console.WriteLine(userDataBase.Count());
                 }
             }
             return description;
@@ -105,7 +113,7 @@ namespace FyBuzz_E2
         // Metodo para obtener los datos de usr
         public List<string> GetData(User usr)
         {
-            foreach (User user in this.userDataBase.Values)
+            foreach (User user in this.userDataBase)
             {
                 if (user.Username == usr.Username)
                 {
@@ -118,9 +126,9 @@ namespace FyBuzz_E2
         // Metodo para realizar el LogIn
         public User LogIn(string usrname, string password)
         {
-            Dictionary<int, User> userdic = Load_Users();
+            List<User> userdic = Load_Users();
             //Aqui revisar el archivo, no el diccionario en el programa en si.
-            foreach (User user in userdic.Values)
+            foreach (User user in userdic)
             {
                 if (user.Username == usrname && user.Password == password)
                 {
@@ -157,7 +165,7 @@ namespace FyBuzz_E2
 
         //Guarda canciones en archivos, pero necesito la lista de canciones.
 
-        static private void Save_Songs(Song SongGlobal)
+        public void Save_Songs(List<Song> SongGlobal)
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllSongs.bin", FileMode.Append, FileAccess.Write, FileShare.None);
@@ -169,19 +177,12 @@ namespace FyBuzz_E2
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllSongs.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            List<Song> listSongsGlobal = new List<Song>();
-            int lines = File.ReadAllLines("AllSongs.bin").Length;
-            string sep;
-            for (int i = 0; i < (lines - 1)/5; i++)
-            {
-                listSongsGlobal.Add((Song)formatter.Deserialize(stream));
-                sep = (string)formatter.Deserialize(stream);
-            }
+            List<Song> listSongsGlobal = (List<Song>)formatter.Deserialize(stream);
             stream.Close();
             return listSongsGlobal;
         }
 
-        static private void Save_Videos(Video VideosGlobal)
+        public void Save_Videos(List<Video> VideosGlobal)
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllVideos.bin", FileMode.Append, FileAccess.Write, FileShare.None);
@@ -193,18 +194,11 @@ namespace FyBuzz_E2
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllVideos.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            List<Video> listVideosGlobal = new List<Video>();
-            int lines = File.ReadAllLines("AllVideos.bin").Length;
-            string sep;
-            for (int i = 0; i < (lines - 1)/7; i++)
-            {
-                listVideosGlobal.Add((Video)formatter.Deserialize(stream));
-                sep = (string)formatter.Deserialize(stream);
-            }
+            List<Video> listVideosGlobal = (List<Video>)formatter.Deserialize(stream);
             stream.Close();
             return listVideosGlobal;
         }
-        static private void Save_PLs(PlayList listPLsGlobal)
+        public void Save_PLs(List<PlayList> listPLsGlobal)
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllPlayLists.bin", FileMode.Append, FileAccess.Write, FileShare.None);
@@ -216,14 +210,7 @@ namespace FyBuzz_E2
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllPlayLists.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            List<PlayList> listPLsGlobal = new List<PlayList>();
-            int lines = File.ReadAllLines("AllPlayLists.bin").Length;
-            string sep;
-            for (int i = 0; i < (lines - 1) / 4; i++)
-            {
-                listPLsGlobal.Add((PlayList)formatter.Deserialize(stream));
-                sep = (string)formatter.Deserialize(stream);
-            }
+            List<PlayList> listPLsGlobal = (List<PlayList>)formatter.Deserialize(stream);
             stream.Close();
             return listPLsGlobal;
         }
@@ -232,7 +219,7 @@ namespace FyBuzz_E2
 
         public void ChangePassword(string usr, string newpsswd)
         {
-            foreach (User user in this.userDataBase.Values)
+            foreach (User user in this.userDataBase)
             {
                 if (user.Username == usr)
                 {
@@ -277,7 +264,7 @@ namespace FyBuzz_E2
                     {
                         Song cancion = new Song(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], double.Parse(multInfo[7]), Convert.ToBoolean(multInfo[8]), multInfo[9]);
                         listSongsGlobal.Add(cancion);
-                        Save_Songs(cancion);
+                        
                     }
                     break;
 
@@ -298,7 +285,7 @@ namespace FyBuzz_E2
                     {
                         Video video = new Video(multInfo[0], multInfo[1], multInfo[2], multInfo[3], int.Parse(multInfo[4]), multInfo[5], multInfo[6], multInfo[7], Convert.ToBoolean(multInfo[8]), double.Parse(multInfo[9]), Convert.ToBoolean(multInfo[10]), multInfo[11]);
                         listVideosGlobal.Add(video);
-                        Save_Videos(video);
+                        
                         //Escribir de alguna forma de que se ha agregado al sistema.
                     }
                     break;
@@ -318,8 +305,7 @@ namespace FyBuzz_E2
                     if (description == null)
                     {
                         PlayList playlist = new PlayList(multInfo[0], multInfo[1]);
-                        listPLsGlobal.Add(playlist);
-                        Save_PLs(playlist);
+                        listPLsGlobal.Add(playlist); 
                     }
                     break;
 
@@ -327,6 +313,7 @@ namespace FyBuzz_E2
                     description = "Ingresó una opción que no existe";
                     break;
             }
+            
             return description;
         }
     }
