@@ -244,7 +244,7 @@ namespace FyBuzz_E2
                         infoCompare = s.InfoSong();
                         if ((infoCompare[0] == multInfo[0]) && (infoCompare[1] == multInfo[1]) && (infoCompare[2] == multInfo[2]))
                         {
-                            description = "Esta cancion ya fue agregada al sistema.";
+                            description = "This Song is already in the system.";
                             break;
                         }
                         else if ((infoCompare[0] == multInfo[0]) && (infoCompare[1] == multInfo[1]) && (infoCompare[2] != multInfo[2]))
@@ -252,20 +252,20 @@ namespace FyBuzz_E2
                             string confirm;
                             do
                             {
-                                Console.Write("Esta cancion se encuentra en otro album, quiere agregarla de todas formas? (y/n): ");
+                                Console.Write("This song is in other album, do you want to add it anyway? (y/n): ");
                                 confirm = Console.ReadLine();
-                            } while ((confirm != "y" || confirm != "Y") || (confirm != "n" || confirm != "N"));
+                            } while (((confirm != "y") && (confirm != "n")) || ((confirm != "Y") && (confirm != "N")));
 
-                            if ((confirm == "n" || confirm == "N"))
+                            if ((confirm == "n") || (confirm == "N"))
                             {
-                                description = "La canción ya se encontraba en otro album y se decidió no agregarla";
+                                description = "The song was in another album and you didn't add it anyway.";
                                 break;
                             }
                         }
                     }
                     if(description == null)
                     {
-                        Song cancion = new Song(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], double.Parse(multInfo[7]), Convert.ToBoolean(multInfo[8]), multInfo[9]);
+                        Song cancion = new Song(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], double.Parse(multInfo[7]), multInfo[8], multInfo[9]);
                         listSongsGlobal.Add(cancion);
                         
                     }
@@ -278,7 +278,7 @@ namespace FyBuzz_E2
                         infoCompare = v.InfoVideo();
                         if ((infoCompare[0] == multInfo[0]) && (infoCompare[1] == multInfo[1]) && (infoCompare[2] == multInfo[2]))
                         {
-                            description = "Este video ya fue agregado al sistema.";
+                            description = "This Video is already in the system.";
                             break;
                         }
 
@@ -286,7 +286,7 @@ namespace FyBuzz_E2
 
                     if (description == null)
                     {
-                        Video video = new Video(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], multInfo[7], Convert.ToBoolean(multInfo[8]), double.Parse(multInfo[9]), Convert.ToBoolean(multInfo[10]), multInfo[11]);
+                        Video video = new Video(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], multInfo[7], Convert.ToBoolean(multInfo[8]), double.Parse(multInfo[9]), multInfo[10], multInfo[11]);
                         listVideosGlobal.Add(video);
                         
                         //Escribir de alguna forma de que se ha agregado al sistema.
@@ -299,7 +299,7 @@ namespace FyBuzz_E2
                         infoCompare = p.InfoPlayList();
                         if ((infoCompare[0] == multInfo[0]) && (infoCompare[1] == multInfo[1]))
                         {
-                            description = "Esta Playlist ya fue agregada al sistema.";
+                            description = "This Playlist is already in the system.";
                             break;
                         }
  
@@ -313,7 +313,7 @@ namespace FyBuzz_E2
                     break;
 
                 default: // Cuando escribe algo incorrecto(?)
-                    description = "Ingresó una opción que no existe";
+                    description = "ERROR[!] Invalid command.";
                     break;
             }
             

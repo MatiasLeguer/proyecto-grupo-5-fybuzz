@@ -13,6 +13,7 @@ namespace FyBuzz_E2
         private List<Video> videos;
         private string namePlayList;
         private string format;
+        private int followers;
 
         private Dictionary<string, List<Song>> dicCanciones;
         private Dictionary<string, List<Video>> dicVideos;

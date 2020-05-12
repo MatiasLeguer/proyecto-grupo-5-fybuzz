@@ -16,11 +16,13 @@ namespace FyBuzz_E2
         protected string description;
         protected int rated;
         protected bool image;
-        protected bool subtitles; // 
+        protected string subtitles;
         protected string actors;
         protected string directors;
+        public string Subtitles { get => subtitles; }
+        public string Category { get => category; }
 
-        public Video(string name, string actors, string directors ,string date, string videoDimension, string quality, string category, string description, bool image, double duration, bool subtitles, string format)
+        public Video(string name, string actors, string directors ,string date, string videoDimension, string quality, string category, string description, bool image, double duration, string subtitles, string format)
 
         {
             this.name = name;
