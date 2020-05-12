@@ -168,7 +168,7 @@ namespace FyBuzz_E2
         public void Save_Songs(List<Song> SongGlobal)
         {
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("AllSongs.bin", FileMode.Append, FileAccess.Write, FileShare.None);
+            Stream stream = new FileStream("AllSongs.bin", FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, SongGlobal);
             formatter.Serialize(stream, "\n");
             stream.Close();
@@ -185,7 +185,7 @@ namespace FyBuzz_E2
         public void Save_Videos(List<Video> VideosGlobal)
         {
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("AllVideos.bin", FileMode.Append, FileAccess.Write, FileShare.None);
+            Stream stream = new FileStream("AllVideos.bin", FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, VideosGlobal);
             formatter.Serialize(stream, "\n");
             stream.Close();
@@ -201,7 +201,7 @@ namespace FyBuzz_E2
         public void Save_PLs(List<PlayList> listPLsGlobal)
         {
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("AllPlayLists.bin", FileMode.Append, FileAccess.Write, FileShare.None);
+            Stream stream = new FileStream("AllPlayLists.bin", FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, listPLsGlobal);
             formatter.Serialize(stream, "\n");
             stream.Close();
@@ -232,6 +232,10 @@ namespace FyBuzz_E2
         {
             string description = null;
             List<string> infoCompare;
+            listVideosGlobal = Load_Videos();
+            listSongsGlobal = Load_Songs();
+            listPLsGlobal = Load_PLs();
+
             switch (typeMult)
             {
                 case 0: // Case 0 es cuando quiere agregar cancion
@@ -259,7 +263,6 @@ namespace FyBuzz_E2
                             }
                         }
                     }
-
                     if(description == null)
                     {
                         Song cancion = new Song(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], double.Parse(multInfo[7]), Convert.ToBoolean(multInfo[8]), multInfo[9]);
@@ -283,7 +286,7 @@ namespace FyBuzz_E2
 
                     if (description == null)
                     {
-                        Video video = new Video(multInfo[0], multInfo[1], multInfo[2], multInfo[3], int.Parse(multInfo[4]), multInfo[5], multInfo[6], multInfo[7], Convert.ToBoolean(multInfo[8]), double.Parse(multInfo[9]), Convert.ToBoolean(multInfo[10]), multInfo[11]);
+                        Video video = new Video(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], multInfo[7], Convert.ToBoolean(multInfo[8]), double.Parse(multInfo[9]), Convert.ToBoolean(multInfo[10]), multInfo[11]);
                         listVideosGlobal.Add(video);
                         
                         //Escribir de alguna forma de que se ha agregado al sistema.

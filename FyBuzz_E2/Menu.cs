@@ -72,11 +72,7 @@ namespace FyBuzz_E2
         
         public Profile DisplayProfiles(User user)
         {
-            List<User> userDataBase = database.UserDataBase;
-
-
-
-                    
+            List<User> userDataBase = database.Load_Users();  //Falta actualizar los perfiles.      
             bool x = true;
 
             Console.WriteLine("---------Profiles----------");
@@ -109,6 +105,7 @@ namespace FyBuzz_E2
                         }
                         Console.WriteLine("Choose a profile:");
                         int index = int.Parse(Console.ReadLine()) - 1;
+                        //database.Save_Users(userDataBase);
                         return user.Perfiles[index];
                     }
                     else if (dec == "1")
@@ -141,20 +138,12 @@ namespace FyBuzz_E2
         public void DisplayStart(Profile profile,User usr) // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
             List<User> listUserGlobal = database.Load_Users();
-
-            List<PlayList> listPlayListGlobal = new List<PlayList>();
-            //listPlayListGlobal = database.Load_PLs();
-            if(listPlayListGlobal.Count() == 0)
-            {
-                DisplayGlobalMult(2, database);
-                Console.WriteLine("---------------------------");
-            }
-            
             List<Video> listVideosGlobal = new List<Video>();
-            //listVideosGlobal = database.Load_Videos();
-            
             List<Song> listSongsGlobal = new List<Song>();
-            //listSongsGlobal = database.Load_Songs();
+            List<PlayList> listPlayListGlobal = new List<PlayList>();
+            listVideosGlobal = database.Load_Videos();
+            listSongsGlobal = database.Load_Songs();
+            listPlayListGlobal = database.Load_PLs();
 
             // mostrará todas las playlist del usuario, si es primera vez que ingresa estara la playlist general y la favorita(esta sin nada)
             // es la lista global de playlist que viene de database, pero hay que conectarla
@@ -201,9 +190,10 @@ namespace FyBuzz_E2
                             Console.WriteLine("Searched Songs, choose the position of the song you want to hear...");
                             int indice = int.Parse(Console.ReadLine()) - 1;
                             Song song = listSongsGlobal[indice]; //La cancion a la que querria escuchar
-                            //Console.WriteLine("Playing: " + song.SearchedInfoSong());
-                            //Thread.Sleep((int)song.Duration * 1000);
-                            Reproduction(1, type, indice, false, database); //Falta arreglar el método de reproduccion
+                            Console.WriteLine("Playing: " + song.SearchedInfoSong());
+                            Thread.Sleep((int)song.Duration * 100);
+                            //Si es que no ere premium mostrar publicidad
+                            //Reproduction(1, type, indice, false, database); //Falta arreglar el método de reproduccion
                             Console.WriteLine("\n");
                         }
                         else if(type == "Videos")
@@ -223,9 +213,9 @@ namespace FyBuzz_E2
                                 int indice = int.Parse(Console.ReadLine()) - 1;
                                 Video video = listVideosGlobal[indice]; //La cancion a la que querria escuchar
                                 Console.WriteLine("Playing: " + video.SearchedInfoVideo());
-                                Thread.Sleep((int)video.Duration * 1000);
+                                Thread.Sleep((int)video.Duration * 100);
                                 Console.WriteLine("\n");
-                                
+                                //Si es que no ere premium mostrar publicidad
                                 //Reproduction(1, type, indexglobal[indice], false); //Falta arreglar el método de reproduccion
                             }
                         }
@@ -255,6 +245,7 @@ namespace FyBuzz_E2
                     case "II":
                         if(profile.ProfileType == "creator")
                         {
+
                             Console.Write("What do you wish to add? (song(0), video(1), Playlist(2))\tDo you wish to Show the list of a specified multimedia? (song(3), video(4), Playlist(5)): ");
                             int opc = int.Parse(Console.ReadLine());
                             if(opc == 0 || opc == 1 || opc == 2)
@@ -263,15 +254,14 @@ namespace FyBuzz_E2
                                 string description = database.AddMult(opc, infoMult);
                                 if (description == null) Console.WriteLine("Multimedia has been registered into the system!");
                                 else Console.WriteLine("ERROR[!] ~{0}", description);
-                                if (opc == 0) database.Save_Songs(database.ListSongsGlobal);
-                                else if (opc == 1) database.Save_Videos(database.ListVideosGlobal);
-                                else if (opc == 2) database.Save_PLs(database.ListPLsGlobal);
+                                if (opc == 0) database.Save_Songs(listSongsGlobal);
+                                else if (opc == 1) database.Save_Videos(listVideosGlobal);
+                                else if (opc == 2) database.Save_PLs(listPlayListGlobal);
                             }
                             else if(opc == 3 || opc == 4 || opc == 5)
                             {
                                 DisplayGlobalMult(opc - 3, database);
                             }
-
                         }
                         else
                         {
@@ -279,19 +269,23 @@ namespace FyBuzz_E2
                         }
                         break;
                     case "III":
+
                         if (playlistFavSongs != null || playlistFavVideos != null)
                         {
                             Console.WriteLine(favSongs.InfoPlayList());
                             Console.WriteLine(favSongs.InfoPlayList());
                         }
-                        else Console.WriteLine("You don´t have a Favorite Playlist");
+                        else Console.WriteLine("You don´t have a Favorite Playlist.");
 
-                        if (followedPL.Count() != 0)
+                        if (followedPL != null)
                         {
-                            DisplayPlaylists(followedPL);
+                            DisplayPlaylists(followedPL); //Este metodo no esta bueno.
                         }
-                        DisplayPlaylists(listPlayListGlobal);
+                        else Console.WriteLine("You don´t follow anyone Playlist.");
+                        Console.WriteLine("Global Playlist:");
+                        DisplayGlobalMult(2,database); //No imprime la lista
                         //database.Save_Users(database.UserDataBase);
+                        Console.WriteLine("\n");
                         break;
                     case "IV":
                         Console.WriteLine("---------------------------");
@@ -483,8 +477,7 @@ namespace FyBuzz_E2
             else
             {
                 //player.Random(playlist);
-                Console.WriteLine("Reproduce cancion random de la playlist");
-                
+                Console.WriteLine("Reproduce cancion random de la playlist"); 
             }
         }
 
@@ -599,7 +592,7 @@ namespace FyBuzz_E2
                 Console.Write("Escriba el nombre de el/los actores: ");                                string act = Console.ReadLine();
                 Console.Write("Escriba el nombre de el/los directores: ");                             string dir = Console.ReadLine();
                 Console.Write("Escriba la fecha de publicación (fecha actual en formato dd/mm/aa): "); string date = Console.ReadLine();
-                Console.Write("Escriba la dimension del video (numero): ");                            string dim = Console.ReadLine();
+                Console.Write("Escriba la dimension del video (16:9): ");                            string dim = Console.ReadLine();
                 Console.Write("Escriba la calidad del video: ");                                       string cal = Console.ReadLine();
                 Console.Write("Escriba la categoria del video: ");                                     string cat = Console.ReadLine();
                 Console.Write("Escriba la descripción del video: ");                                   string des = Console.ReadLine();
