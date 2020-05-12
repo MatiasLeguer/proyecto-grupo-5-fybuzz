@@ -41,9 +41,9 @@ namespace FyBuzz_E2
         }
 
 
-        public void Register()
+        public void Register(User userlist)
         {
-            User userlist = new User();
+
             // Pedimos todos los datos necesarios
             Console.Write("Welcome! Type your information in FyBuZz\nUsername: ");
             string usr = Console.ReadLine();
@@ -67,7 +67,8 @@ namespace FyBuzz_E2
             else Console.WriteLine("Error [!] Invalid Subscription.");
             userlist.Followers = 0;
             userlist.Following = 0;
-            userlist.Perfil = new Profile(usr,".JPG", profileType, email, gender, age);
+            userlist.Perfiles.Add(new Profile(usr,".JPG", profileType, email, gender, age));
+            
 
             userlist.Username = usr; userlist.Email = email; userlist.Password = psswd; userlist.Accountype = premium;userlist.Privacy = priv;
             string result = Data.AddUser(userlist);

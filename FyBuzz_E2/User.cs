@@ -21,7 +21,7 @@ namespace FyBuzz_E2
         protected bool adsOn;
         protected bool privacy;
 
-        protected Profile perfil; //Agregar perfiles a el archivo de usuario para que no s epierdan cuando se cierrre el program
+        protected List<Profile> perfiles = new List<Profile>(); //Agregar perfiles a el archivo de usuario para que no s epierdan cuando se cierrre el program
 
 
         public string Username { get => username; set => username = value; }
@@ -33,7 +33,7 @@ namespace FyBuzz_E2
         public bool Verified { get => verified; set => verified = value; }
         public bool AdsOn { get => adsOn; set => adsOn = value; }
         public bool Privacy { get => privacy; set => privacy = value; }
-        public Profile Perfil { get => perfil; set => perfil = value; } 
+        public List<Profile> Perfiles { get => perfiles; set => perfiles = value; } 
 
         // Constructor
         public User()
@@ -41,12 +41,12 @@ namespace FyBuzz_E2
 
         }
 
-        /*
-        public void CreateProfile(string pname, string ppic, string ptype, string pmail, string pgender, int page,int cont)
+
+        public void CreateProfile(string pname, string ppic, string ptype, string pmail, string pgender, int page)
         {
             Profile profileX = new Profile(pname, ppic, ptype, pmail, pgender, page);
-            perfiles.Add(cont, profileX);
-        }*/
+            perfiles.Add(profileX);
+        }
 
         public List<string> AccountSettings()
         {
