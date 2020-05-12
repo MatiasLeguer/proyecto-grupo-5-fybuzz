@@ -9,6 +9,7 @@ namespace FyBuzz_E2
     [Serializable]
     public class User
     {
+<<<<<<< HEAD
         private string username;
         private string password;
         private string accountType; // Premium,Standard //Yo le pondria un 0 y un 1, asi es mas facil
@@ -20,6 +21,20 @@ namespace FyBuzz_E2
         private bool privacy;
         private Profile perfil;
         //private Dictionary<int, Profile> perfiles = new Dictionary<int, Profile>(); Agregar perfiles a el archivo de usuario para que no s epierdan cuando se cierrre el program
+=======
+        protected int registerNumber;
+        protected string username;
+        protected string password;
+        protected string accountType; // Premium,Standard //Yo le pondria un 0 y un 1, asi es mas facil
+        protected string email;
+        protected int followers;
+        protected int following;
+        protected bool verified;
+        protected bool adsOn;
+        protected bool privacy;
+
+        protected Dictionary<int, Profile> perfiles = new Dictionary<int, Profile>(); //Agregar perfiles a el archivo de usuario para que no s epierdan cuando se cierrre el program
+>>>>>>> c989fcecee6e3e9d3052873c6ab520002da584db
 
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
