@@ -7,6 +7,7 @@ using System.Threading;
 
 namespace FyBuzz_E2
 {
+    [Serializable]
     public class Profile:User
     {
         protected string profileName;
@@ -70,6 +71,10 @@ namespace FyBuzz_E2
         {
             List<string> InfoPro = new List<string>() { profileName, profileType, gender, age.ToString() };
             return InfoPro;
+        }
+        public string SearchedInfoProfile()
+        {
+            return "Name: " + profileName + " " + "Gender:" + gender + " " + "Age:" + age;
         }
         
         public void RankingMultimedia()

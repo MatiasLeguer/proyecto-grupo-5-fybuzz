@@ -52,7 +52,7 @@ namespace FyBuzz_E2
 
         public string DisplayInfoSong()
         {
-            return "Nombre: " + name + "\tArtista: " + artist + "\nAlbum: " + album + "\tDiscografía: " + discography + "\nStudio: " + studio + "\tGenero: " + gender + "\nRanking: " + ranking;
+            return "Name: " + name + "\tArtist: " + artist + "\nAlbum: " + album + "\tDiscography: " + discography + "\nStudio: " + studio + "\tGender: " + gender + "\nRanking: " + ranking;
         }
 
         public List<int> InfoRep()
@@ -61,7 +61,7 @@ namespace FyBuzz_E2
         }
         public string SearchedInfoSong()
         {
-            return "Cancion: " + name + "\tArtista: " + artist;
+            return "Song: " + name + "\tArtist: " + artist;
         }
 
         //Necesitaremos agragar más métodos??

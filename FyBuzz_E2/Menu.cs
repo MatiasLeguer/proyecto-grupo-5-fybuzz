@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FyBuzz_E2
@@ -15,13 +17,14 @@ namespace FyBuzz_E2
         protected List<string> filters;
         public List<Song> searchedSongs;
         public List<Video> searchedVideos;
-        User user = new User();
+        //User user = new User();
         DataBase database = new DataBase();
         Player player = new Player();
 
-        public bool DisplayLogin()
+        public User DisplayLogin()
         {
             Server server = new Server(database);
+            User usr = new User();
 
             bool x = false;
             while (x == false)
@@ -38,16 +41,16 @@ namespace FyBuzz_E2
                         string username = Console.ReadLine();
                         Console.Write("Password: ");
                         string password = Console.ReadLine();
-                        if (database.LogIn(username, password) == null) //tengo que obtener mediante un get el nombre de usuario y password
+                        if (database.LogIn(username, password) != null) //tengo que obtener mediante un get el nombre de usuario y password
                         {
-                            user.Username = username;
-                            user.Password = password;
                             Console.WriteLine("Login Succesfull.");
                             x = true;
+                            usr = database.LogIn(username, password);
+                            
                         }
                         else
                         {
-                            Console.WriteLine("ERROR[!]");
+                            Console.WriteLine("ERROR[!] Invalid Username or Password");
                         }
                         break;
 
@@ -58,99 +61,115 @@ namespace FyBuzz_E2
                         //Dar todas las caracteriscas del usaurio aca.
                         break;
                     case "III":
-                        return false;
+                        return null;
                         
                 }
             }
-            return x;
+            return usr;
         }
-        //if DisplayLogin == true:
-        public Profile DisplayProfiles()
+        
+        public void DisplayProfiles(User user)
         {
-            Dictionary<int, Profile> dicprofile = new Dictionary<int, Profile>();
-            List<Profile> profilelist = new List<Profile>();
+            Dictionary<int, User> userdic = database.Load_Users();
             Profile profile_n = new Profile("", "", "", "", "", 0);
 
-            Console.WriteLine("---------Profiles----------");
+            Profile profile = user.Perfil;
+            List<Profile> profilelist = new List<Profile>();
+                    
             bool x = true;
-            int pcont = 01;
-            while (x == true)
+            int pcont = 2;
+
+            Console.WriteLine("---------Profiles----------");
+            /*
+            if (dicprofile.Count() == 0)
             {
-                Console.WriteLine("Choose a profile(0) or Create Profile(1) or Add Mult (2) or Display Mult (3)");
-                string dec = Console.ReadLine();
-                if (dec == "0")
+                Console.Write("Select your gender(M/F): ");
+                string gender = Console.ReadLine();
+                Console.Write("Select your age: ");
+                int age = int.Parse(Console.ReadLine());
+                Console.Write("Select your Profile Type(creator/viewer): ");
+                string profileType = Console.ReadLine();
+                Profile profile = new Profile(user.Username, ".JPEG", profileType, user.Email, gender, age);
+                dicprofile.Add(1, profile);
+                        
+            }
+
+            else
+            {*/
+                while (x == true)
                 {
-                    Console.WriteLine("List of profiles:");
-                    dicprofile = user.Perfiles;
-                    foreach (Profile profile in dicprofile.Values)
+                    Console.WriteLine("Choose a profile(0) or Create Profile(1) or Add Mult (2) or Display Mult (3)");
+                    string dec = Console.ReadLine();/*
+                    if (dec == "0")
                     {
-                        Console.WriteLine(profile.ProfileName);
-                        profilelist.Add(profile);
-                    }
-                    Console.WriteLine("Choose a profile:");
-                    string perfil = Console.ReadLine();
-                    for (int i = 0; i < profilelist.Count(); i++)
-                    {
-                        if (perfil == profilelist[i].ProfileName)
+                        Console.WriteLine("List of profiles:");
+                        foreach (Profile profile in dicprofile.Values)
                         {
-                            profile_n = profilelist[i]; // tengo que devolver algun perfil
-                            x = false;
+                            Console.WriteLine(profile.ProfileName);
+                            profilelist.Add(profile);
+                        }
+                        Console.WriteLine("Choose a profile:");
+                        string perfil = Console.ReadLine();
+                        for (int i = 0; i < profilelist.Count(); i++)
+                        {
+                            if (perfil == profilelist[i].ProfileName) //Se asume que no ingresará 2 perfiles iguales.
+                            {
+                                profile_n = profilelist[i]; // tengo que devolver algun perfil
+                                x = false;
+                            }
                         }
                     }
-                }
-                else if(dec == "1")
-                {
-                    Console.WriteLine("Create a profile:");
-                    Console.Write("Profile name: ");
-                    string pname = Console.ReadLine();
-                    Console.Write("Profile pic: ");
-                    string ppic = Console.ReadLine();
-                    Console.Write("Profile type(public/private): ");
-                    string ptype = Console.ReadLine();
-                    //string pmail = user.Email; Esto deberia ser....
-                    string pmail = "diego@gmail.com";
-                    Console.Write("Profile gender (M/F): ");
-                    string pgender = Console.ReadLine();
-                    Console.Write("Profile age: ");
-                    int page = int.Parse(Console.ReadLine());
-                    user.CreateProfile(pname, ppic, ptype, pmail, pgender, page, pcont);
-                    pcont++;
-                    
-                }
-                else if(dec == "2")
-                {
-                    Console.Write("Que desea agregar? (cancion(0), video(1), Playlist(2)): ");
-                    int opc = int.Parse(Console.ReadLine());
-                    List<string> infoMult = AskInfoMult(opc);
-                    string description = database.AddMult(opc, infoMult);
-                    if (description == null) Console.WriteLine("Se ha ingresado la multimedia!");
-                    else Console.WriteLine("ERROR[!] ~{0}", description);
-                }
-                else if(dec == "3")
-                {
-                    Console.WriteLine("Que lista desea observar? (cancion(0), video(1), Playlist(2)): ");
-                    int opc = int.Parse(Console.ReadLine());
-                    DisplayGlobalMult(opc, database);
-                }
-                else
-                {
-                    x = false;
-                }
-                    
+                    else if (dec == "1")
+                    {
+                        Console.WriteLine("Create a profile:");
+                        Console.Write("Profile name: ");
+                        string pname = Console.ReadLine();
+                        Console.Write("Profile pic: ");
+                        string ppic = Console.ReadLine();
+                        Console.Write("Profile type(creator/viewer): ");
+                        string ptype = Console.ReadLine();
+                        string pmail = user.Email;
+                        Console.Write("Profile gender (M/F): ");
+                        string pgender = Console.ReadLine();
+                        Console.Write("Profile age: ");
+                        int page = int.Parse(Console.ReadLine());
+                        user.CreateProfile(pname, ppic, ptype, pmail, pgender, page, pcont);
+
+
+                    }*/
+                    if (dec == "2")
+                    {
+                        Console.Write("Que desea agregar? (cancion(0), video(1), Playlist(2)): ");
+                        int opc = int.Parse(Console.ReadLine());
+                        List<string> infoMult = AskInfoMult(opc);
+                        string description = database.AddMult(opc, infoMult);
+                        if (description == null) Console.WriteLine("Se ha ingresado la multimedia!");
+                        else Console.WriteLine("ERROR[!] ~{0}", description);
+                    }
+                    else if (dec == "3")
+                    {
+                        Console.WriteLine("Que lista desea observar? (cancion(0), video(1), Playlist(2)): ");
+                        int opc = int.Parse(Console.ReadLine());
+                        DisplayGlobalMult(opc, database);
+                    }
+                    else
+                    {
+                        x = false;
+                    }
+                //}   
             }
-            return profile_n;
+            //return profile_n;
         }
 
         //Se necesita el perfil con el que quiere acceder
-        public void DisplayStart(Profile profile) // solo funciona si DisplayLogIn() retorna true se ve en program.
+        public void DisplayStart(Profile profile,User user) // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
-            //database.createFiles(); //crea los archivos necesarios.
-
             List<PlayList> listPlayListGlobal = new List<PlayList>();
             listPlayListGlobal = database.Load_PLs();
             if(listPlayListGlobal != null)
             {
-                DisplayPlaylists(listPlayListGlobal);
+                DisplayGlobalMult(2, database);
+                Console.WriteLine("---------------------------");
             }
             
             List<Video> listVideosGlobal = new List<Video>();
@@ -158,6 +177,8 @@ namespace FyBuzz_E2
             
             List<Song> listSongsGlobal = new List<Song>();
             listSongsGlobal = database.Load_Songs();
+
+            Dictionary<int, User> userDicGlobal = database.Load_Users();
             
 
 
@@ -177,10 +198,11 @@ namespace FyBuzz_E2
             bool x = true;
             while (x == true)
             {
-                Console.WriteLine("I) Search Songs or Videos."); //Faltaria la bsuqueda de gente.
+                Console.WriteLine("I) Search Songs, Videos or Users."); //Faltaria la bsuqueda de gente.
                 Console.WriteLine("II) Display all Playlists.");
                 Console.WriteLine("III) Account Settings.");
                 Console.WriteLine("IV) Play a Playlist.");
+                //La opcion de agregar multimedia
                 Console.WriteLine("V) LogOut.");
                 Console.WriteLine("VI) CloseApp.");
                 string dec = Console.ReadLine();
@@ -188,57 +210,79 @@ namespace FyBuzz_E2
                 { //(REVISAR DESPUES)Mejorar el metodo de busqueda para que busque canciones que se parezca
                     case "I":
                         //Método de buscar, una vez buscada la canción y elegida.
-                        
-                        Console.WriteLine("What would you like to search? (Songs/Videos)");
+                        Console.WriteLine("What would you like to search? (Songs/Videos/Users)");
                         string type = Console.ReadLine();
                         if (type == "Songs")
                         {
                             Console.WriteLine("Type what you want to search...");
                             string search = Console.ReadLine();
-                            List<string> searchEngine = SearchEngine(search, type);
+                            List<string> searchEngine = SearchEngine(search, type, database);
                             List<int> indexglobal = new List<int>();
-                            Console.WriteLine("Searched Songs, choose one...");
-                            for(int i = 0; i < searchEngine.Count(); i++)
+                            Console.WriteLine("Searched Songs: ");
+                            for (int i = 0; i < searchEngine.Count(); i++)
                             {
-                                searchEngine[i].Split('>'); // [[Bad Bunny Safaera etc],[12]]
-                                indexglobal.Add(searchEngine[i][1]);
-
-                                Console.WriteLine((i+1) + ") " + searchEngine[i][0]);
+                                Console.WriteLine((i + 1) + ") " + searchEngine[i]);
                             }
-                            int indice = int.Parse(Console.ReadLine())-1;
-                            Song song = listSongsGlobal[indexglobal[indice]]; //La cancion a la que querria escuchar
-
-                            Reproduction(1, type,indexglobal[indice] , false); //Falta arreglar el método de reproduccion
+                            Console.WriteLine("Searched Songs, choose the position of the song you want to hear...");
+                            int indice = int.Parse(Console.ReadLine()) - 1;
+                            Song song = listSongsGlobal[indice]; //La cancion a la que querria escuchar
+                            Console.WriteLine("Playing: " + song.SearchedInfoSong());
+                            Thread.Sleep((int)song.Duration * 1000);
+                            Console.WriteLine("\n");
+                            //Reproduction(1, type, indexglobal[indice], false); //Falta arreglar el método de reproduccion
                         }
-                        else
+                        else if(type == "Videos")
                         {
                             Console.WriteLine("Type what you want to search...");
                             string search = Console.ReadLine();
-                            List<string> searchEngine = SearchEngine(search, type);
+                            List<string> searchEngine = SearchEngine(search, type, database);
                             List<int> indexglobal = new List<int>();
-                            Console.WriteLine("Searched Videos, choose one...");
-                            for (int i = 0; i < searchEngine.Count(); i++)
+                            if (searchEngine.Count != 0)
                             {
-                                searchEngine[i].Split('>'); // [[Bad Bunny Safaera etc],[12]]
-                                indexglobal.Add(searchEngine[i][1]);
-
-                                Console.WriteLine((i + 1) + ") " + searchEngine[i][0]);
+                                Console.WriteLine("Searched Videos: ");
+                                for (int i = 0; i < searchEngine.Count(); i++)
+                                {
+                                    Console.WriteLine((i + 1) + ") " + searchEngine[i]);
+                                }
+                                Console.WriteLine("Searched Songs, choose the position of the song you want to hear...");
+                                int indice = int.Parse(Console.ReadLine()) - 1;
+                                Video video = listVideosGlobal[indice]; //La cancion a la que querria escuchar
+                                Console.WriteLine("Playing: " + video.SearchedInfoVideo());
+                                Thread.Sleep((int)video.Duration * 1000);
+                                Console.WriteLine("\n");
+                                
+                                //Reproduction(1, type, indexglobal[indice], false); //Falta arreglar el método de reproduccion
                             }
-                            int indice = int.Parse(Console.ReadLine()) - 1;
-                            Video video = listVideosGlobal[indexglobal[indice]]; //La video a la que querria escuchar
-
-                            Reproduction(1,type, indexglobal[indice], false); //Falta arreglar el método de reproduccion
+                        }
+                        else
+                        {
+                            Console.WriteLine("Type the user you want to search...");
+                            string search = Console.ReadLine();
+                            List<string> searchEngine = SearchEngine(search, type, database);
+                            if (searchEngine.Count != 0)
+                            {
+                                Console.WriteLine("Searched Users: ");
+                                for (int i = 0; i < searchEngine.Count(); i++)
+                                {
+                                    Console.WriteLine((i + 1) + ") " + searchEngine[i]);
+                                }
+                                Console.WriteLine("Searched Users, choose the position of the user you want to follow...");
+                                int indice = int.Parse(Console.ReadLine()) - 1;
+                                User usr = userDicGlobal[indice];
+                                usr.Followers = usr.Followers + 1;
+                                Console.WriteLine("Followed: " + usr.SearchedInfoUser());
+                                Console.WriteLine("\n");
+                            }
                         }
                         break;
                     case "II":
-                        if (playlistFavSongs.Count() != 0)
+                        if (playlistFavSongs != null || playlistFavVideos != null)
                         {
                             Console.WriteLine(favSongs.InfoPlayList());
-                        }
-                        if (playlistFavVideos.Count() != 0)
-                        {
                             Console.WriteLine(favSongs.InfoPlayList());
                         }
+                        else Console.WriteLine("You don´t have a Favorite Playlist");
+
                         if (followedPL.Count() != 0)
                         {
                             DisplayPlaylists(followedPL);
@@ -247,8 +291,9 @@ namespace FyBuzz_E2
 
                         break;
                     case "III":
-                        AccountSettings(user); // incorporar el usuario.
-
+                        Console.WriteLine("---------------------------");
+                        AccountSettings(user);
+                        Console.WriteLine("---------------------------");
                         break;
 
                     case "IV":
@@ -357,16 +402,13 @@ namespace FyBuzz_E2
         //tenemos que decidir si esta clase sera de inputs y outputs, o la que hace de reproductor.
         public void DisplayGlobalMult(int typeMult, DataBase database)
         {
-            
-            
-            
             if (typeMult == 0)
             {
                 List<Song> ListSongsGlobal = database.Load_Songs();
                 for (int i = 0; i < ListSongsGlobal.Count(); i++)
                 {
-                    Console.WriteLine("Cancion {0}", i);
-                    Console.WriteLine(ListSongsGlobal[i].DisplayInfoSong());
+                    Console.WriteLine("Cancion {0}", i+1);
+                    Console.WriteLine(ListSongsGlobal[i].DisplayInfoSong() + "\n");
                 }
             }
             else if(typeMult == 1)
@@ -374,8 +416,8 @@ namespace FyBuzz_E2
                 List<Video> ListVideosGlobal = database.Load_Videos();
                 for (int i = 0; i < ListVideosGlobal.Count(); i++)
                 {
-                    Console.WriteLine("Video {0}", i);
-                    Console.WriteLine(ListVideosGlobal[i].DisplayInfoVideo());
+                    Console.WriteLine("Video {0}", i + 1);
+                    Console.WriteLine(ListVideosGlobal[i].DisplayInfoVideo() + "\n");
                 }
             }
             else if(typeMult == 2)
@@ -383,8 +425,8 @@ namespace FyBuzz_E2
                 List<PlayList> ListPLsGlobal = database.Load_PLs();
                 for (int i = 0; i < ListPLsGlobal.Count(); i++)
                 {
-                    Console.WriteLine("Playlist {0}", i);
-                    Console.WriteLine(i + ") " + ListPLsGlobal[i].DisplayInfoPlayList());
+                    Console.WriteLine("Playlist {0}", i + 1);
+                    Console.WriteLine(ListPLsGlobal[i].DisplayInfoPlayList() + "\n");
                 }
             }
 
@@ -399,25 +441,18 @@ namespace FyBuzz_E2
         }
         public void AccountSettings(User user)
         {
-            for (int i = 0; i < user.AccountSettings().Count(); i++)
-            {
-                Console.WriteLine("Username: " + user.AccountSettings()[0] + "\n");
-                Console.WriteLine("Password: " + user.AccountSettings()[1] + "\n");
-                Console.WriteLine("Email: " + user.AccountSettings()[2] + "\n");
-                Console.WriteLine("Account type: " + user.AccountSettings()[3] + "\n");
-            }
+            Console.WriteLine("Username: " + user.AccountSettings()[0] + "\n");
+            Console.WriteLine("Password: " + user.AccountSettings()[1] + "\n");
+            Console.WriteLine("Email: " + user.AccountSettings()[2] + "\n");
+            Console.WriteLine("Account type: " + user.AccountSettings()[3] + "\n");
+            
         }
 
-        public void Reproduction(int inplaylist, string type, int indexofmultimedia, bool ver) // Si viene de una playlist y se decide poner aleatorio verif sera 4, si se elige una canción sera 1.
+        public void Reproduction(int inplaylist, string type, int indexofmultimedia, bool ver, DataBase dataBase) // Si viene de una playlist y se decide poner aleatorio verif sera 4, si se elige una canción sera 1.
         {
-            List<Video> listVideosGlobal = new List<Video>();
-            listVideosGlobal = database.Load_Videos();
-
-            List<Song> listSongsGlobal = new List<Song>();
-            listSongsGlobal = database.Load_Songs();
-
             if (inplaylist == 1)
             {
+                List<Song> listSongsGlobal = dataBase.Load_Songs();
                 int x = 0;
                 int cont = 0;
                 if (type == "Song") {
@@ -429,6 +464,7 @@ namespace FyBuzz_E2
                 }
                 else
                 {
+                    List<Video> listVideosGlobal = dataBase.ListVideosGlobal;
                     while (cont != -1)
                     {
                         cont = player.PlayVideo(cont, listVideosGlobal[indexofmultimedia], ver); //Devuelve el tiempo en el que se para la canción
@@ -445,46 +481,55 @@ namespace FyBuzz_E2
             }
         }
 
-        public List<string> SearchEngine(string searching, string type)
+        public List<string> SearchEngine(string searching, string type, DataBase dataBase)
         {
-            List<Video> listVideosGlobal = new List<Video>();
-            listVideosGlobal = database.Load_Videos();
-
-            List<Song> listSongsGlobal = new List<Song>();
-            listSongsGlobal = database.Load_Songs();
-
+            
             List<string> searchEngine = new List<string>();
-            int num_s = 0;
             int num_v = 0;
 
 
             if (type == "Songs")
             {
-                foreach (Song song in listSongsGlobal)
+                List<Song> listSongsGlobal = dataBase.Load_Songs();
+                for(int i = 0; i < listSongsGlobal.Count(); i++)
                 {
-                    for (int i = 0; i < song.InfoSong().Count(); i++)
+                    for (int x = 0; x < listSongsGlobal[i].InfoSong().Count(); x++)
                     {
-                        if (song.InfoSong()[i] == searching)
+                        if (listSongsGlobal[i].InfoSong()[x] == searching)
                         {
-                            searchEngine.Add(song.SearchedInfoSong() + ">" + num_s); //num_s es un int y no me patalea, si tira error es aca. Usar remove leguer
+                            searchEngine.Add(listSongsGlobal[i].SearchedInfoSong() + ", Position: " + (i+1)); //num_s es un int y no me patalea, si tira error es aca. Usar remove leguer
                         }
                     }
-                    num_s++;
                 }
             }
-            else
+            else if(type == "Videos")
             {
-                foreach (Video video in listVideosGlobal)
+                List<Video> listVideosGlobal = dataBase.Load_Videos();
+                for (int i = 0; i < listVideosGlobal.Count(); i++)
                 {
-                    for (int i = 0; i < video.InfoVideo().Count(); i++)
+                    for (int x = 0; x < listVideosGlobal[i].InfoVideo().Count(); x++)
                     {
-                        if (video.InfoVideo()[i] == searching)
+                        if (listVideosGlobal[i].InfoVideo()[x] == searching)
                         {
-                            searchEngine.Add(video.SearchedInfoVideo() + ">" + num_v);
+                            searchEngine.Add(listVideosGlobal[i].SearchedInfoVideo() + ", Position: " + (i+1)); //num_s es un int y no me patalea, si tira error es aca. Usar remove leguer
                         }
-                        
                     }
-                    num_v++;
+                }
+            }
+            else if(type == "Users")
+            {
+                Dictionary<int, User> diceUserGlobal = dataBase.Load_Users();
+
+                for(int i = 0; i < diceUserGlobal.Count(); i++)
+                {
+                    for (int x = 0; x < diceUserGlobal[i].infoUser().Count(); x++)
+                    {
+                        if (diceUserGlobal[i].infoUser()[x] == searching)
+                        {
+                            if(diceUserGlobal[i].Privacy != true) searchEngine.Add(diceUserGlobal[i].Perfil.SearchedInfoProfile() + ", Position: " + (i + 1));
+                            else if (diceUserGlobal[i].Privacy == true) searchEngine.Add(diceUserGlobal[i].Perfil.SearchedInfoProfile() + ", Position: " + "???");
+                        }
+                    }
                 }
             }
             if (searchEngine.Count() == 0) Console.WriteLine("No match found...");
@@ -570,14 +615,15 @@ namespace FyBuzz_E2
             else if(type == 2)
             {
                 Console.Write("Escriba el nombre de la playlist: ");                     string n = Console.ReadLine();
-                Console.Write("Quiere que su playlist sea de cancion o video? (c/v): "); string format = null;
+                Console.Write("Quiere que su playlist sea de cancion o video? (c/v): "); string choice = Console.ReadLine();
+                string format = null;
 
-                if (Console.ReadLine() == "c" || Console.ReadLine() == "C")
+                if (choice == "c" || choice == "C")
                 {
                     Console.Write("Escriba el formato de la playlist de cancion (.mp3|.wav): ");
                     format = Console.ReadLine();
                 }
-                else if (Console.ReadLine() == "v" || Console.ReadLine() == "V")
+                else if (choice == "v" || choice == "V")
                 {
                     Console.Write("Escriba el formato de la playlist de video (.mp4|.mov): ");
                     format = Console.ReadLine();
