@@ -15,10 +15,11 @@ namespace FyBuzz_E2
         protected string discography;
         protected string gender;
         protected string studio;
-        protected bool lyrics;
+        protected string lyrics;
+        public string Lyrics { get => lyrics; }
 
         //Ver si el constructor está adecuado, o si hay que sacar algo.
-        public Song(string name, string artist, string album, string discography, string gender, string date, string studio, double duration, bool lyrics, string format)
+        public Song(string name, string artist, string album, string discography, string gender, string date, string studio, double duration, string lyrics, string format)
         {
             this.name = name;
             this.artist = artist;

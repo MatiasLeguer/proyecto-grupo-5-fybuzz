@@ -15,6 +15,7 @@ namespace FyBuzz_E2
     public class Menu
     {
         protected List<string> filters;
+        protected List<string> badWords = new List<string>() { "fuck", "sex", "niggas", "sexo", "ass", "nigger", "culo", "viola", "violar", "spank", "puta", "hooker","perra","hoe","cocaina","alchohol","blunt","weed","marihuana","lcd","kush","krippy","penis","dick","cock","shit","percocet" };
         public List<Song> searchedSongs;
         public List<Video> searchedVideos;
         User user = new User();
@@ -25,8 +26,6 @@ namespace FyBuzz_E2
         public User DisplayLogin()
         {
             Server server = new Server(database);
-
-
             bool x = false;
             while (x == false)
             {
@@ -45,6 +44,7 @@ namespace FyBuzz_E2
                         if (database.LogIn(username, password) != null) //tengo que obtener mediante un get el nombre de usuario y password
                         {
                             Console.WriteLine("Login Succesfull.");
+                            Console.Beep();
                             x = true;
                             user = database.LogIn(username, password); 
                         }
@@ -72,7 +72,8 @@ namespace FyBuzz_E2
         
         public Profile DisplayProfiles(User user)
         {
-            List<User> userDataBase = database.Load_Users();  //Falta actualizar los perfiles.      
+            Console.WriteLine("Welcome: " + user.Username + "\n");
+            List<User> userDataBase = database.Load_Users();  //Falta actualizar los perfiles.  
             bool x = true;
 
             Console.WriteLine("---------Profiles----------");
@@ -110,20 +111,30 @@ namespace FyBuzz_E2
                     }
                     else if (dec == "1")
                     {
-                        Console.WriteLine("Create a profile:");
-                        Console.Write("Profile name: ");
-                        string pname = Console.ReadLine();
-                        Console.Write("Profile pic: ");
-                        string ppic = Console.ReadLine();
-                        Console.Write("Profile type(creator/viewer): ");
-                        string ptype = Console.ReadLine();
-                        string pmail = user.Email;
-                        Console.Write("Profile gender (M/F): ");
-                        string pgender = Console.ReadLine();
-                        Console.Write("Profile age: ");
-                        int page = int.Parse(Console.ReadLine());
-                        user.CreateProfile(pname, ppic, ptype, pmail, pgender, page);
-
+                        if (user.Accountype == "premium")
+                        {
+                            Console.WriteLine("Create a profile:");
+                            Console.Write("Profile name: ");
+                            string pname = Console.ReadLine();
+                            Console.Write("Profile pic: ");
+                            string ppic = Console.ReadLine();
+                            Console.Write("Profile type(creator/viewer): ");
+                            string ptype = Console.ReadLine();
+                            string pmail = user.Email;
+                            Console.Write("Profile gender (M/F): ");
+                            string pgender = Console.ReadLine();
+                            Console.Write("Profile age: ");
+                            int page = int.Parse(Console.ReadLine());
+                            user.CreateProfile(pname, ppic, ptype, pmail, pgender, page);
+                        }
+                        else if (user.Accountype == "standard")
+                        {
+                            Console.WriteLine("ERROR [!] Standard Account Types, you can only have one profile.\nTry Upgrading to Premium Account.");
+                            Console.Write("Do you want to change your Account Type to premium?(y/n): ");
+                            string premium = Console.ReadLine();
+                            if (premium == "y") user.Accountype = "premium"; //Falta actualizar la lista de perfiles.
+                            else continue;
+                        }
                     }
                     else
                     {
@@ -135,7 +146,7 @@ namespace FyBuzz_E2
         }
 
         //Se necesita el perfil con el que quiere acceder
-        public void DisplayStart(Profile profile,User usr) // solo funciona si DisplayLogIn() retorna true se ve en program.
+        public int DisplayStart(Profile profile,User usr) // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
             List<User> listUserGlobal = database.Load_Users();
             List<Video> listVideosGlobal = new List<Video>();
@@ -144,6 +155,7 @@ namespace FyBuzz_E2
             listVideosGlobal = database.Load_Videos();
             listSongsGlobal = database.Load_Songs();
             listPlayListGlobal = database.Load_PLs();
+            int ret = 0;
 
             // mostrará todas las playlist del usuario, si es primera vez que ingresa estara la playlist general y la favorita(esta sin nada)
             // es la lista global de playlist que viene de database, pero hay que conectarla
@@ -164,10 +176,10 @@ namespace FyBuzz_E2
                 Console.WriteLine("I) Search Songs, Videos or Users."); //Faltaria la bsuqueda de gente.
                 Console.WriteLine("II) Add Songs, Videos or Playlists.");
                 Console.WriteLine("III) Display all Playlists.");
-                Console.WriteLine("IV) Account Settings.");
+                Console.WriteLine("IV) Account Settings/ Profile Settings.");
                 Console.WriteLine("V) Play a Playlist.");
                 //La opcion de agregar multimedia
-                Console.WriteLine("VI) LogOut.");
+                Console.WriteLine("VI) LogOut from Prrofile.");
                 Console.WriteLine("VII) CloseApp.");
                 string dec = Console.ReadLine();
                 switch (dec)
@@ -192,8 +204,34 @@ namespace FyBuzz_E2
                             Song song = listSongsGlobal[indice]; //La cancion a la que querria escuchar
                             Console.WriteLine("Playing: " + song.SearchedInfoSong());
                             Thread.Sleep((int)song.Duration * 100);
-                            //Si es que no ere premium mostrar publicidad
-                            //Reproduction(1, type, indice, false, database); //Falta arreglar el método de reproduccion
+                            //Metodo de publicidad deberia ir en el metodo de Play()
+                            if (user.AdsOn == true) //Falta poner cada cuanto tiempo lo hace
+                            {
+                                List<string> AdsList = new List<string>(){ "Are you a standar user? Pfff try upgrading to premium and stop getting Ads!!"
+                                    , "Keep Calm Leguer's Toilet Paper doesn't run out of stock in this Quarentine, come and buy it!!"
+                                    , "Do you want to be good at videogames? try watching Juan Jacobo's tip and tricks videos."
+                                    , "Are you into Podcasts? COMING SOON Diego's Podcast 'FyBuZz in tha house' "};
+                                Random random = new Random();
+                                for (int i = 0; i < 1; i++)
+                                {
+                                    Console.WriteLine(AdsList[random.Next(4)]);
+                                    Thread.Sleep(1000);
+                                }
+                                
+                            }
+                            foreach(string word in badWords)
+                            {
+                                if (song.Lyrics.Contains(word) && profile.Age < 16)
+                                {
+                                    Console.WriteLine("ERROR[!] This content is age restricted");
+                                    break;
+                                }
+                                else
+                                {
+                                    //Metodo de reproducir cancion.
+                                }
+                            }
+
                             Console.WriteLine("\n");
                         }
                         else if(type == "Videos")
@@ -212,8 +250,21 @@ namespace FyBuzz_E2
                                 Console.WriteLine("Searched Songs, choose the position of the song you want to hear...");
                                 int indice = int.Parse(Console.ReadLine()) - 1;
                                 Video video = listVideosGlobal[indice]; //La cancion a la que querria escuchar
-                                Console.WriteLine("Playing: " + video.SearchedInfoVideo());
-                                Thread.Sleep((int)video.Duration * 100);
+                                
+                                //Thread.Sleep((int)video.Duration * 100);
+                                foreach (string word in badWords)
+                                {
+                                    if ((video.Subtitles.Contains(word) && profile.Age < 16 )|| (int.Parse(video.Category) >= profile.Age))
+                                    {
+                                        Console.WriteLine("ERROR[!] This content is age restricted");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Playing: " + video.SearchedInfoVideo());
+                                        //Metodo de reproducir cancion.
+                                    }
+                                }
                                 Console.WriteLine("\n");
                                 //Si es que no ere premium mostrar publicidad
                                 //Reproduction(1, type, indexglobal[indice], false); //Falta arreglar el método de reproduccion
@@ -289,7 +340,11 @@ namespace FyBuzz_E2
                         break;
                     case "IV":
                         Console.WriteLine("---------------------------");
-                        AccountSettings(usr);
+                        Console.Write("Which settings do you want to acces?(Account/Profile): ");
+                        string settings = Console.ReadLine();
+                        if (settings == "Account") AccountSettings(usr);
+                        else if (settings == "Profile") ProfileSettings(profile);
+                        else Console.WriteLine("ERROR[!] Invalid Command");
                         Console.WriteLine("---------------------------");
                         break;
 
@@ -311,12 +366,17 @@ namespace FyBuzz_E2
                                 string mult = Console.ReadLine();
                                 if (mult == "Songs")
                                 {
+                                    //Método de restriccion de edad.
+
                                     //SongsSearchEngine(searchedSongs);
                                     //Reproduction(1, mult, indexofmultimedia, false);
+
                                     Console.WriteLine("Aca se esta reproduciendo la cancion de playlist favorita.");
                                 }
                                 else
                                 {
+                                    //Método de restriccion de edad.
+
                                     //VideosSearchEngine(searchedVideos);
                                     //Reproduction(1, 1, false);
                                     Console.WriteLine("Aca se esta reproduciendo la Video de playlist favorita.");
@@ -325,9 +385,24 @@ namespace FyBuzz_E2
                         }
                         else if (play == "GlobalPlayList")
                         {
-                            Console.WriteLine("Please select the number...");
+                            List<Song> repPlaylistSong = new List<Song>();
+                            List<Video> repPlaylistVideo =  new List<Video>();
+                            Console.WriteLine("Please type the Playlist name...");
                             string num = Console.ReadLine();
-                            //Elegir la playlist que te dan y según eso lo siguiente.
+                            Console.WriteLine("Please type the Playlist format...");
+                            string format = Console.ReadLine();
+                            foreach (PlayList playList in listPlayListGlobal)
+                            {
+                                if(num == playList.NamePlayList && (format == ".mp3" || format == ".wav") )
+                                {
+                                    repPlaylistSong = playList.DicCanciones[num];
+                                }
+                                else if(num == playList.NamePlayList && (format == ".mp4" || format == ".mov"))
+                                {
+                                    repPlaylistVideo = playList.DicVideos[num];
+                                }
+                                //Iguala a la playlist que se esta reproduciendo.
+                            }
                             Console.WriteLine("Random or select a song?");
                             string rand = Console.ReadLine();
                             if (rand == "Random")
@@ -341,12 +416,16 @@ namespace FyBuzz_E2
                                 string mult = Console.ReadLine();
                                 if (mult == "Songs")
                                 {
+                                    //Método de restriccion de edad.
+
                                     //ongsSearchEngine(searchedSongs);
                                     //Reproduction(1, 0, false);
                                     Console.WriteLine("Aca se esta reproduciendo la cancion de playlist " + num + " global.");
                                 }
                                 else
                                 {
+                                    //Método de restriccion de edad.
+
                                     //VideosSearchEngine(searchedVideos);
                                     //Reproduction(1, 1, false);
                                     Console.WriteLine("Aca se esta reproduciendo la video de playlist " + num + " global.");
@@ -355,9 +434,24 @@ namespace FyBuzz_E2
                         }
                         else if (play == "FollowedPlaylist")
                         {
-                            Console.WriteLine("Please select the number...");
+                            List<Song> repPlaylistSong = new List<Song>();
+                            List<Video> repPlaylistVideo = new List<Video>();
+                            Console.WriteLine("Please type the Playlist name...");
                             string num = Console.ReadLine();
-                            //Elegir la playlist que te dan y según eso lo siguiente.
+                            Console.WriteLine("Please type the Playlist format...");
+                            string format = Console.ReadLine();
+                            foreach (PlayList playList in listPlayListGlobal)
+                            {
+                                if (num == playList.NamePlayList && (format == ".mp3" || format == ".wav"))
+                                {
+                                    repPlaylistSong = playList.DicCanciones[num];
+                                }
+                                else if (num == playList.NamePlayList && (format == ".mp4" || format == ".mov"))
+                                {
+                                    repPlaylistVideo = playList.DicVideos[num];
+                                }
+                                //Iguala a la playlist que se esta reproduciendo.
+                            }
                             Console.WriteLine("Random or select multimedia?");
                             string rand = Console.ReadLine();
                             if (rand == "Random")
@@ -371,12 +465,16 @@ namespace FyBuzz_E2
                                 string mult = Console.ReadLine();
                                 if (mult == "Songs")
                                 {
+                                    //Método de restriccion de edad.
+
                                     //SongsSearchEngine(searchedSongs);
                                     //Reproduction(1, 0, false);
                                     Console.WriteLine("Aca se esta reproduciendo la cancion de playlist " + num + " followed.");
                                 }
                                 else
                                 {
+                                    //Método de restriccion de edad.
+
                                     //VideosSearchEngine(searchedVideos);
                                     //Reproduction(1, 1, false);
                                     Console.WriteLine("Aca se esta reproduciendo la video de playlist " + num + " followed.");
@@ -385,19 +483,20 @@ namespace FyBuzz_E2
                         }
                         break;
                     case "VI":
-                        //termina el método y llamaria al metodo de inicio en program.
-                        Console.WriteLine("LoggedOut");
-                        
+                        Console.WriteLine("Logged Out");
+                        ret = 0;
                         database.Save_Users(listUserGlobal);
                         x = false;
+                        Console.Clear();
                         break;
                     case "VII":
-                        
+                        ret = 1;
                         database.Save_Users(listUserGlobal);
                         x = false;
                         break;
                 }
             }
+            return ret;
         }
 
         //tenemos que decidir si esta clase sera de inputs y outputs, o la que hace de reproductor.
@@ -448,7 +547,16 @@ namespace FyBuzz_E2
             Console.WriteLine("Account type: " + user.AccountSettings()[3] + "\n");
             
         }
+        public void ProfileSettings(Profile profile)
+        {
+            Console.WriteLine("Name: " + profile.ProfileSettings()[0] + "\n");
+            Console.WriteLine("Profile Type: " + profile.ProfileSettings()[1] + "\n");
+            Console.WriteLine("Profile Pic: " + profile.ProfileSettings()[2] + "\n");
+            Console.WriteLine("Gender: " + profile.ProfileSettings()[3] + "\n");
+            Console.WriteLine("Age: " + profile.ProfileSettings()[4] + "\n");
+        }
 
+        //Cada vez que termine el ciclo de algun archivo multimedia consultar al perfil si se le da like o no.
         public void Reproduction(int inplaylist, string type, int indexofmultimedia, bool ver, DataBase dataBase) // Si viene de una playlist y se decide poner aleatorio verif sera 4, si se elige una canción sera 1.
         {
             if (inplaylist == 1)
@@ -462,6 +570,7 @@ namespace FyBuzz_E2
                         cont = player.PlaySong(cont, listSongsGlobal[indexofmultimedia], ver); //Devuelve el tiempo en el que se para la canción
                         if (cont != -1) cont = player.Stop(cont); // devuelve el contador cuando se detiene para empezar de nuevo.
                     }
+                    
                 }
                 else
                 {
@@ -576,7 +685,7 @@ namespace FyBuzz_E2
                 Console.Write("Escriba el studio: ");                                                  string std = Console.ReadLine();
                 Console.Write("Escriba la duración de la cancion (formato: min.seg): ");               string dur = Console.ReadLine();
                 Console.Write("Escriba el formato de la cancion (.mp3 || .wav): ");                    string format = Console.ReadLine();
-                Console.Write("su cancion tiene lyrics?: ");
+                Console.Write("Song lyrics (write): ");
                 
                 string lyr;
                 if ((Console.ReadLine() == "y") || (Console.ReadLine() == "Y"))
@@ -594,12 +703,12 @@ namespace FyBuzz_E2
                 Console.Write("Escriba la fecha de publicación (fecha actual en formato dd/mm/aa): "); string date = Console.ReadLine();
                 Console.Write("Escriba la dimension del video (16:9): ");                            string dim = Console.ReadLine();
                 Console.Write("Escriba la calidad del video: ");                                       string cal = Console.ReadLine();
-                Console.Write("Escriba la categoria del video: ");                                     string cat = Console.ReadLine();
+                Console.Write("Video category(number) (0 = all espectator, 16 = above 16 years, etc.): ");                                     string cat = Console.ReadLine();
                 Console.Write("Escriba la descripción del video: ");                                   string des = Console.ReadLine();
                 Console.Write("Escriba la duración de la cancion (formato: min.seg)(double): ");       string dur = Console.ReadLine();
                 Console.Write("Escriba el formato de la video (.mp4 || .mov): ");                      string format = Console.ReadLine();
                 Console.Write("Confirme si es que tiene una imagen para agregar (y/n): ");             string im = Console.ReadLine();
-                Console.Write("Confirme si es que tiene subtitulos para su video: ");                  string sub = Console.ReadLine();
+                Console.Write("Video subtitles (write): ");                  string sub = Console.ReadLine();
                 if ((im == "y") || (im == "Y"))
                     im = "true";
                 else
