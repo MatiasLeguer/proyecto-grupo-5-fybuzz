@@ -111,20 +111,7 @@ namespace FyBuzz_E2
             List<string> Settings = new List<string>() { profileName, profileType, profilePic, gender, age.ToString()};
             return Settings;
         }
-        /*
-        public void LikeSong(Song song)
-        {
-            // Conexion con multimedia / Likes +1
-            song.Likes();
-
-        }
-        public void LikeVideo(Video video)
-        {
-            // Conexion con multimedia / Likes +1
-            video.Likes();
-
-        }
-        */
+        
         // En videos o canciones (seria mejor en multimedia) deberia haber un metodo
         // que permita sumarle uno al contador de likes de cancion o video, de lo
         // contrario no se le podria sumar algo al atributo desde esta clase

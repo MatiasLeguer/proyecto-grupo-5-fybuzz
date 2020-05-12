@@ -94,9 +94,9 @@ namespace FyBuzz_E2
             {
                 while (x == true)
                 {
-                    Console.WriteLine("Choose a profile(0) or Create Profile(1)");
+                    Console.WriteLine("I) Choose a profile\nII) Create Profile\nIII) Close App.");
                     string dec = Console.ReadLine();
-                    if (dec == "0")
+                    if (dec == "I")
                     {
                         Console.WriteLine("List of profiles:");
                         int i;
@@ -109,7 +109,7 @@ namespace FyBuzz_E2
                         //database.Save_Users(userDataBase);
                         return user.Perfiles[index];
                     }
-                    else if (dec == "1")
+                    else if (dec == "II")
                     {
                         if (user.Accountype == "premium")
                         {
@@ -136,16 +136,15 @@ namespace FyBuzz_E2
                             else continue;
                         }
                     }
-                    else
+                    else if(dec == "III")
                     {
-                        Console.WriteLine("Invalid command, please try again");
+                        return null;
                     }
                 }
             }
             return null;
         }
 
-        //Se necesita el perfil con el que quiere acceder
         public int DisplayStart(Profile profile,User usr) // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
             List<User> listUserGlobal = database.Load_Users();
@@ -202,36 +201,23 @@ namespace FyBuzz_E2
                             Console.WriteLine("Searched Songs, choose the position of the song you want to hear...");
                             int indice = int.Parse(Console.ReadLine()) - 1;
                             Song song = listSongsGlobal[indice]; //La cancion a la que querria escuchar
-                            Console.WriteLine("Playing: " + song.SearchedInfoSong());
-                            Thread.Sleep((int)song.Duration * 100);
+
                             //Metodo de publicidad deberia ir en el metodo de Play()
-                            if (user.AdsOn == true) //Falta poner cada cuanto tiempo lo hace
-                            {
-                                List<string> AdsList = new List<string>(){ "Are you a standar user? Pfff try upgrading to premium and stop getting Ads!!"
-                                    , "Keep Calm Leguer's Toilet Paper doesn't run out of stock in this Quarentine, come and buy it!!"
-                                    , "Do you want to be good at videogames? try watching Juan Jacobo's tip and tricks videos."
-                                    , "Are you into Podcasts? COMING SOON Diego's Podcast 'FyBuZz in tha house' "};
-                                Random random = new Random();
-                                for (int i = 0; i < 1; i++)
-                                {
-                                    Console.WriteLine(AdsList[random.Next(4)]);
-                                    Thread.Sleep(1000);
-                                }
-                                
-                            }
+                            int cont = 0;
                             foreach(string word in badWords)
                             {
-                                if (song.Lyrics.Contains(word) && profile.Age < 16)
+                                if (song.Lyrics.Contains(word) == true && profile.Age < 16)
                                 {
                                     Console.WriteLine("ERROR[!] This content is age restricted");
+                                    cont++;
                                     break;
                                 }
-                                else
-                                {
-                                    //Metodo de reproducir cancion.
-                                }
                             }
-
+                            if(cont == 0)
+                            {
+                                Console.Clear();
+                                player.PlaySong(0, song, null, database, "", usr, profile);
+                            }
                             Console.WriteLine("\n");
                         }
                         else if(type == "Videos")
@@ -250,24 +236,22 @@ namespace FyBuzz_E2
                                 Console.WriteLine("Searched Songs, choose the position of the song you want to hear...");
                                 int indice = int.Parse(Console.ReadLine()) - 1;
                                 Video video = listVideosGlobal[indice]; //La cancion a la que querria escuchar
-                                
-                                //Thread.Sleep((int)video.Duration * 100);
+                                int cont = 0;
                                 foreach (string word in badWords)
                                 {
                                     if ((video.Subtitles.Contains(word) && profile.Age < 16 )|| (int.Parse(video.Category) >= profile.Age))
                                     {
                                         Console.WriteLine("ERROR[!] This content is age restricted");
+                                        cont++;
                                         break;
                                     }
-                                    else
-                                    {
-                                        Console.WriteLine("Playing: " + video.SearchedInfoVideo());
-                                        //Metodo de reproducir cancion.
-                                    }
+                                }
+                                if (cont == 0)
+                                {
+                                    Console.Clear();
+                                    player.PlayVideo(0, video, null, database, "", usr,profile);
                                 }
                                 Console.WriteLine("\n");
-                                //Si es que no ere premium mostrar publicidad
-                                //Reproduction(1, type, indexglobal[indice], false); //Falta arreglar el método de reproduccion
                             }
                         }
                         else
@@ -676,16 +660,16 @@ namespace FyBuzz_E2
             List<string> infoMult = new List<string>();
             if(type == 0)
             {
-                Console.Write("Escriba el nombre de la cancion: ");                                    string n = Console.ReadLine();
-                Console.Write("Escriba su nombre de artista: ");                                       string art = Console.ReadLine();
-                Console.Write("Escriba el album en donde se encontrará la cancion: ");                 string alb = Console.ReadLine();
-                Console.Write("Escriba la discografia: ");                                             string disc = Console.ReadLine();
-                Console.Write("Escriba el genero de la cancion: ");                                    string gen = Console.ReadLine();
-                Console.Write("Escriba la fecha de publicación (fecha actual en formato dd/mm/aa): "); string date = Console.ReadLine();
-                Console.Write("Escriba el studio: ");                                                  string std = Console.ReadLine();
-                Console.Write("Escriba la duración de la cancion (formato: min.seg): ");               string dur = Console.ReadLine();
-                Console.Write("Escriba el formato de la cancion (.mp3 || .wav): ");                    string format = Console.ReadLine();
-                Console.Write("Song lyrics (write): ");
+                Console.Write("Song name: ");                                    string n = Console.ReadLine();
+                Console.Write("Song artist or artists(if this is the case separate them by '-', Bad Bunny-Ricky Martin: ");                                       string art = Console.ReadLine();
+                Console.Write("Album: ");                 string alb = Console.ReadLine();
+                Console.Write("Discography: ");                                             string disc = Console.ReadLine();
+                Console.Write("Song Gender: ");                                    string gen = Console.ReadLine();
+                Console.Write("Publish date (dd/mm/aa): "); string date = Console.ReadLine();
+                Console.Write("Studio: ");                                                  string std = Console.ReadLine();
+                Console.Write("Song Duration (format: min.seg)(double): ");               string dur = Console.ReadLine();
+                Console.Write("Song Format(.mp3 || .wav): ");                    string format = Console.ReadLine();
+                Console.Write("Song lyrics(write): ");
                 
                 string lyr;
                 if ((Console.ReadLine() == "y") || (Console.ReadLine() == "Y"))
@@ -697,18 +681,18 @@ namespace FyBuzz_E2
             }
             else if(type == 1)
             {
-                Console.Write("Escriba el nombre del video: ");                                        string n = Console.ReadLine();
-                Console.Write("Escriba el nombre de el/los actores: ");                                string act = Console.ReadLine();
-                Console.Write("Escriba el nombre de el/los directores: ");                             string dir = Console.ReadLine();
-                Console.Write("Escriba la fecha de publicación (fecha actual en formato dd/mm/aa): "); string date = Console.ReadLine();
-                Console.Write("Escriba la dimension del video (16:9): ");                            string dim = Console.ReadLine();
-                Console.Write("Escriba la calidad del video: ");                                       string cal = Console.ReadLine();
+                Console.Write("Video Name: ");                                        string n = Console.ReadLine();
+                Console.Write("Video actor or actors(if this is the case separate them by '-', Bad Bunny-Ricky Martin: ");                                string act = Console.ReadLine();
+                Console.Write("Video director or directors(if this is the case separate them by '-', Bad Bunny-Ricky Martin: ");                             string dir = Console.ReadLine();
+                Console.Write("Publish date (dd/mm/aa): "); string date = Console.ReadLine();
+                Console.Write("Video Dimension (16:9): ");                            string dim = Console.ReadLine();
+                Console.Write("Video Quality");                                       string cal = Console.ReadLine();
                 Console.Write("Video category(number) (0 = all espectator, 16 = above 16 years, etc.): ");                                     string cat = Console.ReadLine();
-                Console.Write("Escriba la descripción del video: ");                                   string des = Console.ReadLine();
-                Console.Write("Escriba la duración de la cancion (formato: min.seg)(double): ");       string dur = Console.ReadLine();
-                Console.Write("Escriba el formato de la video (.mp4 || .mov): ");                      string format = Console.ReadLine();
-                Console.Write("Confirme si es que tiene una imagen para agregar (y/n): ");             string im = Console.ReadLine();
-                Console.Write("Video subtitles (write): ");                  string sub = Console.ReadLine();
+                Console.Write("Video Description: ");                                   string des = Console.ReadLine();
+                Console.Write("Video Duration(format: min.seg)(double): ");       string dur = Console.ReadLine();
+                Console.Write("Video Format(.mp4 || .mov): ");                      string format = Console.ReadLine();
+                Console.Write("Video Image(y/n): ");             string im = Console.ReadLine();
+                Console.Write("Video subtitles(write): ");                  string sub = Console.ReadLine();
                 if ((im == "y") || (im == "Y"))
                     im = "true";
                 else
