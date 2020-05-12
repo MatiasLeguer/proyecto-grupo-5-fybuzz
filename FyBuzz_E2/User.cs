@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 
 namespace FyBuzz_E2
 {
+    [Serializable]
     public class User
     {
-        private int registerNumber;
-        private string username;
-        private string password;
-        private string accountType; // Premium,Standard //Yo le pondria un 0 y un 1, asi es mas facil
-        private string email;
-        private int followers;
-        private int following;
-        private bool verified;
-        private bool adsOn;
-        private bool privacy;
+        protected int registerNumber;
+        protected string username;
+        protected string password;
+        protected string accountType; // Premium,Standard //Yo le pondria un 0 y un 1, asi es mas facil
+        protected string email;
+        protected int followers;
+        protected int following;
+        protected bool verified;
+        protected bool adsOn;
+        protected bool privacy;
 
-        private Dictionary<int, Profile> perfiles = new Dictionary<int, Profile>(); //Agregar perfiles a el archivo de usuario para que no s epierdan cuando se cierrre el program
+        protected Dictionary<int, Profile> perfiles = new Dictionary<int, Profile>(); //Agregar perfiles a el archivo de usuario para que no s epierdan cuando se cierrre el program
 
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }

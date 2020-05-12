@@ -53,7 +53,9 @@ namespace FyBuzz_E2
 
             // Genera el link de verificacion para el usuario
             //string verificationLink = GenerateLink(usr);
-            List<string> userlist = new List<string>() { usr, email, psswd, Convert.ToString(DateTime.Now) };
+
+            User userlist = new User(); 
+            userlist.Username = usr; userlist.Email = email; userlist.Password = psswd;
             string result = Data.AddUser(userlist);
             if (result == null)
             {

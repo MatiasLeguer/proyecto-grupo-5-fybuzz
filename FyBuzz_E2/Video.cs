@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FyBuzz_E2
 {
+    [Serializable]
     public class Video:Multimedia
     {
         protected int videoDimension;
@@ -18,8 +19,6 @@ namespace FyBuzz_E2
         protected bool subtitles; // 
         protected string actors;
         protected string directors;
-
-
 
         public Video(string name, string actors, string directors ,string date, int videoDimension, string quality, string category, string description, bool image, double duration, bool subtitles, string format)
 
@@ -40,7 +39,7 @@ namespace FyBuzz_E2
             this.directors = directors;
 
         }
-
+        /*
         public delegate void SendVideoEventHandler(object source, Video v);
         public event SendVideoEventHandler VideoSent;
 
@@ -52,7 +51,7 @@ namespace FyBuzz_E2
                 VideoSent(this, v);
             }
         }
-
+        */
 
         public List<string> InfoVideo()
         {

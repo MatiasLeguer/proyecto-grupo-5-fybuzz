@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -11,7 +12,7 @@ namespace FyBuzz_E2
 {
     public class Menu
     {
-        private List<String> filters;
+        protected List<string> filters;
         public List<Song> searchedSongs;
         public List<Video> searchedVideos;
         User user = new User();
@@ -28,30 +29,37 @@ namespace FyBuzz_E2
                 Console.WriteLine("------------Welcome to FyBuZz--------------");
                 Console.WriteLine("I) Log-In with a existing account.");
                 Console.WriteLine("II) Register.");
+                Console.WriteLine("III) Close App.");
                 string dec = Console.ReadLine();
-                if (dec == "I")
+                switch (dec)
                 {
-                    Console.Write("Username: ");
-                    string username = Console.ReadLine();
-                    Console.Write("Password: ");
-                    string password = Console.ReadLine();
-                    if (database.LogIn(username, password) == null) //tengo que obtener mediante un get el nombre de usuario y password
-                    {
-                        user.Username = username;
-                        user.Password = password;
-                        Console.WriteLine("Login Succesfull.");
-                        x = true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("ERROR[!]");
-                    }
-                }
-                else
-                {
-                    server.Register(); //Agregue el metodo de server register.
-                    x = false;
-                    //Dar todas las caracteriscas del usaurio aca.
+                    case "I":
+                        Console.Write("Username: ");
+                        string username = Console.ReadLine();
+                        Console.Write("Password: ");
+                        string password = Console.ReadLine();
+                        if (database.LogIn(username, password) == null) //tengo que obtener mediante un get el nombre de usuario y password
+                        {
+                            user.Username = username;
+                            user.Password = password;
+                            Console.WriteLine("Login Succesfull.");
+                            x = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("ERROR[!]");
+                        }
+                        break;
+
+
+                    case "II":
+                        server.Register(); //Agregue el metodo de server register.
+                        x = false;
+                        //Dar todas las caracteriscas del usaurio aca.
+                        break;
+                    case "III":
+                        return false;
+                        
                 }
             }
             return x;
@@ -124,6 +132,11 @@ namespace FyBuzz_E2
                     int opc = int.Parse(Console.ReadLine());
                     DisplayGlobalMult(opc, database);
                 }
+                else
+                {
+                    x = false;
+                }
+                    
             }
             return profile_n;
         }
@@ -344,28 +357,34 @@ namespace FyBuzz_E2
         //tenemos que decidir si esta clase sera de inputs y outputs, o la que hace de reproductor.
         public void DisplayGlobalMult(int typeMult, DataBase database)
         {
-            if(typeMult == 0)
+            
+            
+            
+            if (typeMult == 0)
             {
-                for (int i = 0; i < database.ListSongsGlobal.Count(); i++)
+                List<Song> ListSongsGlobal = database.Load_Songs();
+                for (int i = 0; i < ListSongsGlobal.Count(); i++)
                 {
                     Console.WriteLine("Cancion {0}", i);
-                    Console.WriteLine(database.ListSongsGlobal[i].DisplayInfoSong());
+                    Console.WriteLine(ListSongsGlobal[i].DisplayInfoSong());
                 }
             }
             else if(typeMult == 1)
             {
-                for (int i = 0; i < database.ListVideosGlobal.Count(); i++)
+                List<Video> ListVideosGlobal = database.Load_Videos();
+                for (int i = 0; i < ListVideosGlobal.Count(); i++)
                 {
                     Console.WriteLine("Video {0}", i);
-                    Console.WriteLine(database.ListVideosGlobal[i].DisplayInfoVideo());
+                    Console.WriteLine(ListVideosGlobal[i].DisplayInfoVideo());
                 }
             }
             else if(typeMult == 2)
             {
-                for (int i = 0; i < database.ListPLsGlobal.Count(); i++)
+                List<PlayList> ListPLsGlobal = database.Load_PLs();
+                for (int i = 0; i < ListPLsGlobal.Count(); i++)
                 {
                     Console.WriteLine("Playlist {0}", i);
-                    Console.WriteLine(i + ") " + database.ListPLsGlobal[i].DisplayInfoPlayList());
+                    Console.WriteLine(i + ") " + ListPLsGlobal[i].DisplayInfoPlayList());
                 }
             }
 

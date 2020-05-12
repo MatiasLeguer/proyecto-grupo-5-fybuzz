@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FyBuzz_E2
 {
+    [Serializable]
     public class Song:Multimedia
     {
         //Ver si nos faltan atributos por poner
@@ -31,7 +32,7 @@ namespace FyBuzz_E2
             this.lyrics = lyrics;
             this.format = format;
         }
-
+        /*
         public delegate void SendSongEventHandler(object source, Song s);
         public event SendSongEventHandler SongSent;
 
@@ -43,7 +44,7 @@ namespace FyBuzz_E2
                 SongSent(this, s);
             }
         }
-
+        */
         public List<string> InfoSong()
         {
             return new List<string>() { name, artist, album, discography, studio, gender, ranking.ToString() };
