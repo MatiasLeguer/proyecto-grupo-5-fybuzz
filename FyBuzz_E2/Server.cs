@@ -43,19 +43,33 @@ namespace FyBuzz_E2
 
         public void Register()
         {
+            User userlist = new User();
             // Pedimos todos los datos necesarios
-            Console.Write("Bienvenido! Ingrese sus datos de registro en FyBuZz\nUsuario: ");
+            Console.Write("Welcome! Type your information in FyBuZz\nUsername: ");
             string usr = Console.ReadLine();
-            Console.Write("Correo: ");
+            Console.Write("Email: ");
             string email = Console.ReadLine();
-            Console.Write("Contraseña: ");
+            Console.Write("Password: ");
             string psswd = Console.ReadLine();
+            Console.Write("Would you like to pay for the premium subscription?(premium/standard):");
+            string premium = Console.ReadLine();
+            Console.Write("Would you like to have a private user?(true/false):");
+            bool priv = bool.Parse(Console.ReadLine());
+            Console.Write("Select your gender(M/F): ");
+            string gender = Console.ReadLine();
+            Console.Write("Select your age: ");
+            int age = int.Parse(Console.ReadLine());
+            Console.Write("Select your Profile Type(creator/viewer): ");
+            string profileType = Console.ReadLine();
 
-            // Genera el link de verificacion para el usuario
-            //string verificationLink = GenerateLink(usr);
+            if (premium == "premium") userlist.AdsOn = false;
+            else if (premium == "standard") userlist.AdsOn = true;
+            else Console.WriteLine("Error [!] Invalid Subscription.");
+            userlist.Followers = 0;
+            userlist.Following = 0;
+            userlist.Perfil = new Profile(usr,".JPG", profileType, email, gender, age);
 
-            User userlist = new User(); 
-            userlist.Username = usr; userlist.Email = email; userlist.Password = psswd;
+            userlist.Username = usr; userlist.Email = email; userlist.Password = psswd; userlist.Accountype = premium;userlist.Privacy = priv;
             string result = Data.AddUser(userlist);
             if (result == null)
             {
@@ -69,6 +83,7 @@ namespace FyBuzz_E2
                 Console.WriteLine("[!] ERROR: " + result + "\n");
             }
         }
+        /*
         public void ChangePassword()
         {
             Console.Write("Ingrese su nombre de usuario: ");
@@ -76,8 +91,8 @@ namespace FyBuzz_E2
             Console.Write("Ingrese su contraseña: ");
             string pass = Console.ReadLine();
 
-            string result = Data.LogIn(user, pass);
-            if (result == null)
+            User result = Data.LogIn(user,pass);
+            if (result != null)
             {
                 Console.Write("Ingrese la nueva contraseña: ");
                 string newPass = Console.ReadLine();
@@ -91,6 +106,6 @@ namespace FyBuzz_E2
                 Console.WriteLine("[!]ERROR: {0}", result);
             }
 
-        }
+        }*/
     }
 }

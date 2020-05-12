@@ -55,11 +55,11 @@ namespace FyBuzz_E2
 
         public List<string> InfoVideo()
         {
-            return new List<string>() { name, actors, directors, quality, category, rated.ToString(), ranking.ToString() }; //Agregar más atributos?
+            return new List<string>() { name, actors, directors, quality, category, rated.ToString(), ranking.ToString(), description}; //Agregar más atributos?
         }
         public string DisplayInfoVideo()
         {
-            return "Nombre: " + name + "\tActores: " + actors + "\nDirectores: " + directors + "\tCalidad: " + quality + "\nCategoria: " + rated + "\tRating: " + rated + "\nRanking: " + ranking;
+            return "Name: " + name + "\tActors: " + actors + "\nDirectors: " + directors + "\tQuality: " + quality + "\nCategory: " + rated + "\tRating: " + rated + "\nRanking: " + ranking;
         }
         public List<int> InfoRep()
         {
