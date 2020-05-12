@@ -9,8 +9,8 @@ namespace FyBuzz_E2
     [Serializable]
     public class Video:Multimedia
     {
-        protected int videoDimension;
-        protected string quality;
+        protected string[] videoDimension;
+        protected string[] quality;
         protected int memorySize; //No se si colocarlo o no en el constructor ya que nadie pone el peso de su video youtube. Se pone solo
         protected string category;
         protected string description;
@@ -20,13 +20,13 @@ namespace FyBuzz_E2
         protected string actors;
         protected string directors;
 
-        public Video(string name, string actors, string directors ,string date, int videoDimension, string quality, string category, string description, bool image, double duration, bool subtitles, string format)
+        public Video(string name, string actors, string directors ,string date, string videoDimension, string quality, string category, string description, bool image, double duration, bool subtitles, string format)
 
         {
             this.name = name;
             this.date = date;
-            this.videoDimension = videoDimension;
-            this.quality = quality;
+            this.videoDimension = videoDimension.Split(':');
+            this.quality = quality.Split('x');
             this.category = category;
             this.description = description;
             this.rated = 0;
@@ -55,7 +55,7 @@ namespace FyBuzz_E2
 
         public List<string> InfoVideo()
         {
-            return new List<string>() { name, actors, directors, quality, category, rated.ToString(), ranking.ToString(), description}; //Agregar más atributos?
+            return new List<string>() { name, actors, directors, quality[0] + ":" + quality[1], category, rated.ToString(), ranking.ToString(), description}; //Agregar más atributos?
         }
         public string DisplayInfoVideo()
         {
