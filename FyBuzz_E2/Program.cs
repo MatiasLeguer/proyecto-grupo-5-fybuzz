@@ -13,8 +13,8 @@ namespace FyBuzz_E2
             
             if (LogInUser != null)
             {
-                menu.DisplayProfiles(LogInUser);
-                menu.DisplayStart(LogInUser.Perfil,LogInUser);
+                Profile profileMain = menu.DisplayProfiles(LogInUser);
+                menu.DisplayStart(profileMain, LogInUser);
             }
 
         }
