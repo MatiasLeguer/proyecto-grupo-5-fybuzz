@@ -45,8 +45,7 @@ namespace FyBuzz_E2
                         {
                             Console.WriteLine("Login Succesfull.");
                             x = true;
-                            usr = database.LogIn(username, password);
-                            
+                            usr = database.LogIn(username, password); 
                         }
                         else
                         {
@@ -58,9 +57,11 @@ namespace FyBuzz_E2
                     case "II":
                         server.Register(); //Agregue el metodo de server register.
                         x = false;
+                        database.Save_Users(database.UserDataBase);
                         //Dar todas las caracteriscas del usaurio aca.
                         break;
                     case "III":
+                        database.Save_Users(database.UserDataBase);
                         return null;
                         
                 }
@@ -70,8 +71,8 @@ namespace FyBuzz_E2
         
         public void DisplayProfiles(User user)
         {
-            Dictionary<int, User> userdic = database.Load_Users();
-            Profile profile_n = new Profile("", "", "", "", "", 0);
+            List<User> userDataBase = database.UserDataBase;
+            //Profile profile_n = new Profile("", "", "", "", "", 0);
 
             Profile profile = user.Perfil;
             List<Profile> profilelist = new List<Profile>();
@@ -145,7 +146,10 @@ namespace FyBuzz_E2
                         string description = database.AddMult(opc, infoMult);
                         if (description == null) Console.WriteLine("Se ha ingresado la multimedia!");
                         else Console.WriteLine("ERROR[!] ~{0}", description);
-                    }
+                        if(opc == 0)database.Save_Songs(database.ListSongsGlobal);
+                        else if(opc == 1)database.Save_Videos(database.ListVideosGlobal);
+                        else if(opc == 2)database.Save_PLs(database.ListPLsGlobal);
+                }
                     else if (dec == "3")
                     {
                         Console.WriteLine("Que lista desea observar? (cancion(0), video(1), Playlist(2)): ");
@@ -164,6 +168,8 @@ namespace FyBuzz_E2
         //Se necesita el perfil con el que quiere acceder
         public void DisplayStart(Profile profile,User user) // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
+            List<User> listUserGlobal = database.Load_Users();
+
             List<PlayList> listPlayListGlobal = new List<PlayList>();
             listPlayListGlobal = database.Load_PLs();
             if(listPlayListGlobal != null)
@@ -178,9 +184,7 @@ namespace FyBuzz_E2
             List<Song> listSongsGlobal = new List<Song>();
             listSongsGlobal = database.Load_Songs();
 
-            Dictionary<int, User> userDicGlobal = database.Load_Users();
-            
-
+            List<User> userDicGlobal = database.Load_Users();
 
             // mostrará todas las playlist del usuario, si es primera vez que ingresa estara la playlist general y la favorita(esta sin nada)
             // es la lista global de playlist que viene de database, pero hay que conectarla
@@ -226,10 +230,10 @@ namespace FyBuzz_E2
                             Console.WriteLine("Searched Songs, choose the position of the song you want to hear...");
                             int indice = int.Parse(Console.ReadLine()) - 1;
                             Song song = listSongsGlobal[indice]; //La cancion a la que querria escuchar
-                            Console.WriteLine("Playing: " + song.SearchedInfoSong());
-                            Thread.Sleep((int)song.Duration * 1000);
+                            //Console.WriteLine("Playing: " + song.SearchedInfoSong());
+                            //Thread.Sleep((int)song.Duration * 1000);
+                            Reproduction(1, type, indice, false, database); //Falta arreglar el método de reproduccion
                             Console.WriteLine("\n");
-                            //Reproduction(1, type, indexglobal[indice], false); //Falta arreglar el método de reproduccion
                         }
                         else if(type == "Videos")
                         {
@@ -274,6 +278,7 @@ namespace FyBuzz_E2
                                 Console.WriteLine("\n");
                             }
                         }
+                        //database.Save_Users(database.UserDataBase);
                         break;
                     case "II":
                         if (playlistFavSongs != null || playlistFavVideos != null)
@@ -288,7 +293,7 @@ namespace FyBuzz_E2
                             DisplayPlaylists(followedPL);
                         }
                         DisplayPlaylists(listPlayListGlobal);
-
+                        //database.Save_Users(database.UserDataBase);
                         break;
                     case "III":
                         Console.WriteLine("---------------------------");
@@ -390,9 +395,13 @@ namespace FyBuzz_E2
                     case "V":
                         //termina el método y llamaria al metodo de inicio en program.
                         Console.WriteLine("LoggedOut");
+                        
+                        database.Save_Users(listUserGlobal);
                         x = false;
                         break;
                     case "VI":
+                        
+                        database.Save_Users(listUserGlobal);
                         x = false;
                         break;
                 }
@@ -518,7 +527,7 @@ namespace FyBuzz_E2
             }
             else if(type == "Users")
             {
-                Dictionary<int, User> diceUserGlobal = dataBase.Load_Users();
+                List<User> diceUserGlobal = dataBase.Load_Users();
 
                 for(int i = 0; i < diceUserGlobal.Count(); i++)
                 {

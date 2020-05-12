@@ -75,6 +75,7 @@ namespace FyBuzz_E2
             {
                 // Disparamos el evento
                 OnRegistered(usr, psswd,/* verificationlink: verificationLink,*/ email: email);
+                Console.WriteLine("Register Succesfull");
                 
             }
             else

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FyBuzz_E2
 {
@@ -7,15 +9,14 @@ namespace FyBuzz_E2
         public static void Main(string[] args)
         {
             Menu menu = new Menu();
-            DataBase database = new DataBase();
-            Server server = new Server(database);
             User LogInUser = menu.DisplayLogin();
-            if(LogInUser != null)
+            
+            if (LogInUser != null)
             {
                 menu.DisplayProfiles(LogInUser);
                 menu.DisplayStart(LogInUser.Perfil,LogInUser);
             }
-            
+
         }
     }
 }
