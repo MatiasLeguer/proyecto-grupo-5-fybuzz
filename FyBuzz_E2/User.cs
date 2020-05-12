@@ -70,7 +70,7 @@ namespace FyBuzz_E2
         public bool GetVerification()
         {
             // Decide si tiene o no verificacion a partir de sus seguidores
-            if (followers > 100000)
+            if (followers > 3)
             {
                 verified = true;
                 return verified;

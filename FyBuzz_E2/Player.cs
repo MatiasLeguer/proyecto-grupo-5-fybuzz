@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,7 +13,9 @@ namespace FyBuzz_E2
     {
         //Hay que usar eventos que vengan desde menú y triguereen los métodos de aca con las canciones de Database.
         // hacer un get a la duracion y al nombre
-        public void PlaySong(int cont, Song song, PlayList p, DataBase d, string name)
+
+
+        public void PlaySong(int cont, Song song, PlayList p, DataBase d, string name, User user, Profile profile)
         {
             Song s = song;
             while (true)
@@ -23,6 +26,22 @@ namespace FyBuzz_E2
                 int condition = -1;
                 while (cont < seconds)
                 {
+                    if (user.AdsOn == true && cont % 26 == 0) 
+                    {
+                        List<string> AdsList = new List<string>(){ "Are you a standar user? Pfff try upgrading to premium and stop getting Ads!!"
+                                    , "Keep Calm Leguer's Toilet Paper doesn't run out of stock in this Quarentine, come and buy it!!"
+                                    , "Do you want to be good at videogames? try watching Juan Jacobo's tip and tricks videos."
+                                    , "Are you into Podcasts? COMING SOON Diego's Podcast 'FyBuZz in tha house' "};
+                        Random random = new Random();
+                        Console.WriteLine("-------------------------------------------------------");
+                        Console.WriteLine("ADS-ON");
+                        Console.WriteLine(AdsList[random.Next(4)]);
+                        Console.WriteLine("-------------------------------------------------------");
+                        for (int i = 0; i < 1; i++)
+                        {
+                            Thread.Sleep(5000);
+                        }
+                    }
                     if (cont % 10 == 0)
                     {
                         Console.WriteLine("To pause press 0.");
@@ -43,26 +62,37 @@ namespace FyBuzz_E2
                     }
                     else if (verif == "1")
                     {
-                        Song ss = SkipOrPreviousSong(s, p, d, name, 1);
-                        if (ss != song) break;
+                         s = SkipOrPreviousSong(s, p, d, name, 1);
+                        if (s != song) break;
                     }
                     else if (verif == "2")
                     {
-                        Song ss = SkipOrPreviousSong(s, p, d, name, 2);
-                        if (ss != song) break;
+                        s = SkipOrPreviousSong(s, p, d, name, 2);
+                        if (s != song) break;
                     }
 
                     Thread.Sleep(500);
                     cont++;
                 }
-                if (cont == seconds) return;
+                if (cont == seconds)
+                {
+                    Console.Write("Did you like the song? Give it a like!! (y/n): ");
+                    string like = Console.ReadLine();
+                    if (like == "y")
+                    {
+                        profile.AddFavSongs(song);
+                        song.Likes++;
+                    }
+                    song.GeneralRep++;
+                    return;
+                }
             }
             //Si es menor de tal edad no puede ver esta pelicula;
 
 
 
         }
-        public void PlayVideo(int cont, Video video, PlayList p, DataBase d, string name)
+        public void PlayVideo(int cont, Video video, PlayList p, DataBase d, string name,User user, Profile profile)
         {
             Video v = video;
             while (true)
@@ -73,6 +103,23 @@ namespace FyBuzz_E2
                 int condition = -1;
                 while (cont < seconds)
                 {
+                    if (user.AdsOn == true && cont % 26 == 0)
+                    {
+                        List<string> AdsList = new List<string>(){ "Are you a standar user? Pfff try upgrading to premium and stop getting Ads!!"
+                                    , "Keep Calm Leguer's Toilet Paper doesn't run out of stock in this Quarentine, come and buy it!!"
+                                    , "Do you want to be good at videogames? try watching Juan Jacobo's tip and tricks videos."
+                                    , "Are you into Podcasts? COMING SOON Diego's Podcast 'FyBuZz in tha house' "};
+                        Random random = new Random();
+                        Console.WriteLine("-------------------------------------------------------");
+                        Console.WriteLine("ADS-ON");
+                        Console.WriteLine(AdsList[random.Next(4)]);
+                        Console.WriteLine("-------------------------------------------------------");
+                        for (int i = 0; i < 1; i++)
+                        {
+                            Thread.Sleep(5000);
+                        }
+                        
+                    }
                     if (cont % 10 == 0)
                     {
                         Console.WriteLine("To pause press 0.");
@@ -105,10 +152,21 @@ namespace FyBuzz_E2
                     Thread.Sleep(500);
                     cont++;
                 }
-                if (cont == seconds) return;
+                if (cont == seconds)
+                {
+                    Console.Write("Did you like the video? Give it a like!! (y/n): ");
+                    string like = Console.ReadLine();
+                    if (like == "y")
+                    {
+                        profile.AddFavVideos(video);
+                        video.Likes++;
+                    }
+                    video.GeneralRep++;
+                    return;
+                }
+
             }
             //Si es menor de tal edad no puede ver esta pelicula;
-
 
         }
 
@@ -134,14 +192,17 @@ namespace FyBuzz_E2
 
         public Song SkipOrPreviousSong(Song s, PlayList p, DataBase d, string name, int typeOption)
         {
+            List<Song> ListSongsGlobal = new List<Song>();
+            ListSongsGlobal = d.Load_Songs();
+
             if (typeOption == 1)
             {
                 if (p == null)
                 {
-                    for (int i = 0; i < d.ListSongsGlobal.Count(); i++)
+                    for (int i = 0; i < ListSongsGlobal.Count(); i++)
                     {
-                        if ((s == d.ListSongsGlobal[i]) && (i != (d.ListSongsGlobal.Count() - 1))) return d.ListSongsGlobal[i + 1];
-                        else if ((s == d.ListSongsGlobal[i]) && (i == (d.ListSongsGlobal.Count() - 1))) return d.ListSongsGlobal[0];
+                        if (((s.InfoSong()[0] == ListSongsGlobal[i].InfoSong()[0]) && (s.InfoSong()[1] == ListSongsGlobal[i].InfoSong()[1])) && (i != (ListSongsGlobal.Count() - 1))) return ListSongsGlobal[i + 1];
+                        else if (((s.InfoSong()[0] == ListSongsGlobal[i].InfoSong()[0]) && (s.InfoSong()[1] == ListSongsGlobal[i].InfoSong()[1])) && (i == (ListSongsGlobal.Count() - 1))) return ListSongsGlobal[0];
 
                     }
                     return s;
@@ -161,10 +222,10 @@ namespace FyBuzz_E2
             {
                 if (p == null)
                 {
-                    for (int i = 0; i < d.ListSongsGlobal.Count(); i++)
+                    for (int i = 0; i < ListSongsGlobal.Count(); i++)
                     {
-                        if ((s == d.ListSongsGlobal[i]) && (i != 0)) return d.ListSongsGlobal[i - 1];
-                        else if ((s == d.ListSongsGlobal[i]) && (i == 0)) return d.ListSongsGlobal[(d.ListSongsGlobal.Count() - 1)];
+                        if (((s.InfoSong()[0] == ListSongsGlobal[i].InfoSong()[0]) && (s.InfoSong()[1] == ListSongsGlobal[i].InfoSong()[1])) && (i != 0)) return ListSongsGlobal[i - 1];
+                        else if (((s.InfoSong()[0] == ListSongsGlobal[i].InfoSong()[0]) && (s.InfoSong()[1] == ListSongsGlobal[i].InfoSong()[1])) && (i == 0)) return ListSongsGlobal[(ListSongsGlobal.Count() - 1)];
 
                     }
                     return s;
@@ -186,14 +247,17 @@ namespace FyBuzz_E2
 
         public Video SkipOrPreviousVideo(Video v, PlayList p, DataBase d, string name, int typeOption)
         {
+            List<Video> ListVideosGlobal = new List<Video>();
+            ListVideosGlobal = d.Load_Videos();
+
             if (typeOption == 1)
             {
                 if (p == null)
                 {
-                    for (int i = 0; i < d.ListVideosGlobal.Count(); i++)
+                    for (int i = 0; i < ListVideosGlobal.Count(); i++)
                     {
-                        if ((v == d.ListVideosGlobal[i]) && (i != (d.ListVideosGlobal.Count() - 1))) return d.ListVideosGlobal[i + 1];
-                        else if ((v == d.ListVideosGlobal[i]) && (i == (d.ListVideosGlobal.Count() - 1))) return d.ListVideosGlobal[0];
+                        if (((v.InfoVideo()[0] == ListVideosGlobal[i].InfoVideo()[0]) && (v.InfoVideo()[0] == ListVideosGlobal[i].InfoVideo()[0])) && (i != (ListVideosGlobal.Count() - 1))) return ListVideosGlobal[i + 1];
+                        else if (((v.InfoVideo()[0] == ListVideosGlobal[i].InfoVideo()[0]) && (v.InfoVideo()[0] == ListVideosGlobal[i].InfoVideo()[0])) && (i == (ListVideosGlobal.Count() - 1))) return ListVideosGlobal[0];
 
                     }
                     return v;
@@ -213,10 +277,10 @@ namespace FyBuzz_E2
             {
                 if (p == null)
                 {
-                    for (int i = 0; i < d.ListVideosGlobal.Count(); i++)
+                    for (int i = 0; i < ListVideosGlobal.Count(); i++)
                     {
-                        if ((v == d.ListVideosGlobal[i]) && (i != 0)) return d.ListVideosGlobal[i - 1];
-                        else if ((v == d.ListVideosGlobal[i]) && (i == 0)) return d.ListVideosGlobal[(d.ListVideosGlobal.Count() - 1)];
+                        if (((v.InfoVideo()[0] == ListVideosGlobal[i].InfoVideo()[0]) && (v.InfoVideo()[0] == ListVideosGlobal[i].InfoVideo()[0])) && (i != 0)) return ListVideosGlobal[i - 1];
+                        else if (((v.InfoVideo()[0] == ListVideosGlobal[i].InfoVideo()[0]) && (v.InfoVideo()[0] == ListVideosGlobal[i].InfoVideo()[0])) && (i == 0)) return ListVideosGlobal[(ListVideosGlobal.Count() - 1)];
 
                     }
                     return v;
