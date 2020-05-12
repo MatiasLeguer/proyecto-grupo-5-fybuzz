@@ -22,7 +22,7 @@ namespace FyBuzz_E2
         public string Format { get => format; }
         public string NamePlayList { get => namePlayList; }
 
-        public PlayList(string Formato, string Nombre)
+        public PlayList(string Nombre, string Formato)
         {
             format = Formato;
             namePlayList = Nombre;

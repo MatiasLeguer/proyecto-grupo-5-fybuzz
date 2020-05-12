@@ -27,7 +27,7 @@ namespace FyBuzz_E2
 
 
         //Guarda usuarios en archivos, pero necesito el diccionario.
-        static private void Save_Users(User user)
+        public void Save_Users(User user)
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("AllUsers.bin", FileMode.Append, FileAccess.Write, FileShare.None); //Puse append para abrir o crear el archivo y ponerle cosas.
@@ -44,7 +44,7 @@ namespace FyBuzz_E2
             Dictionary<int, User> userdatabase = new Dictionary<int, User>();
             int lines = File.ReadAllLines("AllUsers.bin").Length;
             string sep;
-            for (int i = 0; i < (lines- 1)/2; i++)
+            for (int i = 0; i < (lines- 1)/19; i++)
             {
                 userdatabase.Add(i, (User)formatter.Deserialize(stream));
                 sep = (string)formatter.Deserialize(stream);
@@ -116,19 +116,18 @@ namespace FyBuzz_E2
             return new List<string>();
         }
         // Metodo para realizar el LogIn
-        public string LogIn(string usrname, string password)
+        public User LogIn(string usrname, string password)
         {
             Dictionary<int, User> userdic = Load_Users();
-            string description = null;
             //Aqui revisar el archivo, no el diccionario en el programa en si.
             foreach (User user in userdic.Values)
             {
                 if (user.Username == usrname && user.Password == password)
                 {
-                    return description;
+                    return user;
                 }
             }
-            return "Usuario o contrasena incorrecta";
+            return null;
         }
         //Metodo que viene de evento que verifica y agrega elementos a las listas especificas.
         /*
@@ -173,7 +172,7 @@ namespace FyBuzz_E2
             List<Song> listSongsGlobal = new List<Song>();
             int lines = File.ReadAllLines("AllSongs.bin").Length;
             string sep;
-            for (int i = 0; i < (lines - 1)/4; i++)
+            for (int i = 0; i < (lines - 1)/5; i++)
             {
                 listSongsGlobal.Add((Song)formatter.Deserialize(stream));
                 sep = (string)formatter.Deserialize(stream);
@@ -197,7 +196,7 @@ namespace FyBuzz_E2
             List<Video> listVideosGlobal = new List<Video>();
             int lines = File.ReadAllLines("AllVideos.bin").Length;
             string sep;
-            for (int i = 0; i < (lines - 1)/6; i++)
+            for (int i = 0; i < (lines - 1)/7; i++)
             {
                 listVideosGlobal.Add((Video)formatter.Deserialize(stream));
                 sep = (string)formatter.Deserialize(stream);
