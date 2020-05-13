@@ -29,6 +29,7 @@ namespace FyBuzz_E2
             bool x = false;
             while (x == false)
             {
+                Console.Clear();
                 Console.WriteLine("------------Welcome to FyBuZz--------------");
                 Console.WriteLine("I) Log-In with a existing account.");
                 Console.WriteLine("II) Register.");
@@ -36,6 +37,7 @@ namespace FyBuzz_E2
                 string dec = Console.ReadLine();
                 switch (dec)
                 {
+
                     case "I":
                         Console.Write("Username: ");
                         string username = Console.ReadLine();
@@ -44,6 +46,7 @@ namespace FyBuzz_E2
                         if (database.LogIn(username, password,userDataBase) != null)
                         {
                             Console.WriteLine("Login Succesfull.");
+                            Thread.Sleep(1000);
                             Console.Beep();
                             x = true;
                             user = database.LogIn(username, password,userDataBase); 
@@ -51,6 +54,7 @@ namespace FyBuzz_E2
                         else
                         {
                             Console.WriteLine("ERROR[!] Invalid Username or Password");
+                            Thread.Sleep(2000);
                         }
                         break;
 
@@ -143,6 +147,7 @@ namespace FyBuzz_E2
                         else if(user.Accountype == "admin")
                         {
                             Console.WriteLine("ERROR [!] Admin Account Types, you can only have one profile.");
+                            Thread.Sleep(1000);
                         }
                     }
                     else if(dec == "III")
@@ -214,6 +219,7 @@ namespace FyBuzz_E2
                                 if (song.Lyrics.Contains(word) == true && userProfile.Age < 16)
                                 {
                                     Console.WriteLine("ERROR[!] This content is age restricted");
+                                    Thread.Sleep(1000);
                                     cont++;
                                     break;
                                 }
@@ -233,6 +239,7 @@ namespace FyBuzz_E2
                                     Console.WriteLine("Song is Downloading...");
                                     Thread.Sleep(1000 * 5);
                                     Console.WriteLine("Song Downloaded.");
+                                    Thread.Sleep(1000);
                                     DownloadSongs.Add(song);
                                     database.Save_DSongs(DownloadSongs);
                                     break;
@@ -265,6 +272,7 @@ namespace FyBuzz_E2
                                     if ((video.Subtitles.Contains(word) && userProfile.Age < 16 )|| (int.Parse(video.Category) >= userProfile.Age))
                                     {
                                         Console.WriteLine("ERROR[!] This content is age restricted");
+                                        Thread.Sleep(1000);
                                         cont++;
                                         break;
                                     }
@@ -320,7 +328,7 @@ namespace FyBuzz_E2
                             {
                                 List<string> infoMult = AskInfoMult(opc);
                                 string description = database.AddMult(opc, infoMult,listSongsGlobal,listPlayListGlobal,listVideosGlobal);
-                                if (description == null) Console.WriteLine("Multimedia has been registered into the system!");
+                                if (description == null) Console.WriteLine("Multimedia has been registered into the system!"); 
                                 else Console.WriteLine("ERROR[!] ~{0}", description);
                                 if (opc == 0) database.Save_Songs(listSongsGlobal);
                                 else if (opc == 1) database.Save_Videos(listVideosGlobal);
@@ -334,6 +342,7 @@ namespace FyBuzz_E2
                         else
                         {
                             Console.WriteLine("You do not have permission to add Multimedia.");
+                            Thread.Sleep(1000);
                         }
                         break;
                     case "III":
@@ -344,12 +353,14 @@ namespace FyBuzz_E2
                             Console.WriteLine(favSongs.InfoPlayList());
                         }
                         else Console.WriteLine("You don´t have a Favorite Playlist.");
+                        Thread.Sleep(1000);
 
                         if (followedPL != null)
                         {
                             DisplayPlaylists(followedPL); //Este metodo no esta bueno.
                         }
                         else Console.WriteLine("You don´t follow anyone Playlist.");
+                        Thread.Sleep(1000);
                         Console.WriteLine("Global Playlist:");
                         DisplayGlobalMult(2,database); //No imprime la lista
                         //database.Save_Users(database.UserDataBase);
@@ -370,6 +381,7 @@ namespace FyBuzz_E2
                         }
                         else if (settings == "Profile") ProfileSettings(userProfile);
                         else Console.WriteLine("ERROR[!] Invalid Command");
+                        Thread.Sleep(1000);
                         Console.WriteLine("---------------------------");
                         break;
 
@@ -752,15 +764,13 @@ namespace FyBuzz_E2
                 Console.Write("Publish date (dd/mm/aa): "); string date = Console.ReadLine();
                 Console.Write("Studio: ");                                                  string std = Console.ReadLine();
                 Console.Write("Song Duration (format: min.seg)(double): ");               string dur = Console.ReadLine();
-                Console.Write("Song Format(.mp3 || .wav): ");                    string format = Console.ReadLine();
-                Console.Write("Song lyrics(write): ");
-                
-                string lyr;
-                if ((Console.ReadLine() == "y") || (Console.ReadLine() == "Y"))
-                    lyr = "true";
-                else 
-                    lyr = "false";
-
+                string format;
+                do {
+                    Console.Write("Song Format(.mp3 || .wav): "); format = Console.ReadLine();
+                } while (format != ".mp3" && format != ".wav");
+                Console.Write("Song lyrics(write: We will, we will rock you!!): ");
+                string lyr = Console.ReadLine();
+ 
                 infoMult = new List<string>() { n, art, alb, disc, gen, date, std, dur, lyr, format };
             }
             else if(type == 1)
@@ -774,36 +784,42 @@ namespace FyBuzz_E2
                 Console.Write("Video category(number) (0 = all espectator, 16 = above 16 years, etc.): ");                                     string cat = Console.ReadLine();
                 Console.Write("Video Description: ");                                   string des = Console.ReadLine();
                 Console.Write("Video Duration(format: min.seg)(double): ");       string dur = Console.ReadLine();
-                Console.Write("Video Format(.mp4 || .mov): ");                      string format = Console.ReadLine();
-                Console.Write("Video Image(y/n): ");             string im = Console.ReadLine();
-                Console.Write("Video subtitles(write): ");                  string sub = Console.ReadLine();
-                if ((im == "y") || (im == "Y"))
-                    im = "true";
-                else
-                    im = "false";
+                string format;
+                do {
+                    Console.Write("Video Format(.mp4 || .mov): "); format = Console.ReadLine();
+                } while (format != ".mp4" && format != ".mov");
+                string im;
+                do
+                {
+                    Console.Write("Video Image(y/n): "); im = Console.ReadLine();
+                } while (im != "y" && im != "n");
 
-                if ((sub== "y") || (sub == "Y"))
-                    sub = "true";
-                else
-                    sub = "false";
+                Console.Write("Video subtitles(write): ");                  string sub = Console.ReadLine();
 
                 infoMult = new List<string>() { n, act, dir, date, dim, cal, cat, des, im, dur, sub, format };
             }
             else if(type == 2)
             {
-                Console.Write("Escriba el nombre de la playlist: ");                     string n = Console.ReadLine();
-                Console.Write("Quiere que su playlist sea de cancion o video? (c/v): "); string choice = Console.ReadLine();
+                Console.Write("Playlist Name: ");                     string n = Console.ReadLine();
+                string choice;
+                do {
+                    Console.Write("Do you want your playlist with songs or videos? (c/v): "); choice = Console.ReadLine();
+                } while (choice != "c" && choice != "v");
                 string format = null;
 
                 if (choice == "c" || choice == "C")
                 {
-                    Console.Write("Escriba el formato de la playlist de cancion (.mp3|.wav): ");
-                    format = Console.ReadLine();
+                    do
+                    {
+                        Console.Write("Song Format(.mp3 || .wav): "); format = Console.ReadLine();
+                    } while (format != ".mp3" && format != ".wav");
                 }
                 else if (choice == "v" || choice == "V")
                 {
-                    Console.Write("Escriba el formato de la playlist de video (.mp4|.mov): ");
-                    format = Console.ReadLine();
+                    do
+                    {
+                        Console.Write("Video Format(.mp4 || .mov): "); format = Console.ReadLine();
+                    } while (format != ".mp4" && format != ".mov");
                 }
 
                     infoMult = new List<string>() { n, format};
