@@ -216,7 +216,7 @@ namespace FyBuzz_E2
                             if(cont == 0)
                             {
                                 Console.Clear();
-                                player.PlaySong(0, song, null, database, "", usr, profile);
+                                player.PlaySong(song, null, database, "", usr, profile);
                             }
                             Console.WriteLine("\n");
                         }
@@ -249,7 +249,7 @@ namespace FyBuzz_E2
                                 if (cont == 0)
                                 {
                                     Console.Clear();
-                                    player.PlayVideo(0, video, null, database, "", usr,profile);
+                                    player.PlayVideo(video, null, database, "", usr,profile);
                                 }
                                 Console.WriteLine("\n");
                             }
@@ -660,19 +660,19 @@ namespace FyBuzz_E2
             List<string> infoMult = new List<string>();
             if(type == 0)
             {
-                Console.Write("Song name: ");                                    string n = Console.ReadLine();
-                Console.Write("Song artist or artists(if this is the case separate them by '-', Bad Bunny-Ricky Martin: ");                                       string art = Console.ReadLine();
-                Console.Write("Album: ");                 string alb = Console.ReadLine();
-                Console.Write("Discography: ");                                             string disc = Console.ReadLine();
-                Console.Write("Song Gender: ");                                    string gen = Console.ReadLine();
-                Console.Write("Publish date (dd/mm/aa): "); string date = Console.ReadLine();
-                Console.Write("Studio: ");                                                  string std = Console.ReadLine();
-                Console.Write("Song Duration (format: min.seg)(double): ");               string dur = Console.ReadLine();
-                Console.Write("Song Format(.mp3 || .wav): ");                    string format = Console.ReadLine();
-                Console.Write("Song lyrics(write): ");
-                
-                string lyr;
-                if ((Console.ReadLine() == "y") || (Console.ReadLine() == "Y"))
+                Console.Write("Song name: ");                                                                               string n = Console.ReadLine();
+                Console.Write("Song artist or artists(if this is the case separate them by '-', Bad Bunny-Ricky Martin: "); string art = Console.ReadLine();
+                Console.Write("Album: ");                                                                                   string alb = Console.ReadLine();
+                Console.Write("Discography: ");                                                                             string disc = Console.ReadLine();
+                Console.Write("Song Gender: ");                                                                             string gen = Console.ReadLine();
+                Console.Write("Publish date (dd/mm/aa): ");                                                                 string date = Console.ReadLine();
+                Console.Write("Studio: ");                                                                                  string std = Console.ReadLine();
+                Console.Write("Song Duration (format: min.seg)(double): ");                                                 string dur = Console.ReadLine();
+                Console.Write("Song Format(.mp3 || .wav): ");                                                               string format = Console.ReadLine();
+                Console.Write("Song lyrics(write): ");                                                                      string lyr = Console.ReadLine();
+
+
+                if ((lyr == "y") || (lyr == "Y"))
                     lyr = "true";
                 else 
                     lyr = "false";
@@ -681,18 +681,18 @@ namespace FyBuzz_E2
             }
             else if(type == 1)
             {
-                Console.Write("Video Name: ");                                        string n = Console.ReadLine();
-                Console.Write("Video actor or actors(if this is the case separate them by '-', Bad Bunny-Ricky Martin: ");                                string act = Console.ReadLine();
-                Console.Write("Video director or directors(if this is the case separate them by '-', Bad Bunny-Ricky Martin: ");                             string dir = Console.ReadLine();
-                Console.Write("Publish date (dd/mm/aa): "); string date = Console.ReadLine();
-                Console.Write("Video Dimension (16:9): ");                            string dim = Console.ReadLine();
-                Console.Write("Video Quality");                                       string cal = Console.ReadLine();
-                Console.Write("Video category(number) (0 = all espectator, 16 = above 16 years, etc.): ");                                     string cat = Console.ReadLine();
-                Console.Write("Video Description: ");                                   string des = Console.ReadLine();
-                Console.Write("Video Duration(format: min.seg)(double): ");       string dur = Console.ReadLine();
-                Console.Write("Video Format(.mp4 || .mov): ");                      string format = Console.ReadLine();
-                Console.Write("Video Image(y/n): ");             string im = Console.ReadLine();
-                Console.Write("Video subtitles(write): ");                  string sub = Console.ReadLine();
+                Console.Write("Video Name: ");                                                                                    string n = Console.ReadLine();
+                Console.Write("Video actor or actors(if this is the case separate them by '-', Bad Bunny-Ricky Martin: ");        string act = Console.ReadLine();
+                Console.Write("Video director or directors(if this is the case separate them by '-', Bad Bunny-Ricky Martin: ");  string dir = Console.ReadLine();
+                Console.Write("Publish date (dd/mm/aa): ");                                                                       string date = Console.ReadLine();
+                Console.Write("Video Dimension (16:9): ");                                                                        string dim = Console.ReadLine();
+                Console.Write("Video Quality");                                                                                   string cal = Console.ReadLine();
+                Console.Write("Video category(number) (0 = all espectator, 16 = above 16 years, etc.): ");                        string cat = Console.ReadLine();
+                Console.Write("Video Description: ");                                                                             string des = Console.ReadLine();
+                Console.Write("Video Duration(format: min.seg)(double): ");                                                       string dur = Console.ReadLine();
+                Console.Write("Video Format(.mp4 || .mov): ");                                                                    string format = Console.ReadLine();
+                Console.Write("Video Image(y/n): ");                                                                              string im = Console.ReadLine();
+                Console.Write("Video subtitles(write): ");                                                                        string sub = Console.ReadLine();
                 if ((im == "y") || (im == "Y"))
                     im = "true";
                 else

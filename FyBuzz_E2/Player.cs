@@ -15,15 +15,16 @@ namespace FyBuzz_E2
         // hacer un get a la duracion y al nombre
 
 
-        public void PlaySong(int cont, Song song, PlayList p, DataBase d, string name, User user, Profile profile)
+        public void PlaySong(Song song, PlayList p, DataBase d, string name, User user, Profile profile)
         {
             Song s = song;
-            while (true)
-            {
+            bool loop = true;
+            while (loop)
+            {  
                 double seconds = 60 * s.Duration; //duration viene de multimedia y es la cantidad de minutos como decimal, hay que establecer una relacion
                 Console.WriteLine("Playing: " + s.Name); //name tambien viene de multimedia.
                 string verif = "-1";
-                int condition = -1;
+                int condition = -1, cont = 0;
                 while (cont < seconds)
                 {
                     if (user.AdsOn == true && cont % 26 == 0) 
@@ -39,7 +40,7 @@ namespace FyBuzz_E2
                         Console.WriteLine("-------------------------------------------------------");
                         for (int i = 0; i < 1; i++)
                         {
-                            Thread.Sleep(5000);
+                            Thread.Sleep(100);
                         }
                     }
                     if (cont % 10 == 0)
@@ -80,11 +81,12 @@ namespace FyBuzz_E2
                     string like = Console.ReadLine();
                     if (like == "y")
                     {
-                        profile.AddFavSongs(song);
-                        song.Likes++;
+                        profile.AddFavSongs(s);
+                        s.Likes++;
                     }
-                    song.GeneralRep++;
-                    return;
+                    s.GeneralRep++;
+                    loop = false;
+                    break;
                 }
             }
             //Si es menor de tal edad no puede ver esta pelicula;
@@ -92,15 +94,16 @@ namespace FyBuzz_E2
 
 
         }
-        public void PlayVideo(int cont, Video video, PlayList p, DataBase d, string name,User user, Profile profile)
+        public void PlayVideo(Video video, PlayList p, DataBase d, string name,User user, Profile profile)
         {
             Video v = video;
-            while (true)
+            bool loop = true;
+            while (loop)
             {
                 double seconds = 60 * v.Duration; //duration viene de multimedia y es la cantidad de minutos como decimal, hay que establecer una relacion
                 Console.WriteLine("Playing: " + v.Name); //name tambien viene de multimedia.
                 string verif = "-1";
-                int condition = -1;
+                int condition = -1, cont = 0;
                 while (cont < seconds)
                 {
                     if (user.AdsOn == true && cont % 26 == 0)
@@ -149,7 +152,7 @@ namespace FyBuzz_E2
                         if (v != video) break;
                     }
 
-                    Thread.Sleep(500);
+                    Thread.Sleep(100);
                     cont++;
                 }
                 if (cont == seconds)
@@ -162,7 +165,9 @@ namespace FyBuzz_E2
                         video.Likes++;
                     }
                     video.GeneralRep++;
-                    return;
+                    loop = false;
+                    break;
+
                 }
 
             }
