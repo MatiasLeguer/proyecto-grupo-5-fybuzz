@@ -16,24 +16,38 @@ namespace FyBuzz_E2
             List<Video> baseListVideo = new List<Video>() { new Video("United","Tom Holland-Cris Pratt","Disney", "", "16:9" ,"1080x1920", "0","Movie", false,120,"i love you",".mp4"), 
                 new Video("Create a C# App from start to finish","freecodecamp.org","freecodecamp.org","12/12/2019","16:9","1080x1920","16","C# Course",true,1440,"fuck", ".mov") };
             List<PlayList> baseListPLs = new List<PlayList>() { new PlayList("Programming hard", ".mp3"), new PlayList("TikToks that cured my depression", ".mp4") };
-                
-            if(File.Exists("AllSongs.bin") != true) dataBase.Save_Songs(baseListSong);
+
+            List<User> baseListUser = new List<User>() {new User()};
+            List<User> userDataBase = new List<User>();
+
+            List<Song> songDataBase = new List<Song>();
+            List<Video> videoDataBase = new List<Video>();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+
+            if (File.Exists("AllSongs.bin") != true) dataBase.Save_Songs(baseListSong);
             if (File.Exists("AllVideos.bin") != true) dataBase.Save_Videos(baseListVideo);
             if (File.Exists("AllPLs.bin") != true) dataBase.Save_PLs(baseListPLs);
+            if (File.Exists("AllUsers.bin") != true) dataBase.Save_Users(baseListUser);
             int ret = 0;
 
-            User LogInUser = menu.DisplayLogin();
-            while (ret == 0)
+            userDataBase = dataBase.Load_Users();
+            songDataBase = dataBase.Load_Songs();
+            videoDataBase = dataBase.Load_Videos();
+            playlistDataBase = dataBase.Load_PLs();
+
+            User LogInUser = menu.DisplayLogin(userDataBase);
+            if (LogInUser != null)
             {
-                if (LogInUser != null)
+                while (ret == 0)
                 {
-                    Profile profileMain = menu.DisplayProfiles(LogInUser);
-                    if (profileMain != null) ret = menu.DisplayStart(profileMain, LogInUser);
+                    Profile profileMain = menu.DisplayProfiles(LogInUser, userDataBase);
+                    if (profileMain != null) ret = menu.DisplayStart(profileMain,LogInUser, userDataBase, songDataBase, videoDataBase, playlistDataBase);
                     else break;
+                    break;
                 }
-                
             }
-             //Save_Users;
+            dataBase.Save_Users(userDataBase);
+
         }
     }
 }
