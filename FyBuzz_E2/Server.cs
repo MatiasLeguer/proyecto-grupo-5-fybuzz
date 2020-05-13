@@ -41,7 +41,7 @@ namespace FyBuzz_E2
         }
 
 
-        public void Register(User userlist)
+        public void Register(User userlist,List<User> userDataBase)
         {
 
             // Pedimos todos los datos necesarios
@@ -71,7 +71,7 @@ namespace FyBuzz_E2
             
 
             userlist.Username = usr; userlist.Email = email; userlist.Password = psswd; userlist.Accountype = premium;userlist.Privacy = priv;
-            string result = Data.AddUser(userlist);
+            string result = Data.AddUser(userlist, userDataBase);
             if (result == null)
             {
                 // Disparamos el evento
