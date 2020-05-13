@@ -232,7 +232,7 @@ namespace FyBuzz_E2
                                     if (cont == 0)
                                     {
                                         Console.Clear();
-                                        player.PlaySong(0, song, null, database, "", usr, userProfile);
+                                        player.PlaySong(song, null, database, usr, userProfile);
                                     }
                                     break;
                                 case "II":
@@ -285,7 +285,7 @@ namespace FyBuzz_E2
                                         if (cont == 0)
                                         {
                                             Console.Clear();
-                                            player.PlayVideo(0, video, null, database, "", usr, userProfile);
+                                            player.PlayVideo(video, null, database, usr, userProfile);
                                         }
                                         break;
                                     case "II":
@@ -388,138 +388,301 @@ namespace FyBuzz_E2
                     case "V":
                         Console.Clear();
                         Console.WriteLine("What playlist do you want to play?(GlobalPlayLists, FollowedPlaylists or FavoritePlayList)");
-                        string play = Console.ReadLine();
+                        string play;
+                        do
+                        {
+                            play = Console.ReadLine();
+                        } while (play != "GlobalPlayLists" && play != "FollowedPlaylists" && play != "FavoritePlayList");
+
                         if (play == "FavoritePlayList")
                         {
-                            Console.WriteLine("Random or select a song/video?");
-                            string rand = Console.ReadLine();
-                            if (rand == "Random")
+
+                            Console.Write("Do you want to listen to a song (s) or watch a video (v)?: ");
+                            string op;
+                            do
                             {
-                                //Reproduction(0, true);
-                                Console.WriteLine("Aca se esta reproduciendo la playlist favorita.");
-                            }
-                            else
+                                op = Console.ReadLine();
+                                if ((op != "s" && op != "v") && (op != "S" && op != "V"))
+                                    Console.Write("ERROR[!] ~Select a valid command please");
+                            } while ((op != "s" && op != "v") && (op != "S" && op != "V"));
+
+                            if (op == "s")
                             {
-                                Console.WriteLine("What would you like to play?");
-                                string mult = Console.ReadLine();
-                                if (mult == "Songs")
+                                if (user.Accountype == "premium")
                                 {
-                                    //Método de restriccion de edad.
+                                    Console.WriteLine("Do you want to play a random song? or select it from the playlist? (r/s): ");
+                                    string rndSel;
+                                    do
+                                    {
+                                        rndSel = Console.ReadLine();
+                                        if (rndSel != "r" && rndSel != "s")
+                                            Console.Write("ERROR [!] ~Select a valid command please (r/s): ");
+                                    } while (rndSel != "r" && rndSel != "s");
 
-                                    //SongsSearchEngine(searchedSongs);
-                                    //Reproduction(1, mult, indexofmultimedia, false);
+                                    if (rndSel == "r")
+                                    {
+                                        player.PlaySong(userProfile.PlaylistFavoritosSongs[player.RandomMult(userProfile, 0, "Fav")], userProfile.PlaylistFavoritosSongs, database, user, userProfile);
+                                    }
+                                    else
+                                    {
+                                        for (int i = 0; i < userProfile.PlaylistFavoritosSongs.Count(); i++)
+                                        {
+                                            Console.WriteLine("{0}) {1}", i + 1, userProfile.PlaylistFavoritosSongs[i].Name);
+                                        }
+                                        Console.Write("Escoga una cancion: ");
+                                        int index = int.Parse(Console.ReadLine()) - 1;
+                                        player.PlaySong(userProfile.PlaylistFavoritosSongs[index], userProfile.PlaylistFavoritosSongs, database, user, userProfile);
+                                    }
 
-                                    Console.WriteLine("Aca se esta reproduciendo la cancion de playlist favorita.");
                                 }
                                 else
                                 {
-                                    //Método de restriccion de edad.
+                                    player.PlaySong(userProfile.PlaylistFavoritosSongs[player.RandomMult(userProfile, 0, "Fav")], userProfile.PlaylistFavoritosSongs, database, user, userProfile);
+                                }
 
-                                    //VideosSearchEngine(searchedVideos);
-                                    //Reproduction(1, 1, false);
-                                    Console.WriteLine("Aca se esta reproduciendo la Video de playlist favorita.");
-                                }
                             }
-                        }
-                        else if (play == "GlobalPlayList")
-                        {
-                            List<Song> repPlaylistSong = new List<Song>();
-                            List<Video> repPlaylistVideo =  new List<Video>();
-                            Console.WriteLine("Please type the Playlist name...");
-                            string num = Console.ReadLine();
-                            Console.WriteLine("Please type the Playlist format...");
-                            string format = Console.ReadLine();
-                            foreach (PlayList playList in listPlayListGlobal)
+                            else if (op == "v")
                             {
-                                if(num == playList.NamePlayList && (format == ".mp3" || format == ".wav") )
+                                if (user.Accountype == "premium")
                                 {
-                                    repPlaylistSong = playList.DicCanciones[num];
-                                }
-                                else if(num == playList.NamePlayList && (format == ".mp4" || format == ".mov"))
-                                {
-                                    repPlaylistVideo = playList.DicVideos[num];
-                                }
-                                //Iguala a la playlist que se esta reproduciendo.
-                            }
-                            Console.WriteLine("Random or select a song?");
-                            string rand = Console.ReadLine();
-                            if (rand == "Random")
-                            {
-                                //Reproduction(4, true);
-                                Console.WriteLine("Aca se esta reproduciendo la playlist " + num + " global.");
-                            }
-                            else
-                            {
-                                Console.WriteLine("What would you like to play?");
-                                string mult = Console.ReadLine();
-                                if (mult == "Songs")
-                                {
-                                    //Método de restriccion de edad.
+                                    Console.Write("Do you want to play a random video? or select it from the playlist? (r/v): ");
+                                    string rndSel;
+                                    do
+                                    {
+                                        rndSel = Console.ReadLine();
+                                        if (rndSel != "r" && rndSel != "v")
+                                            Console.Write("ERROR [!] ~Select a valid command please (r/v): ");
+                                    } while (rndSel != "r" && rndSel != "v");
 
-                                    //ongsSearchEngine(searchedSongs);
-                                    //Reproduction(1, 0, false);
-                                    Console.WriteLine("Aca se esta reproduciendo la cancion de playlist " + num + " global.");
+                                    if (rndSel == "r")
+                                    {
+                                        player.PlayVideo(userProfile.PlaylistFavoritosVideos[player.RandomMult(userProfile, 1, "Fav")], userProfile.PlaylistFavoritosVideos, database, user, userProfile);
+                                    }
+                                    else
+                                    {
+                                        for (int i = 0; i < userProfile.PlaylistFavoritosVideos.Count(); i++)
+                                        {
+                                            Console.WriteLine("{0}) {1}", i + 1, userProfile.PlaylistFavoritosVideos[i].Name);
+                                        }
+                                        Console.Write("Escoga un video: ");
+                                        int index = int.Parse(Console.ReadLine()) - 1;
+                                        player.PlayVideo(userProfile.PlaylistFavoritosVideos[index], userProfile.PlaylistFavoritosVideos, database, user, userProfile);
+                                    }
                                 }
                                 else
                                 {
-                                    //Método de restriccion de edad.
-
-                                    //VideosSearchEngine(searchedVideos);
-                                    //Reproduction(1, 1, false);
-                                    Console.WriteLine("Aca se esta reproduciendo la video de playlist " + num + " global.");
+                                    player.PlayVideo(userProfile.PlaylistFavoritosVideos[player.RandomMult(userProfile, 1, "Fav")], userProfile.PlaylistFavoritosVideos, database, user, userProfile);
                                 }
+                            }
+                            else
+                            {
+                                Console.WriteLine("ERROR[!]~How did you get here? WTF");
                             }
                         }
                         else if (play == "FollowedPlaylist")
                         {
-                            List<Song> repPlaylistSong = new List<Song>();
-                            List<Video> repPlaylistVideo = new List<Video>();
-                            Console.WriteLine("Please type the Playlist name...");
-                            string num = Console.ReadLine();
-                            Console.WriteLine("Please type the Playlist format...");
-                            string format = Console.ReadLine();
-                            foreach (PlayList playList in listPlayListGlobal)
+                            Console.Write("Do you wish to play a song (s) or a video (v)?");
+                            string sv;
+                            do
                             {
-                                if (num == playList.NamePlayList && (format == ".mp3" || format == ".wav"))
+                                sv = Console.ReadLine();
+                                if (sv != "s" && sv != "v")
+                                    Console.Write("ERROR[!]~ Select a Valid command please: ");
+                            } while (sv != "s" && sv != "v");
+                            if (sv == "s")
+                            {
+                                int i = 0;
+                                foreach (PlayList p in userProfile.FollowedPlayList)
                                 {
-                                    repPlaylistSong = playList.DicCanciones[num];
+                                    Console.WriteLine("{0}) {1}", i + 1, p.NamePlayList);
+                                    i++;
                                 }
-                                else if (num == playList.NamePlayList && (format == ".mp4" || format == ".mov"))
+                                Console.Write("Type the playlist that you want to play: ");
+                                int numPl = int.Parse(Console.ReadLine()) - 1;
+                                string nPl = userProfile.FollowedPlayList[numPl].NamePlayList;
+                                if (user.Accountype == "Premium")
                                 {
-                                    repPlaylistVideo = playList.DicVideos[num];
-                                }
-                                //Iguala a la playlist que se esta reproduciendo.
-                            }
-                            Console.WriteLine("Random or select multimedia?");
-                            string rand = Console.ReadLine();
-                            if (rand == "Random")
-                            {
-                                //Reproduction(4, true);
-                                Console.WriteLine("Aca se esta reproduciendo la playlist " + num + " followed.");
-                            }
-                            else
-                            {
-                                Console.WriteLine("What would you like to play?");
-                                string mult = Console.ReadLine();
-                                if (mult == "Songs")
-                                {
-                                    //Método de restriccion de edad.
+                                    Console.Write("Do you want to play a random song? or select it? (r/s): ");
+                                    string rndSel;
+                                    do
+                                    {
+                                        rndSel = Console.ReadLine();
+                                        if (rndSel != "r" && rndSel != "s")
+                                            Console.Write("ERROR [!] ~Select a valid command please (r/s): ");
+                                    } while (rndSel != "r" && rndSel != "s");
 
-                                    //SongsSearchEngine(searchedSongs);
-                                    //Reproduction(1, 0, false);
-                                    Console.WriteLine("Aca se esta reproduciendo la cancion de playlist " + num + " followed.");
+                                    if (rndSel == "r")
+                                    {
+                                        int rnd = player.RandomMult(userProfile, 0, "Foll");
+                                        player.PlaySong(userProfile.FollowedPlayList[rnd].DicCanciones[nPl][rnd], userProfile.FollowedPlayList[rnd].DicCanciones[nPl], database, user, userProfile);
+                                    }
+                                    else
+                                    {
+                                        for (int j = 0; j < userProfile.FollowedPlayList[numPl].DicCanciones[nPl].Count(); j++)
+                                        {
+                                            Console.WriteLine("{0}) {1}", j + 1, userProfile.FollowedPlayList[numPl].DicCanciones[nPl][j].Name);
+                                        }
+
+                                        Console.Write("Choose a song: ");
+                                        int index = int.Parse(Console.ReadLine()) - 1;
+                                        player.PlaySong(userProfile.FollowedPlayList[numPl].DicCanciones[nPl][index], userProfile.FollowedPlayList[numPl].DicCanciones[nPl], database, user, userProfile);
+                                    }
                                 }
                                 else
                                 {
-                                    //Método de restriccion de edad.
+                                    int rnd = player.RandomMult(userProfile, 0, "Foll");
+                                    player.PlaySong(userProfile.FollowedPlayList[rnd].DicCanciones[nPl][rnd], userProfile.FollowedPlayList[rnd].DicCanciones[nPl], database, user, userProfile);
+                                }
+                            }
+                            else
+                            {
+                                int i = 0;
+                                foreach (PlayList p in userProfile.FollowedPlayList)
+                                {
+                                    Console.WriteLine("{0}) {1}", i + 1, p.NamePlayList);
+                                    i++;
+                                }
+                                Console.Write("Type the playlist that you want to play: ");
+                                int numPl = int.Parse(Console.ReadLine()) - 1;
+                                string nPl = userProfile.FollowedPlayList[numPl].NamePlayList;
+                                if (user.Accountype == "Premium")
+                                {
+                                    Console.Write("Do you want to play a random video? or select it? (r/v): ");
+                                    string rndSel;
+                                    do
+                                    {
+                                        rndSel = Console.ReadLine();
+                                        if (rndSel != "r" && rndSel != "v")
+                                            Console.Write("ERROR [!] ~Select a valid command please (r/v): ");
+                                    } while (rndSel != "r" && rndSel != "v");
 
-                                    //VideosSearchEngine(searchedVideos);
-                                    //Reproduction(1, 1, false);
-                                    Console.WriteLine("Aca se esta reproduciendo la video de playlist " + num + " followed.");
+                                    if (rndSel == "r")
+                                    {
+                                        int rnd = player.RandomMult(userProfile, 1, "Foll");
+                                        player.PlayVideo(userProfile.FollowedPlayList[rnd].DicVideos[nPl][rnd], userProfile.FollowedPlayList[rnd].DicVideos[nPl], database, user, userProfile);
+                                    }
+                                    else
+                                    {
+                                        for (int j = 0; j < userProfile.FollowedPlayList[numPl].DicVideos[nPl].Count(); j++)
+                                        {
+                                            Console.WriteLine("{0}) {1}", j + 1, userProfile.FollowedPlayList[numPl].DicVideos[nPl][j].Name);
+                                        }
+
+                                        Console.Write("Choose a video: ");
+                                        int index = int.Parse(Console.ReadLine()) - 1;
+                                        player.PlayVideo(userProfile.FollowedPlayList[numPl].DicVideos[nPl][index], userProfile.FollowedPlayList[numPl].DicVideos[nPl], database, user, userProfile);
+                                    }
+                                }
+                                else
+                                {
+                                    int rnd = player.RandomMult(userProfile, 1, "Foll");
+                                    player.PlayVideo(userProfile.FollowedPlayList[rnd].DicVideos[nPl][rnd], userProfile.FollowedPlayList[rnd].DicVideos[nPl], database, user, userProfile);
+                                }
+                            }
+                        }
+                        else if (play == "GlobalPlayLists")
+                        {
+                            Console.Write("Do you wish to play a song (s) or a video (v)?");
+                            string sv;
+                            do
+                            {
+                                sv = Console.ReadLine();
+                                if (sv != "s" && sv != "v")
+                                    Console.Write("ERROR[!]~ Select a Valid command please: ");
+                            } while (sv != "s" && sv != "v");
+                            if (sv == "s")
+                            {
+                                int i = 0;
+                                foreach (PlayList p in listPlayListGlobal)
+                                {
+                                    Console.WriteLine("{0}) {1}", i + 1, p.NamePlayList);
+                                    i++;
+                                }
+                                Console.Write("Type the playlist that you want to play: ");
+                                int numPl = int.Parse(Console.ReadLine()) - 1;
+                                string nPl = listPlayListGlobal[numPl].NamePlayList;
+                                if (user.Accountype == "Premium")
+                                {
+                                    Console.Write("Do you want to play a random song? or select it? (r/s): ");
+                                    string rndSel;
+                                    do
+                                    {
+                                        rndSel = Console.ReadLine();
+                                        if (rndSel != "r" && rndSel != "s")
+                                            Console.Write("ERROR [!] ~Select a valid command please (r/s): ");
+                                    } while (rndSel != "r" && rndSel != "s");
+
+                                    if (rndSel == "r")
+                                    {
+                                        int rnd = player.RandomMult(userProfile, 0, "Gl");
+                                        player.PlaySong(listPlayListGlobal[rnd].DicCanciones[nPl][rnd], listPlayListGlobal[rnd].DicCanciones[nPl], database, user, userProfile);
+                                    }
+                                    else
+                                    {
+                                        for (int j = 0; j < listPlayListGlobal[numPl].DicCanciones[nPl].Count(); j++)
+                                        {
+                                            Console.WriteLine("{0}) {1}", j + 1, listPlayListGlobal[numPl].DicCanciones[nPl][j].Name);
+                                        }
+
+                                        Console.Write("Choose a song: ");
+                                        int index = int.Parse(Console.ReadLine()) - 1;
+                                        player.PlaySong(listPlayListGlobal[numPl].DicCanciones[nPl][index], listPlayListGlobal[numPl].DicCanciones[nPl], database, user, userProfile);
+                                    }
+                                }
+                                else
+                                {
+                                    int rnd = player.RandomMult(userProfile, 0, "Gl");
+                                    player.PlaySong(listPlayListGlobal[rnd].DicCanciones[nPl][rnd], userProfile.FollowedPlayList[rnd].DicCanciones[nPl], database, user, userProfile);
+                                }
+                            }
+                            else
+                            {
+                                int i = 0;
+                                foreach (PlayList p in listPlayListGlobal)
+                                {
+                                    Console.WriteLine("{0}) {1}", i + 1, p.NamePlayList);
+                                    i++;
+                                }
+                                Console.Write("Type the playlist that you want to play: ");
+                                int numPl = int.Parse(Console.ReadLine()) - 1;
+                                string nPl = listPlayListGlobal[numPl].NamePlayList;
+                                if (user.Accountype == "Premium")
+                                {
+                                    Console.Write("Do you want to play a random video? or select it? (r/v): ");
+                                    string rndSel;
+                                    do
+                                    {
+                                        rndSel = Console.ReadLine();
+                                        if (rndSel != "r" && rndSel != "v")
+                                            Console.Write("ERROR [!] ~Select a valid command please (r/v): ");
+                                    } while (rndSel != "r" && rndSel != "v");
+
+                                    if (rndSel == "r")
+                                    {
+                                        int rnd = player.RandomMult(userProfile, 1, "Gl");
+                                        player.PlayVideo(listPlayListGlobal[rnd].DicVideos[nPl][rnd], listPlayListGlobal[rnd].DicVideos[nPl], database, user, userProfile);
+                                    }
+                                    else
+                                    {
+                                        for (int j = 0; j < listPlayListGlobal[numPl].DicVideos[nPl].Count(); j++)
+                                        {
+                                            Console.WriteLine("{0}) {1}", j + 1, listPlayListGlobal[numPl].DicVideos[nPl][j].Name);
+                                        }
+
+                                        Console.Write("Choose a video: ");
+                                        int index = int.Parse(Console.ReadLine()) - 1;
+                                        player.PlayVideo(listPlayListGlobal[numPl].DicVideos[nPl][index], listPlayListGlobal[numPl].DicVideos[nPl], database, user, userProfile);
+                                    }
+                                }
+                                else
+                                {
+                                    int rnd = player.RandomMult(userProfile, 1, "Gl");
+                                    player.PlayVideo(listPlayListGlobal[rnd].DicVideos[nPl][rnd], listPlayListGlobal[rnd].DicVideos[nPl], database, user, userProfile);
                                 }
                             }
                         }
                         break;
+
                     case "VI":
                         Console.WriteLine("Logged Out");
                         ret = 0;
