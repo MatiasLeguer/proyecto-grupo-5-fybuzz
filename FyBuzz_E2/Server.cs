@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -51,16 +52,37 @@ namespace FyBuzz_E2
             string email = Console.ReadLine();
             Console.Write("Password: ");
             string psswd = Console.ReadLine();
-            Console.Write("Would you like to pay for the premium subscription?(premium/standard/admin):"); //añadi admin
-            string premium = Console.ReadLine();
-            Console.Write("Would you like to have a private user?(true/false):");
-            bool priv = bool.Parse(Console.ReadLine());
-            Console.Write("Select your gender(M/F): ");
-            string gender = Console.ReadLine();
-            Console.Write("Select your age: ");
-            int age = int.Parse(Console.ReadLine());
-            Console.Write("Select your Profile Type(creator/viewer): ");
-            string profileType = Console.ReadLine();
+            string premium;
+            do
+            {
+                Console.Write("Would you like to pay for the premium subscription?(premium/standard/admin):");
+                premium = Console.ReadLine();
+            } while (premium != "premium" && premium != "standard" && premium != "admin");
+            string pars;
+            bool priv;
+            do
+            {
+                Console.Write("Would you like to have a private user?(true/false):");
+                pars = Console.ReadLine();
+            } while (pars != "true" && pars != "false");
+            priv = bool.Parse(pars);
+            string gender;
+            do {
+                Console.Write("Select your gender(M/F): ");
+                gender = Console.ReadLine();
+            } while (gender != "M" && gender != "F");
+            int age;
+            do
+            {
+                Console.Write("Select your age: ");
+                age = int.Parse(Console.ReadLine());
+            } while (age/age != 1);
+            string profileType;
+            do
+            {
+                Console.Write("Select your Profile Type(creator/viewer): ");
+                 profileType = Console.ReadLine();
+            } while (profileType != "creator" && profileType != "viewer");
 
             if (premium == "premium") userlist.AdsOn = false;
             else if (premium == "standard") userlist.AdsOn = true;
