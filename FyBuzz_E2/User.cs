@@ -13,7 +13,7 @@ namespace FyBuzz_E2
         protected int registerNumber;
         protected string username;
         protected string password;
-        protected string accountType; // Premium,Standard //Yo le pondria un 0 y un 1, asi es mas facil
+        protected string accountType;
         protected string email;
         protected int followers;
         protected int following;
@@ -21,8 +21,7 @@ namespace FyBuzz_E2
         protected bool adsOn;
         protected bool privacy;
 
-        protected List<Profile> perfiles = new List<Profile>(); //Agregar perfiles a el archivo de usuario para que no s epierdan cuando se cierrre el program
-
+        protected List<Profile> perfiles = new List<Profile>(); 
 
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }

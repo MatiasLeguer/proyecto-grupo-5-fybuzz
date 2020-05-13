@@ -64,11 +64,13 @@ namespace FyBuzz_E2
                         return null;    
                 }
             }
+            Console.Clear();
             return user;
         }
         
         public Profile DisplayProfiles(User user,List<User> userDataBase)
         {
+            
             Console.WriteLine("Welcome: " + user.Username + "\n");
             bool x = true;
             int u = 0;
@@ -92,7 +94,6 @@ namespace FyBuzz_E2
                 string profileType = Console.ReadLine();
                 Profile profile = new Profile(user.Username, ".JPEG", profileType, user.Email, gender, age);
                 user.Perfiles.Add(profile);
-
             }
             else
             {
@@ -108,7 +109,7 @@ namespace FyBuzz_E2
                         {
                             Console.WriteLine("{0}).- {1}", i + 1, userDataBase[u].Perfiles[i].ProfileName);
                         }
-                        Console.WriteLine("Choose a profile:");
+                        Console.WriteLine("Choose a profile (Number):");
                         int index = int.Parse(Console.ReadLine()) - 1;
                         return userDataBase[u].Perfiles[index];
                     }
@@ -129,14 +130,19 @@ namespace FyBuzz_E2
                             Console.Write("Profile age: ");
                             int page = int.Parse(Console.ReadLine());
                             userDataBase[u].CreateProfile(pname, ppic, ptype, pmail, pgender, page);
+                            Console.Clear();
                         }
                         else if (user.Accountype == "standard")
                         {
                             Console.WriteLine("ERROR [!] Standard Account Types, you can only have one profile.\nTry Upgrading to Premium Account.");
                             Console.Write("Do you want to change your Account Type to premium?(y/n): ");
                             string premium = Console.ReadLine();
-                            if (premium == "y") userDataBase[u].Accountype = "premium"; //Falta actualizar la lista de perfiles.
+                            if (premium == "y") userDataBase[u].Accountype = "premium";
                             else continue;
+                        }
+                        else if(user.Accountype == "admin")
+                        {
+                            Console.WriteLine("ERROR [!] Admin Account Types, you can only have one profile.");
                         }
                     }
                     else if(dec == "III")
@@ -145,12 +151,15 @@ namespace FyBuzz_E2
                     }
                 }
             }
+            Console.Clear();
             return null;
         }
 
-        public int DisplayStart(Profile profile,User usr, List<User> listUserGlobal, List<Song> listSongsGlobal, List<Video> listVideosGlobal, List<PlayList> listPlayListGlobal) // solo funciona si DisplayLogIn() retorna true se ve en program.
+        public int DisplayStart(Profile userProfile,User usr, List<User> listUserGlobal, List<Song> listSongsGlobal, List<Song> DownloadSongs, List<Video> listVideosGlobal, List<PlayList> listPlayListGlobal) // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
+            Console.Clear();
             int ret = 0;
+            Server server = new Server(database);
 
             // mostrará todas las playlist del usuario, si es primera vez que ingresa estara la playlist general y la favorita(esta sin nada)
             // es la lista global de playlist que viene de database, pero hay que conectarla
@@ -161,30 +170,33 @@ namespace FyBuzz_E2
             PlayList favVideos = new PlayList(".mp3", "FavoriteVideos");
             Dictionary<string, List<Video>> playlistFavVideos = favVideos.DicVideos; //Playlist de favoritos que su nombre es el de arriba.
 
-            List<PlayList> followedPL = profile.FollowedPlayList; //una lista de todas las playlist, discos, usuarios, etc.
+            List<PlayList> followedPL = userProfile.FollowedPlayList; //una lista de todas las playlist, discos, usuarios, etc.
             //Si seguimos la usuario seguiremos todas sus playlist (REVISAR ESTO)
 
             Console.WriteLine("------------Welcome to FyBuZz--------------"); //Se inicia el menu en si.
             bool x = true;
             while (x == true)
             {
+                Console.Clear();
                 Console.WriteLine("I) Search Songs, Videos or Users."); //Faltaria la bsuqueda de gente.
-                Console.WriteLine("II) Add Songs, Videos or Playlists.");
+                Console.WriteLine("II) Add/Show Songs, Videos or Playlists.");
                 Console.WriteLine("III) Display all Playlists.");
                 Console.WriteLine("IV) Account Settings/ Profile Settings.");
                 Console.WriteLine("V) Play a Playlist.");
-                Console.WriteLine("VI) LogOut from Prrofile.");
+                Console.WriteLine("VI) LogOut from Profile.");
                 Console.WriteLine("VII) CloseApp.");
+                Console.WriteLine("VIII) Admin Menu.");
                 string dec = Console.ReadLine();
                 switch (dec)
                 { //(REVISAR DESPUES)Mejorar el metodo de busqueda para que busque canciones que se parezca
                     case "I":
+                        Console.Clear();
                         //Método de buscar, una vez buscada la canción y elegida.
                         Console.WriteLine("What would you like to search? (Songs/Videos/Users)");
                         string type = Console.ReadLine();
                         if (type == "Songs")
                         {
-                            Console.WriteLine("Type what you want to search...");
+                            Console.WriteLine("Type what you want to search...{name, artist, album, discography, studio, gender}");
                             string search = Console.ReadLine();
                             List<string> searchEngine = SearchEngine(search, type, database);
                             List<int> indexglobal = new List<int>();
@@ -196,27 +208,44 @@ namespace FyBuzz_E2
                             Console.WriteLine("Searched Songs, choose the position of the song you want to hear...");
                             int indice = int.Parse(Console.ReadLine()) - 1;
                             Song song = listSongsGlobal[indice]; //La cancion a la que querria escuchar
-
                             int cont = 0;
-                            foreach(string word in badWords)
+                            foreach (string word in badWords)
                             {
-                                if (song.Lyrics.Contains(word) == true && profile.Age < 16)
+                                if (song.Lyrics.Contains(word) == true && userProfile.Age < 16)
                                 {
                                     Console.WriteLine("ERROR[!] This content is age restricted");
                                     cont++;
                                     break;
                                 }
                             }
-                            if(cont == 0)
+                            Console.WriteLine("Do you want to: \nI)Listen.\nII)Download.\nIII)Add to Playlist.");
+                            string want = Console.ReadLine();
+                            switch (want)
                             {
-                                Console.Clear();
-                                player.PlaySong(0, song, null, database, "", usr, profile);
+                                case "I":
+                                    if (cont == 0)
+                                    {
+                                        Console.Clear();
+                                        player.PlaySong(0, song, null, database, "", usr, userProfile);
+                                    }
+                                    break;
+                                case "II":
+                                    Console.WriteLine("Song is Downloading...");
+                                    Thread.Sleep(1000 * 5);
+                                    Console.WriteLine("Song Downloaded.");
+                                    DownloadSongs.Add(song);
+                                    database.Save_DSongs(DownloadSongs);
+                                    break;
+                                case "III":
+                                    userProfile.PlaylistFavoritosSongs.Add(song);
+                                    break;
                             }
                             Console.WriteLine("\n");
                         }
                         else if(type == "Videos")
                         {
-                            Console.WriteLine("Type what you want to search...");
+                            Console.WriteLine("Type what you want to search...{ name, actors, directors, quality, category, rated, description}");
+
                             string search = Console.ReadLine();
                             List<string> searchEngine = SearchEngine(search, type, database);
                             List<int> indexglobal = new List<int>();
@@ -233,17 +262,26 @@ namespace FyBuzz_E2
                                 int cont = 0;
                                 foreach (string word in badWords)
                                 {
-                                    if ((video.Subtitles.Contains(word) && profile.Age < 16 )|| (int.Parse(video.Category) >= profile.Age))
+                                    if ((video.Subtitles.Contains(word) && userProfile.Age < 16 )|| (int.Parse(video.Category) >= userProfile.Age))
                                     {
                                         Console.WriteLine("ERROR[!] This content is age restricted");
                                         cont++;
                                         break;
                                     }
                                 }
-                                if (cont == 0)
+                                Console.WriteLine("Do you want to: \nI)Listen.\nII)Add to Playlist.");
+                                string want = Console.ReadLine();
+                                switch (want)
                                 {
-                                    Console.Clear();
-                                    player.PlayVideo(0, video, null, database, "", usr,profile);
+                                    case "I":
+                                        if (cont == 0)
+                                        {
+                                            Console.Clear();
+                                            player.PlayVideo(0, video, null, database, "", usr, userProfile);
+                                        }
+                                        break;
+                                    case "II":
+                                        break;
                                 }
                                 Console.WriteLine("\n");
                             }
@@ -272,7 +310,8 @@ namespace FyBuzz_E2
                         break;
 
                     case "II":
-                        if(profile.ProfileType == "creator")
+                        Console.Clear();
+                        if (userProfile.ProfileType == "creator" || userProfile.ProfileType == "admin")
                         {
 
                             Console.Write("What do you wish to add? (song(0), video(1), Playlist(2))\tDo you wish to Show the list of a specified multimedia? (song(3), video(4), Playlist(5)): ");
@@ -298,7 +337,7 @@ namespace FyBuzz_E2
                         }
                         break;
                     case "III":
-
+                        Console.Clear();
                         if (playlistFavSongs != null || playlistFavVideos != null)
                         {
                             Console.WriteLine(favSongs.InfoPlayList());
@@ -317,16 +356,25 @@ namespace FyBuzz_E2
                         Console.WriteLine("\n");
                         break;
                     case "IV":
+                        Console.Clear();
                         Console.WriteLine("---------------------------");
                         Console.Write("Which settings do you want to acces?(Account/Profile): ");
                         string settings = Console.ReadLine();
-                        if (settings == "Account") AccountSettings(usr);
-                        else if (settings == "Profile") ProfileSettings(profile);
+                        if (settings == "Account")
+                        {
+                            AccountSettings(usr);
+                            Console.WriteLine("Do you want to change password? (y/n)");
+                            string pass = Console.ReadLine();
+                            if (pass == "y") server.ChangePassword(listUserGlobal);
+                            else continue;
+                        }
+                        else if (settings == "Profile") ProfileSettings(userProfile);
                         else Console.WriteLine("ERROR[!] Invalid Command");
                         Console.WriteLine("---------------------------");
                         break;
 
                     case "V":
+                        Console.Clear();
                         Console.WriteLine("What playlist do you want to play?(GlobalPlayLists, FollowedPlaylists or FavoritePlayList)");
                         string play = Console.ReadLine();
                         if (play == "FavoritePlayList")
@@ -471,6 +519,48 @@ namespace FyBuzz_E2
                         ret = 1;
                         database.Save_Users(listUserGlobal);
                         x = false;
+                        break;
+                    case "VIII":
+                        //Menu admin
+                        Console.Clear();
+                        if (usr.Accountype == "admin")
+                        {
+                            Console.Clear();
+                            Console.WriteLine("------Admin Menu-------");
+                            Console.WriteLine("I)Erase Users.\nII)Ban Erase.");
+                            string admin = Console.ReadLine();
+                            switch (admin)
+                            {
+                                case "I":
+                                    Console.WriteLine("Type the username, the user you want to delete...");
+                                    string username = Console.ReadLine();
+                                    foreach(User usernombre in listUserGlobal)
+                                    {
+                                        if (username == usernombre.Username)
+                                        {
+                                            listUserGlobal.Remove(usernombre);
+                                            Console.WriteLine("Delete succesfull");
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                case "II":
+                                    int y = 0;
+                                    Console.WriteLine("Type the username, the user you want to ban...");
+                                    string user = Console.ReadLine();
+                                    foreach (User usernombre in listUserGlobal)
+                                    {
+                                        if (user == usernombre.Username && usernombre.Accountype == "premium")
+                                        {
+                                            listUserGlobal[y].Accountype.Replace("premium","standard");
+                                            Console.WriteLine("Ban succesfull");
+                                            break;
+                                        }
+                                        y++;
+                                    }
+                                    break;
+                            }
+                        }
                         break;
                 }
             }

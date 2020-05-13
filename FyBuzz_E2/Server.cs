@@ -51,7 +51,7 @@ namespace FyBuzz_E2
             string email = Console.ReadLine();
             Console.Write("Password: ");
             string psswd = Console.ReadLine();
-            Console.Write("Would you like to pay for the premium subscription?(premium/standard):");
+            Console.Write("Would you like to pay for the premium subscription?(premium/standard/admin):"); //añadi admin
             string premium = Console.ReadLine();
             Console.Write("Would you like to have a private user?(true/false):");
             bool priv = bool.Parse(Console.ReadLine());
@@ -64,6 +64,7 @@ namespace FyBuzz_E2
 
             if (premium == "premium") userlist.AdsOn = false;
             else if (premium == "standard") userlist.AdsOn = true;
+            else if (premium == "admin") userlist.AdsOn = false; //añadi publicidad a admin
             else Console.WriteLine("Error [!] Invalid Subscription.");
             userlist.Followers = 0;
             userlist.Following = 0;
@@ -85,29 +86,29 @@ namespace FyBuzz_E2
                 Console.WriteLine("[!] ERROR: " + result + "\n");
             }
         }
-        /*
-        public void ChangePassword()
+        
+        public void ChangePassword(List<User> userdatabase)
         {
             Console.Write("Ingrese su nombre de usuario: ");
             string user = Console.ReadLine();
             Console.Write("Ingrese su contraseña: ");
             string pass = Console.ReadLine();
 
-            User result = Data.LogIn(user,pass);
+            User result = Data.LogIn(user,pass,userdatabase);
             if (result != null)
             {
                 Console.Write("Ingrese la nueva contraseña: ");
                 string newPass = Console.ReadLine();
 
                 Data.ChangePassword(user, newPass);
-                //List<string> data = Data.GetData(user);
-                //OnPasswordChanged(data[0], data[1], data[2]);
+                List<string> data = Data.GetData(user,userdatabase);
+                OnPasswordChanged(data[0], data[1]);
             }
             else
             {
                 Console.WriteLine("[!]ERROR: {0}", result);
             }
 
-        }*/
+        }
     }
 }

@@ -83,11 +83,11 @@ namespace FyBuzz_E2
         }
 
         // Metodo para obtener los datos de usr
-        public List<string> GetData(User usr)
+        public List<string> GetData(string usr,List<User> userdatabase)
         {
-            foreach (User user in this.userDataBase)
+            foreach (User user in userdatabase)
             {
-                if (user.Username == usr.Username)
+                if (user.Username == usr)
                 {
                     return user.AccountSettings();
                 }
@@ -151,6 +151,22 @@ namespace FyBuzz_E2
             List<Song> listSongsGlobal = (List<Song>)formatter.Deserialize(stream);
             stream.Close();
             return listSongsGlobal;
+        }
+        public void Save_DSongs(List<Song> DSongs)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("DownloadSongs.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, DSongs);
+            formatter.Serialize(stream, "\n");
+            stream.Close();
+        }
+        public List<Song> Load_DSongs()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("DownloadSongs.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<Song> DSongs = (List<Song>)formatter.Deserialize(stream);
+            stream.Close();
+            return DSongs;
         }
 
         public void Save_Videos(List<Video> VideosGlobal)

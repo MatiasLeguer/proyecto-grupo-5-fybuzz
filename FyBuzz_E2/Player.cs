@@ -71,7 +71,7 @@ namespace FyBuzz_E2
                         if (s != song) break;
                     }
 
-                    Thread.Sleep(500);
+                    //Thread.Sleep(500);
                     cont++;
                 }
                 if (cont == seconds)
@@ -80,10 +80,11 @@ namespace FyBuzz_E2
                     string like = Console.ReadLine();
                     if (like == "y")
                     {
-                        profile.AddFavSongs(song);
-                        song.Likes++;
+                        List<Song> FavSongs = profile.PlaylistFavoritosSongs;
+                        FavSongs.Add(s);
+                        s.Likes++;
                     }
-                    song.GeneralRep++;
+                    s.GeneralRep++;
                     return;
                 }
             }

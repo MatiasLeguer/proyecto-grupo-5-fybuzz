@@ -16,7 +16,7 @@ namespace FyBuzz_E2
         protected string profileType; //creador o viewer
         protected string profileMail;
         protected List<Song> playlistEnColaSongs;
-        protected List<Song> playlistFavoritosSongs;
+        protected List<Song> playlistFavoritosSongs = new List<Song>();
         protected List<Video> playlistEnColaVideos;
         protected List<Video> playlistFavoritosVideos;
         protected List<PlayList> followedPlayList;
