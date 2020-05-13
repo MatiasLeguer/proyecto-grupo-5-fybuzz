@@ -23,7 +23,7 @@ namespace FyBuzz_E2
         Player player = new Player();
 
 
-        public User DisplayLogin()
+        public User DisplayLogin(List<User> userDataBase)
         {
             Server server = new Server(database);
             bool x = false;
@@ -41,12 +41,12 @@ namespace FyBuzz_E2
                         string username = Console.ReadLine();
                         Console.Write("Password: ");
                         string password = Console.ReadLine();
-                        if (database.LogIn(username, password) != null) //tengo que obtener mediante un get el nombre de usuario y password
+                        if (database.LogIn(username, password,userDataBase) != null)
                         {
                             Console.WriteLine("Login Succesfull.");
                             Console.Beep();
                             x = true;
-                            user = database.LogIn(username, password); 
+                            user = database.LogIn(username, password,userDataBase); 
                         }
                         else
                         {
@@ -56,29 +56,33 @@ namespace FyBuzz_E2
 
 
                     case "II":
-                        server.Register(user); //Agregue el metodo de server register.
+                        server.Register(user,userDataBase);
+                        database.Save_Users(userDataBase);
                         x = false;
-                        database.Save_Users(database.UserDataBase);
-                        //Dar todas las caracteriscas del usaurio aca.
                         break;
                     case "III":
-                        database.Save_Users(database.UserDataBase);
-                        return null;
-                        
+                        return null;    
                 }
             }
             return user;
         }
         
-        public Profile DisplayProfiles(User user)
+        public Profile DisplayProfiles(User user,List<User> userDataBase)
         {
             Console.WriteLine("Welcome: " + user.Username + "\n");
-            List<User> userDataBase = database.Load_Users();  //Falta actualizar los perfiles.  
             bool x = true;
-
+            int u = 0;
+            foreach(User usr in userDataBase)
+            {
+                if(usr.Username == user.Username)
+                {
+                    break;
+                }
+                u++;
+            }
             Console.WriteLine("---------Profiles----------");
 
-            if (user.Perfiles.Count() == 0)
+            if (userDataBase[u].Perfiles.Count() == 0)
             {
                 Console.Write("Select your gender(M/F): ");
                 string gender = Console.ReadLine();
@@ -100,14 +104,13 @@ namespace FyBuzz_E2
                     {
                         Console.WriteLine("List of profiles:");
                         int i;
-                        for (i = 0; i < user.Perfiles.Count(); i++)
+                        for (i = 0; i < userDataBase[u].Perfiles.Count(); i++)
                         {
-                            Console.WriteLine("{0}).- {1}", i + 1, user.Perfiles[i].ProfileName);
+                            Console.WriteLine("{0}).- {1}", i + 1, userDataBase[u].Perfiles[i].ProfileName);
                         }
                         Console.WriteLine("Choose a profile:");
                         int index = int.Parse(Console.ReadLine()) - 1;
-                        //database.Save_Users(userDataBase);
-                        return user.Perfiles[index];
+                        return userDataBase[u].Perfiles[index];
                     }
                     else if (dec == "II")
                     {
@@ -125,14 +128,14 @@ namespace FyBuzz_E2
                             string pgender = Console.ReadLine();
                             Console.Write("Profile age: ");
                             int page = int.Parse(Console.ReadLine());
-                            user.CreateProfile(pname, ppic, ptype, pmail, pgender, page);
+                            userDataBase[u].CreateProfile(pname, ppic, ptype, pmail, pgender, page);
                         }
                         else if (user.Accountype == "standard")
                         {
                             Console.WriteLine("ERROR [!] Standard Account Types, you can only have one profile.\nTry Upgrading to Premium Account.");
                             Console.Write("Do you want to change your Account Type to premium?(y/n): ");
                             string premium = Console.ReadLine();
-                            if (premium == "y") user.Accountype = "premium"; //Falta actualizar la lista de perfiles.
+                            if (premium == "y") userDataBase[u].Accountype = "premium"; //Falta actualizar la lista de perfiles.
                             else continue;
                         }
                     }
@@ -145,15 +148,8 @@ namespace FyBuzz_E2
             return null;
         }
 
-        public int DisplayStart(Profile profile,User usr) // solo funciona si DisplayLogIn() retorna true se ve en program.
+        public int DisplayStart(Profile profile,User usr, List<User> listUserGlobal, List<Song> listSongsGlobal, List<Video> listVideosGlobal, List<PlayList> listPlayListGlobal) // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
-            List<User> listUserGlobal = database.Load_Users();
-            List<Video> listVideosGlobal = new List<Video>();
-            List<Song> listSongsGlobal = new List<Song>();
-            List<PlayList> listPlayListGlobal = new List<PlayList>();
-            listVideosGlobal = database.Load_Videos();
-            listSongsGlobal = database.Load_Songs();
-            listPlayListGlobal = database.Load_PLs();
             int ret = 0;
 
             // mostrará todas las playlist del usuario, si es primera vez que ingresa estara la playlist general y la favorita(esta sin nada)
@@ -177,7 +173,6 @@ namespace FyBuzz_E2
                 Console.WriteLine("III) Display all Playlists.");
                 Console.WriteLine("IV) Account Settings/ Profile Settings.");
                 Console.WriteLine("V) Play a Playlist.");
-                //La opcion de agregar multimedia
                 Console.WriteLine("VI) LogOut from Prrofile.");
                 Console.WriteLine("VII) CloseApp.");
                 string dec = Console.ReadLine();
@@ -202,7 +197,6 @@ namespace FyBuzz_E2
                             int indice = int.Parse(Console.ReadLine()) - 1;
                             Song song = listSongsGlobal[indice]; //La cancion a la que querria escuchar
 
-                            //Metodo de publicidad deberia ir en el metodo de Play()
                             int cont = 0;
                             foreach(string word in badWords)
                             {
@@ -286,7 +280,7 @@ namespace FyBuzz_E2
                             if(opc == 0 || opc == 1 || opc == 2)
                             {
                                 List<string> infoMult = AskInfoMult(opc);
-                                string description = database.AddMult(opc, infoMult);
+                                string description = database.AddMult(opc, infoMult,listSongsGlobal,listPlayListGlobal,listVideosGlobal);
                                 if (description == null) Console.WriteLine("Multimedia has been registered into the system!");
                                 else Console.WriteLine("ERROR[!] ~{0}", description);
                                 if (opc == 0) database.Save_Songs(listSongsGlobal);

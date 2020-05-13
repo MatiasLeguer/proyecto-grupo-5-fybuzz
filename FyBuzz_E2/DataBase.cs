@@ -61,51 +61,23 @@ namespace FyBuzz_E2
         }
 
         // Metodo para agregar un nuevo usuario, verificando ademas que no exista
-        public string AddUser(User userdata)
+        public string AddUser(User userdata,List<User> userDataBase)
         {
-            string description;
-            // No funciona revisar los usuarios del archivo AllUsers.bin
-            if (File.Exists("AllUsers.bin") == true)
+            string description = null;
+            foreach (User value in userDataBase)
             {
-                userDataBase = Load_Users();
-                description = null;
-                foreach (User value in userDataBase)
+                if (userdata.Username == value.Username)
                 {
-                    if (userdata.Username == value.Username)
-                    {
-                        description = "El nombre de usuario especificado ya existe";
-                    }
-                    else if (userdata.Email == value.Email)
-                    {
-                        description = "El correo ingresado ya existe";
-                    }
+                    description = "El nombre de usuario especificado ya existe";
                 }
-
-                if (description == null)
+                else if (userdata.Email == value.Email)
                 {
-                    userDataBase.Add(userdata);
+                    description = "El correo ingresado ya existe";
                 }
             }
-            else
+            if (description == null)
             {
-                description = null;
-                foreach (User value in userDataBase)
-                {
-                    if (userdata.Username == value.Username)
-                    {
-                        description = "El nombre de usuario especificado ya existe";
-                    }
-                    else if (userdata.Email == value.Email)
-                    {
-                        description = "El correo ingresado ya existe";
-                    }
-                }
-
-                if (description == null)
-                {
-                    userDataBase.Add(userdata);
-                    Console.WriteLine(userDataBase.Count());
-                }
+                userDataBase.Add(userdata);
             }
             return description;
         }
@@ -124,11 +96,10 @@ namespace FyBuzz_E2
             return new List<string>();
         }
         // Metodo para realizar el LogIn
-        public User LogIn(string usrname, string password)
+        public User LogIn(string usrname, string password,List<User> userlist)
         {
-            List<User> userdic = Load_Users();
-            //Aqui revisar el archivo, no el diccionario en el programa en si.
-            foreach (User user in userdic)
+            //Aqui revisar el archivo.
+            foreach (User user in userlist)
             {
                 if (user.Username == usrname && user.Password == password)
                 {
@@ -228,13 +199,10 @@ namespace FyBuzz_E2
             }
         }
 
-        public string AddMult(int typeMult, List<string> multInfo)
+        public string AddMult(int typeMult, List<string> multInfo,List<Song>listSongsGlobal, List<PlayList> listPLsGlobal,List<Video>listVideosGlobal)
         {
             string description = null;
             List<string> infoCompare;
-            listVideosGlobal = Load_Videos();
-            listSongsGlobal = Load_Songs();
-            listPLsGlobal = Load_PLs();
 
             switch (typeMult)
             {
