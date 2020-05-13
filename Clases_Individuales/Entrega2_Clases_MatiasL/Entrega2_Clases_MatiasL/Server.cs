@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FyBuzz_E2
+namespace Clases_Matias_Leguer_entrega2
 {
     public class Server
     {
-        public DataBase Data;
+        public Database Data;
 
         //Obtenemos el constructor para poder recibir la base de datos.
         public Server(DataBase data)
@@ -24,7 +24,7 @@ namespace FyBuzz_E2
         {
             if (Registered != null)
             {
-                Registered(this, new RegisterEventArgs() { Username = username, Password = password, Email = email });
+                Registered(this, new RegisterEventArgs() { Username = username, Password = password, Email = email }); ;
             }
         }
 
@@ -41,44 +41,25 @@ namespace FyBuzz_E2
         }
 
 
-        public void Register(User userlist,List<User> userDataBase)
+        public void Register()
         {
-
             // Pedimos todos los datos necesarios
-            Console.Write("Welcome! Type your information in FyBuZz\nUsername: ");
+            Console.Write("Bienvenido! Ingrese sus datos de registro en PlusCorporation\nUsuario: ");
             string usr = Console.ReadLine();
-            Console.Write("Email: ");
+            Console.Write("Correo: ");
             string email = Console.ReadLine();
-            Console.Write("Password: ");
+            Console.Write("Contraseña: ");
             string psswd = Console.ReadLine();
-            Console.Write("Would you like to pay for the premium subscription?(premium/standard/admin):"); //añadi admin
-            string premium = Console.ReadLine();
-            Console.Write("Would you like to have a private user?(true/false):");
-            bool priv = bool.Parse(Console.ReadLine());
-            Console.Write("Select your gender(M/F): ");
-            string gender = Console.ReadLine();
-            Console.Write("Select your age: ");
-            int age = int.Parse(Console.ReadLine());
-            Console.Write("Select your Profile Type(creator/viewer): ");
-            string profileType = Console.ReadLine();
 
-            if (premium == "premium") userlist.AdsOn = false;
-            else if (premium == "standard") userlist.AdsOn = true;
-            else if (premium == "admin") userlist.AdsOn = false; //añadi publicidad a admin
-            else Console.WriteLine("Error [!] Invalid Subscription.");
-            userlist.Followers = 0;
-            userlist.Following = 0;
-            userlist.Perfiles.Add(new Profile(usr,".JPG", profileType, email, gender, age));
-            
+            // Genera el link de verificacion para el usuario
+            //string verificationLink = GenerateLink(usr);
 
-            userlist.Username = usr; userlist.Email = email; userlist.Password = psswd; userlist.Accountype = premium;userlist.Privacy = priv;
-            string result = Data.AddUser(userlist, userDataBase);
+            string result = Data.AddUser(new List<string>()
+                {usr, email, psswd,/* verificationLink,*/ Convert.ToString(DateTime.Now)});
             if (result == null)
             {
                 // Disparamos el evento
                 OnRegistered(usr, psswd,/* verificationlink: verificationLink,*/ email: email);
-                Console.WriteLine("Register Succesfull");
-                
             }
             else
             {
@@ -86,23 +67,22 @@ namespace FyBuzz_E2
                 Console.WriteLine("[!] ERROR: " + result + "\n");
             }
         }
-        
-        public void ChangePassword(List<User> userdatabase)
+        public void ChangePassword()
         {
             Console.Write("Ingrese su nombre de usuario: ");
             string user = Console.ReadLine();
             Console.Write("Ingrese su contraseña: ");
             string pass = Console.ReadLine();
 
-            User result = Data.LogIn(user,pass,userdatabase);
-            if (result != null)
+            string result = Data.LogIn(user, pass);
+            if (result == null)
             {
                 Console.Write("Ingrese la nueva contraseña: ");
                 string newPass = Console.ReadLine();
 
                 Data.ChangePassword(user, newPass);
-                List<string> data = Data.GetData(user,userdatabase);
-                OnPasswordChanged(data[0], data[1]);
+                //List<string> data = Data.GetData(user);
+                //OnPasswordChanged(data[0], data[1], data[2]);
             }
             else
             {
@@ -110,5 +90,6 @@ namespace FyBuzz_E2
             }
 
         }
+
     }
 }
