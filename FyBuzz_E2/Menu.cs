@@ -162,7 +162,7 @@ namespace FyBuzz_E2
 
         public int DisplayStart(Profile userProfile,User usr, List<User> listUserGlobal, List<Song> listSongsGlobal, List<Song> DownloadSongs, List<Video> listVideosGlobal, List<PlayList> listPlayListGlobal) // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
-            Console.Clear();
+            
             int ret = 0;
             Server server = new Server(database);
 
@@ -178,11 +178,12 @@ namespace FyBuzz_E2
             List<PlayList> followedPL = userProfile.FollowedPlayList; //una lista de todas las playlist, discos, usuarios, etc.
             //Si seguimos la usuario seguiremos todas sus playlist (REVISAR ESTO)
 
+            Console.Clear();
             Console.WriteLine("------------Welcome to FyBuZz--------------"); //Se inicia el menu en si.
             bool x = true;
             while (x == true)
             {
-                Console.Clear();
+                
                 Console.WriteLine("I) Search Songs, Videos or Users."); //Faltaria la bsuqueda de gente.
                 Console.WriteLine("II) Add/Show Songs, Videos or Playlists.");
                 Console.WriteLine("III) Display all Playlists.");
@@ -195,7 +196,6 @@ namespace FyBuzz_E2
                 switch (dec)
                 { //(REVISAR DESPUES)Mejorar el metodo de busqueda para que busque canciones que se parezca
                     case "I":
-                        Console.Clear();
                         //Método de buscar, una vez buscada la canción y elegida.
                         Console.WriteLine("What would you like to search? (Songs/Videos/Users)");
                         string type = Console.ReadLine();
@@ -206,48 +206,55 @@ namespace FyBuzz_E2
                             List<string> searchEngine = SearchEngine(search, type, database);
                             List<int> indexglobal = new List<int>();
                             Console.WriteLine("Searched Songs: ");
-                            for (int i = 0; i < searchEngine.Count(); i++)
+                            if (searchEngine.Count() != 0)
                             {
-                                Console.WriteLine((i + 1) + ") " + searchEngine[i]);
-                            }
-                            Console.WriteLine("Searched Songs, choose the position of the song you want to hear...");
-                            int indice = int.Parse(Console.ReadLine()) - 1;
-                            Song song = listSongsGlobal[indice]; //La cancion a la que querria escuchar
-                            int cont = 0;
-                            foreach (string word in badWords)
-                            {
-                                if (song.Lyrics.Contains(word) == true && userProfile.Age < 16)
+                                for (int i = 0; i < searchEngine.Count(); i++)
                                 {
-                                    Console.WriteLine("ERROR[!] This content is age restricted");
-                                    Thread.Sleep(1000);
-                                    cont++;
-                                    break;
+                                    Console.WriteLine((i + 1) + ") " + searchEngine[i]);
                                 }
-                            }
-                            Console.WriteLine("Do you want to: \nI)Listen.\nII)Download.\nIII)Add to Playlist.");
-                            string want = Console.ReadLine();
-                            switch (want)
-                            {
-                                case "I":
-                                    if (cont == 0)
+                                Console.WriteLine("Searched Songs, choose the position of the song you want to hear...");
+                                int indice = int.Parse(Console.ReadLine()) - 1;
+                                Song song = listSongsGlobal[indice]; //La cancion a la que querria escuchar
+                                int cont = 0;
+                                foreach (string word in badWords)
+                                {
+                                    if (song.Lyrics.Contains(word) == true && userProfile.Age < 16)
                                     {
-                                        Console.Clear();
-                                        player.PlaySong(song, null, database, usr, userProfile);
+                                        Console.WriteLine("ERROR[!] This content is age restricted");
+                                        Thread.Sleep(1000);
+                                        cont++;
+                                        break;
                                     }
-                                    break;
-                                case "II":
-                                    Console.WriteLine("Song is Downloading...");
-                                    Thread.Sleep(1000 * 5);
-                                    Console.WriteLine("Song Downloaded.");
-                                    Thread.Sleep(1000);
-                                    DownloadSongs.Add(song);
-                                    database.Save_DSongs(DownloadSongs);
-                                    break;
-                                case "III":
-                                    userProfile.PlaylistFavoritosSongs.Add(song);
-                                    break;
+                                }
+                                if (cont == 0)
+                                {
+                                    
+                                    Console.WriteLine("Do you want to: \nI)Listen.\nII)Download.\nIII)Add to Playlist.");
+                                    string want = Console.ReadLine();
+                                    switch (want)
+                                    {
+                                        case "I":
+                                            if (cont == 0)
+                                            {
+                                                Console.Clear();
+                                                player.PlaySong(song, null, database, usr, userProfile);
+                                            }
+                                            break;
+                                        case "II":
+                                            Console.WriteLine("Song is Downloading...");
+                                            Thread.Sleep(1000 * 5);
+                                            Console.WriteLine("Song Downloaded.");
+                                            Thread.Sleep(1000);
+                                            DownloadSongs.Add(song);
+                                            database.Save_DSongs(DownloadSongs);
+                                            break;
+                                        case "III":
+                                            userProfile.PlaylistFavoritosSongs.Add(song);
+                                            break;
+                                    }
+                                }
+                                Console.WriteLine("\n");
                             }
-                            Console.WriteLine("\n");
                         }
                         else if(type == "Videos")
                         {
@@ -277,19 +284,22 @@ namespace FyBuzz_E2
                                         break;
                                     }
                                 }
-                                Console.WriteLine("Do you want to: \nI)Listen.\nII)Add to Playlist.");
-                                string want = Console.ReadLine();
-                                switch (want)
+                                if (cont == 0)
                                 {
-                                    case "I":
-                                        if (cont == 0)
-                                        {
-                                            Console.Clear();
-                                            player.PlayVideo(video, null, database, usr, userProfile);
-                                        }
-                                        break;
-                                    case "II":
-                                        break;
+                                    Console.WriteLine("Do you want to: \nI)Listen.\nII)Add to Playlist.");
+                                    string want = Console.ReadLine();
+                                    switch (want)
+                                    {
+                                        case "I":
+                                            if (cont == 0)
+                                            {
+                                                Console.Clear();
+                                                player.PlayVideo(video, null, database, usr, userProfile);
+                                            }
+                                            break;
+                                        case "II":
+                                            break;
+                                    }
                                 }
                                 Console.WriteLine("\n");
                             }
@@ -309,7 +319,7 @@ namespace FyBuzz_E2
                                 Console.WriteLine("Searched Users, choose the position of the user you want to follow...");
                                 int indice = int.Parse(Console.ReadLine()) - 1;
                                 User u = listUserGlobal[indice];
-                                u.Followers++;
+                                //u.Followers++;
                                 Console.WriteLine("Followed: " + u.SearchedInfoUser());
                                 Console.WriteLine("\n");
                             }
@@ -337,6 +347,7 @@ namespace FyBuzz_E2
                             else if(opc == 3 || opc == 4 || opc == 5)
                             {
                                 DisplayGlobalMult(opc - 3, database);
+                                Thread.Sleep(5000);
                             }
                         }
                         else
@@ -364,6 +375,7 @@ namespace FyBuzz_E2
                         Console.WriteLine("Global Playlist:");
                         DisplayGlobalMult(2,database); //No imprime la lista
                         //database.Save_Users(database.UserDataBase);
+                        Thread.Sleep(2000);
                         Console.WriteLine("\n");
                         break;
                     case "IV":
