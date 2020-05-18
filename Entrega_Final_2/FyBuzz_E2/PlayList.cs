@@ -14,6 +14,7 @@ namespace FyBuzz_E2
         private string namePlayList;
         private string format;
         private int followers;
+        private User creator;
 
         private Dictionary<string, List<Song>> dicCanciones;
         private Dictionary<string, List<Video>> dicVideos;
@@ -22,11 +23,13 @@ namespace FyBuzz_E2
         public Dictionary<string, List<Video>> DicVideos { get => dicVideos; }
         public string Format { get => format; }
         public string NamePlayList { get => namePlayList; }
+        public User Creator { get => creator; set => creator = value; }
 
-        public PlayList(string Nombre, string Formato)
+        public PlayList(string Nombre, string Formato, User Creator)
         {
             format = Formato;
             namePlayList = Nombre;
+            this.creator = Creator;
 
         }
 

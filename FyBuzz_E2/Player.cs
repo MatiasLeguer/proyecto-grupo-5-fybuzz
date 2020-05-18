@@ -73,7 +73,7 @@ namespace FyBuzz_E2
                         if (s != song) break;
                     }
 
-                    //Thread.Sleep(500);
+                    Thread.Sleep(500);
                     cont++;
                 }
                 if (cont == seconds)
@@ -179,7 +179,6 @@ namespace FyBuzz_E2
             //Si es menor de tal edad no puede ver esta pelicula;
 
         }
-
         public int Pause()
         {
             string play = "0";
