@@ -215,7 +215,7 @@ namespace FyBuzz_E2
             }
         }
 
-        public string AddMult(int typeMult, List<string> multInfo,List<Song>listSongsGlobal, List<PlayList> listPLsGlobal,List<Video>listVideosGlobal)
+        public string AddMult(int typeMult, List<string> multInfo,List<Song>listSongsGlobal, List<PlayList> listPLsGlobal,List<Video>listVideosGlobal, string username)
         {
             string description = null;
             List<string> infoCompare;
@@ -251,7 +251,6 @@ namespace FyBuzz_E2
                     {
                         Song cancion = new Song(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], double.Parse(multInfo[7]), multInfo[8], multInfo[9]);
                         listSongsGlobal.Add(cancion);
-                        
                     }
                     break;
 
@@ -291,8 +290,8 @@ namespace FyBuzz_E2
 
                     if (description == null)
                     {
-                        PlayList playlist = new PlayList(multInfo[0], multInfo[1]);
-                        listPLsGlobal.Add(playlist); 
+                        PlayList playlist = new PlayList(multInfo[0], multInfo[1], username);
+                        listPLsGlobal.Add(playlist);
                     }
                     break;
 

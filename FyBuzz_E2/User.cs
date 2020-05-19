@@ -17,6 +17,7 @@ namespace FyBuzz_E2
         protected string email;
         protected int followers;
         protected int following;
+        private List<string> followingList = new List<string>();
         protected bool verified;
         protected bool adsOn;
         protected bool privacy;
@@ -32,14 +33,8 @@ namespace FyBuzz_E2
         public bool Verified { get => verified; set => verified = value; }
         public bool AdsOn { get => adsOn; set => adsOn = value; }
         public bool Privacy { get => privacy; set => privacy = value; }
-        public List<Profile> Perfiles { get => perfiles; set => perfiles = value; } 
-
-        // Constructor
-        public User()
-        {
-
-        }
-
+        public List<Profile> Perfiles { get => perfiles; set => perfiles = value; }
+        public List<string> FollowingList { get => followingList; set => followingList = value; }
 
         public void CreateProfile(string pname, string ppic, string ptype, string pmail, string pgender, int page)
         {
@@ -50,7 +45,7 @@ namespace FyBuzz_E2
         public List<string> AccountSettings()
         {
             // Metodo que entrega la lista de informacion del usuario seleccionado
-            List<string> Settings = new List<string>() { username, password, email, accountType };
+            List<string> Settings = new List<string>() { username, password, email, accountType, followers.ToString(), following.ToString()};
             return Settings;
 
             // ver si efectivamente esta informacion proviene del usuario o si se adquiere de database.
