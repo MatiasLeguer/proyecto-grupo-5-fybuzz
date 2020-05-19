@@ -37,8 +37,9 @@ namespace FyBuzz_E2
                 string dec = Console.ReadLine();
                 switch (dec)
                 {
-
+                    
                     case "I":
+                        database.Load_Users();
                         Console.Write("Username: ");
                         string username = Console.ReadLine();
                         Console.Write("Password: ");
@@ -169,10 +170,10 @@ namespace FyBuzz_E2
             // mostrará todas las playlist del usuario, si es primera vez que ingresa estara la playlist general y la favorita(esta sin nada)
             // es la lista global de playlist que viene de database, pero hay que conectarla
 
-            PlayList favSongs = new PlayList(".mp3", "FavoriteSongs");
+            PlayList favSongs = new PlayList(".mp3", "FavoriteSongs", usr.Username);
             Dictionary<string, List<Song>> playlistFavSongs = favSongs.DicCanciones; //Playlist de favoritos que su nombre es el de arriba.
 
-            PlayList favVideos = new PlayList(".mp3", "FavoriteVideos");
+            PlayList favVideos = new PlayList(".mp3", "FavoriteVideos",usr.Username);
             Dictionary<string, List<Video>> playlistFavVideos = favVideos.DicVideos; //Playlist de favoritos que su nombre es el de arriba.
 
             List<PlayList> followedPL = userProfile.FollowedPlayList; //una lista de todas las playlist, discos, usuarios, etc.
@@ -319,59 +320,109 @@ namespace FyBuzz_E2
                                 Console.WriteLine("Searched Users, choose the position of the user you want to follow...");
                                 int indice = int.Parse(Console.ReadLine()) - 1;
                                 User u = listUserGlobal[indice];
-                                //u.Followers++;
+                                List<string> listuser = usr.FollowingList;
+                                string tryingToFollow = u.Username;
+
+                                if (listuser.Contains(tryingToFollow) == false)
+                                {
+                                    u.Followers = u.Followers + 1;
+                                    usr.Following = usr.Following + 1;
+                                    //foreach(PlayList Pls in )
+                                    //{
+                                      //  userProfile.FollowedPlayList.Add(Pls);
+                                    //}
+                                    //u.FollowingList.Add(usr.Username);
+                                    Console.WriteLine("Succesfully followed user.");
+                                    database.Save_Users(listUserGlobal);
+                                }
+                                else Console.WriteLine("You already follow this user.");
+                                
                                 Console.WriteLine("Followed: " + u.SearchedInfoUser());
+                                Thread.Sleep(2000);
                                 Console.WriteLine("\n");
                             }
                         }
+                        Console.Clear();
                         //database.Save_Users(database.UserDataBase);
                         break;
 
                     case "II":
                         Console.Clear();
-                        if (userProfile.ProfileType == "creator" || userProfile.ProfileType == "admin")
+                        Console.Write("What do you wish to add? (song(0), video(1), Playlist(2))\nDo you wish to Show the list of a specified multimedia? (song(3), video(4), Playlist(5)): ");
+                        int opc = int.Parse(Console.ReadLine());
+                        if(opc == 0 || opc == 1 || opc == 2)
                         {
-
-                            Console.Write("What do you wish to add? (song(0), video(1), Playlist(2))\tDo you wish to Show the list of a specified multimedia? (song(3), video(4), Playlist(5)): ");
-                            int opc = int.Parse(Console.ReadLine());
-                            if(opc == 0 || opc == 1 || opc == 2)
+                            if (userProfile.ProfileType == "creator" || userProfile.ProfileType == "admin")
                             {
                                 List<string> infoMult = AskInfoMult(opc);
-                                string description = database.AddMult(opc, infoMult,listSongsGlobal,listPlayListGlobal,listVideosGlobal);
-                                if (description == null) Console.WriteLine("Multimedia has been registered into the system!"); 
+                                string username = usr.Username;
+                                string description = database.AddMult(opc, infoMult, listSongsGlobal, listPlayListGlobal, listVideosGlobal, username);
+                                if (description == null)
+                                {
+                                    Console.WriteLine("Multimedia has been registered into the system!");
+                                    Thread.Sleep(3000);
+                                }
                                 else Console.WriteLine("ERROR[!] ~{0}", description);
                                 if (opc == 0) database.Save_Songs(listSongsGlobal);
                                 else if (opc == 1) database.Save_Videos(listVideosGlobal);
-                                else if (opc == 2) database.Save_PLs(listPlayListGlobal);
+                                else if (opc == 2)
+                                {
+                                    foreach(PlayList playList in listPlayListGlobal)
+                                    {
+                                        if(playList.Creator == usr.Username)
+                                        {
+                                            userProfile.CreatedPlaylist.Add(playList);
+                                        }
+                                    }
+                                    database.Save_PLs(listPlayListGlobal);
+                                }
                             }
-                            else if(opc == 3 || opc == 4 || opc == 5)
+                            else
                             {
-                                DisplayGlobalMult(opc - 3, database);
-                                Thread.Sleep(5000);
+                                Console.WriteLine("You do not have permission to add Multimedia.");
+                                Thread.Sleep(1000);
                             }
                         }
-                        else
+                        else if(opc == 3 || opc == 4 || opc == 5)
                         {
-                            Console.WriteLine("You do not have permission to add Multimedia.");
-                            Thread.Sleep(1000);
+                            DisplayGlobalMult(opc - 3, database);
+                            Thread.Sleep(5000);
                         }
+                        Console.Clear();
                         break;
                     case "III":
                         Console.Clear();
                         if (playlistFavSongs != null || playlistFavVideos != null)
                         {
                             Console.WriteLine(favSongs.InfoPlayList());
+                            Console.WriteLine("\n");
                             Console.WriteLine(favSongs.InfoPlayList());
+                            Console.WriteLine("\n");
                         }
                         else Console.WriteLine("You don´t have a Favorite Playlist.");
                         Thread.Sleep(1000);
 
                         if (followedPL != null)
                         {
-                            DisplayPlaylists(followedPL); //Este metodo no esta bueno.
+                            foreach (PlayList pl in followedPL)
+                            {
+                                Console.WriteLine(pl.DisplayInfoPlayList());
+                                Console.WriteLine("\n");
+                            }
                         }
                         else Console.WriteLine("You don´t follow anyone Playlist.");
                         Thread.Sleep(1000);
+                        if (userProfile.CreatedPlaylist != null)
+                        {
+                            foreach (PlayList playList in userProfile.CreatedPlaylist)
+                            {
+                                Console.WriteLine(playList.DisplayInfoPlayList());
+                                Console.WriteLine("\n");
+                            }
+                        }
+                        else Console.WriteLine("You don´t have any personal Playlist.");
+                        Thread.Sleep(1000);
+
                         Console.WriteLine("Global Playlist:");
                         DisplayGlobalMult(2,database); //No imprime la lista
                         //database.Save_Users(database.UserDataBase);
@@ -389,12 +440,14 @@ namespace FyBuzz_E2
                             Console.WriteLine("Do you want to change password? (y/n)");
                             string pass = Console.ReadLine();
                             if (pass == "y") server.ChangePassword(listUserGlobal);
-                            else continue;
+                            else break;
+                            //Console.Clear();
                         }
                         else if (settings == "Profile") ProfileSettings(userProfile);
                         else Console.WriteLine("ERROR[!] Invalid Command");
                         Thread.Sleep(1000);
                         Console.WriteLine("---------------------------");
+                        Console.Clear();
                         break;
 
                     case "V":
@@ -800,7 +853,9 @@ namespace FyBuzz_E2
             Console.WriteLine("Password: " + user.AccountSettings()[1] + "\n");
             Console.WriteLine("Email: " + user.AccountSettings()[2] + "\n");
             Console.WriteLine("Account type: " + user.AccountSettings()[3] + "\n");
-            
+            Console.WriteLine("Followers: " + user.AccountSettings()[4] + "\n");
+            Console.WriteLine("Following: " + user.AccountSettings()[5] + "\n");
+
         }
         public void ProfileSettings(Profile profile)
         {

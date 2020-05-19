@@ -46,6 +46,8 @@ namespace FyBuzz_E2
                     }
                     if (cont % 10 == 0)
                     {
+                        Console.WriteLine("Lyrics: {0} \n", s.Lyrics);
+
                         Console.WriteLine("To pause press 0.");
                         Console.WriteLine("To skip press 1.");
                         Console.WriteLine("To preview press 2.");
@@ -82,7 +84,6 @@ namespace FyBuzz_E2
                     string like = Console.ReadLine();
                     if (like == "y")
                     {
-
                         profile.AddFavSongs(s);
                         s.Likes++;
                     }
@@ -94,9 +95,7 @@ namespace FyBuzz_E2
                     FavSongs.Add(s);
                     s.Likes++;
                 }
-                s.GeneralRep++;
-                return;
-                }
+            }
         }
         //Si es menor de tal edad no puede ver esta pelicula;
         public void PlayVideo(Video video, List<Video> p, DataBase d, User user, Profile profile)
@@ -130,6 +129,7 @@ namespace FyBuzz_E2
                     }
                     if (cont % 10 == 0)
                     {
+                        Console.WriteLine("Subtitles: {0} \n", v.Subtitles);
                         Console.WriteLine("To pause press 0.");
                         Console.WriteLine("To skip press 1.");
                         Console.WriteLine("To preview press 2.");

@@ -20,6 +20,7 @@ namespace FyBuzz_E2
         protected List<Video> playlistEnColaVideos;
         protected List<Video> playlistFavoritosVideos;
         protected List<PlayList> followedPlayList;
+        protected List<PlayList> createdPlaylist = new List<PlayList>();
         protected string gender;
         protected int age;
 
@@ -33,6 +34,7 @@ namespace FyBuzz_E2
         public List<Video> PlaylistFavoritosVideos { get => playlistFavoritosVideos; set => playlistFavoritosVideos = value; }
         public List<Video> PlaylistEnColaVideos { get => playlistEnColaVideos; set => playlistEnColaVideos = value; }
         public List<PlayList> FollowedPlayList { get => followedPlayList; set => followedPlayList = value; }
+        public List<PlayList> CreatedPlaylist { get => createdPlaylist; set => createdPlaylist = value;}
 
         public Profile(string pn, string pp, string pt, string pm, string pg, int pa)
         {
