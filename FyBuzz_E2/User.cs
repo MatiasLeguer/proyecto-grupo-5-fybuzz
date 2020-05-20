@@ -17,10 +17,11 @@ namespace FyBuzz_E2
         protected string email;
         protected int followers;
         protected int following;
-        private List<string> followingList = new List<string>();
+        protected List<string> followingList = new List<string>();
         protected bool verified;
         protected bool adsOn;
         protected bool privacy;
+        protected List<PlayList> profilePlaylists = new List<PlayList>();
 
         protected List<Profile> perfiles = new List<Profile>(); 
 
@@ -35,6 +36,7 @@ namespace FyBuzz_E2
         public bool Privacy { get => privacy; set => privacy = value; }
         public List<Profile> Perfiles { get => perfiles; set => perfiles = value; }
         public List<string> FollowingList { get => followingList; set => followingList = value; }
+        public List<PlayList> ProfilePlaylists { get => profilePlaylists; set => profilePlaylists = value; }
 
         public void CreateProfile(string pname, string ppic, string ptype, string pmail, string pgender, int page)
         {

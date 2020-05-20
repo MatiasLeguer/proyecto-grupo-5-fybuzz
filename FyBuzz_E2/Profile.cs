@@ -19,7 +19,7 @@ namespace FyBuzz_E2
         protected List<Song> playlistFavoritosSongs = new List<Song>();
         protected List<Video> playlistEnColaVideos;
         protected List<Video> playlistFavoritosVideos;
-        protected List<PlayList> followedPlayList;
+        protected List<PlayList> followedPlayList = new List<PlayList>();
         protected List<PlayList> createdPlaylist = new List<PlayList>();
         protected string gender;
         protected int age;
