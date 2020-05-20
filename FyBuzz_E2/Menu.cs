@@ -250,7 +250,20 @@ namespace FyBuzz_E2
                                             database.Save_DSongs(DownloadSongs);
                                             break;
                                         case "III":
-                                            userProfile.PlaylistFavoritosSongs.Add(song);
+                                            if (userProfile.CreatedPlaylist.Count() != 0)
+                                            {
+                                                int i = 1;
+                                                Console.WriteLine("Where do you want to add this song?");
+                                                foreach(PlayList playList in userProfile.CreatedPlaylist)
+                                                {
+                                                    Console.WriteLine(i + ") " + playList.DisplayInfoPlayList());
+                                                    i++;
+                                                }
+                                                Console.WriteLine("Please select de number of the Playlist...");
+                                                int createdPlaylistIndex = int.Parse(Console.ReadLine()) - 1;
+                                                userProfile.CreatedPlaylist[createdPlaylistIndex].Songs.Add(song);
+                                            }
+                                            else Console.WriteLine("You don´t have any Playlists, please create one...");
                                             break;
                                     }
                                 }
@@ -299,6 +312,19 @@ namespace FyBuzz_E2
                                             }
                                             break;
                                         case "II":
+                                            if (userProfile.CreatedPlaylist.Count() != 0)
+                                            {
+                                                int i = 1;
+                                                Console.WriteLine("Where do you want to add this video?");
+                                                foreach (PlayList playList in userProfile.CreatedPlaylist)
+                                                {
+                                                    Console.WriteLine(i + ") " + playList.DisplayInfoPlayList());
+                                                    i++;
+                                                }
+                                                Console.WriteLine("Please select de number of the Playlist...");
+                                                int createdPlaylistIndex = int.Parse(Console.ReadLine()) - 1;
+                                                userProfile.CreatedPlaylist[createdPlaylistIndex].Videos.Add(video);
+                                            }
                                             break;
                                     }
                                 }
@@ -430,6 +456,20 @@ namespace FyBuzz_E2
                             foreach (PlayList playList in userProfile.CreatedPlaylist)
                             {
                                 Console.WriteLine(playList.DisplayInfoPlayList());
+                                if(playList.Format == ".mp3" || playList.Format == ".wav")
+                                {
+                                    foreach(Song song in playList.Songs)
+                                    {
+                                        Console.WriteLine(song.SearchedInfoSong());
+                                    }
+                                }
+                                if (playList.Format == ".mp4" || playList.Format == ".mov")
+                                {
+                                    foreach (Video video in playList.Videos)
+                                    {
+                                        Console.WriteLine(video.SearchedInfoVideo());
+                                    }
+                                }
                                 Console.WriteLine("\n");
                             }
                         }

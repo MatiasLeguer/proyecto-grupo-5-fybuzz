@@ -9,8 +9,8 @@ namespace FyBuzz_E2
     [Serializable]
     public class PlayList
     {
-        private List<Song> songs;
-        private List<Video> videos;
+        private List<Song> songs = new List<Song>();
+        private List<Video> videos = new List<Video>();
         private string namePlayList;
         private string format;
         private int followers;
@@ -26,6 +26,8 @@ namespace FyBuzz_E2
         public string NamePlayList { get => namePlayList; }
         public string Creator { get => creator; set => creator = value; }
         public string ProfileCreator { get => profileCreator; set => profileCreator = value; }
+        public List<Song> Songs { get => songs; set => songs = value; }
+        public List<Video> Videos { get => videos; set => videos = value; }
 
         public PlayList(string Nombre, string Formato, string Creator, string ProfileCreator)
         {
