@@ -15,7 +15,7 @@ namespace FyBuzz_E2
                 new Song("MAS DE UNA CITA", "Zion & Lenox", "LAS QUE NO IBAN A SALIR", "Rimas entertainment LLC", "Trap", "10/05/2020", "Z&L Rcds.", 3.5, "Se necesita, ey, más de una cita, ey", ".wav") };
             List<Video> baseListVideo = new List<Video>() { new Video("United","Tom Holland-Cris Pratt","Disney", "", "16:9" ,"1080x1920", "0","Movie", false,120,"i love you",".mp4"), 
                 new Video("Create a C# App from start to finish","freecodecamp.org","freecodecamp.org","12/12/2019","16:9","1080x1920","16","C# Course",true,1440,"fuck", ".mov") };
-            List<PlayList> baseListPLs = new List<PlayList>() { new PlayList("Programming hard", ".mp3","FyBuZz"), new PlayList("TikToks that cured my depression", ".mp4", "FyBuZz") };
+            List<PlayList> baseListPLs = new List<PlayList>() { new PlayList("Programming hard", ".mp3","FyBuZz", "FyBuZz"), new PlayList("TikToks that cured my depression", ".mp4", "FyBuZz", "FyBuZz") };
             List<Song> downloadSongs = new List<Song>() { new Song("", "", "", "", "", "", "", 0, "", "") };
 
             List<User> baseListUser = new List<User>() {new User()};

@@ -170,10 +170,10 @@ namespace FyBuzz_E2
             // mostrará todas las playlist del usuario, si es primera vez que ingresa estara la playlist general y la favorita(esta sin nada)
             // es la lista global de playlist que viene de database, pero hay que conectarla
 
-            PlayList favSongs = new PlayList(".mp3", "FavoriteSongs", usr.Username);
+            PlayList favSongs = new PlayList(".mp3", "FavoriteSongs", usr.Username,userProfile.ProfileName);
             Dictionary<string, List<Song>> playlistFavSongs = favSongs.DicCanciones; //Playlist de favoritos que su nombre es el de arriba.
 
-            PlayList favVideos = new PlayList(".mp3", "FavoriteVideos",usr.Username);
+            PlayList favVideos = new PlayList(".mp3", "FavoriteVideos",usr.Username, userProfile.ProfileName);
             Dictionary<string, List<Video>> playlistFavVideos = favVideos.DicVideos; //Playlist de favoritos que su nombre es el de arriba.
 
             List<PlayList> followedPL = userProfile.FollowedPlayList; //una lista de todas las playlist, discos, usuarios, etc.
@@ -327,18 +327,24 @@ namespace FyBuzz_E2
                                 {
                                     u.Followers = u.Followers + 1;
                                     usr.Following = usr.Following + 1;
-                                    //foreach(PlayList Pls in )
-                                    //{
-                                      //  userProfile.FollowedPlayList.Add(Pls);
-                                    //}
-                                    //u.FollowingList.Add(usr.Username);
-                                    Console.WriteLine("Succesfully followed user.");
+                                    if (u.ProfilePlaylists != null)
+                                    {
+                                        foreach (PlayList Pls in u.ProfilePlaylists)
+                                        {
+                                            followedPL.Add(Pls);
+
+                                        }
+                                    }
+                                    else Console.WriteLine("This user hasn´t created any PlayList");
+                                    usr.FollowingList.Add(u.Username);
+                                    Console.WriteLine("\nFollowed: " + u.SearchedInfoUser());
+                                    Thread.Sleep(2000);
                                     database.Save_Users(listUserGlobal);
+                                    
                                 }
                                 else Console.WriteLine("You already follow this user.");
-                                
-                                Console.WriteLine("Followed: " + u.SearchedInfoUser());
-                                Thread.Sleep(2000);
+                                Thread.Sleep(1000);
+                               
                                 Console.WriteLine("\n");
                             }
                         }
@@ -356,7 +362,8 @@ namespace FyBuzz_E2
                             {
                                 List<string> infoMult = AskInfoMult(opc);
                                 string username = usr.Username;
-                                string description = database.AddMult(opc, infoMult, listSongsGlobal, listPlayListGlobal, listVideosGlobal, username);
+                                string profileUser = userProfile.ProfileName;
+                                string description = database.AddMult(opc, infoMult, listSongsGlobal, listPlayListGlobal, listVideosGlobal, username, profileUser);
                                 if (description == null)
                                 {
                                     Console.WriteLine("Multimedia has been registered into the system!");
@@ -369,9 +376,10 @@ namespace FyBuzz_E2
                                 {
                                     foreach(PlayList playList in listPlayListGlobal)
                                     {
-                                        if(playList.Creator == usr.Username)
+                                        if(playList.Creator == usr.Username && playList.ProfileCreator == userProfile.ProfileName)
                                         {
                                             userProfile.CreatedPlaylist.Add(playList);
+                                            usr.ProfilePlaylists.Add(playList);
                                         }
                                     }
                                     database.Save_PLs(listPlayListGlobal);
@@ -394,16 +402,19 @@ namespace FyBuzz_E2
                         Console.Clear();
                         if (playlistFavSongs != null || playlistFavVideos != null)
                         {
+                            Console.WriteLine("Liked Playlist:");
                             Console.WriteLine(favSongs.InfoPlayList());
                             Console.WriteLine("\n");
                             Console.WriteLine(favSongs.InfoPlayList());
                             Console.WriteLine("\n");
                         }
                         else Console.WriteLine("You don´t have a Favorite Playlist.");
+                        Console.WriteLine("-------------------------------------------------------");
                         Thread.Sleep(1000);
 
-                        if (followedPL != null)
+                        if (followedPL.Count() != 0)
                         {
+                            Console.WriteLine("Followed Playlist:");
                             foreach (PlayList pl in followedPL)
                             {
                                 Console.WriteLine(pl.DisplayInfoPlayList());
@@ -411,9 +422,11 @@ namespace FyBuzz_E2
                             }
                         }
                         else Console.WriteLine("You don´t follow anyone Playlist.");
+                        Console.WriteLine("-------------------------------------------------------");
                         Thread.Sleep(1000);
-                        if (userProfile.CreatedPlaylist != null)
+                        if (userProfile.CreatedPlaylist.Count() != 0)
                         {
+                            Console.WriteLine("Personal Playlist:");
                             foreach (PlayList playList in userProfile.CreatedPlaylist)
                             {
                                 Console.WriteLine(playList.DisplayInfoPlayList());
@@ -421,13 +434,16 @@ namespace FyBuzz_E2
                             }
                         }
                         else Console.WriteLine("You don´t have any personal Playlist.");
+                        Console.WriteLine("-------------------------------------------------------");
                         Thread.Sleep(1000);
-
+                        
                         Console.WriteLine("Global Playlist:");
-                        DisplayGlobalMult(2,database); //No imprime la lista
-                        //database.Save_Users(database.UserDataBase);
-                        Thread.Sleep(2000);
+                        DisplayGlobalMult(2,database);
+
+                        Thread.Sleep(6000);
+                        Console.WriteLine("-------------------------------------------------------");
                         Console.WriteLine("\n");
+                        Console.Clear();
                         break;
                     case "IV":
                         Console.Clear();
@@ -437,10 +453,19 @@ namespace FyBuzz_E2
                         if (settings == "Account")
                         {
                             AccountSettings(usr);
+                            Console.WriteLine("Following list:");
+                            foreach(String username in usr.FollowingList)
+                            {
+                                Console.WriteLine(username);
+                            }
                             Console.WriteLine("Do you want to change password? (y/n)");
                             string pass = Console.ReadLine();
                             if (pass == "y") server.ChangePassword(listUserGlobal);
-                            else break;
+                            else
+                            {
+                                Console.Clear();
+                                break;
+                            }
                             //Console.Clear();
                         }
                         else if (settings == "Profile") ProfileSettings(userProfile);
