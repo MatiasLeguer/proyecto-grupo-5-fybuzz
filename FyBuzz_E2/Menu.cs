@@ -161,7 +161,7 @@ namespace FyBuzz_E2
             return null;
         }
 
-        public int DisplayStart(Profile userProfile,User usr, List<User> listUserGlobal, List<Song> listSongsGlobal, List<Song> DownloadSongs, List<Video> listVideosGlobal, List<PlayList> listPlayListGlobal) // solo funciona si DisplayLogIn() retorna true se ve en program.
+        public int DisplayStart(Profile userProfile,User usr, List<User> listUserGlobal, List<Song> listSongsGlobal, List<Song> DownloadSongs, List<Video> listVideosGlobal, List<PlayList> listPlayListGlobal, List<PlayList> listPlaylistPriv) // solo funciona si DisplayLogIn() retorna true se ve en program.
         {
             
             int ret = 0;
@@ -250,7 +250,20 @@ namespace FyBuzz_E2
                                             database.Save_DSongs(DownloadSongs);
                                             break;
                                         case "III":
-                                            userProfile.PlaylistFavoritosSongs.Add(song);
+                                            if (userProfile.CreatedPlaylist.Count() != 0)
+                                            {
+                                                int i = 1;
+                                                Console.WriteLine("Where do you want to add this song?");
+                                                foreach(PlayList playList in userProfile.CreatedPlaylist)
+                                                {
+                                                    Console.WriteLine(i + ") " + playList.DisplayInfoPlayList());
+                                                    i++;
+                                                }
+                                                Console.WriteLine("Please select de number of the Playlist...");
+                                                int createdPlaylistIndex = int.Parse(Console.ReadLine()) - 1;
+                                                userProfile.CreatedPlaylist[createdPlaylistIndex].Songs.Add(song);
+                                            }
+                                            else Console.WriteLine("You don´t have any Playlists, please create one...");
                                             break;
                                     }
                                 }
@@ -299,6 +312,19 @@ namespace FyBuzz_E2
                                             }
                                             break;
                                         case "II":
+                                            if (userProfile.CreatedPlaylist.Count() != 0)
+                                            {
+                                                int i = 1;
+                                                Console.WriteLine("Where do you want to add this video?");
+                                                foreach (PlayList playList in userProfile.CreatedPlaylist)
+                                                {
+                                                    Console.WriteLine(i + ") " + playList.DisplayInfoPlayList());
+                                                    i++;
+                                                }
+                                                Console.WriteLine("Please select de number of the Playlist...");
+                                                int createdPlaylistIndex = int.Parse(Console.ReadLine()) - 1;
+                                                userProfile.CreatedPlaylist[createdPlaylistIndex].Videos.Add(video);
+                                            }
                                             break;
                                     }
                                 }
@@ -363,7 +389,13 @@ namespace FyBuzz_E2
                                 List<string> infoMult = AskInfoMult(opc);
                                 string username = usr.Username;
                                 string profileUser = userProfile.ProfileName;
-                                string description = database.AddMult(opc, infoMult, listSongsGlobal, listPlayListGlobal, listVideosGlobal, username, profileUser);
+                                string priv;
+                                if (opc == 2)
+                                {
+                                    Console.WriteLine("Do you want the Playlist to be private or public?(y/n)");
+                                }
+                                priv = Console.ReadLine();
+                                string description = database.AddMult(opc, infoMult, listSongsGlobal, listPlayListGlobal, listVideosGlobal, username, profileUser, priv,listPlaylistPriv);
                                 if (description == null)
                                 {
                                     Console.WriteLine("Multimedia has been registered into the system!");
@@ -382,7 +414,16 @@ namespace FyBuzz_E2
                                             usr.ProfilePlaylists.Add(playList);
                                         }
                                     }
+                                    foreach (PlayList playList in listPlaylistPriv)
+                                    {
+                                        if (playList.Creator == usr.Username && playList.ProfileCreator == userProfile.ProfileName)
+                                        {
+                                            userProfile.CreatedPlaylist.Add(playList);
+                                            //usr.ProfilePlaylists.Add(playList); Si la PL es privada no se agrega al usuario, por lo tanto no se puede seguir.
+                                        }
+                                    }
                                     database.Save_PLs(listPlayListGlobal);
+                                    database.Save_PLs_Priv(listPlaylistPriv);
                                 }
                             }
                             else
@@ -418,7 +459,22 @@ namespace FyBuzz_E2
                             foreach (PlayList pl in followedPL)
                             {
                                 Console.WriteLine(pl.DisplayInfoPlayList());
-                                Console.WriteLine("\n");
+                                if (pl.Format == ".mp3" || pl.Format == ".wav")
+                                {
+                                    Console.WriteLine("\tSongs in Playlist:");
+                                    foreach (Song song in pl.Songs)
+                                    {
+                                        Console.WriteLine("\t" + song.SearchedInfoSong());
+                                    }
+                                }
+                                if (pl.Format == ".mp4" || pl.Format == ".mov")
+                                {
+                                    Console.WriteLine("\tVideos in Playlist:");
+                                    foreach (Video video in pl.Videos)
+                                    {
+                                        Console.WriteLine("\t" + video.SearchedInfoVideo());
+                                    }
+                                }
                             }
                         }
                         else Console.WriteLine("You don´t follow anyone Playlist.");
@@ -430,6 +486,22 @@ namespace FyBuzz_E2
                             foreach (PlayList playList in userProfile.CreatedPlaylist)
                             {
                                 Console.WriteLine(playList.DisplayInfoPlayList());
+                                if(playList.Format == ".mp3" || playList.Format == ".wav")
+                                {
+                                    Console.WriteLine("\tSongs in Playlist:");
+                                    foreach (Song song in playList.Songs)
+                                    {
+                                        Console.WriteLine("\t" + song.SearchedInfoSong());
+                                    }
+                                }
+                                if (playList.Format == ".mp4" || playList.Format == ".mov")
+                                {
+                                    Console.WriteLine("\tVideos in Playlist:");
+                                    foreach (Video video in playList.Videos)
+                                    {
+                                        Console.WriteLine("\t" + video.SearchedInfoVideo());
+                                    }
+                                }
                                 Console.WriteLine("\n");
                             }
                         }
