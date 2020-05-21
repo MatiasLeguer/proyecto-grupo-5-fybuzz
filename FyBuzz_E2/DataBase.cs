@@ -201,7 +201,23 @@ namespace FyBuzz_E2
             stream.Close();
             return listPLsGlobal;
         }
-        
+        public void Save_PLs_Priv(List<PlayList> listPLsGlobal)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("PrivatePlayLists.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, listPLsGlobal);
+            formatter.Serialize(stream, "\n");
+            stream.Close();
+        }
+        public List<PlayList> Load_PLs_Priv()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("PrivatePlayLists.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<PlayList> listPLsGlobal = (List<PlayList>)formatter.Deserialize(stream);
+            stream.Close();
+            return listPLsGlobal;
+        }
+
         //Metodo para cambiar contraseña por newpsswds
 
         public void ChangePassword(string usr, string newpsswd)
@@ -215,7 +231,7 @@ namespace FyBuzz_E2
             }
         }
 
-        public string AddMult(int typeMult, List<string> multInfo,List<Song>listSongsGlobal, List<PlayList> listPLsGlobal,List<Video>listVideosGlobal, string username, string profileUsername)
+        public string AddMult(int typeMult, List<string> multInfo,List<Song>listSongsGlobal, List<PlayList> listPLsGlobal,List<Video>listVideosGlobal, string username, string profileUsername, string privacy,List<PlayList> listPLsPriv)
         {
             string description = null;
             List<string> infoCompare;
@@ -291,7 +307,8 @@ namespace FyBuzz_E2
                     if (description == null)
                     {
                         PlayList playlist = new PlayList(multInfo[0], multInfo[1], username, profileUsername);
-                        listPLsGlobal.Add(playlist);
+                        if (privacy == "n") listPLsGlobal.Add(playlist);
+                        else if (privacy == "y") listPLsPriv.Add(playlist);
                     }
                     break;
 
