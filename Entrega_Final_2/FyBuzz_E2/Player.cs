@@ -15,16 +15,15 @@ namespace FyBuzz_E2
         // hacer un get a la duracion y al nombre
 
 
-        public void PlaySong(Song song, List<Song> p, DataBase d, User user, Profile profile)
+        public void PlaySong(int cont, Song song, PlayList p, DataBase d, string name, User user, Profile profile)
         {
             Song s = song;
-            bool loop = true;
-            while (loop)
-            {  
+            while (true)
+            {
                 double seconds = 60 * s.Duration; //duration viene de multimedia y es la cantidad de minutos como decimal, hay que establecer una relacion
                 Console.WriteLine("Playing: " + s.Name); //name tambien viene de multimedia.
                 string verif = "-1";
-                int condition = -1, cont = 0;
+                int condition = -1;
                 while (cont < seconds)
                 {
                     if (user.AdsOn == true && cont % 26 == 0) 
@@ -40,7 +39,7 @@ namespace FyBuzz_E2
                         Console.WriteLine("-------------------------------------------------------");
                         for (int i = 0; i < 1; i++)
                         {
-                            Thread.Sleep(100);
+                            Thread.Sleep(5000);
                         }
                     }
                     if (cont % 10 == 0)
@@ -63,12 +62,12 @@ namespace FyBuzz_E2
                     }
                     else if (verif == "1")
                     {
-                         s = SkipOrPreviousSong(s, p, d, 1);
+                         s = SkipOrPreviousSong(s, p, d, name, 1);
                         if (s != song) break;
                     }
                     else if (verif == "2")
                     {
-                        s = SkipOrPreviousSong(s, p, d, 2);
+                        s = SkipOrPreviousSong(s, p, d, name, 2);
                         if (s != song) break;
                     }
 
@@ -81,35 +80,28 @@ namespace FyBuzz_E2
                     string like = Console.ReadLine();
                     if (like == "y")
                     {
-
-                        profile.AddFavSongs(s);
+                        List<Song> FavSongs = profile.PlaylistFavoritosSongs;
+                        FavSongs.Add(s);
                         s.Likes++;
                     }
                     s.GeneralRep++;
-                    loop = false;
-                    List<Song> FavSongs = profile.PlaylistFavoritosSongs;
-                    FavSongs.Add(s);
-                    s.Likes++;
-                    break;
-
-
-                }
-                    s.GeneralRep++;
                     return;
-
+                }
             }
+            //Si es menor de tal edad no puede ver esta pelicula;
+
+
+
         }
-        //Si es menor de tal edad no puede ver esta pelicula;
-        public void PlayVideo(Video video, List<Video> p, DataBase d, User user, Profile profile)
+        public void PlayVideo(int cont, Video video, PlayList p, DataBase d, string name,User user, Profile profile)
         {
             Video v = video;
-            bool loop = true;
-            while (loop)
+            while (true)
             {
                 double seconds = 60 * v.Duration; //duration viene de multimedia y es la cantidad de minutos como decimal, hay que establecer una relacion
                 Console.WriteLine("Playing: " + v.Name); //name tambien viene de multimedia.
                 string verif = "-1";
-                int condition = -1, cont = 0;
+                int condition = -1;
                 while (cont < seconds)
                 {
                     if (user.AdsOn == true && cont % 26 == 0)
@@ -127,7 +119,7 @@ namespace FyBuzz_E2
                         {
                             Thread.Sleep(5000);
                         }
-
+                        
                     }
                     if (cont % 10 == 0)
                     {
@@ -149,16 +141,16 @@ namespace FyBuzz_E2
                     }
                     else if (verif == "1")
                     {
-                        v = SkipOrPreviousVideo(v, p, d, 1);
+                        v = SkipOrPreviousVideo(v, p, d, name, 1);
                         if (v != video) break;
                     }
                     else if (verif == "2")
                     {
-                        v = SkipOrPreviousVideo(v, p, d, 2);
+                        v = SkipOrPreviousVideo(v, p, d, name, 2);
                         if (v != video) break;
                     }
 
-                    Thread.Sleep(100);
+                    Thread.Sleep(500);
                     cont++;
                 }
                 if (cont == seconds)
@@ -171,9 +163,7 @@ namespace FyBuzz_E2
                         video.Likes++;
                     }
                     video.GeneralRep++;
-                    loop = false;
-                    break;
-
+                    return;
                 }
 
             }
@@ -201,7 +191,7 @@ namespace FyBuzz_E2
             return int.Parse(play);
         }
 
-        public Song SkipOrPreviousSong(Song s, List<Song> p, DataBase d, int typeOption)
+        public Song SkipOrPreviousSong(Song s, PlayList p, DataBase d, string name, int typeOption)
         {
             List<Song> ListSongsGlobal = new List<Song>();
             ListSongsGlobal = d.Load_Songs();
@@ -220,7 +210,7 @@ namespace FyBuzz_E2
                 }
                 else
                 {
-                    List<Song> sPlaylist = p;
+                    List<Song> sPlaylist = p.DicCanciones[name];
                     for (int i = 0; i < sPlaylist.Count(); i++)
                     {
                         if ((s == sPlaylist[i]) && (i != (sPlaylist.Count() - 1))) return sPlaylist[i + 1];
@@ -243,7 +233,7 @@ namespace FyBuzz_E2
                 }
                 else
                 {
-                    List<Song> sPlaylist = p;
+                    List<Song> sPlaylist = p.DicCanciones[name];
                     for (int i = 0; i < sPlaylist.Count(); i++)
                     {
                         if ((s == sPlaylist[i]) && (i != 0)) return sPlaylist[i - 1];
@@ -256,7 +246,7 @@ namespace FyBuzz_E2
 
         }
 
-        public Video SkipOrPreviousVideo(Video v, List<Video> p, DataBase d, int typeOption)
+        public Video SkipOrPreviousVideo(Video v, PlayList p, DataBase d, string name, int typeOption)
         {
             List<Video> ListVideosGlobal = new List<Video>();
             ListVideosGlobal = d.Load_Videos();
@@ -275,7 +265,7 @@ namespace FyBuzz_E2
                 }
                 else
                 {
-                    List<Video> vPlaylist = p;
+                    List<Video> vPlaylist = p.DicVideos[name];
                     for (int i = 0; i < vPlaylist.Count(); i++)
                     {
                         if ((v == vPlaylist[i]) && (i != (vPlaylist.Count() - 1))) return vPlaylist[i + 1];
@@ -298,7 +288,7 @@ namespace FyBuzz_E2
                 }
                 else
                 {
-                    List<Video> vPlaylist = p;
+                    List<Video> vPlaylist = p.DicVideos[name];
                     for (int i = 0; i < vPlaylist.Count(); i++)
                     {
                         if ((v == vPlaylist[i]) && (i != 0)) return vPlaylist[i - 1];
@@ -313,41 +303,31 @@ namespace FyBuzz_E2
 
 
 
-        public int RandomMult(Profile p, int typeFormat, string typeP)
+        /*public void Random(PlayList playList)
         {
             Random random = new Random();
-            if (typeFormat == 0)
+            int cont = 0;
+            if (playList.Format == ".mp3" || playList.Format == ".wav")
             {
-                if (typeP == "Fav")
+                Dictionary<string, List<Song>> playlistDicSong = playList.DicCanciones;
+                foreach (List<Song> listsong in playlistDicSong.Values)
                 {
-                    int largoS = p.PlaylistFavoritosSongs.Count();
-                    return random.Next(0, largoS);
+                    int len = listsong.Count();
+                    
+                    PlaySong(cont, listsong[random.Next(0,len)], true);
+                    
                 }
-
             }
             else
             {
-                if (typeP == "Fav")
+                Dictionary<string, List<Video>> playlistDicVideo = playList.DicVideos;
+                foreach (List<Video> listvideo in playlistDicVideo.Values)
                 {
-                    int largoV = p.PlaylistFavoritosVideos.Count();
-                    return random.Next(0, largoV);
-                }
-                else if (typeP == "Foll")
-                {
+                    int len = listvideo.Count();
 
+                    PlayVideo(cont, listvideo[random.Next(0, len)], true);
                 }
-                else
-                {
-
-                }
-
             }
-            return 2;
-
-        }
-
-
+        }*/
     }
-       
-
 }
