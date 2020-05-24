@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entrega3 FyBuZz", "Entrega3 FyBuZz.csproj", "{664DC41A-3470-4D91-A7D6-BAEA67434276}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelos", "..\Modelos\Modelos.csproj", "{809E0C96-6C5C-4B74-8E68-3CE3A11A98BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{664DC41A-3470-4D91-A7D6-BAEA67434276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{664DC41A-3470-4D91-A7D6-BAEA67434276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{664DC41A-3470-4D91-A7D6-BAEA67434276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{664DC41A-3470-4D91-A7D6-BAEA67434276}.Release|Any CPU.Build.0 = Release|Any CPU
+		{809E0C96-6C5C-4B74-8E68-3CE3A11A98BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{809E0C96-6C5C-4B74-8E68-3CE3A11A98BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{809E0C96-6C5C-4B74-8E68-3CE3A11A98BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{809E0C96-6C5C-4B74-8E68-3CE3A11A98BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95E71061-750F-4098-8BA7-A909B6544F08}
+	EndGlobalSection
+EndGlobal
