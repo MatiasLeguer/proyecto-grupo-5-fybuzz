@@ -30,12 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FyBuZz));
             this.WelcomePanel = new System.Windows.Forms.Panel();
-            this.LogoWelcome = new System.Windows.Forms.PictureBox();
             this.WelcomeCloseFyBuZz = new System.Windows.Forms.Button();
             this.WelcomeRegisterButton = new System.Windows.Forms.Button();
             this.WelcomeLogInButton = new System.Windows.Forms.Button();
             this.WelcomeLabel = new System.Windows.Forms.Label();
             this.RegisterPanel = new System.Windows.Forms.Panel();
+            this.RegisterInvalidCredencialsTextBox = new System.Windows.Forms.TextBox();
+            this.AgeRegisterDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.ProfileTypeRegisterDomainUp = new System.Windows.Forms.DomainUpDown();
+            this.GenderRegisterDomainUp = new System.Windows.Forms.DomainUpDown();
+            this.SubscriptionRegisterDomainUp = new System.Windows.Forms.DomainUpDown();
             this.RegisterRegisterButton = new System.Windows.Forms.Button();
             this.GobackRegisterButton = new System.Windows.Forms.Button();
             this.PrivacyRegisterCheckBox = new System.Windows.Forms.CheckBox();
@@ -50,34 +54,36 @@
             this.PrivacyRegisterLabel = new System.Windows.Forms.Label();
             this.GenderRegisterLabel = new System.Windows.Forms.Label();
             this.RegisterUsernameLabel = new System.Windows.Forms.Label();
-            this.LogoRegister = new System.Windows.Forms.PictureBox();
             this.RegisterLabel = new System.Windows.Forms.Label();
             this.LogInPanel = new System.Windows.Forms.Panel();
+            this.LogInInvalidCredentialsTetxbox = new System.Windows.Forms.TextBox();
+            this.LogInLogInButton = new System.Windows.Forms.Button();
             this.GoBackLoginButton = new System.Windows.Forms.Button();
-            this.LogoLogIn = new System.Windows.Forms.PictureBox();
             this.UserLogInTextBox = new System.Windows.Forms.TextBox();
             this.PasswordLogInTextBox = new System.Windows.Forms.TextBox();
             this.UsernameLogInLabel = new System.Windows.Forms.Label();
             this.PasswordLogInLabel = new System.Windows.Forms.Label();
             this.LogInLogInLabel = new System.Windows.Forms.Label();
-            this.SubscriptionRegisterDomainUp = new System.Windows.Forms.DomainUpDown();
-            this.GenderRegisterDomainUp = new System.Windows.Forms.DomainUpDown();
-            this.ProfileTypeRegisterDomainUp = new System.Windows.Forms.DomainUpDown();
-            this.AgeRegisterDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.LogInLogInButton = new System.Windows.Forms.Button();
-            this.LogInInvalidCredentialsLabel = new System.Windows.Forms.Label();
+            this.ProfilePanel = new System.Windows.Forms.Panel();
+            this.ProfileProfilesLabel = new System.Windows.Forms.Label();
+            this.WelcomeLogo = new System.Windows.Forms.PictureBox();
+            this.LogInLogo = new System.Windows.Forms.PictureBox();
+            this.RegisterLogo = new System.Windows.Forms.PictureBox();
+            this.ProfileLogo = new System.Windows.Forms.PictureBox();
             this.WelcomePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoWelcome)).BeginInit();
             this.RegisterPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoRegister)).BeginInit();
             this.LogInPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoLogIn)).BeginInit();
+            this.ProfilePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogInLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RegisterLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfileLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // WelcomePanel
             // 
-            this.WelcomePanel.BackColor = System.Drawing.Color.MidnightBlue;
-            this.WelcomePanel.Controls.Add(this.LogoWelcome);
+            this.WelcomePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.WelcomePanel.Controls.Add(this.WelcomeLogo);
             this.WelcomePanel.Controls.Add(this.WelcomeCloseFyBuZz);
             this.WelcomePanel.Controls.Add(this.WelcomeRegisterButton);
             this.WelcomePanel.Controls.Add(this.WelcomeLogInButton);
@@ -85,24 +91,14 @@
             this.WelcomePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WelcomePanel.Location = new System.Drawing.Point(0, 0);
             this.WelcomePanel.Name = "WelcomePanel";
-            this.WelcomePanel.Size = new System.Drawing.Size(712, 761);
+            this.WelcomePanel.Size = new System.Drawing.Size(709, 784);
             this.WelcomePanel.TabIndex = 0;
-            // 
-            // LogoWelcome
-            // 
-            this.LogoWelcome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LogoWelcome.BackgroundImage")));
-            this.LogoWelcome.InitialImage = null;
-            this.LogoWelcome.Location = new System.Drawing.Point(184, 148);
-            this.LogoWelcome.Name = "LogoWelcome";
-            this.LogoWelcome.Size = new System.Drawing.Size(339, 200);
-            this.LogoWelcome.TabIndex = 4;
-            this.LogoWelcome.TabStop = false;
             // 
             // WelcomeCloseFyBuZz
             // 
-            this.WelcomeCloseFyBuZz.Location = new System.Drawing.Point(184, 638);
+            this.WelcomeCloseFyBuZz.Location = new System.Drawing.Point(228, 661);
             this.WelcomeCloseFyBuZz.Name = "WelcomeCloseFyBuZz";
-            this.WelcomeCloseFyBuZz.Size = new System.Drawing.Size(339, 99);
+            this.WelcomeCloseFyBuZz.Size = new System.Drawing.Size(245, 99);
             this.WelcomeCloseFyBuZz.TabIndex = 3;
             this.WelcomeCloseFyBuZz.Text = "Close FyBuZz";
             this.WelcomeCloseFyBuZz.UseVisualStyleBackColor = true;
@@ -110,9 +106,9 @@
             // 
             // WelcomeRegisterButton
             // 
-            this.WelcomeRegisterButton.Location = new System.Drawing.Point(184, 509);
+            this.WelcomeRegisterButton.Location = new System.Drawing.Point(228, 537);
             this.WelcomeRegisterButton.Name = "WelcomeRegisterButton";
-            this.WelcomeRegisterButton.Size = new System.Drawing.Size(339, 99);
+            this.WelcomeRegisterButton.Size = new System.Drawing.Size(245, 99);
             this.WelcomeRegisterButton.TabIndex = 2;
             this.WelcomeRegisterButton.Text = "Register";
             this.WelcomeRegisterButton.UseVisualStyleBackColor = true;
@@ -120,9 +116,9 @@
             // 
             // WelcomeLogInButton
             // 
-            this.WelcomeLogInButton.Location = new System.Drawing.Point(184, 376);
+            this.WelcomeLogInButton.Location = new System.Drawing.Point(228, 411);
             this.WelcomeLogInButton.Name = "WelcomeLogInButton";
-            this.WelcomeLogInButton.Size = new System.Drawing.Size(339, 99);
+            this.WelcomeLogInButton.Size = new System.Drawing.Size(245, 99);
             this.WelcomeLogInButton.TabIndex = 1;
             this.WelcomeLogInButton.Text = "Log-In";
             this.WelcomeLogInButton.UseVisualStyleBackColor = true;
@@ -141,7 +137,9 @@
             // 
             // RegisterPanel
             // 
-            this.RegisterPanel.BackColor = System.Drawing.Color.MidnightBlue;
+            this.RegisterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.RegisterPanel.Controls.Add(this.RegisterLogo);
+            this.RegisterPanel.Controls.Add(this.RegisterInvalidCredencialsTextBox);
             this.RegisterPanel.Controls.Add(this.AgeRegisterDateTimePicker);
             this.RegisterPanel.Controls.Add(this.ProfileTypeRegisterDomainUp);
             this.RegisterPanel.Controls.Add(this.GenderRegisterDomainUp);
@@ -160,13 +158,70 @@
             this.RegisterPanel.Controls.Add(this.PrivacyRegisterLabel);
             this.RegisterPanel.Controls.Add(this.GenderRegisterLabel);
             this.RegisterPanel.Controls.Add(this.RegisterUsernameLabel);
-            this.RegisterPanel.Controls.Add(this.LogoRegister);
             this.RegisterPanel.Controls.Add(this.RegisterLabel);
             this.RegisterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RegisterPanel.Location = new System.Drawing.Point(0, 0);
             this.RegisterPanel.Name = "RegisterPanel";
-            this.RegisterPanel.Size = new System.Drawing.Size(712, 761);
+            this.RegisterPanel.Size = new System.Drawing.Size(709, 784);
             this.RegisterPanel.TabIndex = 1;
+            // 
+            // RegisterInvalidCredencialsTextBox
+            // 
+            this.RegisterInvalidCredencialsTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.RegisterInvalidCredencialsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RegisterInvalidCredencialsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegisterInvalidCredencialsTextBox.ForeColor = System.Drawing.Color.White;
+            this.RegisterInvalidCredencialsTextBox.Location = new System.Drawing.Point(53, 693);
+            this.RegisterInvalidCredencialsTextBox.Name = "RegisterInvalidCredencialsTextBox";
+            this.RegisterInvalidCredencialsTextBox.ReadOnly = true;
+            this.RegisterInvalidCredencialsTextBox.Size = new System.Drawing.Size(333, 19);
+            this.RegisterInvalidCredencialsTextBox.TabIndex = 21;
+            // 
+            // AgeRegisterDateTimePicker
+            // 
+            this.AgeRegisterDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AgeRegisterDateTimePicker.Location = new System.Drawing.Point(214, 577);
+            this.AgeRegisterDateTimePicker.Name = "AgeRegisterDateTimePicker";
+            this.AgeRegisterDateTimePicker.Size = new System.Drawing.Size(312, 26);
+            this.AgeRegisterDateTimePicker.TabIndex = 20;
+            this.AgeRegisterDateTimePicker.Value = new System.DateTime(2020, 5, 23, 0, 0, 0, 0);
+            // 
+            // ProfileTypeRegisterDomainUp
+            // 
+            this.ProfileTypeRegisterDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProfileTypeRegisterDomainUp.Items.Add("creator");
+            this.ProfileTypeRegisterDomainUp.Items.Add("viewer");
+            this.ProfileTypeRegisterDomainUp.Location = new System.Drawing.Point(214, 637);
+            this.ProfileTypeRegisterDomainUp.Name = "ProfileTypeRegisterDomainUp";
+            this.ProfileTypeRegisterDomainUp.ReadOnly = true;
+            this.ProfileTypeRegisterDomainUp.Size = new System.Drawing.Size(312, 26);
+            this.ProfileTypeRegisterDomainUp.TabIndex = 2;
+            this.ProfileTypeRegisterDomainUp.Text = "creator";
+            // 
+            // GenderRegisterDomainUp
+            // 
+            this.GenderRegisterDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GenderRegisterDomainUp.Items.Add("M");
+            this.GenderRegisterDomainUp.Items.Add("F");
+            this.GenderRegisterDomainUp.Location = new System.Drawing.Point(214, 504);
+            this.GenderRegisterDomainUp.Name = "GenderRegisterDomainUp";
+            this.GenderRegisterDomainUp.ReadOnly = true;
+            this.GenderRegisterDomainUp.Size = new System.Drawing.Size(312, 26);
+            this.GenderRegisterDomainUp.TabIndex = 2;
+            this.GenderRegisterDomainUp.Text = "M";
+            // 
+            // SubscriptionRegisterDomainUp
+            // 
+            this.SubscriptionRegisterDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubscriptionRegisterDomainUp.Items.Add("premium");
+            this.SubscriptionRegisterDomainUp.Items.Add("standard");
+            this.SubscriptionRegisterDomainUp.Items.Add("admin");
+            this.SubscriptionRegisterDomainUp.Location = new System.Drawing.Point(214, 387);
+            this.SubscriptionRegisterDomainUp.Name = "SubscriptionRegisterDomainUp";
+            this.SubscriptionRegisterDomainUp.ReadOnly = true;
+            this.SubscriptionRegisterDomainUp.Size = new System.Drawing.Size(312, 26);
+            this.SubscriptionRegisterDomainUp.TabIndex = 3;
+            this.SubscriptionRegisterDomainUp.Text = "premium";
             // 
             // RegisterRegisterButton
             // 
@@ -312,15 +367,6 @@
             this.RegisterUsernameLabel.TabIndex = 2;
             this.RegisterUsernameLabel.Text = "Username";
             // 
-            // LogoRegister
-            // 
-            this.LogoRegister.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LogoRegister.BackgroundImage")));
-            this.LogoRegister.Location = new System.Drawing.Point(530, 12);
-            this.LogoRegister.Name = "LogoRegister";
-            this.LogoRegister.Size = new System.Drawing.Size(170, 156);
-            this.LogoRegister.TabIndex = 1;
-            this.LogoRegister.TabStop = false;
-            // 
             // RegisterLabel
             // 
             this.RegisterLabel.AutoSize = true;
@@ -334,11 +380,11 @@
             // 
             // LogInPanel
             // 
-            this.LogInPanel.BackColor = System.Drawing.Color.MidnightBlue;
-            this.LogInPanel.Controls.Add(this.LogInInvalidCredentialsLabel);
+            this.LogInPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.LogInPanel.Controls.Add(this.LogInLogo);
+            this.LogInPanel.Controls.Add(this.LogInInvalidCredentialsTetxbox);
             this.LogInPanel.Controls.Add(this.LogInLogInButton);
             this.LogInPanel.Controls.Add(this.GoBackLoginButton);
-            this.LogInPanel.Controls.Add(this.LogoLogIn);
             this.LogInPanel.Controls.Add(this.UserLogInTextBox);
             this.LogInPanel.Controls.Add(this.PasswordLogInTextBox);
             this.LogInPanel.Controls.Add(this.UsernameLogInLabel);
@@ -347,8 +393,30 @@
             this.LogInPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LogInPanel.Location = new System.Drawing.Point(0, 0);
             this.LogInPanel.Name = "LogInPanel";
-            this.LogInPanel.Size = new System.Drawing.Size(712, 761);
+            this.LogInPanel.Size = new System.Drawing.Size(709, 784);
             this.LogInPanel.TabIndex = 2;
+            // 
+            // LogInInvalidCredentialsTetxbox
+            // 
+            this.LogInInvalidCredentialsTetxbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.LogInInvalidCredentialsTetxbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LogInInvalidCredentialsTetxbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogInInvalidCredentialsTetxbox.ForeColor = System.Drawing.Color.White;
+            this.LogInInvalidCredentialsTetxbox.Location = new System.Drawing.Point(77, 508);
+            this.LogInInvalidCredentialsTetxbox.Name = "LogInInvalidCredentialsTetxbox";
+            this.LogInInvalidCredentialsTetxbox.ReadOnly = true;
+            this.LogInInvalidCredentialsTetxbox.Size = new System.Drawing.Size(244, 20);
+            this.LogInInvalidCredentialsTetxbox.TabIndex = 8;
+            // 
+            // LogInLogInButton
+            // 
+            this.LogInLogInButton.Location = new System.Drawing.Point(467, 609);
+            this.LogInLogInButton.Name = "LogInLogInButton";
+            this.LogInLogInButton.Size = new System.Drawing.Size(147, 46);
+            this.LogInLogInButton.TabIndex = 7;
+            this.LogInLogInButton.Text = "Log In";
+            this.LogInLogInButton.UseVisualStyleBackColor = true;
+            this.LogInLogInButton.Click += new System.EventHandler(this.LogInLogInButton_Click);
             // 
             // GoBackLoginButton
             // 
@@ -359,15 +427,6 @@
             this.GoBackLoginButton.Text = "Go back";
             this.GoBackLoginButton.UseVisualStyleBackColor = true;
             this.GoBackLoginButton.Click += new System.EventHandler(this.GoBackLoginButton_Click);
-            // 
-            // LogoLogIn
-            // 
-            this.LogoLogIn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LogoLogIn.BackgroundImage")));
-            this.LogoLogIn.Location = new System.Drawing.Point(491, 19);
-            this.LogoLogIn.Name = "LogoLogIn";
-            this.LogoLogIn.Size = new System.Drawing.Size(189, 168);
-            this.LogoLogIn.TabIndex = 5;
-            this.LogoLogIn.TabStop = false;
             // 
             // UserLogInTextBox
             // 
@@ -419,93 +478,94 @@
             this.LogInLogInLabel.TabIndex = 0;
             this.LogInLogInLabel.Text = "Log-In";
             // 
-            // SubscriptionRegisterDomainUp
+            // ProfilePanel
             // 
-            this.SubscriptionRegisterDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SubscriptionRegisterDomainUp.Items.Add("premium");
-            this.SubscriptionRegisterDomainUp.Items.Add("standard");
-            this.SubscriptionRegisterDomainUp.Items.Add("admin");
-            this.SubscriptionRegisterDomainUp.Location = new System.Drawing.Point(214, 387);
-            this.SubscriptionRegisterDomainUp.Name = "SubscriptionRegisterDomainUp";
-            this.SubscriptionRegisterDomainUp.ReadOnly = true;
-            this.SubscriptionRegisterDomainUp.Size = new System.Drawing.Size(312, 26);
-            this.SubscriptionRegisterDomainUp.TabIndex = 3;
-            this.SubscriptionRegisterDomainUp.Text = "premium";
+            this.ProfilePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.ProfilePanel.Controls.Add(this.ProfileLogo);
+            this.ProfilePanel.Controls.Add(this.ProfileProfilesLabel);
+            this.ProfilePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ProfilePanel.Location = new System.Drawing.Point(0, 0);
+            this.ProfilePanel.Name = "ProfilePanel";
+            this.ProfilePanel.Size = new System.Drawing.Size(709, 784);
+            this.ProfilePanel.TabIndex = 3;
             // 
-            // GenderRegisterDomainUp
+            // ProfileProfilesLabel
             // 
-            this.GenderRegisterDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GenderRegisterDomainUp.Items.Add("M");
-            this.GenderRegisterDomainUp.Items.Add("F");
-            this.GenderRegisterDomainUp.Location = new System.Drawing.Point(214, 504);
-            this.GenderRegisterDomainUp.Name = "GenderRegisterDomainUp";
-            this.GenderRegisterDomainUp.ReadOnly = true;
-            this.GenderRegisterDomainUp.Size = new System.Drawing.Size(312, 26);
-            this.GenderRegisterDomainUp.TabIndex = 2;
-            this.GenderRegisterDomainUp.Text = "M";
+            this.ProfileProfilesLabel.AutoSize = true;
+            this.ProfileProfilesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProfileProfilesLabel.ForeColor = System.Drawing.Color.White;
+            this.ProfileProfilesLabel.Location = new System.Drawing.Point(252, 71);
+            this.ProfileProfilesLabel.Name = "ProfileProfilesLabel";
+            this.ProfileProfilesLabel.Size = new System.Drawing.Size(192, 58);
+            this.ProfileProfilesLabel.TabIndex = 0;
+            this.ProfileProfilesLabel.Text = "Profiles";
             // 
-            // ProfileTypeRegisterDomainUp
+            // WelcomeLogo
             // 
-            this.ProfileTypeRegisterDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProfileTypeRegisterDomainUp.Items.Add("creator");
-            this.ProfileTypeRegisterDomainUp.Items.Add("viewer");
-            this.ProfileTypeRegisterDomainUp.Location = new System.Drawing.Point(214, 637);
-            this.ProfileTypeRegisterDomainUp.Name = "ProfileTypeRegisterDomainUp";
-            this.ProfileTypeRegisterDomainUp.ReadOnly = true;
-            this.ProfileTypeRegisterDomainUp.Size = new System.Drawing.Size(312, 26);
-            this.ProfileTypeRegisterDomainUp.TabIndex = 2;
-            this.ProfileTypeRegisterDomainUp.Text = "creator";
+            this.WelcomeLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.WelcomeLogo.Image = ((System.Drawing.Image)(resources.GetObject("WelcomeLogo.Image")));
+            this.WelcomeLogo.Location = new System.Drawing.Point(199, 132);
+            this.WelcomeLogo.Name = "WelcomeLogo";
+            this.WelcomeLogo.Size = new System.Drawing.Size(302, 255);
+            this.WelcomeLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.WelcomeLogo.TabIndex = 4;
+            this.WelcomeLogo.TabStop = false;
             // 
-            // AgeRegisterDateTimePicker
+            // LogInLogo
             // 
-            this.AgeRegisterDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AgeRegisterDateTimePicker.Location = new System.Drawing.Point(214, 577);
-            this.AgeRegisterDateTimePicker.Name = "AgeRegisterDateTimePicker";
-            this.AgeRegisterDateTimePicker.Size = new System.Drawing.Size(312, 26);
-            this.AgeRegisterDateTimePicker.TabIndex = 20;
-            this.AgeRegisterDateTimePicker.Value = new System.DateTime(2020, 5, 23, 0, 0, 0, 0);
+            this.LogInLogo.Image = ((System.Drawing.Image)(resources.GetObject("LogInLogo.Image")));
+            this.LogInLogo.Location = new System.Drawing.Point(507, 25);
+            this.LogInLogo.Name = "LogInLogo";
+            this.LogInLogo.Size = new System.Drawing.Size(168, 145);
+            this.LogInLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.LogInLogo.TabIndex = 9;
+            this.LogInLogo.TabStop = false;
             // 
-            // LogInLogInButton
+            // RegisterLogo
             // 
-            this.LogInLogInButton.Location = new System.Drawing.Point(467, 609);
-            this.LogInLogInButton.Name = "LogInLogInButton";
-            this.LogInLogInButton.Size = new System.Drawing.Size(147, 46);
-            this.LogInLogInButton.TabIndex = 7;
-            this.LogInLogInButton.Text = "Log In";
-            this.LogInLogInButton.UseVisualStyleBackColor = true;
-            this.LogInLogInButton.Click += new System.EventHandler(this.LogInLogInButton_Click);
+            this.RegisterLogo.Image = ((System.Drawing.Image)(resources.GetObject("RegisterLogo.Image")));
+            this.RegisterLogo.Location = new System.Drawing.Point(535, 25);
+            this.RegisterLogo.Name = "RegisterLogo";
+            this.RegisterLogo.Size = new System.Drawing.Size(140, 127);
+            this.RegisterLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.RegisterLogo.TabIndex = 22;
+            this.RegisterLogo.TabStop = false;
             // 
-            // LogInInvalidCredentialsLabel
+            // ProfileLogo
             // 
-            this.LogInInvalidCredentialsLabel.AutoSize = true;
-            this.LogInInvalidCredentialsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogInInvalidCredentialsLabel.ForeColor = System.Drawing.Color.White;
-            this.LogInInvalidCredentialsLabel.Location = new System.Drawing.Point(81, 494);
-            this.LogInInvalidCredentialsLabel.Name = "LogInInvalidCredentialsLabel";
-            this.LogInInvalidCredentialsLabel.Size = new System.Drawing.Size(0, 20);
-            this.LogInInvalidCredentialsLabel.TabIndex = 8;
+            this.ProfileLogo.Image = ((System.Drawing.Image)(resources.GetObject("ProfileLogo.Image")));
+            this.ProfileLogo.Location = new System.Drawing.Point(535, 25);
+            this.ProfileLogo.Name = "ProfileLogo";
+            this.ProfileLogo.Size = new System.Drawing.Size(140, 127);
+            this.ProfileLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ProfileLogo.TabIndex = 5;
+            this.ProfileLogo.TabStop = false;
             // 
             // FyBuZz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(712, 761);
-            this.Controls.Add(this.LogInPanel);
+            this.ClientSize = new System.Drawing.Size(709, 784);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.ProfilePanel);
+            this.Controls.Add(this.LogInPanel);
             this.Controls.Add(this.RegisterPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FyBuZz";
             this.Text = "FyBuZz";
             this.WelcomePanel.ResumeLayout(false);
             this.WelcomePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoWelcome)).EndInit();
             this.RegisterPanel.ResumeLayout(false);
             this.RegisterPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoRegister)).EndInit();
             this.LogInPanel.ResumeLayout(false);
             this.LogInPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoLogIn)).EndInit();
+            this.ProfilePanel.ResumeLayout(false);
+            this.ProfilePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogInLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RegisterLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfileLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -513,14 +573,12 @@
         #endregion
 
         private System.Windows.Forms.Panel WelcomePanel;
-        private System.Windows.Forms.PictureBox LogoWelcome;
         private System.Windows.Forms.Button WelcomeCloseFyBuZz;
         private System.Windows.Forms.Button WelcomeRegisterButton;
         private System.Windows.Forms.Button WelcomeLogInButton;
         private System.Windows.Forms.Label WelcomeLabel;
         private System.Windows.Forms.Panel RegisterPanel;
         private System.Windows.Forms.Label RegisterUsernameLabel;
-        private System.Windows.Forms.PictureBox LogoRegister;
         private System.Windows.Forms.Label RegisterLabel;
         private System.Windows.Forms.Label EmailRegisterLabel;
         private System.Windows.Forms.Label PasswordRegisterLabel;
@@ -534,7 +592,6 @@
         private System.Windows.Forms.TextBox UsernameRegisterTextBox;
         private System.Windows.Forms.Label ProfileTypeRegisterLabel;
         private System.Windows.Forms.Panel LogInPanel;
-        private System.Windows.Forms.PictureBox LogoLogIn;
         private System.Windows.Forms.TextBox UserLogInTextBox;
         private System.Windows.Forms.TextBox PasswordLogInTextBox;
         private System.Windows.Forms.Label UsernameLogInLabel;
@@ -548,6 +605,13 @@
         private System.Windows.Forms.DomainUpDown ProfileTypeRegisterDomainUp;
         private System.Windows.Forms.DomainUpDown GenderRegisterDomainUp;
         private System.Windows.Forms.Button LogInLogInButton;
-        private System.Windows.Forms.Label LogInInvalidCredentialsLabel;
+        private System.Windows.Forms.TextBox RegisterInvalidCredencialsTextBox;
+        private System.Windows.Forms.TextBox LogInInvalidCredentialsTetxbox;
+        private System.Windows.Forms.Panel ProfilePanel;
+        private System.Windows.Forms.Label ProfileProfilesLabel;
+        private System.Windows.Forms.PictureBox WelcomeLogo;
+        private System.Windows.Forms.PictureBox LogInLogo;
+        private System.Windows.Forms.PictureBox RegisterLogo;
+        private System.Windows.Forms.PictureBox ProfileLogo;
     }
 }

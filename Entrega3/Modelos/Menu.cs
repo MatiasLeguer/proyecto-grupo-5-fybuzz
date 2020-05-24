@@ -94,8 +94,8 @@ namespace Modelos
                             Console.Write("Select your Profile Type(creator/viewer): ");
                             profileType = Console.ReadLine();
                         } while (profileType != "creator" && profileType != "viewer");
-
-                        server.Register(user, userDataBase, usr, email, psswd, premium, priv, gender, age, profileType);
+                        DateTime date = DateTime.Now;
+                        server.Register(user, userDataBase, usr, email, psswd, premium, priv, gender, date, profileType);
                         database.Save_Users(userDataBase);
                         x = false;
                         break;

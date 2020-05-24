@@ -2,6 +2,7 @@
 using Modelos;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Configuration;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,10 @@ namespace Entrega3_FyBuZz.Controladores
 {
     public class UserControler
     {
-        List<User> userDataBase = new List<User>();
+        List<User> userDataBase = new List<User>() { new User() };
         DataBase dataBase = new DataBase();
+        static DataBase data = new DataBase();
+        Server server = new Server(data);
         FyBuZz fyBuZz;
 
 
@@ -22,30 +25,39 @@ namespace Entrega3_FyBuZz.Controladores
             Initialize();
             this.fyBuZz = fyBuZz as FyBuZz;
             this.fyBuZz.LogInLogInButton_Clicked += OnLoginButtonClicked;
+            this.fyBuZz.RegisterRegisterButton_Clicked += OnRegisterRegisterButtonClicked;
         }
 
         public void Initialize()
         {
+            if (File.Exists("AllUsers.bin") != true) dataBase.Save_Users(userDataBase);
             userDataBase = dataBase.Load_Users();
         }
 
         private bool OnLoginButtonClicked(object sender, LogInEventArgs e)
         {
-            User user = null;
-            user = userDataBase.Where(u => u.Username.Contains(e.UsernameText)).FirstOrDefault();
+            User user = new User();
+            
             bool x = true;
-            if(user is null)
+            
+            if(dataBase.LogIn(e.UsernameText, e.PasswrodText, userDataBase) != null)
             {
-                return false;
+                x = true;
             }
             else
             {
-                if(dataBase.LogIn(user.Username, user.Password, userDataBase) != null)
-                {
-                    x = true;
-                }
-                return x;
+                x = false;
             }
+            
+            return x;
+        }
+        private bool OnRegisterRegisterButtonClicked(object sender, RegisterEventArgs e)
+        {
+            User user = new User();
+            bool x;
+            x = server.Register(user, userDataBase,e.UsernameText, e.EmailText, e.PasswrodText, e.SubsText, e.PrivacyText, e.GenderText, e.BirthdayText, e.ProfileTypeText);
+            dataBase.Save_Users(userDataBase);
+            return x;
         }
     }
 }

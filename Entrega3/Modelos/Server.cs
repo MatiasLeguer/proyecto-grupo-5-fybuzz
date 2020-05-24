@@ -17,7 +17,7 @@ namespace Modelos
         }
 
         //Creamos evento para Registrarse
-        public delegate void RegisterEventHandler(object source, RegisterEventArgs args);
+        /*public delegate void RegisterEventHandler(object source, RegisterEventArgs args);
         public event RegisterEventHandler Registered;
 
         protected virtual void OnRegistered(string username, string password, string email)
@@ -26,7 +26,7 @@ namespace Modelos
             {
                 Registered(this, new RegisterEventArgs() { Username = username, Password = password, Email = email });
             }
-        }
+        }*/
 
         //Creamos evento para cambiar la contraseña
         public delegate void ChangePasswordEventHandler(object source, ChangePasswordEventArgs args);
@@ -41,16 +41,16 @@ namespace Modelos
         }
 
 
-        public void Register(User userlist, List<User> userDataBase, string usr, string email, string psswd, string premium, bool priv, string gender, int age, string profileType)
+        public bool Register(User userlist, List<User> userDataBase, string usr, string email, string psswd, string premium, bool priv, string gender, DateTime age, string profileType)
         {
-
             if (premium == "premium") userlist.AdsOn = false;
             else if (premium == "standard") userlist.AdsOn = true;
             else if (premium == "admin") userlist.AdsOn = false; //añadi publicidad a admin
             else Console.WriteLine("Error [!] Invalid Subscription.");
             userlist.Followers = 0;
             userlist.Following = 0;
-            userlist.Perfiles.Add(new Profile(usr, ".JPG", profileType, email, gender, age));
+            int Age = 2020 - age.Year;
+            userlist.Perfiles.Add(new Profile(usr, ".JPG", profileType, email, gender, Age));
 
 
             userlist.Username = usr; userlist.Email = email; userlist.Password = psswd; userlist.Accountype = premium; userlist.Privacy = priv;
@@ -58,14 +58,14 @@ namespace Modelos
             if (result == null)
             {
                 // Disparamos el evento
-                OnRegistered(usr, psswd,/* verificationlink: verificationLink,*/ email: email);
-                Console.WriteLine("Register Succesfull");
+                //OnRegistered(usr, psswd,/* verificationlink: verificationLink,*/ email: email);
+                return true;
 
             }
             else
             {
                 // Mostramos el error
-                Console.WriteLine("[!] ERROR: " + result + "\n");
+                return false;
             }
         }
 

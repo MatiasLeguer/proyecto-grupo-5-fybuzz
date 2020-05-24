@@ -14,7 +14,7 @@ namespace Entrega3_FyBuZz
         /// </summary>
         [STAThread]
         static void Main()
-        {
+       {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             FyBuZz fyBuZz = new FyBuZz();
