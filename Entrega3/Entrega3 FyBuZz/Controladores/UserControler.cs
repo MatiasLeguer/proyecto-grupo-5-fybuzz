@@ -16,6 +16,7 @@ namespace Entrega3_FyBuZz.Controladores
         List<User> userDataBase = new List<User>() { new User() };
         DataBase dataBase = new DataBase();
         static DataBase data = new DataBase();
+        Modelos.Menu menu = new Modelos.Menu();
         Server server = new Server(data);
         FyBuZz fyBuZz;
 
@@ -26,6 +27,8 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz = fyBuZz as FyBuZz;
             this.fyBuZz.LogInLogInButton_Clicked += OnLoginButtonClicked;
             this.fyBuZz.RegisterRegisterButton_Clicked += OnRegisterRegisterButtonClicked;
+            this.fyBuZz.CreateProfileCreateProfileButton_Clicked += OnCreateProfileCreateProfileButton_Clicked;
+            this.fyBuZz.ProfilesChooseProfile_Clicked += OnProfilesChooseProfile_Click;
         }
 
         public void Initialize()
@@ -34,22 +37,23 @@ namespace Entrega3_FyBuZz.Controladores
             userDataBase = dataBase.Load_Users();
         }
 
-        private bool OnLoginButtonClicked(object sender, LogInEventArgs e)
+        private int UserIndex(ProfileEventArgs e)
         {
-            User user = new User();
-            
-            bool x = true;
-            
-            if(dataBase.LogIn(e.UsernameText, e.PasswrodText, userDataBase) != null)
+            int u = 0;
+            foreach (User user in userDataBase)
             {
-                x = true;
+                if (user.Username == e.UsernameText && user.Password == e.PasswordText)
+                {
+                    break;
+                }
+                u++;
             }
-            else
-            {
-                x = false;
-            }
-            
-            return x;
+            return u;
+        }
+
+        private User OnLoginButtonClicked(object sender, LogInEventArgs e)
+        {
+            return dataBase.LogIn(e.UsernameText, e.PasswrodText, userDataBase);
         }
         private bool OnRegisterRegisterButtonClicked(object sender, RegisterEventArgs e)
         {
@@ -58,6 +62,37 @@ namespace Entrega3_FyBuZz.Controladores
             x = server.Register(user, userDataBase,e.UsernameText, e.EmailText, e.PasswrodText, e.SubsText, e.PrivacyText, e.GenderText, e.BirthdayText, e.ProfileTypeText);
             dataBase.Save_Users(userDataBase);
             return x;
+        }
+        private Profile OnCreateProfileCreateProfileButton_Clicked(object sender, ProfileEventArgs e)
+        {
+            int u = UserIndex(e);
+            if (userDataBase[u].Accountype == "premium")
+            {
+                int pAge = 2020 - e.BirthdayText.Year;
+                string pPic = "...";
+                string name = userDataBase[u].Username;
+                Profile profile = userDataBase[u].CreateProfile(e.ProfileNameText, pPic, e.ProfileTypeText, e.EmailText, e.GenderText, pAge);
+                dataBase.Save_Users(userDataBase);
+                return profile;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        private Profile OnProfilesChooseProfile_Click(object sender, ProfileEventArgs e)
+        {
+            int u = UserIndex(e);
+            int pAge = 2020 - e.BirthdayText.Year;
+            Profile prof = new Profile(e.ProfileNameText,"..",e.ProfileTypeText,e.EmailText,e.GenderText, pAge);
+            foreach(Profile profile in userDataBase[u].Perfiles)
+            {
+                if(profile.ProfileName == e.ProfileNameText || profile.Username == e.ProfileNameText)
+                {
+                    prof = profile;
+                }
+            }
+            return prof;
         }
     }
 }

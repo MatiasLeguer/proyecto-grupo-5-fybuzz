@@ -38,10 +38,11 @@ namespace Modelos
         public List<string> FollowingList { get => followingList; set => followingList = value; }
         public List<PlayList> ProfilePlaylists { get => profilePlaylists; set => profilePlaylists = value; }
 
-        public void CreateProfile(string pname, string ppic, string ptype, string pmail, string pgender, int page)
+        public Profile CreateProfile(string pname, string ppic, string ptype, string pmail, string pgender, int page)
         {
             Profile profileX = new Profile(pname, ppic, ptype, pmail, pgender, page);
             perfiles.Add(profileX);
+            return profileX;
         }
 
         public List<string> AccountSettings()

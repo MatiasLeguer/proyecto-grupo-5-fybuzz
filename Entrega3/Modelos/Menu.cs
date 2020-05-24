@@ -11,8 +11,8 @@ namespace Modelos
     {
         protected List<string> filters;
         protected List<string> badWords = new List<string>() { "fuck", "sex", "niggas", "sexo", "ass", "nigger", "culo", "viola", "violar", "spank", "puta", "hooker", "perra", "hoe", "cocaina", "alchohol", "blunt", "weed", "marihuana", "lcd", "kush", "krippy", "penis", "dick", "cock", "shit", "percocet" };
-        public List<Song> searchedSongs;
-        public List<Video> searchedVideos;
+        public List<Song> searchedSongs = new List<Song>();
+        public List<Video> searchedVideos = new List<Video>();
         User user = new User();
         DataBase database = new DataBase();
         Player player = new Player();
@@ -106,11 +106,18 @@ namespace Modelos
             Console.Clear();
             return user;
         }
+        //Por mientras para probar algo...
+        public void CreateProfile(User user, string pname, string ppic, string ptype, string pmail, string pgender, DateTime pbirthday)
+        {
+            int page = 2020 - pbirthday.Year;
+            user.CreateProfile(pname, ppic, ptype, pmail, pgender,page);
+        }
+        //Hasta aca....
 
         public Profile DisplayProfiles(User user, List<User> userDataBase)
         {
 
-            Console.WriteLine("Welcome: " + user.Username + "\n");
+            //Console.WriteLine("Welcome: " + user.Username + "\n");
             bool x = true;
             int u = 0;
             foreach (User usr in userDataBase)
@@ -121,76 +128,63 @@ namespace Modelos
                 }
                 u++;
             }
-            Console.WriteLine("---------Profiles----------");
-
-            if (userDataBase[u].Perfiles.Count() == 0)
+            //Console.WriteLine("---------Profiles----------");
+            
+            while (x == true)
             {
-                Console.Write("Select your gender(M/F): ");
-                string gender = Console.ReadLine();
-                Console.Write("Select your age: ");
-                int age = int.Parse(Console.ReadLine());
-                Console.Write("Select your Profile Type(creator/viewer): ");
-                string profileType = Console.ReadLine();
-                Profile profile = new Profile(user.Username, ".JPEG", profileType, user.Email, gender, age);
-                user.Perfiles.Add(profile);
-            }
-            else
-            {
-                while (x == true)
+                //Console.WriteLine("I) Choose a profile\nII) Create Profile\nIII) Close App.");
+                string dec = Console.ReadLine();
+                if (dec == "I")
                 {
-                    Console.WriteLine("I) Choose a profile\nII) Create Profile\nIII) Close App.");
-                    string dec = Console.ReadLine();
-                    if (dec == "I")
+                    Console.WriteLine("List of profiles:");
+                    int i;
+                    for (i = 0; i < userDataBase[u].Perfiles.Count(); i++)
                     {
-                        Console.WriteLine("List of profiles:");
-                        int i;
-                        for (i = 0; i < userDataBase[u].Perfiles.Count(); i++)
-                        {
-                            Console.WriteLine("{0}).- {1}", i + 1, userDataBase[u].Perfiles[i].ProfileName);
-                        }
-                        Console.WriteLine("Choose a profile (Number):");
-                        int index = int.Parse(Console.ReadLine()) - 1;
-                        return userDataBase[u].Perfiles[index];
+                        Console.WriteLine("{0}).- {1}", i + 1, userDataBase[u].Perfiles[i].ProfileName);
                     }
-                    else if (dec == "II")
+                    Console.WriteLine("Choose a profile (Number):");
+                    int index = int.Parse(Console.ReadLine()) - 1;
+                    return userDataBase[u].Perfiles[index];
+                }
+                else if (dec == "II")
+                {
+                    if (user.Accountype == "premium")
                     {
-                        if (user.Accountype == "premium")
-                        {
-                            Console.WriteLine("Create a profile:");
-                            Console.Write("Profile name: ");
-                            string pname = Console.ReadLine();
-                            Console.Write("Profile pic: ");
-                            string ppic = Console.ReadLine();
-                            Console.Write("Profile type(creator/viewer): ");
-                            string ptype = Console.ReadLine();
-                            string pmail = user.Email;
-                            Console.Write("Profile gender (M/F): ");
-                            string pgender = Console.ReadLine();
-                            Console.Write("Profile age: ");
-                            int page = int.Parse(Console.ReadLine());
-                            userDataBase[u].CreateProfile(pname, ppic, ptype, pmail, pgender, page);
-                            Console.Clear();
-                        }
-                        else if (user.Accountype == "standard")
-                        {
-                            Console.WriteLine("ERROR [!] Standard Account Types, you can only have one profile.\nTry Upgrading to Premium Account.");
-                            Console.Write("Do you want to change your Account Type to premium?(y/n): ");
-                            string premium = Console.ReadLine();
-                            if (premium == "y") userDataBase[u].Accountype = "premium";
-                            else continue;
-                        }
-                        else if (user.Accountype == "admin")
-                        {
-                            Console.WriteLine("ERROR [!] Admin Account Types, you can only have one profile.");
-                            Thread.Sleep(1000);
-                        }
+                        Console.WriteLine("Create a profile:");
+                        Console.Write("Profile name: ");
+                        string pname = Console.ReadLine();
+                        Console.Write("Profile pic: ");
+                        string ppic = Console.ReadLine();
+                        Console.Write("Profile type(creator/viewer): ");
+                        string ptype = Console.ReadLine();
+                        string pmail = user.Email;
+                        Console.Write("Profile gender (M/F): ");
+                        string pgender = Console.ReadLine();
+                        Console.Write("Profile age: ");
+                        int page = int.Parse(Console.ReadLine());
+                        userDataBase[u].CreateProfile(pname, ppic, ptype, pmail, pgender, page);
+                        Console.Clear();
                     }
-                    else if (dec == "III")
+                    else if (user.Accountype == "standard")
                     {
-                        return null;
+                        Console.WriteLine("ERROR [!] Standard Account Types, you can only have one profile.\nTry Upgrading to Premium Account.");
+                        Console.Write("Do you want to change your Account Type to premium?(y/n): ");
+                        string premium = Console.ReadLine();
+                        if (premium == "y") userDataBase[u].Accountype = "premium";
+                        else continue;
+                    }
+                    else if (user.Accountype == "admin")
+                    {
+                        Console.WriteLine("ERROR [!] Admin Account Types, you can only have one profile.");
+                        Thread.Sleep(1000);
                     }
                 }
+                else if (dec == "III")
+                {
+                    return null;
+                }
             }
+            
             Console.Clear();
             return null;
         }
