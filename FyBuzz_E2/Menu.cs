@@ -1662,7 +1662,7 @@ namespace FyBuzz_E2
 
                     } while (format != ".mp3" && format != ".wav");
                 }
-                else if (choice == "v")
+                else if (choice == "v") 
                 {
                     Console.Write("Song Format(.mp4 || .mov): ");
                     do
