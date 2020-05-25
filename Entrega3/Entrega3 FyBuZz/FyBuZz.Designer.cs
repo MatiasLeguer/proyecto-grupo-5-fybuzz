@@ -68,6 +68,7 @@
             this.PasswordLogInLabel = new System.Windows.Forms.Label();
             this.LogInLogInLabel = new System.Windows.Forms.Label();
             this.ProfilePanel = new System.Windows.Forms.Panel();
+            this.ProfilesWelcomeTextBox = new System.Windows.Forms.TextBox();
             this.ProfilesInvalidCredentialTextBox = new System.Windows.Forms.TextBox();
             this.ProfilesChooseProfile = new System.Windows.Forms.Button();
             this.ProfileGoBack = new System.Windows.Forms.Button();
@@ -466,7 +467,7 @@
             this.LogInInvalidCredentialsTetxbox.Location = new System.Drawing.Point(77, 508);
             this.LogInInvalidCredentialsTetxbox.Name = "LogInInvalidCredentialsTetxbox";
             this.LogInInvalidCredentialsTetxbox.ReadOnly = true;
-            this.LogInInvalidCredentialsTetxbox.Size = new System.Drawing.Size(244, 20);
+            this.LogInInvalidCredentialsTetxbox.Size = new System.Drawing.Size(524, 20);
             this.LogInInvalidCredentialsTetxbox.TabIndex = 8;
             // 
             // LogInLogInButton
@@ -542,6 +543,7 @@
             // ProfilePanel
             // 
             this.ProfilePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.ProfilePanel.Controls.Add(this.ProfilesWelcomeTextBox);
             this.ProfilePanel.Controls.Add(this.ProfilesInvalidCredentialTextBox);
             this.ProfilePanel.Controls.Add(this.ProfilesChooseProfile);
             this.ProfilePanel.Controls.Add(this.ProfileGoBack);
@@ -555,6 +557,19 @@
             this.ProfilePanel.Size = new System.Drawing.Size(691, 784);
             this.ProfilePanel.TabIndex = 3;
             this.ProfilePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ProfilePanel_Paint);
+            // 
+            // ProfilesWelcomeTextBox
+            // 
+            this.ProfilesWelcomeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.ProfilesWelcomeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ProfilesWelcomeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProfilesWelcomeTextBox.ForeColor = System.Drawing.Color.White;
+            this.ProfilesWelcomeTextBox.Location = new System.Drawing.Point(177, 63);
+            this.ProfilesWelcomeTextBox.Multiline = true;
+            this.ProfilesWelcomeTextBox.Name = "ProfilesWelcomeTextBox";
+            this.ProfilesWelcomeTextBox.Size = new System.Drawing.Size(324, 107);
+            this.ProfilesWelcomeTextBox.TabIndex = 11;
+            this.ProfilesWelcomeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ProfilesInvalidCredentialTextBox
             // 
@@ -621,7 +636,7 @@
             this.ProfileProfilesLabel.AutoSize = true;
             this.ProfileProfilesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileProfilesLabel.ForeColor = System.Drawing.Color.White;
-            this.ProfileProfilesLabel.Location = new System.Drawing.Point(252, 71);
+            this.ProfileProfilesLabel.Location = new System.Drawing.Point(246, 187);
             this.ProfileProfilesLabel.Name = "ProfileProfilesLabel";
             this.ProfileProfilesLabel.Size = new System.Drawing.Size(192, 58);
             this.ProfileProfilesLabel.TabIndex = 0;
@@ -860,8 +875,8 @@
             this.ClientSize = new System.Drawing.Size(691, 784);
             this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.ProfilePanel);
-            this.Controls.Add(this.CreateProfilePanel);
             this.Controls.Add(this.LogInPanel);
+            this.Controls.Add(this.CreateProfilePanel);
             this.Controls.Add(this.RegisterPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FyBuZz";
@@ -956,5 +971,6 @@
         private System.Windows.Forms.PictureBox CreateProfilePic1;
         private System.Windows.Forms.CheckedListBox CreateProfilePicCheckedListBox;
         private System.Windows.Forms.TextBox ProfilesInvalidCredentialTextBox;
+        private System.Windows.Forms.TextBox ProfilesWelcomeTextBox;
     }
 }

@@ -89,6 +89,8 @@ namespace Entrega3_FyBuZz
         {
             string profileProfileName = ProfileDomainUp.Text;
             Profile profile = OnProfilesChooseProfile_Click(profileProfileName);
+            //Creo que cada vez que necesite el perfil debo llamar a este método con el parametro
+            //que venga del "ProfileDomainUp.Text"
         }
 
         private void ProfileCreateProfileButton_Click(object sender, EventArgs e)
@@ -134,10 +136,11 @@ namespace Entrega3_FyBuZz
                     LogInInvalidCredentialsTetxbox.AppendText("Log-In Succesfull");
                     LogInInvalidCredentialsTetxbox.Visible = true;
                     ProfilePanel.BringToFront();
-                }
-                foreach(Profile profile in user.Perfiles)
-                {
-                    ProfileDomainUp.Items.Add(profile.ProfileName);
+                    ProfilesWelcomeTextBox.AppendText("Welcome to FyBuZz " + user.Username);
+                    foreach (Profile profile in user.Perfiles)
+                    {
+                        ProfileDomainUp.Items.Add(profile.ProfileName);
+                    }
                 }
             }
             return user;
