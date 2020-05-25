@@ -46,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controladores\ServerController.cs" />
     <Compile Include="Controladores\UserControler.cs" />
     <Compile Include="CustomArgs\LogInEventArgs.cs" />
+    <Compile Include="CustomArgs\ProfileEventArgs.cs" />
     <Compile Include="CustomArgs\RegisterEventArgs.cs" />
     <Compile Include="FyBuZz.cs">
       <SubType>Form</SubType>
