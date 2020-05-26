@@ -49,6 +49,8 @@ namespace Modelos
             else Console.WriteLine("Error [!] Invalid Subscription.");
             userlist.Followers = 0;
             userlist.Following = 0;
+            DateTime dateTime = new DateTime();
+            //Falta el año sea variable.
             int Age = 2020 - age.Year;
             userlist.Perfiles.Add(new Profile(usr, ".JPG", profileType, email, gender, Age));
 
@@ -57,7 +59,7 @@ namespace Modelos
             string result = Data.AddUser(userlist, userDataBase);
             if (result == null)
             {
-                // Disparamos el evento
+                //Disparamos el evento
                 //OnRegistered(usr, psswd,/* verificationlink: verificationLink,*/ email: email);
                 return true;
 

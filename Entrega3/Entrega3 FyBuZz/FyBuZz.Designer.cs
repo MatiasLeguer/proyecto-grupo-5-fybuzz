@@ -95,6 +95,18 @@
             this.CreateProfileProfileNameLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CreateProfileLabel = new System.Windows.Forms.Label();
+            this.DisplayStartPanel = new System.Windows.Forms.Panel();
+            this.DisplayStartLabel = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.DisplayStartSearchButton = new System.Windows.Forms.Button();
+            this.DisplayStartShowAddButton = new System.Windows.Forms.Button();
+            this.DisplayStartDisplayPlaylistButton = new System.Windows.Forms.Button();
+            this.DisplayStartSettingsButton = new System.Windows.Forms.Button();
+            this.DisplayStartPlayPlaylistButton = new System.Windows.Forms.Button();
+            this.DisplayStartLogOutProfileButton = new System.Windows.Forms.Button();
+            this.DisplayStartCloseButton = new System.Windows.Forms.Button();
+            this.DisplayStartAdminMenuButton = new System.Windows.Forms.Button();
+            this.DisplayStartLogOutButton = new System.Windows.Forms.Button();
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -109,20 +121,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.CreateProfilePic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CreateProfilePic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.DisplayStartPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // WelcomePanel
             // 
             this.WelcomePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.WelcomePanel.Controls.Add(this.WelcomeLabel);
             this.WelcomePanel.Controls.Add(this.WelcomeLogo);
             this.WelcomePanel.Controls.Add(this.WelcomeCloseFyBuZz);
             this.WelcomePanel.Controls.Add(this.WelcomeRegisterButton);
             this.WelcomePanel.Controls.Add(this.WelcomeLogInButton);
-            this.WelcomePanel.Controls.Add(this.WelcomeLabel);
             this.WelcomePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WelcomePanel.Location = new System.Drawing.Point(0, 0);
             this.WelcomePanel.Name = "WelcomePanel";
-            this.WelcomePanel.Size = new System.Drawing.Size(691, 784);
+            this.WelcomePanel.Size = new System.Drawing.Size(721, 784);
             this.WelcomePanel.TabIndex = 0;
             // 
             // WelcomeLogo
@@ -204,7 +218,7 @@
             this.RegisterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RegisterPanel.Location = new System.Drawing.Point(0, 0);
             this.RegisterPanel.Name = "RegisterPanel";
-            this.RegisterPanel.Size = new System.Drawing.Size(691, 784);
+            this.RegisterPanel.Size = new System.Drawing.Size(721, 784);
             this.RegisterPanel.TabIndex = 1;
             // 
             // RegisterLogo
@@ -445,7 +459,7 @@
             this.LogInPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LogInPanel.Location = new System.Drawing.Point(0, 0);
             this.LogInPanel.Name = "LogInPanel";
-            this.LogInPanel.Size = new System.Drawing.Size(691, 784);
+            this.LogInPanel.Size = new System.Drawing.Size(721, 784);
             this.LogInPanel.TabIndex = 2;
             // 
             // LogInLogo
@@ -554,7 +568,7 @@
             this.ProfilePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProfilePanel.Location = new System.Drawing.Point(0, 0);
             this.ProfilePanel.Name = "ProfilePanel";
-            this.ProfilePanel.Size = new System.Drawing.Size(691, 784);
+            this.ProfilePanel.Size = new System.Drawing.Size(721, 784);
             this.ProfilePanel.TabIndex = 3;
             this.ProfilePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ProfilePanel_Paint);
             // 
@@ -666,7 +680,7 @@
             this.CreateProfilePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreateProfilePanel.Location = new System.Drawing.Point(0, 0);
             this.CreateProfilePanel.Name = "CreateProfilePanel";
-            this.CreateProfilePanel.Size = new System.Drawing.Size(691, 784);
+            this.CreateProfilePanel.Size = new System.Drawing.Size(721, 784);
             this.CreateProfilePanel.TabIndex = 4;
             // 
             // CreateProfilePicCheckedListBox
@@ -867,17 +881,140 @@
             this.CreateProfileLabel.TabIndex = 0;
             this.CreateProfileLabel.Text = "Create a Profile";
             // 
+            // DisplayStartPanel
+            // 
+            this.DisplayStartPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartLogOutButton);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartAdminMenuButton);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartCloseButton);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartLogOutProfileButton);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartPlayPlaylistButton);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartSettingsButton);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartDisplayPlaylistButton);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartShowAddButton);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartSearchButton);
+            this.DisplayStartPanel.Controls.Add(this.pictureBox2);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartLabel);
+            this.DisplayStartPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DisplayStartPanel.Location = new System.Drawing.Point(0, 0);
+            this.DisplayStartPanel.Name = "DisplayStartPanel";
+            this.DisplayStartPanel.Size = new System.Drawing.Size(721, 784);
+            this.DisplayStartPanel.TabIndex = 5;
+            // 
+            // DisplayStartLabel
+            // 
+            this.DisplayStartLabel.AutoSize = true;
+            this.DisplayStartLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisplayStartLabel.ForeColor = System.Drawing.Color.White;
+            this.DisplayStartLabel.Location = new System.Drawing.Point(261, 94);
+            this.DisplayStartLabel.Name = "DisplayStartLabel";
+            this.DisplayStartLabel.Size = new System.Drawing.Size(198, 58);
+            this.DisplayStartLabel.TabIndex = 0;
+            this.DisplayStartLabel.Text = "FyBuZz";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(560, 25);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(140, 127);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            // 
+            // DisplayStartSearchButton
+            // 
+            this.DisplayStartSearchButton.Location = new System.Drawing.Point(256, 222);
+            this.DisplayStartSearchButton.Name = "DisplayStartSearchButton";
+            this.DisplayStartSearchButton.Size = new System.Drawing.Size(220, 49);
+            this.DisplayStartSearchButton.TabIndex = 7;
+            this.DisplayStartSearchButton.Text = "Search Songs,Videos or Users";
+            this.DisplayStartSearchButton.UseVisualStyleBackColor = true;
+            // 
+            // DisplayStartShowAddButton
+            // 
+            this.DisplayStartShowAddButton.Location = new System.Drawing.Point(256, 288);
+            this.DisplayStartShowAddButton.Name = "DisplayStartShowAddButton";
+            this.DisplayStartShowAddButton.Size = new System.Drawing.Size(220, 49);
+            this.DisplayStartShowAddButton.TabIndex = 8;
+            this.DisplayStartShowAddButton.Text = "Add/Show Songs, Videos or Playlists";
+            this.DisplayStartShowAddButton.UseVisualStyleBackColor = true;
+            // 
+            // DisplayStartDisplayPlaylistButton
+            // 
+            this.DisplayStartDisplayPlaylistButton.Location = new System.Drawing.Point(256, 363);
+            this.DisplayStartDisplayPlaylistButton.Name = "DisplayStartDisplayPlaylistButton";
+            this.DisplayStartDisplayPlaylistButton.Size = new System.Drawing.Size(220, 49);
+            this.DisplayStartDisplayPlaylistButton.TabIndex = 9;
+            this.DisplayStartDisplayPlaylistButton.Text = "Display all Playlists";
+            this.DisplayStartDisplayPlaylistButton.UseVisualStyleBackColor = true;
+            // 
+            // DisplayStartSettingsButton
+            // 
+            this.DisplayStartSettingsButton.Location = new System.Drawing.Point(253, 430);
+            this.DisplayStartSettingsButton.Name = "DisplayStartSettingsButton";
+            this.DisplayStartSettingsButton.Size = new System.Drawing.Size(220, 49);
+            this.DisplayStartSettingsButton.TabIndex = 10;
+            this.DisplayStartSettingsButton.Text = "Account/Profile Settings";
+            this.DisplayStartSettingsButton.UseVisualStyleBackColor = true;
+            // 
+            // DisplayStartPlayPlaylistButton
+            // 
+            this.DisplayStartPlayPlaylistButton.Location = new System.Drawing.Point(253, 495);
+            this.DisplayStartPlayPlaylistButton.Name = "DisplayStartPlayPlaylistButton";
+            this.DisplayStartPlayPlaylistButton.Size = new System.Drawing.Size(220, 49);
+            this.DisplayStartPlayPlaylistButton.TabIndex = 11;
+            this.DisplayStartPlayPlaylistButton.Text = "Play a Playlist";
+            this.DisplayStartPlayPlaylistButton.UseVisualStyleBackColor = true;
+            // 
+            // DisplayStartLogOutProfileButton
+            // 
+            this.DisplayStartLogOutProfileButton.Location = new System.Drawing.Point(253, 565);
+            this.DisplayStartLogOutProfileButton.Name = "DisplayStartLogOutProfileButton";
+            this.DisplayStartLogOutProfileButton.Size = new System.Drawing.Size(220, 49);
+            this.DisplayStartLogOutProfileButton.TabIndex = 12;
+            this.DisplayStartLogOutProfileButton.Text = "Log-Out from Profile";
+            this.DisplayStartLogOutProfileButton.UseVisualStyleBackColor = true;
+            // 
+            // DisplayStartCloseButton
+            // 
+            this.DisplayStartCloseButton.Location = new System.Drawing.Point(253, 631);
+            this.DisplayStartCloseButton.Name = "DisplayStartCloseButton";
+            this.DisplayStartCloseButton.Size = new System.Drawing.Size(220, 49);
+            this.DisplayStartCloseButton.TabIndex = 13;
+            this.DisplayStartCloseButton.Text = "Close FyBuZz";
+            this.DisplayStartCloseButton.UseVisualStyleBackColor = true;
+            // 
+            // DisplayStartAdminMenuButton
+            // 
+            this.DisplayStartAdminMenuButton.Location = new System.Drawing.Point(567, 720);
+            this.DisplayStartAdminMenuButton.Name = "DisplayStartAdminMenuButton";
+            this.DisplayStartAdminMenuButton.Size = new System.Drawing.Size(133, 40);
+            this.DisplayStartAdminMenuButton.TabIndex = 14;
+            this.DisplayStartAdminMenuButton.Text = "Admin Menu";
+            this.DisplayStartAdminMenuButton.UseVisualStyleBackColor = true;
+            // 
+            // DisplayStartLogOutButton
+            // 
+            this.DisplayStartLogOutButton.Location = new System.Drawing.Point(17, 16);
+            this.DisplayStartLogOutButton.Name = "DisplayStartLogOutButton";
+            this.DisplayStartLogOutButton.Size = new System.Drawing.Size(143, 37);
+            this.DisplayStartLogOutButton.TabIndex = 15;
+            this.DisplayStartLogOutButton.Text = "Log-Out";
+            this.DisplayStartLogOutButton.UseVisualStyleBackColor = true;
+            // 
             // FyBuZz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(691, 784);
+            this.ClientSize = new System.Drawing.Size(721, 784);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.ProfilePanel);
+            this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.LogInPanel);
             this.Controls.Add(this.CreateProfilePanel);
-            this.Controls.Add(this.RegisterPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FyBuZz";
             this.Text = "FyBuZz";
@@ -900,6 +1037,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.CreateProfilePic2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CreateProfilePic1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.DisplayStartPanel.ResumeLayout(false);
+            this.DisplayStartPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -972,5 +1112,17 @@
         private System.Windows.Forms.CheckedListBox CreateProfilePicCheckedListBox;
         private System.Windows.Forms.TextBox ProfilesInvalidCredentialTextBox;
         private System.Windows.Forms.TextBox ProfilesWelcomeTextBox;
+        private System.Windows.Forms.Panel DisplayStartPanel;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label DisplayStartLabel;
+        private System.Windows.Forms.Button DisplayStartSearchButton;
+        private System.Windows.Forms.Button DisplayStartLogOutButton;
+        private System.Windows.Forms.Button DisplayStartAdminMenuButton;
+        private System.Windows.Forms.Button DisplayStartCloseButton;
+        private System.Windows.Forms.Button DisplayStartLogOutProfileButton;
+        private System.Windows.Forms.Button DisplayStartPlayPlaylistButton;
+        private System.Windows.Forms.Button DisplayStartSettingsButton;
+        private System.Windows.Forms.Button DisplayStartDisplayPlaylistButton;
+        private System.Windows.Forms.Button DisplayStartShowAddButton;
     }
 }
