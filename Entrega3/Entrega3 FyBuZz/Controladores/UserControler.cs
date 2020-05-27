@@ -72,6 +72,7 @@ namespace Entrega3_FyBuZz.Controladores
                 string pPic = "...";
                 string name = userDataBase[u].Username;
                 Profile profile = userDataBase[u].CreateProfile(e.ProfileNameText, pPic, e.ProfileTypeText, e.EmailText, e.GenderText, pAge);
+                userDataBase[u].Perfiles.Add(profile);
                 dataBase.Save_Users(userDataBase);
                 return profile;
             }
@@ -89,10 +90,10 @@ namespace Entrega3_FyBuZz.Controladores
             {
                 if(profile.ProfileName == e.ProfileNameText || profile.Username == e.ProfileNameText)
                 {
-                    prof = profile;
+                    return profile;
                 }
             }
-            return prof;
+            return null;
         }
     }
 }

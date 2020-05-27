@@ -27,6 +27,8 @@ namespace Entrega3_FyBuZz
         public delegate Profile ChooseProfileEventHandler(object source, ProfileEventArgs args);
         public event ChooseProfileEventHandler ProfilesChooseProfile_Clicked;
 
+        private string ProfileName { get; set; }
+
         public FyBuZz()
         {
             InitializeComponent();
@@ -87,8 +89,13 @@ namespace Entrega3_FyBuZz
 
         private void ProfilesChooseProfile_Click(object sender, EventArgs e)
         {
+            string username = UserLogInTextBox.Text;
+            string password = PasswordLogInTextBox.Text;
             string profileProfileName = ProfileDomainUp.Text;
-            Profile profile = OnProfilesChooseProfile_Click(profileProfileName);
+            Profile profile = OnProfilesChooseProfile_Click(profileProfileName, username, password);
+
+            ProfileName = profileProfileName;
+            DisplayStartPanel.BringToFront();
             //Creo que cada vez que necesite el perfil debo llamar a este método con el parametro
             //que venga del "ProfileDomainUp.Text"
         }
@@ -119,7 +126,92 @@ namespace Entrega3_FyBuZz
             OnCreateProfileCreateProfileButton_Click(username, psswd, pName,pGender,pType,pEmail,pBirth,pPic);
         }
 
-        //Metodos internos
+        private void DisplayStartSearchButton_Click(object sender, EventArgs e)
+        {
+            SearchPanel.BringToFront();
+        }
+
+        private void DisplayStartLogOutButton_Click(object sender, EventArgs e)
+        {
+            LogInPanel.BringToFront();
+            UserLogInTextBox.ResetText();
+            PasswordLogInTextBox.ResetText();
+        }
+
+        private void DisplayStartDisplayPlaylistButton_Click(object sender, EventArgs e)
+        {
+            DisplayPlaylistPanel.BringToFront();
+        }
+
+        private void DisplayStartSettingsButton_Click(object sender, EventArgs e)
+        {
+            string username = UserLogInTextBox.Text;
+            string password = PasswordLogInTextBox.Text;
+            User user = OnLoginButtonClicked(username, password);
+
+            AccountSettingsUsernameTextBox.AppendText(user.Username);
+            AccountSettingsPasswordTextBox.AppendText(user.Password);
+            AccountSettingsEmailTextBox.AppendText(user.Email);
+            AccountSettingsAccountTypeTextBox.AppendText(user.Accountype);
+            AccountSettingsFollowersTextBox.AppendText(user.Followers.ToString());
+            AccountSettingsFollowingTextBox.AppendText(user.Following.ToString());
+            
+            foreach(string seguidor in user.FollowingList)
+            {
+                AccountSettingsFollowingListDomaiUp.Items.Add(seguidor);
+            }
+
+            foreach(string followers in user.FollowerList)
+            {
+                AccountSettingsFollowerListDomainUp.Items.Add(followers);
+            }
+
+
+            Profile profile = OnProfilesChooseProfile_Click(ProfileName, username, password);
+
+            ProfileSettingsNameTextBox.AppendText(profile.ProfileName);
+            ProfileSettingsProfileTypeTextBox.AppendText(profile.ProfileType);
+            ProfileSettingsGenderTextBox.AppendText(profile.Gender);
+            ProfileSettingsBirthdayTextBox.AppendText(profile.Age.ToString());
+            AccountProfileSettingsPanel.BringToFront();
+        }
+
+        private void DisplayStartLogOutProfileButton_Click(object sender, EventArgs e)
+        {
+            ProfilePanel.BringToFront();
+        }
+
+        private void DisplayStartAdminMenuButton_Click(object sender, EventArgs e)
+        {
+            AdminMenuPanel.BringToFront();
+        }
+
+        private void DisplayStartCloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void SearchGoBackButton_Click(object sender, EventArgs e)
+        {
+            DisplayStartPanel.BringToFront();
+        }
+
+        private void DisplayPlaylistGoBackButton_Click(object sender, EventArgs e)
+        {
+            DisplayStartPanel.BringToFront();
+        }
+
+        private void AccountProfileSettingsGoBackButton_Click(object sender, EventArgs e)
+        {
+            DisplayStartPanel.BringToFront();
+        }
+
+        private void AdminMenuGoBackButton_Click(object sender, EventArgs e)
+        {
+            DisplayStartPanel.BringToFront();
+        }
+
+        //MÉTODOS INTERNOS 
         public User OnLoginButtonClicked(string username, string password)
         {
             User user = new User();
@@ -182,13 +274,14 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
-        public Profile OnProfilesChooseProfile_Click(string pName)
+        public Profile OnProfilesChooseProfile_Click(string pName, string usr, string pass)
         {
             if (ProfilesChooseProfile_Clicked != null)
             {
-                Profile choosenProfile = ProfilesChooseProfile_Clicked(this, new ProfileEventArgs() { ProfileNameText = pName });
+                Profile choosenProfile = ProfilesChooseProfile_Clicked(this, new ProfileEventArgs() { ProfileNameText = pName , UsernameText = usr, PasswordText = pass});
                 ProfilesInvalidCredentialTextBox.ResetText();
                 ProfilesInvalidCredentialTextBox.AppendText("Entering FyBuZz with... " + choosenProfile.ProfileName);
+
                 Thread.Sleep(2000);
                 return choosenProfile;
             }
@@ -197,6 +290,7 @@ namespace Entrega3_FyBuZz
                 return null;
             }
         }
+
 
     }
 }
