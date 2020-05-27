@@ -213,14 +213,14 @@ namespace Modelos
             while (x == true)
             {
 
-                Console.WriteLine("I) Search Songs, Videos or Users."); //Faltaria la bsuqueda de gente.
+                Console.WriteLine("I) Search Songs, Videos or Users."); //Panel listo
                 Console.WriteLine("II) Add/Show Songs, Videos or Playlists.");
-                Console.WriteLine("III) Display all Playlists.");
-                Console.WriteLine("IV) Account Settings/ Profile Settings.");
-                Console.WriteLine("V) Play a Playlist.");
+                Console.WriteLine("III) Display all Playlists."); //Panel listo
+                Console.WriteLine("IV) Account Settings/ Profile Settings."); //Panel listo
+                Console.WriteLine("V) Play a Playlist."); //No seria mejor juntar esto con display all playlist....? Le ponemos un searchbar para playlists.
                 Console.WriteLine("VI) LogOut from Profile.");
                 Console.WriteLine("VII) CloseApp.");
-                Console.WriteLine("VIII) Admin Menu.");
+                Console.WriteLine("VIII) Admin Menu."); //Panel listo
                 string dec = Console.ReadLine();
                 switch (dec)
                 { //(REVISAR DESPUES)Mejorar el metodo de busqueda para que busque canciones que se parezca
