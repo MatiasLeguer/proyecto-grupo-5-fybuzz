@@ -321,6 +321,11 @@ namespace FyBuzz_E2
                     int largoS = p.PlaylistFavoritosSongs.Count();
                     return random.Next(0, largoS);
                 }
+                else if(typeP == "Foll")
+                {
+                    int largoS = p.FollowedPlayList;
+                    return random.Next(0, largoS);
+                }
 
             }
             else

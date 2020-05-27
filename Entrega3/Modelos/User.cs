@@ -18,6 +18,7 @@ namespace Modelos
         protected int followers;
         protected int following;
         protected List<string> followingList = new List<string>();
+        protected List<string> followerList = new List<string>();
         protected bool verified;
         protected bool adsOn;
         protected bool privacy;
@@ -36,6 +37,7 @@ namespace Modelos
         public bool Privacy { get => privacy; set => privacy = value; }
         public List<Profile> Perfiles { get => perfiles; set => perfiles = value; }
         public List<string> FollowingList { get => followingList; set => followingList = value; }
+        public List<string> FollowerList { get => followerList; set => followerList = value; }
         public List<PlayList> ProfilePlaylists { get => profilePlaylists; set => profilePlaylists = value; }
 
         public Profile CreateProfile(string pname, string ppic, string ptype, string pmail, string pgender, int page)
