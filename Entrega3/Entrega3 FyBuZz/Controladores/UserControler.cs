@@ -40,7 +40,7 @@ namespace Entrega3_FyBuZz.Controladores
         private int UserIndex(ProfileEventArgs e)
         {
             int u = 0;
-            foreach (User user in userDataBase)
+            foreach(User user in userDataBase)
             {
                 if (user.Username == e.UsernameText && user.Password == e.PasswordText)
                 {
@@ -67,11 +67,12 @@ namespace Entrega3_FyBuZz.Controladores
         {
             int u = UserIndex(e);
             if (userDataBase[u].Accountype == "premium")
-            {
+            {   
                 int pAge = DateTime.Now.Year - e.BirthdayText.Year;
                 string pPic = "...";
                 string name = userDataBase[u].Username;
                 Profile profile = userDataBase[u].CreateProfile(e.ProfileNameText, pPic, e.ProfileTypeText, e.EmailText, e.GenderText, pAge);
+                userDataBase[u].Perfiles.Add(profile);
                 dataBase.Save_Users(userDataBase);
                 return profile;
             }
@@ -87,12 +88,13 @@ namespace Entrega3_FyBuZz.Controladores
             Profile prof = new Profile(e.ProfileNameText,"..",e.ProfileTypeText,e.EmailText,e.GenderText, pAge);
             foreach(Profile profile in userDataBase[u].Perfiles)
             {
-                if(profile.ProfileName == e.ProfileNameText || profile.Username == e.ProfileNameText)
+                
+                if(profile.ProfileName == prof.ProfileName || profile.Username == prof.ProfileName)
                 {
-                    prof = profile;
+                    return profile;
                 }
             }
-            return prof;
+            return null;
         }
     }
 }

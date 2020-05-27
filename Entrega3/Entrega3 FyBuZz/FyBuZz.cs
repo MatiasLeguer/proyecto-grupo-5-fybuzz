@@ -87,8 +87,12 @@ namespace Entrega3_FyBuZz
 
         private void ProfilesChooseProfile_Click(object sender, EventArgs e)
         {
+            string username = UserLogInTextBox.Text;
+            string pswd = PasswordLogInTextBox.Text;
             string profileProfileName = ProfileDomainUp.Text;
-            Profile profile = OnProfilesChooseProfile_Click(profileProfileName);
+            Profile profile = OnProfilesChooseProfile_Click(profileProfileName,username,pswd);
+            AccountProfileSettingsPanel.BringToFront();
+            //ProfileSettingsNameTextBox.AppendText(profile.ProfileName);
             //Creo que cada vez que necesite el perfil debo llamar a este método con el parametro
             //que venga del "ProfileDomainUp.Text"
         }
@@ -116,7 +120,7 @@ namespace Entrega3_FyBuZz
             else if (CreateProfilePicCheckedListBox.SelectedIndex == 1) pPic = CreateProfilePic2.Image;
             else if (CreateProfilePicCheckedListBox.SelectedIndex == 2) pPic = CreateProfilePic3.Image;
             else if (CreateProfilePicCheckedListBox.SelectedIndex == 3) pPic = CreateProfilePic4.Image;
-            OnCreateProfileCreateProfileButton_Click(username, psswd, pName,pGender,pType,pEmail,pBirth,pPic);
+            OnCreateProfileCreateProfileButton_Click(username, psswd, pName,pGender,pType, pEmail,pBirth,pPic);
         }
 
         //Metodos internos
@@ -182,14 +186,17 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
-        public Profile OnProfilesChooseProfile_Click(string pName)
+        public Profile OnProfilesChooseProfile_Click(string pName,string user, string pswd)
         {
             if (ProfilesChooseProfile_Clicked != null)
             {
-                Profile choosenProfile = ProfilesChooseProfile_Clicked(this, new ProfileEventArgs() { ProfileNameText = pName });
-                ProfilesInvalidCredentialTextBox.ResetText();
-                ProfilesInvalidCredentialTextBox.AppendText("Entering FyBuZz with... " + choosenProfile.ProfileName);
-                Thread.Sleep(2000);
+                Profile choosenProfile = ProfilesChooseProfile_Clicked(this, new ProfileEventArgs() { ProfileNameText = pName, UsernameText = user, PasswordText = pswd});
+                if (choosenProfile != null)
+                {
+                    ProfilesInvalidCredentialTextBox.ResetText();
+                    ProfilesInvalidCredentialTextBox.AppendText("Entering FyBuZz with... " + choosenProfile.ProfileName);
+                    Thread.Sleep(2000);
+                }
                 return choosenProfile;
             }
             else
