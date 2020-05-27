@@ -902,18 +902,29 @@ namespace FyBuzz_E2
 
                     //REVISAR CASO 5 DESPUES
                     case "V":
+
+                        //Le pide al usuario escoger la lista de playlist a la que quiere acceder.
                         Console.Clear();
-                        Console.WriteLine("What playlist do you want to play?(GlobalPlayLists, FollowedPlaylists or FavoritePlayList)");
+                        Console.WriteLine("What playlist do you want to play?(GlobalPlayLists (gl), FollowedPlaylists (foll) or FavoritePlayList (fav))");
+                        
+                        //Condición para corregir posibles errores que puede crear el usuario
                         string play;
                         do
                         {
                             play = Console.ReadLine();
-                        } while (play != "GlobalPlayLists" && play != "FollowedPlaylists" && play != "FavoritePlayList");
+                            if (play != "gl" && play != "foll" && play != "fav")
+                                Console.Write("Please choose one of these options (gl/foll/fav): ");
 
-                        if (play == "FavoritePlayList")
+                        } while (play != "gl" && play != "foll" && play != "fav");
+
+                        //Condición cuando el usuario escoge favoritePlayList
+                        if (play == "fav")
                         {
 
+                            //Le pregunta al usuario si es que quiere una cancion o video
                             Console.Write("Do you want to listen to a song (s) or watch a video (v)?: ");
+
+                            //Condición para corregir posibles errores creados por el usuario
                             string op;
                             do
                             {
@@ -922,10 +933,15 @@ namespace FyBuzz_E2
                                     Console.Write("ERROR[!] ~Select a valid command please");
                             } while ((op != "s" && op != "v") && (op != "S" && op != "V"));
 
+                            //Condición utilizada si es que el usuario escoge ver la playlist de canciones.
                             if (op == "s")
                             {
+
+                                //Condición utilizada para ver si el usuario es premium.
                                 if (user.Accountype == "premium")
                                 {
+
+                                    //Le pregunta al usuario si es que quiere una canción random o seleccionar una.
                                     Console.WriteLine("Do you want to play a random song? or select it from the playlist? (r/s): ");
                                     string rndSel;
                                     do
@@ -937,22 +953,34 @@ namespace FyBuzz_E2
                                     } while (rndSel != "r" && rndSel != "s");
 
 
+                                    //Condición cuando el usuario escoge la opción random.
                                     if (rndSel == "r")
                                     {
+                                        //coloca una cancion random que esta dentro de la playlist.
                                         player.PlaySong(userProfile.PlaylistFavoritosSongs[player.RandomMult(userProfile, 0, "Fav")], userProfile.PlaylistFavoritosSongs, database, user, userProfile);
                                     }
+
+                                    //Condición cuando el usuario escoge s
                                     else
                                     {
+
+                                        //Muestra un listado de todas las canciones que se encuentran dentro de esta playlist.
                                         for (int i = 0; i < userProfile.PlaylistFavoritosSongs.Count(); i++)
                                         {
                                             Console.WriteLine("{0}) {1}", i + 1, userProfile.PlaylistFavoritosSongs[i].Name);
                                         }
-                                        Console.Write("Escoga una cancion: ");
+
+                                        //Le pide al usuario que escoga una canción.
+                                        Console.Write("Choose a song (Number): ");
                                         int index = int.Parse(Console.ReadLine()) - 1;
+
+                                        //Realiza el play de la canción.
                                         player.PlaySong(userProfile.PlaylistFavoritosSongs[index], userProfile.PlaylistFavoritosSongs, database, user, userProfile);
                                     }
 
                                 }
+
+                                //En caso de que el usuario es standard, se le selecciona automáticamente una canción random.
                                 else
                                 {
                                     player.PlaySong(userProfile.PlaylistFavoritosSongs[player.RandomMult(userProfile, 0, "Fav")], userProfile.PlaylistFavoritosSongs, database, user, userProfile);
@@ -960,47 +988,69 @@ namespace FyBuzz_E2
 
 
                             }
+
+                            //Condición en caso de que el usuario decide ver una playlist de videos.
                             else if (op == "v")
                             {
+        
+                                //Condición en caso de que el usuario es premium.
                                 if (user.Accountype == "premium")
                                 {
+
+                                    //Se le pregunta al usuario si es que quiere un video random o seleccionar uno.
                                     Console.Write("Do you want to play a random video? or select it from the playlist? (r/v): ");
+
+                                    //Condición para corregir posibles errores creados por el humano.
                                     string rndSel;
                                     do
                                     {
                                         rndSel = Console.ReadLine();
                                         if (rndSel != "r" && rndSel != "v")
                                             Console.Write("ERROR [!] ~Select a valid command please (r/v): ");
+
                                     } while (rndSel != "r" && rndSel != "v");
 
 
+                                    //Condición utilizada en caso de que el usuario escoga ver un video random
                                     if (rndSel == "r")
                                     {
                                         player.PlayVideo(userProfile.PlaylistFavoritosVideos[player.RandomMult(userProfile, 1, "Fav")], userProfile.PlaylistFavoritosVideos, database, user, userProfile);
                                     }
+
+                                    //Condición utilizada en caso de que el usuario escoge seleccionar un video
                                     else
                                     {
+
+                                        //muestra un listado de los videos que se encuentran en la playlist.
                                         for (int i = 0; i < userProfile.PlaylistFavoritosVideos.Count(); i++)
                                         {
                                             Console.WriteLine("{0}) {1}", i + 1, userProfile.PlaylistFavoritosVideos[i].Name);
                                         }
-                                        Console.Write("Escoga un video: ");
+
+                                        //Le pide al usuario escoger un video del listado.
+                                        Console.Write("Choose a video (Number): ");
                                         int index = int.Parse(Console.ReadLine()) - 1;
+
+                                        //Reproduce el video.
                                         player.PlayVideo(userProfile.PlaylistFavoritosVideos[index], userProfile.PlaylistFavoritosVideos, database, user, userProfile);
                                     }
                                 }
+
+                                //Condición en caso de que el usuario es standard. se le selecciona un video random de la playlist.
                                 else
                                 {
                                     player.PlayVideo(userProfile.PlaylistFavoritosVideos[player.RandomMult(userProfile, 1, "Fav")], userProfile.PlaylistFavoritosVideos, database, user, userProfile);
                                 }
                             }
+
+                            //Error que si no me equivoco es imposible llegar 
                             else
                             {
                                 Console.WriteLine("ERROR[!]~How did you get here? WTF");
                             }
                         }
 
-                        else if (play == "FollowedPlaylist")
+                        else if (play == "foll")
                         {
                             Console.Write("Do you wish to play a song (s) or a video (v)?");
                             string sv;
@@ -1106,7 +1156,7 @@ namespace FyBuzz_E2
                             }
                         }
 
-                        else if (play == "GlobalPlayLists")
+                        else if (play == "gl")
                         {
                             Console.Write("Do you wish to play a song (s) or a video (v)?");
                             string sv;
