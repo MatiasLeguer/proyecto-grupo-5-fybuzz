@@ -68,7 +68,7 @@ namespace Entrega3_FyBuZz.Controladores
             int u = UserIndex(e);
             if (userDataBase[u].Accountype == "premium")
             {
-                int pAge = 2020 - e.BirthdayText.Year;
+                int pAge = DateTime.Now.Year - e.BirthdayText.Year;
                 string pPic = "...";
                 string name = userDataBase[u].Username;
                 Profile profile = userDataBase[u].CreateProfile(e.ProfileNameText, pPic, e.ProfileTypeText, e.EmailText, e.GenderText, pAge);
@@ -83,7 +83,7 @@ namespace Entrega3_FyBuZz.Controladores
         private Profile OnProfilesChooseProfile_Click(object sender, ProfileEventArgs e)
         {
             int u = UserIndex(e);
-            int pAge = 2020 - e.BirthdayText.Year;
+            int pAge = DateTime.Now.Year - e.BirthdayText.Year;
             Profile prof = new Profile(e.ProfileNameText,"..",e.ProfileTypeText,e.EmailText,e.GenderText, pAge);
             foreach(Profile profile in userDataBase[u].Perfiles)
             {

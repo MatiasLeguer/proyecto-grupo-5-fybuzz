@@ -23,6 +23,14 @@ namespace FyBuzz_E2
             
             List<PlayList> baseListPLs = new List<PlayList>() { new PlayList("Programming hard", ".mp3","FyBuZz", "FyBuZz"),
                                                                 new PlayList("TikToks that cured my depression", ".mp4", "FyBuZz", "FyBuZz") };
+            int i = 0;
+            foreach (PlayList pl in baseListPLs)
+            {
+
+                pl.Songs.Add(baseListSong[i]);
+                pl.Videos.Add(baseListVideo[i]);
+                i++;      
+            }
             
             List<PlayList> basePrivPLs = new List<PlayList>() { new PlayList("", "", "", "") };
             

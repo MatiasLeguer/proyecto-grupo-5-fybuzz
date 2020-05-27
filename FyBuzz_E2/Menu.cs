@@ -1177,7 +1177,7 @@ namespace FyBuzz_E2
                                 Console.Write("Type the playlist that you want to play: ");
                                 int numPl = int.Parse(Console.ReadLine()) - 1;
                                 string nPl = listPlayListGlobal[numPl].NamePlayList;
-                                if (user.Accountype == "Premium")
+                                if (user.Accountype == "premium")
                                 {
                                     Console.Write("Do you want to play a random song? or select it? (r/s): ");
                                     string rndSel;
@@ -1190,23 +1190,25 @@ namespace FyBuzz_E2
 
                                     if (rndSel == "r")
                                     {
+                                        /*Una vez terminado el metodo de random colocar la lista de Songs en vez del diccionario.*/
                                         int rnd = player.RandomMult(userProfile, 0, "Gl");
                                         player.PlaySong(listPlayListGlobal[rnd].DicCanciones[nPl][rnd], listPlayListGlobal[rnd].DicCanciones[nPl], database, user, userProfile);
                                     }
                                     else
                                     {
-                                        for (int j = 0; j < listPlayListGlobal[numPl].DicCanciones[nPl].Count(); j++)
+                                        for (int j = 0; j < listPlayListGlobal[numPl].Songs.Count(); j++)
                                         {
-                                            Console.WriteLine("{0}) {1}", j + 1, listPlayListGlobal[numPl].DicCanciones[nPl][j].Name);
+                                            Console.WriteLine("{0}) {1}", j + 1, listPlayListGlobal[numPl].Songs[j].Name);
                                         }
 
                                         Console.Write("Choose a song: ");
                                         int index = int.Parse(Console.ReadLine()) - 1;
-                                        player.PlaySong(listPlayListGlobal[numPl].DicCanciones[nPl][index], listPlayListGlobal[numPl].DicCanciones[nPl], database, user, userProfile);
+                                        player.PlaySong(listPlayListGlobal[numPl].Songs[index], listPlayListGlobal[numPl].Songs, database, user, userProfile);
                                     }
                                 }
                                 else
                                 {
+                                    /*Una vez terminado el metodo de random colocar la lista de Songs en vez del diccionario.*/
                                     int rnd = player.RandomMult(userProfile, 0, "Gl");
                                     player.PlaySong(listPlayListGlobal[rnd].DicCanciones[nPl][rnd], userProfile.FollowedPlayList[rnd].DicCanciones[nPl], database, user, userProfile);
                                 }
@@ -1235,6 +1237,7 @@ namespace FyBuzz_E2
 
                                     if (rndSel == "r")
                                     {
+                                        /*Una vez terminado el metodo de random colocar la lista de Video en vez del diccionario.*/
                                         int rnd = player.RandomMult(userProfile, 1, "Gl");
                                         player.PlayVideo(listPlayListGlobal[rnd].DicVideos[nPl][rnd], listPlayListGlobal[rnd].DicVideos[nPl], database, user, userProfile);
                                     }
@@ -1242,15 +1245,16 @@ namespace FyBuzz_E2
                                     {
                                         for (int j = 0; j < listPlayListGlobal[numPl].DicVideos[nPl].Count(); j++)
                                         {
-                                            Console.WriteLine("{0}) {1}", j + 1, listPlayListGlobal[numPl].DicVideos[nPl][j].Name);
+                                            Console.WriteLine("{0}) {1}", j + 1, listPlayListGlobal[numPl].Videos[j].Name);
                                         }
                                         Console.Write("Choose a video: ");
                                         int index = int.Parse(Console.ReadLine()) - 1;
-                                        player.PlayVideo(listPlayListGlobal[numPl].DicVideos[nPl][index], listPlayListGlobal[numPl].DicVideos[nPl], database, user, userProfile);
+                                        player.PlayVideo(listPlayListGlobal[numPl].Videos[index], listPlayListGlobal[numPl].Videos, database, user, userProfile);
                                     }
                                 }
                                 else
                                 {
+                                    /*Una vez terminado el metodo de random colocar la lista de Video en vez del diccionario.*/
                                     int rnd = player.RandomMult(userProfile, 1, "Gl");
                                     player.PlayVideo(listPlayListGlobal[rnd].DicVideos[nPl][rnd], listPlayListGlobal[rnd].DicVideos[nPl], database, user, userProfile);
                                 }
