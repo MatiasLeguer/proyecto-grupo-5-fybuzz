@@ -10,6 +10,8 @@ namespace Modelos
     [Serializable]
     public class Profile : User
     {
+        //ATRIBUTOS:
+
         protected string profileName;
         protected string profilePic;
 
@@ -23,8 +25,10 @@ namespace Modelos
         protected List<PlayList> createdPlaylist = new List<PlayList>();
         protected string gender;
         protected int age;
+        //--------------------------------------------------------------------------------------------------
 
-
+        //GETTERS Y SETTERS
+        //--------------------------------------------------------------------------------------------------
         public string ProfileName { get => profileName; set => profileName = value; }
         public string ProfileType { get => profileType; set => profileType = value; }
         public string Gender { get => gender; set => gender = value; }
@@ -35,7 +39,10 @@ namespace Modelos
         public List<Video> PlaylistEnColaVideos { get => playlistEnColaVideos; set => playlistEnColaVideos = value; }
         public List<PlayList> FollowedPlayList { get => followedPlayList; set => followedPlayList = value; }
         public List<PlayList> CreatedPlaylist { get => createdPlaylist; set => createdPlaylist = value; }
+        //--------------------------------------------------------------------------------------------------
 
+        //CONSTRUCTOR
+        //--------------------------------------------------------------------------------------------------
         public Profile(string pn, string pp, string pt, string pm, string pg, int pa)
         {
             profileName = pn;
@@ -45,16 +52,24 @@ namespace Modelos
             gender = pg;
             age = pa;
         }
+        //--------------------------------------------------------------------------------------------------
 
-        public void ChangeName(string NewName)
+
+        //MÉTODOS
+
+        //MÉTODOS CHANGE
+        //--------------------------------------------------------------------------------------------------
+        public void ChangeName(string NewName)                            //Reemplaza el nombre de perfil por un nombre nuevo.
         {
             profileName.Replace(profileName, NewName);
         }
-        public void ChangeProfilePic()
+
+        public void ChangeProfilePic()                                    //Reemplaza la imagen anterior por una nueva.
         {
 
         }
-        public void ChangeProfileType()
+
+        public void ChangeProfileType()                                   //Reemplaza el tipo de perfil por uno nuevo.
         {
             if (profileType == "public")
             {
@@ -65,58 +80,83 @@ namespace Modelos
                 profileType.Replace(profileType, "public");
             }
         }
-        public void Follow()
+
+        public void Follow()                                              //Sigue a una cuenta.
         {
 
         }
-        public List<string> InfoProfile()
+
+
+        //--------------------------------------------------------------------------------------------------
+
+        //MÉTODOS DE INFORMACIÓN
+        //--------------------------------------------------------------------------------------------------
+
+        public List<string> InfoProfile()                                 //Entrega una lista de string con la información total del perfil.
         {
             List<string> InfoPro = new List<string>() { profileName, profileType, gender, age.ToString() };
             return InfoPro;
         }
-        public string SearchedInfoProfile()
+
+        public string SearchedInfoProfile()                               //Entrega un string con la informacion básica del perfil.
         {
             return "Name: " + profileName + " " + "Gender:" + gender + " " + "Age:" + age;
         }
 
-        public void RankingMultimedia()
+        public void RankingMultimedia()                                   //Entrega la información del ranking que tiene la canción.
         {
 
         }
-        public void AddColaSongs(Song song)
+        //--------------------------------------------------------------------------------------------------
+
+
+        //MÉTODOS ADD/DOWNLOAD
+        //--------------------------------------------------------------------------------------------------
+
+        public void AddColaSongs(Song song)                               //Agrega la canción seleccionada a la playlist "En Cola Song"
         {
             playlistEnColaSongs.Add(song);
         }
-        public void AddColaVideos(Video video)
+
+        public void AddColaVideos(Video video)                            //Agrega el video seleccionado a la playlist "En Cola Videos"
         {
             playlistEnColaVideos.Add(video);
         }
-        public void AddFavSongs(Song song)
+
+        public void AddFavSongs(Song song)                                //Agrega la canción seleccionada a la playlist favorita de canciones.
         {
             playlistFavoritosSongs.Add(song);
         }
-        public void AddFavVideos(Video video)
+
+        public void AddFavVideos(Video video)                             //Agrega el video seleccionado a la playlist favorita de videos.
         {
             playlistFavoritosVideos.Add(video);
         }
-        public void AddImage()
+
+        public void AddImage()                                            //Agrega una imagen al perfil.
         {
 
         }
-        public void DownloadSong()
+
+        public void DownloadSong()                                        //Función que permite descargar la canción.
         {
             Thread.Sleep(5000);
             Console.WriteLine("Se ha descargado la cancion");
         }
-        public List<string> ProfileSettings()
+        //--------------------------------------------------------------------------------------------------
+
+        //MÉTODOS SETTINGS
+        //--------------------------------------------------------------------------------------------------
+        public List<string> ProfileSettings()                             //Entrega una lista ocn la información de profile para hacer display en los settings.
         {
             List<string> Settings = new List<string>() { profileName, profileType, profilePic, gender, age.ToString() };
             return Settings;
         }
+        //--------------------------------------------------------------------------------------------------
 
-        // En videos o canciones (seria mejor en multimedia) deberia haber un metodo
-        // que permita sumarle uno al contador de likes de cancion o video, de lo
-        // contrario no se le podria sumar algo al atributo desde esta clase
+        /* En videos o canciones (seria mejor en multimedia) deberia haber un metodo
+           que permita sumarle uno al contador de likes de cancion o video, de lo
+           contrario no se le podria sumar algo al atributo desde esta clase */
 
 
     }
