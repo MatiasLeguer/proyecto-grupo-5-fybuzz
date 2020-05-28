@@ -323,7 +323,7 @@ namespace FyBuzz_E2
                 }
                 else if(typeP == "Foll")
                 {
-                    int largoS = p.FollowedPlayList;
+                    int largoS = p.FollowedPlayList.Count();
                     return random.Next(0, largoS);
                 }
 

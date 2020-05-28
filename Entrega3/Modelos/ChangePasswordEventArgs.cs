@@ -8,8 +8,9 @@ namespace Modelos
 {
     public class ChangePasswordEventArgs : EventArgs
     {
-        //Necesito algun requisito más para poder cambiar la contraseña?
+        /* Necesito algun requisito más para poder cambiar la contraseña? */
 
+        //GETTERS Y SETTERS
         public string Username { get; set; }
         public string Email { get; set; }
     }

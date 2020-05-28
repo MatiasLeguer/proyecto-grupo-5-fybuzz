@@ -9,6 +9,8 @@ namespace Modelos
     [Serializable]
     public class Multimedia
     {
+        //ATRIBUTOS:
+
         protected string name;
         protected string date;
         protected int ranking;
@@ -18,12 +20,20 @@ namespace Modelos
         protected double duration;
         protected double presentTime;
         protected string format;
+        //--------------------------------------------------------------------------------------------------
 
+        //GETTERS Y SETTERS
+        //--------------------------------------------------------------------------------------------------
         public double Duration { get => duration; }
         public string Name { get => name; }
         public int Likes { get => likes; set => likes = value; }
         public int GeneralRep { get => generalRep; set => generalRep = value; }
+        //--------------------------------------------------------------------------------------------------
 
+        //MÉTODOS
+
+        //METODOS CHANGE
+        //--------------------------------------------------------------------------------------------------
         public string AddMult()
         {
             throw new NotImplementedException();
@@ -39,8 +49,12 @@ namespace Modelos
             throw new NotImplementedException();
         }
 
-        //InfoMult()
-        //Todavia no sabemos como colocar un archivo srt o una lyric de una cancion, entonces no puedo hacer display (lyrics esta en bool)
+        //--------------------------------------------------------------------------------------------------
+
+
+
+        /*InfoMult()
+          Todavia no sabemos como colocar un archivo srt o una lyric de una cancion, entonces no puedo hacer display (lyrics esta en bool) */
 
 
 

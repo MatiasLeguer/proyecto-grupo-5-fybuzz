@@ -9,6 +9,8 @@ namespace Modelos
     [Serializable]
     public class PlayList
     {
+        //ATRIBUTOS:
+
         private List<Song> songs = new List<Song>();
         private List<Video> videos = new List<Video>();
         private string namePlayList;
@@ -16,10 +18,12 @@ namespace Modelos
         private int followers;
         private string creator;
         private string profileCreator;
-
         private Dictionary<string, List<Song>> dicCanciones;
         private Dictionary<string, List<Video>> dicVideos;
+        //--------------------------------------------------------------------------------------------------
 
+        //GETTERS Y SETTERS:
+        //--------------------------------------------------------------------------------------------------
         public Dictionary<string, List<Song>> DicCanciones { get => dicCanciones; }
         public Dictionary<string, List<Video>> DicVideos { get => dicVideos; }
         public string Format { get => format; }
@@ -28,7 +32,10 @@ namespace Modelos
         public string ProfileCreator { get => profileCreator; set => profileCreator = value; }
         public List<Song> Songs { get => songs; set => songs = value; }
         public List<Video> Videos { get => videos; set => videos = value; }
+        //--------------------------------------------------------------------------------------------------
 
+        //CONSTRUCTOR
+        //--------------------------------------------------------------------------------------------------
         public PlayList(string Nombre, string Formato, string Creator, string ProfileCreator)
         {
             format = Formato;
@@ -37,8 +44,13 @@ namespace Modelos
             this.profileCreator = ProfileCreator;
 
         }
+        //--------------------------------------------------------------------------------------------------
 
-        public void AddToPlayList()
+        //MÉTODOS:
+
+        //MÉTODO ADD
+        //--------------------------------------------------------------------------------------------------
+        public void AddToPlayList()                             //Agrega las canciones y videos a un diccionario de canciones o videos.
         {
             if (format == ".mp3" || format == ".wav")
             {
@@ -49,19 +61,23 @@ namespace Modelos
                 dicVideos.Add(namePlayList, videos);
             }
         }
+        //--------------------------------------------------------------------------------------------------
 
-
-        public List<string> InfoPlayList()
+        //MÉTODOs INFORMACIÓN
+        //--------------------------------------------------------------------------------------------------
+        public List<string> InfoPlayList()                      //Entrega una lista de string con la información de la playlist
         {
             return new List<string>() { NamePlayList, Format };
             /*string str = "";
             str += "PlayList Name: " + namePlayList + "\n";
             str += "Play List Format: " + format + "\n";
+
             return str;*/
         }
-        public string DisplayInfoPlayList()
+        public string DisplayInfoPlayList()                     //Entrega un string con la información de la playlist
         {
             return "PlayList Name: " + namePlayList + "\t Formato: " + format + "\t Creator: " + creator;
         }
+        //--------------------------------------------------------------------------------------------------
     }
 }

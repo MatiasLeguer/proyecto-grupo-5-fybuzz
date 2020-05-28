@@ -86,11 +86,12 @@ namespace Modelos
                     }
                     s.GeneralRep++;
                     loop = false;
-                    break;
 
                     List<Song> FavSongs = profile.PlaylistFavoritosSongs;
                     FavSongs.Add(s);
                     s.Likes++;
+                    break;
+
                 }
             }
         }
@@ -316,6 +317,11 @@ namespace Modelos
                 if (typeP == "Fav")
                 {
                     int largoS = p.PlaylistFavoritosSongs.Count();
+                    return random.Next(0, largoS);
+                }
+                else if (typeP == "Foll")
+                {
+                    int largoS = p.FollowedPlayList.Count();
                     return random.Next(0, largoS);
                 }
 
