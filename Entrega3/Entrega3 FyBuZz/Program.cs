@@ -19,6 +19,7 @@ namespace Entrega3_FyBuZz
             Application.SetCompatibleTextRenderingDefault(false);
             FyBuZz fyBuZz = new FyBuZz();
             UserControler userController = new UserControler(fyBuZz);
+            SongController songController = new SongController(fyBuZz);
             Application.Run(fyBuZz);
         }
     }
