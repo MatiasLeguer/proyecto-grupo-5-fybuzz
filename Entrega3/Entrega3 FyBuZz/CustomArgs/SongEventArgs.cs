@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entrega3_FyBuZz.CustomArgs
 {
-    public class SongEventArgs:EventArgs
+    public class SongEventArgs : EventArgs
     {
         public string NameText { get; set; }
         public string ArtistText { get; set; }
@@ -18,5 +18,6 @@ namespace Entrega3_FyBuZz.CustomArgs
         public double DurationText { get; set; }
         public string FormatText { get; set; }
         public string LyricsText { get; set; }
+        public string FileNameText { get; set; }
     }
 }

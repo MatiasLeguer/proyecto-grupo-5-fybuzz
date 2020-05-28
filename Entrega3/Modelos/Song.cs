@@ -19,8 +19,10 @@ namespace Modelos
         protected string gender;
         protected string studio;
         protected string lyrics;
-        protected string songFile;
+        private string songFile;
         public string Lyrics { get => lyrics; }
+        public string SongFile { get => songFile; set => songFile = value; }
+        public string Format { get => format; }
 
         //Ver si el constructor está adecuado, o si hay que sacar algo.
         public Song(string name, string artist, string album, string discography, string gender, string date, string studio, double duration, string lyrics, string format, string songFile)
@@ -36,7 +38,7 @@ namespace Modelos
             this.duration = duration;
             this.lyrics = lyrics;
             this.format = format;
-            this.songFile = songFile;
+            this.SongFile = songFile;
         }
         /*
         public delegate void SendSongEventHandler(object source, Song s);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FyBuZz));
             this.WelcomePanel = new System.Windows.Forms.Panel();
             this.WelcomeLogInButton = new System.Windows.Forms.Button();
@@ -140,9 +141,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.ProfileSettingsLabel = new System.Windows.Forms.Label();
             this.SearchPanel = new System.Windows.Forms.Panel();
+            this.SearchSelectMultButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.SearchTimerDisplayLabel = new System.Windows.Forms.Label();
+            this.SearchProgressBar = new System.Windows.Forms.ProgressBar();
+            this.SearchSkipButton = new System.Windows.Forms.Button();
+            this.SearchPreviousButton = new System.Windows.Forms.Button();
+            this.SearchPauseButton = new System.Windows.Forms.Button();
+            this.SearchPlayButton = new System.Windows.Forms.Button();
             this.SearchGoBackButton = new System.Windows.Forms.Button();
             this.SearchFollowButton = new System.Windows.Forms.Button();
-            this.SearchPlayButton = new System.Windows.Forms.Button();
             this.SearchSearchResultsDomainUp = new System.Windows.Forms.DomainUpDown();
             this.SearchSearchButton = new System.Windows.Forms.Button();
             this.SearchSearchTextBox = new System.Windows.Forms.TextBox();
@@ -186,6 +194,9 @@
             this.AdminMenuEraseUserButton = new System.Windows.Forms.Button();
             this.AdminMenuLabel = new System.Windows.Forms.Label();
             this.CreateSongPanel = new System.Windows.Forms.Panel();
+            this.CreateSongSongFileButton = new System.Windows.Forms.Button();
+            this.CreateSongSongFileTextBox = new System.Windows.Forms.TextBox();
+            this.CreateSongSongFileLabel = new System.Windows.Forms.Label();
             this.CreateSongInvalidSongLabel = new System.Windows.Forms.Label();
             this.CreateSongCreateSongButton = new System.Windows.Forms.Button();
             this.CreateSongGoBackButton = new System.Windows.Forms.Button();
@@ -212,10 +223,8 @@
             this.CreateSongLabel = new System.Windows.Forms.Label();
             this.CreateVideoPanel = new System.Windows.Forms.Panel();
             this.CreatePlaylistPanel = new System.Windows.Forms.Panel();
-            this.CreateSongSongFileLabel = new System.Windows.Forms.Label();
-            this.CreateSongOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.CreateSongSongFileTextBox = new System.Windows.Forms.TextBox();
-            this.CreateSongSongFileButton = new System.Windows.Forms.Button();
+            this.DurationTimer = new System.Windows.Forms.Timer(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -241,6 +250,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfileSettingsProfilePicImageBox)).BeginInit();
             this.SearchPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.AddShowPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddShowLogo1)).BeginInit();
@@ -1502,18 +1512,102 @@
             // SearchPanel
             // 
             this.SearchPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchPanel.Controls.Add(this.SearchSelectMultButton);
+            this.SearchPanel.Controls.Add(this.panel1);
             this.SearchPanel.Controls.Add(this.SearchGoBackButton);
             this.SearchPanel.Controls.Add(this.SearchFollowButton);
-            this.SearchPanel.Controls.Add(this.SearchPlayButton);
             this.SearchPanel.Controls.Add(this.SearchSearchResultsDomainUp);
             this.SearchPanel.Controls.Add(this.SearchSearchButton);
             this.SearchPanel.Controls.Add(this.SearchSearchTextBox);
             this.SearchPanel.Controls.Add(this.pictureBox3);
             this.SearchPanel.Controls.Add(this.SearchSearchLabel);
-            this.SearchPanel.Location = new System.Drawing.Point(0, 88);
+            this.SearchPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SearchPanel.Location = new System.Drawing.Point(0, 0);
             this.SearchPanel.Name = "SearchPanel";
-            this.SearchPanel.Size = new System.Drawing.Size(561, 704);
+            this.SearchPanel.Size = new System.Drawing.Size(712, 792);
             this.SearchPanel.TabIndex = 7;
+            // 
+            // SearchSelectMultButton
+            // 
+            this.SearchSelectMultButton.Location = new System.Drawing.Point(133, 522);
+            this.SearchSelectMultButton.Name = "SearchSelectMultButton";
+            this.SearchSelectMultButton.Size = new System.Drawing.Size(170, 46);
+            this.SearchSelectMultButton.TabIndex = 30;
+            this.SearchSelectMultButton.Text = "Select Multimedia";
+            this.SearchSelectMultButton.UseVisualStyleBackColor = true;
+            this.SearchSelectMultButton.Click += new System.EventHandler(this.SearchSelectMultButton_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.SearchTimerDisplayLabel);
+            this.panel1.Controls.Add(this.SearchProgressBar);
+            this.panel1.Controls.Add(this.SearchSkipButton);
+            this.panel1.Controls.Add(this.SearchPreviousButton);
+            this.panel1.Controls.Add(this.SearchPauseButton);
+            this.panel1.Controls.Add(this.SearchPlayButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 650);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(712, 142);
+            this.panel1.TabIndex = 29;
+            // 
+            // SearchTimerDisplayLabel
+            // 
+            this.SearchTimerDisplayLabel.AutoSize = true;
+            this.SearchTimerDisplayLabel.ForeColor = System.Drawing.Color.White;
+            this.SearchTimerDisplayLabel.Location = new System.Drawing.Point(616, 109);
+            this.SearchTimerDisplayLabel.Name = "SearchTimerDisplayLabel";
+            this.SearchTimerDisplayLabel.Size = new System.Drawing.Size(0, 17);
+            this.SearchTimerDisplayLabel.TabIndex = 31;
+            // 
+            // SearchProgressBar
+            // 
+            this.SearchProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.SearchProgressBar.Location = new System.Drawing.Point(102, 108);
+            this.SearchProgressBar.Name = "SearchProgressBar";
+            this.SearchProgressBar.Size = new System.Drawing.Size(497, 17);
+            this.SearchProgressBar.TabIndex = 30;
+            // 
+            // SearchSkipButton
+            // 
+            this.SearchSkipButton.Location = new System.Drawing.Point(487, 30);
+            this.SearchSkipButton.Name = "SearchSkipButton";
+            this.SearchSkipButton.Size = new System.Drawing.Size(72, 46);
+            this.SearchSkipButton.TabIndex = 29;
+            this.SearchSkipButton.Text = "Skip";
+            this.SearchSkipButton.UseVisualStyleBackColor = true;
+            this.SearchSkipButton.Click += new System.EventHandler(this.SearchSkipButton_Click);
+            // 
+            // SearchPreviousButton
+            // 
+            this.SearchPreviousButton.Location = new System.Drawing.Point(151, 32);
+            this.SearchPreviousButton.Name = "SearchPreviousButton";
+            this.SearchPreviousButton.Size = new System.Drawing.Size(72, 46);
+            this.SearchPreviousButton.TabIndex = 28;
+            this.SearchPreviousButton.Text = "Previous";
+            this.SearchPreviousButton.UseVisualStyleBackColor = true;
+            this.SearchPreviousButton.Click += new System.EventHandler(this.SearchPreviousButton_Click);
+            // 
+            // SearchPauseButton
+            // 
+            this.SearchPauseButton.Location = new System.Drawing.Point(374, 32);
+            this.SearchPauseButton.Name = "SearchPauseButton";
+            this.SearchPauseButton.Size = new System.Drawing.Size(72, 46);
+            this.SearchPauseButton.TabIndex = 27;
+            this.SearchPauseButton.Text = "Pause";
+            this.SearchPauseButton.UseVisualStyleBackColor = true;
+            this.SearchPauseButton.Click += new System.EventHandler(this.SearchPauseButton_Click);
+            // 
+            // SearchPlayButton
+            // 
+            this.SearchPlayButton.Location = new System.Drawing.Point(259, 32);
+            this.SearchPlayButton.Name = "SearchPlayButton";
+            this.SearchPlayButton.Size = new System.Drawing.Size(72, 46);
+            this.SearchPlayButton.TabIndex = 26;
+            this.SearchPlayButton.Text = "Play";
+            this.SearchPlayButton.UseVisualStyleBackColor = true;
+            this.SearchPlayButton.Click += new System.EventHandler(this.SearchPlayButton_Click);
             // 
             // SearchGoBackButton
             // 
@@ -1528,40 +1622,32 @@
             // 
             // SearchFollowButton
             // 
-            this.SearchFollowButton.Location = new System.Drawing.Point(247, 600);
+            this.SearchFollowButton.Location = new System.Drawing.Point(403, 522);
             this.SearchFollowButton.Name = "SearchFollowButton";
             this.SearchFollowButton.Size = new System.Drawing.Size(170, 46);
             this.SearchFollowButton.TabIndex = 27;
             this.SearchFollowButton.Text = "Follow";
             this.SearchFollowButton.UseVisualStyleBackColor = true;
             // 
-            // SearchPlayButton
-            // 
-            this.SearchPlayButton.Location = new System.Drawing.Point(247, 534);
-            this.SearchPlayButton.Name = "SearchPlayButton";
-            this.SearchPlayButton.Size = new System.Drawing.Size(170, 46);
-            this.SearchPlayButton.TabIndex = 26;
-            this.SearchPlayButton.Text = "Play";
-            this.SearchPlayButton.UseVisualStyleBackColor = true;
-            // 
             // SearchSearchResultsDomainUp
             // 
             this.SearchSearchResultsDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchSearchResultsDomainUp.Location = new System.Drawing.Point(146, 467);
+            this.SearchSearchResultsDomainUp.Location = new System.Drawing.Point(32, 467);
             this.SearchSearchResultsDomainUp.Name = "SearchSearchResultsDomainUp";
-            this.SearchSearchResultsDomainUp.Size = new System.Drawing.Size(380, 36);
+            this.SearchSearchResultsDomainUp.Size = new System.Drawing.Size(607, 36);
             this.SearchSearchResultsDomainUp.TabIndex = 10;
             this.SearchSearchResultsDomainUp.Text = "Search Results:";
             this.SearchSearchResultsDomainUp.Visible = false;
             // 
             // SearchSearchButton
             // 
-            this.SearchSearchButton.Location = new System.Drawing.Point(447, 418);
+            this.SearchSearchButton.Location = new System.Drawing.Point(447, 405);
             this.SearchSearchButton.Name = "SearchSearchButton";
-            this.SearchSearchButton.Size = new System.Drawing.Size(79, 22);
+            this.SearchSearchButton.Size = new System.Drawing.Size(111, 44);
             this.SearchSearchButton.TabIndex = 25;
             this.SearchSearchButton.Text = "Search";
             this.SearchSearchButton.UseVisualStyleBackColor = true;
+            this.SearchSearchButton.Click += new System.EventHandler(this.SearchSearchButton_Click);
             // 
             // SearchSearchTextBox
             // 
@@ -2044,6 +2130,35 @@
             this.CreateSongPanel.Size = new System.Drawing.Size(712, 792);
             this.CreateSongPanel.TabIndex = 10;
             // 
+            // CreateSongSongFileButton
+            // 
+            this.CreateSongSongFileButton.Location = new System.Drawing.Point(279, 528);
+            this.CreateSongSongFileButton.Name = "CreateSongSongFileButton";
+            this.CreateSongSongFileButton.Size = new System.Drawing.Size(100, 28);
+            this.CreateSongSongFileButton.TabIndex = 27;
+            this.CreateSongSongFileButton.Text = "Choose File";
+            this.CreateSongSongFileButton.UseVisualStyleBackColor = true;
+            this.CreateSongSongFileButton.Click += new System.EventHandler(this.CreateSongSongFileButton_Click);
+            // 
+            // CreateSongSongFileTextBox
+            // 
+            this.CreateSongSongFileTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateSongSongFileTextBox.Location = new System.Drawing.Point(377, 528);
+            this.CreateSongSongFileTextBox.Name = "CreateSongSongFileTextBox";
+            this.CreateSongSongFileTextBox.Size = new System.Drawing.Size(280, 27);
+            this.CreateSongSongFileTextBox.TabIndex = 26;
+            // 
+            // CreateSongSongFileLabel
+            // 
+            this.CreateSongSongFileLabel.AutoSize = true;
+            this.CreateSongSongFileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateSongSongFileLabel.ForeColor = System.Drawing.Color.White;
+            this.CreateSongSongFileLabel.Location = new System.Drawing.Point(31, 531);
+            this.CreateSongSongFileLabel.Name = "CreateSongSongFileLabel";
+            this.CreateSongSongFileLabel.Size = new System.Drawing.Size(79, 20);
+            this.CreateSongSongFileLabel.TabIndex = 25;
+            this.CreateSongSongFileLabel.Text = "Song File";
+            // 
             // CreateSongInvalidSongLabel
             // 
             this.CreateSongInvalidSongLabel.AutoSize = true;
@@ -2293,37 +2408,13 @@
             this.CreatePlaylistPanel.Size = new System.Drawing.Size(712, 792);
             this.CreatePlaylistPanel.TabIndex = 12;
             // 
-            // CreateSongSongFileLabel
+            // DurationTimer
             // 
-            this.CreateSongSongFileLabel.AutoSize = true;
-            this.CreateSongSongFileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongSongFileLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongSongFileLabel.Location = new System.Drawing.Point(31, 531);
-            this.CreateSongSongFileLabel.Name = "CreateSongSongFileLabel";
-            this.CreateSongSongFileLabel.Size = new System.Drawing.Size(79, 20);
-            this.CreateSongSongFileLabel.TabIndex = 25;
-            this.CreateSongSongFileLabel.Text = "Song File";
+            this.DurationTimer.Tick += new System.EventHandler(this.DurationTimer_Tick);
             // 
-            // CreateSongOpenFileDialog
+            // openFileDialog1
             // 
-            this.CreateSongOpenFileDialog.FileName = "openFileDialog1";
-            // 
-            // CreateSongSongFileTextBox
-            // 
-            this.CreateSongSongFileTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongSongFileTextBox.Location = new System.Drawing.Point(321, 532);
-            this.CreateSongSongFileTextBox.Name = "CreateSongSongFileTextBox";
-            this.CreateSongSongFileTextBox.Size = new System.Drawing.Size(280, 27);
-            this.CreateSongSongFileTextBox.TabIndex = 26;
-            // 
-            // CreateSongSongFileButton
-            // 
-            this.CreateSongSongFileButton.Location = new System.Drawing.Point(600, 531);
-            this.CreateSongSongFileButton.Name = "CreateSongSongFileButton";
-            this.CreateSongSongFileButton.Size = new System.Drawing.Size(100, 28);
-            this.CreateSongSongFileButton.TabIndex = 27;
-            this.CreateSongSongFileButton.Text = "Choose File";
-            this.CreateSongSongFileButton.UseVisualStyleBackColor = true;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // FyBuZz
             // 
@@ -2331,14 +2422,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(712, 792);
-            this.Controls.Add(this.DisplayStartPanel);
-            this.Controls.Add(this.CreateSongPanel);
-            this.Controls.Add(this.AddShowPanel);
+            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.CreateSongPanel);
+            this.Controls.Add(this.DisplayStartPanel);
+            this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.CreateVideoPanel);
             this.Controls.Add(this.RegisterPanel);
-            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
             this.Controls.Add(this.AdminMenuPanel);
@@ -2383,6 +2474,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProfileSettingsProfilePicImageBox)).EndInit();
             this.SearchPanel.ResumeLayout(false);
             this.SearchPanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.AddShowPanel.ResumeLayout(false);
             this.AddShowPanel.PerformLayout();
@@ -2595,6 +2688,14 @@
         private System.Windows.Forms.Button CreateSongSongFileButton;
         private System.Windows.Forms.TextBox CreateSongSongFileTextBox;
         private System.Windows.Forms.Label CreateSongSongFileLabel;
-        private System.Windows.Forms.OpenFileDialog CreateSongOpenFileDialog;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button SearchSkipButton;
+        private System.Windows.Forms.Button SearchPreviousButton;
+        private System.Windows.Forms.Button SearchPauseButton;
+        private System.Windows.Forms.ProgressBar SearchProgressBar;
+        private System.Windows.Forms.Button SearchSelectMultButton;
+        private System.Windows.Forms.Timer DurationTimer;
+        private System.Windows.Forms.Label SearchTimerDisplayLabel;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
