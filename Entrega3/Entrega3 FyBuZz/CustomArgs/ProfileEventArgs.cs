@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entrega3_FyBuZz.CustomArgs
 {
-    public class ProfileEventArgs
+    public class ProfileEventArgs:EventArgs
     {
         public string UsernameText { get; set; }
         public string PasswordText { get; set; }
