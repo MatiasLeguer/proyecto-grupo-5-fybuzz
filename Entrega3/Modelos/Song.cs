@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace Modelos
 {
     [Serializable]
     public class Song : Multimedia
     {
+        SoundPlayer player = new SoundPlayer();
+
         //Ver si nos faltan atributos por poner
         protected string album;
         protected string artist;
@@ -16,10 +19,11 @@ namespace Modelos
         protected string gender;
         protected string studio;
         protected string lyrics;
+        protected string songFile;
         public string Lyrics { get => lyrics; }
 
         //Ver si el constructor está adecuado, o si hay que sacar algo.
-        public Song(string name, string artist, string album, string discography, string gender, string date, string studio, double duration, string lyrics, string format)
+        public Song(string name, string artist, string album, string discography, string gender, string date, string studio, double duration, string lyrics, string format, string songFile)
         {
             this.name = name;
             this.artist = artist;
@@ -32,6 +36,7 @@ namespace Modelos
             this.duration = duration;
             this.lyrics = lyrics;
             this.format = format;
+            this.songFile = songFile;
         }
         /*
         public delegate void SendSongEventHandler(object source, Song s);

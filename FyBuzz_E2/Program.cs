@@ -15,8 +15,8 @@ namespace FyBuzz_E2
             User LogInUser;
 
             //LISTA DE CANCIONES, VIDEOS Y PLAYLISTS BASE
-            List<Song> baseListSong = new List<Song>(){ new Song("Safaera","Bad Bunny", "YHLQMDLM","Rimas entertainment LLC", "Trap","20/01/2020","BB Rcds.", 4.9, "Tú tiene' un culo cabrón",".mp3"),
-                                                        new Song("MAS DE UNA CITA", "Zion & Lenox", "LAS QUE NO IBAN A SALIR", "Rimas entertainment LLC", "Trap", "10/05/2020", "Z&L Rcds.", 3.5, "Se necesita, ey, más de una cita, ey", ".wav") };
+            List<Song> baseListSong = new List<Song>(){ new Song("Safaera","Bad Bunny", "YHLQMDLM","Rimas entertainment LLC", "Trap","20/01/2020","BB Rcds.", 4.9, "Tú tiene' un culo cabrón",".mp3","Bad Bunny ft Jowell & Randy ft Ñengo Flow - Safaera.mp3"),
+                                                        new Song("MAS DE UNA CITA", "Zion & Lenox", "LAS QUE NO IBAN A SALIR", "Rimas entertainment LLC", "Trap", "10/05/2020", "Z&L Rcds.", 3.5, "Se necesita, ey, más de una cita, ey", ".mp3","02-Bad-Bunny-Zion-Lennox-MÁS-DE-UNA-CITA.mp3") };
             
             List<Video> baseListVideo = new List<Video>() { new Video("United","Tom Holland-Cris Pratt","Disney", "", "16:9" ,"1080x1920", "0","Movie", false,120,"i love you",".mp4"), 
                                                             new Video("Create a C# App from start to finish","freecodecamp.org","freecodecamp.org","12/12/2019","16:9","1080x1920","16","C# Course",true,1440,"fuck", ".mov") };
@@ -35,7 +35,7 @@ namespace FyBuzz_E2
             List<PlayList> basePrivPLs = new List<PlayList>() { new PlayList("", "", "", "") };
             
             //LISTA CON OBJETO VACIO DE CANCIONES DESCARGADAS
-            List<Song> downloadSongs = new List<Song>() { new Song("", "", "", "", "", "", "", 0, "", "") };
+            List<Song> downloadSongs = new List<Song>() { new Song("", "", "", "", "", "", "", 0, "", "","") };
 
             //LISTA CON OBJETO VACIO DE USUARIOS
             List<User> baseListUser = new List<User>() {new User()};
