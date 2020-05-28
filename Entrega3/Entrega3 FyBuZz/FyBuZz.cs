@@ -42,10 +42,7 @@ namespace Entrega3_FyBuZz
         public delegate bool SongEventHandler(object source, SongEventArgs args);
         public event SongEventHandler CreateSongCreateSongButton_Clicked;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> b370bcfe8f6232cb00fa97bdefd7f50f00e814b7
         private string ProfileName { get; set; }
         //--------------------------------------------------------------------------------
 
@@ -435,8 +432,6 @@ namespace Entrega3_FyBuZz
         {
             Close();
         }
-<<<<<<< HEAD
-=======
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -444,21 +439,18 @@ namespace Entrega3_FyBuZz
 
 
             //listView1.Items.Add();
-
->>>>>>> b370bcfe8f6232cb00fa97bdefd7f50f00e814b7
+        }
         //<<ADD/SHOW MULTIMEDIA PANEL>>
         private void AddShowGoBackButton_Click(object sender, EventArgs e)
         {
             DisplayStartLabel.BringToFront();
 
-<<<<<<< HEAD
+
         }
 
         private void WelcomePanel_Paint(object sender, PaintEventArgs e)
         {
 
-=======
->>>>>>> b370bcfe8f6232cb00fa97bdefd7f50f00e814b7
         }
     }
 }
