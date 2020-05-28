@@ -310,5 +310,14 @@ namespace Entrega3_FyBuZz
         {
             Close();
         }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListViewGroup listViewUsers = new ListViewGroup("Users");
+
+
+            //listView1.Items.Add();
+
+        }
     }
 }

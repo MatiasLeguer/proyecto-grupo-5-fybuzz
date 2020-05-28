@@ -172,6 +172,9 @@
             this.AdminMenuBanUserButton = new System.Windows.Forms.Button();
             this.AdminMenuEraseUserButton = new System.Windows.Forms.Button();
             this.AdminMenuLabel = new System.Windows.Forms.Label();
+            this.AdminMenuEraseUserPanel = new System.Windows.Forms.Panel();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.Users = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -208,6 +211,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistLogo)).BeginInit();
             this.AdminMenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.AdminMenuEraseUserPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // WelcomePanel
@@ -1826,6 +1830,7 @@
             // AdminMenuPanel
             // 
             this.AdminMenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.AdminMenuPanel.Controls.Add(this.AdminMenuEraseUserPanel);
             this.AdminMenuPanel.Controls.Add(this.AdminMenuGoBackButton);
             this.AdminMenuPanel.Controls.Add(this.AdminMenuWelcomeTextBox);
             this.AdminMenuPanel.Controls.Add(this.pictureBox4);
@@ -1905,6 +1910,27 @@
             this.AdminMenuLabel.TabIndex = 0;
             this.AdminMenuLabel.Text = "Admin Menu";
             // 
+            // AdminMenuEraseUserPanel
+            // 
+            this.AdminMenuEraseUserPanel.Controls.Add(this.listView1);
+            this.AdminMenuEraseUserPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AdminMenuEraseUserPanel.Location = new System.Drawing.Point(0, 0);
+            this.AdminMenuEraseUserPanel.Name = "AdminMenuEraseUserPanel";
+            this.AdminMenuEraseUserPanel.Size = new System.Drawing.Size(790, 980);
+            this.AdminMenuEraseUserPanel.TabIndex = 8;
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Users});
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(19, 140);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(748, 608);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
             // FyBuZz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1974,6 +2000,7 @@
             this.AdminMenuPanel.ResumeLayout(false);
             this.AdminMenuPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.AdminMenuEraseUserPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2123,5 +2150,8 @@
         private System.Windows.Forms.Button AccountProfileSettingsGoBackButton;
         private System.Windows.Forms.Button AdminMenuGoBackButton;
         private System.Windows.Forms.Label AccountProfileSettingsLabelUsername;
+        private System.Windows.Forms.Panel AdminMenuEraseUserPanel;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader Users;
     }
 }
