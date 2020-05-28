@@ -15,6 +15,9 @@ namespace Entrega3_FyBuZz
 {
     public partial class FyBuZz : Form
     {
+
+        //PUBLIC DELEGATES
+        //--------------------------------------------------------------------------------
         public delegate User LogInEventHandler(object soruce, LogInEventArgs args);
         public event LogInEventHandler LogInLogInButton_Clicked;
 
@@ -26,14 +29,25 @@ namespace Entrega3_FyBuZz
 
         public delegate Profile ChooseProfileEventHandler(object source, ProfileEventArgs args);
         public event ChooseProfileEventHandler ProfilesChooseProfile_Clicked;
+        //--------------------------------------------------------------------------------
 
+        //ATRIBUTOS
+        //--------------------------------------------------------------------------------
         private string ProfileName { get; set; }
+        //--------------------------------------------------------------------------------
 
+
+        //CONSTRUCTOR
+        //--------------------------------------------------------------------------------
         public FyBuZz()
         {
             InitializeComponent();
         }
+        //--------------------------------------------------------------------------------
 
+
+        //LOG-IN
+        //--------------------------------------------------------------------------------
         private void WelcomeLogInButton_Click(object sender, EventArgs e)
         {
             LogInPanel.BringToFront();
@@ -43,10 +57,7 @@ namespace Entrega3_FyBuZz
             RegisterPanel.BringToFront();
         }
 
-        private void WelcomeCloseFyBuZz_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+
 
         private void GobackRegisterButton_Click(object sender, EventArgs e)
         {
@@ -186,10 +197,7 @@ namespace Entrega3_FyBuZz
             AdminMenuPanel.BringToFront();
         }
 
-        private void DisplayStartCloseButton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+
 
         private void SearchGoBackButton_Click(object sender, EventArgs e)
         {
@@ -291,6 +299,16 @@ namespace Entrega3_FyBuZz
             }
         }
 
+        // CLOSE/GO BACK
 
+        private void DisplayStartCloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void WelcomeCloseFyBuZz_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
