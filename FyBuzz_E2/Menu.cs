@@ -9,11 +9,13 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using WMPLib;
 
 namespace FyBuzz_E2
 {
     public class Menu
     {
+        WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
         //ATRIBUTOS:
 
         protected List<string> filters;

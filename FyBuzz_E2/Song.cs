@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
+
 
 namespace FyBuzz_E2
 {
     [Serializable]
     public class Song : Multimedia
     {
-    //ATRIBUTOS:
+        //ATRIBUTOS:
+        SoundPlayer soundPlayer = new SoundPlayer();
+        
+
         /* Ver si nos faltan atributos por poner */
         protected string album;
         protected string artist;
@@ -17,6 +22,7 @@ namespace FyBuzz_E2
         protected string gender;
         protected string studio;
         protected string lyrics;
+        protected string file;
         //--------------------------------------------------------------------------------------------------
 
         //GETTERS Y SETTERS:
@@ -28,7 +34,7 @@ namespace FyBuzz_E2
         //CONSTRUCTOR
         //--------------------------------------------------------------------------------------------------
         /* Ver si el constructor está adecuado, o si hay que sacar algo. */
-        public Song(string name, string artist, string album, string discography, string gender, string date, string studio, double duration, string lyrics, string format)
+        public Song(string name, string artist, string album, string discography, string gender, string date, string studio, double duration, string lyrics, string format, string file)
         {
             this.name = name;
             this.artist = artist;
@@ -41,6 +47,7 @@ namespace FyBuzz_E2
             this.duration = duration;
             this.lyrics = lyrics;
             this.format = format;
+            this.file = file;
         }
         //--------------------------------------------------------------------------------------------------
 
