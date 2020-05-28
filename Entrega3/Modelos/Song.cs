@@ -3,32 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace Modelos
 {
     [Serializable]
     public class Song : Multimedia
     {
+
         //ATRIBUTOS:
         /* Ver si nos faltan atributos por poner */
+
+        SoundPlayer player = new SoundPlayer();
+
+        //Ver si nos faltan atributos por poner
+
         protected string album;
         protected string artist;
         protected string discography;
         protected string gender;
         protected string studio;
         protected string lyrics;
-        //--------------------------------------------------------------------------------------------------
 
-        //GETTERS Y SETTERS:
-        //--------------------------------------------------------------------------------------------------
+        private string songFile;
         public string Lyrics { get => lyrics; }
-        //--------------------------------------------------------------------------------------------------
+        public string SongFile { get => songFile; set => songFile = value; }
+        public string Format { get => format; }
 
+        //Ver si el constructor está adecuado, o si hay que sacar algo.
+        public Song(string name, string artist, string album, string discography, string gender, string date, string studio, double duration, string lyrics, string format, string songFile)
 
-        //CONSTRUCTOR
-        //--------------------------------------------------------------------------------------------------
-        /* Ver si el constructor está adecuado, o si hay que sacar algo. */
-        public Song(string name, string artist, string album, string discography, string gender, string date, string studio, double duration, string lyrics, string format)
         {
             this.name = name;
             this.artist = artist;
@@ -41,6 +45,7 @@ namespace Modelos
             this.duration = duration;
             this.lyrics = lyrics;
             this.format = format;
+            this.SongFile = songFile;
         }
         //--------------------------------------------------------------------------------------------------
 

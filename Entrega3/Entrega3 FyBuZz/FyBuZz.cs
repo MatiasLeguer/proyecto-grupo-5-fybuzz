@@ -2,6 +2,7 @@
 using Modelos;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
@@ -11,14 +12,19 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace Entrega3_FyBuZz
 {
     public partial class FyBuZz : Form
     {
 
+
         //PUBLIC DELEGATES
         //--------------------------------------------------------------------------------
+
+        WindowsMediaPlayer windowsMediaPlayer = new WindowsMediaPlayer();
+
         public delegate User LogInEventHandler(object soruce, LogInEventArgs args);
         public event LogInEventHandler LogInLogInButton_Clicked;
 
@@ -41,6 +47,8 @@ namespace Entrega3_FyBuZz
 
         public delegate bool SongEventHandler(object source, SongEventArgs args);
         public event SongEventHandler CreateSongCreateSongButton_Clicked;
+        public delegate List<Song> ListSongEventHandler(object source, SongEventArgs args);
+        public event ListSongEventHandler SearchSearchButton_Clicked;
 
 
         private string ProfileName { get; set; }
@@ -277,7 +285,105 @@ namespace Entrega3_FyBuZz
         {
             AddShowPanel.BringToFront();
         }
-
+        //<<Search Panel>>
+        private void SearchSelectMultButton_Click(object sender, EventArgs e)
+        {
+            List<Song> songDataBase = new List<Song>();
+            songDataBase = OnSearchSearchButton_Click();
+            foreach (Song song in songDataBase)
+            {
+                if (song.Format == ".mp3")
+                {
+                    string result = SearchSearchResultsDomainUp.Text;
+                    if (result == song.SearchedInfoSong() + " Format: " + song.Format)
+                    {
+                        //No se como reiniciar la barra de progreso ni el timer
+                        SearchProgressBar.Value = 0;
+                        SearchTimerDisplayLabel.ResetText();
+                        windowsMediaPlayer.URL = song.SongFile;
+                        DurationTimer.Interval = 1000;
+                        SearchProgressBar.Maximum = (int)(song.Duration * 60);
+                        DurationTimer.Start();
+                        break;
+                    }
+                }
+            }
+        }
+        private void DurationTimer_Tick(object sender, EventArgs e)
+        {
+            SearchProgressBar.Increment(1);
+            //Falta que se muestre bien el tiempo...
+            SearchTimerDisplayLabel.Text =  SearchProgressBar.Value.ToString();
+        }
+        private void SearchPlayButton_Click(object sender, EventArgs e)
+        {
+            List<Song> songDataBase = new List<Song>();
+            songDataBase = OnSearchSearchButton_Click();
+            foreach (Song song in songDataBase)
+            {
+                if (song.Format == ".mp3")
+                {
+                    windowsMediaPlayer.controls.play();
+                    DurationTimer.Start();
+                    break;   
+                }
+            }
+        }
+        private void SearchPauseButton_Click(object sender, EventArgs e)
+        {
+            List<Song> songDataBase = new List<Song>();
+            songDataBase = OnSearchSearchButton_Click();
+            foreach (Song song in songDataBase)
+            {
+                if (song.Format == ".mp3")
+                {
+                    windowsMediaPlayer.controls.pause();
+                    DurationTimer.Stop();
+                    break;
+                }
+            }
+        }
+        private void SearchPreviousButton_Click(object sender, EventArgs e)
+        {
+            List<Song> songDataBase = new List<Song>();
+            songDataBase = OnSearchSearchButton_Click();
+            foreach (Song song in songDataBase)
+            {
+                if (song.Format == ".mp3")
+                {
+                    windowsMediaPlayer.controls.previous();
+                    break;
+                }
+            }
+        }
+        private void SearchSkipButton_Click(object sender, EventArgs e)
+        {
+            List<Song> songDataBase = new List<Song>();
+            songDataBase = OnSearchSearchButton_Click();
+            foreach (Song song in songDataBase)
+            {
+                if (song.Format == ".mp3")
+                {
+                    windowsMediaPlayer.controls.next();
+                    break;
+                }
+            }
+        }
+        private void SearchSearchButton_Click(object sender, EventArgs e)
+        {
+            string search = SearchSearchTextBox.Text;
+            List<Song> songDataBase = new List<Song>();
+            songDataBase = OnSearchSearchButton_Click();
+            foreach(Song song in songDataBase)
+            {
+                if (song.DisplayInfoSong().Contains(search))
+                {
+                    SearchSearchResultsDomainUp.Visible = true;
+                    SearchSearchResultsDomainUp.Items.Add(song.SearchedInfoSong() + " Format: " + song.Format);
+                }
+            }  
+        }
+        //<<PANEL DE CREACION SONG>>
         private void CreateSongCreateSongButton_Click(object sender, EventArgs e)
         {
             Profile profile = OnProfilesChooseProfile_Click(ProfileName, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
@@ -293,11 +399,25 @@ namespace Entrega3_FyBuZz
                 double songDuration = double.Parse(CreateSongDurationTextBox.Text);
                 string songFormat = CreateSongFormatTextBox.Text;
                 string songLyrics = CreateSongLyricsTextBox.Text;
-                OnCreateSongCreateSongButton_Click(songName, songArtist, songAlbum, songDiscography, songGender, songPublishDate, songStudio, songDuration, songFormat, songLyrics);
+                string songFileSource = CreateSongSongFileTextBox.Text;
+                string songFileDest = Directory.GetCurrentDirectory();
+                string songFile = songFileSource.Split('\\')[songFileSource.Split('\\').Length-1];
+                File.Copy(songFileSource, songFile);
+                OnCreateSongCreateSongButton_Click(songName, songArtist, songAlbum, songDiscography, songGender, songPublishDate, songStudio, songDuration, songFormat, songLyrics, songFile);
             }
             else
             {
                 AddShowInvalidCredentialsLabel.Text = "You profile type is viewer, you don't have permision to create multimedia";
+            }
+        }
+        private void CreateSongSongFileButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filename = openFileDialog.FileName;
+                CreateSongSongFileTextBox.Text = filename;
             }
         }
 
@@ -391,11 +511,11 @@ namespace Entrega3_FyBuZz
             }
             return null;
         }
-        public void OnCreateSongCreateSongButton_Click(string sName, string sArtist, string sAlbum, string sDiscography, string sGender, DateTime sPublishDate, string sStudio, double sDuration, string sFormat, string sLyrics)
+        public void OnCreateSongCreateSongButton_Click(string sName, string sArtist, string sAlbum, string sDiscography, string sGender, DateTime sPublishDate, string sStudio, double sDuration, string sFormat, string sLyrics, string songFile)
         {
             if (CreateSongCreateSongButton_Clicked != null)
             {
-                bool result = CreateSongCreateSongButton_Clicked(this, new SongEventArgs() { NameText = sName, AlbumText = sAlbum, ArtistText = sArtist, DateText = sPublishDate, DiscographyText = sDiscography, DurationText = sDuration, FormatText = sFormat, GenderText = sGender, LyricsText = sLyrics, StudioText = sStudio });
+                bool result = CreateSongCreateSongButton_Clicked(this, new SongEventArgs() { NameText = sName, AlbumText = sAlbum, ArtistText = sArtist, DateText = sPublishDate, DiscographyText = sDiscography, DurationText = sDuration, FormatText = sFormat, GenderText = sGender, LyricsText = sLyrics, StudioText = sStudio, FileNameText = songFile});
                 if (!result)
                 {
                     CreateSongInvalidSongLabel.Text = "An Error has ocurred please try again";
@@ -414,10 +534,20 @@ namespace Entrega3_FyBuZz
                     CreateSongDurationTextBox.Clear();
                     CreateSongFormatTextBox.Clear();
                     CreateSongLyricsTextBox.Clear();
+                    CreateSongSongFileTextBox.Clear();
 
                     DisplayStartPanel.BringToFront();
                 }
             }
+        }
+        public List<Song> OnSearchSearchButton_Click()
+        {
+            if(SearchSearchButton_Clicked != null)
+            {
+                List<Song> songDataBase = SearchSearchButton_Clicked(this, new SongEventArgs());
+                return songDataBase;
+            }
+            return null;
         }
 
 
@@ -452,5 +582,7 @@ namespace Entrega3_FyBuZz
         {
 
         }
+
+        
     }
 }

@@ -264,7 +264,7 @@ namespace Modelos
                     }
                     if (description == null)
                     {
-                        Song cancion = new Song(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], double.Parse(multInfo[7]), multInfo[8], multInfo[9]);
+                        Song cancion = new Song(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], double.Parse(multInfo[7]), multInfo[8], multInfo[9],multInfo[10]);
                         listSongsGlobal.Add(cancion);
                     }
                     break;
