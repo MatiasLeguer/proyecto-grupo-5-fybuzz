@@ -16,8 +16,7 @@
 # Mono auto generated files
 mono_crash.*
 
-# Build results
-[Dd]ebug/
+# Build res
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -27,7 +26,6 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
