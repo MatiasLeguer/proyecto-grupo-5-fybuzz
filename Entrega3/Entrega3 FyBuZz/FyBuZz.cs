@@ -38,8 +38,12 @@ namespace Entrega3_FyBuZz
 
         public delegate bool SongEventHandler(object source, SongEventArgs args);
         public event SongEventHandler CreateSongCreateSongButton_Clicked;
+
         public delegate List<Song> ListSongEventHandler(object source, SongEventArgs args);
         public event ListSongEventHandler SearchSearchButton_Clicked;
+
+        public delegate List<User> ListUserEventHandler(object source, RegisterEventArgs args);
+        public event ListUserEventHandler SearchUserButton_Clicked;
 
         private string ProfileName { get; set; }
 
@@ -274,10 +278,44 @@ namespace Entrega3_FyBuZz
             AddShowPanel.BringToFront();
         }
         //<<Search Panel>>
+        private void SearchSearchButton_Click(object sender, EventArgs e)
+        {
+            string search = SearchSearchTextBox.Text; //Bad Bunny and Trap and ... and ...
+
+            //string[] newSearchAnd = search.Split(new string[] { " and " }, StringSplitOptions.None);
+
+            List<string> listSearch = new List<string>();
+            //listSearch.Add(search);
+            List<Song> songDataBase = new List<Song>();
+            songDataBase = OnSearchSearchButton_Click();
+            List<User> userDataBase = new List<User>();
+            userDataBase = OnSearchUserButton_Click();
+
+            foreach (Song song in songDataBase)
+            {
+
+                if (song.InfoSong().Contains(search))
+                {
+                    SearchSearchResultsDomainUp.Visible = true;
+                    SearchSearchResultsDomainUp.Items.Add(song.SearchedInfoSong());
+                }
+            }
+            foreach(User user in userDataBase)
+            {             
+                if (user.infoUser().Contains(search))
+                {
+                    SearchSearchResultsDomainUp.Visible = true;
+                    SearchSearchResultsDomainUp.Items.Add("User: " + user.SearchedInfoUser());
+                }
+            }
+
+        }
         private void SearchSelectMultButton_Click(object sender, EventArgs e)
         {
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSearchButton_Click();
+            List<User> userDataBase = new List<User>();     
+            userDataBase = OnSearchUserButton_Click();
             foreach (Song song in songDataBase)
             {
                 if (song.Format == ".mp3")
@@ -297,6 +335,29 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
+        private void SearchFollowButton_Click(object sender, EventArgs e)
+        {
+            List<User> userDataBase = new List<User>();
+            userDataBase = OnSearchUserButton_Click();
+
+            if (SearchSearchResultsDomainUp.Text.Contains("User:"))
+            {
+                foreach (User user in userDataBase)
+                {
+                    string result = SearchSearchResultsDomainUp.Text;
+                    List<string> listuser = user.FollowingList;
+                    if (result == "User: " + user.SearchedInfoUser())
+                    {
+                        //user es el usuario que quiero seguir....
+                        //Todo esto dentro de un método:user.Followers = user.Followers + 1;
+                        DisplayStartPanel.BringToFront();
+                        //Hacer un evento en user que revise si el usuario ya sigue 
+                        //al que se esta buscando, si no lo sigue... etc, mismo metodo
+                        //que en menú.
+                    }
+                }
+            }
+        }
         private void DurationTimer_Tick(object sender, EventArgs e)
         {
             SearchProgressBar.Increment(1);
@@ -309,7 +370,7 @@ namespace Entrega3_FyBuZz
             songDataBase = OnSearchSearchButton_Click();
             foreach (Song song in songDataBase)
             {
-                if (song.Format == ".mp3")
+                if (SearchSearchResultsDomainUp.Text.Contains("Song:") &&  song.Format == ".mp3")
                 {
                     windowsMediaPlayer.controls.play();
                     DurationTimer.Start();
@@ -357,20 +418,8 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
-        private void SearchSearchButton_Click(object sender, EventArgs e)
-        {
-            string search = SearchSearchTextBox.Text;
-            List<Song> songDataBase = new List<Song>();
-            songDataBase = OnSearchSearchButton_Click();
-            foreach(Song song in songDataBase)
-            {
-                if (song.DisplayInfoSong().Contains(search))
-                {
-                    SearchSearchResultsDomainUp.Visible = true;
-                    SearchSearchResultsDomainUp.Items.Add(song.SearchedInfoSong() + " Format: " + song.Format);
-                }
-            }  
-        }
+        
+
         //<<PANEL DE CREACION SONG>>
         private void CreateSongCreateSongButton_Click(object sender, EventArgs e)
         {
@@ -537,13 +586,20 @@ namespace Entrega3_FyBuZz
             }
             return null;
         }
+        public List<User> OnSearchUserButton_Click()
+        {
+            if (SearchUserButton_Clicked != null)
+            {
+                List<User> userDataBase = SearchUserButton_Clicked(this, new RegisterEventArgs());
+                return userDataBase;
+            }
+            return null;
+        }
 
         //<<ADD/SHOW MULTIMEDIA PANEL>>
         private void AddShowGoBackButton_Click(object sender, EventArgs e)
         {
             DisplayStartLabel.BringToFront();
         }
-
-        
     }
 }

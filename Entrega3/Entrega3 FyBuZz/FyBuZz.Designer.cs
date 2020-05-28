@@ -359,9 +359,10 @@
             this.RegisterPanel.Controls.Add(this.GenderRegisterLabel);
             this.RegisterPanel.Controls.Add(this.RegisterUsernameLabel);
             this.RegisterPanel.Controls.Add(this.RegisterLabel);
-            this.RegisterPanel.Location = new System.Drawing.Point(0, 117);
+            this.RegisterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RegisterPanel.Location = new System.Drawing.Point(0, 0);
             this.RegisterPanel.Name = "RegisterPanel";
-            this.RegisterPanel.Size = new System.Drawing.Size(526, 675);
+            this.RegisterPanel.Size = new System.Drawing.Size(712, 792);
             this.RegisterPanel.TabIndex = 1;
             // 
             // RegisterLogo
@@ -1157,9 +1158,10 @@
             // 
             this.AccountProfileSettingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.AccountProfileSettingsPanel.Controls.Add(this.AccountProfileSettingsSplitContainer);
-            this.AccountProfileSettingsPanel.Location = new System.Drawing.Point(0, 25);
+            this.AccountProfileSettingsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AccountProfileSettingsPanel.Location = new System.Drawing.Point(0, 0);
             this.AccountProfileSettingsPanel.Name = "AccountProfileSettingsPanel";
-            this.AccountProfileSettingsPanel.Size = new System.Drawing.Size(484, 767);
+            this.AccountProfileSettingsPanel.Size = new System.Drawing.Size(712, 792);
             this.AccountProfileSettingsPanel.TabIndex = 6;
             // 
             // AccountProfileSettingsSplitContainer
@@ -1628,6 +1630,7 @@
             this.SearchFollowButton.TabIndex = 27;
             this.SearchFollowButton.Text = "Follow";
             this.SearchFollowButton.UseVisualStyleBackColor = true;
+            this.SearchFollowButton.Click += new System.EventHandler(this.SearchFollowButton_Click);
             // 
             // SearchSearchResultsDomainUp
             // 
@@ -1641,7 +1644,7 @@
             // 
             // SearchSearchButton
             // 
-            this.SearchSearchButton.Location = new System.Drawing.Point(447, 405);
+            this.SearchSearchButton.Location = new System.Drawing.Point(467, 404);
             this.SearchSearchButton.Name = "SearchSearchButton";
             this.SearchSearchButton.Size = new System.Drawing.Size(111, 44);
             this.SearchSearchButton.TabIndex = 25;
@@ -2422,16 +2425,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(712, 792);
-            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.AccountProfileSettingsPanel);
+            this.Controls.Add(this.RegisterPanel);
+            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.CreateVideoPanel);
-            this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.DisplayPlaylistPanel);
-            this.Controls.Add(this.AccountProfileSettingsPanel);
             this.Controls.Add(this.AdminMenuPanel);
             this.Controls.Add(this.CreateProfilePanel);
             this.Controls.Add(this.ProfilePanel);

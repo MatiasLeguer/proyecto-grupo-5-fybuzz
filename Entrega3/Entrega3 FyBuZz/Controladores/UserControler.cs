@@ -29,6 +29,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.RegisterRegisterButton_Clicked += OnRegisterRegisterButtonClicked;
             this.fyBuZz.CreateProfileCreateProfileButton_Clicked += OnCreateProfileCreateProfileButton_Clicked;
             this.fyBuZz.ProfilesChooseProfile_Clicked += OnProfilesChooseProfile_Click;
+            this.fyBuZz.SearchUserButton_Clicked += OnSearchUserButton_Click;
         }
 
         public void Initialize()
@@ -95,6 +96,10 @@ namespace Entrega3_FyBuZz.Controladores
                 }
             }
             return null;
+        }
+        private List<User> OnSearchUserButton_Click(object sender, RegisterEventArgs e)
+        {
+            return userDataBase;
         }
     }
 }
