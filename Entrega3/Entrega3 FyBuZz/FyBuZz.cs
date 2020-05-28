@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -31,8 +32,16 @@ namespace Entrega3_FyBuZz
         public event ChooseProfileEventHandler ProfilesChooseProfile_Clicked;
         //--------------------------------------------------------------------------------
 
+
         //ATRIBUTOS
         //--------------------------------------------------------------------------------
+
+        public delegate List<PlayList> ChoosePlaylistEventHandler(object source, PlaylistEventArgs args);
+        public event ChoosePlaylistEventHandler DisplayPlaylistsGlobalPlaylist_Clicked;
+
+        public delegate bool SongEventHandler(object source, SongEventArgs args);
+        public event SongEventHandler CreateSongCreateSongButton_Clicked;
+
         private string ProfileName { get; set; }
         //--------------------------------------------------------------------------------
 
@@ -85,9 +94,14 @@ namespace Entrega3_FyBuZz
 
         private void LogInLogInButton_Click(object sender, EventArgs e)
         {
+            User user = new User();
             string username = UserLogInTextBox.Text;
             string pass = PasswordLogInTextBox.Text;
-            OnLoginButtonClicked(username, pass);
+            user = OnLoginButtonClicked(username, pass);
+            if(user != null)
+            {
+                ProfilePanel.BringToFront();
+            }
         }
         private void ProfilePanel_Paint(object sender, EventArgs e)
         {
@@ -101,12 +115,14 @@ namespace Entrega3_FyBuZz
         private void ProfilesChooseProfile_Click(object sender, EventArgs e)
         {
             string username = UserLogInTextBox.Text;
+
             string password = PasswordLogInTextBox.Text;
             string profileProfileName = ProfileDomainUp.Text;
             Profile profile = OnProfilesChooseProfile_Click(profileProfileName, username, password);
 
             ProfileName = profileProfileName;
             DisplayStartPanel.BringToFront();
+
             //Creo que cada vez que necesite el perfil debo llamar a este método con el parametro
             //que venga del "ProfileDomainUp.Text"
         }
@@ -134,7 +150,7 @@ namespace Entrega3_FyBuZz
             else if (CreateProfilePicCheckedListBox.SelectedIndex == 1) pPic = CreateProfilePic2.Image;
             else if (CreateProfilePicCheckedListBox.SelectedIndex == 2) pPic = CreateProfilePic3.Image;
             else if (CreateProfilePicCheckedListBox.SelectedIndex == 3) pPic = CreateProfilePic4.Image;
-            OnCreateProfileCreateProfileButton_Click(username, psswd, pName,pGender,pType,pEmail,pBirth,pPic);
+            OnCreateProfileCreateProfileButton_Click(username, psswd, pName,pGender,pType, pEmail,pBirth,pPic);
         }
 
         private void DisplayStartSearchButton_Click(object sender, EventArgs e)
@@ -149,10 +165,6 @@ namespace Entrega3_FyBuZz
             PasswordLogInTextBox.ResetText();
         }
 
-        private void DisplayStartDisplayPlaylistButton_Click(object sender, EventArgs e)
-        {
-            DisplayPlaylistPanel.BringToFront();
-        }
 
         private void DisplayStartSettingsButton_Click(object sender, EventArgs e)
         {
@@ -171,11 +183,13 @@ namespace Entrega3_FyBuZz
             {
                 AccountSettingsFollowingListDomaiUp.Items.Add(seguidor);
             }
-
-            foreach(string followers in user.FollowerList)
+            
+            /*
+            foreach (string followers in user.FollowerList)
             {
                 AccountSettingsFollowerListDomainUp.Items.Add(followers);
-            }
+            }*/         
+            
 
 
             Profile profile = OnProfilesChooseProfile_Click(ProfileName, username, password);
@@ -184,6 +198,15 @@ namespace Entrega3_FyBuZz
             ProfileSettingsProfileTypeTextBox.AppendText(profile.ProfileType);
             ProfileSettingsGenderTextBox.AppendText(profile.Gender);
             ProfileSettingsBirthdayTextBox.AppendText(profile.Age.ToString());
+
+            Image pPic = CreateProfilePic1.Image;
+            if (CreateProfilePicCheckedListBox.SelectedIndex == 0) pPic = CreateProfilePic1.Image;
+            else if (CreateProfilePicCheckedListBox.SelectedIndex == 1) pPic = CreateProfilePic2.Image;
+            else if (CreateProfilePicCheckedListBox.SelectedIndex == 2) pPic = CreateProfilePic3.Image;
+            else if (CreateProfilePicCheckedListBox.SelectedIndex == 3) pPic = CreateProfilePic4.Image;
+
+            ProfileSettingsProfilePicImageBox.Image = pPic;
+
             AccountProfileSettingsPanel.BringToFront();
         }
 
@@ -219,6 +242,64 @@ namespace Entrega3_FyBuZz
             DisplayStartPanel.BringToFront();
         }
 
+        //<<PANEL DISPLAY PLAYLISTS>>
+
+        private void DisplayStartDisplayPlaylistButton_Click(object sender, EventArgs e)
+        {
+            
+            DisplayPlaylistPanel.BringToFront();
+        }
+        private void DisplayPlaylistsGlobalPlaylist1_Click(object sender, EventArgs e)
+        {
+            OnDisplayPlaylistsGlobalPlaylist_Click(0);
+        }
+
+        private void DisplayPlaylistsGlobalPlaylist2_Click(object sender, EventArgs e)
+        {
+            OnDisplayPlaylistsGlobalPlaylist_Click(1);
+        }
+
+        private void DisplayPlaylistsGlobalPlaylist3_Click(object sender, EventArgs e)
+        {
+            OnDisplayPlaylistsGlobalPlaylist_Click(2);
+        }
+        //<<CREATE SONG PANEL>>
+        private void DisplayStartShowAddButton_Click(object sender, EventArgs e)
+        {
+            AddShowPanel.BringToFront();
+        }
+        private void AddShowAddSongButton_Click(object sender, EventArgs e)
+        {
+            CreateSongPanel.BringToFront();
+        }
+        private void CreateSongGoBackButton_Click(object sender, EventArgs e)
+        {
+            AddShowPanel.BringToFront();
+        }
+
+        private void CreateSongCreateSongButton_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileName, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            if (profile.ProfileType != "viewer")
+            {
+                string songName = CreateSongNameTextBox.Text;
+                string songArtist = CreateSongArtistTextBox.Text;
+                string songAlbum = CreateSongAlbumTextBox.Text;
+                string songDiscography = CreateSongDiscographyTextBox.Text;
+                string songGender = CreateSongGenderTextBox.Text;
+                DateTime songPublishDate = CreateSongPublishDateTime.Value;
+                string songStudio = CreateSongStudioTextBox.Text;
+                double songDuration = double.Parse(CreateSongDurationTextBox.Text);
+                string songFormat = CreateSongFormatTextBox.Text;
+                string songLyrics = CreateSongLyricsTextBox.Text;
+                OnCreateSongCreateSongButton_Click(songName, songArtist, songAlbum, songDiscography, songGender, songPublishDate, songStudio, songDuration, songFormat, songLyrics);
+            }
+            else
+            {
+                AddShowInvalidCredentialsLabel.Text = "You profile type is viewer, you don't have permision to create multimedia";
+            }
+        }
+
         //MÉTODOS INTERNOS 
         public User OnLoginButtonClicked(string username, string password)
         {
@@ -235,7 +316,7 @@ namespace Entrega3_FyBuZz
                 {
                     LogInInvalidCredentialsTetxbox.AppendText("Log-In Succesfull");
                     LogInInvalidCredentialsTetxbox.Visible = true;
-                    ProfilePanel.BringToFront();
+                    
                     ProfilesWelcomeTextBox.AppendText("Welcome to FyBuZz " + user.Username);
                     foreach (Profile profile in user.Perfiles)
                     {
@@ -282,6 +363,7 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
+
         public Profile OnProfilesChooseProfile_Click(string pName, string usr, string pass)
         {
             if (ProfilesChooseProfile_Clicked != null)
@@ -291,6 +373,7 @@ namespace Entrega3_FyBuZz
                 ProfilesInvalidCredentialTextBox.AppendText("Entering FyBuZz with... " + choosenProfile.ProfileName);
 
                 Thread.Sleep(2000);
+
                 return choosenProfile;
             }
             else
@@ -298,6 +381,44 @@ namespace Entrega3_FyBuZz
                 return null;
             }
         }
+        public PlayList OnDisplayPlaylistsGlobalPlaylist_Click(int playlistIndex)
+        {
+            if(DisplayPlaylistsGlobalPlaylist_Clicked != null)
+            {
+                List<PlayList> listPlaylist = DisplayPlaylistsGlobalPlaylist_Clicked(this, new PlaylistEventArgs()); //Nose si es necesario darle parametros
+                return listPlaylist[playlistIndex];
+            }
+            return null;
+        }
+        public void OnCreateSongCreateSongButton_Click(string sName, string sArtist, string sAlbum, string sDiscography, string sGender, DateTime sPublishDate, string sStudio, double sDuration, string sFormat, string sLyrics)
+        {
+            if (CreateSongCreateSongButton_Clicked != null)
+            {
+                bool result = CreateSongCreateSongButton_Clicked(this, new SongEventArgs() { NameText = sName, AlbumText = sAlbum, ArtistText = sArtist, DateText = sPublishDate, DiscographyText = sDiscography, DurationText = sDuration, FormatText = sFormat, GenderText = sGender, LyricsText = sLyrics, StudioText = sStudio });
+                if (!result)
+                {
+                    CreateSongInvalidSongLabel.Text = "An Error has ocurred please try again";
+                    Thread.Sleep(2000);
+                }
+                else
+                {
+                    CreateSongInvalidSongLabel.Text = "Song Added to the system";
+                    Thread.Sleep(2000);
+                    CreateSongNameTextBox.Clear();
+                    CreateSongArtistTextBox.Clear();
+                    CreateSongAlbumTextBox.Clear();
+                    CreateSongDiscographyTextBox.Clear();
+                    CreateSongGenderTextBox.Clear();
+                    CreateSongStudioTextBox.Clear();
+                    CreateSongDurationTextBox.Clear();
+                    CreateSongFormatTextBox.Clear();
+                    CreateSongLyricsTextBox.Clear();
+
+                    DisplayStartPanel.BringToFront();
+                }
+            }
+        }
+
 
         // CLOSE/GO BACK
 
@@ -309,6 +430,17 @@ namespace Entrega3_FyBuZz
         private void WelcomeCloseFyBuZz_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        //<<ADD/SHOW MULTIMEDIA PANEL>>
+        private void AddShowGoBackButton_Click(object sender, EventArgs e)
+        {
+            DisplayStartLabel.BringToFront();
+
+        }
+
+        private void WelcomePanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
