@@ -51,10 +51,11 @@ namespace Modelos
 
         //MÉTODO PARA CREAR UN PERFIL
         //--------------------------------------------------------------------------------------------------
-        public void CreateProfile(string pname, string ppic, string ptype, string pmail, string pgender, int page)
+        public Profile CreateProfile(string pname, string ppic, string ptype, string pmail, string pgender, int page)
         {
             Profile profileX = new Profile(pname, ppic, ptype, pmail, pgender, page);
             perfiles.Add(profileX);
+            return profileX;
         }
         //--------------------------------------------------------------------------------------------------
 

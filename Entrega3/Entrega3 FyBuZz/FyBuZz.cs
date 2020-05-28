@@ -439,11 +439,17 @@ namespace Entrega3_FyBuZz
 
 
             //listView1.Items.Add();
-
+        }
         //<<ADD/SHOW MULTIMEDIA PANEL>>
         private void AddShowGoBackButton_Click(object sender, EventArgs e)
         {
             DisplayStartLabel.BringToFront();
+
+
+        }
+
+        private void WelcomePanel_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
