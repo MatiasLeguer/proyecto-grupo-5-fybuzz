@@ -78,7 +78,7 @@ namespace Modelos
 
                     case "II":
                         //Utiliza el método Register de Server para registrar al usuario.
-                        server.Register(user, userDataBase);
+                        //server.Register(user, userDataBase);
 
                         //Guarda la información del usuario.
                         database.Save_Users(userDataBase);
