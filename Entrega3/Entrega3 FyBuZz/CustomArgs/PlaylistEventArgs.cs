@@ -8,6 +8,7 @@ namespace Entrega3_FyBuZz.CustomArgs
 {
     public class PlaylistEventArgs:EventArgs
     {
+        public string PrivacyText { get; set; }
         public string NameText { get; set; }
         public string FormatText { get; set; }
         public string CreatorText { get; set; }
