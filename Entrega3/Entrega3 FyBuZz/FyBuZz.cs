@@ -45,6 +45,9 @@ namespace Entrega3_FyBuZz
         public delegate List<User> ListUserEventHandler(object source, RegisterEventArgs args);
         public event ListUserEventHandler SearchUserButton_Clicked;
 
+        public delegate string SearchedUserEventHandler(object source, UserEventArgs args);
+        public event SearchedUserEventHandler SearchFollowButton_Clicked;
+
         private string ProfileName { get; set; }
 
         public FyBuZz()
@@ -161,6 +164,11 @@ namespace Entrega3_FyBuZz
             LogInPanel.BringToFront();
             UserLogInTextBox.ResetText();
             PasswordLogInTextBox.ResetText();
+            LogInInvalidCredentialsTetxbox.Clear();
+            ProfilesWelcomeTextBox.Clear();
+            ProfilesInvalidCredentialTextBox.Clear();
+            ProfileDomainUp.ResetText();
+            ProfilesInvalidCredentialTextBox.Clear();
         }
 
 
@@ -182,11 +190,11 @@ namespace Entrega3_FyBuZz
                 AccountSettingsFollowingListDomaiUp.Items.Add(seguidor);
             }
             
-            /*
+            
             foreach (string followers in user.FollowerList)
             {
                 AccountSettingsFollowerListDomainUp.Items.Add(followers);
-            }*/         
+            }         
             
 
 
@@ -264,14 +272,28 @@ namespace Entrega3_FyBuZz
         {
             OnDisplayPlaylistsGlobalPlaylist_Click(2);
         }
-        //<<CREATE SONG PANEL>>
         private void DisplayStartShowAddButton_Click(object sender, EventArgs e)
         {
             AddShowPanel.BringToFront();
         }
+
+        //<<ADD/SHOW MULTIMEDIA PANEL>>
+        private void AddShowGoBackButton_Click(object sender, EventArgs e)
+        {
+            DisplayStartPanel.BringToFront();
+        }
         private void AddShowAddSongButton_Click(object sender, EventArgs e)
         {
-            CreateSongPanel.BringToFront();
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            if(profile.ProfileType != "viewer")
+            {
+                CreateSongPanel.BringToFront();
+            }
+            else
+            {
+                AddShowInvalidCredentialsLabel.Text = "You don´t have permission to create multimedia";
+            }
+            
         }
         private void CreateSongGoBackButton_Click(object sender, EventArgs e)
         {
@@ -339,21 +361,17 @@ namespace Entrega3_FyBuZz
         {
             List<User> userDataBase = new List<User>();
             userDataBase = OnSearchUserButton_Click();
+            User logInUser = OnLoginButtonClicked(UserLogInTextBox.Text, PasswordLogInTextBox.Text);
 
             if (SearchSearchResultsDomainUp.Text.Contains("User:"))
             {
-                foreach (User user in userDataBase)
+                foreach (User searchedUser in userDataBase)
                 {
                     string result = SearchSearchResultsDomainUp.Text;
-                    List<string> listuser = user.FollowingList;
-                    if (result == "User: " + user.SearchedInfoUser())
+                    List<string> listuser = searchedUser.FollowingList;
+                    if (result == "User: " + searchedUser.SearchedInfoUser())
                     {
-                        //user es el usuario que quiero seguir....
-                        //Todo esto dentro de un método:user.Followers = user.Followers + 1;
-                        DisplayStartPanel.BringToFront();
-                        //Hacer un evento en user que revise si el usuario ya sigue 
-                        //al que se esta buscando, si no lo sigue... etc, mismo metodo
-                        //que en menú.
+                        OnSearchFollowButton_Click(logInUser, searchedUser);
                     }
                 }
             }
@@ -442,10 +460,6 @@ namespace Entrega3_FyBuZz
                 File.Copy(songFileSource, songFile);
                 OnCreateSongCreateSongButton_Click(songName, songArtist, songAlbum, songDiscography, songGender, songPublishDate, songStudio, songDuration, songFormat, songLyrics, songFile);
             }
-            else
-            {
-                AddShowInvalidCredentialsLabel.Text = "You profile type is viewer, you don't have permision to create multimedia";
-            }
         }
         private void CreateSongSongFileButton_Click(object sender, EventArgs e)
         {
@@ -495,11 +509,20 @@ namespace Entrega3_FyBuZz
                     RegisterInvalidCredencialsTextBox.AppendText("User already exist");
                     RegisterInvalidCredencialsTextBox.Visible = true;
                     Thread.Sleep(2000);
+                    UsernameRegisterTextBox.Clear();
+                    EmailRegisterTextBox.Clear();
+                    PasswordRegisterTextBox.Clear();
+                    RegisterInvalidCredencialsTextBox.Clear();
+                    
                 }
                 else
                 {
                     RegisterInvalidCredencialsTextBox.AppendText("Registered Succesfull");
                     RegisterInvalidCredencialsTextBox.Visible = true;
+                    UsernameRegisterTextBox.Clear();
+                    EmailRegisterTextBox.Clear();
+                    PasswordRegisterTextBox.Clear();
+                    RegisterInvalidCredencialsTextBox.Clear();
                     Thread.Sleep(2000);
                 }
             }
@@ -513,6 +536,7 @@ namespace Entrega3_FyBuZz
                 {
                     ProfileDomainUp.Items.Add(result.ProfileName);
                     ProfilePanel.BringToFront();
+                    CreateProfileProfileNameTextBox.Clear();
                 }
                 else
                 {
@@ -595,11 +619,35 @@ namespace Entrega3_FyBuZz
             }
             return null;
         }
-
-        //<<ADD/SHOW MULTIMEDIA PANEL>>
-        private void AddShowGoBackButton_Click(object sender, EventArgs e)
+        public void OnSearchFollowButton_Click(User userLogIn, User userSearched)
         {
-            DisplayStartLabel.BringToFront();
+            if(SearchFollowButton_Clicked != null)
+            {
+                string result = SearchFollowButton_Clicked(this, new UserEventArgs() {UserLogIn = userLogIn, UserSearched = userSearched });
+                if (result != null)
+                {
+                    //Un label que appende el result...
+                    SearchInvalidCredentialsTextBox.AppendText(result);
+                    Thread.Sleep(2000);
+                    DisplayStartPanel.BringToFront();
+                    SearchInvalidCredentialsTextBox.Clear();
+                }
+                else
+                {
+                    //Un label que appende un error...
+                    SearchInvalidCredentialsTextBox.AppendText("Error... couldn't follow " + userSearched.Username);
+                    Thread.Sleep(2000);
+                    DisplayStartPanel.BringToFront();
+                    SearchInvalidCredentialsTextBox.Clear();
+                }
+            }
+            else
+            {
+                SearchInvalidCredentialsTextBox.AppendText("Error... couldn't follow " + userSearched.Username);
+                Thread.Sleep(2000);
+                DisplayStartPanel.BringToFront();
+                SearchInvalidCredentialsTextBox.Clear();
+            }
         }
     }
 }

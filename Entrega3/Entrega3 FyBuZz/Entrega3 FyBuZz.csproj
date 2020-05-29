@@ -54,6 +54,7 @@
     <Compile Include="CustomArgs\ProfileEventArgs.cs" />
     <Compile Include="CustomArgs\RegisterEventArgs.cs" />
     <Compile Include="CustomArgs\SongEventArgs.cs" />
+    <Compile Include="CustomArgs\UserEventArgs.cs" />
     <Compile Include="FyBuZz.cs">
       <SubType>Form</SubType>
     </Compile>

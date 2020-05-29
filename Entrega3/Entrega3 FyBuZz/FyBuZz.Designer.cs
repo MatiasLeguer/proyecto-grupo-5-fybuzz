@@ -141,6 +141,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.ProfileSettingsLabel = new System.Windows.Forms.Label();
             this.SearchPanel = new System.Windows.Forms.Panel();
+            this.SearchInvalidCredentialsTextBox = new System.Windows.Forms.TextBox();
             this.SearchSelectMultButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SearchTimerDisplayLabel = new System.Windows.Forms.Label();
@@ -1514,6 +1515,7 @@
             // SearchPanel
             // 
             this.SearchPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchPanel.Controls.Add(this.SearchInvalidCredentialsTextBox);
             this.SearchPanel.Controls.Add(this.SearchSelectMultButton);
             this.SearchPanel.Controls.Add(this.panel1);
             this.SearchPanel.Controls.Add(this.SearchGoBackButton);
@@ -1528,6 +1530,17 @@
             this.SearchPanel.Name = "SearchPanel";
             this.SearchPanel.Size = new System.Drawing.Size(712, 792);
             this.SearchPanel.TabIndex = 7;
+            // 
+            // SearchInvalidCredentialsTextBox
+            // 
+            this.SearchInvalidCredentialsTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchInvalidCredentialsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchInvalidCredentialsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchInvalidCredentialsTextBox.ForeColor = System.Drawing.Color.White;
+            this.SearchInvalidCredentialsTextBox.Location = new System.Drawing.Point(133, 594);
+            this.SearchInvalidCredentialsTextBox.Name = "SearchInvalidCredentialsTextBox";
+            this.SearchInvalidCredentialsTextBox.Size = new System.Drawing.Size(440, 20);
+            this.SearchInvalidCredentialsTextBox.TabIndex = 31;
             // 
             // SearchSelectMultButton
             // 
@@ -2426,18 +2439,18 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(712, 792);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.AddShowPanel);
+            this.Controls.Add(this.ProfilePanel);
+            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
             this.Controls.Add(this.RegisterPanel);
-            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.DisplayStartPanel);
-            this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.CreateVideoPanel);
             this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.AdminMenuPanel);
             this.Controls.Add(this.CreateProfilePanel);
-            this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.LogInPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2700,5 +2713,6 @@
         private System.Windows.Forms.Timer DurationTimer;
         private System.Windows.Forms.Label SearchTimerDisplayLabel;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox SearchInvalidCredentialsTextBox;
     }
 }
