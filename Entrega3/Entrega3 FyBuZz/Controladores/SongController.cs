@@ -35,6 +35,7 @@ namespace Entrega3_FyBuZz.Controladores
         {
             string date = e.DateText.ToShortDateString();
             string duration = e.DurationText.ToString();
+            File.Copy(e.FileDestName, e.FileNameText);
             List<string> infoMult = new List<string> {e.NameText, e.ArtistText, e.AlbumText, e.DiscographyText, e.GenderText,date, e.StudioText, duration, e.LyricsText, e.FormatText, e.FileNameText};
             string description = dataBase.AddMult(0, infoMult, songDatabase, null, null, null, null, null, null);
             if (description == null)
@@ -42,7 +43,11 @@ namespace Entrega3_FyBuZz.Controladores
                 dataBase.Save_Songs(songDatabase);
                 return true;
             }
-            else return false;
+            else
+            {
+                File.Delete(e.FileNameText);
+                return false;
+            }
         }
         private List<Song> OnSearchSearchButton_Clicked(object sender, SongEventArgs e)
         {

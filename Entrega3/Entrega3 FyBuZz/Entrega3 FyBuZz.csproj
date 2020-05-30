@@ -49,11 +49,14 @@
     <Compile Include="Controladores\PlaylistController.cs" />
     <Compile Include="Controladores\SongController.cs" />
     <Compile Include="Controladores\UserControler.cs" />
+    <Compile Include="Controladores\VideoController.cs" />
     <Compile Include="CustomArgs\LogInEventArgs.cs" />
     <Compile Include="CustomArgs\PlaylistEventArgs.cs" />
     <Compile Include="CustomArgs\ProfileEventArgs.cs" />
     <Compile Include="CustomArgs\RegisterEventArgs.cs" />
     <Compile Include="CustomArgs\SongEventArgs.cs" />
+    <Compile Include="CustomArgs\UserEventArgs.cs" />
+    <Compile Include="CustomArgs\VideoEventArgs.cs" />
     <Compile Include="FyBuZz.cs">
       <SubType>Form</SubType>
     </Compile>

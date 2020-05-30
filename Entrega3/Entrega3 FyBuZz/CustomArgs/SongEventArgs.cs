@@ -19,5 +19,6 @@ namespace Entrega3_FyBuZz.CustomArgs
         public string FormatText { get; set; }
         public string LyricsText { get; set; }
         public string FileNameText { get; set; }
+        public string FileDestName { get; set; }
     }
 }

@@ -29,6 +29,8 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.RegisterRegisterButton_Clicked += OnRegisterRegisterButtonClicked;
             this.fyBuZz.CreateProfileCreateProfileButton_Clicked += OnCreateProfileCreateProfileButton_Clicked;
             this.fyBuZz.ProfilesChooseProfile_Clicked += OnProfilesChooseProfile_Click;
+            this.fyBuZz.SearchUserButton_Clicked += OnSearchUserButton_Click;
+            this.fyBuZz.SearchFollowButton_Clicked += OnSearchFollowButton_Click;
         }
 
         public void Initialize()
@@ -95,6 +97,40 @@ namespace Entrega3_FyBuZz.Controladores
                 }
             }
             return null;
+        }
+        private List<User> OnSearchUserButton_Click(object sender, RegisterEventArgs e)
+        {
+            return userDataBase;
+        }
+        private string OnSearchFollowButton_Click(object sender, UserEventArgs e)
+        {
+            List<string> listuser = e.UserLogIn.FollowingList;
+            string tryingToFollow = e.UserSearched.Username;
+            string result = null;
+
+            if (listuser.Contains(tryingToFollow) == false)
+            {
+                e.UserSearched.Followers = e.UserSearched.Followers + 1;
+                e.UserLogIn.Following = e.UserLogIn.Following + 1;
+                if (e.UserSearched.ProfilePlaylists != null)
+                {
+                    foreach (PlayList Pls in e.UserSearched.ProfilePlaylists)
+                    {
+                        //followedPL.Add(Pls);
+
+                    }
+                }
+                /*else
+                {
+                    result = "Error, this user don't have created playlists";
+                }*/
+
+                e.UserLogIn.FollowingList.Add(e.UserSearched.Username);
+                e.UserSearched.FollowerList.Add(e.UserLogIn.Username);
+                result = "Followed: " + e.UserSearched.SearchedInfoUser();
+                dataBase.Save_Users(userDataBase);
+            }
+            return result;
         }
     }
 }

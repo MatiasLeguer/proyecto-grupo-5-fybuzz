@@ -36,21 +36,33 @@ namespace Entrega3_FyBuZz
 
         public delegate Profile ChooseProfileEventHandler(object source, ProfileEventArgs args);
         public event ChooseProfileEventHandler ProfilesChooseProfile_Clicked;
-        //--------------------------------------------------------------------------------
-
-
-        //ATRIBUTOS
-        //--------------------------------------------------------------------------------
 
         public delegate List<PlayList> ChoosePlaylistEventHandler(object source, PlaylistEventArgs args);
         public event ChoosePlaylistEventHandler DisplayPlaylistsGlobalPlaylist_Clicked;
 
         public delegate bool SongEventHandler(object source, SongEventArgs args);
         public event SongEventHandler CreateSongCreateSongButton_Clicked;
+
         public delegate List<Song> ListSongEventHandler(object source, SongEventArgs args);
         public event ListSongEventHandler SearchSearchButton_Clicked;
 
 
+        public delegate List<User> ListUserEventHandler(object source, RegisterEventArgs args);
+        public event ListUserEventHandler SearchUserButton_Clicked;
+
+        public delegate string SearchedUserEventHandler(object source, UserEventArgs args);
+        public event SearchedUserEventHandler SearchFollowButton_Clicked;
+
+        public delegate string PlaylistEventHandler(object source, PlaylistEventArgs args);
+        public event PlaylistEventHandler CreatePlaylistCreatePlaylistButton_Clicked;
+
+        public delegate bool CreateVideoEventHandler(object source, VideoEventArgs args);
+        public event CreateVideoEventHandler CreateVideoSaveButton_Clicked;
+        //--------------------------------------------------------------------------------
+
+
+        //ATRIBUTOS
+        //--------------------------------------------------------------------------------
         private string ProfileName { get; set; }
         //--------------------------------------------------------------------------------
 
@@ -172,6 +184,11 @@ namespace Entrega3_FyBuZz
             LogInPanel.BringToFront();
             UserLogInTextBox.ResetText();
             PasswordLogInTextBox.ResetText();
+            LogInInvalidCredentialsTetxbox.Clear();
+            ProfilesWelcomeTextBox.Clear();
+            ProfilesInvalidCredentialTextBox.Clear();
+            ProfileDomainUp.ResetText();
+            ProfilesInvalidCredentialTextBox.Clear();
         }
 
 
@@ -193,11 +210,11 @@ namespace Entrega3_FyBuZz
                 AccountSettingsFollowingListDomaiUp.Items.Add(seguidor);
             }
             
-            /*
+            
             foreach (string followers in user.FollowerList)
             {
                 AccountSettingsFollowerListDomainUp.Items.Add(followers);
-            }*/         
+            }         
             
 
 
@@ -272,30 +289,90 @@ namespace Entrega3_FyBuZz
         {
             OnDisplayPlaylistsGlobalPlaylist_Click(2);
         }
-        //<<CREATE SONG PANEL>>
         private void DisplayStartShowAddButton_Click(object sender, EventArgs e)
         {
             AddShowPanel.BringToFront();
         }
+
+        //<<ADD/SHOW MULTIMEDIA PANEL>>
+        private void AddShowGoBackButton_Click(object sender, EventArgs e)
+        {
+            DisplayStartPanel.BringToFront();
+        }
         private void AddShowAddSongButton_Click(object sender, EventArgs e)
         {
-            CreateSongPanel.BringToFront();
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            if(profile.ProfileType != "viewer")
+            {
+                CreateSongPanel.BringToFront();
+            }
+            else
+            {
+                AddShowInvalidCredentialsLabel.Text = "You don´t have permission to create multimedia";
+            }
+            
+        }
+        private void AddShowAddPlaylistButton_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            if (profile.ProfileType != "viewer")
+            {
+                CreatePlaylistPanel.BringToFront();
+            }
+            else
+            {
+                AddShowInvalidCredentialsLabel.Text = "You don´t have permission to create multimedia";
+            }
         }
         private void CreateSongGoBackButton_Click(object sender, EventArgs e)
         {
             AddShowPanel.BringToFront();
         }
         //<<Search Panel>>
+        private void SearchSearchButton_Click(object sender, EventArgs e)
+        {
+            string search = SearchSearchTextBox.Text; //Bad Bunny and Trap and ... and ...
+
+            //string[] newSearchAnd = search.Split(new string[] { " and " }, StringSplitOptions.None);
+
+            List<string> listSearch = new List<string>();
+            //listSearch.Add(search);
+            List<Song> songDataBase = new List<Song>();
+            songDataBase = OnSearchSearchButton_Click();
+            List<User> userDataBase = new List<User>();
+            userDataBase = OnSearchUserButton_Click();
+
+            foreach (Song song in songDataBase)
+            {
+
+                if (song.InfoSong().Contains(search))
+                {
+                    SearchSearchResultsDomainUp.Visible = true;
+                    SearchSearchResultsDomainUp.Items.Add(song.SearchedInfoSong());
+                }
+            }
+            foreach(User user in userDataBase)
+            {             
+                if (user.infoUser().Contains(search))
+                {
+                    SearchSearchResultsDomainUp.Visible = true;
+                    SearchSearchResultsDomainUp.Items.Add("User: " + user.SearchedInfoUser());
+                }
+            }
+
+        }
         private void SearchSelectMultButton_Click(object sender, EventArgs e)
         {
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSearchButton_Click();
+            List<User> userDataBase = new List<User>();     
+            userDataBase = OnSearchUserButton_Click();
             foreach (Song song in songDataBase)
             {
                 if (song.Format == ".mp3")
                 {
                     string result = SearchSearchResultsDomainUp.Text;
-                    if (result == song.SearchedInfoSong() + " Format: " + song.Format)
+                    if (result == song.SearchedInfoSong())
                     {
                         //No se como reiniciar la barra de progreso ni el timer
                         SearchProgressBar.Value = 0;
@@ -305,6 +382,25 @@ namespace Entrega3_FyBuZz
                         SearchProgressBar.Maximum = (int)(song.Duration * 60);
                         DurationTimer.Start();
                         break;
+                    }
+                }
+            }
+        }
+        private void SearchFollowButton_Click(object sender, EventArgs e)
+        {
+            List<User> userDataBase = new List<User>();
+            userDataBase = OnSearchUserButton_Click();
+            User logInUser = OnLoginButtonClicked(UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+
+            if (SearchSearchResultsDomainUp.Text.Contains("User:"))
+            {
+                foreach (User searchedUser in userDataBase)
+                {
+                    string result = SearchSearchResultsDomainUp.Text;
+                    List<string> listuser = searchedUser.FollowingList;
+                    if (result == "User: " + searchedUser.SearchedInfoUser())
+                    {
+                        OnSearchFollowButton_Click(logInUser, searchedUser);
                     }
                 }
             }
@@ -321,7 +417,7 @@ namespace Entrega3_FyBuZz
             songDataBase = OnSearchSearchButton_Click();
             foreach (Song song in songDataBase)
             {
-                if (song.Format == ".mp3")
+                if (SearchSearchResultsDomainUp.Text.Contains("Song:") &&  song.Format == ".mp3")
                 {
                     windowsMediaPlayer.controls.play();
                     DurationTimer.Start();
@@ -369,20 +465,8 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
-        private void SearchSearchButton_Click(object sender, EventArgs e)
-        {
-            string search = SearchSearchTextBox.Text;
-            List<Song> songDataBase = new List<Song>();
-            songDataBase = OnSearchSearchButton_Click();
-            foreach(Song song in songDataBase)
-            {
-                if (song.DisplayInfoSong().Contains(search))
-                {
-                    SearchSearchResultsDomainUp.Visible = true;
-                    SearchSearchResultsDomainUp.Items.Add(song.SearchedInfoSong() + " Format: " + song.Format);
-                }
-            }  
-        }
+        
+
         //<<PANEL DE CREACION SONG>>
         private void CreateSongCreateSongButton_Click(object sender, EventArgs e)
         {
@@ -400,14 +484,28 @@ namespace Entrega3_FyBuZz
                 string songFormat = CreateSongFormatTextBox.Text;
                 string songLyrics = CreateSongLyricsTextBox.Text;
                 string songFileSource = CreateSongSongFileTextBox.Text;
-                string songFileDest = Directory.GetCurrentDirectory();
                 string songFile = songFileSource.Split('\\')[songFileSource.Split('\\').Length-1];
-                File.Copy(songFileSource, songFile);
-                OnCreateSongCreateSongButton_Click(songName, songArtist, songAlbum, songDiscography, songGender, songPublishDate, songStudio, songDuration, songFormat, songLyrics, songFile);
-            }
-            else
-            {
-                AddShowInvalidCredentialsLabel.Text = "You profile type is viewer, you don't have permision to create multimedia";
+                if(File.Exists(songFile) == false)
+                {
+                    OnCreateSongCreateSongButton_Click(songName, songArtist, songAlbum, songDiscography, songGender, songPublishDate, songStudio, songDuration, songFormat, songLyrics, songFileSource, songFile);
+                }
+                else
+                {
+                    CreateSongInvalidCredentialTextBox.AppendText("An Error has ocurred please try again");
+                    Thread.Sleep(2000);
+                    DisplayStartPanel.BringToFront();
+                    CreateSongNameTextBox.Clear();
+                    CreateSongArtistTextBox.Clear();
+                    CreateSongAlbumTextBox.Clear();
+                    CreateSongDiscographyTextBox.Clear();
+                    CreateSongGenderTextBox.Clear();
+                    CreateSongStudioTextBox.Clear();
+                    CreateSongDurationTextBox.Clear();
+                    CreateSongFormatTextBox.Clear();
+                    CreateSongLyricsTextBox.Clear();
+                    CreateSongSongFileTextBox.Clear();
+                }
+                
             }
         }
         private void CreateSongSongFileButton_Click(object sender, EventArgs e)
@@ -418,6 +516,81 @@ namespace Entrega3_FyBuZz
             {
                 string filename = openFileDialog.FileName;
                 CreateSongSongFileTextBox.Text = filename;
+            }
+        }
+
+        //<<CREATE PLAYLIST PANEL>>
+        private void CreatePlaylistGoBack_Click(object sender, EventArgs e)
+        {
+            DisplayStartPanel.BringToFront();
+        }
+
+        private void CreatePlaylistCreatePlaylistButton_Click(object sender, EventArgs e)
+        {
+            string playlistName = CreatePlaylistNameTextBox.Text;
+            string playlistFormat = CreatePlaylistFormatDomainUp.Text;
+            User playlistCreator = OnLoginButtonClicked(UserLogInTextBox.Text,PasswordLogInTextBox.Text);
+            Profile playlistProfileCreator = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            bool playlistPrivacy = CreatePlaylistPrivacyCheckBox.Checked; //True si esta checked
+            OnCreatePlaylistCreatePlaylistButton_Click(playlistName, playlistFormat, playlistPrivacy, playlistCreator, playlistProfileCreator);
+
+        }
+
+        //CREATE VIDEO PANEL -->AL APRETAR ADD VIDEO
+        private void AddShowAddVideoButton_Click(object sender, EventArgs e)
+        {
+            CreateVideoPanel.BringToFront();
+        }
+
+        private void CreateVideoSaveButton_Click(object sender, EventArgs e)
+        {
+            string videoName = CreateVideoNameTextBox.Text;
+            string actors = CreateVideoActorsTextBox.Text;
+            string directors = CreateVideoDirectorsTextBox.Text;
+            string releaseDate = CreateVideoReleaseDateDateTimePicker.Value.ToShortDateString();
+            string videoDimension = CreateVideoDimensionTextBox.Text;
+            string videoQuality = CreateVideoQualityTextBox.Text;
+            string videoCategory = CreateVideoCategoryTextBox.Text;
+            string videoDescription = CreateVideoDescriptionTextBox.Text;
+            string videoDuration = CreateVideoDurationTextBox.Text;
+            string videoFormat = CreateVideoFormatTextBox.Text;
+            string videoSubtitles = CreateVideoSubtitlesTextBox.Text;
+            string videoFileSource = CreateVideoLoadVideoTextBox.Text;
+            string videoFileName = videoFileSource.Split('\\')[videoFileSource.Split('\\').Length - 1];
+            
+
+            if(File.Exists(videoFileName) == false)
+            {
+                OnCreateVideoSaveButton_Clicked(videoName, actors, directors, releaseDate, videoDimension, videoQuality, videoCategory, videoDescription, videoDuration, videoFormat, videoSubtitles, videoFileSource, videoFileName, "true");
+            }
+            else
+            {
+                CreateVideoMessageTextBox.AppendText("ERROR[!] Your file already exists");
+                CreateVideoNameTextBox.Clear();
+                CreateVideoActorsTextBox.Clear();
+                CreateVideoDirectorsTextBox.Clear();
+                CreateVideoDimensionTextBox.Clear();
+                CreateVideoQualityTextBox.Clear();
+                CreateVideoCategoryTextBox.Clear();
+                CreateVideoDescriptionTextBox.Clear();
+                CreateVideoDurationTextBox.Clear();
+                CreateVideoFormatTextBox.Clear();
+                CreateVideoSubtitlesTextBox.Clear();
+                CreateVideoLoadVideoTextBox.Clear();
+                Thread.Sleep(1500);
+                CreateVideoMessageTextBox.Clear();
+            }
+
+        }
+
+        private void CreateVideoLoadVideoButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filename = openFileDialog.FileName;
+                CreateVideoLoadVideoTextBox.Text = filename;
             }
         }
 
@@ -458,11 +631,20 @@ namespace Entrega3_FyBuZz
                     RegisterInvalidCredencialsTextBox.AppendText("User already exist");
                     RegisterInvalidCredencialsTextBox.Visible = true;
                     Thread.Sleep(2000);
+                    UsernameRegisterTextBox.Clear();
+                    EmailRegisterTextBox.Clear();
+                    PasswordRegisterTextBox.Clear();
+                    RegisterInvalidCredencialsTextBox.Clear();
+                    
                 }
                 else
                 {
                     RegisterInvalidCredencialsTextBox.AppendText("Registered Succesfull");
                     RegisterInvalidCredencialsTextBox.Visible = true;
+                    UsernameRegisterTextBox.Clear();
+                    EmailRegisterTextBox.Clear();
+                    PasswordRegisterTextBox.Clear();
+                    RegisterInvalidCredencialsTextBox.Clear();
                     Thread.Sleep(2000);
                 }
             }
@@ -476,6 +658,7 @@ namespace Entrega3_FyBuZz
                 {
                     ProfileDomainUp.Items.Add(result.ProfileName);
                     ProfilePanel.BringToFront();
+                    CreateProfileProfileNameTextBox.Clear();
                 }
                 else
                 {
@@ -511,19 +694,31 @@ namespace Entrega3_FyBuZz
             }
             return null;
         }
-        public void OnCreateSongCreateSongButton_Click(string sName, string sArtist, string sAlbum, string sDiscography, string sGender, DateTime sPublishDate, string sStudio, double sDuration, string sFormat, string sLyrics, string songFile)
+        public void OnCreateSongCreateSongButton_Click(string sName, string sArtist, string sAlbum, string sDiscography, string sGender, DateTime sPublishDate, string sStudio, double sDuration, string sFormat, string sLyrics, string sSource,string songFile)
         {
             if (CreateSongCreateSongButton_Clicked != null)
             {
-                bool result = CreateSongCreateSongButton_Clicked(this, new SongEventArgs() { NameText = sName, AlbumText = sAlbum, ArtistText = sArtist, DateText = sPublishDate, DiscographyText = sDiscography, DurationText = sDuration, FormatText = sFormat, GenderText = sGender, LyricsText = sLyrics, StudioText = sStudio, FileNameText = songFile});
+                bool result = CreateSongCreateSongButton_Clicked(this, new SongEventArgs() { NameText = sName, AlbumText = sAlbum, ArtistText = sArtist, DateText = sPublishDate, DiscographyText = sDiscography, DurationText = sDuration, FormatText = sFormat, GenderText = sGender, LyricsText = sLyrics, StudioText = sStudio, FileDestName = sSource,FileNameText = songFile});
                 if (!result)
                 {
-                    CreateSongInvalidSongLabel.Text = "An Error has ocurred please try again";
+                    CreateSongInvalidCredentialTextBox.AppendText("An Error has ocurred please try again");
                     Thread.Sleep(2000);
+                    DisplayStartPanel.BringToFront();
+                    CreateSongNameTextBox.Clear();
+                    CreateSongArtistTextBox.Clear();
+                    CreateSongAlbumTextBox.Clear();
+                    CreateSongDiscographyTextBox.Clear();
+                    CreateSongGenderTextBox.Clear();
+                    CreateSongStudioTextBox.Clear();
+                    CreateSongDurationTextBox.Clear();
+                    CreateSongFormatTextBox.Clear();
+                    CreateSongLyricsTextBox.Clear();
+                    CreateSongSongFileTextBox.Clear();
+                    
                 }
                 else
                 {
-                    CreateSongInvalidSongLabel.Text = "Song Added to the system";
+                    CreateSongInvalidCredentialTextBox.AppendText("Song Added to the system");
                     Thread.Sleep(2000);
                     CreateSongNameTextBox.Clear();
                     CreateSongArtistTextBox.Clear();
@@ -535,8 +730,6 @@ namespace Entrega3_FyBuZz
                     CreateSongFormatTextBox.Clear();
                     CreateSongLyricsTextBox.Clear();
                     CreateSongSongFileTextBox.Clear();
-
-                    DisplayStartPanel.BringToFront();
                 }
             }
         }
@@ -549,6 +742,7 @@ namespace Entrega3_FyBuZz
             }
             return null;
         }
+
 
 
         // CLOSE/GO BACK
@@ -571,21 +765,115 @@ namespace Entrega3_FyBuZz
             //listView1.Items.Add();
         }
         //<<ADD/SHOW MULTIMEDIA PANEL>>
-        private void AddShowGoBackButton_Click(object sender, EventArgs e)
-        {
-            DisplayStartLabel.BringToFront();
 
-
-        }
 
         private void WelcomePanel_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
-        private void AddShowAddVideoButton_Click(object sender, EventArgs e)
+        public List<User> OnSearchUserButton_Click()
         {
-            CreateVideoPanel.BringToFront();
+            if (SearchUserButton_Clicked != null)
+            {
+                List<User> userDataBase = SearchUserButton_Clicked(this, new RegisterEventArgs());
+                return userDataBase;
+            }
+            return null;
+
         }
+        public void OnSearchFollowButton_Click(User userLogIn, User userSearched)
+        {
+            if(SearchFollowButton_Clicked != null)
+            {
+                string result = SearchFollowButton_Clicked(this, new UserEventArgs() {UserLogIn = userLogIn, UserSearched = userSearched });
+                if (result != null)
+                {
+                    //Un label que appende el result...
+                    SearchInvalidCredentialsTextBox.AppendText(result);
+                    Thread.Sleep(2000);
+                    DisplayStartPanel.BringToFront();
+                    SearchInvalidCredentialsTextBox.Clear();
+                }
+                else
+                {
+                    //Un label que appende un error...
+                    SearchInvalidCredentialsTextBox.AppendText("Error... couldn't follow " + userSearched.Username);
+                    Thread.Sleep(2000);
+                    DisplayStartPanel.BringToFront();
+                    SearchInvalidCredentialsTextBox.Clear();
+                }
+            }
+            else
+            {
+                SearchInvalidCredentialsTextBox.AppendText("Error... couldn't follow " + userSearched.Username);
+                Thread.Sleep(2000);
+                DisplayStartPanel.BringToFront();
+                SearchInvalidCredentialsTextBox.Clear();
+            }
+        }
+        public void OnCreatePlaylistCreatePlaylistButton_Click(string plName, string plFormat, bool plPrivacy, User plCreator, Profile plProfileCreator)
+        {
+            if(CreatePlaylistCreatePlaylistButton_Clicked != null)
+            {
+                string result = CreatePlaylistCreatePlaylistButton_Clicked(this, new PlaylistEventArgs() { NameText = plName, CreatorText = plCreator, FormatText = plFormat, PrivacyText = plPrivacy, ProfileCreatorText = plProfileCreator });
+
+                if(result == null)
+                {
+                    CreatePlaylistInvalidCredentialstextBox.AppendText("Playlist created succesfully!!");
+                    Thread.Sleep(2000);
+                    DisplayStartPanel.BringToFront();
+                }
+                else
+                {
+                    CreatePlaylistInvalidCredentialstextBox.AppendText("Error[!] " + result);
+                    Thread.Sleep(2000);
+                    DisplayStartPanel.BringToFront();
+                }
+            }
+        }
+
+        public void OnCreateVideoSaveButton_Clicked(string name, string actors, string directors, string releaseDate, string dimension, string quality, string category, string description, string duration, string format, string subtitles, string fileDest, string fileName,  string image)
+        {
+            if(CreateVideoSaveButton_Clicked != null)
+            {
+                bool createVideo = CreateVideoSaveButton_Clicked(this, new VideoEventArgs() { NameText = name, ActorsText = actors, DirectorsText = directors, ReleaseDateText = releaseDate, DimensionText = dimension, Categorytext = category, DescriptionText = description, DurationText = duration, FormatText = format, SubtitlesText = subtitles, FileDestText = fileDest, FileNameText = fileName , QualityText = quality, VideoImage = image});
+                if (createVideo)
+                {
+                    CreateVideoMessageTextBox.AppendText("Video Created succesfully!");
+                    CreateVideoNameTextBox.Clear();
+                    CreateVideoActorsTextBox.Clear();
+                    CreateVideoDirectorsTextBox.Clear();
+                    CreateVideoDimensionTextBox.Clear();
+                    CreateVideoQualityTextBox.Clear();
+                    CreateVideoCategoryTextBox.Clear();
+                    CreateVideoDescriptionTextBox.Clear();
+                    CreateVideoDurationTextBox.Clear();
+                    CreateVideoFormatTextBox.Clear();
+                    CreateVideoSubtitlesTextBox.Clear();
+                    CreateVideoLoadVideoTextBox.Clear();
+                    Thread.Sleep(2000);
+                    CreateVideoMessageTextBox.Clear();
+                    DisplayStartPanel.BringToFront();
+                }
+                else
+                {
+                    CreateVideoMessageTextBox.AppendText("ERROR[!] could not create video!");
+                    CreateVideoNameTextBox.Clear();
+                    CreateVideoActorsTextBox.Clear();
+                    CreateVideoDirectorsTextBox.Clear();
+                    CreateVideoDimensionTextBox.Clear();
+                    CreateVideoQualityTextBox.Clear();
+                    CreateVideoCategoryTextBox.Clear();
+                    CreateVideoDescriptionTextBox.Clear();
+                    CreateVideoDurationTextBox.Clear();
+                    CreateVideoFormatTextBox.Clear();
+                    CreateVideoSubtitlesTextBox.Clear();
+                    CreateVideoLoadVideoTextBox.Clear();
+                    Thread.Sleep(1500);
+                    CreateVideoMessageTextBox.Clear();
+                }
+            }
+        }
+
     }
 }

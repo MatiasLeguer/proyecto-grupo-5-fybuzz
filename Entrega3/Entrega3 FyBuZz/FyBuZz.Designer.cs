@@ -141,6 +141,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.ProfileSettingsLabel = new System.Windows.Forms.Label();
             this.SearchPanel = new System.Windows.Forms.Panel();
+            this.SearchInvalidCredentialsTextBox = new System.Windows.Forms.TextBox();
             this.SearchSelectMultButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SearchTimerDisplayLabel = new System.Windows.Forms.Label();
@@ -197,10 +198,10 @@
             this.AdminMenuEraseUserButton = new System.Windows.Forms.Button();
             this.AdminMenuLabel = new System.Windows.Forms.Label();
             this.CreateSongPanel = new System.Windows.Forms.Panel();
+            this.CreateSongInvalidCredentialTextBox = new System.Windows.Forms.TextBox();
             this.CreateSongSongFileButton = new System.Windows.Forms.Button();
             this.CreateSongSongFileTextBox = new System.Windows.Forms.TextBox();
             this.CreateSongSongFileLabel = new System.Windows.Forms.Label();
-            this.CreateSongInvalidSongLabel = new System.Windows.Forms.Label();
             this.CreateSongCreateSongButton = new System.Windows.Forms.Button();
             this.CreateSongGoBackButton = new System.Windows.Forms.Button();
             this.CreateSongPublishDateTime = new System.Windows.Forms.DateTimePicker();
@@ -225,7 +226,49 @@
             this.CreateSongNameLabel = new System.Windows.Forms.Label();
             this.CreateSongLabel = new System.Windows.Forms.Label();
             this.CreateVideoPanel = new System.Windows.Forms.Panel();
+            this.CreateVideoMessageTextBox = new System.Windows.Forms.TextBox();
+            this.CreateVideoSaveButton = new System.Windows.Forms.Button();
+            this.CreateVideoLoadVideoButton = new System.Windows.Forms.Button();
+            this.CreateVideoLoadVideoTextBox = new System.Windows.Forms.TextBox();
+            this.CreateVideoReleaseDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.CreateVideoSubtitlesTextBox = new System.Windows.Forms.TextBox();
+            this.CreateVideoFormatTextBox = new System.Windows.Forms.TextBox();
+            this.CreateVideoDurationTextBox = new System.Windows.Forms.TextBox();
+            this.CreateVideoDescriptionTextBox = new System.Windows.Forms.TextBox();
+            this.CreateVideoCategoryTextBox = new System.Windows.Forms.TextBox();
+            this.CreateVideoQualityTextBox = new System.Windows.Forms.TextBox();
+            this.CreateVideoDimensionTextBox = new System.Windows.Forms.TextBox();
+            this.CreateVideoDirectorsTextBox = new System.Windows.Forms.TextBox();
+            this.CreateVideoActorsTextBox = new System.Windows.Forms.TextBox();
+            this.CreateVideoNameTextBox = new System.Windows.Forms.TextBox();
+            this.CreateVideoLoadLabel = new System.Windows.Forms.Label();
+            this.CreateVideoSubtitlesLabel = new System.Windows.Forms.Label();
+            this.CreateVideoFormatLabel = new System.Windows.Forms.Label();
+            this.CreateVideoDuration = new System.Windows.Forms.Label();
+            this.CreateVideoDescription = new System.Windows.Forms.Label();
+            this.CreateVideoCategoryLabel = new System.Windows.Forms.Label();
+            this.CreateVideoQualityLabel = new System.Windows.Forms.Label();
+            this.CreateVideoDimensionLabel = new System.Windows.Forms.Label();
+            this.CreateVideoReleaseDateLabel = new System.Windows.Forms.Label();
+            this.CreateVideoDirectorsLabel = new System.Windows.Forms.Label();
+            this.CreateVideoactorsLabel = new System.Windows.Forms.Label();
+            this.CreateVideoNameLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CreateVideoLabel = new System.Windows.Forms.Label();
             this.CreatePlaylistPanel = new System.Windows.Forms.Panel();
+            this.CreatePlaylistInvalidCredentialstextBox = new System.Windows.Forms.TextBox();
+            this.CreatePlaylistPrivacyLabel = new System.Windows.Forms.Label();
+            this.CreatePlaylistPrivacyCheckBox = new System.Windows.Forms.CheckBox();
+            this.CreatePlaylistGoBack = new System.Windows.Forms.Button();
+            this.CreatePlaylistCreatePlaylistButton = new System.Windows.Forms.Button();
+            this.CreatePlaylistChooseFile = new System.Windows.Forms.Button();
+            this.CreatePlaylistFileNameTextBox = new System.Windows.Forms.TextBox();
+            this.CreatePlaylistFormatDomainUp = new System.Windows.Forms.DomainUpDown();
+            this.CreatePlaylistNameTextBox = new System.Windows.Forms.TextBox();
+            this.CreatePlaylistImageLabel = new System.Windows.Forms.Label();
+            this.CreatePlaylistFormatLabel = new System.Windows.Forms.Label();
+            this.CreatePlaylistNameLabel = new System.Windows.Forms.Label();
+            this.CreatePlaylistLabel = new System.Windows.Forms.Label();
             this.DurationTimer = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.WelcomePanel.SuspendLayout();
@@ -271,6 +314,8 @@
             this.AdminMenuEraseUserPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.CreateSongPanel.SuspendLayout();
+            this.CreateVideoPanel.SuspendLayout();
+            this.CreatePlaylistPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // WelcomePanel
@@ -285,7 +330,7 @@
             this.WelcomePanel.Location = new System.Drawing.Point(0, 0);
             this.WelcomePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.WelcomePanel.Name = "WelcomePanel";
-            this.WelcomePanel.Size = new System.Drawing.Size(801, 811);
+            this.WelcomePanel.Size = new System.Drawing.Size(712, 792);
             this.WelcomePanel.TabIndex = 0;
             this.WelcomePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.WelcomePanel_Paint);
             // 
@@ -369,10 +414,10 @@
             this.RegisterPanel.Controls.Add(this.GenderRegisterLabel);
             this.RegisterPanel.Controls.Add(this.RegisterUsernameLabel);
             this.RegisterPanel.Controls.Add(this.RegisterLabel);
-            this.RegisterPanel.Location = new System.Drawing.Point(0, 146);
-            this.RegisterPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.RegisterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RegisterPanel.Location = new System.Drawing.Point(0, 0);
             this.RegisterPanel.Name = "RegisterPanel";
-            this.RegisterPanel.Size = new System.Drawing.Size(592, 844);
+            this.RegisterPanel.Size = new System.Drawing.Size(712, 792);
             this.RegisterPanel.TabIndex = 1;
             // 
             // RegisterLogo
@@ -626,7 +671,7 @@
             this.LogInPanel.Location = new System.Drawing.Point(0, 0);
             this.LogInPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LogInPanel.Name = "LogInPanel";
-            this.LogInPanel.Size = new System.Drawing.Size(801, 811);
+            this.LogInPanel.Size = new System.Drawing.Size(712, 792);
             this.LogInPanel.TabIndex = 2;
             // 
             // LogInLogo
@@ -742,7 +787,7 @@
             this.ProfilePanel.Location = new System.Drawing.Point(0, 0);
             this.ProfilePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProfilePanel.Name = "ProfilePanel";
-            this.ProfilePanel.Size = new System.Drawing.Size(801, 811);
+            this.ProfilePanel.Size = new System.Drawing.Size(712, 792);
             this.ProfilePanel.TabIndex = 3;
             this.ProfilePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ProfilePanel_Paint);
             // 
@@ -1092,7 +1137,7 @@
             this.DisplayStartPanel.Location = new System.Drawing.Point(0, 0);
             this.DisplayStartPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DisplayStartPanel.Name = "DisplayStartPanel";
-            this.DisplayStartPanel.Size = new System.Drawing.Size(801, 811);
+            this.DisplayStartPanel.Size = new System.Drawing.Size(712, 792);
             this.DisplayStartPanel.TabIndex = 5;
             // 
             // DisplayStartLabel
@@ -1219,10 +1264,10 @@
             // 
             this.AccountProfileSettingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.AccountProfileSettingsPanel.Controls.Add(this.AccountProfileSettingsSplitContainer);
-            this.AccountProfileSettingsPanel.Location = new System.Drawing.Point(0, 31);
-            this.AccountProfileSettingsPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AccountProfileSettingsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AccountProfileSettingsPanel.Location = new System.Drawing.Point(0, 0);
             this.AccountProfileSettingsPanel.Name = "AccountProfileSettingsPanel";
-            this.AccountProfileSettingsPanel.Size = new System.Drawing.Size(544, 959);
+            this.AccountProfileSettingsPanel.Size = new System.Drawing.Size(712, 792);
             this.AccountProfileSettingsPanel.TabIndex = 6;
             // 
             // AccountProfileSettingsSplitContainer
@@ -1592,6 +1637,7 @@
             // SearchPanel
             // 
             this.SearchPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchPanel.Controls.Add(this.SearchInvalidCredentialsTextBox);
             this.SearchPanel.Controls.Add(this.SearchSelectMultButton);
             this.SearchPanel.Controls.Add(this.panel1);
             this.SearchPanel.Controls.Add(this.SearchGoBackButton);
@@ -1604,8 +1650,19 @@
             this.SearchPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchPanel.Location = new System.Drawing.Point(0, 0);
             this.SearchPanel.Name = "SearchPanel";
-            this.SearchPanel.Size = new System.Drawing.Size(801, 811);
+            this.SearchPanel.Size = new System.Drawing.Size(712, 792);
             this.SearchPanel.TabIndex = 7;
+            // 
+            // SearchInvalidCredentialsTextBox
+            // 
+            this.SearchInvalidCredentialsTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchInvalidCredentialsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchInvalidCredentialsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchInvalidCredentialsTextBox.ForeColor = System.Drawing.Color.White;
+            this.SearchInvalidCredentialsTextBox.Location = new System.Drawing.Point(133, 594);
+            this.SearchInvalidCredentialsTextBox.Name = "SearchInvalidCredentialsTextBox";
+            this.SearchInvalidCredentialsTextBox.Size = new System.Drawing.Size(440, 24);
+            this.SearchInvalidCredentialsTextBox.TabIndex = 31;
             // 
             // SearchSelectMultButton
             // 
@@ -1627,9 +1684,9 @@
             this.panel1.Controls.Add(this.SearchPauseButton);
             this.panel1.Controls.Add(this.SearchPlayButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 669);
+            this.panel1.Location = new System.Drawing.Point(0, 650);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(801, 142);
+            this.panel1.Size = new System.Drawing.Size(712, 142);
             this.panel1.TabIndex = 29;
             // 
             // SearchTimerDisplayLabel
@@ -1708,6 +1765,7 @@
             this.SearchFollowButton.TabIndex = 27;
             this.SearchFollowButton.Text = "Follow";
             this.SearchFollowButton.UseVisualStyleBackColor = true;
+            this.SearchFollowButton.Click += new System.EventHandler(this.SearchFollowButton_Click);
             // 
             // SearchSearchResultsDomainUp
             // 
@@ -1721,7 +1779,7 @@
             // 
             // SearchSearchButton
             // 
-            this.SearchSearchButton.Location = new System.Drawing.Point(447, 405);
+            this.SearchSearchButton.Location = new System.Drawing.Point(467, 404);
             this.SearchSearchButton.Name = "SearchSearchButton";
             this.SearchSearchButton.Size = new System.Drawing.Size(111, 44);
             this.SearchSearchButton.TabIndex = 25;
@@ -1779,7 +1837,7 @@
             this.AddShowPanel.Location = new System.Drawing.Point(0, 0);
             this.AddShowPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AddShowPanel.Name = "AddShowPanel";
-            this.AddShowPanel.Size = new System.Drawing.Size(801, 811);
+            this.AddShowPanel.Size = new System.Drawing.Size(712, 792);
             this.AddShowPanel.TabIndex = 7;
             // 
             // AddShowInvalidCredentialsLabel
@@ -1853,6 +1911,7 @@
             this.AddShowAddPlaylistButton.TabIndex = 5;
             this.AddShowAddPlaylistButton.Text = "Playlist";
             this.AddShowAddPlaylistButton.UseVisualStyleBackColor = true;
+            this.AddShowAddPlaylistButton.Click += new System.EventHandler(this.AddShowAddPlaylistButton_Click);
             // 
             // AddShowAddVideoButton
             // 
@@ -2136,7 +2195,7 @@
             this.AdminMenuPanel.Location = new System.Drawing.Point(0, 0);
             this.AdminMenuPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AdminMenuPanel.Name = "AdminMenuPanel";
-            this.AdminMenuPanel.Size = new System.Drawing.Size(801, 990);
+            this.AdminMenuPanel.Size = new System.Drawing.Size(712, 792);
             this.AdminMenuPanel.TabIndex = 9;
             // 
             // AdminMenuEraseUserPanel
@@ -2145,7 +2204,7 @@
             this.AdminMenuEraseUserPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AdminMenuEraseUserPanel.Location = new System.Drawing.Point(0, 0);
             this.AdminMenuEraseUserPanel.Name = "AdminMenuEraseUserPanel";
-            this.AdminMenuEraseUserPanel.Size = new System.Drawing.Size(801, 990);
+            this.AdminMenuEraseUserPanel.Size = new System.Drawing.Size(712, 792);
             this.AdminMenuEraseUserPanel.TabIndex = 8;
             // 
             // listView1
@@ -2230,10 +2289,10 @@
             // CreateSongPanel
             // 
             this.CreateSongPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.CreateSongPanel.Controls.Add(this.CreateSongInvalidCredentialTextBox);
             this.CreateSongPanel.Controls.Add(this.CreateSongSongFileButton);
             this.CreateSongPanel.Controls.Add(this.CreateSongSongFileTextBox);
             this.CreateSongPanel.Controls.Add(this.CreateSongSongFileLabel);
-            this.CreateSongPanel.Controls.Add(this.CreateSongInvalidSongLabel);
             this.CreateSongPanel.Controls.Add(this.CreateSongCreateSongButton);
             this.CreateSongPanel.Controls.Add(this.CreateSongGoBackButton);
             this.CreateSongPanel.Controls.Add(this.CreateSongPublishDateTime);
@@ -2261,8 +2320,19 @@
             this.CreateSongPanel.Location = new System.Drawing.Point(0, 0);
             this.CreateSongPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CreateSongPanel.Name = "CreateSongPanel";
-            this.CreateSongPanel.Size = new System.Drawing.Size(801, 811);
+            this.CreateSongPanel.Size = new System.Drawing.Size(712, 792);
             this.CreateSongPanel.TabIndex = 10;
+            // 
+            // CreateSongInvalidCredentialTextBox
+            // 
+            this.CreateSongInvalidCredentialTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.CreateSongInvalidCredentialTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CreateSongInvalidCredentialTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateSongInvalidCredentialTextBox.ForeColor = System.Drawing.Color.White;
+            this.CreateSongInvalidCredentialTextBox.Location = new System.Drawing.Point(66, 712);
+            this.CreateSongInvalidCredentialTextBox.Name = "CreateSongInvalidCredentialTextBox";
+            this.CreateSongInvalidCredentialTextBox.Size = new System.Drawing.Size(362, 24);
+            this.CreateSongInvalidCredentialTextBox.TabIndex = 28;
             // 
             // CreateSongSongFileButton
             // 
@@ -2292,15 +2362,6 @@
             this.CreateSongSongFileLabel.Size = new System.Drawing.Size(103, 25);
             this.CreateSongSongFileLabel.TabIndex = 25;
             this.CreateSongSongFileLabel.Text = "Song File";
-            // 
-            // CreateSongInvalidSongLabel
-            // 
-            this.CreateSongInvalidSongLabel.AutoSize = true;
-            this.CreateSongInvalidSongLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongInvalidSongLabel.Location = new System.Drawing.Point(40, 906);
-            this.CreateSongInvalidSongLabel.Name = "CreateSongInvalidSongLabel";
-            this.CreateSongInvalidSongLabel.Size = new System.Drawing.Size(0, 20);
-            this.CreateSongInvalidSongLabel.TabIndex = 24;
             // 
             // CreateSongCreateSongButton
             // 
@@ -2529,22 +2590,475 @@
             // CreateVideoPanel
             // 
             this.CreateVideoPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoMessageTextBox);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoSaveButton);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoLoadVideoButton);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoLoadVideoTextBox);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoReleaseDateDateTimePicker);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoSubtitlesTextBox);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoFormatTextBox);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoDurationTextBox);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoDescriptionTextBox);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoCategoryTextBox);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoQualityTextBox);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoDimensionTextBox);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoDirectorsTextBox);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoActorsTextBox);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoNameTextBox);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoLoadLabel);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoSubtitlesLabel);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoFormatLabel);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoDuration);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoDescription);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoCategoryLabel);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoQualityLabel);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoDimensionLabel);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoReleaseDateLabel);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoDirectorsLabel);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoactorsLabel);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoNameLabel);
+            this.CreateVideoPanel.Controls.Add(this.label4);
+            this.CreateVideoPanel.Controls.Add(this.CreateVideoLabel);
             this.CreateVideoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreateVideoPanel.Location = new System.Drawing.Point(0, 0);
             this.CreateVideoPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CreateVideoPanel.Name = "CreateVideoPanel";
-            this.CreateVideoPanel.Size = new System.Drawing.Size(801, 811);
+            this.CreateVideoPanel.Size = new System.Drawing.Size(712, 792);
             this.CreateVideoPanel.TabIndex = 11;
+            // 
+            // CreateVideoMessageTextBox
+            // 
+            this.CreateVideoMessageTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.CreateVideoMessageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CreateVideoMessageTextBox.ForeColor = System.Drawing.Color.Silver;
+            this.CreateVideoMessageTextBox.Location = new System.Drawing.Point(153, 745);
+            this.CreateVideoMessageTextBox.Name = "CreateVideoMessageTextBox";
+            this.CreateVideoMessageTextBox.Size = new System.Drawing.Size(303, 19);
+            this.CreateVideoMessageTextBox.TabIndex = 29;
+            // 
+            // CreateVideoSaveButton
+            // 
+            this.CreateVideoSaveButton.Location = new System.Drawing.Point(473, 735);
+            this.CreateVideoSaveButton.Name = "CreateVideoSaveButton";
+            this.CreateVideoSaveButton.Size = new System.Drawing.Size(158, 47);
+            this.CreateVideoSaveButton.TabIndex = 28;
+            this.CreateVideoSaveButton.Text = "Add Video";
+            this.CreateVideoSaveButton.UseVisualStyleBackColor = true;
+            this.CreateVideoSaveButton.Click += new System.EventHandler(this.CreateVideoSaveButton_Click);
+            // 
+            // CreateVideoLoadVideoButton
+            // 
+            this.CreateVideoLoadVideoButton.Location = new System.Drawing.Point(556, 693);
+            this.CreateVideoLoadVideoButton.Name = "CreateVideoLoadVideoButton";
+            this.CreateVideoLoadVideoButton.Size = new System.Drawing.Size(83, 29);
+            this.CreateVideoLoadVideoButton.TabIndex = 27;
+            this.CreateVideoLoadVideoButton.Text = "Examine";
+            this.CreateVideoLoadVideoButton.UseVisualStyleBackColor = true;
+            this.CreateVideoLoadVideoButton.Click += new System.EventHandler(this.CreateVideoLoadVideoButton_Click);
+            // 
+            // CreateVideoLoadVideoTextBox
+            // 
+            this.CreateVideoLoadVideoTextBox.Location = new System.Drawing.Point(259, 695);
+            this.CreateVideoLoadVideoTextBox.Name = "CreateVideoLoadVideoTextBox";
+            this.CreateVideoLoadVideoTextBox.Size = new System.Drawing.Size(282, 26);
+            this.CreateVideoLoadVideoTextBox.TabIndex = 26;
+            // 
+            // CreateVideoReleaseDateDateTimePicker
+            // 
+            this.CreateVideoReleaseDateDateTimePicker.Location = new System.Drawing.Point(259, 260);
+            this.CreateVideoReleaseDateDateTimePicker.Name = "CreateVideoReleaseDateDateTimePicker";
+            this.CreateVideoReleaseDateDateTimePicker.Size = new System.Drawing.Size(362, 26);
+            this.CreateVideoReleaseDateDateTimePicker.TabIndex = 25;
+            // 
+            // CreateVideoSubtitlesTextBox
+            // 
+            this.CreateVideoSubtitlesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoSubtitlesTextBox.Location = new System.Drawing.Point(259, 632);
+            this.CreateVideoSubtitlesTextBox.Name = "CreateVideoSubtitlesTextBox";
+            this.CreateVideoSubtitlesTextBox.Size = new System.Drawing.Size(362, 30);
+            this.CreateVideoSubtitlesTextBox.TabIndex = 24;
+            // 
+            // CreateVideoFormatTextBox
+            // 
+            this.CreateVideoFormatTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoFormatTextBox.Location = new System.Drawing.Point(259, 589);
+            this.CreateVideoFormatTextBox.Name = "CreateVideoFormatTextBox";
+            this.CreateVideoFormatTextBox.Size = new System.Drawing.Size(362, 30);
+            this.CreateVideoFormatTextBox.TabIndex = 23;
+            // 
+            // CreateVideoDurationTextBox
+            // 
+            this.CreateVideoDurationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoDurationTextBox.Location = new System.Drawing.Point(259, 527);
+            this.CreateVideoDurationTextBox.Name = "CreateVideoDurationTextBox";
+            this.CreateVideoDurationTextBox.Size = new System.Drawing.Size(362, 30);
+            this.CreateVideoDurationTextBox.TabIndex = 22;
+            // 
+            // CreateVideoDescriptionTextBox
+            // 
+            this.CreateVideoDescriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoDescriptionTextBox.Location = new System.Drawing.Point(259, 465);
+            this.CreateVideoDescriptionTextBox.Name = "CreateVideoDescriptionTextBox";
+            this.CreateVideoDescriptionTextBox.Size = new System.Drawing.Size(362, 30);
+            this.CreateVideoDescriptionTextBox.TabIndex = 21;
+            // 
+            // CreateVideoCategoryTextBox
+            // 
+            this.CreateVideoCategoryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoCategoryTextBox.Location = new System.Drawing.Point(259, 414);
+            this.CreateVideoCategoryTextBox.Name = "CreateVideoCategoryTextBox";
+            this.CreateVideoCategoryTextBox.Size = new System.Drawing.Size(362, 30);
+            this.CreateVideoCategoryTextBox.TabIndex = 20;
+            // 
+            // CreateVideoQualityTextBox
+            // 
+            this.CreateVideoQualityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoQualityTextBox.Location = new System.Drawing.Point(259, 356);
+            this.CreateVideoQualityTextBox.Name = "CreateVideoQualityTextBox";
+            this.CreateVideoQualityTextBox.Size = new System.Drawing.Size(362, 30);
+            this.CreateVideoQualityTextBox.TabIndex = 19;
+            // 
+            // CreateVideoDimensionTextBox
+            // 
+            this.CreateVideoDimensionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoDimensionTextBox.Location = new System.Drawing.Point(259, 307);
+            this.CreateVideoDimensionTextBox.Name = "CreateVideoDimensionTextBox";
+            this.CreateVideoDimensionTextBox.Size = new System.Drawing.Size(362, 30);
+            this.CreateVideoDimensionTextBox.TabIndex = 18;
+            // 
+            // CreateVideoDirectorsTextBox
+            // 
+            this.CreateVideoDirectorsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoDirectorsTextBox.Location = new System.Drawing.Point(259, 213);
+            this.CreateVideoDirectorsTextBox.Name = "CreateVideoDirectorsTextBox";
+            this.CreateVideoDirectorsTextBox.Size = new System.Drawing.Size(362, 30);
+            this.CreateVideoDirectorsTextBox.TabIndex = 16;
+            // 
+            // CreateVideoActorsTextBox
+            // 
+            this.CreateVideoActorsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoActorsTextBox.Location = new System.Drawing.Point(259, 166);
+            this.CreateVideoActorsTextBox.Name = "CreateVideoActorsTextBox";
+            this.CreateVideoActorsTextBox.Size = new System.Drawing.Size(362, 30);
+            this.CreateVideoActorsTextBox.TabIndex = 15;
+            // 
+            // CreateVideoNameTextBox
+            // 
+            this.CreateVideoNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoNameTextBox.Location = new System.Drawing.Point(259, 117);
+            this.CreateVideoNameTextBox.Name = "CreateVideoNameTextBox";
+            this.CreateVideoNameTextBox.Size = new System.Drawing.Size(362, 30);
+            this.CreateVideoNameTextBox.TabIndex = 14;
+            // 
+            // CreateVideoLoadLabel
+            // 
+            this.CreateVideoLoadLabel.AutoSize = true;
+            this.CreateVideoLoadLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoLoadLabel.ForeColor = System.Drawing.Color.White;
+            this.CreateVideoLoadLabel.Location = new System.Drawing.Point(51, 693);
+            this.CreateVideoLoadLabel.Name = "CreateVideoLoadLabel";
+            this.CreateVideoLoadLabel.Size = new System.Drawing.Size(122, 26);
+            this.CreateVideoLoadLabel.TabIndex = 13;
+            this.CreateVideoLoadLabel.Text = "Load Video";
+            // 
+            // CreateVideoSubtitlesLabel
+            // 
+            this.CreateVideoSubtitlesLabel.AutoSize = true;
+            this.CreateVideoSubtitlesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoSubtitlesLabel.ForeColor = System.Drawing.Color.White;
+            this.CreateVideoSubtitlesLabel.Location = new System.Drawing.Point(51, 640);
+            this.CreateVideoSubtitlesLabel.Name = "CreateVideoSubtitlesLabel";
+            this.CreateVideoSubtitlesLabel.Size = new System.Drawing.Size(96, 26);
+            this.CreateVideoSubtitlesLabel.TabIndex = 12;
+            this.CreateVideoSubtitlesLabel.Text = "Subtitles";
+            // 
+            // CreateVideoFormatLabel
+            // 
+            this.CreateVideoFormatLabel.AutoSize = true;
+            this.CreateVideoFormatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoFormatLabel.ForeColor = System.Drawing.Color.White;
+            this.CreateVideoFormatLabel.Location = new System.Drawing.Point(51, 592);
+            this.CreateVideoFormatLabel.Name = "CreateVideoFormatLabel";
+            this.CreateVideoFormatLabel.Size = new System.Drawing.Size(143, 26);
+            this.CreateVideoFormatLabel.TabIndex = 11;
+            this.CreateVideoFormatLabel.Text = "Video Format";
+            // 
+            // CreateVideoDuration
+            // 
+            this.CreateVideoDuration.AutoSize = true;
+            this.CreateVideoDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoDuration.ForeColor = System.Drawing.Color.White;
+            this.CreateVideoDuration.Location = new System.Drawing.Point(51, 530);
+            this.CreateVideoDuration.Name = "CreateVideoDuration";
+            this.CreateVideoDuration.Size = new System.Drawing.Size(156, 26);
+            this.CreateVideoDuration.TabIndex = 10;
+            this.CreateVideoDuration.Text = "Video Duration";
+            // 
+            // CreateVideoDescription
+            // 
+            this.CreateVideoDescription.AutoSize = true;
+            this.CreateVideoDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoDescription.ForeColor = System.Drawing.Color.White;
+            this.CreateVideoDescription.Location = new System.Drawing.Point(51, 469);
+            this.CreateVideoDescription.Name = "CreateVideoDescription";
+            this.CreateVideoDescription.Size = new System.Drawing.Size(183, 26);
+            this.CreateVideoDescription.TabIndex = 9;
+            this.CreateVideoDescription.Text = "Video Description";
+            // 
+            // CreateVideoCategoryLabel
+            // 
+            this.CreateVideoCategoryLabel.AutoSize = true;
+            this.CreateVideoCategoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoCategoryLabel.ForeColor = System.Drawing.Color.White;
+            this.CreateVideoCategoryLabel.Location = new System.Drawing.Point(51, 417);
+            this.CreateVideoCategoryLabel.Name = "CreateVideoCategoryLabel";
+            this.CreateVideoCategoryLabel.Size = new System.Drawing.Size(205, 26);
+            this.CreateVideoCategoryLabel.TabIndex = 8;
+            this.CreateVideoCategoryLabel.Text = "Video Category (int)";
+            // 
+            // CreateVideoQualityLabel
+            // 
+            this.CreateVideoQualityLabel.AutoSize = true;
+            this.CreateVideoQualityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoQualityLabel.ForeColor = System.Drawing.Color.White;
+            this.CreateVideoQualityLabel.Location = new System.Drawing.Point(51, 358);
+            this.CreateVideoQualityLabel.Name = "CreateVideoQualityLabel";
+            this.CreateVideoQualityLabel.Size = new System.Drawing.Size(142, 26);
+            this.CreateVideoQualityLabel.TabIndex = 7;
+            this.CreateVideoQualityLabel.Text = "Video Quality";
+            // 
+            // CreateVideoDimensionLabel
+            // 
+            this.CreateVideoDimensionLabel.AutoSize = true;
+            this.CreateVideoDimensionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoDimensionLabel.ForeColor = System.Drawing.Color.White;
+            this.CreateVideoDimensionLabel.Location = new System.Drawing.Point(51, 306);
+            this.CreateVideoDimensionLabel.Name = "CreateVideoDimensionLabel";
+            this.CreateVideoDimensionLabel.Size = new System.Drawing.Size(172, 26);
+            this.CreateVideoDimensionLabel.TabIndex = 6;
+            this.CreateVideoDimensionLabel.Text = "VideoDimension";
+            // 
+            // CreateVideoReleaseDateLabel
+            // 
+            this.CreateVideoReleaseDateLabel.AutoSize = true;
+            this.CreateVideoReleaseDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoReleaseDateLabel.ForeColor = System.Drawing.Color.White;
+            this.CreateVideoReleaseDateLabel.Location = new System.Drawing.Point(51, 260);
+            this.CreateVideoReleaseDateLabel.Name = "CreateVideoReleaseDateLabel";
+            this.CreateVideoReleaseDateLabel.Size = new System.Drawing.Size(144, 26);
+            this.CreateVideoReleaseDateLabel.TabIndex = 5;
+            this.CreateVideoReleaseDateLabel.Text = "Release Date";
+            // 
+            // CreateVideoDirectorsLabel
+            // 
+            this.CreateVideoDirectorsLabel.AutoSize = true;
+            this.CreateVideoDirectorsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoDirectorsLabel.ForeColor = System.Drawing.Color.White;
+            this.CreateVideoDirectorsLabel.Location = new System.Drawing.Point(51, 215);
+            this.CreateVideoDirectorsLabel.Name = "CreateVideoDirectorsLabel";
+            this.CreateVideoDirectorsLabel.Size = new System.Drawing.Size(99, 26);
+            this.CreateVideoDirectorsLabel.TabIndex = 4;
+            this.CreateVideoDirectorsLabel.Text = "Directors";
+            // 
+            // CreateVideoactorsLabel
+            // 
+            this.CreateVideoactorsLabel.AutoSize = true;
+            this.CreateVideoactorsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoactorsLabel.ForeColor = System.Drawing.Color.White;
+            this.CreateVideoactorsLabel.Location = new System.Drawing.Point(51, 166);
+            this.CreateVideoactorsLabel.Name = "CreateVideoactorsLabel";
+            this.CreateVideoactorsLabel.Size = new System.Drawing.Size(74, 26);
+            this.CreateVideoactorsLabel.TabIndex = 3;
+            this.CreateVideoactorsLabel.Text = "Actors";
+            // 
+            // CreateVideoNameLabel
+            // 
+            this.CreateVideoNameLabel.AutoSize = true;
+            this.CreateVideoNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoNameLabel.ForeColor = System.Drawing.Color.White;
+            this.CreateVideoNameLabel.Location = new System.Drawing.Point(51, 121);
+            this.CreateVideoNameLabel.Name = "CreateVideoNameLabel";
+            this.CreateVideoNameLabel.Size = new System.Drawing.Size(71, 26);
+            this.CreateVideoNameLabel.TabIndex = 2;
+            this.CreateVideoNameLabel.Text = "Name";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(63, 118);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 20);
+            this.label4.TabIndex = 1;
+            // 
+            // CreateVideoLabel
+            // 
+            this.CreateVideoLabel.AutoSize = true;
+            this.CreateVideoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateVideoLabel.ForeColor = System.Drawing.Color.White;
+            this.CreateVideoLabel.Location = new System.Drawing.Point(163, 31);
+            this.CreateVideoLabel.Name = "CreateVideoLabel";
+            this.CreateVideoLabel.Size = new System.Drawing.Size(378, 69);
+            this.CreateVideoLabel.TabIndex = 0;
+            this.CreateVideoLabel.Text = "Create Video";
             // 
             // CreatePlaylistPanel
             // 
             this.CreatePlaylistPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistInvalidCredentialstextBox);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistPrivacyLabel);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistPrivacyCheckBox);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistGoBack);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistCreatePlaylistButton);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistChooseFile);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistFileNameTextBox);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistFormatDomainUp);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistNameTextBox);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistImageLabel);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistFormatLabel);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistNameLabel);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistLabel);
             this.CreatePlaylistPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreatePlaylistPanel.Location = new System.Drawing.Point(0, 0);
             this.CreatePlaylistPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CreatePlaylistPanel.Name = "CreatePlaylistPanel";
-            this.CreatePlaylistPanel.Size = new System.Drawing.Size(801, 811);
+            this.CreatePlaylistPanel.Size = new System.Drawing.Size(712, 792);
             this.CreatePlaylistPanel.TabIndex = 12;
+            // 
+            // CreatePlaylistInvalidCredentialstextBox
+            // 
+            this.CreatePlaylistInvalidCredentialstextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.CreatePlaylistInvalidCredentialstextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CreatePlaylistInvalidCredentialstextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistInvalidCredentialstextBox.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistInvalidCredentialstextBox.Location = new System.Drawing.Point(127, 717);
+            this.CreatePlaylistInvalidCredentialstextBox.Name = "CreatePlaylistInvalidCredentialstextBox";
+            this.CreatePlaylistInvalidCredentialstextBox.Size = new System.Drawing.Size(299, 24);
+            this.CreatePlaylistInvalidCredentialstextBox.TabIndex = 12;
+            // 
+            // CreatePlaylistPrivacyLabel
+            // 
+            this.CreatePlaylistPrivacyLabel.AutoSize = true;
+            this.CreatePlaylistPrivacyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistPrivacyLabel.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistPrivacyLabel.Location = new System.Drawing.Point(107, 475);
+            this.CreatePlaylistPrivacyLabel.Name = "CreatePlaylistPrivacyLabel";
+            this.CreatePlaylistPrivacyLabel.Size = new System.Drawing.Size(210, 36);
+            this.CreatePlaylistPrivacyLabel.TabIndex = 11;
+            this.CreatePlaylistPrivacyLabel.Text = "Private Playlist";
+            // 
+            // CreatePlaylistPrivacyCheckBox
+            // 
+            this.CreatePlaylistPrivacyCheckBox.AutoSize = true;
+            this.CreatePlaylistPrivacyCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistPrivacyCheckBox.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistPrivacyCheckBox.Location = new System.Drawing.Point(311, 474);
+            this.CreatePlaylistPrivacyCheckBox.Name = "CreatePlaylistPrivacyCheckBox";
+            this.CreatePlaylistPrivacyCheckBox.Size = new System.Drawing.Size(80, 40);
+            this.CreatePlaylistPrivacyCheckBox.TabIndex = 10;
+            this.CreatePlaylistPrivacyCheckBox.Text = "On";
+            this.CreatePlaylistPrivacyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // CreatePlaylistGoBack
+            // 
+            this.CreatePlaylistGoBack.Location = new System.Drawing.Point(39, 41);
+            this.CreatePlaylistGoBack.Name = "CreatePlaylistGoBack";
+            this.CreatePlaylistGoBack.Size = new System.Drawing.Size(136, 38);
+            this.CreatePlaylistGoBack.TabIndex = 9;
+            this.CreatePlaylistGoBack.Text = "Go Back";
+            this.CreatePlaylistGoBack.UseVisualStyleBackColor = true;
+            this.CreatePlaylistGoBack.Click += new System.EventHandler(this.CreatePlaylistGoBack_Click);
+            // 
+            // CreatePlaylistCreatePlaylistButton
+            // 
+            this.CreatePlaylistCreatePlaylistButton.Location = new System.Drawing.Point(519, 708);
+            this.CreatePlaylistCreatePlaylistButton.Name = "CreatePlaylistCreatePlaylistButton";
+            this.CreatePlaylistCreatePlaylistButton.Size = new System.Drawing.Size(151, 41);
+            this.CreatePlaylistCreatePlaylistButton.TabIndex = 8;
+            this.CreatePlaylistCreatePlaylistButton.Text = "Create Playlist";
+            this.CreatePlaylistCreatePlaylistButton.UseVisualStyleBackColor = true;
+            this.CreatePlaylistCreatePlaylistButton.Click += new System.EventHandler(this.CreatePlaylistCreatePlaylistButton_Click);
+            // 
+            // CreatePlaylistChooseFile
+            // 
+            this.CreatePlaylistChooseFile.Location = new System.Drawing.Point(471, 403);
+            this.CreatePlaylistChooseFile.Name = "CreatePlaylistChooseFile";
+            this.CreatePlaylistChooseFile.Size = new System.Drawing.Size(83, 36);
+            this.CreatePlaylistChooseFile.TabIndex = 7;
+            this.CreatePlaylistChooseFile.Text = "...";
+            this.CreatePlaylistChooseFile.UseVisualStyleBackColor = true;
+            // 
+            // CreatePlaylistFileNameTextBox
+            // 
+            this.CreatePlaylistFileNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistFileNameTextBox.Location = new System.Drawing.Point(227, 403);
+            this.CreatePlaylistFileNameTextBox.Name = "CreatePlaylistFileNameTextBox";
+            this.CreatePlaylistFileNameTextBox.Size = new System.Drawing.Size(252, 41);
+            this.CreatePlaylistFileNameTextBox.TabIndex = 6;
+            this.CreatePlaylistFileNameTextBox.Text = "Choose File (.jpg)";
+            // 
+            // CreatePlaylistFormatDomainUp
+            // 
+            this.CreatePlaylistFormatDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistFormatDomainUp.Items.Add(".mp3");
+            this.CreatePlaylistFormatDomainUp.Items.Add(".wav");
+            this.CreatePlaylistFormatDomainUp.Items.Add(".mp4");
+            this.CreatePlaylistFormatDomainUp.Location = new System.Drawing.Point(226, 288);
+            this.CreatePlaylistFormatDomainUp.Name = "CreatePlaylistFormatDomainUp";
+            this.CreatePlaylistFormatDomainUp.Size = new System.Drawing.Size(332, 41);
+            this.CreatePlaylistFormatDomainUp.TabIndex = 5;
+            this.CreatePlaylistFormatDomainUp.Text = "Playlist Multimedia Format";
+            // 
+            // CreatePlaylistNameTextBox
+            // 
+            this.CreatePlaylistNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistNameTextBox.Location = new System.Drawing.Point(226, 190);
+            this.CreatePlaylistNameTextBox.Name = "CreatePlaylistNameTextBox";
+            this.CreatePlaylistNameTextBox.Size = new System.Drawing.Size(332, 41);
+            this.CreatePlaylistNameTextBox.TabIndex = 4;
+            // 
+            // CreatePlaylistImageLabel
+            // 
+            this.CreatePlaylistImageLabel.AutoSize = true;
+            this.CreatePlaylistImageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistImageLabel.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistImageLabel.Location = new System.Drawing.Point(107, 406);
+            this.CreatePlaylistImageLabel.Name = "CreatePlaylistImageLabel";
+            this.CreatePlaylistImageLabel.Size = new System.Drawing.Size(95, 36);
+            this.CreatePlaylistImageLabel.TabIndex = 3;
+            this.CreatePlaylistImageLabel.Text = "Image";
+            // 
+            // CreatePlaylistFormatLabel
+            // 
+            this.CreatePlaylistFormatLabel.AutoSize = true;
+            this.CreatePlaylistFormatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistFormatLabel.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistFormatLabel.Location = new System.Drawing.Point(107, 295);
+            this.CreatePlaylistFormatLabel.Name = "CreatePlaylistFormatLabel";
+            this.CreatePlaylistFormatLabel.Size = new System.Drawing.Size(107, 36);
+            this.CreatePlaylistFormatLabel.TabIndex = 2;
+            this.CreatePlaylistFormatLabel.Text = "Format";
+            // 
+            // CreatePlaylistNameLabel
+            // 
+            this.CreatePlaylistNameLabel.AutoSize = true;
+            this.CreatePlaylistNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistNameLabel.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistNameLabel.Location = new System.Drawing.Point(107, 192);
+            this.CreatePlaylistNameLabel.Name = "CreatePlaylistNameLabel";
+            this.CreatePlaylistNameLabel.Size = new System.Drawing.Size(92, 36);
+            this.CreatePlaylistNameLabel.TabIndex = 1;
+            this.CreatePlaylistNameLabel.Text = "Name";
+            // 
+            // CreatePlaylistLabel
+            // 
+            this.CreatePlaylistLabel.AutoSize = true;
+            this.CreatePlaylistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistLabel.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistLabel.Location = new System.Drawing.Point(190, 41);
+            this.CreatePlaylistLabel.Name = "CreatePlaylistLabel";
+            this.CreatePlaylistLabel.Size = new System.Drawing.Size(417, 69);
+            this.CreatePlaylistLabel.TabIndex = 0;
+            this.CreatePlaylistLabel.Text = "Create Playlist";
             // 
             // DurationTimer
             // 
@@ -2559,19 +3073,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(801, 811);
-            this.Controls.Add(this.CreateSongPanel);
-            this.Controls.Add(this.CreateVideoPanel);
-            this.Controls.Add(this.AddShowPanel);
-            this.Controls.Add(this.DisplayStartPanel);
-            this.Controls.Add(this.SearchPanel);
+            this.ClientSize = new System.Drawing.Size(712, 792);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.CreateVideoPanel);
+            this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
-            this.Controls.Add(this.RegisterPanel);
-            this.Controls.Add(this.DisplayPlaylistPanel);
-            this.Controls.Add(this.AccountProfileSettingsPanel);
-            this.Controls.Add(this.CreateProfilePanel);
+            this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.ProfilePanel);
+            this.Controls.Add(this.SearchPanel);
+            this.Controls.Add(this.AccountProfileSettingsPanel);
+            this.Controls.Add(this.RegisterPanel);
+            this.Controls.Add(this.DisplayStartPanel);
+            this.Controls.Add(this.DisplayPlaylistPanel);
+            this.Controls.Add(this.AdminMenuPanel);
+            this.Controls.Add(this.CreateProfilePanel);
             this.Controls.Add(this.LogInPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2635,6 +3150,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.CreateSongPanel.ResumeLayout(false);
             this.CreateSongPanel.PerformLayout();
+            this.CreateVideoPanel.ResumeLayout(false);
+            this.CreateVideoPanel.PerformLayout();
+            this.CreatePlaylistPanel.ResumeLayout(false);
+            this.CreatePlaylistPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2825,7 +3344,6 @@
         private System.Windows.Forms.Label CreateSongLabel;
         private System.Windows.Forms.Panel CreateVideoPanel;
         private System.Windows.Forms.Panel CreatePlaylistPanel;
-        private System.Windows.Forms.Label CreateSongInvalidSongLabel;
         private System.Windows.Forms.Label AddShowInvalidCredentialsLabel;
         private System.Windows.Forms.Button CreateSongSongFileButton;
         private System.Windows.Forms.TextBox CreateSongSongFileTextBox;
@@ -2839,5 +3357,49 @@
         private System.Windows.Forms.Timer DurationTimer;
         private System.Windows.Forms.Label SearchTimerDisplayLabel;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox SearchInvalidCredentialsTextBox;
+        private System.Windows.Forms.Label CreatePlaylistFormatLabel;
+        private System.Windows.Forms.Label CreatePlaylistNameLabel;
+        private System.Windows.Forms.Label CreatePlaylistLabel;
+        private System.Windows.Forms.Label CreatePlaylistImageLabel;
+        private System.Windows.Forms.Button CreatePlaylistGoBack;
+        private System.Windows.Forms.Button CreatePlaylistCreatePlaylistButton;
+        private System.Windows.Forms.Button CreatePlaylistChooseFile;
+        private System.Windows.Forms.TextBox CreatePlaylistFileNameTextBox;
+        private System.Windows.Forms.DomainUpDown CreatePlaylistFormatDomainUp;
+        private System.Windows.Forms.TextBox CreatePlaylistNameTextBox;
+        private System.Windows.Forms.Label CreatePlaylistPrivacyLabel;
+        private System.Windows.Forms.CheckBox CreatePlaylistPrivacyCheckBox;
+        private System.Windows.Forms.TextBox CreatePlaylistInvalidCredentialstextBox;
+        private System.Windows.Forms.TextBox CreateSongInvalidCredentialTextBox;
+        private System.Windows.Forms.Label CreateVideoDuration;
+        private System.Windows.Forms.Label CreateVideoDescription;
+        private System.Windows.Forms.Label CreateVideoCategoryLabel;
+        private System.Windows.Forms.Label CreateVideoQualityLabel;
+        private System.Windows.Forms.Label CreateVideoDimensionLabel;
+        private System.Windows.Forms.Label CreateVideoReleaseDateLabel;
+        private System.Windows.Forms.Label CreateVideoDirectorsLabel;
+        private System.Windows.Forms.Label CreateVideoactorsLabel;
+        private System.Windows.Forms.Label CreateVideoNameLabel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label CreateVideoLabel;
+        private System.Windows.Forms.TextBox CreateVideoSubtitlesTextBox;
+        private System.Windows.Forms.TextBox CreateVideoFormatTextBox;
+        private System.Windows.Forms.TextBox CreateVideoDurationTextBox;
+        private System.Windows.Forms.TextBox CreateVideoDescriptionTextBox;
+        private System.Windows.Forms.TextBox CreateVideoCategoryTextBox;
+        private System.Windows.Forms.TextBox CreateVideoQualityTextBox;
+        private System.Windows.Forms.TextBox CreateVideoDimensionTextBox;
+        private System.Windows.Forms.TextBox CreateVideoDirectorsTextBox;
+        private System.Windows.Forms.TextBox CreateVideoActorsTextBox;
+        private System.Windows.Forms.TextBox CreateVideoNameTextBox;
+        private System.Windows.Forms.Label CreateVideoLoadLabel;
+        private System.Windows.Forms.Label CreateVideoSubtitlesLabel;
+        private System.Windows.Forms.Label CreateVideoFormatLabel;
+        private System.Windows.Forms.Button CreateVideoSaveButton;
+        private System.Windows.Forms.Button CreateVideoLoadVideoButton;
+        private System.Windows.Forms.TextBox CreateVideoLoadVideoTextBox;
+        private System.Windows.Forms.DateTimePicker CreateVideoReleaseDateDateTimePicker;
+        private System.Windows.Forms.TextBox CreateVideoMessageTextBox;
     }
 }
