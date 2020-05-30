@@ -198,7 +198,6 @@
             this.CreateSongSongFileButton = new System.Windows.Forms.Button();
             this.CreateSongSongFileTextBox = new System.Windows.Forms.TextBox();
             this.CreateSongSongFileLabel = new System.Windows.Forms.Label();
-            this.CreateSongInvalidSongLabel = new System.Windows.Forms.Label();
             this.CreateSongCreateSongButton = new System.Windows.Forms.Button();
             this.CreateSongGoBackButton = new System.Windows.Forms.Button();
             this.CreateSongPublishDateTime = new System.Windows.Forms.DateTimePicker();
@@ -224,8 +223,22 @@
             this.CreateSongLabel = new System.Windows.Forms.Label();
             this.CreateVideoPanel = new System.Windows.Forms.Panel();
             this.CreatePlaylistPanel = new System.Windows.Forms.Panel();
+            this.CreatePlaylistInvalidCredentialstextBox = new System.Windows.Forms.TextBox();
+            this.CreatePlaylistPrivacyLabel = new System.Windows.Forms.Label();
+            this.CreatePlaylistPrivacyCheckBox = new System.Windows.Forms.CheckBox();
+            this.CreatePlaylistGoBack = new System.Windows.Forms.Button();
+            this.CreatePlaylistCreatePlaylistButton = new System.Windows.Forms.Button();
+            this.CreatePlaylistChooseFile = new System.Windows.Forms.Button();
+            this.CreatePlaylistFileNameTextBox = new System.Windows.Forms.TextBox();
+            this.CreatePlaylistFormatDomainUp = new System.Windows.Forms.DomainUpDown();
+            this.CreatePlaylistNameTextBox = new System.Windows.Forms.TextBox();
+            this.CreatePlaylistImageLabel = new System.Windows.Forms.Label();
+            this.CreatePlaylistFormatLabel = new System.Windows.Forms.Label();
+            this.CreatePlaylistNameLabel = new System.Windows.Forms.Label();
+            this.CreatePlaylistLabel = new System.Windows.Forms.Label();
             this.DurationTimer = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.CreateSongInvalidCredentialTextBox = new System.Windows.Forms.TextBox();
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -268,6 +281,7 @@
             this.AdminMenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.CreateSongPanel.SuspendLayout();
+            this.CreatePlaylistPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // WelcomePanel
@@ -1780,6 +1794,7 @@
             this.AddShowAddPlaylistButton.TabIndex = 5;
             this.AddShowAddPlaylistButton.Text = "Playlist";
             this.AddShowAddPlaylistButton.UseVisualStyleBackColor = true;
+            this.AddShowAddPlaylistButton.Click += new System.EventHandler(this.AddShowAddPlaylistButton_Click);
             // 
             // AddShowAddVideoButton
             // 
@@ -2113,10 +2128,10 @@
             // CreateSongPanel
             // 
             this.CreateSongPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.CreateSongPanel.Controls.Add(this.CreateSongInvalidCredentialTextBox);
             this.CreateSongPanel.Controls.Add(this.CreateSongSongFileButton);
             this.CreateSongPanel.Controls.Add(this.CreateSongSongFileTextBox);
             this.CreateSongPanel.Controls.Add(this.CreateSongSongFileLabel);
-            this.CreateSongPanel.Controls.Add(this.CreateSongInvalidSongLabel);
             this.CreateSongPanel.Controls.Add(this.CreateSongCreateSongButton);
             this.CreateSongPanel.Controls.Add(this.CreateSongGoBackButton);
             this.CreateSongPanel.Controls.Add(this.CreateSongPublishDateTime);
@@ -2174,15 +2189,6 @@
             this.CreateSongSongFileLabel.Size = new System.Drawing.Size(79, 20);
             this.CreateSongSongFileLabel.TabIndex = 25;
             this.CreateSongSongFileLabel.Text = "Song File";
-            // 
-            // CreateSongInvalidSongLabel
-            // 
-            this.CreateSongInvalidSongLabel.AutoSize = true;
-            this.CreateSongInvalidSongLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongInvalidSongLabel.Location = new System.Drawing.Point(36, 725);
-            this.CreateSongInvalidSongLabel.Name = "CreateSongInvalidSongLabel";
-            this.CreateSongInvalidSongLabel.Size = new System.Drawing.Size(0, 17);
-            this.CreateSongInvalidSongLabel.TabIndex = 24;
             // 
             // CreateSongCreateSongButton
             // 
@@ -2418,11 +2424,160 @@
             // CreatePlaylistPanel
             // 
             this.CreatePlaylistPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistInvalidCredentialstextBox);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistPrivacyLabel);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistPrivacyCheckBox);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistGoBack);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistCreatePlaylistButton);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistChooseFile);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistFileNameTextBox);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistFormatDomainUp);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistNameTextBox);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistImageLabel);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistFormatLabel);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistNameLabel);
+            this.CreatePlaylistPanel.Controls.Add(this.CreatePlaylistLabel);
             this.CreatePlaylistPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreatePlaylistPanel.Location = new System.Drawing.Point(0, 0);
             this.CreatePlaylistPanel.Name = "CreatePlaylistPanel";
             this.CreatePlaylistPanel.Size = new System.Drawing.Size(712, 792);
             this.CreatePlaylistPanel.TabIndex = 12;
+            // 
+            // CreatePlaylistInvalidCredentialstextBox
+            // 
+            this.CreatePlaylistInvalidCredentialstextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.CreatePlaylistInvalidCredentialstextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CreatePlaylistInvalidCredentialstextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistInvalidCredentialstextBox.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistInvalidCredentialstextBox.Location = new System.Drawing.Point(127, 717);
+            this.CreatePlaylistInvalidCredentialstextBox.Name = "CreatePlaylistInvalidCredentialstextBox";
+            this.CreatePlaylistInvalidCredentialstextBox.Size = new System.Drawing.Size(299, 20);
+            this.CreatePlaylistInvalidCredentialstextBox.TabIndex = 12;
+            // 
+            // CreatePlaylistPrivacyLabel
+            // 
+            this.CreatePlaylistPrivacyLabel.AutoSize = true;
+            this.CreatePlaylistPrivacyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistPrivacyLabel.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistPrivacyLabel.Location = new System.Drawing.Point(107, 475);
+            this.CreatePlaylistPrivacyLabel.Name = "CreatePlaylistPrivacyLabel";
+            this.CreatePlaylistPrivacyLabel.Size = new System.Drawing.Size(181, 29);
+            this.CreatePlaylistPrivacyLabel.TabIndex = 11;
+            this.CreatePlaylistPrivacyLabel.Text = "Private Playlist";
+            // 
+            // CreatePlaylistPrivacyCheckBox
+            // 
+            this.CreatePlaylistPrivacyCheckBox.AutoSize = true;
+            this.CreatePlaylistPrivacyCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistPrivacyCheckBox.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistPrivacyCheckBox.Location = new System.Drawing.Point(311, 474);
+            this.CreatePlaylistPrivacyCheckBox.Name = "CreatePlaylistPrivacyCheckBox";
+            this.CreatePlaylistPrivacyCheckBox.Size = new System.Drawing.Size(68, 33);
+            this.CreatePlaylistPrivacyCheckBox.TabIndex = 10;
+            this.CreatePlaylistPrivacyCheckBox.Text = "On";
+            this.CreatePlaylistPrivacyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // CreatePlaylistGoBack
+            // 
+            this.CreatePlaylistGoBack.Location = new System.Drawing.Point(39, 41);
+            this.CreatePlaylistGoBack.Name = "CreatePlaylistGoBack";
+            this.CreatePlaylistGoBack.Size = new System.Drawing.Size(136, 38);
+            this.CreatePlaylistGoBack.TabIndex = 9;
+            this.CreatePlaylistGoBack.Text = "Go Back";
+            this.CreatePlaylistGoBack.UseVisualStyleBackColor = true;
+            this.CreatePlaylistGoBack.Click += new System.EventHandler(this.CreatePlaylistGoBack_Click);
+            // 
+            // CreatePlaylistCreatePlaylistButton
+            // 
+            this.CreatePlaylistCreatePlaylistButton.Location = new System.Drawing.Point(519, 708);
+            this.CreatePlaylistCreatePlaylistButton.Name = "CreatePlaylistCreatePlaylistButton";
+            this.CreatePlaylistCreatePlaylistButton.Size = new System.Drawing.Size(151, 41);
+            this.CreatePlaylistCreatePlaylistButton.TabIndex = 8;
+            this.CreatePlaylistCreatePlaylistButton.Text = "Create Playlist";
+            this.CreatePlaylistCreatePlaylistButton.UseVisualStyleBackColor = true;
+            this.CreatePlaylistCreatePlaylistButton.Click += new System.EventHandler(this.CreatePlaylistCreatePlaylistButton_Click);
+            // 
+            // CreatePlaylistChooseFile
+            // 
+            this.CreatePlaylistChooseFile.Location = new System.Drawing.Point(471, 403);
+            this.CreatePlaylistChooseFile.Name = "CreatePlaylistChooseFile";
+            this.CreatePlaylistChooseFile.Size = new System.Drawing.Size(83, 36);
+            this.CreatePlaylistChooseFile.TabIndex = 7;
+            this.CreatePlaylistChooseFile.Text = "...";
+            this.CreatePlaylistChooseFile.UseVisualStyleBackColor = true;
+            // 
+            // CreatePlaylistFileNameTextBox
+            // 
+            this.CreatePlaylistFileNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistFileNameTextBox.Location = new System.Drawing.Point(227, 403);
+            this.CreatePlaylistFileNameTextBox.Name = "CreatePlaylistFileNameTextBox";
+            this.CreatePlaylistFileNameTextBox.Size = new System.Drawing.Size(252, 36);
+            this.CreatePlaylistFileNameTextBox.TabIndex = 6;
+            this.CreatePlaylistFileNameTextBox.Text = "Choose File (.jpg)";
+            // 
+            // CreatePlaylistFormatDomainUp
+            // 
+            this.CreatePlaylistFormatDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistFormatDomainUp.Items.Add(".mp3");
+            this.CreatePlaylistFormatDomainUp.Items.Add(".wav");
+            this.CreatePlaylistFormatDomainUp.Items.Add(".mp4");
+            this.CreatePlaylistFormatDomainUp.Location = new System.Drawing.Point(226, 288);
+            this.CreatePlaylistFormatDomainUp.Name = "CreatePlaylistFormatDomainUp";
+            this.CreatePlaylistFormatDomainUp.Size = new System.Drawing.Size(332, 36);
+            this.CreatePlaylistFormatDomainUp.TabIndex = 5;
+            this.CreatePlaylistFormatDomainUp.Text = "Playlist Multimedia Format";
+            // 
+            // CreatePlaylistNameTextBox
+            // 
+            this.CreatePlaylistNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistNameTextBox.Location = new System.Drawing.Point(226, 190);
+            this.CreatePlaylistNameTextBox.Name = "CreatePlaylistNameTextBox";
+            this.CreatePlaylistNameTextBox.Size = new System.Drawing.Size(332, 36);
+            this.CreatePlaylistNameTextBox.TabIndex = 4;
+            // 
+            // CreatePlaylistImageLabel
+            // 
+            this.CreatePlaylistImageLabel.AutoSize = true;
+            this.CreatePlaylistImageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistImageLabel.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistImageLabel.Location = new System.Drawing.Point(107, 406);
+            this.CreatePlaylistImageLabel.Name = "CreatePlaylistImageLabel";
+            this.CreatePlaylistImageLabel.Size = new System.Drawing.Size(83, 29);
+            this.CreatePlaylistImageLabel.TabIndex = 3;
+            this.CreatePlaylistImageLabel.Text = "Image";
+            // 
+            // CreatePlaylistFormatLabel
+            // 
+            this.CreatePlaylistFormatLabel.AutoSize = true;
+            this.CreatePlaylistFormatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistFormatLabel.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistFormatLabel.Location = new System.Drawing.Point(107, 295);
+            this.CreatePlaylistFormatLabel.Name = "CreatePlaylistFormatLabel";
+            this.CreatePlaylistFormatLabel.Size = new System.Drawing.Size(93, 29);
+            this.CreatePlaylistFormatLabel.TabIndex = 2;
+            this.CreatePlaylistFormatLabel.Text = "Format";
+            // 
+            // CreatePlaylistNameLabel
+            // 
+            this.CreatePlaylistNameLabel.AutoSize = true;
+            this.CreatePlaylistNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistNameLabel.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistNameLabel.Location = new System.Drawing.Point(107, 192);
+            this.CreatePlaylistNameLabel.Name = "CreatePlaylistNameLabel";
+            this.CreatePlaylistNameLabel.Size = new System.Drawing.Size(81, 29);
+            this.CreatePlaylistNameLabel.TabIndex = 1;
+            this.CreatePlaylistNameLabel.Text = "Name";
+            // 
+            // CreatePlaylistLabel
+            // 
+            this.CreatePlaylistLabel.AutoSize = true;
+            this.CreatePlaylistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlaylistLabel.ForeColor = System.Drawing.Color.White;
+            this.CreatePlaylistLabel.Location = new System.Drawing.Point(190, 41);
+            this.CreatePlaylistLabel.Name = "CreatePlaylistLabel";
+            this.CreatePlaylistLabel.Size = new System.Drawing.Size(347, 58);
+            this.CreatePlaylistLabel.TabIndex = 0;
+            this.CreatePlaylistLabel.Text = "Create Playlist";
             // 
             // DurationTimer
             // 
@@ -2432,6 +2587,17 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // CreateSongInvalidCredentialTextBox
+            // 
+            this.CreateSongInvalidCredentialTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.CreateSongInvalidCredentialTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CreateSongInvalidCredentialTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateSongInvalidCredentialTextBox.ForeColor = System.Drawing.Color.White;
+            this.CreateSongInvalidCredentialTextBox.Location = new System.Drawing.Point(66, 712);
+            this.CreateSongInvalidCredentialTextBox.Name = "CreateSongInvalidCredentialTextBox";
+            this.CreateSongInvalidCredentialTextBox.Size = new System.Drawing.Size(362, 20);
+            this.CreateSongInvalidCredentialTextBox.TabIndex = 28;
+            // 
             // FyBuZz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2439,14 +2605,14 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(712, 792);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.CreateSongPanel);
+            this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
             this.Controls.Add(this.RegisterPanel);
-            this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.DisplayStartPanel);
-            this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.CreateVideoPanel);
             this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.AdminMenuPanel);
@@ -2512,6 +2678,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.CreateSongPanel.ResumeLayout(false);
             this.CreateSongPanel.PerformLayout();
+            this.CreatePlaylistPanel.ResumeLayout(false);
+            this.CreatePlaylistPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2699,7 +2867,6 @@
         private System.Windows.Forms.Label CreateSongLabel;
         private System.Windows.Forms.Panel CreateVideoPanel;
         private System.Windows.Forms.Panel CreatePlaylistPanel;
-        private System.Windows.Forms.Label CreateSongInvalidSongLabel;
         private System.Windows.Forms.Label AddShowInvalidCredentialsLabel;
         private System.Windows.Forms.Button CreateSongSongFileButton;
         private System.Windows.Forms.TextBox CreateSongSongFileTextBox;
@@ -2714,5 +2881,19 @@
         private System.Windows.Forms.Label SearchTimerDisplayLabel;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox SearchInvalidCredentialsTextBox;
+        private System.Windows.Forms.Label CreatePlaylistFormatLabel;
+        private System.Windows.Forms.Label CreatePlaylistNameLabel;
+        private System.Windows.Forms.Label CreatePlaylistLabel;
+        private System.Windows.Forms.Label CreatePlaylistImageLabel;
+        private System.Windows.Forms.Button CreatePlaylistGoBack;
+        private System.Windows.Forms.Button CreatePlaylistCreatePlaylistButton;
+        private System.Windows.Forms.Button CreatePlaylistChooseFile;
+        private System.Windows.Forms.TextBox CreatePlaylistFileNameTextBox;
+        private System.Windows.Forms.DomainUpDown CreatePlaylistFormatDomainUp;
+        private System.Windows.Forms.TextBox CreatePlaylistNameTextBox;
+        private System.Windows.Forms.Label CreatePlaylistPrivacyLabel;
+        private System.Windows.Forms.CheckBox CreatePlaylistPrivacyCheckBox;
+        private System.Windows.Forms.TextBox CreatePlaylistInvalidCredentialstextBox;
+        private System.Windows.Forms.TextBox CreateSongInvalidCredentialTextBox;
     }
 }
