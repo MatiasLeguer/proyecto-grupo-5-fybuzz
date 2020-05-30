@@ -583,6 +583,9 @@ namespace Entrega3_FyBuZz
 
         }
 
-        
+        private void AddShowAddVideoButton_Click(object sender, EventArgs e)
+        {
+            CreateVideoPanel.BringToFront();
+        }
     }
 }
