@@ -48,6 +48,9 @@ namespace Entrega3_FyBuZz
         public delegate string SearchedUserEventHandler(object source, UserEventArgs args);
         public event SearchedUserEventHandler SearchFollowButton_Clicked;
 
+        public delegate string PlaylistEventHandler(object source, PlaylistEventArgs args);
+        public event PlaylistEventHandler CreatePlaylistCreatePlaylistButton_Clicked;
+
         private string ProfileName { get; set; }
 
         public FyBuZz()
@@ -295,6 +298,18 @@ namespace Entrega3_FyBuZz
             }
             
         }
+        private void AddShowAddPlaylistButton_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            if (profile.ProfileType != "viewer")
+            {
+                CreatePlaylistPanel.BringToFront();
+            }
+            else
+            {
+                AddShowInvalidCredentialsLabel.Text = "You don´t have permission to create multimedia";
+            }
+        }
         private void CreateSongGoBackButton_Click(object sender, EventArgs e)
         {
             AddShowPanel.BringToFront();
@@ -457,8 +472,28 @@ namespace Entrega3_FyBuZz
                 string songFileSource = CreateSongSongFileTextBox.Text;
                 string songFileDest = Directory.GetCurrentDirectory();
                 string songFile = songFileSource.Split('\\')[songFileSource.Split('\\').Length-1];
-                File.Copy(songFileSource, songFile);
-                OnCreateSongCreateSongButton_Click(songName, songArtist, songAlbum, songDiscography, songGender, songPublishDate, songStudio, songDuration, songFormat, songLyrics, songFile);
+                if(File.Exists(songFile) == false)
+                {
+                    File.Copy(songFileSource, songFile);
+                    OnCreateSongCreateSongButton_Click(songName, songArtist, songAlbum, songDiscography, songGender, songPublishDate, songStudio, songDuration, songFormat, songLyrics, songFile);
+                }
+                else
+                {
+                    CreateSongInvalidCredentialTextBox.AppendText("An Error has ocurred please try again");
+                    Thread.Sleep(2000);
+                    DisplayStartPanel.BringToFront();
+                    CreateSongNameTextBox.Clear();
+                    CreateSongArtistTextBox.Clear();
+                    CreateSongAlbumTextBox.Clear();
+                    CreateSongDiscographyTextBox.Clear();
+                    CreateSongGenderTextBox.Clear();
+                    CreateSongStudioTextBox.Clear();
+                    CreateSongDurationTextBox.Clear();
+                    CreateSongFormatTextBox.Clear();
+                    CreateSongLyricsTextBox.Clear();
+                    CreateSongSongFileTextBox.Clear();
+                }
+                
             }
         }
         private void CreateSongSongFileButton_Click(object sender, EventArgs e)
@@ -470,6 +505,23 @@ namespace Entrega3_FyBuZz
                 string filename = openFileDialog.FileName;
                 CreateSongSongFileTextBox.Text = filename;
             }
+        }
+
+        //<<CREATE PLAYLIST PANEL>>
+        private void CreatePlaylistGoBack_Click(object sender, EventArgs e)
+        {
+            DisplayStartPanel.BringToFront();
+        }
+
+        private void CreatePlaylistCreatePlaylistButton_Click(object sender, EventArgs e)
+        {
+            string playlistName = CreatePlaylistNameTextBox.Text;
+            string playlistFormat = CreatePlaylistFormatDomainUp.Text;
+            User playlistCreator = OnLoginButtonClicked(UserLogInTextBox.Text,PasswordLogInTextBox.Text);
+            Profile playlistProfileCreator = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            bool playlistPrivacy = CreatePlaylistPrivacyCheckBox.Checked; //True si esta checked
+            OnCreatePlaylistCreatePlaylistButton_Click(playlistName, playlistFormat, playlistPrivacy, playlistCreator, playlistProfileCreator);
+
         }
 
         //MÉTODOS INTERNOS 
@@ -579,12 +631,23 @@ namespace Entrega3_FyBuZz
                 bool result = CreateSongCreateSongButton_Clicked(this, new SongEventArgs() { NameText = sName, AlbumText = sAlbum, ArtistText = sArtist, DateText = sPublishDate, DiscographyText = sDiscography, DurationText = sDuration, FormatText = sFormat, GenderText = sGender, LyricsText = sLyrics, StudioText = sStudio, FileNameText = songFile});
                 if (!result)
                 {
-                    CreateSongInvalidSongLabel.Text = "An Error has ocurred please try again";
+                    CreateSongInvalidCredentialTextBox.AppendText("An Error has ocurred please try again");
                     Thread.Sleep(2000);
+                    DisplayStartPanel.BringToFront();
+                    CreateSongNameTextBox.Clear();
+                    CreateSongArtistTextBox.Clear();
+                    CreateSongAlbumTextBox.Clear();
+                    CreateSongDiscographyTextBox.Clear();
+                    CreateSongGenderTextBox.Clear();
+                    CreateSongStudioTextBox.Clear();
+                    CreateSongDurationTextBox.Clear();
+                    CreateSongFormatTextBox.Clear();
+                    CreateSongLyricsTextBox.Clear();
+                    CreateSongSongFileTextBox.Clear();
                 }
                 else
                 {
-                    CreateSongInvalidSongLabel.Text = "Song Added to the system";
+                    CreateSongInvalidCredentialTextBox.AppendText("Song Added to the system");
                     Thread.Sleep(2000);
                     CreateSongNameTextBox.Clear();
                     CreateSongArtistTextBox.Clear();
@@ -649,5 +712,30 @@ namespace Entrega3_FyBuZz
                 SearchInvalidCredentialsTextBox.Clear();
             }
         }
+        public void OnCreatePlaylistCreatePlaylistButton_Click(string plName, string plFormat, bool plPrivacy, User plCreator, Profile plProfileCreator)
+        {
+            if(CreatePlaylistCreatePlaylistButton_Clicked != null)
+            {
+                string result = CreatePlaylistCreatePlaylistButton_Clicked(this, new PlaylistEventArgs() { NameText = plName, CreatorText = plCreator, FormatText = plFormat, PrivacyText = plPrivacy, ProfileCreatorText = plProfileCreator });
+
+                if(result == null)
+                {
+                    CreatePlaylistInvalidCredentialstextBox.AppendText("Playlist created succesfully!!");
+                    Thread.Sleep(2000);
+                    DisplayStartPanel.BringToFront();
+                }
+                else
+                {
+                    CreatePlaylistInvalidCredentialstextBox.AppendText("Error[!] " + result);
+                    Thread.Sleep(2000);
+                    DisplayStartPanel.BringToFront();
+                }
+            }
+        }
+
+
+
+
+
     }
 }
