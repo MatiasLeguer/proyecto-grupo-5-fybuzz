@@ -358,7 +358,7 @@ namespace Entrega3_FyBuZz
                 if (song.Format == ".mp3")
                 {
                     string result = SearchSearchResultsDomainUp.Text;
-                    if (result == song.SearchedInfoSong() + " Format: " + song.Format)
+                    if (result == song.SearchedInfoSong())
                     {
                         //No se como reiniciar la barra de progreso ni el timer
                         SearchProgressBar.Value = 0;
@@ -470,12 +470,10 @@ namespace Entrega3_FyBuZz
                 string songFormat = CreateSongFormatTextBox.Text;
                 string songLyrics = CreateSongLyricsTextBox.Text;
                 string songFileSource = CreateSongSongFileTextBox.Text;
-                string songFileDest = Directory.GetCurrentDirectory();
                 string songFile = songFileSource.Split('\\')[songFileSource.Split('\\').Length-1];
                 if(File.Exists(songFile) == false)
                 {
-                    File.Copy(songFileSource, songFile);
-                    OnCreateSongCreateSongButton_Click(songName, songArtist, songAlbum, songDiscography, songGender, songPublishDate, songStudio, songDuration, songFormat, songLyrics, songFile);
+                    OnCreateSongCreateSongButton_Click(songName, songArtist, songAlbum, songDiscography, songGender, songPublishDate, songStudio, songDuration, songFormat, songLyrics, songFileSource, songFile);
                 }
                 else
                 {
@@ -624,11 +622,11 @@ namespace Entrega3_FyBuZz
             }
             return null;
         }
-        public void OnCreateSongCreateSongButton_Click(string sName, string sArtist, string sAlbum, string sDiscography, string sGender, DateTime sPublishDate, string sStudio, double sDuration, string sFormat, string sLyrics, string songFile)
+        public void OnCreateSongCreateSongButton_Click(string sName, string sArtist, string sAlbum, string sDiscography, string sGender, DateTime sPublishDate, string sStudio, double sDuration, string sFormat, string sLyrics, string sSource,string songFile)
         {
             if (CreateSongCreateSongButton_Clicked != null)
             {
-                bool result = CreateSongCreateSongButton_Clicked(this, new SongEventArgs() { NameText = sName, AlbumText = sAlbum, ArtistText = sArtist, DateText = sPublishDate, DiscographyText = sDiscography, DurationText = sDuration, FormatText = sFormat, GenderText = sGender, LyricsText = sLyrics, StudioText = sStudio, FileNameText = songFile});
+                bool result = CreateSongCreateSongButton_Clicked(this, new SongEventArgs() { NameText = sName, AlbumText = sAlbum, ArtistText = sArtist, DateText = sPublishDate, DiscographyText = sDiscography, DurationText = sDuration, FormatText = sFormat, GenderText = sGender, LyricsText = sLyrics, StudioText = sStudio, FileDestName = sSource,FileNameText = songFile});
                 if (!result)
                 {
                     CreateSongInvalidCredentialTextBox.AppendText("An Error has ocurred please try again");
@@ -644,6 +642,7 @@ namespace Entrega3_FyBuZz
                     CreateSongFormatTextBox.Clear();
                     CreateSongLyricsTextBox.Clear();
                     CreateSongSongFileTextBox.Clear();
+                    
                 }
                 else
                 {
