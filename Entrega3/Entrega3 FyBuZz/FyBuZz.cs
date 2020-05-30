@@ -18,8 +18,12 @@ namespace Entrega3_FyBuZz
 {
     public partial class FyBuZz : Form
     {
-        WindowsMediaPlayer windowsMediaPlayer = new WindowsMediaPlayer();
 
+
+        //PUBLIC DELEGATES
+        //--------------------------------------------------------------------------------
+
+        WindowsMediaPlayer windowsMediaPlayer = new WindowsMediaPlayer();
 
         public delegate User LogInEventHandler(object soruce, LogInEventArgs args);
         public event LogInEventHandler LogInLogInButton_Clicked;
@@ -42,6 +46,7 @@ namespace Entrega3_FyBuZz
         public delegate List<Song> ListSongEventHandler(object source, SongEventArgs args);
         public event ListSongEventHandler SearchSearchButton_Clicked;
 
+
         public delegate List<User> ListUserEventHandler(object source, RegisterEventArgs args);
         public event ListUserEventHandler SearchUserButton_Clicked;
 
@@ -51,13 +56,28 @@ namespace Entrega3_FyBuZz
         public delegate string PlaylistEventHandler(object source, PlaylistEventArgs args);
         public event PlaylistEventHandler CreatePlaylistCreatePlaylistButton_Clicked;
 
-        private string ProfileName { get; set; }
+        public delegate bool CreateVideoEventHandler(object source, VideoEventArgs args);
+        public event CreateVideoEventHandler CreateVideoSaveButton_Clicked;
+        //--------------------------------------------------------------------------------
 
+
+        //ATRIBUTOS
+        //--------------------------------------------------------------------------------
+        private string ProfileName { get; set; }
+        //--------------------------------------------------------------------------------
+
+
+        //CONSTRUCTOR
+        //--------------------------------------------------------------------------------
         public FyBuZz()
         {
             InitializeComponent();
         }
+        //--------------------------------------------------------------------------------
 
+
+        //LOG-IN
+        //--------------------------------------------------------------------------------
         private void WelcomeLogInButton_Click(object sender, EventArgs e)
         {
             LogInPanel.BringToFront();
@@ -67,10 +87,7 @@ namespace Entrega3_FyBuZz
             RegisterPanel.BringToFront();
         }
 
-        private void WelcomeCloseFyBuZz_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+
 
         private void GobackRegisterButton_Click(object sender, EventArgs e)
         {
@@ -229,10 +246,7 @@ namespace Entrega3_FyBuZz
             AdminMenuPanel.BringToFront();
         }
 
-        private void DisplayStartCloseButton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+
 
         private void SearchGoBackButton_Click(object sender, EventArgs e)
         {
@@ -522,6 +536,64 @@ namespace Entrega3_FyBuZz
 
         }
 
+        //CREATE VIDEO PANEL -->AL APRETAR ADD VIDEO
+        private void AddShowAddVideoButton_Click(object sender, EventArgs e)
+        {
+            CreateVideoPanel.BringToFront();
+        }
+
+        private void CreateVideoSaveButton_Click(object sender, EventArgs e)
+        {
+            string videoName = CreateVideoNameTextBox.Text;
+            string actors = CreateVideoActorsTextBox.Text;
+            string directors = CreateVideoDirectorsTextBox.Text;
+            string releaseDate = CreateVideoReleaseDateDateTimePicker.Value.ToShortDateString();
+            string videoDimension = CreateVideoDimensionTextBox.Text;
+            string videoQuality = CreateVideoQualityTextBox.Text;
+            string videoCategory = CreateVideoCategoryTextBox.Text;
+            string videoDescription = CreateVideoDescriptionTextBox.Text;
+            string videoDuration = CreateVideoDurationTextBox.Text;
+            string videoFormat = CreateVideoFormatTextBox.Text;
+            string videoSubtitles = CreateVideoSubtitlesTextBox.Text;
+            string videoFileSource = CreateVideoLoadVideoTextBox.Text;
+            string videoFileName = videoFileSource.Split('\\')[videoFileSource.Split('\\').Length - 1];
+            
+
+            if(File.Exists(videoFileName) == false)
+            {
+                OnCreateVideoSaveButton_Clicked(videoName, actors, directors, releaseDate, videoDimension, videoQuality, videoCategory, videoDescription, videoDuration, videoFormat, videoSubtitles, videoFileSource, videoFileName, "true");
+            }
+            else
+            {
+                CreateVideoMessageTextBox.AppendText("ERROR[!] Your file already exists");
+                CreateVideoNameTextBox.Clear();
+                CreateVideoActorsTextBox.Clear();
+                CreateVideoDirectorsTextBox.Clear();
+                CreateVideoDimensionTextBox.Clear();
+                CreateVideoQualityTextBox.Clear();
+                CreateVideoCategoryTextBox.Clear();
+                CreateVideoDescriptionTextBox.Clear();
+                CreateVideoDurationTextBox.Clear();
+                CreateVideoFormatTextBox.Clear();
+                CreateVideoSubtitlesTextBox.Clear();
+                CreateVideoLoadVideoTextBox.Clear();
+                Thread.Sleep(1500);
+                CreateVideoMessageTextBox.Clear();
+            }
+
+        }
+
+        private void CreateVideoLoadVideoButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filename = openFileDialog.FileName;
+                CreateVideoLoadVideoTextBox.Text = filename;
+            }
+        }
+
         //MÉTODOS INTERNOS 
         public User OnLoginButtonClicked(string username, string password)
         {
@@ -658,8 +730,6 @@ namespace Entrega3_FyBuZz
                     CreateSongFormatTextBox.Clear();
                     CreateSongLyricsTextBox.Clear();
                     CreateSongSongFileTextBox.Clear();
-
-                    DisplayStartPanel.BringToFront();
                 }
             }
         }
@@ -672,6 +742,35 @@ namespace Entrega3_FyBuZz
             }
             return null;
         }
+
+
+
+        // CLOSE/GO BACK
+
+        private void DisplayStartCloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void WelcomeCloseFyBuZz_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListViewGroup listViewUsers = new ListViewGroup("Users");
+
+
+            //listView1.Items.Add();
+        }
+        //<<ADD/SHOW MULTIMEDIA PANEL>>
+
+
+        private void WelcomePanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
         public List<User> OnSearchUserButton_Click()
         {
             if (SearchUserButton_Clicked != null)
@@ -680,6 +779,7 @@ namespace Entrega3_FyBuZz
                 return userDataBase;
             }
             return null;
+
         }
         public void OnSearchFollowButton_Click(User userLogIn, User userSearched)
         {
@@ -732,9 +832,48 @@ namespace Entrega3_FyBuZz
             }
         }
 
-
-
-
+        public void OnCreateVideoSaveButton_Clicked(string name, string actors, string directors, string releaseDate, string dimension, string quality, string category, string description, string duration, string format, string subtitles, string fileDest, string fileName,  string image)
+        {
+            if(CreateVideoSaveButton_Clicked != null)
+            {
+                bool createVideo = CreateVideoSaveButton_Clicked(this, new VideoEventArgs() { NameText = name, ActorsText = actors, DirectorsText = directors, ReleaseDateText = releaseDate, DimensionText = dimension, Categorytext = category, DescriptionText = description, DurationText = duration, FormatText = format, SubtitlesText = subtitles, FileDestText = fileDest, FileNameText = fileName , QualityText = quality, VideoImage = image});
+                if (createVideo)
+                {
+                    CreateVideoMessageTextBox.AppendText("Video Created succesfully!");
+                    CreateVideoNameTextBox.Clear();
+                    CreateVideoActorsTextBox.Clear();
+                    CreateVideoDirectorsTextBox.Clear();
+                    CreateVideoDimensionTextBox.Clear();
+                    CreateVideoQualityTextBox.Clear();
+                    CreateVideoCategoryTextBox.Clear();
+                    CreateVideoDescriptionTextBox.Clear();
+                    CreateVideoDurationTextBox.Clear();
+                    CreateVideoFormatTextBox.Clear();
+                    CreateVideoSubtitlesTextBox.Clear();
+                    CreateVideoLoadVideoTextBox.Clear();
+                    Thread.Sleep(2000);
+                    CreateVideoMessageTextBox.Clear();
+                    DisplayStartPanel.BringToFront();
+                }
+                else
+                {
+                    CreateVideoMessageTextBox.AppendText("ERROR[!] could not create video!");
+                    CreateVideoNameTextBox.Clear();
+                    CreateVideoActorsTextBox.Clear();
+                    CreateVideoDirectorsTextBox.Clear();
+                    CreateVideoDimensionTextBox.Clear();
+                    CreateVideoQualityTextBox.Clear();
+                    CreateVideoCategoryTextBox.Clear();
+                    CreateVideoDescriptionTextBox.Clear();
+                    CreateVideoDurationTextBox.Clear();
+                    CreateVideoFormatTextBox.Clear();
+                    CreateVideoSubtitlesTextBox.Clear();
+                    CreateVideoLoadVideoTextBox.Clear();
+                    Thread.Sleep(1500);
+                    CreateVideoMessageTextBox.Clear();
+                }
+            }
+        }
 
     }
 }

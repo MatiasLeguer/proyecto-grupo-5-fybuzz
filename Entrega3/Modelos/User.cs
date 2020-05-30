@@ -9,6 +9,7 @@ namespace Modelos
     [Serializable]
     public class User
     {
+        //ATRIBUTOS:
 
         protected int registerNumber;
         protected string username;
@@ -23,9 +24,13 @@ namespace Modelos
         protected bool adsOn;
         protected bool privacy;
         protected List<PlayList> profilePlaylists = new List<PlayList>();
-
         protected List<Profile> perfiles = new List<Profile>();
+        //--------------------------------------------------------------------------------------------------
 
+
+
+        //GETTERS Y SETTERS
+        //--------------------------------------------------------------------------------------------------
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
         public string Email { get => email; set => email = value; }
@@ -39,36 +44,48 @@ namespace Modelos
         public List<string> FollowingList { get => followingList; set => followingList = value; }
         public List<string> FollowerList { get => followerList; set => followerList = value; }
         public List<PlayList> ProfilePlaylists { get => profilePlaylists; set => profilePlaylists = value; }
+        //--------------------------------------------------------------------------------------------------
 
+
+        //METODOS:
+
+        //MÉTODO PARA CREAR UN PERFIL
+        //--------------------------------------------------------------------------------------------------
         public Profile CreateProfile(string pname, string ppic, string ptype, string pmail, string pgender, int page)
         {
             Profile profileX = new Profile(pname, ppic, ptype, pmail, pgender, page);
             perfiles.Add(profileX);
             return profileX;
         }
+        //--------------------------------------------------------------------------------------------------
 
-        public List<string> AccountSettings()
+
+
+        //MÉTODOS PARA ENTREGAR INFORMACIÓN DE LA CLASE
+        //--------------------------------------------------------------------------------------------------
+        public List<string> AccountSettings()                      //Entrega la lista de informacion del usuario seleccionado
         {
-            // Metodo que entrega la lista de informacion del usuario seleccionado
+
             List<string> Settings = new List<string>() { username, password, email, accountType, followers.ToString(), following.ToString() };
             return Settings;
-
             // ver si efectivamente esta informacion proviene del usuario o si se adquiere de database.
+
 
         }
 
-        public List<string> infoUser()
+        public List<string> infoUser()                             //Entrega el username y el email del usuario
         {
             return new List<string> { username, email };
         }
-        public string SearchedInfoUser()
+
+        public string SearchedInfoUser()                          //Entrega un string con el username y el email del usuario
         {
             return "Name: " + username + " " + "Email: " + email;
         }
 
-        public bool GetVerification()
+        public bool GetVerification()                            //Decide si tiene o no verificacion a partir de sus seguidores
         {
-            // Decide si tiene o no verificacion a partir de sus seguidores
+
             if (followers > 3)
             {
                 verified = true;
@@ -80,23 +97,13 @@ namespace Modelos
                 return verified;
             }
         }
+        //--------------------------------------------------------------------------------------------------
 
-
-        // Diccionario de usuarios {key int, lista de palabras}
-        /*
-        public void AdminDeleteUser(DataBase data, int key)
+        //MÉTODOS QUE PUEDE UTILIZAR EL ADMIN
+        //--------------------------------------------------------------------------------------------------
+        public void AdminBanUser()                              // Cambiar el account tyoe a uno menor
         {
-            // if y fors para borrar la informacion del usuario
-            // acceder al diccionario con la clave key
-            if (key == registerNumber)
-            {
-                data.Load_Users().Remove(key);
-            }
-        }*/
 
-        public void AdminBanUser()
-        {
-            // Cambiar el account tyoe a uno menor
             if (accountType == "Premium")
             {
                 accountType.Replace("Premium", "Standard");
@@ -104,6 +111,22 @@ namespace Modelos
 
         }
         // Encontrar mas metodos para admin +Admin...
+        //--------------------------------------------------------------------------------------------------
 
     }
 }
+
+//SE ENCONTRABA EN LA LINEA 82
+
+// Diccionario de usuarios {key int, lista de palabras}          
+/*
+public void AdminDeleteUser(DataBase data, int key)
+{
+    // if y fors para borrar la informacion del usuario
+    // acceder al diccionario con la clave key
+    if (key == registerNumber)
+    {
+        data.Load_Users().Remove(key);
+    }
+
+}*/

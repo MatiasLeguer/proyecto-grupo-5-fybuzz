@@ -26,7 +26,8 @@ namespace Modelos
             {
                 Registered(this, new RegisterEventArgs() { Username = username, Password = password, Email = email });
             }
-        }*/
+        }
+        */
 
         //Creamos evento para cambiar la contraseña
         public delegate void ChangePasswordEventHandler(object source, ChangePasswordEventArgs args);
@@ -49,7 +50,7 @@ namespace Modelos
             else Console.WriteLine("Error [!] Invalid Subscription.");
             userlist.Followers = 0;
             userlist.Following = 0;
-            DateTime dateTime = new DateTime();
+            //DateTime dateTime = new DateTime();  COMENTADA PARA QUE NO TIRE LA ADVERTENCIA
             //Falta el año sea variable.
             int Age = 2020 - age.Year;
             userlist.Perfiles.Add(new Profile(usr, ".JPG", profileType, email, gender, Age));

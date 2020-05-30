@@ -21,6 +21,7 @@ namespace Entrega3_FyBuZz
             UserControler userController = new UserControler(fyBuZz);
             SongController songController = new SongController(fyBuZz);
             PlaylistController playlistController = new PlaylistController(fyBuZz);
+            VideoController videoController = new VideoController(fyBuZz);
             Application.Run(fyBuZz);
         }
     }

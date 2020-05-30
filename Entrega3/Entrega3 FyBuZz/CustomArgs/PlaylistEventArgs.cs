@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entrega3_FyBuZz.CustomArgs
 {
-    public class PlaylistEventArgs:EventArgs
+    public class PlaylistEventArgs : EventArgs
     {
         public bool PrivacyText { get; set; }
         public string NameText { get; set; }

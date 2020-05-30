@@ -97,6 +97,7 @@ namespace Modelos
         // Metodo para realizar el LogIn
         public User LogIn(string usrname, string password, List<User> userlist)
         {
+            //Aqui revisar el archivo.
             foreach (User user in userlist)
             {
                 if (user.Username == usrname && user.Password == password)
@@ -114,6 +115,7 @@ namespace Modelos
             {
                 if (song != s) listSongsGlobal.Add(s);
             }
+
         }
         public void OnVideoSent(object source, Video v)
         {

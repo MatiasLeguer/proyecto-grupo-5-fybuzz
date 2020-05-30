@@ -19,6 +19,7 @@ namespace FyBuzz_E2
         protected int followers;
         protected int following;
         protected List<string> followingList = new List<string>();
+        protected List<string> followerList = new List<string>();
         protected bool verified;
         protected bool adsOn;
         protected bool privacy;
