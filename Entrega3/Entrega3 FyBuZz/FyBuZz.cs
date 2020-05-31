@@ -143,6 +143,7 @@ namespace Entrega3_FyBuZz
 
             ProfileName = profileProfileName;
             DisplayStartPanel.BringToFront();
+            
 
             //Creo que cada vez que necesite el perfil debo llamar a este método con el parametro
             //que venga del "ProfileDomainUp.Text"
@@ -246,13 +247,6 @@ namespace Entrega3_FyBuZz
             AdminMenuPanel.BringToFront();
         }
 
-
-
-        private void SearchGoBackButton_Click(object sender, EventArgs e)
-        {
-            DisplayStartPanel.BringToFront();
-        }
-
         private void DisplayPlaylistGoBackButton_Click(object sender, EventArgs e)
         {
             DisplayStartPanel.BringToFront();
@@ -329,6 +323,15 @@ namespace Entrega3_FyBuZz
             AddShowPanel.BringToFront();
         }
         //<<Search Panel>>
+        private void SearchGoBackButton_Click(object sender, EventArgs e)
+        {
+            DisplayStartPanel.BringToFront();
+            if (windowsMediaPlayer.URL != null)
+            {
+                PlayerPanel.BringToFront();
+                PlayerPanel.Dock = DockStyle.Bottom;
+            }
+        }
         private void SearchSearchButton_Click(object sender, EventArgs e)
         {
             string search = SearchSearchTextBox.Text; //Bad Bunny and Trap and ... and ...
@@ -365,8 +368,7 @@ namespace Entrega3_FyBuZz
         {
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSearchButton_Click();
-            List<User> userDataBase = new List<User>();     
-            userDataBase = OnSearchUserButton_Click();
+
             foreach (Song song in songDataBase)
             {
                 if (song.Format == ".mp3")
@@ -374,12 +376,14 @@ namespace Entrega3_FyBuZz
                     string result = SearchSearchResultsDomainUp.Text;
                     if (result == song.SearchedInfoSong())
                     {
-                        //No se como reiniciar la barra de progreso ni el timer
-                        SearchProgressBar.Value = 0;
-                        SearchTimerDisplayLabel.ResetText();
+                        PlayerPlayingLabel.Clear();
+                        PlaySongProgressBar.Value = 0;
+                        PlaySongTimerTextBox.ResetText();
                         windowsMediaPlayer.URL = song.SongFile;
                         DurationTimer.Interval = 1000;
-                        SearchProgressBar.Maximum = (int)(song.Duration * 60);
+                        PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
+                        PlaySongPanel.BringToFront();
+                        PlayerPlayingLabel.AppendText("Playing: " + song.Name);
                         DurationTimer.Start();
                         break;
                     }
@@ -405,27 +409,39 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
+
+        //<<PLAY SONG PANEL>>
         private void DurationTimer_Tick(object sender, EventArgs e)
         {
-            SearchProgressBar.Increment(1);
+            PlaySongProgressBar.Increment(1);
             //Falta que se muestre bien el tiempo...
-            SearchTimerDisplayLabel.Text =  SearchProgressBar.Value.ToString();
+            PlaySongTimerTextBox.Text = PlaySongProgressBar.Value.ToString();
         }
-        private void SearchPlayButton_Click(object sender, EventArgs e)
+        private void PlaySongGoBackButton_Click(object sender, EventArgs e)
+        {
+            SearchPanel.BringToFront();
+            if (PlaySongProgressBar.Value != 0)
+            {
+                PlayerPanel.BringToFront();
+            }
+        }
+
+        private void PlaySongPlayButton_Click(object sender, EventArgs e)
         {
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSearchButton_Click();
             foreach (Song song in songDataBase)
             {
-                if (SearchSearchResultsDomainUp.Text.Contains("Song:") &&  song.Format == ".mp3")
+                if (SearchSearchResultsDomainUp.Text.Contains("Song:") && song.Format == ".mp3")
                 {
                     windowsMediaPlayer.controls.play();
                     DurationTimer.Start();
-                    break;   
+                    break;
                 }
             }
         }
-        private void SearchPauseButton_Click(object sender, EventArgs e)
+
+        private void PlaySongPauseButton_Click(object sender, EventArgs e)
         {
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSearchButton_Click();
@@ -439,7 +455,7 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
-        private void SearchPreviousButton_Click(object sender, EventArgs e)
+        private void PlaySongPreviousButton_Click(object sender, EventArgs e)
         {
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSearchButton_Click();
@@ -452,7 +468,8 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
-        private void SearchSkipButton_Click(object sender, EventArgs e)
+
+        private void PlaySongSkipButton_Click(object sender, EventArgs e)
         {
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSearchButton_Click();
@@ -465,6 +482,7 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
+
         
 
         //<<PANEL DE CREACION SONG>>
@@ -875,5 +893,6 @@ namespace Entrega3_FyBuZz
             }
         }
 
+        
     }
 }
