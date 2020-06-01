@@ -44,7 +44,7 @@ namespace Entrega3_FyBuZz
         public event SongEventHandler CreateSongCreateSongButton_Clicked;
 
         public delegate List<Song> ListSongEventHandler(object source, SongEventArgs args);
-        public event ListSongEventHandler SearchSearchButton_Clicked;
+        public event ListSongEventHandler SearchSongButton_Clicked;
 
 
         public delegate List<User> ListUserEventHandler(object source, RegisterEventArgs args);
@@ -58,6 +58,9 @@ namespace Entrega3_FyBuZz
 
         public delegate bool CreateVideoEventHandler(object source, VideoEventArgs args);
         public event CreateVideoEventHandler CreateVideoSaveButton_Clicked;
+
+        public delegate List<Video> ListVideoEventHandler(object source, VideoEventArgs args);
+        public event ListVideoEventHandler SearchVideoButton_Clicked;
         //--------------------------------------------------------------------------------
 
 
@@ -341,9 +344,11 @@ namespace Entrega3_FyBuZz
             List<string> listSearch = new List<string>();
             //listSearch.Add(search);
             List<Song> songDataBase = new List<Song>();
-            songDataBase = OnSearchSearchButton_Click();
+            songDataBase = OnSearchSongButton_Click();
             List<User> userDataBase = new List<User>();
             userDataBase = OnSearchUserButton_Click();
+            List<Video> videoDataBase = new List<Video>();
+            videoDataBase = OnSearchVideoButton_Click();
 
             foreach (Song song in songDataBase)
             {
@@ -363,11 +368,20 @@ namespace Entrega3_FyBuZz
                 }
             }
 
+            foreach(Video video in videoDataBase)
+            {
+                if (video.InfoVideo().Contains(search))
+                {
+                    SearchSearchResultsDomainUp.Visible = true;
+                    SearchSearchResultsDomainUp.Items.Add(video.SearchedInfoVideo());
+                }
+            }
+
         }
         private void SearchSelectMultButton_Click(object sender, EventArgs e)
         {
             List<Song> songDataBase = new List<Song>();
-            songDataBase = OnSearchSearchButton_Click();
+            songDataBase = OnSearchSongButton_Click();
 
             foreach (Song song in songDataBase)
             {
@@ -429,7 +443,7 @@ namespace Entrega3_FyBuZz
         private void PlaySongPlayButton_Click(object sender, EventArgs e)
         {
             List<Song> songDataBase = new List<Song>();
-            songDataBase = OnSearchSearchButton_Click();
+            songDataBase = OnSearchSongButton_Click();
             foreach (Song song in songDataBase)
             {
                 if (SearchSearchResultsDomainUp.Text.Contains("Song:") && song.Format == ".mp3")
@@ -444,7 +458,7 @@ namespace Entrega3_FyBuZz
         private void PlaySongPauseButton_Click(object sender, EventArgs e)
         {
             List<Song> songDataBase = new List<Song>();
-            songDataBase = OnSearchSearchButton_Click();
+            songDataBase = OnSearchSongButton_Click();
             foreach (Song song in songDataBase)
             {
                 if (song.Format == ".mp3")
@@ -458,7 +472,7 @@ namespace Entrega3_FyBuZz
         private void PlaySongPreviousButton_Click(object sender, EventArgs e)
         {
             List<Song> songDataBase = new List<Song>();
-            songDataBase = OnSearchSearchButton_Click();
+            songDataBase = OnSearchSongButton_Click();
             foreach (Song song in songDataBase)
             {
                 if (song.Format == ".mp3")
@@ -472,7 +486,7 @@ namespace Entrega3_FyBuZz
         private void PlaySongSkipButton_Click(object sender, EventArgs e)
         {
             List<Song> songDataBase = new List<Song>();
-            songDataBase = OnSearchSearchButton_Click();
+            songDataBase = OnSearchSongButton_Click();
             foreach (Song song in songDataBase)
             {
                 if (song.Format == ".mp3")
@@ -751,11 +765,11 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
-        public List<Song> OnSearchSearchButton_Click()
+        public List<Song> OnSearchSongButton_Click()
         {
-            if(SearchSearchButton_Clicked != null)
+            if(SearchSongButton_Clicked != null)
             {
-                List<Song> songDataBase = SearchSearchButton_Clicked(this, new SongEventArgs());
+                List<Song> songDataBase = SearchSongButton_Clicked(this, new SongEventArgs());
                 return songDataBase;
             }
             return null;
@@ -891,6 +905,16 @@ namespace Entrega3_FyBuZz
                     CreateVideoMessageTextBox.Clear();
                 }
             }
+        }
+
+        public List<Video> OnSearchVideoButton_Click()
+        {
+            if (SearchVideoButton_Clicked != null)
+            {
+                List<Video> videoDataBase = SearchVideoButton_Clicked(this, new VideoEventArgs());
+                return videoDataBase;
+            }
+            return null;
         }
 
         
