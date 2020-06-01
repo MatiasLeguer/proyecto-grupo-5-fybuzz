@@ -13,6 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WMPLib;
+using System.Media;
 
 namespace Entrega3_FyBuZz
 {
@@ -24,6 +25,8 @@ namespace Entrega3_FyBuZz
         //--------------------------------------------------------------------------------
 
         WindowsMediaPlayer windowsMediaPlayer = new WindowsMediaPlayer();
+        SoundPlayer soundPlayer;
+        
 
         public delegate User LogInEventHandler(object soruce, LogInEventArgs args);
         public event LogInEventHandler LogInLogInButton_Clicked;
@@ -75,6 +78,10 @@ namespace Entrega3_FyBuZz
         public FyBuZz()
         {
             InitializeComponent();
+        }
+        private void FyBuZz_Load(object sender, EventArgs e)
+        {
+            
         }
         //--------------------------------------------------------------------------------
 
@@ -378,8 +385,10 @@ namespace Entrega3_FyBuZz
             }
 
         }
+
         private void SearchSelectMultButton_Click(object sender, EventArgs e)
         {
+            soundPlayer = new SoundPlayer();
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSongButton_Click();
 
@@ -402,8 +411,28 @@ namespace Entrega3_FyBuZz
                         break;
                     }
                 }
+                else if(song.Format == ".wav")
+                {
+                    string result = SearchSearchResultsDomainUp.Text;
+                    if (result == song.SearchedInfoSong())
+                    {
+
+                        PlayerPlayingLabel.Clear();
+                        PlaySongProgressBar.Value = 0;
+                        PlaySongTimerTextBox.ResetText();
+                        soundPlayer.SoundLocation = song.SongFile;
+                        soundPlayer.Play();
+                        DurationTimer.Interval = 1000;
+                        PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
+                        PlaySongPanel.BringToFront();
+                        PlayerPlayingLabel.AppendText("Playing: " + song.Name);
+                        DurationTimer.Start();
+                        break;
+                    }
+                }
             }
         }
+     
         private void SearchFollowButton_Click(object sender, EventArgs e)
         {
             List<User> userDataBase = new List<User>();
@@ -423,40 +452,25 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
+        
 
-        //<<PLAY SONG PANEL>>
+        //<<PLAY SONG MP3 PANEL>>
+
         private void DurationTimer_Tick(object sender, EventArgs e)
         {
-            PlaySongProgressBar.Increment(1);
+            PlaySongProgressBar.Increment(1);      
             //Falta que se muestre bien el tiempo...
             PlaySongTimerTextBox.Text = PlaySongProgressBar.Value.ToString();
         }
         private void PlaySongGoBackButton_Click(object sender, EventArgs e)
         {
             SearchPanel.BringToFront();
-            if (PlaySongProgressBar.Value != 0)
-            {
-                PlayerPanel.BringToFront();
-            }
+            
+            
         }
-
-        private void PlaySongPlayButton_Click(object sender, EventArgs e)
+        private void PlaySongStopButton_Click(object sender, EventArgs e)
         {
-            List<Song> songDataBase = new List<Song>();
-            songDataBase = OnSearchSongButton_Click();
-            foreach (Song song in songDataBase)
-            {
-                if (SearchSearchResultsDomainUp.Text.Contains("Song:") && song.Format == ".mp3")
-                {
-                    windowsMediaPlayer.controls.play();
-                    DurationTimer.Start();
-                    break;
-                }
-            }
-        }
-
-        private void PlaySongPauseButton_Click(object sender, EventArgs e)
-        {
+            soundPlayer.Stop();
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSongButton_Click();
             foreach (Song song in songDataBase)
@@ -467,8 +481,36 @@ namespace Entrega3_FyBuZz
                     DurationTimer.Stop();
                     break;
                 }
+                else if (song.Format == ".wav")
+                {
+                    soundPlayer.Stop();
+                    DurationTimer.Stop();
+                    break;
+                }
             }
         }
+
+        private void PlaySongPlayButton_Click_1(object sender, EventArgs e)
+        {
+            soundPlayer.Play();
+            List<Song> songDataBase = new List<Song>();
+            songDataBase = OnSearchSongButton_Click();
+            foreach (Song song in songDataBase)
+            {
+                if (SearchSearchResultsDomainUp.Text.Contains("Song:") && song.Format == ".mp3")
+                {
+                    windowsMediaPlayer.controls.play();
+                    DurationTimer.Start();
+                    break;
+                }
+                else if (SearchSearchResultsDomainUp.Text.Contains("Song:") && song.Format == ".wav")
+                {
+
+                    DurationTimer.Start();
+                }
+            }
+        }
+
         private void PlaySongPreviousButton_Click(object sender, EventArgs e)
         {
             List<Song> songDataBase = new List<Song>();
@@ -917,6 +959,6 @@ namespace Entrega3_FyBuZz
             return null;
         }
 
-        
+
     }
 }

@@ -13,7 +13,8 @@ namespace Entrega3_FyBuZz.Controladores
     public class SongController
     {
         List<Song> songDatabase = new List<Song>() {new Song("Safaera","Bad Bunny", "YHLQMDLM","Rimas entertainment LLC", "Trap","20/01/2020","BB Rcds.", 4.9, "Tú tiene' un culo cabrón",".mp3","Bad Bunny ft Jowell & Randy ft Ñengo Flow - Safaera.mp3"),
-                                                    new Song("MAS DE UNA CITA", "Bad Bunny Zion & Lenox", "LAS QUE NO IBAN A SALIR", "Rimas entertainment LLC", "Trap", "10/05/2020", "Z&L Rcds.", 3.5, "Se necesita, ey, más de una cita, ey", ".mp3", "02-Bad-Bunny-Zion-Lennox-MÁS-DE-UNA-CITA.mp3") };
+                                                    new Song("MAS DE UNA CITA", "Bad Bunny Zion & Lenox", "LAS QUE NO IBAN A SALIR", "Rimas entertainment LLC", "Trap", "10/05/2020", "Z&L Rcds.", 3.5, "Se necesita, ey, más de una cita, ey", ".mp3", "02-Bad-Bunny-Zion-Lennox-MÁS-DE-UNA-CITA.mp3"), 
+                                                    new Song("Aplausos durante el confinamiento", "la gente", "covid 2020", "covid disc","Indie","12/05/2020","covid stdio",4,"[Insert Aplausos]",".wav","aplausosduranteelconfinamiento_01.wav")};
 
         FyBuZz fyBuZz;
         DataBase dataBase = new DataBase();
