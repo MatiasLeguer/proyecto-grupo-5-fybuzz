@@ -64,6 +64,9 @@ namespace Entrega3_FyBuZz
 
         public delegate List<Video> ListVideoEventHandler(object source, VideoEventArgs args);
         public event ListVideoEventHandler SearchVideoButton_Clicked;
+
+        public delegate string ChoosePLEventHanlder(object source, PlaylistEventArgs args);
+        public event ChoosePLEventHanlder PlaySongChoosePlsButton_Clicked;
         //--------------------------------------------------------------------------------
 
 
@@ -276,22 +279,295 @@ namespace Entrega3_FyBuZz
 
         private void DisplayStartDisplayPlaylistButton_Click(object sender, EventArgs e)
         {
-            
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            //<<Followed>>
+            if (profile.FollowedPlayList.Count() == 1)
+            {
+                DisplayPlaylistsFollowedPlaylist1.Visible = true;
+                DisplayPlaylistsFollowedPlaylist1.Image = CreateProfilePic1.Image;
+            }
+            else if (profile.FollowedPlayList.Count() == 2)
+            {
+                DisplayPlaylistsFollowedPlaylist1.Visible = true;
+                DisplayPlaylistsFollowedPlaylist2.Visible = true;
+            }
+            else if (profile.FollowedPlayList.Count() == 3)
+            {
+                DisplayPlaylistsFollowedPlaylist1.Visible = true;
+                DisplayPlaylistsFollowedPlaylist2.Visible = true;
+                DisplayPlaylistsFollowedPlaylist3.Visible = true;
+            }
+            else if(profile.FollowedPlayList.Count() > 3)
+            {
+                DisplayPlaylistsFollowedPlaylist1.Visible = true;
+                DisplayPlaylistsFollowedPlaylist2.Visible = true;
+                DisplayPlaylistsFollowedPlaylist3.Visible = true;
+                DisplayPlaylistsMoreFollowedPlaylistButton.Visible = true;
+            }
+            //<<Created>>
+            if (profile.CreatedPlaylist.Count() == 1)
+            {
+                DisplayPlaylistCreatedPlaylistImage1.Visible = true;
+                DisplayPlaylistCreatedPlaylistImage1.Image = CreateProfilePic1.Image;
+            }
+            else if (profile.FollowedPlayList.Count() == 2)
+            {
+                DisplayPlaylistCreatedPlaylistImage1.Visible = true;
+                DisplayPlaylistCreatedPlaylistImage2.Visible = true;
+            }
+            else if (profile.FollowedPlayList.Count() == 3)
+            {
+                DisplayPlaylistCreatedPlaylistImage1.Visible = true;
+                DisplayPlaylistCreatedPlaylistImage2.Visible = true;
+                DisplayPlaylistCreatedPlaylistImage3.Visible = true;
+            }
+            else if (profile.FollowedPlayList.Count() > 3)
+            {
+                DisplayPlaylistCreatedPlaylistImage1.Visible = true;
+                DisplayPlaylistCreatedPlaylistImage2.Visible = true;
+                DisplayPlaylistCreatedPlaylistImage3.Visible = true;
+                DisplayPlaylistCreatedPlaylistButton.Visible = true;
+            }
             DisplayPlaylistPanel.BringToFront();
         }
         private void DisplayPlaylistsGlobalPlaylist1_Click(object sender, EventArgs e)
         {
-            OnDisplayPlaylistsGlobalPlaylist_Click(0);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = playlistDataBase[0].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+
         }
 
         private void DisplayPlaylistsGlobalPlaylist2_Click(object sender, EventArgs e)
         {
-            OnDisplayPlaylistsGlobalPlaylist_Click(1);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = playlistDataBase[1].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
         }
 
         private void DisplayPlaylistsGlobalPlaylist3_Click(object sender, EventArgs e)
         {
-            OnDisplayPlaylistsGlobalPlaylist_Click(2);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = playlistDataBase[2].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+        private void DisplayPlaylistsMoreGlobalPlaylistButton_Click(object sender, EventArgs e)
+        {
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+            if(playlistDataBase.Count > 3)
+            {
+                //Traer un panel que muestre las otras Pls Globales...
+            }
+        }
+        private void DisplayPlaylistsFollowedPlaylist1_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = profile.FollowedPlayList[0].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+
+        private void DisplayPlaylistsFollowedPlaylist2_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = profile.FollowedPlayList[1].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+
+        private void DisplayPlaylistsFollowedPlaylist3_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = profile.FollowedPlayList[2].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+
+        private void DisplayPlaylistsMoreFollowedPlaylistButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void DisplayPlaylistCreatedPlaylistImage1_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = profile.CreatedPlaylist[0].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+
+        private void DisplayPlaylistCreatedPlaylistImage2_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = profile.CreatedPlaylist[1].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+
+        private void DisplayPlaylistCreatedPlaylistImage3_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = profile.CreatedPlaylist[2].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+
+        private void DisplayPlaylistCreatedPlaylistButton_Click(object sender, EventArgs e)
+        {
+
         }
         private void DisplayStartShowAddButton_Click(object sender, EventArgs e)
         {
@@ -356,6 +632,8 @@ namespace Entrega3_FyBuZz
             userDataBase = OnSearchUserButton_Click();
             List<Video> videoDataBase = new List<Video>();
             videoDataBase = OnSearchVideoButton_Click();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
 
             foreach (Song song in songDataBase)
             {
@@ -372,6 +650,14 @@ namespace Entrega3_FyBuZz
                 {
                     SearchSearchResultsDomainUp.Visible = true;
                     SearchSearchResultsDomainUp.Items.Add("User: " + user.SearchedInfoUser());
+                }
+            }
+            foreach(PlayList playlist in playlistDataBase)
+            {
+                if (playlist.InfoPlayList().Contains(search))
+                {
+                    SearchSearchResultsDomainUp.Visible = true;
+                    SearchSearchResultsDomainUp.Items.Add(playlist.DisplayInfoPlayList());
                 }
             }
 
@@ -391,45 +677,70 @@ namespace Entrega3_FyBuZz
             soundPlayer = new SoundPlayer();
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSongButton_Click();
+            List<PlayList> playListsDataBase = new List<PlayList>();
+            playListsDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+            string multimediaType = SearchSearchResultsDomainUp.Text;
 
-            foreach (Song song in songDataBase)
+            if (multimediaType.Contains("Song:") == true && multimediaType.Contains("Artist:") == true)
             {
-                if (song.Format == ".mp3")
+                foreach (Song song in songDataBase)
                 {
-                    string result = SearchSearchResultsDomainUp.Text;
-                    if (result == song.SearchedInfoSong())
+                    if (song.Format == ".mp3")
                     {
-                        PlayerPlayingLabel.Clear();
-                        PlaySongProgressBar.Value = 0;
-                        PlaySongTimerTextBox.ResetText();
-                        windowsMediaPlayer.URL = song.SongFile;
-                        DurationTimer.Interval = 1000;
-                        PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
-                        PlaySongPanel.BringToFront();
-                        PlayerPlayingLabel.AppendText("Playing: " + song.Name);
-                        DurationTimer.Start();
-                        break;
+                        string result = SearchSearchResultsDomainUp.Text;
+                        if (result == song.SearchedInfoSong())
+                        {
+                            PlayerPlayingLabel.Clear();
+                            PlaySongProgressBar.Value = 0;
+                            PlaySongTimerTextBox.ResetText();
+                            windowsMediaPlayer.URL = song.SongFile;
+                            DurationTimer.Interval = 1000;
+                            PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
+                            PlaySongPanel.BringToFront();
+                            PlayerPlayingLabel.AppendText("Playing: " + song.Name);
+                            DurationTimer.Start();
+                            break;
+                        }
                     }
-                }
-                else if(song.Format == ".wav")
-                {
-                    string result = SearchSearchResultsDomainUp.Text;
-                    if (result == song.SearchedInfoSong())
+                    else if (song.Format == ".wav")
                     {
+                        string result = SearchSearchResultsDomainUp.Text;
+                        if (result == song.SearchedInfoSong())
+                        {
 
-                        PlayerPlayingLabel.Clear();
-                        PlaySongProgressBar.Value = 0;
-                        PlaySongTimerTextBox.ResetText();
-                        soundPlayer.SoundLocation = song.SongFile;
-                        soundPlayer.Play();
-                        DurationTimer.Interval = 1000;
-                        PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
-                        PlaySongPanel.BringToFront();
-                        PlayerPlayingLabel.AppendText("Playing: " + song.Name);
-                        DurationTimer.Start();
-                        break;
+                            PlayerPlayingLabel.Clear();
+                            PlaySongProgressBar.Value = 0;
+                            PlaySongTimerTextBox.ResetText();
+                            soundPlayer.SoundLocation = song.SongFile;
+                            soundPlayer.Play();
+                            DurationTimer.Interval = 1000;
+                            PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
+                            PlaySongPanel.BringToFront();
+                            PlayerPlayingLabel.AppendText("Playing: " + song.Name);
+                            DurationTimer.Start();
+                            break;
+                        }
                     }
                 }
+            }
+            else if(multimediaType.Contains("PlayList Name:") == true)
+            {
+                string result = SearchSearchResultsDomainUp.Text;
+                foreach (PlayList playList in playListsDataBase)
+                {
+                    string ex = playList.DisplayInfoPlayList();
+                    if(result == ex)
+                    {
+                        if(playList.Format == ".mp3" || playList.Format == ".wav")
+                        {
+                            foreach(Song song in playList.Songs)
+                            {
+                                PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                            }
+                        }
+                    }
+                }
+                PlayPlaylistPanel.BringToFront();
             }
         }
      
@@ -437,6 +748,7 @@ namespace Entrega3_FyBuZz
         {
             List<User> userDataBase = new List<User>();
             userDataBase = OnSearchUserButton_Click();
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
             User logInUser = OnLoginButtonClicked(UserLogInTextBox.Text, PasswordLogInTextBox.Text);
 
             if (SearchSearchResultsDomainUp.Text.Contains("User:"))
@@ -447,26 +759,71 @@ namespace Entrega3_FyBuZz
                     List<string> listuser = searchedUser.FollowingList;
                     if (result == "User: " + searchedUser.SearchedInfoUser())
                     {
-                        OnSearchFollowButton_Click(logInUser, searchedUser);
+                        OnSearchFollowButton_Click(logInUser, searchedUser,profile);
                     }
                 }
             }
         }
         
 
-        //<<PLAY SONG MP3 PANEL>>
+        //<<PLAY SONG PANEL>>
 
-        private void DurationTimer_Tick(object sender, EventArgs e)
-        {
-            PlaySongProgressBar.Increment(1);      
-            //Falta que se muestre bien el tiempo...
-            PlaySongTimerTextBox.Text = PlaySongProgressBar.Value.ToString();
-        }
         private void PlaySongGoBackButton_Click(object sender, EventArgs e)
         {
             SearchPanel.BringToFront();
-            
-            
+            SearchSearchResultsDomainUp.ResetText();
+
+        }
+        private void PlaySongAddToPlaylistButton_Click(object sender, EventArgs e)
+        {
+            PlaySongMessageTextBox.Clear();
+            PlaySongChoosePlsDomainUp.ResetText();
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            if (profile.CreatedPlaylist.Count() != 0)
+            {
+                foreach(PlayList playList in profile.CreatedPlaylist)
+                {
+                    PlaySongChoosePlsDomainUp.Items.Add(playList.NamePlayList);
+                }
+                PlaySongChoosePlsButton.Visible = true;
+                PlaySongChoosePlsDomainUp.Visible = true;
+            }
+            else
+            {
+                PlaySongMessageTextBox.AppendText("ERROR[!] You don´t have created Playlists");
+            }
+        }
+        private void PlaySongChoosePlsButton_Click(object sender, EventArgs e)
+        {
+            PlaySongMessageTextBox.Clear();
+            List<Song> songDataBase = new List<Song>();
+            string result = SearchSearchResultsDomainUp.Text;
+            string searchedPlaylistName = PlaySongChoosePlsDomainUp.Text;
+            int choosenPl = PlaySongChoosePlsDomainUp.SelectedIndex;
+            songDataBase = OnSearchSongButton_Click();
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            PlaySongChoosePlsButton_Click(songDataBase, profile, result, choosenPl, searchedPlaylistName);
+            SearchSearchResultsDomainUp.ResetText();
+        }
+        
+
+        private void PlaySongDownloadSongButton_Click(object sender, EventArgs e)
+        {
+            //Iria el metodo para descargar canciones
+            User user = OnLoginButtonClicked(UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            if(user.Accountype != "standard")
+            {
+
+            }
+
+        }
+        private void DurationTimer_Tick(object sender, EventArgs e)
+        {
+            PlaySongProgressBar.Increment(1);
+            PlayPlaylistProgressBarBox.Increment(1);
+            //Falta que se muestre bien el tiempo...
+            PlaySongTimerTextBox.Text = PlaySongProgressBar.Value.ToString();
+            PlayPlaylistTimerBox.Text = PlayPlaylistProgressBarBox.Value.ToString();
         }
         private void PlaySongStopButton_Click(object sender, EventArgs e)
         {
@@ -597,6 +954,7 @@ namespace Entrega3_FyBuZz
         private void CreatePlaylistGoBack_Click(object sender, EventArgs e)
         {
             DisplayStartPanel.BringToFront();
+            SearchSearchResultsDomainUp.ResetText();
         }
 
         private void CreatePlaylistCreatePlaylistButton_Click(object sender, EventArgs e)
@@ -607,8 +965,118 @@ namespace Entrega3_FyBuZz
             Profile playlistProfileCreator = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
             bool playlistPrivacy = CreatePlaylistPrivacyCheckBox.Checked; //True si esta checked
             OnCreatePlaylistCreatePlaylistButton_Click(playlistName, playlistFormat, playlistPrivacy, playlistCreator, playlistProfileCreator);
+            OnSearchUserButton_Click();
+        }
+        //<<PLAY PLAYLIST PANEL
+        private void PlayPlaylistGoBackButton_Click(object sender, EventArgs e)
+        {
+            SearchPanel.BringToFront();
+        }
+
+        private void PlayPlaylistChooseMultimediaButton_Click(object sender, EventArgs e)
+        {
+            PlayPlaylistPlayerPanel.Visible = true;
+            List<Song> songDataBase = new List<Song>();
+            songDataBase = OnSearchSongButton_Click();
+            string multimediaType = PlayPlaylistShowMultimedia.Text;
+            if (multimediaType.Contains("Song:") == true && multimediaType.Contains("Artist:") == true)
+            {
+                foreach (Song song in songDataBase)
+                {
+                    if (song.Format == ".mp3")
+                    {
+                        if (multimediaType == song.SearchedInfoSong())
+                        {
+                            PlayerPlayingLabel.Clear();
+                            PlaySongProgressBar.Value = 0;
+                            PlaySongTimerTextBox.ResetText();
+                            windowsMediaPlayer.URL = song.SongFile;
+                            DurationTimer.Interval = 1000;
+                            PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
+
+                            PlayPlaylistMessageBox.AppendText("Playing: " + song.Name);
+                            DurationTimer.Start();
+                            break;
+                        }
+                    }
+                    else if (song.Format == ".wav")
+                    {
+                        if (multimediaType == song.SearchedInfoSong())
+                        {
+
+                            PlayerPlayingLabel.Clear();
+                            PlaySongProgressBar.Value = 0;
+                            PlaySongTimerTextBox.ResetText();
+                            soundPlayer.SoundLocation = song.SongFile;
+                            soundPlayer.Play();
+                            DurationTimer.Interval = 1000;
+                            PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
+
+                            PlayPlaylistMessageBox.AppendText("Playing: " + song.Name);
+                            DurationTimer.Start();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        private void PlayPlaylistRandomButton_Click(object sender, EventArgs e)
+        {
 
         }
+        private void PlayPlaylistPlayButton_Click(object sender, EventArgs e)
+        {
+            soundPlayer.Play();
+            List<Song> songDataBase = new List<Song>();
+            songDataBase = OnSearchSongButton_Click();
+            string ex = PlayPlaylistShowMultimedia.Text;
+            foreach (Song song in songDataBase)
+            {
+                if (PlayPlaylistShowMultimedia.Text.Contains("Song:") && song.Format == ".mp3")
+                {
+                    windowsMediaPlayer.controls.play();
+                    DurationTimer.Start();
+                    break;
+                }
+                else if (PlayPlaylistShowMultimedia.Text.Contains("Song:") && song.Format == ".wav")
+                {
+                    DurationTimer.Start();
+                }
+            }
+        }
+
+        private void PlayPlaylistPauseButton_Click(object sender, EventArgs e)
+        {
+            soundPlayer.Stop();
+            List<Song> songDataBase = new List<Song>();
+            songDataBase = OnSearchSongButton_Click();
+            string ex = PlayPlaylistShowMultimedia.Text;
+            foreach (Song song in songDataBase)
+            {
+                if (PlayPlaylistShowMultimedia.Text.Contains("Song:") && song.Format == ".mp3")
+                {
+                    windowsMediaPlayer.controls.pause();
+                    DurationTimer.Stop();
+                    break;
+                }
+                else if (PlayPlaylistShowMultimedia.Text.Contains("Song:") && song.Format == ".wav")
+                {
+                    DurationTimer.Stop();
+                }
+            }
+        }
+
+        private void PlayPlaylistPreviousButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PlayPlaylistSkipButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
 
         //CREATE VIDEO PANEL -->AL APRETAR ADD VIDEO
         private void AddShowAddVideoButton_Click(object sender, EventArgs e)
@@ -741,6 +1209,26 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
+        private void PlaySongChoosePlsButton_Click(List<Song> songDataBase, Profile profile, string result, int choosenPl, string searchedPL)
+        {
+            if (PlaySongChoosePlsButton_Clicked != null)
+            {
+                string final = PlaySongChoosePlsButton_Clicked(this, new PlaylistEventArgs() { RestultText = result, ChoosenIndex = choosenPl, SongDataBaseText = songDataBase, ProfileCreatorText = profile,SearchedPlaylistNameText = searchedPL });
+                if (final == null)
+                {
+                    PlaySongMessageTextBox.AppendText("Song added succesfully.");
+                    OnSearchUserButton_Click();
+                }
+                else
+                {
+                    PlaySongMessageTextBox.AppendText("ERROR[!] couldn´t add song.");
+                    Thread.Sleep(1000);
+                    PlaySongMessageTextBox.Clear();
+
+                }
+
+            }
+        }
 
         public Profile OnProfilesChooseProfile_Click(string pName, string usr, string pass)
         {
@@ -759,12 +1247,12 @@ namespace Entrega3_FyBuZz
                 return null;
             }
         }
-        public PlayList OnDisplayPlaylistsGlobalPlaylist_Click(int playlistIndex)
+        public List<PlayList> OnDisplayPlaylistsGlobalPlaylist_Click()
         {
             if(DisplayPlaylistsGlobalPlaylist_Clicked != null)
             {
                 List<PlayList> listPlaylist = DisplayPlaylistsGlobalPlaylist_Clicked(this, new PlaylistEventArgs()); //Nose si es necesario darle parametros
-                return listPlaylist[playlistIndex];
+                return listPlaylist;
             }
             return null;
         }
@@ -855,11 +1343,11 @@ namespace Entrega3_FyBuZz
             return null;
 
         }
-        public void OnSearchFollowButton_Click(User userLogIn, User userSearched)
+        public void OnSearchFollowButton_Click(User userLogIn, User userSearched, Profile profilesearched)
         {
             if(SearchFollowButton_Clicked != null)
             {
-                string result = SearchFollowButton_Clicked(this, new UserEventArgs() {UserLogIn = userLogIn, UserSearched = userSearched });
+                string result = SearchFollowButton_Clicked(this, new UserEventArgs() {UserLogIn = userLogIn, UserSearched = userSearched, ProfileUserLogIn = profilesearched });
                 if (result != null)
                 {
                     //Un label que appende el result...
@@ -959,6 +1447,6 @@ namespace Entrega3_FyBuZz
             return null;
         }
 
-
+        
     }
 }

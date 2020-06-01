@@ -67,7 +67,7 @@ namespace Modelos
         //--------------------------------------------------------------------------------------------------
         public List<string> InfoPlayList()                      //Entrega una lista de string con la información de la playlist
         {
-            return new List<string>() { NamePlayList, Format };
+            return new List<string>() { NamePlayList, Format,Creator };
             /*string str = "";
             str += "PlayList Name: " + namePlayList + "\n";
             str += "Play List Format: " + format + "\n";
