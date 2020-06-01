@@ -89,8 +89,7 @@ namespace Entrega3_FyBuZz.Controladores
             int pAge = DateTime.Now.Year - e.BirthdayText.Year;
             Profile prof = new Profile(e.ProfileNameText,"..",e.ProfileTypeText,e.EmailText,e.GenderText, pAge);
             foreach(Profile profile in userDataBase[u].Perfiles)
-            {
-                
+            {   
                 if(profile.ProfileName == prof.ProfileName || profile.Username == prof.ProfileName)
                 {
                     return profile;
@@ -100,6 +99,7 @@ namespace Entrega3_FyBuZz.Controladores
         }
         private List<User> OnSearchUserButton_Click(object sender, RegisterEventArgs e)
         {
+            dataBase.Save_Users(userDataBase);
             return userDataBase;
         }
         private string OnSearchFollowButton_Click(object sender, UserEventArgs e)

@@ -14,5 +14,9 @@ namespace Entrega3_FyBuZz.CustomArgs
         public string FormatText { get; set; }
         public User CreatorText { get; set; }
         public Profile ProfileCreatorText { get; set; }
+        public List<Song> SongDataBaseText { get; set; }
+        public string RestultText { get; set; }
+        public int ChoosenIndex { get; set; }
+        public string SearchedPlaylistNameText { get; set; }
     }
 }

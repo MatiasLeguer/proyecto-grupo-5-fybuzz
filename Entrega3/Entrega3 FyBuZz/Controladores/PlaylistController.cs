@@ -27,6 +27,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz = fyBuZz as FyBuZz;
             this.fyBuZz.DisplayPlaylistsGlobalPlaylist_Clicked += OnDisplayPlaylistsGlobalPlaylist_Clicked;
             this.fyBuZz.CreatePlaylistCreatePlaylistButton_Clicked += CreatePlaylistButton_Clicked;
+            this.fyBuZz.PlaySongChoosePlsButton_Clicked += PlaySongChoosePlsButton_Clicked;
         }
         public void Initialize()
         {
@@ -60,20 +61,51 @@ namespace Entrega3_FyBuZz.Controladores
             {
                 if (playList.Creator == e.CreatorText.Username && playList.ProfileCreator == e.ProfileCreatorText.ProfileName)
                 {
-                    e.ProfileCreatorText.CreatedPlaylist.Add(playList);
-                    e.CreatorText.ProfilePlaylists.Add(playList);
+                    if(e.ProfileCreatorText.CreatedPlaylist.Contains(playList) == false) e.ProfileCreatorText.CreatedPlaylist.Add(playList);
+                    if(e.CreatorText.ProfilePlaylists.Contains(playList) == false) e.CreatorText.ProfilePlaylists.Add(playList);
                 }
             }
             foreach (PlayList playList in privatePlaylistsDatabase)
             {
                 if (playList.Creator == e.CreatorText.Username && playList.ProfileCreator == e.ProfileCreatorText.ProfileName)
                 {
-                    e.ProfileCreatorText.CreatedPlaylist.Add(playList);
+                    if (e.ProfileCreatorText.CreatedPlaylist.Contains(playList) == false) e.ProfileCreatorText.CreatedPlaylist.Add(playList);
                     //usr.ProfilePlaylists.Add(playList); Si la PL es privada no se agrega al usuario, por lo tanto no se puede seguir.
                 }
             }
             dataBase.Save_PLs(playlistDataBase);
             dataBase.Save_PLs_Priv(privatePlaylistsDatabase);
+            return description;
+        }
+        private string PlaySongChoosePlsButton_Clicked(object sender, PlaylistEventArgs e)
+        {
+            string description = null;
+            foreach (PlayList playlist in playlistDataBase)
+            {
+                if(playlist.NamePlayList == e.SearchedPlaylistNameText)
+                {
+                    foreach (Song song in e.SongDataBaseText)
+                    {
+                        string result = e.RestultText;
+                        int choosenPl = e.ChoosenIndex;
+                        if (result == song.SearchedInfoSong() && e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Contains(song) == false && playlist.Songs.Contains(song) == false)
+                        {
+                            e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Add(song);
+                            playlist.Songs.Add(song);
+                            dataBase.Save_PLs(playlistDataBase);
+                            dataBase.Save_PLs_Priv(privatePlaylistsDatabase);
+                            return description;
+
+                        }
+                        else
+                        {
+                            description = "ERROR[!]";
+                        }
+                    }
+                }
+                
+            }
+
             return description;
         }
 
