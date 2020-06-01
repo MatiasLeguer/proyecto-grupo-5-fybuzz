@@ -105,6 +105,7 @@ namespace Entrega3_FyBuZz.Controladores
         private string OnSearchFollowButton_Click(object sender, UserEventArgs e)
         {
             List<string> listuser = e.UserLogIn.FollowingList;
+            List<PlayList> followedPL = e.ProfileUserLogIn.FollowedPlayList;
             string tryingToFollow = e.UserSearched.Username;
             string result = null;
 
@@ -116,8 +117,7 @@ namespace Entrega3_FyBuZz.Controladores
                 {
                     foreach (PlayList Pls in e.UserSearched.ProfilePlaylists)
                     {
-                        //followedPL.Add(Pls);
-
+                        followedPL.Add(Pls);
                     }
                 }
                 /*else

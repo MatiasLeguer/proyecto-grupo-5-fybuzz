@@ -279,22 +279,295 @@ namespace Entrega3_FyBuZz
 
         private void DisplayStartDisplayPlaylistButton_Click(object sender, EventArgs e)
         {
-            
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            //<<Followed>>
+            if (profile.FollowedPlayList.Count() == 1)
+            {
+                DisplayPlaylistsFollowedPlaylist1.Visible = true;
+                DisplayPlaylistsFollowedPlaylist1.Image = CreateProfilePic1.Image;
+            }
+            else if (profile.FollowedPlayList.Count() == 2)
+            {
+                DisplayPlaylistsFollowedPlaylist1.Visible = true;
+                DisplayPlaylistsFollowedPlaylist2.Visible = true;
+            }
+            else if (profile.FollowedPlayList.Count() == 3)
+            {
+                DisplayPlaylistsFollowedPlaylist1.Visible = true;
+                DisplayPlaylistsFollowedPlaylist2.Visible = true;
+                DisplayPlaylistsFollowedPlaylist3.Visible = true;
+            }
+            else if(profile.FollowedPlayList.Count() > 3)
+            {
+                DisplayPlaylistsFollowedPlaylist1.Visible = true;
+                DisplayPlaylistsFollowedPlaylist2.Visible = true;
+                DisplayPlaylistsFollowedPlaylist3.Visible = true;
+                DisplayPlaylistsMoreFollowedPlaylistButton.Visible = true;
+            }
+            //<<Created>>
+            if (profile.CreatedPlaylist.Count() == 1)
+            {
+                DisplayPlaylistCreatedPlaylistImage1.Visible = true;
+                DisplayPlaylistCreatedPlaylistImage1.Image = CreateProfilePic1.Image;
+            }
+            else if (profile.FollowedPlayList.Count() == 2)
+            {
+                DisplayPlaylistCreatedPlaylistImage1.Visible = true;
+                DisplayPlaylistCreatedPlaylistImage2.Visible = true;
+            }
+            else if (profile.FollowedPlayList.Count() == 3)
+            {
+                DisplayPlaylistCreatedPlaylistImage1.Visible = true;
+                DisplayPlaylistCreatedPlaylistImage2.Visible = true;
+                DisplayPlaylistCreatedPlaylistImage3.Visible = true;
+            }
+            else if (profile.FollowedPlayList.Count() > 3)
+            {
+                DisplayPlaylistCreatedPlaylistImage1.Visible = true;
+                DisplayPlaylistCreatedPlaylistImage2.Visible = true;
+                DisplayPlaylistCreatedPlaylistImage3.Visible = true;
+                DisplayPlaylistCreatedPlaylistButton.Visible = true;
+            }
             DisplayPlaylistPanel.BringToFront();
         }
         private void DisplayPlaylistsGlobalPlaylist1_Click(object sender, EventArgs e)
         {
-            //OnDisplayPlaylistsGlobalPlaylist_Click(0);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = playlistDataBase[0].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+
         }
 
         private void DisplayPlaylistsGlobalPlaylist2_Click(object sender, EventArgs e)
         {
-            //OnDisplayPlaylistsGlobalPlaylist_Click(1);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = playlistDataBase[1].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
         }
 
         private void DisplayPlaylistsGlobalPlaylist3_Click(object sender, EventArgs e)
         {
-            //OnDisplayPlaylistsGlobalPlaylist_Click(2);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = playlistDataBase[2].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+        private void DisplayPlaylistsMoreGlobalPlaylistButton_Click(object sender, EventArgs e)
+        {
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+            if(playlistDataBase.Count > 3)
+            {
+                //Traer un panel que muestre las otras Pls Globales...
+            }
+        }
+        private void DisplayPlaylistsFollowedPlaylist1_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = profile.FollowedPlayList[0].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+
+        private void DisplayPlaylistsFollowedPlaylist2_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = profile.FollowedPlayList[1].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+
+        private void DisplayPlaylistsFollowedPlaylist3_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = profile.FollowedPlayList[2].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+
+        private void DisplayPlaylistsMoreFollowedPlaylistButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void DisplayPlaylistCreatedPlaylistImage1_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = profile.CreatedPlaylist[0].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+
+        private void DisplayPlaylistCreatedPlaylistImage2_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = profile.CreatedPlaylist[1].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+
+        private void DisplayPlaylistCreatedPlaylistImage3_Click(object sender, EventArgs e)
+        {
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            soundPlayer = new SoundPlayer();
+            List<PlayList> playlistDataBase = new List<PlayList>();
+            playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            string result = profile.CreatedPlaylist[2].DisplayInfoPlayList();
+            foreach (PlayList playList in playlistDataBase)
+            {
+                string ex = playList.DisplayInfoPlayList();
+                if (result == ex)
+                {
+                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    {
+                        foreach (Song song in playList.Songs)
+                        {
+                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                        }
+                    }
+                }
+            }
+            PlayPlaylistPanel.BringToFront();
+        }
+
+        private void DisplayPlaylistCreatedPlaylistButton_Click(object sender, EventArgs e)
+        {
+
         }
         private void DisplayStartShowAddButton_Click(object sender, EventArgs e)
         {
@@ -475,6 +748,7 @@ namespace Entrega3_FyBuZz
         {
             List<User> userDataBase = new List<User>();
             userDataBase = OnSearchUserButton_Click();
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
             User logInUser = OnLoginButtonClicked(UserLogInTextBox.Text, PasswordLogInTextBox.Text);
 
             if (SearchSearchResultsDomainUp.Text.Contains("User:"))
@@ -485,7 +759,7 @@ namespace Entrega3_FyBuZz
                     List<string> listuser = searchedUser.FollowingList;
                     if (result == "User: " + searchedUser.SearchedInfoUser())
                     {
-                        OnSearchFollowButton_Click(logInUser, searchedUser);
+                        OnSearchFollowButton_Click(logInUser, searchedUser,profile);
                     }
                 }
             }
@@ -1069,11 +1343,11 @@ namespace Entrega3_FyBuZz
             return null;
 
         }
-        public void OnSearchFollowButton_Click(User userLogIn, User userSearched)
+        public void OnSearchFollowButton_Click(User userLogIn, User userSearched, Profile profilesearched)
         {
             if(SearchFollowButton_Clicked != null)
             {
-                string result = SearchFollowButton_Clicked(this, new UserEventArgs() {UserLogIn = userLogIn, UserSearched = userSearched });
+                string result = SearchFollowButton_Clicked(this, new UserEventArgs() {UserLogIn = userLogIn, UserSearched = userSearched, ProfileUserLogIn = profilesearched });
                 if (result != null)
                 {
                     //Un label que appende el result...
@@ -1172,5 +1446,7 @@ namespace Entrega3_FyBuZz
             }
             return null;
         }
+
+        
     }
 }

@@ -171,6 +171,12 @@
             this.AddShowShowLabel = new System.Windows.Forms.Label();
             this.AddShowAddLabel = new System.Windows.Forms.Label();
             this.DisplayPlaylistPanel = new System.Windows.Forms.Panel();
+            this.DisplayPlaylistCreatedPlaylistButton = new System.Windows.Forms.Button();
+            this.DisplayPlaylistCreatedPlaylistImage3 = new System.Windows.Forms.PictureBox();
+            this.DisplayPlaylistCreatedPlaylistImage2 = new System.Windows.Forms.PictureBox();
+            this.DisplayPlaylistCreatedPlaylistImage1 = new System.Windows.Forms.PictureBox();
+            this.DisplayPlaylistCreatedPlaylistLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.DisplayPlaylistGoBackButton = new System.Windows.Forms.Button();
             this.DisplayPlaylistsMoreFollowedPlaylistButton = new System.Windows.Forms.Button();
             this.DisplayPlaylistsMoreGlobalPlaylistButton = new System.Windows.Forms.Button();
@@ -326,6 +332,9 @@
             this.AddShowPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddShowLogo1)).BeginInit();
             this.DisplayPlaylistPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistCreatedPlaylistImage3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistCreatedPlaylistImage2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistCreatedPlaylistImage1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistsFavoritePlaylist2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistsFavoritePlaylist1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistsFollowedPlaylist3)).BeginInit();
@@ -1931,6 +1940,12 @@
             // DisplayPlaylistPanel
             // 
             this.DisplayPlaylistPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.DisplayPlaylistPanel.Controls.Add(this.DisplayPlaylistCreatedPlaylistButton);
+            this.DisplayPlaylistPanel.Controls.Add(this.DisplayPlaylistCreatedPlaylistImage3);
+            this.DisplayPlaylistPanel.Controls.Add(this.DisplayPlaylistCreatedPlaylistImage2);
+            this.DisplayPlaylistPanel.Controls.Add(this.DisplayPlaylistCreatedPlaylistImage1);
+            this.DisplayPlaylistPanel.Controls.Add(this.DisplayPlaylistCreatedPlaylistLabel);
+            this.DisplayPlaylistPanel.Controls.Add(this.label7);
             this.DisplayPlaylistPanel.Controls.Add(this.DisplayPlaylistGoBackButton);
             this.DisplayPlaylistPanel.Controls.Add(this.DisplayPlaylistsMoreFollowedPlaylistButton);
             this.DisplayPlaylistPanel.Controls.Add(this.DisplayPlaylistsMoreGlobalPlaylistButton);
@@ -1953,6 +1968,75 @@
             this.DisplayPlaylistPanel.Size = new System.Drawing.Size(683, 786);
             this.DisplayPlaylistPanel.TabIndex = 8;
             // 
+            // DisplayPlaylistCreatedPlaylistButton
+            // 
+            this.DisplayPlaylistCreatedPlaylistButton.Location = new System.Drawing.Point(548, 591);
+            this.DisplayPlaylistCreatedPlaylistButton.Name = "DisplayPlaylistCreatedPlaylistButton";
+            this.DisplayPlaylistCreatedPlaylistButton.Size = new System.Drawing.Size(108, 34);
+            this.DisplayPlaylistCreatedPlaylistButton.TabIndex = 43;
+            this.DisplayPlaylistCreatedPlaylistButton.Text = "More Playlists";
+            this.DisplayPlaylistCreatedPlaylistButton.UseVisualStyleBackColor = true;
+            this.DisplayPlaylistCreatedPlaylistButton.Visible = false;
+            this.DisplayPlaylistCreatedPlaylistButton.Click += new System.EventHandler(this.DisplayPlaylistCreatedPlaylistButton_Click);
+            // 
+            // DisplayPlaylistCreatedPlaylistImage3
+            // 
+            this.DisplayPlaylistCreatedPlaylistImage3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DisplayPlaylistCreatedPlaylistImage3.Location = new System.Drawing.Point(379, 541);
+            this.DisplayPlaylistCreatedPlaylistImage3.Name = "DisplayPlaylistCreatedPlaylistImage3";
+            this.DisplayPlaylistCreatedPlaylistImage3.Size = new System.Drawing.Size(127, 84);
+            this.DisplayPlaylistCreatedPlaylistImage3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DisplayPlaylistCreatedPlaylistImage3.TabIndex = 42;
+            this.DisplayPlaylistCreatedPlaylistImage3.TabStop = false;
+            this.DisplayPlaylistCreatedPlaylistImage3.Visible = false;
+            this.DisplayPlaylistCreatedPlaylistImage3.Click += new System.EventHandler(this.DisplayPlaylistCreatedPlaylistImage3_Click);
+            // 
+            // DisplayPlaylistCreatedPlaylistImage2
+            // 
+            this.DisplayPlaylistCreatedPlaylistImage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DisplayPlaylistCreatedPlaylistImage2.Location = new System.Drawing.Point(213, 543);
+            this.DisplayPlaylistCreatedPlaylistImage2.Name = "DisplayPlaylistCreatedPlaylistImage2";
+            this.DisplayPlaylistCreatedPlaylistImage2.Size = new System.Drawing.Size(110, 84);
+            this.DisplayPlaylistCreatedPlaylistImage2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DisplayPlaylistCreatedPlaylistImage2.TabIndex = 41;
+            this.DisplayPlaylistCreatedPlaylistImage2.TabStop = false;
+            this.DisplayPlaylistCreatedPlaylistImage2.Visible = false;
+            this.DisplayPlaylistCreatedPlaylistImage2.Click += new System.EventHandler(this.DisplayPlaylistCreatedPlaylistImage2_Click);
+            // 
+            // DisplayPlaylistCreatedPlaylistImage1
+            // 
+            this.DisplayPlaylistCreatedPlaylistImage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DisplayPlaylistCreatedPlaylistImage1.Location = new System.Drawing.Point(53, 546);
+            this.DisplayPlaylistCreatedPlaylistImage1.Name = "DisplayPlaylistCreatedPlaylistImage1";
+            this.DisplayPlaylistCreatedPlaylistImage1.Size = new System.Drawing.Size(103, 84);
+            this.DisplayPlaylistCreatedPlaylistImage1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DisplayPlaylistCreatedPlaylistImage1.TabIndex = 40;
+            this.DisplayPlaylistCreatedPlaylistImage1.TabStop = false;
+            this.DisplayPlaylistCreatedPlaylistImage1.Visible = false;
+            this.DisplayPlaylistCreatedPlaylistImage1.Click += new System.EventHandler(this.DisplayPlaylistCreatedPlaylistImage1_Click);
+            // 
+            // DisplayPlaylistCreatedPlaylistLabel
+            // 
+            this.DisplayPlaylistCreatedPlaylistLabel.AutoSize = true;
+            this.DisplayPlaylistCreatedPlaylistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisplayPlaylistCreatedPlaylistLabel.ForeColor = System.Drawing.Color.White;
+            this.DisplayPlaylistCreatedPlaylistLabel.Location = new System.Drawing.Point(3, 499);
+            this.DisplayPlaylistCreatedPlaylistLabel.Name = "DisplayPlaylistCreatedPlaylistLabel";
+            this.DisplayPlaylistCreatedPlaylistLabel.Size = new System.Drawing.Size(204, 29);
+            this.DisplayPlaylistCreatedPlaylistLabel.TabIndex = 39;
+            this.DisplayPlaylistCreatedPlaylistLabel.Text = "Created Playlists";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(442, 325);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 17);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "Videos";
+            // 
             // DisplayPlaylistGoBackButton
             // 
             this.DisplayPlaylistGoBackButton.Location = new System.Drawing.Point(50, 42);
@@ -1966,30 +2050,32 @@
             // 
             // DisplayPlaylistsMoreFollowedPlaylistButton
             // 
-            this.DisplayPlaylistsMoreFollowedPlaylistButton.Location = new System.Drawing.Point(579, 525);
+            this.DisplayPlaylistsMoreFollowedPlaylistButton.Location = new System.Drawing.Point(548, 443);
             this.DisplayPlaylistsMoreFollowedPlaylistButton.Name = "DisplayPlaylistsMoreFollowedPlaylistButton";
-            this.DisplayPlaylistsMoreFollowedPlaylistButton.Size = new System.Drawing.Size(96, 47);
+            this.DisplayPlaylistsMoreFollowedPlaylistButton.Size = new System.Drawing.Size(108, 34);
             this.DisplayPlaylistsMoreFollowedPlaylistButton.TabIndex = 36;
             this.DisplayPlaylistsMoreFollowedPlaylistButton.Text = "More Playlists";
             this.DisplayPlaylistsMoreFollowedPlaylistButton.UseVisualStyleBackColor = true;
             this.DisplayPlaylistsMoreFollowedPlaylistButton.Visible = false;
+            this.DisplayPlaylistsMoreFollowedPlaylistButton.Click += new System.EventHandler(this.DisplayPlaylistsMoreFollowedPlaylistButton_Click);
             // 
             // DisplayPlaylistsMoreGlobalPlaylistButton
             // 
-            this.DisplayPlaylistsMoreGlobalPlaylistButton.Location = new System.Drawing.Point(579, 301);
+            this.DisplayPlaylistsMoreGlobalPlaylistButton.Location = new System.Drawing.Point(548, 288);
             this.DisplayPlaylistsMoreGlobalPlaylistButton.Name = "DisplayPlaylistsMoreGlobalPlaylistButton";
-            this.DisplayPlaylistsMoreGlobalPlaylistButton.Size = new System.Drawing.Size(96, 47);
+            this.DisplayPlaylistsMoreGlobalPlaylistButton.Size = new System.Drawing.Size(115, 38);
             this.DisplayPlaylistsMoreGlobalPlaylistButton.TabIndex = 35;
             this.DisplayPlaylistsMoreGlobalPlaylistButton.Text = "More Playlists";
             this.DisplayPlaylistsMoreGlobalPlaylistButton.UseVisualStyleBackColor = true;
             this.DisplayPlaylistsMoreGlobalPlaylistButton.Visible = false;
+            this.DisplayPlaylistsMoreGlobalPlaylistButton.Click += new System.EventHandler(this.DisplayPlaylistsMoreGlobalPlaylistButton_Click);
             // 
             // DisplayPlaylistsFavoritePlaylist2
             // 
             this.DisplayPlaylistsFavoritePlaylist2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DisplayPlaylistsFavoritePlaylist2.Location = new System.Drawing.Point(227, 637);
+            this.DisplayPlaylistsFavoritePlaylist2.Location = new System.Drawing.Point(213, 693);
             this.DisplayPlaylistsFavoritePlaylist2.Name = "DisplayPlaylistsFavoritePlaylist2";
-            this.DisplayPlaylistsFavoritePlaylist2.Size = new System.Drawing.Size(144, 128);
+            this.DisplayPlaylistsFavoritePlaylist2.Size = new System.Drawing.Size(102, 72);
             this.DisplayPlaylistsFavoritePlaylist2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DisplayPlaylistsFavoritePlaylist2.TabIndex = 34;
             this.DisplayPlaylistsFavoritePlaylist2.TabStop = false;
@@ -1998,9 +2084,9 @@
             // DisplayPlaylistsFavoritePlaylist1
             // 
             this.DisplayPlaylistsFavoritePlaylist1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DisplayPlaylistsFavoritePlaylist1.Location = new System.Drawing.Point(53, 637);
+            this.DisplayPlaylistsFavoritePlaylist1.Location = new System.Drawing.Point(56, 693);
             this.DisplayPlaylistsFavoritePlaylist1.Name = "DisplayPlaylistsFavoritePlaylist1";
-            this.DisplayPlaylistsFavoritePlaylist1.Size = new System.Drawing.Size(144, 128);
+            this.DisplayPlaylistsFavoritePlaylist1.Size = new System.Drawing.Size(100, 72);
             this.DisplayPlaylistsFavoritePlaylist1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DisplayPlaylistsFavoritePlaylist1.TabIndex = 33;
             this.DisplayPlaylistsFavoritePlaylist1.TabStop = false;
@@ -2009,73 +2095,73 @@
             // DisplayPlaylistsFollowedPlaylist3
             // 
             this.DisplayPlaylistsFollowedPlaylist3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DisplayPlaylistsFollowedPlaylist3.Location = new System.Drawing.Point(399, 444);
+            this.DisplayPlaylistsFollowedPlaylist3.Location = new System.Drawing.Point(379, 393);
             this.DisplayPlaylistsFollowedPlaylist3.Name = "DisplayPlaylistsFollowedPlaylist3";
-            this.DisplayPlaylistsFollowedPlaylist3.Size = new System.Drawing.Size(144, 128);
+            this.DisplayPlaylistsFollowedPlaylist3.Size = new System.Drawing.Size(127, 84);
             this.DisplayPlaylistsFollowedPlaylist3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DisplayPlaylistsFollowedPlaylist3.TabIndex = 32;
             this.DisplayPlaylistsFollowedPlaylist3.TabStop = false;
             this.DisplayPlaylistsFollowedPlaylist3.Visible = false;
+            this.DisplayPlaylistsFollowedPlaylist3.Click += new System.EventHandler(this.DisplayPlaylistsFollowedPlaylist3_Click);
             // 
             // DisplayPlaylistsFollowedPlaylist2
             // 
             this.DisplayPlaylistsFollowedPlaylist2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DisplayPlaylistsFollowedPlaylist2.Location = new System.Drawing.Point(227, 444);
+            this.DisplayPlaylistsFollowedPlaylist2.Location = new System.Drawing.Point(213, 395);
             this.DisplayPlaylistsFollowedPlaylist2.Name = "DisplayPlaylistsFollowedPlaylist2";
-            this.DisplayPlaylistsFollowedPlaylist2.Size = new System.Drawing.Size(144, 128);
+            this.DisplayPlaylistsFollowedPlaylist2.Size = new System.Drawing.Size(110, 84);
             this.DisplayPlaylistsFollowedPlaylist2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DisplayPlaylistsFollowedPlaylist2.TabIndex = 31;
             this.DisplayPlaylistsFollowedPlaylist2.TabStop = false;
             this.DisplayPlaylistsFollowedPlaylist2.Visible = false;
+            this.DisplayPlaylistsFollowedPlaylist2.Click += new System.EventHandler(this.DisplayPlaylistsFollowedPlaylist2_Click);
             // 
             // DisplayPlaylistsFollowedPlaylist1
             // 
             this.DisplayPlaylistsFollowedPlaylist1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DisplayPlaylistsFollowedPlaylist1.Location = new System.Drawing.Point(53, 444);
+            this.DisplayPlaylistsFollowedPlaylist1.Location = new System.Drawing.Point(53, 398);
             this.DisplayPlaylistsFollowedPlaylist1.Name = "DisplayPlaylistsFollowedPlaylist1";
-            this.DisplayPlaylistsFollowedPlaylist1.Size = new System.Drawing.Size(144, 128);
+            this.DisplayPlaylistsFollowedPlaylist1.Size = new System.Drawing.Size(103, 84);
             this.DisplayPlaylistsFollowedPlaylist1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DisplayPlaylistsFollowedPlaylist1.TabIndex = 30;
             this.DisplayPlaylistsFollowedPlaylist1.TabStop = false;
             this.DisplayPlaylistsFollowedPlaylist1.Visible = false;
+            this.DisplayPlaylistsFollowedPlaylist1.Click += new System.EventHandler(this.DisplayPlaylistsFollowedPlaylist1_Click);
             // 
             // DisplayPlaylistsGlobalPlaylist3
             // 
             this.DisplayPlaylistsGlobalPlaylist3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DisplayPlaylistsGlobalPlaylist3.Image = ((System.Drawing.Image)(resources.GetObject("DisplayPlaylistsGlobalPlaylist3.Image")));
-            this.DisplayPlaylistsGlobalPlaylist3.Location = new System.Drawing.Point(399, 230);
+            this.DisplayPlaylistsGlobalPlaylist3.Location = new System.Drawing.Point(379, 229);
             this.DisplayPlaylistsGlobalPlaylist3.Name = "DisplayPlaylistsGlobalPlaylist3";
-            this.DisplayPlaylistsGlobalPlaylist3.Size = new System.Drawing.Size(144, 128);
+            this.DisplayPlaylistsGlobalPlaylist3.Size = new System.Drawing.Size(128, 94);
             this.DisplayPlaylistsGlobalPlaylist3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DisplayPlaylistsGlobalPlaylist3.TabIndex = 29;
             this.DisplayPlaylistsGlobalPlaylist3.TabStop = false;
-            this.DisplayPlaylistsGlobalPlaylist3.Visible = false;
             this.DisplayPlaylistsGlobalPlaylist3.Click += new System.EventHandler(this.DisplayPlaylistsGlobalPlaylist3_Click);
             // 
             // DisplayPlaylistsGlobalPlaylist2
             // 
             this.DisplayPlaylistsGlobalPlaylist2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DisplayPlaylistsGlobalPlaylist2.Image = ((System.Drawing.Image)(resources.GetObject("DisplayPlaylistsGlobalPlaylist2.Image")));
-            this.DisplayPlaylistsGlobalPlaylist2.Location = new System.Drawing.Point(227, 230);
+            this.DisplayPlaylistsGlobalPlaylist2.Location = new System.Drawing.Point(213, 232);
             this.DisplayPlaylistsGlobalPlaylist2.Name = "DisplayPlaylistsGlobalPlaylist2";
-            this.DisplayPlaylistsGlobalPlaylist2.Size = new System.Drawing.Size(144, 128);
+            this.DisplayPlaylistsGlobalPlaylist2.Size = new System.Drawing.Size(110, 94);
             this.DisplayPlaylistsGlobalPlaylist2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DisplayPlaylistsGlobalPlaylist2.TabIndex = 28;
             this.DisplayPlaylistsGlobalPlaylist2.TabStop = false;
-            this.DisplayPlaylistsGlobalPlaylist2.Visible = false;
             this.DisplayPlaylistsGlobalPlaylist2.Click += new System.EventHandler(this.DisplayPlaylistsGlobalPlaylist2_Click);
             // 
             // DisplayPlaylistsGlobalPlaylist1
             // 
             this.DisplayPlaylistsGlobalPlaylist1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DisplayPlaylistsGlobalPlaylist1.Image = ((System.Drawing.Image)(resources.GetObject("DisplayPlaylistsGlobalPlaylist1.Image")));
-            this.DisplayPlaylistsGlobalPlaylist1.Location = new System.Drawing.Point(53, 230);
+            this.DisplayPlaylistsGlobalPlaylist1.Location = new System.Drawing.Point(56, 230);
             this.DisplayPlaylistsGlobalPlaylist1.Name = "DisplayPlaylistsGlobalPlaylist1";
-            this.DisplayPlaylistsGlobalPlaylist1.Size = new System.Drawing.Size(144, 128);
+            this.DisplayPlaylistsGlobalPlaylist1.Size = new System.Drawing.Size(103, 94);
             this.DisplayPlaylistsGlobalPlaylist1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DisplayPlaylistsGlobalPlaylist1.TabIndex = 27;
             this.DisplayPlaylistsGlobalPlaylist1.TabStop = false;
-            this.DisplayPlaylistsGlobalPlaylist1.Visible = false;
             this.DisplayPlaylistsGlobalPlaylist1.Click += new System.EventHandler(this.DisplayPlaylistsGlobalPlaylist1_Click);
             // 
             // DisplayPlaylistFavoritePlaylistLabel
@@ -2083,7 +2169,7 @@
             this.DisplayPlaylistFavoritePlaylistLabel.AutoSize = true;
             this.DisplayPlaylistFavoritePlaylistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DisplayPlaylistFavoritePlaylistLabel.ForeColor = System.Drawing.Color.White;
-            this.DisplayPlaylistFavoritePlaylistLabel.Location = new System.Drawing.Point(19, 595);
+            this.DisplayPlaylistFavoritePlaylistLabel.Location = new System.Drawing.Point(13, 642);
             this.DisplayPlaylistFavoritePlaylistLabel.Name = "DisplayPlaylistFavoritePlaylistLabel";
             this.DisplayPlaylistFavoritePlaylistLabel.Size = new System.Drawing.Size(193, 29);
             this.DisplayPlaylistFavoritePlaylistLabel.TabIndex = 26;
@@ -2094,7 +2180,7 @@
             this.DisplayPlaylistFollowedPlaylistLabel.AutoSize = true;
             this.DisplayPlaylistFollowedPlaylistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DisplayPlaylistFollowedPlaylistLabel.ForeColor = System.Drawing.Color.White;
-            this.DisplayPlaylistFollowedPlaylistLabel.Location = new System.Drawing.Point(19, 384);
+            this.DisplayPlaylistFollowedPlaylistLabel.Location = new System.Drawing.Point(2, 338);
             this.DisplayPlaylistFollowedPlaylistLabel.Name = "DisplayPlaylistFollowedPlaylistLabel";
             this.DisplayPlaylistFollowedPlaylistLabel.Size = new System.Drawing.Size(216, 29);
             this.DisplayPlaylistFollowedPlaylistLabel.TabIndex = 25;
@@ -3336,18 +3422,18 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(683, 786);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.DisplayPlaylistPanel);
+            this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.CreateVideoPanel);
-            this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
             this.Controls.Add(this.AdminMenuPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.CreateProfilePanel);
             this.Controls.Add(this.CreateSongPanel);
-            this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.LogInPanel);
             this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.PlayVideoPanel);
@@ -3398,6 +3484,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.AddShowLogo1)).EndInit();
             this.DisplayPlaylistPanel.ResumeLayout(false);
             this.DisplayPlaylistPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistCreatedPlaylistImage3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistCreatedPlaylistImage2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistCreatedPlaylistImage1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistsFavoritePlaylist2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistsFavoritePlaylist1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistsFollowedPlaylist3)).EndInit();
@@ -3696,5 +3785,11 @@
         private System.Windows.Forms.ProgressBar PlayPlaylistProgressBarBox;
         private System.Windows.Forms.Button PlayPlaylistPreviousButton;
         private System.Windows.Forms.Button PlayPlaylistPauseButton;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button DisplayPlaylistCreatedPlaylistButton;
+        private System.Windows.Forms.PictureBox DisplayPlaylistCreatedPlaylistImage3;
+        private System.Windows.Forms.PictureBox DisplayPlaylistCreatedPlaylistImage2;
+        private System.Windows.Forms.PictureBox DisplayPlaylistCreatedPlaylistImage1;
+        private System.Windows.Forms.Label DisplayPlaylistCreatedPlaylistLabel;
     }
 }
