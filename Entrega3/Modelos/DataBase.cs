@@ -284,7 +284,7 @@ namespace Modelos
 
                     if (description == null)
                     {
-                        Video video = new Video(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], multInfo[7], Convert.ToBoolean(multInfo[8]), double.Parse(multInfo[9]), multInfo[10], multInfo[11]);
+                        Video video = new Video(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], multInfo[7], double.Parse(multInfo[8]), multInfo[9], multInfo[10], multInfo[11], Convert.ToBoolean(multInfo[12]));
                         listVideosGlobal.Add(video);
 
                         //Escribir de alguna forma de que se ha agregado al sistema.

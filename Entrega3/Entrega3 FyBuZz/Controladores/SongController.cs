@@ -22,7 +22,7 @@ namespace Entrega3_FyBuZz.Controladores
             Initialize();
             this.fyBuZz = fyBuZz as FyBuZz;
             this.fyBuZz.CreateSongCreateSongButton_Clicked += OnCreateSongCreateSongButton_Clicked;
-            this.fyBuZz.SearchSearchButton_Clicked += OnSearchSearchButton_Clicked;
+            this.fyBuZz.SearchSongButton_Clicked += OnSearchSongButton_Clicked;
         }
 
         public void Initialize()
@@ -49,7 +49,7 @@ namespace Entrega3_FyBuZz.Controladores
                 return false;
             }
         }
-        private List<Song> OnSearchSearchButton_Clicked(object sender, SongEventArgs e)
+        private List<Song> OnSearchSongButton_Clicked(object sender, SongEventArgs e)
         {
             return songDatabase;
         }

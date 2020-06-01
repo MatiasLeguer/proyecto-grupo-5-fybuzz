@@ -11,8 +11,8 @@ namespace Modelos
     {
         //ATRIBUTOS:
 
-        protected string[] videoDimension;
-        protected string[] quality;
+        protected string videoDimension;
+        protected string quality;
         protected int memorySize; //No se si colocarlo o no en el constructor ya que nadie pone el peso de su video youtube. Se pone solo
         protected string category;
         protected string description;
@@ -21,6 +21,7 @@ namespace Modelos
         protected string subtitles;
         protected string actors;
         protected string directors;
+        protected string fileName;
         //--------------------------------------------------------------------------------------------------
 
         //GETTERS Y SETTERS:
@@ -31,23 +32,23 @@ namespace Modelos
 
         //CONSTRUCTOR:
         //--------------------------------------------------------------------------------------------------
-        public Video(string name, string actors, string directors, string date, string videoDimension, string quality, string category, string description, bool image, double duration, string subtitles, string format)
+        public Video(string name, string actors, string directors, string date, string videoDimension, string quality, string category, string description, double duration, string subtitles, string format, string fileName, bool image)
         {
             this.name = name;
+            this.actors = actors;
+            this.directors = directors;
             this.date = date;
-            this.videoDimension = videoDimension.Split(':');
-            this.quality = quality.Split('x');
+            this.videoDimension = videoDimension;
+            this.quality = quality;
             this.category = category;
             this.description = description;
+            this.duration = duration;
+            this.format = format;
+            this.subtitles = subtitles;
+            this.fileName = fileName;
             this.rated = 0;
             this.image = image;
             this.ranking = 0;
-            this.duration = duration;
-            this.subtitles = subtitles;
-            this.format = format;
-            this.actors = actors;
-            this.directors = directors;
-
         }
         //--------------------------------------------------------------------------------------------------
 
@@ -57,7 +58,7 @@ namespace Modelos
         //--------------------------------------------------------------------------------------------------
         public List<string> InfoVideo()                    //Entrega una lista de strings con la infromación de la clase video.
         {
-            return new List<string>() { name, actors, directors, quality[0] + ":" + quality[1], category, rated.ToString(), ranking.ToString(), description }; //Agregar más atributos?
+            return new List<string>() { name, actors, directors, quality, category, rated.ToString(), ranking.ToString(), description }; //Agregar más atributos?
         }
         public string DisplayInfoVideo()                   //Entrega un string con la información de la clase video
         {
