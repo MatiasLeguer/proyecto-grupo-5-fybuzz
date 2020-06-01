@@ -267,17 +267,17 @@
             this.PlaySongPanel = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.PlaySongGoBackButton = new System.Windows.Forms.Button();
+            this.PlayerPanel = new System.Windows.Forms.Panel();
+            this.PlayerPlayingLabel = new System.Windows.Forms.TextBox();
+            this.PlaySongSkipButton = new System.Windows.Forms.Button();
+            this.PlaySongTimerTextBox = new System.Windows.Forms.TextBox();
+            this.PlaySongPreviousButton = new System.Windows.Forms.Button();
+            this.PlaySongPauseButton = new System.Windows.Forms.Button();
+            this.PlaySongProgressBar = new System.Windows.Forms.ProgressBar();
+            this.PlaySongPlayButton = new System.Windows.Forms.Button();
             this.PlaySongImageBoxImage = new System.Windows.Forms.PictureBox();
             this.PlaySongLabel = new System.Windows.Forms.Label();
             this.PlayVideoPanel = new System.Windows.Forms.Panel();
-            this.PlaySongPlayButton = new System.Windows.Forms.Button();
-            this.PlaySongProgressBar = new System.Windows.Forms.ProgressBar();
-            this.PlaySongPauseButton = new System.Windows.Forms.Button();
-            this.PlaySongPreviousButton = new System.Windows.Forms.Button();
-            this.PlaySongTimerTextBox = new System.Windows.Forms.TextBox();
-            this.PlaySongSkipButton = new System.Windows.Forms.Button();
-            this.PlayerPlayingLabel = new System.Windows.Forms.TextBox();
-            this.PlayerPanel = new System.Windows.Forms.Panel();
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -323,8 +323,8 @@
             this.CreateVideoPanel.SuspendLayout();
             this.CreatePlaylistPanel.SuspendLayout();
             this.PlaySongPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PlaySongImageBoxImage)).BeginInit();
             this.PlayerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PlaySongImageBoxImage)).BeginInit();
             this.SuspendLayout();
             // 
             // WelcomePanel
@@ -2973,6 +2973,100 @@
             this.PlaySongGoBackButton.UseVisualStyleBackColor = true;
             this.PlaySongGoBackButton.Click += new System.EventHandler(this.PlaySongGoBackButton_Click);
             // 
+            // PlayerPanel
+            // 
+            this.PlayerPanel.BackColor = System.Drawing.Color.Black;
+            this.PlayerPanel.Controls.Add(this.PlayerPlayingLabel);
+            this.PlayerPanel.Controls.Add(this.PlaySongSkipButton);
+            this.PlayerPanel.Controls.Add(this.PlaySongTimerTextBox);
+            this.PlayerPanel.Controls.Add(this.PlaySongPreviousButton);
+            this.PlayerPanel.Controls.Add(this.PlaySongPauseButton);
+            this.PlayerPanel.Controls.Add(this.PlaySongProgressBar);
+            this.PlayerPanel.Controls.Add(this.PlaySongPlayButton);
+            this.PlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PlayerPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayerPanel.ForeColor = System.Drawing.Color.White;
+            this.PlayerPanel.Location = new System.Drawing.Point(0, 645);
+            this.PlayerPanel.Name = "PlayerPanel";
+            this.PlayerPanel.Size = new System.Drawing.Size(683, 141);
+            this.PlayerPanel.TabIndex = 6;
+            // 
+            // PlayerPlayingLabel
+            // 
+            this.PlayerPlayingLabel.BackColor = System.Drawing.Color.Black;
+            this.PlayerPlayingLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerPlayingLabel.ForeColor = System.Drawing.Color.White;
+            this.PlayerPlayingLabel.Location = new System.Drawing.Point(127, 16);
+            this.PlayerPlayingLabel.Name = "PlayerPlayingLabel";
+            this.PlayerPlayingLabel.Size = new System.Drawing.Size(410, 20);
+            this.PlayerPlayingLabel.TabIndex = 35;
+            this.PlayerPlayingLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // PlaySongSkipButton
+            // 
+            this.PlaySongSkipButton.ForeColor = System.Drawing.Color.Black;
+            this.PlaySongSkipButton.Location = new System.Drawing.Point(446, 54);
+            this.PlaySongSkipButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PlaySongSkipButton.Name = "PlaySongSkipButton";
+            this.PlaySongSkipButton.Size = new System.Drawing.Size(89, 37);
+            this.PlaySongSkipButton.TabIndex = 33;
+            this.PlaySongSkipButton.Text = "Skip";
+            this.PlaySongSkipButton.UseVisualStyleBackColor = true;
+            this.PlaySongSkipButton.Click += new System.EventHandler(this.PlaySongSkipButton_Click);
+            // 
+            // PlaySongTimerTextBox
+            // 
+            this.PlaySongTimerTextBox.BackColor = System.Drawing.Color.Black;
+            this.PlaySongTimerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlaySongTimerTextBox.ForeColor = System.Drawing.Color.White;
+            this.PlaySongTimerTextBox.Location = new System.Drawing.Point(634, 105);
+            this.PlaySongTimerTextBox.Name = "PlaySongTimerTextBox";
+            this.PlaySongTimerTextBox.Size = new System.Drawing.Size(41, 20);
+            this.PlaySongTimerTextBox.TabIndex = 34;
+            // 
+            // PlaySongPreviousButton
+            // 
+            this.PlaySongPreviousButton.ForeColor = System.Drawing.Color.Black;
+            this.PlaySongPreviousButton.Location = new System.Drawing.Point(111, 53);
+            this.PlaySongPreviousButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PlaySongPreviousButton.Name = "PlaySongPreviousButton";
+            this.PlaySongPreviousButton.Size = new System.Drawing.Size(101, 37);
+            this.PlaySongPreviousButton.TabIndex = 32;
+            this.PlaySongPreviousButton.Text = "Previous";
+            this.PlaySongPreviousButton.UseVisualStyleBackColor = true;
+            this.PlaySongPreviousButton.Click += new System.EventHandler(this.PlaySongPreviousButton_Click);
+            // 
+            // PlaySongPauseButton
+            // 
+            this.PlaySongPauseButton.ForeColor = System.Drawing.Color.Black;
+            this.PlaySongPauseButton.Location = new System.Drawing.Point(346, 53);
+            this.PlaySongPauseButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PlaySongPauseButton.Name = "PlaySongPauseButton";
+            this.PlaySongPauseButton.Size = new System.Drawing.Size(80, 37);
+            this.PlaySongPauseButton.TabIndex = 31;
+            this.PlaySongPauseButton.Text = "Pause";
+            this.PlaySongPauseButton.UseVisualStyleBackColor = true;
+            this.PlaySongPauseButton.Click += new System.EventHandler(this.PlaySongPauseButton_Click);
+            // 
+            // PlaySongProgressBar
+            // 
+            this.PlaySongProgressBar.Location = new System.Drawing.Point(64, 105);
+            this.PlaySongProgressBar.Name = "PlaySongProgressBar";
+            this.PlaySongProgressBar.Size = new System.Drawing.Size(561, 20);
+            this.PlaySongProgressBar.TabIndex = 7;
+            // 
+            // PlaySongPlayButton
+            // 
+            this.PlaySongPlayButton.ForeColor = System.Drawing.Color.Black;
+            this.PlaySongPlayButton.Location = new System.Drawing.Point(235, 53);
+            this.PlaySongPlayButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PlaySongPlayButton.Name = "PlaySongPlayButton";
+            this.PlaySongPlayButton.Size = new System.Drawing.Size(88, 37);
+            this.PlaySongPlayButton.TabIndex = 30;
+            this.PlaySongPlayButton.Text = "Play";
+            this.PlaySongPlayButton.UseVisualStyleBackColor = true;
+            this.PlaySongPlayButton.Click += new System.EventHandler(this.PlaySongPlayButton_Click);
+            // 
             // PlaySongImageBoxImage
             // 
             this.PlaySongImageBoxImage.Image = ((System.Drawing.Image)(resources.GetObject("PlaySongImageBoxImage.Image")));
@@ -3003,109 +3097,15 @@
             this.PlayVideoPanel.Size = new System.Drawing.Size(683, 786);
             this.PlayVideoPanel.TabIndex = 14;
             // 
-            // PlaySongPlayButton
-            // 
-            this.PlaySongPlayButton.ForeColor = System.Drawing.Color.Black;
-            this.PlaySongPlayButton.Location = new System.Drawing.Point(235, 53);
-            this.PlaySongPlayButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.PlaySongPlayButton.Name = "PlaySongPlayButton";
-            this.PlaySongPlayButton.Size = new System.Drawing.Size(88, 37);
-            this.PlaySongPlayButton.TabIndex = 30;
-            this.PlaySongPlayButton.Text = "Play";
-            this.PlaySongPlayButton.UseVisualStyleBackColor = true;
-            this.PlaySongPlayButton.Click += new System.EventHandler(this.PlaySongPlayButton_Click);
-            // 
-            // PlaySongProgressBar
-            // 
-            this.PlaySongProgressBar.Location = new System.Drawing.Point(64, 105);
-            this.PlaySongProgressBar.Name = "PlaySongProgressBar";
-            this.PlaySongProgressBar.Size = new System.Drawing.Size(561, 20);
-            this.PlaySongProgressBar.TabIndex = 7;
-            // 
-            // PlaySongPauseButton
-            // 
-            this.PlaySongPauseButton.ForeColor = System.Drawing.Color.Black;
-            this.PlaySongPauseButton.Location = new System.Drawing.Point(346, 53);
-            this.PlaySongPauseButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.PlaySongPauseButton.Name = "PlaySongPauseButton";
-            this.PlaySongPauseButton.Size = new System.Drawing.Size(80, 37);
-            this.PlaySongPauseButton.TabIndex = 31;
-            this.PlaySongPauseButton.Text = "Pause";
-            this.PlaySongPauseButton.UseVisualStyleBackColor = true;
-            this.PlaySongPauseButton.Click += new System.EventHandler(this.PlaySongPauseButton_Click);
-            // 
-            // PlaySongPreviousButton
-            // 
-            this.PlaySongPreviousButton.ForeColor = System.Drawing.Color.Black;
-            this.PlaySongPreviousButton.Location = new System.Drawing.Point(111, 53);
-            this.PlaySongPreviousButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.PlaySongPreviousButton.Name = "PlaySongPreviousButton";
-            this.PlaySongPreviousButton.Size = new System.Drawing.Size(101, 37);
-            this.PlaySongPreviousButton.TabIndex = 32;
-            this.PlaySongPreviousButton.Text = "Previous";
-            this.PlaySongPreviousButton.UseVisualStyleBackColor = true;
-            this.PlaySongPreviousButton.Click += new System.EventHandler(this.PlaySongPreviousButton_Click);
-            // 
-            // PlaySongTimerTextBox
-            // 
-            this.PlaySongTimerTextBox.BackColor = System.Drawing.Color.Black;
-            this.PlaySongTimerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlaySongTimerTextBox.ForeColor = System.Drawing.Color.White;
-            this.PlaySongTimerTextBox.Location = new System.Drawing.Point(634, 105);
-            this.PlaySongTimerTextBox.Name = "PlaySongTimerTextBox";
-            this.PlaySongTimerTextBox.Size = new System.Drawing.Size(41, 20);
-            this.PlaySongTimerTextBox.TabIndex = 34;
-            // 
-            // PlaySongSkipButton
-            // 
-            this.PlaySongSkipButton.ForeColor = System.Drawing.Color.Black;
-            this.PlaySongSkipButton.Location = new System.Drawing.Point(446, 54);
-            this.PlaySongSkipButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.PlaySongSkipButton.Name = "PlaySongSkipButton";
-            this.PlaySongSkipButton.Size = new System.Drawing.Size(89, 37);
-            this.PlaySongSkipButton.TabIndex = 33;
-            this.PlaySongSkipButton.Text = "Skip";
-            this.PlaySongSkipButton.UseVisualStyleBackColor = true;
-            this.PlaySongSkipButton.Click += new System.EventHandler(this.PlaySongSkipButton_Click);
-            // 
-            // PlayerPlayingLabel
-            // 
-            this.PlayerPlayingLabel.BackColor = System.Drawing.Color.Black;
-            this.PlayerPlayingLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerPlayingLabel.ForeColor = System.Drawing.Color.White;
-            this.PlayerPlayingLabel.Location = new System.Drawing.Point(127, 16);
-            this.PlayerPlayingLabel.Name = "PlayerPlayingLabel";
-            this.PlayerPlayingLabel.Size = new System.Drawing.Size(410, 20);
-            this.PlayerPlayingLabel.TabIndex = 35;
-            this.PlayerPlayingLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // PlayerPanel
-            // 
-            this.PlayerPanel.BackColor = System.Drawing.Color.Black;
-            this.PlayerPanel.Controls.Add(this.PlayerPlayingLabel);
-            this.PlayerPanel.Controls.Add(this.PlaySongSkipButton);
-            this.PlayerPanel.Controls.Add(this.PlaySongTimerTextBox);
-            this.PlayerPanel.Controls.Add(this.PlaySongPreviousButton);
-            this.PlayerPanel.Controls.Add(this.PlaySongPauseButton);
-            this.PlayerPanel.Controls.Add(this.PlaySongProgressBar);
-            this.PlayerPanel.Controls.Add(this.PlaySongPlayButton);
-            this.PlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PlayerPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayerPanel.ForeColor = System.Drawing.Color.White;
-            this.PlayerPanel.Location = new System.Drawing.Point(0, 645);
-            this.PlayerPanel.Name = "PlayerPanel";
-            this.PlayerPanel.Size = new System.Drawing.Size(683, 141);
-            this.PlayerPanel.TabIndex = 6;
-            // 
             // FyBuZz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(683, 786);
+            this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.PlaySongPanel);
-            this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.CreateVideoPanel);
@@ -3184,9 +3184,9 @@
             this.CreatePlaylistPanel.PerformLayout();
             this.PlaySongPanel.ResumeLayout(false);
             this.PlaySongPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PlaySongImageBoxImage)).EndInit();
             this.PlayerPanel.ResumeLayout(false);
             this.PlayerPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PlaySongImageBoxImage)).EndInit();
             this.ResumeLayout(false);
 
         }
