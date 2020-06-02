@@ -679,6 +679,9 @@ namespace Entrega3_FyBuZz
             songDataBase = OnSearchSongButton_Click();
             List<PlayList> playListsDataBase = new List<PlayList>();
             playListsDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+            List<Video> videoDataBase = OnSearchVideoButton_Click();
+
+
             string multimediaType = SearchSearchResultsDomainUp.Text;
 
             if (multimediaType.Contains("Song:") == true && multimediaType.Contains("Artist:") == true)
@@ -742,6 +745,20 @@ namespace Entrega3_FyBuZz
                 }
                 PlayPlaylistPanel.BringToFront();
             }
+
+            else if(multimediaType.Contains("Video:") == true)
+            {
+                foreach(Video video in videoDataBase)
+                {
+                    string result = SearchSearchResultsDomainUp.Text;
+                    if (result == video.SearchedInfoVideo())
+                    {
+                        PlayVideoPanel.BringToFront();
+                        wmpVideo.URL = video.FileName;
+                    }
+                }
+            }
+
         }
      
         private void SearchFollowButton_Click(object sender, EventArgs e)
@@ -1447,6 +1464,29 @@ namespace Entrega3_FyBuZz
             return null;
         }
 
-        
+
+        //PlayVideoPanel
+        //--------------------------------------
+
+
+        private void PlayVideoPlayButton_Click(object sender, EventArgs e)
+        {
+            wmpVideo.Ctlcontrols.play();
+        }
+
+        private void PlayVideoPauseButton_Click(object sender, EventArgs e)
+        {
+            wmpVideo.Ctlcontrols.pause();
+        }
+
+        private void PlayVideoStopButton_Click(object sender, EventArgs e)
+        {
+            wmpVideo.Ctlcontrols.stop();
+        }
+
+        private void PlayVideoGoBackButton_Click(object sender, EventArgs e)
+        {
+            SearchPanel.BringToFront();
+        }
     }
 }
