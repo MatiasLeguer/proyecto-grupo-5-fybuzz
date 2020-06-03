@@ -25,10 +25,12 @@ namespace Entrega3_FyBuZz.Controladores
         {
             Initialize();
             this.fyBuZz = fyBuZz as FyBuZz;
+            this.fyBuZz.LogInLogInButton_Clicked2 += userGetter;
+            this.fyBuZz.GetProfileNames += GetUserProfiles;
             this.fyBuZz.LogInLogInButton_Clicked += OnLoginButtonClicked;
             this.fyBuZz.RegisterRegisterButton_Clicked += OnRegisterRegisterButtonClicked;
             this.fyBuZz.CreateProfileCreateProfileButton_Clicked += OnCreateProfileCreateProfileButton_Clicked;
-            this.fyBuZz.ProfilesChooseProfile_Clicked += OnProfilesChooseProfile_Click;
+            this.fyBuZz.ProfilesChooseProfile_Clicked2 += OnProfilesChooseProfile_Click;
             this.fyBuZz.SearchUserButton_Clicked += OnSearchUserButton_Click;
             this.fyBuZz.SearchFollowButton_Clicked += OnSearchFollowButton_Click;
         }
@@ -65,7 +67,7 @@ namespace Entrega3_FyBuZz.Controladores
             dataBase.Save_Users(userDataBase);
             return x;
         }
-        private Profile OnCreateProfileCreateProfileButton_Clicked(object sender, ProfileEventArgs e)
+        private string OnCreateProfileCreateProfileButton_Clicked(object sender, ProfileEventArgs e)
         {
             int u = UserIndex(e);
             if (userDataBase[u].Accountype == "premium")
@@ -76,15 +78,78 @@ namespace Entrega3_FyBuZz.Controladores
                 Profile profile = userDataBase[u].CreateProfile(e.ProfileNameText, pPic, e.ProfileTypeText, e.EmailText, e.GenderText, pAge);
                 userDataBase[u].Perfiles.Add(profile);
                 dataBase.Save_Users(userDataBase);
-                return profile;
+                return profile.ProfileName;
             }
             else
             {
                 return null;
             }
         }
-        private Profile OnProfilesChooseProfile_Click(object sender, ProfileEventArgs e)
+
+        private List<string> userGetter(object sender, UserEventArgs e)
         {
+            List<string> userGetterString = new List<string>();
+            foreach(User user in userDataBase)
+            {
+                if(user.Username == e.UsernameText)
+                {
+                    userGetterString.Add(user.Username);
+                    userGetterString.Add(user.Password);
+                    userGetterString.Add(user.Email);
+                    userGetterString.Add(user.Accountype);
+                    userGetterString.Add(user.Followers.ToString());
+                    userGetterString.Add(user.Following.ToString());
+                    userGetterString.Add(user.Verified.ToString());
+                    userGetterString.Add(user.AdsOn.ToString());
+                    userGetterString.Add(user.Privacy.ToString());
+                }
+            }
+            if(userGetterString.Count == 0)
+            {
+                return null;
+            }
+            return userGetterString;
+        }
+        private List<List<string>> userListsGetter(object sender, UserEventArgs e)
+        {
+            List<List<string>> userGetterList = new List<List<string>>();
+            foreach (User user in userDataBase)
+            {
+                if (user.Username == e.UsernameText)
+                {
+                    userGetterList.Add(user.FollowingList);
+                    userGetterList.Add(user.FollowerList);
+                }
+            }
+            if (userGetterList.Count == 0)
+            {
+                return null;
+            }
+            return userGetterList;
+        }
+        private List<string> GetUserProfiles(object sender, UserEventArgs e)
+        {
+            List<string> userProfileList = new List<string>();
+            foreach (User user in userDataBase)
+            {
+                string usr = user.Username;
+                if (user.Username == e.UsernameText)
+                {
+                    foreach(Profile profile in user.Perfiles)
+                    {
+                        userProfileList.Add(profile.ProfileName);
+                    }
+                }
+            }
+            if (userProfileList.Count == 0)
+            {
+                return null;
+            }
+            return userProfileList;
+        }
+        private List<string> OnProfilesChooseProfile_Click(object sender, ProfileEventArgs e)
+        {
+            List<string> profileGetterString = new List<string>();
             int u = UserIndex(e);
             int pAge = DateTime.Now.Year - e.BirthdayText.Year;
             Profile prof = new Profile(e.ProfileNameText,"..",e.ProfileTypeText,e.EmailText,e.GenderText, pAge);
@@ -92,10 +157,17 @@ namespace Entrega3_FyBuZz.Controladores
             {   
                 if(profile.ProfileName == prof.ProfileName || profile.Username == prof.ProfileName)
                 {
-                    return profile;
+                    profileGetterString.Add(profile.ProfileName);
+                    profileGetterString.Add(profile.ProfileType);
+                    profileGetterString.Add(profile.Gender);
+                    profileGetterString.Add(profile.Age.ToString());
                 }
             }
-            return null;
+            if(profileGetterString.Count() == 0)
+            {
+                return null;
+            }
+            return profileGetterString;
         }
         private List<User> OnSearchUserButton_Click(object sender, RegisterEventArgs e)
         {
