@@ -934,11 +934,32 @@ namespace Entrega3_FyBuZz
 
         private void PlaySongDownloadSongButton_Click(object sender, EventArgs e)
         {
-            //Iria el metodo para descargar canciones
-            User user = OnLoginButtonClicked(UserLogInTextBox.Text, PasswordLogInTextBox.Text);
-            if(user.Accountype != "standard")
+            PlaySongMessageTextBox.Clear();
+            List<string> listUser = OnLogInLogInButton_Clicked2(UserLogInTextBox.Text);
+            if (listUser[3] != "standard")
             {
-
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                string destDirectory = desktopPath + "\\Downloaded-Songs-FyBuZz";
+                if (System.IO.Directory.Exists(destDirectory) == false)
+                {         
+                    System.IO.Directory.CreateDirectory(destDirectory);
+                    File.Create(destDirectory + "\\ FyBuZz.txt");
+                    string songFile = windowsMediaPlayer.URL.Split('\\')[windowsMediaPlayer.URL.Split('\\').Length - 1];
+                    string destFile = destDirectory + "\\" + songFile;
+                    File.Copy(windowsMediaPlayer.URL, destFile);
+                }
+                else
+                {
+                    string songFile = windowsMediaPlayer.URL.Split('\\')[windowsMediaPlayer.URL.Split('\\').Length - 1];
+                    string destFile = destDirectory + "\\" + songFile;
+                    File.Copy(windowsMediaPlayer.URL, destFile);
+                }        
+                PlaySongMessageTextBox.AppendText("Song downloaded succesfully.");
+            }
+            else
+            {
+                PlaySongMessageTextBox.Visible = true;
+                PlaySongMessageTextBox.AppendText("Standard users can't download songs.");
             }
 
         }
