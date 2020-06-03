@@ -28,6 +28,8 @@ namespace Modelos
         //--------------------------------------------------------------------------------------------------
         public string Subtitles { get => subtitles; }
         public string Category { get => category; }
+        public string Format { get => format; }
+        public string FileName { get => fileName; }
         //--------------------------------------------------------------------------------------------------
 
         //CONSTRUCTOR:
