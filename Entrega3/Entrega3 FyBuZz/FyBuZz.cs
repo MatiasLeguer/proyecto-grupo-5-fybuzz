@@ -1249,6 +1249,7 @@ namespace Entrega3_FyBuZz
         private void CreateVideoLoadVideoButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Media Files|*.mp4;*.wav;*.avi;*.mov";
 
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
