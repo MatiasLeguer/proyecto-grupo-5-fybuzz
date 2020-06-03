@@ -27,7 +27,11 @@ namespace Entrega3_FyBuZz
         WindowsMediaPlayer windowsMediaPlayer = new WindowsMediaPlayer();
         WindowsMediaPlayer addsOnWMP = new WindowsMediaPlayer();
         SoundPlayer soundPlayer;
-        
+
+        public delegate List<string> UserGetterListEventHandler(object source, UserEventArgs args);
+        public event UserGetterListEventHandler LogInLogInButton_Clicked2;
+        public delegate List<string> UserProfilesNames(object source, UserEventArgs args);
+        public event UserProfilesNames GetProfileNames;
 
         public delegate User LogInEventHandler(object soruce, LogInEventArgs args);
         public event LogInEventHandler LogInLogInButton_Clicked;
@@ -35,8 +39,11 @@ namespace Entrega3_FyBuZz
         public delegate bool RegisterEventHandler(object soruce, RegisterEventArgs args);
         public event RegisterEventHandler RegisterRegisterButton_Clicked;
 
-        public delegate Profile ProfileEventHandler(object source, ProfileEventArgs args);
+        public delegate string ProfileEventHandler(object source, ProfileEventArgs args);
         public event ProfileEventHandler CreateProfileCreateProfileButton_Clicked;
+
+        public delegate List<string> ChooseProfileEventHandlerMVC(object source, ProfileEventArgs args);
+        public event ChooseProfileEventHandlerMVC ProfilesChooseProfile_Clicked2;
 
         public delegate Profile ChooseProfileEventHandler(object source, ProfileEventArgs args);
         public event ChooseProfileEventHandler ProfilesChooseProfile_Clicked;
@@ -101,8 +108,6 @@ namespace Entrega3_FyBuZz
             RegisterPanel.BringToFront();
         }
 
-
-
         private void GobackRegisterButton_Click(object sender, EventArgs e)
         {
             WelcomePanel.BringToFront();
@@ -132,11 +137,12 @@ namespace Entrega3_FyBuZz
 
         private void LogInLogInButton_Click(object sender, EventArgs e)
         {
-            User user = new User();
+            List<string> userGetter = new List<string>();
             string username = UserLogInTextBox.Text;
             string pass = PasswordLogInTextBox.Text;
-            user = OnLoginButtonClicked(username, pass);
-            if(user != null)
+            userGetter = OnLogInLogInButton_Clicked2(username);
+            //user = OnLoginButtonClicked(username, pass);
+            if (userGetter != null)
             {
                 ProfilePanel.BringToFront();
             }
@@ -159,7 +165,7 @@ namespace Entrega3_FyBuZz
 
             string password = PasswordLogInTextBox.Text;
             string profileProfileName = ProfileDomainUp.Text;
-            Profile profile = OnProfilesChooseProfile_Click(profileProfileName, username, password);
+            List<string> profileGetterString = OnProfilesChooseProfile_Click2(profileProfileName, username, password);
 
             ProfileName = profileProfileName;
             DisplayStartPanel.BringToFront();
@@ -192,7 +198,7 @@ namespace Entrega3_FyBuZz
             else if (CreateProfilePicCheckedListBox.SelectedIndex == 1) pPic = CreateProfilePic2.Image;
             else if (CreateProfilePicCheckedListBox.SelectedIndex == 2) pPic = CreateProfilePic3.Image;
             else if (CreateProfilePicCheckedListBox.SelectedIndex == 3) pPic = CreateProfilePic4.Image;
-            OnCreateProfileCreateProfileButton_Click(username, psswd, pName,pGender,pType, pEmail,pBirth,pPic);
+            OnCreateProfileCreateProfileButton_Click2(username, psswd, pName,pGender,pType, pEmail,pBirth,pPic);
         }
 
         private void DisplayStartSearchButton_Click(object sender, EventArgs e)
@@ -217,34 +223,35 @@ namespace Entrega3_FyBuZz
         {
             string username = UserLogInTextBox.Text;
             string password = PasswordLogInTextBox.Text;
-            User user = OnLoginButtonClicked(username, password);
+            User user = new User();
+            user = OnLoginButtonClicked(username, password);
+            List<string> userGetterString = new List<string>();
+            userGetterString = OnLogInLogInButton_Clicked2(username);
+            string profileProfileName = ProfileDomainUp.Text;
+            List<string> profileGetterString = OnProfilesChooseProfile_Click2(profileProfileName, username, password);
 
-            AccountSettingsUsernameTextBox.AppendText(user.Username);
-            AccountSettingsPasswordTextBox.AppendText(user.Password);
-            AccountSettingsEmailTextBox.AppendText(user.Email);
-            AccountSettingsAccountTypeTextBox.AppendText(user.Accountype);
-            AccountSettingsFollowersTextBox.AppendText(user.Followers.ToString());
-            AccountSettingsFollowingTextBox.AppendText(user.Following.ToString());
+            AccountSettingsUsernameTextBox.AppendText(userGetterString[0]);
+            AccountSettingsPasswordTextBox.AppendText(userGetterString[1]);
+            AccountSettingsEmailTextBox.AppendText(userGetterString[2]);
+            AccountSettingsAccountTypeTextBox.AppendText(userGetterString[3]);
+            AccountSettingsFollowersTextBox.AppendText(userGetterString[4]);
+            AccountSettingsFollowingTextBox.AppendText(userGetterString[5]);
             
             foreach(string seguidor in user.FollowingList)
             {
                 AccountSettingsFollowingListDomaiUp.Items.Add(seguidor);
             }
-            
-            
+
+
             foreach (string followers in user.FollowerList)
             {
                 AccountSettingsFollowerListDomainUp.Items.Add(followers);
             }         
-            
 
-
-            Profile profile = OnProfilesChooseProfile_Click(ProfileName, username, password);
-
-            ProfileSettingsNameTextBox.AppendText(profile.ProfileName);
-            ProfileSettingsProfileTypeTextBox.AppendText(profile.ProfileType);
-            ProfileSettingsGenderTextBox.AppendText(profile.Gender);
-            ProfileSettingsBirthdayTextBox.AppendText(profile.Age.ToString());
+            ProfileSettingsNameTextBox.AppendText(profileGetterString[0]);
+            ProfileSettingsProfileTypeTextBox.AppendText(profileGetterString[1]);
+            ProfileSettingsGenderTextBox.AppendText(profileGetterString[2]);
+            ProfileSettingsBirthdayTextBox.AppendText(profileGetterString[3]);
 
             Image pPic = CreateProfilePic1.Image;
             if (CreateProfilePicCheckedListBox.SelectedIndex == 0) pPic = CreateProfilePic1.Image;
@@ -259,6 +266,19 @@ namespace Entrega3_FyBuZz
 
         private void DisplayStartLogOutProfileButton_Click(object sender, EventArgs e)
         {
+            AccountSettingsUsernameTextBox.Clear();
+            AccountSettingsPasswordTextBox.Clear();
+            AccountSettingsAccountTypeTextBox.Clear();
+            AccountSettingsEmailTextBox.Clear();
+            AccountSettingsFollowersTextBox.Clear();
+            AccountSettingsFollowingTextBox.Clear();
+
+            ProfileSettingsNameTextBox.Clear();
+            ProfileSettingsProfileTypeTextBox.Clear();
+            ProfileSettingsGenderTextBox.Clear();
+            ProfileSettingsBirthdayTextBox.Clear();
+            //ProfileSettingsProfilePicImageBox.Image.Dispose();
+
             ProfilesInvalidCredentialTextBox.Clear();
             ProfilePanel.BringToFront();
         }
@@ -624,13 +644,13 @@ namespace Entrega3_FyBuZz
             songDataBase = OnSearchSongButton_Click();
             foreach (Song song in songDataBase)
             {
-                if (SearchSearchResultsDomainUp.Text.Contains("Song:") && song.Format == ".mp3")
+                if (song.Format == ".mp3")
                 {
                     windowsMediaPlayer.controls.play();
                     DurationTimer.Start();
                     break;
                 }
-                else if (SearchSearchResultsDomainUp.Text.Contains("Song:") && song.Format == ".wav")
+                else if (song.Format == ".wav")
                 {
 
                     DurationTimer.Start();
@@ -914,11 +934,32 @@ namespace Entrega3_FyBuZz
 
         private void PlaySongDownloadSongButton_Click(object sender, EventArgs e)
         {
-            //Iria el metodo para descargar canciones
-            User user = OnLoginButtonClicked(UserLogInTextBox.Text, PasswordLogInTextBox.Text);
-            if(user.Accountype != "standard")
+            PlaySongMessageTextBox.Clear();
+            List<string> listUser = OnLogInLogInButton_Clicked2(UserLogInTextBox.Text);
+            if (listUser[3] != "standard")
             {
-
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                string destDirectory = desktopPath + "\\Downloaded-Songs-FyBuZz";
+                if (System.IO.Directory.Exists(destDirectory) == false)
+                {         
+                    System.IO.Directory.CreateDirectory(destDirectory);
+                    File.Create(destDirectory + "\\ FyBuZz.txt");
+                    string songFile = windowsMediaPlayer.URL.Split('\\')[windowsMediaPlayer.URL.Split('\\').Length - 1];
+                    string destFile = destDirectory + "\\" + songFile;
+                    File.Copy(windowsMediaPlayer.URL, destFile);
+                }
+                else
+                {
+                    string songFile = windowsMediaPlayer.URL.Split('\\')[windowsMediaPlayer.URL.Split('\\').Length - 1];
+                    string destFile = destDirectory + "\\" + songFile;
+                    File.Copy(windowsMediaPlayer.URL, destFile);
+                }        
+                PlaySongMessageTextBox.AppendText("Song downloaded succesfully.");
+            }
+            else
+            {
+                PlaySongMessageTextBox.Visible = true;
+                PlaySongMessageTextBox.AppendText("Standard users can't download songs.");
             }
 
         }
@@ -960,13 +1001,13 @@ namespace Entrega3_FyBuZz
             songDataBase = OnSearchSongButton_Click();
             foreach (Song song in songDataBase)
             {
-                if (SearchSearchResultsDomainUp.Text.Contains("Song:") && song.Format == ".mp3")
+                if (song.Format == ".mp3")
                 {
                     windowsMediaPlayer.controls.play();
                     DurationTimer.Start();
                     break;
                 }
-                else if (SearchSearchResultsDomainUp.Text.Contains("Song:") && song.Format == ".wav")
+                else if (song.Format == ".wav")
                 {
 
                     DurationTimer.Start();
@@ -1259,7 +1300,107 @@ namespace Entrega3_FyBuZz
         }
 
         //MÉTODOS INTERNOS 
+
+        public List<string> OnLogInLogInButton_Clicked2(string username)
+        {
+            List<string> userGetterStringList = new List<string>();
+            List<string> userProfileNames = new List<string>();
+            if(LogInLogInButton_Clicked2 != null)
+            {
+                userGetterStringList = LogInLogInButton_Clicked2(this, new UserEventArgs() { UsernameText = username });
+                if (userGetterStringList != null)
+                {
+                    LogInInvalidCredentialsTetxbox.AppendText("Log-In Succesfull");
+                    Thread.Sleep(2000);
+                    LogInInvalidCredentialsTetxbox.Visible = true;
+
+                    ProfilesWelcomeTextBox.AppendText("Welcome to FyBuZz " + userGetterStringList[0]);
+                    userProfileNames = GetProfileNames(this, new UserEventArgs() { UsernameText = username });
+                    foreach (string profilename in userProfileNames)
+                    {
+                        ProfileDomainUp.Items.Add(profilename);
+                    }
+                    return userGetterStringList;
+                }
+                else
+                {
+                    LogInInvalidCredentialsTetxbox.AppendText("Incorrect Username or Password");
+                    Thread.Sleep(2000);
+                    LogInInvalidCredentialsTetxbox.Visible = true;
+                    return null;
+                }
+                
+            }
+            return null;
+        }
+        public void OnRegisterRegisterButtonClicked(string username, string email, string psswd, string subs, bool priv, string gender, DateTime birthday, string profileType)
+        {
+            if (RegisterRegisterButton_Clicked != null)
+            {
+                bool result = RegisterRegisterButton_Clicked(this, new RegisterEventArgs() { UsernameText = username, EmailText = email, PasswrodText = psswd, SubsText = subs, PrivacyText = priv, GenderText = gender, BirthdayText = birthday, ProfileTypeText = profileType });
+                if (!result) //Resultado es falso
+                {
+                    RegisterInvalidCredencialsTextBox.AppendText("User already exist");
+                    RegisterInvalidCredencialsTextBox.Visible = true;
+                    Thread.Sleep(2000);
+                    UsernameRegisterTextBox.Clear();
+                    EmailRegisterTextBox.Clear();
+                    PasswordRegisterTextBox.Clear();
+                    RegisterInvalidCredencialsTextBox.Clear();
+
+                }
+                else
+                {
+                    RegisterInvalidCredencialsTextBox.AppendText("Registered Succesfull");
+                    RegisterInvalidCredencialsTextBox.Visible = true;
+                    UsernameRegisterTextBox.Clear();
+                    EmailRegisterTextBox.Clear();
+                    PasswordRegisterTextBox.Clear();
+                    RegisterInvalidCredencialsTextBox.Clear();
+                    Thread.Sleep(2000);
+                }
+            }
+        }
+
+        public void OnCreateProfileCreateProfileButton_Click2(string username, string pswd, string pName, string pGender, string pType, string pEmail, DateTime pBirth, Image pPic)
+        {
+            if (CreateProfileCreateProfileButton_Clicked != null)
+            {
+                string result = CreateProfileCreateProfileButton_Clicked(this, new ProfileEventArgs() { UsernameText = username, PasswordText = pswd, ProfileNameText = pName, EmailText = pEmail, GenderText = pGender, BirthdayText = pBirth, ProfileTypeText = pType, PicImage = pPic });
+                if (result != null)
+                {
+                    ProfileDomainUp.Items.Add(result);
+                    ProfilePanel.BringToFront();
+                    CreateProfileProfileNameTextBox.Clear();
+                }
+                else
+                {
+                    ProfilePanel.BringToFront();
+                    ProfilesInvalidCredentialTextBox.AppendText("Only premium Users can create profiles");
+                }
+            }
+        }
+        public List<string> OnProfilesChooseProfile_Click2(string pName, string usr, string pass)
+        {
+            if (ProfilesChooseProfile_Clicked2 != null)
+            {
+                List<string> choosenProfile = ProfilesChooseProfile_Clicked2(this, new ProfileEventArgs() { ProfileNameText = pName, UsernameText = usr, PasswordText = pass });
+                ProfilesInvalidCredentialTextBox.ResetText();
+                ProfilesInvalidCredentialTextBox.AppendText("Entering FyBuZz with... " + choosenProfile[0]);
+
+                Thread.Sleep(2000);
+
+                return choosenProfile;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        //SIN MVC
+
         public User OnLoginButtonClicked(string username, string password)
+            //Este metodo ya no deberia servir, no es MVC
         {
             User user = new User();
             if(LogInLogInButton_Clicked != null)
@@ -1287,35 +1428,8 @@ namespace Entrega3_FyBuZz
             return user;
         }
             
-        public void OnRegisterRegisterButtonClicked(string username, string email,string psswd, string subs, bool priv, string gender, DateTime birthday, string profileType)
-        {
-            if(RegisterRegisterButton_Clicked != null)
-            {
-                bool result = RegisterRegisterButton_Clicked(this, new RegisterEventArgs() { UsernameText = username, EmailText = email, PasswrodText = psswd, SubsText = subs,PrivacyText = priv, GenderText = gender, BirthdayText = birthday, ProfileTypeText = profileType });
-                if (!result) //Resultado es falso
-                {
-                    RegisterInvalidCredencialsTextBox.AppendText("User already exist");
-                    RegisterInvalidCredencialsTextBox.Visible = true;
-                    Thread.Sleep(2000);
-                    UsernameRegisterTextBox.Clear();
-                    EmailRegisterTextBox.Clear();
-                    PasswordRegisterTextBox.Clear();
-                    RegisterInvalidCredencialsTextBox.Clear();
-                    
-                }
-                else
-                {
-                    RegisterInvalidCredencialsTextBox.AppendText("Registered Succesfull");
-                    RegisterInvalidCredencialsTextBox.Visible = true;
-                    UsernameRegisterTextBox.Clear();
-                    EmailRegisterTextBox.Clear();
-                    PasswordRegisterTextBox.Clear();
-                    RegisterInvalidCredencialsTextBox.Clear();
-                    Thread.Sleep(2000);
-                }
-            }
-        }
-        public void OnCreateProfileCreateProfileButton_Click(string username, string pswd, string pName,string pGender, string pType, string pEmail, DateTime pBirth, Image pPic)
+        
+        /*public void OnCreateProfileCreateProfileButton_Click(string username, string pswd, string pName,string pGender, string pType, string pEmail, DateTime pBirth, Image pPic)
         {
             if(CreateProfileCreateProfileButton_Clicked != null)
             {
@@ -1332,7 +1446,7 @@ namespace Entrega3_FyBuZz
                     ProfilesInvalidCredentialTextBox.AppendText("Only premium Users can create profiles");
                 }
             }
-        }
+        }*/
         private void PlaySongChoosePlsButton_Click(List<Song> songDataBase, Profile profile, string result, int choosenPl, string searchedPL)
         {
             if (PlaySongChoosePlsButton_Clicked != null)
