@@ -40,6 +40,12 @@ namespace Entrega3_FyBuZz
         public delegate List<string> GetSongInfo(object source, SongEventArgs args);
         public event GetSongInfo GetSongInformation;
 
+        public delegate List<List<string>> GetAllSongsInfo(object source, SongEventArgs args);
+        public event GetAllSongsInfo GetAllSongInformation;
+
+        public delegate List<List<string>> GetAllVideosInfo(object source, VideoEventArgs args);
+        public event GetAllVideosInfo GetAllVideosInformation;
+
         public delegate bool RegisterEventHandler(object soruce, RegisterEventArgs args);
         public event RegisterEventHandler RegisterRegisterButton_Clicked;
 
@@ -727,6 +733,8 @@ namespace Entrega3_FyBuZz
             string search = SearchSearchTextBox.Text; //Bad Bunny and Trap and ... and ...
 
             bool filtersOn = SearchFiltersOnCheckBox.Checked;
+            List<List<string>> allSongInfo = ReturnAllSongsInfo();
+            List<List<string>> allVideosInfo = ReturnAllVideosInfo();
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSongButton_Click();
             List<User> userDataBase = new List<User>();
@@ -775,7 +783,113 @@ namespace Entrega3_FyBuZz
             }
             else
             {
+                SearchAndOrCheckBox.Visible = true;
+                SearchFiltersCheBox.Visible = true;
+                string logic = null;
+                List<int> allChosenFilters = new List<int>();
+                foreach(object andOr in SearchAndOrCheckBox.CheckedItems)
+                {
+                    logic = andOr.ToString();
+                }
+                foreach (object filter in SearchFiltersCheBox.CheckedIndices)
+                {
+                    allChosenFilters.Add((int)filter);
+                }
+                if (logic == "And")
+                {
+                    foreach (List<string> songInfo in allSongInfo)
+                    {
+                        int contS = 0;
+                        for (int n = 0; n < allChosenFilters.Count(); n++)
+                        {
+                            if (allChosenFilters[n] <= 7)
+                            {
+                                int newIndex = allChosenFilters[n];
+                                if (songInfo[newIndex].Contains(search) == true)
+                                {
+                                    contS++;
+                                }
+                            }
 
+                        }
+                        if (contS >= allChosenFilters.Count())
+                        {
+                            SearchSearchResultsDomainUp.Visible = true;
+                            SearchSearchResultsDomainUp.Items.Add("Song: " + songInfo[0] + ": Artist: " + songInfo[1]);
+                        }
+
+                    }
+                    foreach (List<string> videoInfo in allVideosInfo)
+                    {
+                        int contS = 0;
+                        for (int n = 0; n < allChosenFilters.Count(); n++)
+                        {
+                            if(allChosenFilters[n] >= 7)
+                            {
+                                int newIndex = allChosenFilters[n] - 7;
+                                if (videoInfo[newIndex].Contains(search) == true)
+                                {
+                                    contS++;
+                                }
+                            }
+                            
+                        }
+                        if (contS >= allChosenFilters.Count())
+                        {
+                            SearchSearchResultsDomainUp.Visible = true;
+                            SearchSearchResultsDomainUp.Items.Add("Video: " + videoInfo[0] + ": Actors: " + videoInfo[1] + ": Directors:" + videoInfo[3]);
+                        }
+ 
+                    }
+                }
+                else
+                {
+                    foreach (List<string> songInfo in allSongInfo)
+                    {
+                        int contS = 0;
+                        for (int n = 0; n < allChosenFilters.Count(); n++)
+                        {
+                            if (allChosenFilters[n] <= 7)
+                            {
+                                int newIndex = allChosenFilters[n];
+                                if (songInfo[newIndex].Contains(search) == true)
+                                {
+                                    contS++;
+                                }
+                            }
+
+                        }
+                        if (contS != 0)
+                        {
+                            SearchSearchResultsDomainUp.Visible = true;
+                            SearchSearchResultsDomainUp.Items.Add("Song: " + songInfo[0] + ": Artist: " + songInfo[1]);
+                        }
+
+                    }
+                    foreach (List<string> videoInfo in allVideosInfo)
+                    {
+                        int contS = 0;
+                        for (int n = 0; n < allChosenFilters.Count(); n++)
+                        {
+                            if (allChosenFilters[n] >= 7)
+                            {
+                                int newIndex = allChosenFilters[n] - 7;
+                                if (videoInfo[newIndex].Contains(search) == true)
+                                {
+                                    contS++;
+                                }
+                            }
+
+                        }
+                        if (contS != 0)
+                        {
+                            SearchSearchResultsDomainUp.Visible = true;
+                            SearchSearchResultsDomainUp.Items.Add("Video: " + videoInfo[0] + ": Actors: " + videoInfo[1] + ": Directors:" + videoInfo[3]);
+                        }
+
+                    }
+
+                }
             }   
             PlaySongChoosePlsDomainUp.Visible = false;
             PlaySongChoosePlsDomainUp.ResetText();
@@ -1340,7 +1454,7 @@ namespace Entrega3_FyBuZz
             }
         }
 
-        //MÉTODOS INTERNOS 
+        //------------------------------MÉTODOS INTERNOS------------------------------- 
 
         public List<string> OnLogInLogInButton_Clicked2(string username)
         {
@@ -1446,6 +1560,24 @@ namespace Entrega3_FyBuZz
                 return songInfo;
             }
             return null;
+        }
+        public List<List<string>> ReturnAllSongsInfo()
+        {
+            if (GetAllSongInformation != null)
+            {
+                List<List<string>> allSongsInfo = GetAllSongInformation(this, new SongEventArgs());
+                return allSongsInfo;
+            }
+            else return null;
+        }
+        public List<List<string>> ReturnAllVideosInfo()
+        {
+            if (GetAllVideosInformation != null)
+            {
+                List<List<string>> allVideosInfo = GetAllVideosInformation(this, new VideoEventArgs());
+                return allVideosInfo;
+            }
+            else return null;
         }
         //SIN MVC
 

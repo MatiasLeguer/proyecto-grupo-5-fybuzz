@@ -60,7 +60,7 @@ namespace Modelos
         //--------------------------------------------------------------------------------------------------
         public List<string> InfoSong()                     //Entrega una lista de strings con la información de la canción
         {
-            return new List<string>() { name, artist, album, discography, studio, gender, ranking.ToString() };
+            return new List<string>() { name, artist, album, discography, studio, gender, ranking.ToString(), songFile };
         }
 
         public string DisplayInfoSong()                    //Entrega un string con la información de la canción

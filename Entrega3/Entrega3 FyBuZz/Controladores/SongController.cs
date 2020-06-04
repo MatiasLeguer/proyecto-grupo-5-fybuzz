@@ -25,6 +25,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.CreateSongCreateSongButton_Clicked += OnCreateSongCreateSongButton_Clicked;
             this.fyBuZz.SearchSongButton_Clicked += OnSearchSongButton_Clicked;
             this.fyBuZz.GetSongInformation += ReturnSongInfo;
+            this.fyBuZz.GetAllSongInformation += ReturnAllSongsInfo;
         }
 
         public void Initialize()
@@ -73,6 +74,15 @@ namespace Entrega3_FyBuZz.Controladores
                 }
             }
             return songInfo;
+        }
+        private List<List<string>> ReturnAllSongsInfo(object sender, SongEventArgs e)
+        {
+            List<List<string>> allSongsInfo = new List<List<string>>();
+            foreach(Song song in songDatabase)
+            {
+                allSongsInfo.Add(song.InfoSong());
+            }
+            return allSongsInfo;
         }
     }
 }
