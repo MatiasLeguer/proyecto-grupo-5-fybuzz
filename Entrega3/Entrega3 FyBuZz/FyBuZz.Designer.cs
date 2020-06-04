@@ -141,9 +141,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.ProfileSettingsLabel = new System.Windows.Forms.Label();
             this.SearchPanel = new System.Windows.Forms.Panel();
+            this.SearchFiltersCheBox = new System.Windows.Forms.CheckedListBox();
             this.SearchAndOrCheckBox = new System.Windows.Forms.CheckedListBox();
             this.SearchFiltersOnCheckBox = new System.Windows.Forms.CheckBox();
-            this.SearchFiltersCheBox = new System.Windows.Forms.CheckedListBox();
             this.SearchPlayingPanel = new System.Windows.Forms.Panel();
             this.SearchPlayerToMultButton = new System.Windows.Forms.Button();
             this.SearchPlayingLabel = new System.Windows.Forms.TextBox();
@@ -1626,9 +1626,9 @@
             // SearchPanel
             // 
             this.SearchPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchPanel.Controls.Add(this.SearchFiltersCheBox);
             this.SearchPanel.Controls.Add(this.SearchAndOrCheckBox);
             this.SearchPanel.Controls.Add(this.SearchFiltersOnCheckBox);
-            this.SearchPanel.Controls.Add(this.SearchFiltersCheBox);
             this.SearchPanel.Controls.Add(this.SearchPlayingPanel);
             this.SearchPanel.Controls.Add(this.SearchInvalidCredentialsTextBox);
             this.SearchPanel.Controls.Add(this.SearchSelectMultButton);
@@ -1645,6 +1645,33 @@
             this.SearchPanel.Name = "SearchPanel";
             this.SearchPanel.Size = new System.Drawing.Size(683, 786);
             this.SearchPanel.TabIndex = 7;
+            // 
+            // SearchFiltersCheBox
+            // 
+            this.SearchFiltersCheBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(38)))));
+            this.SearchFiltersCheBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchFiltersCheBox.ForeColor = System.Drawing.Color.White;
+            this.SearchFiltersCheBox.FormattingEnabled = true;
+            this.SearchFiltersCheBox.Items.AddRange(new object[] {
+            "Song Name",
+            "Artist",
+            "Album",
+            "Discography",
+            "Studio",
+            "Song Gender",
+            "Song Ranking",
+            "Video Name",
+            "Actors",
+            "Directors",
+            "Quality",
+            "Category",
+            "Rated",
+            "Ranking"});
+            this.SearchFiltersCheBox.Location = new System.Drawing.Point(289, 351);
+            this.SearchFiltersCheBox.Name = "SearchFiltersCheBox";
+            this.SearchFiltersCheBox.Size = new System.Drawing.Size(314, 26);
+            this.SearchFiltersCheBox.TabIndex = 33;
+            this.SearchFiltersCheBox.Visible = false;
             // 
             // SearchAndOrCheckBox
             // 
@@ -1673,31 +1700,6 @@
             this.SearchFiltersOnCheckBox.Text = "Filters";
             this.SearchFiltersOnCheckBox.UseVisualStyleBackColor = true;
             this.SearchFiltersOnCheckBox.CheckedChanged += new System.EventHandler(this.SearchFiltersOnCheckBox_CheckedChanged);
-            // 
-            // SearchFiltersCheBox
-            // 
-            this.SearchFiltersCheBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(38)))));
-            this.SearchFiltersCheBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchFiltersCheBox.ForeColor = System.Drawing.Color.White;
-            this.SearchFiltersCheBox.FormattingEnabled = true;
-            this.SearchFiltersCheBox.Items.AddRange(new object[] {
-            "Artist",
-            "Album",
-            "Discography",
-            "Song Gender",
-            "Studio",
-            "Video Dimension",
-            "Quality",
-            "Video Category",
-            "Rated",
-            "Actors",
-            "Directors",
-            "User"});
-            this.SearchFiltersCheBox.Location = new System.Drawing.Point(287, 351);
-            this.SearchFiltersCheBox.Name = "SearchFiltersCheBox";
-            this.SearchFiltersCheBox.Size = new System.Drawing.Size(314, 26);
-            this.SearchFiltersCheBox.TabIndex = 33;
-            this.SearchFiltersCheBox.Visible = false;
             // 
             // SearchPlayingPanel
             // 
@@ -3671,9 +3673,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(683, 786);
+            this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.PlaySongPanel);
-            this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.LogInPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.CreateProfilePanel);
