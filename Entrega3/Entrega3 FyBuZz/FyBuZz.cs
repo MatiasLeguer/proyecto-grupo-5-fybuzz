@@ -30,11 +30,21 @@ namespace Entrega3_FyBuZz
 
         public delegate List<string> UserGetterListEventHandler(object source, UserEventArgs args);
         public event UserGetterListEventHandler LogInLogInButton_Clicked2;
+
         public delegate List<string> UserProfilesNames(object source, UserEventArgs args);
         public event UserProfilesNames GetProfileNames;
 
         public delegate User LogInEventHandler(object soruce, LogInEventArgs args);
         public event LogInEventHandler LogInLogInButton_Clicked;
+
+        public delegate List<string> GetSongInfo(object source, SongEventArgs args);
+        public event GetSongInfo GetSongInformation;
+
+        public delegate List<List<string>> GetAllSongsInfo(object source, SongEventArgs args);
+        public event GetAllSongsInfo GetAllSongInformation;
+
+        public delegate List<List<string>> GetAllVideosInfo(object source, VideoEventArgs args);
+        public event GetAllVideosInfo GetAllVideosInformation;
 
         public delegate bool RegisterEventHandler(object soruce, RegisterEventArgs args);
         public event RegisterEventHandler RegisterRegisterButton_Clicked;
@@ -81,6 +91,9 @@ namespace Entrega3_FyBuZz
         //ATRIBUTOS
         //--------------------------------------------------------------------------------
         private string ProfileName { get; set; }
+        private List<string> queueList = new List<string>();
+        private List<string> QueueList { get => queueList; set => queueList = value; }
+
         //--------------------------------------------------------------------------------
 
 
@@ -704,6 +717,13 @@ namespace Entrega3_FyBuZz
                 PlayerPanel.Dock = DockStyle.Bottom;
             }
         }
+        private void SearchFiltersOnCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            SearchAndOrCheckBox.ClearSelected();
+            SearchFiltersCheBox.ClearSelected();
+            SearchFiltersCheBox.Visible = true;
+            SearchAndOrCheckBox.Visible = true;
+        }
         private void SearchSearchButton_Click(object sender, EventArgs e)
         {
             SearchSearchResultsDomainUp.ReadOnly = true;
@@ -712,10 +732,9 @@ namespace Entrega3_FyBuZz
             
             string search = SearchSearchTextBox.Text; //Bad Bunny and Trap and ... and ...
 
-            //string[] newSearchAnd = search.Split(new string[] { " and " }, StringSplitOptions.None);
-
-            List<string> listSearch = new List<string>();
-            //listSearch.Add(search);
+            bool filtersOn = SearchFiltersOnCheckBox.Checked;
+            List<List<string>> allSongInfo = ReturnAllSongsInfo();
+            List<List<string>> allVideosInfo = ReturnAllVideosInfo();
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSongButton_Click();
             List<User> userDataBase = new List<User>();
@@ -725,40 +744,153 @@ namespace Entrega3_FyBuZz
             List<PlayList> playlistDataBase = new List<PlayList>();
             playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
 
-            foreach (Song song in songDataBase)
+            if (!filtersOn)
             {
+                foreach (Song song in songDataBase)
+                {
 
-                if (song.InfoSong().Contains(search))
-                {
-                    SearchSearchResultsDomainUp.Visible = true;
-                    SearchSearchResultsDomainUp.Items.Add(song.SearchedInfoSong());
+                    if (song.InfoSong().Contains(search))
+                    {
+                        SearchSearchResultsDomainUp.Visible = true;
+                        SearchSearchResultsDomainUp.Items.Add(song.SearchedInfoSong());
+                    }
                 }
-            }
-            foreach(User user in userDataBase)
-            {             
-                if (user.infoUser().Contains(search))
+                foreach (User user in userDataBase)
                 {
-                    SearchSearchResultsDomainUp.Visible = true;
-                    SearchSearchResultsDomainUp.Items.Add("User: " + user.SearchedInfoUser());
+                    if (user.infoUser().Contains(search))
+                    {
+                        SearchSearchResultsDomainUp.Visible = true;
+                        SearchSearchResultsDomainUp.Items.Add("User: " + user.SearchedInfoUser());
+                    }
                 }
-            }
-            foreach(PlayList playlist in playlistDataBase)
-            {
-                if (playlist.InfoPlayList().Contains(search))
+                foreach (PlayList playlist in playlistDataBase)
                 {
-                    SearchSearchResultsDomainUp.Visible = true;
-                    SearchSearchResultsDomainUp.Items.Add(playlist.DisplayInfoPlayList());
+                    if (playlist.InfoPlayList().Contains(search))
+                    {
+                        SearchSearchResultsDomainUp.Visible = true;
+                        SearchSearchResultsDomainUp.Items.Add(playlist.DisplayInfoPlayList());
+                    }
                 }
-            }
 
-            foreach(Video video in videoDataBase)
-            {
-                if (video.InfoVideo().Contains(search))
+                foreach (Video video in videoDataBase)
                 {
-                    SearchSearchResultsDomainUp.Visible = true;
-                    SearchSearchResultsDomainUp.Items.Add(video.SearchedInfoVideo());
+                    if (video.InfoVideo().Contains(search))
+                    {
+                        SearchSearchResultsDomainUp.Visible = true;
+                        SearchSearchResultsDomainUp.Items.Add(video.SearchedInfoVideo());
+                    }
                 }
             }
+            else
+            {
+                SearchAndOrCheckBox.Visible = true;
+                SearchFiltersCheBox.Visible = true;
+                string logic = null;
+                List<int> allChosenFilters = new List<int>();
+                foreach(object andOr in SearchAndOrCheckBox.CheckedItems)
+                {
+                    logic = andOr.ToString();
+                }
+                foreach (object filter in SearchFiltersCheBox.CheckedIndices)
+                {
+                    allChosenFilters.Add((int)filter);
+                }
+                if (logic == "And")
+                {
+                    foreach (List<string> songInfo in allSongInfo)
+                    {
+                        int contS = 0;
+                        for (int n = 0; n < allChosenFilters.Count(); n++)
+                        {
+                            if (allChosenFilters[n] <= 7)
+                            {
+                                int newIndex = allChosenFilters[n];
+                                if (songInfo[newIndex].Contains(search) == true)
+                                {
+                                    contS++;
+                                }
+                            }
+
+                        }
+                        if (contS >= allChosenFilters.Count())
+                        {
+                            SearchSearchResultsDomainUp.Visible = true;
+                            SearchSearchResultsDomainUp.Items.Add("Song: " + songInfo[0] + ": Artist: " + songInfo[1]);
+                        }
+
+                    }
+                    foreach (List<string> videoInfo in allVideosInfo)
+                    {
+                        int contS = 0;
+                        for (int n = 0; n < allChosenFilters.Count(); n++)
+                        {
+                            if(allChosenFilters[n] >= 7)
+                            {
+                                int newIndex = allChosenFilters[n] - 7;
+                                if (videoInfo[newIndex].Contains(search) == true)
+                                {
+                                    contS++;
+                                }
+                            }
+                            
+                        }
+                        if (contS >= allChosenFilters.Count())
+                        {
+                            SearchSearchResultsDomainUp.Visible = true;
+                            SearchSearchResultsDomainUp.Items.Add("Video: " + videoInfo[0] + ": Actors: " + videoInfo[1] + ": Directors:" + videoInfo[3]);
+                        }
+ 
+                    }
+                }
+                else
+                {
+                    foreach (List<string> songInfo in allSongInfo)
+                    {
+                        int contS = 0;
+                        for (int n = 0; n < allChosenFilters.Count(); n++)
+                        {
+                            if (allChosenFilters[n] <= 7)
+                            {
+                                int newIndex = allChosenFilters[n];
+                                if (songInfo[newIndex].Contains(search) == true)
+                                {
+                                    contS++;
+                                }
+                            }
+
+                        }
+                        if (contS != 0)
+                        {
+                            SearchSearchResultsDomainUp.Visible = true;
+                            SearchSearchResultsDomainUp.Items.Add("Song: " + songInfo[0] + ": Artist: " + songInfo[1]);
+                        }
+
+                    }
+                    foreach (List<string> videoInfo in allVideosInfo)
+                    {
+                        int contS = 0;
+                        for (int n = 0; n < allChosenFilters.Count(); n++)
+                        {
+                            if (allChosenFilters[n] >= 7)
+                            {
+                                int newIndex = allChosenFilters[n] - 7;
+                                if (videoInfo[newIndex].Contains(search) == true)
+                                {
+                                    contS++;
+                                }
+                            }
+
+                        }
+                        if (contS != 0)
+                        {
+                            SearchSearchResultsDomainUp.Visible = true;
+                            SearchSearchResultsDomainUp.Items.Add("Video: " + videoInfo[0] + ": Actors: " + videoInfo[1] + ": Directors:" + videoInfo[3]);
+                        }
+
+                    }
+
+                }
+            }   
             PlaySongChoosePlsDomainUp.Visible = false;
             PlaySongChoosePlsDomainUp.ResetText();
             PlaySongChoosePlsDomainUp.ReadOnly = true;
@@ -899,6 +1031,13 @@ namespace Entrega3_FyBuZz
             SearchSearchResultsDomainUp.ResetText();
 
         }
+        private void PlaySongAddQueueButton_Click(object sender, EventArgs e)
+        {
+            string[] searchedSong = SearchSearchResultsDomainUp.Text.Split(':');
+            List<string> songInfo = GetSongButton(searchedSong[1], searchedSong[3]);
+            queueList.Add(songInfo[6]);
+            //Agrega a la queue.
+        }
         private void PlaySongAddToPlaylistButton_Click(object sender, EventArgs e)
         {
             PlaySongMessageTextBox.Clear();
@@ -940,19 +1079,38 @@ namespace Entrega3_FyBuZz
             {
                 string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
                 string destDirectory = desktopPath + "\\Downloaded-Songs-FyBuZz";
+                string songFile;
                 if (System.IO.Directory.Exists(destDirectory) == false)
                 {         
                     System.IO.Directory.CreateDirectory(destDirectory);
                     File.Create(destDirectory + "\\ FyBuZz.txt");
-                    string songFile = windowsMediaPlayer.URL.Split('\\')[windowsMediaPlayer.URL.Split('\\').Length - 1];
-                    string destFile = destDirectory + "\\" + songFile;
-                    File.Copy(windowsMediaPlayer.URL, destFile);
+                    if (PlayerPlayingLabel.Text.Contains(".mp3") == true)
+                    {
+                        songFile = windowsMediaPlayer.URL.Split('\\')[windowsMediaPlayer.URL.Split('\\').Length - 1];
+                        string destFile = destDirectory + "\\" + songFile;
+                        File.Copy(windowsMediaPlayer.URL, destFile);
+                    }
+                    else
+                    {
+                        songFile = soundPlayer.SoundLocation.Split('\\')[soundPlayer.SoundLocation.Split('\\').Length - 1];
+                        string destFile = destDirectory + "\\" + songFile;
+                        File.Copy(soundPlayer.SoundLocation, destFile);
+                    }
                 }
                 else
                 {
-                    string songFile = windowsMediaPlayer.URL.Split('\\')[windowsMediaPlayer.URL.Split('\\').Length - 1];
-                    string destFile = destDirectory + "\\" + songFile;
-                    File.Copy(windowsMediaPlayer.URL, destFile);
+                    if (PlayerPlayingLabel.Text.Contains(".mp3") == true)
+                    {
+                        songFile = windowsMediaPlayer.URL.Split('\\')[windowsMediaPlayer.URL.Split('\\').Length - 1];
+                        string destFile = destDirectory + "\\" + songFile;
+                        File.Copy(windowsMediaPlayer.URL, destFile);
+                    }
+                    else
+                    {
+                        songFile = soundPlayer.SoundLocation.Split('\\')[soundPlayer.SoundLocation.Split('\\').Length - 1];
+                        string destFile = destDirectory + "\\" + songFile;
+                        File.Copy(soundPlayer.SoundLocation, destFile);
+                    }
                 }        
                 PlaySongMessageTextBox.AppendText("Song downloaded succesfully.");
             }
@@ -1238,8 +1396,6 @@ namespace Entrega3_FyBuZz
 
         }
 
-        
-
         //CREATE VIDEO PANEL -->AL APRETAR ADD VIDEO
         private void AddShowAddVideoButton_Click(object sender, EventArgs e)
         {
@@ -1299,7 +1455,7 @@ namespace Entrega3_FyBuZz
             }
         }
 
-        //MÉTODOS INTERNOS 
+        //------------------------------MÉTODOS INTERNOS------------------------------- 
 
         public List<string> OnLogInLogInButton_Clicked2(string username)
         {
@@ -1396,6 +1552,33 @@ namespace Entrega3_FyBuZz
             {
                 return null;
             }
+        }
+        public List<string> GetSongButton(string sName, string sArtist)
+        {
+            if(GetSongInformation != null)
+            {
+                List<string> songInfo = GetSongInformation(this, new SongEventArgs() {NameText = sName, ArtistText = sArtist});
+                return songInfo;
+            }
+            return null;
+        }
+        public List<List<string>> ReturnAllSongsInfo()
+        {
+            if (GetAllSongInformation != null)
+            {
+                List<List<string>> allSongsInfo = GetAllSongInformation(this, new SongEventArgs());
+                return allSongsInfo;
+            }
+            else return null;
+        }
+        public List<List<string>> ReturnAllVideosInfo()
+        {
+            if (GetAllVideosInformation != null)
+            {
+                List<List<string>> allVideosInfo = GetAllVideosInformation(this, new VideoEventArgs());
+                return allVideosInfo;
+            }
+            else return null;
         }
         //SIN MVC
 
@@ -1684,6 +1867,7 @@ namespace Entrega3_FyBuZz
             }
             return null;
         }
+        
 
 
         //PlayVideoPanel

@@ -29,6 +29,11 @@ namespace Modelos
         public string Lyrics { get => lyrics; }
         public string SongFile { get => songFile; set => songFile = value; }
         public string Format { get => format; }
+        public string Album { get; set; }
+        public string Artist { get => artist; set => artist = value; }
+        public string Discography { get; set; }
+        public string Gender { get; set; }
+        public string Studio { get; set; }
 
         //Ver si el constructor está adecuado, o si hay que sacar algo.
         public Song(string name, string artist, string album, string discography, string gender, string date, string studio, double duration, string lyrics, string format, string songFile)
@@ -55,7 +60,7 @@ namespace Modelos
         //--------------------------------------------------------------------------------------------------
         public List<string> InfoSong()                     //Entrega una lista de strings con la información de la canción
         {
-            return new List<string>() { name, artist, album, discography, studio, gender, ranking.ToString() };
+            return new List<string>() { name, artist, album, discography, studio, gender, ranking.ToString(), songFile };
         }
 
         public string DisplayInfoSong()                    //Entrega un string con la información de la canción
@@ -69,7 +74,7 @@ namespace Modelos
         }
         public string SearchedInfoSong()                   //Entrega un string con la información de la canción buscada.
         {
-            return "Song: " + name + "\tArtist: " + artist;
+            return "Song:" + name + ": Artist:" + artist;
         }
         //--------------------------------------------------------------------------------------------------
 

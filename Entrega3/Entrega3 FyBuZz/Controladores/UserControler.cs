@@ -30,7 +30,8 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.LogInLogInButton_Clicked += OnLoginButtonClicked;
             this.fyBuZz.RegisterRegisterButton_Clicked += OnRegisterRegisterButtonClicked;
             this.fyBuZz.CreateProfileCreateProfileButton_Clicked += OnCreateProfileCreateProfileButton_Clicked;
-            this.fyBuZz.ProfilesChooseProfile_Clicked2 += OnProfilesChooseProfile_Click;
+            this.fyBuZz.ProfilesChooseProfile_Clicked2 += OnProfilesChooseProfile_Click2;
+            this.fyBuZz.ProfilesChooseProfile_Clicked += OnProfilesChooseProfile_Click;
             this.fyBuZz.SearchUserButton_Clicked += OnSearchUserButton_Click;
             this.fyBuZz.SearchFollowButton_Clicked += OnSearchFollowButton_Click;
         }
@@ -148,7 +149,32 @@ namespace Entrega3_FyBuZz.Controladores
             return userProfileList;
         }
 
-        private List<string> OnProfilesChooseProfile_Click(object sender, ProfileEventArgs e)
+        private Profile OnProfilesChooseProfile_Click(object sender, ProfileEventArgs e)
+
+        {
+            List<string> profileGetterString = new List<string>();
+            int u = UserIndex(e);
+            int pAge = DateTime.Now.Year - e.BirthdayText.Year;
+
+            Profile prof = new Profile(e.ProfileNameText,"..",e.ProfileTypeText,e.EmailText,e.GenderText, pAge);
+            /*foreach(Profile profile in userDataBase[u].Perfiles)
+            {   
+                if(profile.ProfileName == prof.ProfileName || profile.Username == prof.ProfileName)
+
+                {
+                    profileGetterString.Add(profile.ProfileName);
+                    profileGetterString.Add(profile.ProfileType);
+                    profileGetterString.Add(profile.Gender);
+                    profileGetterString.Add(profile.Age.ToString());
+                }
+            }
+            if (profileGetterString.Count() == 0)
+            {
+                return null;
+            }*/
+            return prof;
+        }
+        private List<string> OnProfilesChooseProfile_Click2(object sender, ProfileEventArgs e)
         {
             List<string> profileGetterString = new List<string>();
             int u = UserIndex(e);
