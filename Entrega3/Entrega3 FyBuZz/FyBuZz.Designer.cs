@@ -3740,8 +3740,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(768, 982);
             this.Controls.Add(this.WelcomePanel);
-            this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.SearchPanel);
+            this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.LogInPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.CreateProfilePanel);

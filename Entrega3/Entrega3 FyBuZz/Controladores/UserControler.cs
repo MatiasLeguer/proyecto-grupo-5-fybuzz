@@ -147,15 +147,16 @@ namespace Entrega3_FyBuZz.Controladores
             }
             return userProfileList;
         }
+
         private List<string> OnProfilesChooseProfile_Click(object sender, ProfileEventArgs e)
         {
             List<string> profileGetterString = new List<string>();
             int u = UserIndex(e);
             int pAge = DateTime.Now.Year - e.BirthdayText.Year;
-            Profile prof = new Profile(e.ProfileNameText,"..",e.ProfileTypeText,e.EmailText,e.GenderText, pAge);
-            foreach(Profile profile in userDataBase[u].Perfiles)
-            {   
-                if(profile.ProfileName == prof.ProfileName || profile.Username == prof.ProfileName)
+            Profile prof = new Profile(e.ProfileNameText, "..", e.ProfileTypeText, e.EmailText, e.GenderText, pAge);
+            foreach (Profile profile in userDataBase[u].Perfiles)
+            {
+                if (profile.ProfileName == prof.ProfileName || profile.Username == prof.ProfileName)
                 {
                     profileGetterString.Add(profile.ProfileName);
                     profileGetterString.Add(profile.ProfileType);
@@ -163,7 +164,7 @@ namespace Entrega3_FyBuZz.Controladores
                     profileGetterString.Add(profile.Age.ToString());
                 }
             }
-            if(profileGetterString.Count() == 0)
+            if (profileGetterString.Count() == 0)
             {
                 return null;
             }
