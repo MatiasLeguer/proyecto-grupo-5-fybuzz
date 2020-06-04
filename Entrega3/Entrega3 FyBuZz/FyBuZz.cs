@@ -43,6 +43,9 @@ namespace Entrega3_FyBuZz
         public delegate List<List<string>> GetAllSongsInfo(object source, SongEventArgs args);
         public event GetAllSongsInfo GetAllSongInformation;
 
+        public delegate List<string> GetVideoInfo(object source, VideoEventArgs args);
+        public event GetVideoInfo GetVideoInformation;
+
         public delegate List<List<string>> GetAllVideosInfo(object source, VideoEventArgs args);
         public event GetAllVideosInfo GetAllVideosInformation;
 
@@ -1033,10 +1036,21 @@ namespace Entrega3_FyBuZz
         }
         private void PlaySongAddQueueButton_Click(object sender, EventArgs e)
         {
-            string[] searchedSong = SearchSearchResultsDomainUp.Text.Split(':');
-            List<string> songInfo = GetSongButton(searchedSong[1], searchedSong[3]);
-            queueList.Add(songInfo[6]);
+            string[] searchedMult = SearchSearchResultsDomainUp.Text.Split(':');
+            if (searchedMult[0].Contains("Song") == true)
+            {
+                List<string> songInfo = GetSongButton(searchedMult[1], searchedMult[3]);
+                queueList.Add(songInfo[6]);
+            }
+            //Esto deberia ir cuando haya un panel con el botton de agregar a la cola en videos.
+            else if(searchedMult[0].Contains("Video") == true)
+            {
+                List<string> videoInfo = GetVideoButton(searchedMult[1], searchedMult[2], searchedMult[3]);
+                queueList.Add(videoInfo[8]);
+            }
+            
             //Agrega a la queue.
+            //Falta ver cuando se le da play a queue, es decir, si es con un boton, con tiempo o algo. No se.
         }
         private void PlaySongAddToPlaylistButton_Click(object sender, EventArgs e)
         {
@@ -1128,7 +1142,16 @@ namespace Entrega3_FyBuZz
             SearchProgressBar.Increment(1);
             PlaySongTimerTextBox.Text = PlaySongProgressBar.Value.ToString();
             PlayPlaylistTimerBox.Text = PlayPlaylistProgressBarBox.Value.ToString();
-            SearchTimerTextBox.Text = PlaySongProgressBar.Value.ToString();  
+            SearchTimerTextBox.Text = PlaySongProgressBar.Value.ToString();
+            if(SearchProgressBar.Value == SearchProgressBar.Maximum)
+            {
+
+            }
+            
+        }
+        private void QueueTimer_Tick(object sender, EventArgs e)
+        {
+            
         }
         private void PlaySongStopButton_Click(object sender, EventArgs e)
         {
@@ -1570,6 +1593,15 @@ namespace Entrega3_FyBuZz
             }
             else return null;
         }
+        public List<string> GetVideoButton(string vName, string vActors, string vDirectors)
+        {
+            if(GetVideoInformation != null)
+            {
+                List<string> videoInfo = GetVideoInformation(this, new VideoEventArgs() {NameText = vName, ActorsText = vActors, DirectorsText = vDirectors });
+                return videoInfo;
+            }
+            return null;
+        }
         public List<List<string>> ReturnAllVideosInfo()
         {
             if (GetAllVideosInformation != null)
@@ -1579,6 +1611,7 @@ namespace Entrega3_FyBuZz
             }
             else return null;
         }
+
         //SIN MVC
 
         public User OnLoginButtonClicked(string username, string password)
@@ -1893,6 +1926,9 @@ namespace Entrega3_FyBuZz
             SearchPanel.BringToFront();
         }
 
-        
+        private void SearchProgressBar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
