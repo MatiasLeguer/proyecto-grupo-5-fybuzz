@@ -156,7 +156,7 @@
             this.SearchInvalidCredentialsTextBox = new System.Windows.Forms.TextBox();
             this.SearchSelectMultButton = new System.Windows.Forms.Button();
             this.SearchGoBackButton = new System.Windows.Forms.Button();
-            this.SearchFollowButton = new System.Windows.Forms.Button();
+            this.SearchViewUserButton = new System.Windows.Forms.Button();
             this.SearchSearchResultsDomainUp = new System.Windows.Forms.DomainUpDown();
             this.SearchSearchButton = new System.Windows.Forms.Button();
             this.SearchSearchTextBox = new System.Windows.Forms.TextBox();
@@ -321,6 +321,18 @@
             this.PlayVideoPlayButton = new System.Windows.Forms.Button();
             this.wmpVideo = new AxWMPLib.AxWindowsMediaPlayer();
             this.QueueTimer = new System.Windows.Forms.Timer(this.components);
+            this.SearcUserPanel = new System.Windows.Forms.Panel();
+            this.SearchUserImage2 = new System.Windows.Forms.PictureBox();
+            this.SearchUserImage1 = new System.Windows.Forms.PictureBox();
+            this.SearchUserFollowButton = new System.Windows.Forms.Button();
+            this.SearchUserFollowers = new System.Windows.Forms.TextBox();
+            this.SearchUserFollowing = new System.Windows.Forms.TextBox();
+            this.SearcUserEmailTextBox = new System.Windows.Forms.TextBox();
+            this.SearUserName = new System.Windows.Forms.TextBox();
+            this.SearchUserLabel = new System.Windows.Forms.Label();
+            this.SearchUserGoBack = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -376,6 +388,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlaySongImageBoxImage)).BeginInit();
             this.PlayVideoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wmpVideo)).BeginInit();
+            this.SearcUserPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchUserImage2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchUserImage1)).BeginInit();
             this.SuspendLayout();
             // 
             // WelcomePanel
@@ -932,10 +947,9 @@
             this.CreateProfilePanel.Controls.Add(this.CreateProfileProfileNameLabel);
             this.CreateProfilePanel.Controls.Add(this.pictureBox1);
             this.CreateProfilePanel.Controls.Add(this.CreateProfileLabel);
-            this.CreateProfilePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CreateProfilePanel.Location = new System.Drawing.Point(0, 0);
+            this.CreateProfilePanel.Location = new System.Drawing.Point(0, 89);
             this.CreateProfilePanel.Name = "CreateProfilePanel";
-            this.CreateProfilePanel.Size = new System.Drawing.Size(683, 786);
+            this.CreateProfilePanel.Size = new System.Drawing.Size(394, 697);
             this.CreateProfilePanel.TabIndex = 4;
             // 
             // CreateProfilePicCheckedListBox
@@ -1634,7 +1648,7 @@
             this.SearchPanel.Controls.Add(this.SearchInvalidCredentialsTextBox);
             this.SearchPanel.Controls.Add(this.SearchSelectMultButton);
             this.SearchPanel.Controls.Add(this.SearchGoBackButton);
-            this.SearchPanel.Controls.Add(this.SearchFollowButton);
+            this.SearchPanel.Controls.Add(this.SearchViewUserButton);
             this.SearchPanel.Controls.Add(this.SearchSearchResultsDomainUp);
             this.SearchPanel.Controls.Add(this.SearchSearchButton);
             this.SearchPanel.Controls.Add(this.SearchSearchTextBox);
@@ -1839,16 +1853,16 @@
             this.SearchGoBackButton.UseVisualStyleBackColor = true;
             this.SearchGoBackButton.Click += new System.EventHandler(this.SearchGoBackButton_Click);
             // 
-            // SearchFollowButton
+            // SearchViewUserButton
             // 
-            this.SearchFollowButton.Location = new System.Drawing.Point(431, 533);
-            this.SearchFollowButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.SearchFollowButton.Name = "SearchFollowButton";
-            this.SearchFollowButton.Size = new System.Drawing.Size(170, 46);
-            this.SearchFollowButton.TabIndex = 27;
-            this.SearchFollowButton.Text = "Follow";
-            this.SearchFollowButton.UseVisualStyleBackColor = true;
-            this.SearchFollowButton.Click += new System.EventHandler(this.SearchFollowButton_Click);
+            this.SearchViewUserButton.Location = new System.Drawing.Point(431, 533);
+            this.SearchViewUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SearchViewUserButton.Name = "SearchViewUserButton";
+            this.SearchViewUserButton.Size = new System.Drawing.Size(170, 46);
+            this.SearchViewUserButton.TabIndex = 27;
+            this.SearchViewUserButton.Text = "View User";
+            this.SearchViewUserButton.UseVisualStyleBackColor = true;
+            this.SearchViewUserButton.Click += new System.EventHandler(this.SearchFollowButton_Click);
             // 
             // SearchSearchResultsDomainUp
             // 
@@ -2570,10 +2584,9 @@
             this.AdminMenuPanel.Controls.Add(this.AdminMenuBanUserButton);
             this.AdminMenuPanel.Controls.Add(this.AdminMenuEraseUserButton);
             this.AdminMenuPanel.Controls.Add(this.AdminMenuLabel);
-            this.AdminMenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AdminMenuPanel.Location = new System.Drawing.Point(0, 0);
+            this.AdminMenuPanel.Location = new System.Drawing.Point(0, 3);
             this.AdminMenuPanel.Name = "AdminMenuPanel";
-            this.AdminMenuPanel.Size = new System.Drawing.Size(683, 786);
+            this.AdminMenuPanel.Size = new System.Drawing.Size(413, 783);
             this.AdminMenuPanel.TabIndex = 9;
             // 
             // AdminMenuEraseUserPanel
@@ -3674,29 +3687,157 @@
             this.QueueTimer.Interval = 1000;
             this.QueueTimer.Tick += new System.EventHandler(this.QueueTimer_Tick);
             // 
+            // SearcUserPanel
+            // 
+            this.SearcUserPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearcUserPanel.Controls.Add(this.label9);
+            this.SearcUserPanel.Controls.Add(this.label8);
+            this.SearcUserPanel.Controls.Add(this.SearchUserImage2);
+            this.SearcUserPanel.Controls.Add(this.SearchUserImage1);
+            this.SearcUserPanel.Controls.Add(this.SearchUserFollowButton);
+            this.SearcUserPanel.Controls.Add(this.SearchUserFollowers);
+            this.SearcUserPanel.Controls.Add(this.SearchUserFollowing);
+            this.SearcUserPanel.Controls.Add(this.SearcUserEmailTextBox);
+            this.SearcUserPanel.Controls.Add(this.SearUserName);
+            this.SearcUserPanel.Controls.Add(this.SearchUserLabel);
+            this.SearcUserPanel.Controls.Add(this.SearchUserGoBack);
+            this.SearcUserPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SearcUserPanel.Location = new System.Drawing.Point(0, 0);
+            this.SearcUserPanel.Name = "SearcUserPanel";
+            this.SearcUserPanel.Size = new System.Drawing.Size(683, 786);
+            this.SearcUserPanel.TabIndex = 15;
+            // 
+            // SearchUserImage2
+            // 
+            this.SearchUserImage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SearchUserImage2.Location = new System.Drawing.Point(357, 468);
+            this.SearchUserImage2.Name = "SearchUserImage2";
+            this.SearchUserImage2.Size = new System.Drawing.Size(172, 139);
+            this.SearchUserImage2.TabIndex = 8;
+            this.SearchUserImage2.TabStop = false;
+            this.SearchUserImage2.Visible = false;
+            this.SearchUserImage2.Click += new System.EventHandler(this.pictureBox7_Click);
+            // 
+            // SearchUserImage1
+            // 
+            this.SearchUserImage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SearchUserImage1.Location = new System.Drawing.Point(122, 467);
+            this.SearchUserImage1.Name = "SearchUserImage1";
+            this.SearchUserImage1.Size = new System.Drawing.Size(167, 139);
+            this.SearchUserImage1.TabIndex = 7;
+            this.SearchUserImage1.TabStop = false;
+            this.SearchUserImage1.Visible = false;
+            this.SearchUserImage1.Click += new System.EventHandler(this.pictureBox6_Click);
+            // 
+            // SearchUserFollowButton
+            // 
+            this.SearchUserFollowButton.Location = new System.Drawing.Point(261, 354);
+            this.SearchUserFollowButton.Name = "SearchUserFollowButton";
+            this.SearchUserFollowButton.Size = new System.Drawing.Size(147, 47);
+            this.SearchUserFollowButton.TabIndex = 6;
+            this.SearchUserFollowButton.Text = "Follow";
+            this.SearchUserFollowButton.UseVisualStyleBackColor = true;
+            this.SearchUserFollowButton.Click += new System.EventHandler(this.SearchUserFollowButton_Click);
+            // 
+            // SearchUserFollowers
+            // 
+            this.SearchUserFollowers.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchUserFollowers.Location = new System.Drawing.Point(426, 355);
+            this.SearchUserFollowers.Name = "SearchUserFollowers";
+            this.SearchUserFollowers.Size = new System.Drawing.Size(107, 45);
+            this.SearchUserFollowers.TabIndex = 5;
+            // 
+            // SearchUserFollowing
+            // 
+            this.SearchUserFollowing.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchUserFollowing.Location = new System.Drawing.Point(128, 353);
+            this.SearchUserFollowing.Name = "SearchUserFollowing";
+            this.SearchUserFollowing.Size = new System.Drawing.Size(111, 45);
+            this.SearchUserFollowing.TabIndex = 4;
+            // 
+            // SearcUserEmailTextBox
+            // 
+            this.SearcUserEmailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearcUserEmailTextBox.Location = new System.Drawing.Point(121, 253);
+            this.SearcUserEmailTextBox.Name = "SearcUserEmailTextBox";
+            this.SearcUserEmailTextBox.Size = new System.Drawing.Size(405, 45);
+            this.SearcUserEmailTextBox.TabIndex = 3;
+            // 
+            // SearUserName
+            // 
+            this.SearUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearUserName.Location = new System.Drawing.Point(121, 167);
+            this.SearUserName.Name = "SearUserName";
+            this.SearUserName.Size = new System.Drawing.Size(405, 45);
+            this.SearUserName.TabIndex = 2;
+            // 
+            // SearchUserLabel
+            // 
+            this.SearchUserLabel.AutoSize = true;
+            this.SearchUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchUserLabel.ForeColor = System.Drawing.Color.White;
+            this.SearchUserLabel.Location = new System.Drawing.Point(188, 50);
+            this.SearchUserLabel.Name = "SearchUserLabel";
+            this.SearchUserLabel.Size = new System.Drawing.Size(328, 58);
+            this.SearchUserLabel.TabIndex = 1;
+            this.SearchUserLabel.Text = "Search Users";
+            // 
+            // SearchUserGoBack
+            // 
+            this.SearchUserGoBack.Location = new System.Drawing.Point(23, 32);
+            this.SearchUserGoBack.Name = "SearchUserGoBack";
+            this.SearchUserGoBack.Size = new System.Drawing.Size(108, 46);
+            this.SearchUserGoBack.TabIndex = 0;
+            this.SearchUserGoBack.Text = "Go Back";
+            this.SearchUserGoBack.UseVisualStyleBackColor = true;
+            this.SearchUserGoBack.Click += new System.EventHandler(this.SearchUserGoBack_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(441, 333);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(81, 20);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Followers";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(145, 331);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(79, 20);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Following";
+            // 
             // FyBuZz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(683, 786);
-            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.WelcomePanel);
-            this.Controls.Add(this.PlaySongPanel);
-            this.Controls.Add(this.LogInPanel);
-            this.Controls.Add(this.PlayPlaylistPanel);
-            this.Controls.Add(this.CreateProfilePanel);
-            this.Controls.Add(this.DisplayStartPanel);
-            this.Controls.Add(this.ProfilePanel);
-            this.Controls.Add(this.PlayVideoPanel);
-            this.Controls.Add(this.DisplayPlaylistPanel);
-            this.Controls.Add(this.CreateVideoPanel);
-            this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
-            this.Controls.Add(this.AdminMenuPanel);
+            this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.CreateSongPanel);
+            this.Controls.Add(this.CreateVideoPanel);
+            this.Controls.Add(this.DisplayPlaylistPanel);
+            this.Controls.Add(this.PlayPlaylistPanel);
+            this.Controls.Add(this.PlaySongPanel);
+            this.Controls.Add(this.PlayVideoPanel);
+            this.Controls.Add(this.SearcUserPanel);
             this.Controls.Add(this.RegisterPanel);
+            this.Controls.Add(this.SearchPanel);
+            this.Controls.Add(this.DisplayStartPanel);
+            this.Controls.Add(this.ProfilePanel);
+            this.Controls.Add(this.LogInPanel);
+            this.Controls.Add(this.CreateProfilePanel);
+            this.Controls.Add(this.AdminMenuPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FyBuZz";
             this.Text = "FyBuZz";
@@ -3776,6 +3917,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlaySongImageBoxImage)).EndInit();
             this.PlayVideoPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.wmpVideo)).EndInit();
+            this.SearcUserPanel.ResumeLayout(false);
+            this.SearcUserPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchUserImage2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchUserImage1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3896,7 +4041,7 @@
         private System.Windows.Forms.Label SearchSearchLabel;
         private System.Windows.Forms.Button SearchSearchButton;
         private System.Windows.Forms.TextBox SearchSearchTextBox;
-        private System.Windows.Forms.Button SearchFollowButton;
+        private System.Windows.Forms.Button SearchViewUserButton;
         private System.Windows.Forms.DomainUpDown SearchSearchResultsDomainUp;
         private System.Windows.Forms.Panel AdminMenuPanel;
         private System.Windows.Forms.Label AdminMenuLabel;
@@ -4073,5 +4218,17 @@
         private System.Windows.Forms.CheckBox SearchFiltersOnCheckBox;
         private System.Windows.Forms.Button PlaySongAddQueueButton;
         private System.Windows.Forms.Timer QueueTimer;
+        private System.Windows.Forms.Panel SearcUserPanel;
+        private System.Windows.Forms.TextBox SearUserName;
+        private System.Windows.Forms.Label SearchUserLabel;
+        private System.Windows.Forms.Button SearchUserGoBack;
+        private System.Windows.Forms.PictureBox SearchUserImage2;
+        private System.Windows.Forms.PictureBox SearchUserImage1;
+        private System.Windows.Forms.Button SearchUserFollowButton;
+        private System.Windows.Forms.TextBox SearchUserFollowers;
+        private System.Windows.Forms.TextBox SearchUserFollowing;
+        private System.Windows.Forms.TextBox SearcUserEmailTextBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }

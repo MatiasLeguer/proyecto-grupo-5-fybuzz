@@ -1002,6 +1002,41 @@ namespace Entrega3_FyBuZz
      
         private void SearchFollowButton_Click(object sender, EventArgs e)
         {
+            SearcUserPanel.BringToFront();
+            List<string> userGetter = OnLogInLogInButton_Clicked2(SearchSearchTextBox.Text);
+            if (userGetter[8] != "True")
+            {
+                SearUserName.Visible = true;
+                SearcUserEmailTextBox.Visible = true;
+                SearchUserFollowers.Visible = true;
+                SearchUserFollowing.Visible = true;
+
+                SearUserName.AppendText(userGetter[0]);
+                SearcUserEmailTextBox.AppendText(userGetter[2]);
+                SearchUserFollowers.AppendText(userGetter[4]);
+                SearchUserFollowing.AppendText(userGetter[5]);
+            }
+            else
+            {
+                SearUserName.Visible = true;
+                SearcUserEmailTextBox.Visible = true;
+                SearUserName.AppendText(userGetter[0]);
+                SearcUserEmailTextBox.AppendText("This user is private");
+            }
+        }
+
+        //<<SEARCH USER>>
+        private void SearchUserGoBack_Click(object sender, EventArgs e)
+        {
+            SearchPanel.BringToFront();
+            SearUserName.Clear();
+            SearcUserEmailTextBox.Clear();
+            SearchUserFollowers.Clear();
+            SearchUserFollowing.Clear();
+        }
+
+        private void SearchUserFollowButton_Click(object sender, EventArgs e)
+        {
             List<User> userDataBase = new List<User>();
             userDataBase = OnSearchUserButton_Click();
             Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
@@ -1015,12 +1050,26 @@ namespace Entrega3_FyBuZz
                     List<string> listuser = searchedUser.FollowingList;
                     if (result == "User: " + searchedUser.SearchedInfoUser())
                     {
-                        OnSearchFollowButton_Click(logInUser, searchedUser,profile);
+                        OnSearchFollowButton_Click(logInUser, searchedUser, profile);
                     }
                 }
             }
+            SearUserName.Clear();
+            SearcUserEmailTextBox.Clear();
+            SearchUserFollowers.Clear();
+            SearchUserFollowing.Clear();
         }
-        
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //<<PLAY SONG PANEL>>
 
         private void PlaySongGoBackButton_Click(object sender, EventArgs e)
@@ -1930,5 +1979,7 @@ namespace Entrega3_FyBuZz
         {
 
         }
+
+        
     }
 }
