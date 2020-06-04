@@ -320,6 +320,7 @@
             this.PlayVideoPauseButton = new System.Windows.Forms.Button();
             this.PlayVideoPlayButton = new System.Windows.Forms.Button();
             this.wmpVideo = new AxWMPLib.AxWindowsMediaPlayer();
+            this.QueueTimer = new System.Windows.Forms.Timer(this.components);
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -1779,6 +1780,7 @@
             this.SearchProgressBar.Name = "SearchProgressBar";
             this.SearchProgressBar.Size = new System.Drawing.Size(499, 16);
             this.SearchProgressBar.TabIndex = 7;
+            this.SearchProgressBar.Click += new System.EventHandler(this.SearchProgressBar_Click);
             // 
             // SearchPrevButton
             // 
@@ -1861,7 +1863,7 @@
             // 
             // SearchSearchButton
             // 
-            this.SearchSearchButton.Location = new System.Drawing.Point(280, 388);
+            this.SearchSearchButton.Location = new System.Drawing.Point(309, 383);
             this.SearchSearchButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchSearchButton.Name = "SearchSearchButton";
             this.SearchSearchButton.Size = new System.Drawing.Size(99, 35);
@@ -3667,14 +3669,19 @@
             this.wmpVideo.Size = new System.Drawing.Size(752, 402);
             this.wmpVideo.TabIndex = 0;
             // 
+            // QueueTimer
+            // 
+            this.QueueTimer.Interval = 1000;
+            this.QueueTimer.Tick += new System.EventHandler(this.QueueTimer_Tick);
+            // 
             // FyBuZz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(683, 786);
-            this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.SearchPanel);
+            this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.LogInPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
@@ -4065,5 +4072,6 @@
         private System.Windows.Forms.CheckedListBox SearchAndOrCheckBox;
         private System.Windows.Forms.CheckBox SearchFiltersOnCheckBox;
         private System.Windows.Forms.Button PlaySongAddQueueButton;
+        private System.Windows.Forms.Timer QueueTimer;
     }
 }
