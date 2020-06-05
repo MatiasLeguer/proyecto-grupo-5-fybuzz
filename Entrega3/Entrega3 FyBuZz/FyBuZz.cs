@@ -1455,6 +1455,32 @@ namespace Entrega3_FyBuZz
             }
         }
 
+        private void PlayVideoAddToPlaylistButton_Click(object sender, EventArgs e)
+        {
+            PlayVideoSelectPlDomainUp.ResetText();
+            
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+
+            if(profile.CreatedPlaylist.Count() != 0)
+            {
+                foreach(PlayList playlist in profile.CreatedPlaylist)
+                {
+                    PlayVideoSelectPlDomainUp.Items.Add(playlist.NamePlayList);
+                }
+                PlayVideoSelectPlDomainUp.Visible = true;
+                PlayVideoSelectPlButton.Visible = true;
+            }
+            else
+            {
+
+            }
+        }
+
+        private void PlayVideoSelectPlButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //------------------------------MÉTODOS INTERNOS------------------------------- 
 
         public List<string> OnLogInLogInButton_Clicked2(string username)
@@ -1873,27 +1899,10 @@ namespace Entrega3_FyBuZz
         //PlayVideoPanel
         //--------------------------------------
 
-
-        private void PlayVideoPlayButton_Click(object sender, EventArgs e)
-        {
-            wmpVideo.Ctlcontrols.play();
-        }
-
-        private void PlayVideoPauseButton_Click(object sender, EventArgs e)
-        {
-            wmpVideo.Ctlcontrols.pause();
-        }
-
-        private void PlayVideoStopButton_Click(object sender, EventArgs e)
-        {
-            wmpVideo.Ctlcontrols.stop();
-        }
-
         private void PlayVideoGoBackButton_Click(object sender, EventArgs e)
         {
             SearchPanel.BringToFront();
         }
 
-        
     }
 }
