@@ -49,6 +49,9 @@ namespace Entrega3_FyBuZz
         public delegate List<List<string>> GetAllVideosInfo(object source, VideoEventArgs args);
         public event GetAllVideosInfo GetAllVideosInformation;
 
+        public delegate string ReturnChangedInfo(object source, UserEventArgs args);
+        public event ReturnChangedInfo UserProfileChangeInfoConfirmButton_Clicked;
+
         public delegate bool RegisterEventHandler(object soruce, RegisterEventArgs args);
         public event RegisterEventHandler RegisterRegisterButton_Clicked;
 
@@ -117,6 +120,9 @@ namespace Entrega3_FyBuZz
         //--------------------------------------------------------------------------------
         private void WelcomeLogInButton_Click(object sender, EventArgs e)
         {
+            UserLogInTextBox.Clear();
+            PasswordLogInTextBox.Clear();
+            LogInInvalidCredentialsTetxbox.Clear();
             LogInPanel.BringToFront();
         }
         private void WelcomeRegisterButton_Click(object sender, EventArgs e)
@@ -158,10 +164,11 @@ namespace Entrega3_FyBuZz
             string pass = PasswordLogInTextBox.Text;
             userGetter = OnLogInLogInButton_Clicked2(username);
             //user = OnLoginButtonClicked(username, pass);
-            if (userGetter != null)
+            if (userGetter != null && userGetter[1] == pass)
             {
                 ProfilePanel.BringToFront();
             }
+            ProfilesInvalidCredentialTextBox.Clear();
         }
         private void ProfilePanel_Paint(object sender, EventArgs e)
         {
@@ -237,6 +244,20 @@ namespace Entrega3_FyBuZz
 
         private void DisplayStartSettingsButton_Click(object sender, EventArgs e)
         {
+            AccountSettingsUsernameTextBox.Clear();
+            AccountSettingsPasswordTextBox.Clear();
+            AccountSettingsAccountTypeTextBox.Clear();
+            AccountSettingsEmailTextBox.Clear();
+            AccountSettingsFollowersTextBox.Clear();
+            AccountSettingsFollowingTextBox.Clear();
+
+            ProfileSettingsNameTextBox.Clear();
+            ProfileSettingsProfileTypeTextBox.Clear();
+            ProfileSettingsGenderTextBox.Clear();
+            ProfileSettingsBirthdayTextBox.Clear();
+            //ProfileSettingsProfilePicImageBox.Image.Dispose();
+
+            ProfilesInvalidCredentialTextBox.Clear();
             string username = UserLogInTextBox.Text;
             string password = PasswordLogInTextBox.Text;
             User user = new User();
@@ -1660,6 +1681,24 @@ namespace Entrega3_FyBuZz
             }
             else return null;
         }
+        public void UserProfileChangeInfoConfirmButton_Click(string username, string password, string profile, string changed, int want)
+        {
+            if (UserProfileChangeInfoConfirmButton_Clicked != null)
+            {
+                string result = UserProfileChangeInfoConfirmButton_Clicked(this, new UserEventArgs() {UsernameText = username, PasswordText = password, ProfilenameText = profile, WantToChangeText = want, ChangedText = changed });
+                if(result == null)
+                {
+                    UserProfileChangeInfoInvalidBox.AppendText("ERROR[!] couldn't change settings");
+                    Thread.Sleep(2000);
+
+                }
+                else
+                {
+                    UserProfileChangeInfoInvalidBox.AppendText(result);
+                    Thread.Sleep(2000);
+                }
+            }
+        }
 
         //SIN MVC
 
@@ -1980,6 +2019,88 @@ namespace Entrega3_FyBuZz
 
         }
 
-        
+        //Change User Profile Info Panel
+        private void UserProfileChangeInfoGoBackButton_Click(object sender, EventArgs e)
+        {
+            DisplayStartPanel.BringToFront();
+            UserProfileChangeInfoPasswordTextBox.Clear();
+            UserProfileChangeInfoUsernameTextBox.Clear();
+            UserProfileChangeInfoProfileNameTextBox.Clear();
+            UserProfilChangeInfoMessageBox.Clear();
+            UserProfileChangeInfoInvalidBox.Clear();
+        }
+
+        private void UserProfileChangeInfoConfirmButton_Click(object sender, EventArgs e)
+        {
+            UserProfilChangeInfoMessageBox.Clear();
+            UserProfileChangeInfoInvalidBox.Clear();
+            int wantToChange = 0;
+            string changed = null;
+            if (UserProfileChangeInfoNewUsernameTextBox.Visible == true)
+            {
+                wantToChange = 1;
+                changed = UserProfileChangeInfoNewUsernameTextBox.Text;
+            }
+            else if (UserProfileChangeInfoNewPasswordTextBox.Visible == true)
+            {
+                wantToChange = 2;
+                changed = UserProfileChangeInfoNewPasswordTextBox.Text;
+            }
+            else if (UserProfileChangeInfoNewProfilenameTextBox.Visible == true)
+            {
+                wantToChange = 3;
+                changed = UserProfileChangeInfoNewProfilenameTextBox.Text;
+            }
+            UserProfileChangeInfoConfirmButton_Click(UserProfileChangeInfoUsernameTextBox.Text, UserProfileChangeInfoPasswordTextBox.Text, UserProfileChangeInfoProfileNameTextBox.Text, changed, wantToChange);
+
+            Thread.Sleep(2000);
+
+            WelcomePanel.BringToFront();
+            UserLogInTextBox.Clear();
+            PasswordLogInTextBox.Clear();
+
+            UserProfileChangeInfoPasswordTextBox.Clear();
+            UserProfileChangeInfoUsernameTextBox.Clear();
+            UserProfileChangeInfoProfileNameTextBox.Clear();
+
+            UserProfileChangeInfoNewPasswordTextBox.Clear();
+            UserProfileChangeInfoNewUsernameTextBox.Clear();
+            UserProfileChangeInfoNewProfilenameTextBox.Clear();
+        }
+
+        private void UserSettinChangeUsernameButton_Click(object sender, EventArgs e)
+        {
+            UserProfilChangeInfoMessageBox.Clear();
+            UserProfileChangeInfoInvalidBox.Clear();
+            UserProfileChangeInfoPanel.BringToFront();
+            UserProfilChangeInfoMessageBox.AppendText("Change Username.");
+            UserProfileChangeInfoNewUsernameTextBox.Visible= true;
+            label12.Visible = true;
+        }
+
+        private void UserSettinChangePasswordButton_Click(object sender, EventArgs e)
+        {
+            UserProfilChangeInfoMessageBox.Clear();
+            UserProfileChangeInfoInvalidBox.Clear();
+            UserProfileChangeInfoPanel.BringToFront();
+            UserProfilChangeInfoMessageBox.AppendText("Change Password.");
+            UserProfileChangeInfoNewPasswordTextBox.Visible = true;
+            label11.Visible = true;
+        }
+
+        private void ProfileSettingsChangeProfileNameButton_Click(object sender, EventArgs e)
+        {
+            UserProfilChangeInfoMessageBox.Clear();
+            UserProfileChangeInfoInvalidBox.Clear();
+            UserProfileChangeInfoPanel.BringToFront();
+            UserProfilChangeInfoMessageBox.AppendText("Change Profilename.");
+            UserProfileChangeInfoNewProfilenameTextBox.Visible = true;
+            label13.Visible = true;
+        }
+
+        private void ProfileSettingsChangeProfilePicButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
