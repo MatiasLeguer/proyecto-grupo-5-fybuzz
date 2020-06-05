@@ -157,21 +157,15 @@ namespace Entrega3_FyBuZz.Controladores
             int pAge = DateTime.Now.Year - e.BirthdayText.Year;
 
             Profile prof = new Profile(e.ProfileNameText,"..",e.ProfileTypeText,e.EmailText,e.GenderText, pAge);
-            /*foreach(Profile profile in userDataBase[u].Perfiles)
+            foreach(Profile profile in userDataBase[u].Perfiles)
             {   
                 if(profile.ProfileName == prof.ProfileName || profile.Username == prof.ProfileName)
 
                 {
-                    profileGetterString.Add(profile.ProfileName);
-                    profileGetterString.Add(profile.ProfileType);
-                    profileGetterString.Add(profile.Gender);
-                    profileGetterString.Add(profile.Age.ToString());
+                    prof = profile;
                 }
             }
-            if (profileGetterString.Count() == 0)
-            {
-                return null;
-            }*/
+
             return prof;
         }
         private List<string> OnProfilesChooseProfile_Click2(object sender, ProfileEventArgs e)

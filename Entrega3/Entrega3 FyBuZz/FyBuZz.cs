@@ -43,6 +43,9 @@ namespace Entrega3_FyBuZz
         public delegate List<List<string>> GetAllSongsInfo(object source, SongEventArgs args);
         public event GetAllSongsInfo GetAllSongInformation;
 
+        public delegate List<string> GetVideoInfo(object source, VideoEventArgs args);
+        public event GetVideoInfo GetVideoInformation;
+
         public delegate List<List<string>> GetAllVideosInfo(object source, VideoEventArgs args);
         public event GetAllVideosInfo GetAllVideosInformation;
 
@@ -999,6 +1002,41 @@ namespace Entrega3_FyBuZz
      
         private void SearchFollowButton_Click(object sender, EventArgs e)
         {
+            SearcUserPanel.BringToFront();
+            List<string> userGetter = OnLogInLogInButton_Clicked2(SearchSearchTextBox.Text);
+            if (userGetter[8] != "True")
+            {
+                SearUserName.Visible = true;
+                SearcUserEmailTextBox.Visible = true;
+                SearchUserFollowers.Visible = true;
+                SearchUserFollowing.Visible = true;
+
+                SearUserName.AppendText(userGetter[0]);
+                SearcUserEmailTextBox.AppendText(userGetter[2]);
+                SearchUserFollowers.AppendText(userGetter[4]);
+                SearchUserFollowing.AppendText(userGetter[5]);
+            }
+            else
+            {
+                SearUserName.Visible = true;
+                SearcUserEmailTextBox.Visible = true;
+                SearUserName.AppendText(userGetter[0]);
+                SearcUserEmailTextBox.AppendText("This user is private");
+            }
+        }
+
+        //<<SEARCH USER>>
+        private void SearchUserGoBack_Click(object sender, EventArgs e)
+        {
+            SearchPanel.BringToFront();
+            SearUserName.Clear();
+            SearcUserEmailTextBox.Clear();
+            SearchUserFollowers.Clear();
+            SearchUserFollowing.Clear();
+        }
+
+        private void SearchUserFollowButton_Click(object sender, EventArgs e)
+        {
             List<User> userDataBase = new List<User>();
             userDataBase = OnSearchUserButton_Click();
             Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
@@ -1012,12 +1050,26 @@ namespace Entrega3_FyBuZz
                     List<string> listuser = searchedUser.FollowingList;
                     if (result == "User: " + searchedUser.SearchedInfoUser())
                     {
-                        OnSearchFollowButton_Click(logInUser, searchedUser,profile);
+                        OnSearchFollowButton_Click(logInUser, searchedUser, profile);
                     }
                 }
             }
+            SearUserName.Clear();
+            SearcUserEmailTextBox.Clear();
+            SearchUserFollowers.Clear();
+            SearchUserFollowing.Clear();
         }
-        
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //<<PLAY SONG PANEL>>
 
         private void PlaySongGoBackButton_Click(object sender, EventArgs e)
@@ -1033,10 +1085,21 @@ namespace Entrega3_FyBuZz
         }
         private void PlaySongAddQueueButton_Click(object sender, EventArgs e)
         {
-            string[] searchedSong = SearchSearchResultsDomainUp.Text.Split(':');
-            List<string> songInfo = GetSongButton(searchedSong[1], searchedSong[3]);
-            queueList.Add(songInfo[6]);
+            string[] searchedMult = SearchSearchResultsDomainUp.Text.Split(':');
+            if (searchedMult[0].Contains("Song") == true)
+            {
+                List<string> songInfo = GetSongButton(searchedMult[1], searchedMult[3]);
+                queueList.Add(songInfo[6]);
+            }
+            //Esto deberia ir cuando haya un panel con el botton de agregar a la cola en videos.
+            else if(searchedMult[0].Contains("Video") == true)
+            {
+                List<string> videoInfo = GetVideoButton(searchedMult[1], searchedMult[2], searchedMult[3]);
+                queueList.Add(videoInfo[8]);
+            }
+            
             //Agrega a la queue.
+            //Falta ver cuando se le da play a queue, es decir, si es con un boton, con tiempo o algo. No se.
         }
         private void PlaySongAddToPlaylistButton_Click(object sender, EventArgs e)
         {
@@ -1128,7 +1191,16 @@ namespace Entrega3_FyBuZz
             SearchProgressBar.Increment(1);
             PlaySongTimerTextBox.Text = PlaySongProgressBar.Value.ToString();
             PlayPlaylistTimerBox.Text = PlayPlaylistProgressBarBox.Value.ToString();
-            SearchTimerTextBox.Text = PlaySongProgressBar.Value.ToString();  
+            SearchTimerTextBox.Text = PlaySongProgressBar.Value.ToString();
+            if(SearchProgressBar.Value == SearchProgressBar.Maximum)
+            {
+
+            }
+            
+        }
+        private void QueueTimer_Tick(object sender, EventArgs e)
+        {
+            
         }
         private void PlaySongStopButton_Click(object sender, EventArgs e)
         {
@@ -1597,6 +1669,15 @@ namespace Entrega3_FyBuZz
             }
             else return null;
         }
+        public List<string> GetVideoButton(string vName, string vActors, string vDirectors)
+        {
+            if(GetVideoInformation != null)
+            {
+                List<string> videoInfo = GetVideoInformation(this, new VideoEventArgs() {NameText = vName, ActorsText = vActors, DirectorsText = vDirectors });
+                return videoInfo;
+            }
+            return null;
+        }
         public List<List<string>> ReturnAllVideosInfo()
         {
             if (GetAllVideosInformation != null)
@@ -1606,6 +1687,7 @@ namespace Entrega3_FyBuZz
             }
             else return null;
         }
+
         //SIN MVC
 
         public User OnLoginButtonClicked(string username, string password)
@@ -1904,5 +1986,10 @@ namespace Entrega3_FyBuZz
             SearchPanel.BringToFront();
         }
 
+
+        private void SearchProgressBar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

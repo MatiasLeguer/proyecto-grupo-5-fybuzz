@@ -23,6 +23,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuzz.CreateVideoSaveButton_Clicked += OnCreateVideoSaveButton_Clicked;
             this.fyBuzz.SearchVideoButton_Clicked += OnSearchVideoButton_Clicked;
             this.fyBuzz.GetAllVideosInformation += ReturnAllVideosInfo;
+            this.fyBuzz.GetVideoInformation += ReturnVideoInfo;
         }
 
         public void Initialize()
@@ -57,6 +58,19 @@ namespace Entrega3_FyBuZz.Controladores
         public List<Video> OnSearchVideoButton_Clicked(object sender, VideoEventArgs e)
         {
             return videoDataBase;
+        }
+        private List<string> ReturnVideoInfo(object sender, VideoEventArgs e)
+        {
+            List<string> videoInfo = new List<string>();
+            foreach (Video video in videoDataBase)
+            {
+
+                if (video.Name == e.NameText && video.Actors == e.ActorsText && video.Directors == e.DirectorsText)
+                {
+                    videoInfo = video.InfoVideo();
+                }
+            }
+            return videoInfo;
         }
         private List<List<string>> ReturnAllVideosInfo(object sender, VideoEventArgs e)
         {

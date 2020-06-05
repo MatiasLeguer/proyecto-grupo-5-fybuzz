@@ -30,6 +30,8 @@ namespace Modelos
         public string Category { get => category; }
         public string Format { get => format; }
         public string FileName { get => fileName; }
+        public string Actors { get => actors; set => actors = value; }
+        public string Directors { get => directors; set => directors = value; }
         //--------------------------------------------------------------------------------------------------
 
         //CONSTRUCTOR:
@@ -72,7 +74,7 @@ namespace Modelos
         }
         public string SearchedInfoVideo()                  //Entrega la información básica cuando se busca un video.
         {
-            return "Video: " + name + "\tActors: " + actors + "\tDirectors: " + directors;
+            return "Video:" + name + ": Actors:" + actors + ": Directors:" + directors;
         }
         //--------------------------------------------------------------------------------------------------
 
