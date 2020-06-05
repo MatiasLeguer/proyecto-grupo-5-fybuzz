@@ -34,6 +34,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.ProfilesChooseProfile_Clicked += OnProfilesChooseProfile_Click;
             this.fyBuZz.SearchUserButton_Clicked += OnSearchUserButton_Click;
             this.fyBuZz.SearchFollowButton_Clicked += OnSearchFollowButton_Click;
+            this.fyBuZz.UserProfileChangeInfoConfirmButton_Clicked += OnUserProfileChangeInfoConfirmButton_Click;
         }
 
         public void Initialize()
@@ -58,6 +59,7 @@ namespace Entrega3_FyBuZz.Controladores
 
         private User OnLoginButtonClicked(object sender, LogInEventArgs e)
         {
+            
             return dataBase.LogIn(e.UsernameText, e.PasswrodText, userDataBase);
         }
         private bool OnRegisterRegisterButtonClicked(object sender, RegisterEventArgs e)
@@ -154,20 +156,13 @@ namespace Entrega3_FyBuZz.Controladores
             int u = UserIndex(e);
             int pAge = DateTime.Now.Year - e.BirthdayText.Year;
             Profile prof = new Profile(e.ProfileNameText,"..",e.ProfileTypeText,e.EmailText,e.GenderText, pAge);
-            /*foreach(Profile profile in userDataBase[u].Perfiles)
-            {   
-                if(profile.ProfileName == prof.ProfileName || profile.Username == prof.ProfileName)
+            foreach(Profile profile in userDataBase[u].Perfiles)
+            {
+                if (profile.ProfileName == prof.ProfileName || profile.Username == prof.ProfileName)
                 {
-                    profileGetterString.Add(profile.ProfileName);
-                    profileGetterString.Add(profile.ProfileType);
-                    profileGetterString.Add(profile.Gender);
-                    profileGetterString.Add(profile.Age.ToString());
+                    prof = profile;
                 }
             }
-            if(profileGetterString.Count() == 0)
-            {
-                return null;
-            }*/
             return prof;
         }
         private List<string> OnProfilesChooseProfile_Click2(object sender, ProfileEventArgs e)
@@ -225,6 +220,73 @@ namespace Entrega3_FyBuZz.Controladores
                 result = "Followed: " + e.UserSearched.SearchedInfoUser();
                 dataBase.Save_Users(userDataBase);
             }
+            return result;
+        }
+        private string OnUserProfileChangeInfoConfirmButton_Click(object sender, UserEventArgs e)
+        {
+            string result = null;
+            if(e.WantToChangeText == 1)
+            {
+                foreach(User user in userDataBase)
+                {
+                    if(user.Username == e.UsernameText && user.Password == e.PasswordText)
+                    {
+                        int cont1 = 0;
+                        foreach (User usr in userDataBase)
+                        {
+                            if(usr.Username == e.ChangedText)
+                            {
+                                cont1++;
+                            }
+                            
+                        }
+                        if (cont1 == 0)
+                        {
+                            user.Username = e.ChangedText;
+                            result = "Succesfully changed Username";
+                        }
+
+                    }
+                }
+            }
+            else if (e.WantToChangeText == 2)
+            {
+                foreach (User user in userDataBase)
+                {
+
+                    if (user.Username == e.UsernameText && user.Password == e.PasswordText)
+                    {
+                        user.Password = e.ChangedText;
+                        result = "Succesfully changed Password";
+                    }
+                }
+            }
+            else
+            {
+                foreach (User user in userDataBase)
+                {
+                    if (user.Username == e.UsernameText && user.Password == e.PasswordText)
+                    {
+                        int cont2 = 0;
+                        foreach (Profile profile in user.Perfiles)
+                        {
+                            if (profile.ProfileName == e.ChangedText)
+                            {
+                                cont2++;
+                                result = null;
+                            }
+                            if (cont2 == 0)
+                            {
+                                profile.ProfileName = e.ChangedText;
+                                result = "Succesfully changed Profilename";
+                            }
+                        }
+                        
+
+                    }
+                }
+            }
+            dataBase.Save_Users(userDataBase);
             return result;
         }
     }
