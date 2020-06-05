@@ -91,6 +91,16 @@ namespace Entrega3_FyBuZz
 
         public delegate string ChoosePLEventHanlder(object source, PlaylistEventArgs args);
         public event ChoosePLEventHanlder PlaySongChoosePlsButton_Clicked;
+
+        public delegate string RateSongEventHandler(object source, SongEventArgs args);
+        public event RateSongEventHandler PlaysSongRateButton_Clicked;
+
+        public delegate string RateVideoEventHandler(object source, VideoEventArgs args);
+        public event RateVideoEventHandler PlaysVideoRateButton_Clicked;
+
+
+
+        //Copiar lo mismo pero para video....
         //--------------------------------------------------------------------------------
 
 
@@ -842,6 +852,7 @@ namespace Entrega3_FyBuZz
                                 {
                                     contS++;
                                 }
+                                
                             }
 
                         }
@@ -1101,7 +1112,7 @@ namespace Entrega3_FyBuZz
 
         }
 
-        //<<PLAY SONG PANEL>>
+        //--------------------------------<<PLAY SONG PANEL>>---------------------------------
 
         private void PlaySongGoBackButton_Click(object sender, EventArgs e)
         {
@@ -1114,6 +1125,25 @@ namespace Entrega3_FyBuZz
             SearchSearchResultsDomainUp.ResetText();
 
         }
+        //Rate Song
+        private void PlaysSongRateButton_Click(object sender, EventArgs e)
+        {
+            PlaySongRateMessageTextBox.Clear();
+            PlaySongRateNumDomainUp.Visible = true;
+            int userRate = (int)PlaySongRateNumDomainUp.Value;
+            string[] infoSong = SearchSearchResultsDomainUp.Text.Split(':');
+            PlaysSongRateButton_Click(userRate, infoSong[1], infoSong[3]);
+            List<string> infoSongList = GetSongButton(infoSong[1], infoSong[3]);
+            PlaySongRateMessageTextBox.AppendText(infoSongList[7]);
+        }
+        private void PlayVideoRateVideoButton_Click(object sender, EventArgs e)
+        {
+            PlayVideoRateDomainUp.Visible = true;
+            int userRate = (int)PlayVideoRateDomainUp.Value;
+            string[] infoVideo = SearchSearchResultsDomainUp.Text.Split(':');
+            PlaysVideoRateButton_Click(userRate, infoVideo[1], infoVideo[3], infoVideo[5]);
+        }
+
         private void PlaySongAddQueueButton_Click(object sender, EventArgs e)
         {
             string[] searchedMult = SearchSearchResultsDomainUp.Text.Split(':');
@@ -1304,7 +1334,105 @@ namespace Entrega3_FyBuZz
             }
         }
 
-        
+        //Change User Profile Info Panel
+        private void UserProfileChangeInfoGoBackButton_Click(object sender, EventArgs e)
+        {
+            DisplayStartPanel.BringToFront();
+            UserProfileChangeInfoPasswordTextBox.Clear();
+            UserProfileChangeInfoUsernameTextBox.Clear();
+            UserProfileChangeInfoProfileNameTextBox.Clear();
+            UserProfilChangeInfoMessageBox.Clear();
+            UserProfileChangeInfoInvalidBox.Clear();
+        }
+
+        private void UserProfileChangeInfoConfirmButton_Click(object sender, EventArgs e)
+        {
+            UserProfilChangeInfoMessageBox.Clear();
+            UserProfileChangeInfoInvalidBox.Clear();
+            int wantToChange = 0;
+            string changed = null;
+            if (UserProfileChangeInfoNewUsernameTextBox.Visible == true)
+            {
+                wantToChange = 1;
+                changed = UserProfileChangeInfoNewUsernameTextBox.Text;
+            }
+            else if (UserProfileChangeInfoNewPasswordTextBox.Visible == true)
+            {
+                wantToChange = 2;
+                changed = UserProfileChangeInfoNewPasswordTextBox.Text;
+            }
+            else if (UserProfileChangeInfoNewProfilenameTextBox.Visible == true)
+            {
+                wantToChange = 3;
+                changed = UserProfileChangeInfoNewProfilenameTextBox.Text;
+            }
+            if (UserProfileChangeInfoUsernameTextBox.Text == UserLogInTextBox.Text)
+            {
+                UserProfileChangeInfoConfirmButton_Click(UserProfileChangeInfoUsernameTextBox.Text, UserProfileChangeInfoPasswordTextBox.Text, UserProfileChangeInfoProfileNameTextBox.Text, changed, wantToChange);
+            }
+            else
+            {
+                UserProfileChangeInfoInvalidBox.Clear();
+                UserProfileChangeInfoInvalidBox.AppendText("ERRROR[!] Not your username.");
+            }
+
+            Thread.Sleep(2000);
+
+            WelcomePanel.BringToFront();
+            UserLogInTextBox.Clear();
+            PasswordLogInTextBox.Clear();
+
+            UserProfileChangeInfoPasswordTextBox.Clear();
+            UserProfileChangeInfoUsernameTextBox.Clear();
+            UserProfileChangeInfoProfileNameTextBox.Clear();
+
+            UserProfileChangeInfoNewPasswordTextBox.Clear();
+            UserProfileChangeInfoNewUsernameTextBox.Clear();
+            UserProfileChangeInfoNewProfilenameTextBox.Clear();
+
+            UserProfileChangeInfoNewUsernameTextBox.Visible = false;
+            UserProfileChangeInfoNewPasswordTextBox.Visible = false;
+            UserProfileChangeInfoNewProfilenameTextBox.Visible = false;
+
+            label11.Visible = false;
+            label12.Visible = false;
+            label13.Visible = false;
+        }
+
+        private void UserSettinChangeUsernameButton_Click(object sender, EventArgs e)
+        {
+            UserProfilChangeInfoMessageBox.Clear();
+            UserProfileChangeInfoInvalidBox.Clear();
+            UserProfileChangeInfoPanel.BringToFront();
+            UserProfilChangeInfoMessageBox.AppendText("Change Username.");
+            UserProfileChangeInfoNewUsernameTextBox.Visible = true;
+            label12.Visible = true;
+        }
+
+        private void UserSettinChangePasswordButton_Click(object sender, EventArgs e)
+        {
+            UserProfilChangeInfoMessageBox.Clear();
+            UserProfileChangeInfoInvalidBox.Clear();
+            UserProfileChangeInfoPanel.BringToFront();
+            UserProfilChangeInfoMessageBox.AppendText("Change Password.");
+            UserProfileChangeInfoNewPasswordTextBox.Visible = true;
+            label11.Visible = true;
+        }
+
+        private void ProfileSettingsChangeProfileNameButton_Click(object sender, EventArgs e)
+        {
+            UserProfilChangeInfoMessageBox.Clear();
+            UserProfileChangeInfoInvalidBox.Clear();
+            UserProfileChangeInfoPanel.BringToFront();
+            UserProfilChangeInfoMessageBox.AppendText("Change Profilename.");
+            UserProfileChangeInfoNewProfilenameTextBox.Visible = true;
+            label13.Visible = true;
+        }
+
+        private void ProfileSettingsChangeProfilePicButton_Click(object sender, EventArgs e)
+        {
+
+        }
 
         //<<PANEL DE CREACION SONG>>
         private void CreateSongCreateSongButton_Click(object sender, EventArgs e)
@@ -1709,6 +1837,40 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
+        public void PlaysSongRateButton_Click(int rated, string sName, string sArtist)
+        {
+            if(PlaysSongRateButton_Clicked != null)
+            {
+                string result = PlaysSongRateButton_Clicked(this, new SongEventArgs() { RankingText = rated, NameText = sName, ArtistText = sArtist }) ;
+                if(result != null)
+                {
+                    PlaySongMessageTextBox.Clear();
+                    PlaySongMessageTextBox.AppendText(result);
+                }
+                else
+                {
+                    PlaySongMessageTextBox.Clear();
+                    PlaySongMessageTextBox.AppendText("ERROR[!] couldn't rate song");
+                }
+            }
+        }
+        public void PlaysVideoRateButton_Click(int rated, string vName, string vActors, string vDirectors)
+        {
+            if (PlaysVideoRateButton_Clicked != null)
+            {
+                string result = PlaysVideoRateButton_Clicked(this, new VideoEventArgs() { RankingText = rated, NameText = vName, ActorsText = vActors, DirectorsText = vDirectors});
+                if (result != null)
+                {
+                    PlayVideoMessageLabel.Clear();
+                    PlayVideoMessageLabel.AppendText(result);
+                }
+                else
+                {
+                    PlayVideoMessageLabel.Clear();
+                    PlayVideoMessageLabel.AppendText("ERROR[!] couldn't rate song");
+                }
+            }
+        }
 
         //SIN MVC
 
@@ -2029,104 +2191,6 @@ namespace Entrega3_FyBuZz
 
         }
 
-        //Change User Profile Info Panel
-        private void UserProfileChangeInfoGoBackButton_Click(object sender, EventArgs e)
-        {
-            DisplayStartPanel.BringToFront();
-            UserProfileChangeInfoPasswordTextBox.Clear();
-            UserProfileChangeInfoUsernameTextBox.Clear();
-            UserProfileChangeInfoProfileNameTextBox.Clear();
-            UserProfilChangeInfoMessageBox.Clear();
-            UserProfileChangeInfoInvalidBox.Clear();
-        }
-
-        private void UserProfileChangeInfoConfirmButton_Click(object sender, EventArgs e)
-        {
-            UserProfilChangeInfoMessageBox.Clear();
-            UserProfileChangeInfoInvalidBox.Clear();
-            int wantToChange = 0;
-            string changed = null;
-            if (UserProfileChangeInfoNewUsernameTextBox.Visible == true)
-            {
-                wantToChange = 1;
-                changed = UserProfileChangeInfoNewUsernameTextBox.Text;
-            }
-            else if (UserProfileChangeInfoNewPasswordTextBox.Visible == true)
-            {
-                wantToChange = 2;
-                changed = UserProfileChangeInfoNewPasswordTextBox.Text;
-            }
-            else if (UserProfileChangeInfoNewProfilenameTextBox.Visible == true)
-            {
-                wantToChange = 3;
-                changed = UserProfileChangeInfoNewProfilenameTextBox.Text;
-            }
-            if (UserProfileChangeInfoUsernameTextBox.Text == UserLogInTextBox.Text)
-            {
-                UserProfileChangeInfoConfirmButton_Click(UserProfileChangeInfoUsernameTextBox.Text, UserProfileChangeInfoPasswordTextBox.Text, UserProfileChangeInfoProfileNameTextBox.Text, changed, wantToChange);
-            }
-            else
-            {
-                UserProfileChangeInfoInvalidBox.Clear();
-                UserProfileChangeInfoInvalidBox.AppendText("ERRROR[!] Not your username.");
-            }
-
-            Thread.Sleep(2000);
-
-            WelcomePanel.BringToFront();
-            UserLogInTextBox.Clear();
-            PasswordLogInTextBox.Clear();
-
-            UserProfileChangeInfoPasswordTextBox.Clear();
-            UserProfileChangeInfoUsernameTextBox.Clear();
-            UserProfileChangeInfoProfileNameTextBox.Clear();
-
-            UserProfileChangeInfoNewPasswordTextBox.Clear();
-            UserProfileChangeInfoNewUsernameTextBox.Clear();
-            UserProfileChangeInfoNewProfilenameTextBox.Clear();
-
-            UserProfileChangeInfoNewUsernameTextBox.Visible = false;
-            UserProfileChangeInfoNewPasswordTextBox.Visible = false;
-            UserProfileChangeInfoNewProfilenameTextBox.Visible = false;
-
-            label11.Visible = false;
-            label12.Visible = false;
-            label13.Visible = false;
-        }
-
-        private void UserSettinChangeUsernameButton_Click(object sender, EventArgs e)
-        {
-            UserProfilChangeInfoMessageBox.Clear();
-            UserProfileChangeInfoInvalidBox.Clear();
-            UserProfileChangeInfoPanel.BringToFront();
-            UserProfilChangeInfoMessageBox.AppendText("Change Username.");
-            UserProfileChangeInfoNewUsernameTextBox.Visible= true;
-            label12.Visible = true;
-        }
-
-        private void UserSettinChangePasswordButton_Click(object sender, EventArgs e)
-        {
-            UserProfilChangeInfoMessageBox.Clear();
-            UserProfileChangeInfoInvalidBox.Clear();
-            UserProfileChangeInfoPanel.BringToFront();
-            UserProfilChangeInfoMessageBox.AppendText("Change Password.");
-            UserProfileChangeInfoNewPasswordTextBox.Visible = true;
-            label11.Visible = true;
-        }
-
-        private void ProfileSettingsChangeProfileNameButton_Click(object sender, EventArgs e)
-        {
-            UserProfilChangeInfoMessageBox.Clear();
-            UserProfileChangeInfoInvalidBox.Clear();
-            UserProfileChangeInfoPanel.BringToFront();
-            UserProfilChangeInfoMessageBox.AppendText("Change Profilename.");
-            UserProfileChangeInfoNewProfilenameTextBox.Visible = true;
-            label13.Visible = true;
-        }
-
-        private void ProfileSettingsChangeProfilePicButton_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

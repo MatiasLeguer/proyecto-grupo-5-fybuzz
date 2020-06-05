@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,8 @@ namespace Modelos
         protected string actors;
         protected string directors;
         protected string fileName;
+        protected int cantRated;
+        protected int accummulativeRated;
         //--------------------------------------------------------------------------------------------------
 
         //GETTERS Y SETTERS:
@@ -32,6 +35,9 @@ namespace Modelos
         public string FileName { get => fileName; }
         public string Actors { get => actors; set => actors = value; }
         public string Directors { get => directors; set => directors = value; }
+        public int Ranking { get => ranking; set => ranking = value; }
+        public int CantRated { get; set; }
+        public int AccumulativeRated { get; set; }
         //--------------------------------------------------------------------------------------------------
 
         //CONSTRUCTOR:
@@ -53,6 +59,9 @@ namespace Modelos
             this.rated = 0;
             this.image = image;
             this.ranking = 0;
+            this.cantRated = 0;
+            this.accummulativeRated = 0;
+
         }
         //--------------------------------------------------------------------------------------------------
 

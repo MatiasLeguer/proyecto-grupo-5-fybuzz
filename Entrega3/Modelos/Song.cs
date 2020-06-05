@@ -24,6 +24,8 @@ namespace Modelos
         protected string gender;
         protected string studio;
         protected string lyrics;
+        protected int cantRated;
+        protected int accumulativeRated;
 
         private string songFile;
         public string Lyrics { get => lyrics; }
@@ -34,6 +36,9 @@ namespace Modelos
         public string Discography { get; set; }
         public string Gender { get; set; }
         public string Studio { get; set; }
+        public int Ranking { get => ranking; set => ranking = value; }
+        public int CantRated { get; set; }
+        public int AccumulativeRated { get; set; }
 
         //Ver si el constructor está adecuado, o si hay que sacar algo.
         public Song(string name, string artist, string album, string discography, string gender, string date, string studio, double duration, string lyrics, string format, string songFile)
@@ -51,6 +56,8 @@ namespace Modelos
             this.lyrics = lyrics;
             this.format = format;
             this.SongFile = songFile;
+            this.cantRated = 0;
+            this.accumulativeRated = 0;
         }
         //--------------------------------------------------------------------------------------------------
 

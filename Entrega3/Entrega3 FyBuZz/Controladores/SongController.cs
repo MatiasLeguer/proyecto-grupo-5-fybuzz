@@ -26,6 +26,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.SearchSongButton_Clicked += OnSearchSongButton_Clicked;
             this.fyBuZz.GetSongInformation += ReturnSongInfo;
             this.fyBuZz.GetAllSongInformation += ReturnAllSongsInfo;
+            this.fyBuZz.PlaysSongRateButton_Clicked += RateSong;
         }
 
         public void Initialize()
@@ -34,6 +35,24 @@ namespace Entrega3_FyBuZz.Controladores
             songDatabase = dataBase.Load_Songs();
         }
 
+        private string RateSong(object sender, SongEventArgs e)
+        {
+            string result = null;
+            foreach (Song song in songDatabase)
+            {
+                string name = e.NameText;
+                string artists = e.ArtistText;
+                if (e.NameText.Contains(song.Name) == true && e.ArtistText.Contains(song.Artist) == true)
+                {
+                    song.CantRated = song.CantRated + 1;
+                    song.AccumulativeRated = song.AccumulativeRated + e.RankingText;
+                    song.Ranking = song.AccumulativeRated/song.CantRated;
+                    result = "Ranking summited.";
+                }
+            }
+            dataBase.Save_Songs(songDatabase);
+            return result;
+        }
         private bool OnCreateSongCreateSongButton_Clicked(object sender, SongEventArgs e)
         {
             string date = e.DateText.ToShortDateString();
@@ -62,7 +81,7 @@ namespace Entrega3_FyBuZz.Controladores
             foreach(Song song in songDatabase)
             {
 
-                if(song.Name == e.NameText && song.Artist == e.ArtistText)
+                if(e.NameText.Contains(song.Name) == true && e.ArtistText.Contains(song.Artist) == true)
                 {
                     songInfo.Add(song.Album);
                     songInfo.Add(song.Artist);
@@ -71,6 +90,7 @@ namespace Entrega3_FyBuZz.Controladores
                     songInfo.Add(song.Studio);
                     songInfo.Add(song.Lyrics);
                     songInfo.Add(song.SongFile);
+                    songInfo.Add(song.Ranking.ToString());
                 }
             }
             return songInfo;
@@ -84,5 +104,6 @@ namespace Entrega3_FyBuZz.Controladores
             }
             return allSongsInfo;
         }
+        
     }
 }
