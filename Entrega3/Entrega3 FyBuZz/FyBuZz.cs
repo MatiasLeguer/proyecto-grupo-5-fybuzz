@@ -159,6 +159,7 @@ namespace Entrega3_FyBuZz
 
         private void LogInLogInButton_Click(object sender, EventArgs e)
         {
+            LogInInvalidCredentialsTetxbox.Clear();
             List<string> userGetter = new List<string>();
             string username = UserLogInTextBox.Text;
             string pass = PasswordLogInTextBox.Text;
@@ -166,9 +167,17 @@ namespace Entrega3_FyBuZz
             //user = OnLoginButtonClicked(username, pass);
             if (userGetter != null && userGetter[1] == pass)
             {
+                ProfilesInvalidCredentialTextBox.Clear();
                 ProfilePanel.BringToFront();
             }
-            ProfilesInvalidCredentialTextBox.Clear();
+            else
+            {
+                LogInInvalidCredentialsTetxbox.Clear();
+                LogInInvalidCredentialsTetxbox.AppendText("Incorrect Username or Password");
+                Thread.Sleep(2000);
+                LogInInvalidCredentialsTetxbox.Visible = true;
+            }
+            LogInInvalidCredentialsTetxbox.Clear();
         }
         private void ProfilePanel_Paint(object sender, EventArgs e)
         {
@@ -943,6 +952,7 @@ namespace Entrega3_FyBuZz
                     if (song.Format == ".mp3")
                     {
                         string result = SearchSearchResultsDomainUp.Text;
+                        string songInfo = song.SearchedInfoSong();
                         if (result == song.SearchedInfoSong())
                         {
                             PlayerPlayingLabel.Clear();
@@ -1556,7 +1566,7 @@ namespace Entrega3_FyBuZz
             if(LogInLogInButton_Clicked2 != null)
             {
                 userGetterStringList = LogInLogInButton_Clicked2(this, new UserEventArgs() { UsernameText = username });
-                if (userGetterStringList != null)
+                if (userGetterStringList != null && userGetterStringList[1] == PasswordLogInTextBox.Text)
                 {
                     LogInInvalidCredentialsTetxbox.AppendText("Log-In Succesfull");
                     Thread.Sleep(2000);
@@ -2051,7 +2061,15 @@ namespace Entrega3_FyBuZz
                 wantToChange = 3;
                 changed = UserProfileChangeInfoNewProfilenameTextBox.Text;
             }
-            UserProfileChangeInfoConfirmButton_Click(UserProfileChangeInfoUsernameTextBox.Text, UserProfileChangeInfoPasswordTextBox.Text, UserProfileChangeInfoProfileNameTextBox.Text, changed, wantToChange);
+            if (UserProfileChangeInfoUsernameTextBox.Text == UserLogInTextBox.Text)
+            {
+                UserProfileChangeInfoConfirmButton_Click(UserProfileChangeInfoUsernameTextBox.Text, UserProfileChangeInfoPasswordTextBox.Text, UserProfileChangeInfoProfileNameTextBox.Text, changed, wantToChange);
+            }
+            else
+            {
+                UserProfileChangeInfoInvalidBox.Clear();
+                UserProfileChangeInfoInvalidBox.AppendText("ERRROR[!] Not your username.");
+            }
 
             Thread.Sleep(2000);
 
@@ -2066,6 +2084,14 @@ namespace Entrega3_FyBuZz
             UserProfileChangeInfoNewPasswordTextBox.Clear();
             UserProfileChangeInfoNewUsernameTextBox.Clear();
             UserProfileChangeInfoNewProfilenameTextBox.Clear();
+
+            UserProfileChangeInfoNewUsernameTextBox.Visible = false;
+            UserProfileChangeInfoNewPasswordTextBox.Visible = false;
+            UserProfileChangeInfoNewProfilenameTextBox.Visible = false;
+
+            label11.Visible = false;
+            label12.Visible = false;
+            label13.Visible = false;
         }
 
         private void UserSettinChangeUsernameButton_Click(object sender, EventArgs e)

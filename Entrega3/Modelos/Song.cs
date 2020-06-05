@@ -74,7 +74,7 @@ namespace Modelos
         }
         public string SearchedInfoSong()                   //Entrega un string con la información de la canción buscada.
         {
-            return "Song:" + name + ": Artist:" + artist;
+            return "Song: " + name + ": Artist: " + artist;
         }
         //--------------------------------------------------------------------------------------------------
 
