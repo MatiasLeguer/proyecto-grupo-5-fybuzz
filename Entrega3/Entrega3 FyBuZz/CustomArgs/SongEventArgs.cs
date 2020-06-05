@@ -20,5 +20,6 @@ namespace Entrega3_FyBuZz.CustomArgs
         public string LyricsText { get; set; }
         public string FileNameText { get; set; }
         public string FileDestName { get; set; }
+        public int RankingText { get; set; }
     }
 }

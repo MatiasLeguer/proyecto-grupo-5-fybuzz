@@ -24,6 +24,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuzz.SearchVideoButton_Clicked += OnSearchVideoButton_Clicked;
             this.fyBuzz.GetAllVideosInformation += ReturnAllVideosInfo;
             this.fyBuzz.GetVideoInformation += ReturnVideoInfo;
+            this.fyBuzz.PlaysVideoRateButton_Clicked += RateVideo;
         }
 
         public void Initialize()
@@ -80,6 +81,25 @@ namespace Entrega3_FyBuZz.Controladores
                 allVideosInfo.Add(video.InfoVideo());
             }
             return allVideosInfo;
+        }
+        private string RateVideo(object sender, VideoEventArgs e)
+        {
+            string result = null;
+            foreach (Video video in videoDataBase)
+            {
+                string name = e.NameText;
+                string actors = e.ActorsText;
+                string dir = e.DirectorsText;
+                if(e.NameText.Contains(video.Name) == true && e.ActorsText.Contains(video.Actors) == true && e.DirectorsText.Contains(video.Directors))
+                {
+                    video.CantRated = video.CantRated + 1;
+                    video.AccumulativeRated = video.AccumulativeRated + e.RankingText;
+                    video.Ranking = video.AccumulativeRated / video.CantRated;
+                    result = "Ranking summited.";
+                }
+            }
+            database.Save_Videos(videoDataBase);
+            return result;
         }
 
     }

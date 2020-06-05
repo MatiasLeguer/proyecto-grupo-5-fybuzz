@@ -22,6 +22,7 @@ namespace Entrega3_FyBuZz.CustomArgs
         public string SubtitlesText { get; set; }
         public string FileDestText { get; set; }
         public string FileNameText { get; set; }
+        public int RankingText { get; set; }
 
     }
 }
