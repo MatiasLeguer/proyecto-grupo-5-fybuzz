@@ -88,6 +88,9 @@ namespace Entrega3_FyBuZz
 
         public delegate string ChoosePLEventHanlder(object source, PlaylistEventArgs args);
         public event ChoosePLEventHanlder PlaySongChoosePlsButton_Clicked;
+
+        public delegate string SelectPlVideoEventHandler(object source, PlaylistEventArgs args);
+        public event SelectPlVideoEventHandler PlayVideoSelectPlButton_Clicked;
         //--------------------------------------------------------------------------------
 
 
@@ -1550,7 +1553,13 @@ namespace Entrega3_FyBuZz
 
         private void PlayVideoSelectPlButton_Click(object sender, EventArgs e)
         {
-
+            List<Video> videoDataBase = new List<Video>();
+            string result = SearchSearchResultsDomainUp.Text;
+            string searchedPlaylistName = PlayVideoSelectPlDomainUp.Text;
+            videoDataBase = OnSearchVideoButton_Click();
+            OnPlayVideoSelectPlButton_Clicked(result, videoDataBase, searchedPlaylistName);
+            SearchSearchResultsDomainUp.ResetText();
+          
         }
 
         //------------------------------MÉTODOS INTERNOS------------------------------- 
@@ -1747,15 +1756,37 @@ namespace Entrega3_FyBuZz
                 {
                     PlaySongMessageTextBox.AppendText("Song added succesfully.");
                     OnSearchUserButton_Click();
+
                 }
                 else
                 {
-                    PlaySongMessageTextBox.AppendText("ERROR[!] couldn´t add song.");
+                    PlaySongMessageTextBox.AppendText("ERROR[!] couldn't add song.");
                     Thread.Sleep(1000);
                     PlaySongMessageTextBox.Clear();
 
                 }
 
+            }
+        }
+
+        public void OnPlayVideoSelectPlButton_Clicked(string result, List<Video> videoDataBase, string searchedPl)
+        {
+            if(PlayVideoSelectPlButton_Clicked != null)
+            {
+                string description = PlayVideoSelectPlButton_Clicked(this, new PlaylistEventArgs() { RestultText = result, videoDataBaseText = videoDataBase, SearchedPlaylistNameText = searchedPl });
+                if (description == null)
+                {
+                    PlayVideoMessageAlertTextBox.AppendText("Video added successfully!");
+                    OnSearchUserButton_Click();
+                    Thread.Sleep(500);
+                    PlayVideoMessageAlertTextBox.Clear();
+                }
+                else
+                {
+                    PlayVideoMessageAlertTextBox.AppendText("ERROR[!] ~ Couldn't add video");
+                    Thread.Sleep(500);
+                    PlayVideoMessageAlertTextBox.Clear();
+                }
             }
         }
 

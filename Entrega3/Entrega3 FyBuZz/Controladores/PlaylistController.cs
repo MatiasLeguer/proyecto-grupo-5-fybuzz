@@ -29,6 +29,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.DisplayPlaylistsGlobalPlaylist_Clicked += OnDisplayPlaylistsGlobalPlaylist_Clicked;
             this.fyBuZz.CreatePlaylistCreatePlaylistButton_Clicked += CreatePlaylistButton_Clicked;
             this.fyBuZz.PlaySongChoosePlsButton_Clicked += PlaySongChoosePlsButton_Clicked;
+            this.fyBuZz.PlayVideoSelectPlButton_Clicked += OnPlayVideoSelectPlButton_Clicked;
         }
         public void Initialize()
         {
@@ -95,7 +96,7 @@ namespace Entrega3_FyBuZz.Controladores
                     {
                         string result = e.RestultText;
                         int choosenPl = e.ChoosenIndex;
-                        if (result == song.SearchedInfoSong() && e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Contains(song) == false && playlist.Songs.Contains(song) == false)
+                        if (result == song.SearchedInfoSong() && (e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Contains(song) == false || playlist.Songs.Contains(song) == false))
                         {
                             e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Add(song);
                             playlist.Songs.Add(song);
@@ -114,6 +115,44 @@ namespace Entrega3_FyBuZz.Controladores
             }
 
             return description;
+        }
+
+        private string OnPlayVideoSelectPlButton_Clicked(object sender, PlaylistEventArgs e)
+        {
+            string description = null;
+            foreach(PlayList playlist in playlistDataBase)
+            {
+                if(playlist.NamePlayList == e.SearchedPlaylistNameText)
+                {
+                    foreach(Video video in e.videoDataBaseText)
+                    {
+                        string resultado = e.RestultText;
+                        int indexDomainUpDownPl = e.ChoosenIndex;
+
+                        if (resultado == video.SearchedInfoVideo() && playlist.Videos.Contains(video) == true) 
+                        {
+                            description = "ERROR[!] ~ The video is already in this playlist";
+                            break;
+                        }
+
+                        else if (resultado == video.SearchedInfoVideo() && playlist.Videos.Contains(video) == false)
+                        {
+                            playlist.Videos.Add(video);
+                            dataBase.Save_PLs(playlistDataBase);
+                            dataBase.Save_PLs_Priv(privatePlaylistsDatabase);
+
+                            return description;
+                        }
+                    }
+                    if (description != null)
+                    {
+                        return description;
+                    }
+                    return "ERROR[!] ~the video wasn't found in the database";
+
+                }
+            }
+            return "ERROR[!] ~ Couldn't find the playlist in the database.";
         }
 
         //Aqui deberia haber un metodo para ponerle play a la mult de la playlist
