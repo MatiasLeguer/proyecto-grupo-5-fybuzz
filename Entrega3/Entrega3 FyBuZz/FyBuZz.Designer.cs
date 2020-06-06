@@ -210,6 +210,7 @@
             this.DisplayPlaylistLogo = new System.Windows.Forms.PictureBox();
             this.DisplayPlaylistLabel = new System.Windows.Forms.Label();
             this.PlayPlaylistPanel = new System.Windows.Forms.Panel();
+            this.PlayPlaylistLoopCheckBox = new System.Windows.Forms.CheckBox();
             this.PlayPlaylistPlayerPanel = new System.Windows.Forms.Panel();
             this.PlayPlaylistMessageBox = new System.Windows.Forms.TextBox();
             this.PlayPlaylistSkipButton = new System.Windows.Forms.Button();
@@ -308,6 +309,7 @@
             this.DurationTimer = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.PlaySongPanel = new System.Windows.Forms.Panel();
+            this.PlaySongRateMessageTextBox = new System.Windows.Forms.TextBox();
             this.PlaySongRateNumDomainUp = new System.Windows.Forms.NumericUpDown();
             this.PlaysSongRateButton = new System.Windows.Forms.Button();
             this.PlaySongAddQueueButton = new System.Windows.Forms.Button();
@@ -362,7 +364,6 @@
             this.UserProfileChangeInfoConfirmButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoGoBackButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoLabel = new System.Windows.Forms.Label();
-            this.PlaySongRateMessageTextBox = new System.Windows.Forms.TextBox();
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -2507,6 +2508,7 @@
             // PlayPlaylistPanel
             // 
             this.PlayPlaylistPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistLoopCheckBox);
             this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistPlayerPanel);
             this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistRandomButton);
             this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistChooseMultimediaButton);
@@ -2518,6 +2520,19 @@
             this.PlayPlaylistPanel.Name = "PlayPlaylistPanel";
             this.PlayPlaylistPanel.Size = new System.Drawing.Size(683, 786);
             this.PlayPlaylistPanel.TabIndex = 8;
+            this.PlayPlaylistPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PlayPlaylistPanel_Paint);
+            // 
+            // PlayPlaylistLoopCheckBox
+            // 
+            this.PlayPlaylistLoopCheckBox.AutoSize = true;
+            this.PlayPlaylistLoopCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayPlaylistLoopCheckBox.ForeColor = System.Drawing.Color.White;
+            this.PlayPlaylistLoopCheckBox.Location = new System.Drawing.Point(300, 367);
+            this.PlayPlaylistLoopCheckBox.Name = "PlayPlaylistLoopCheckBox";
+            this.PlayPlaylistLoopCheckBox.Size = new System.Drawing.Size(91, 33);
+            this.PlayPlaylistLoopCheckBox.TabIndex = 17;
+            this.PlayPlaylistLoopCheckBox.Text = "Loop";
+            this.PlayPlaylistLoopCheckBox.UseVisualStyleBackColor = true;
             // 
             // PlayPlaylistPlayerPanel
             // 
@@ -2530,9 +2545,9 @@
             this.PlayPlaylistPlayerPanel.Controls.Add(this.PlayPlaylistPreviousButton);
             this.PlayPlaylistPlayerPanel.Controls.Add(this.PlayPlaylistPauseButton);
             this.PlayPlaylistPlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PlayPlaylistPlayerPanel.Location = new System.Drawing.Point(0, 602);
+            this.PlayPlaylistPlayerPanel.Location = new System.Drawing.Point(0, 637);
             this.PlayPlaylistPlayerPanel.Name = "PlayPlaylistPlayerPanel";
-            this.PlayPlaylistPlayerPanel.Size = new System.Drawing.Size(683, 184);
+            this.PlayPlaylistPlayerPanel.Size = new System.Drawing.Size(683, 149);
             this.PlayPlaylistPlayerPanel.TabIndex = 16;
             this.PlayPlaylistPlayerPanel.Visible = false;
             // 
@@ -2614,7 +2629,7 @@
             // 
             // PlayPlaylistRandomButton
             // 
-            this.PlayPlaylistRandomButton.Location = new System.Drawing.Point(449, 335);
+            this.PlayPlaylistRandomButton.Location = new System.Drawing.Point(441, 293);
             this.PlayPlaylistRandomButton.Name = "PlayPlaylistRandomButton";
             this.PlayPlaylistRandomButton.Size = new System.Drawing.Size(127, 42);
             this.PlayPlaylistRandomButton.TabIndex = 4;
@@ -2624,7 +2639,7 @@
             // 
             // PlayPlaylistChooseMultimediaButton
             // 
-            this.PlayPlaylistChooseMultimediaButton.Location = new System.Drawing.Point(123, 330);
+            this.PlayPlaylistChooseMultimediaButton.Location = new System.Drawing.Point(115, 288);
             this.PlayPlaylistChooseMultimediaButton.Name = "PlayPlaylistChooseMultimediaButton";
             this.PlayPlaylistChooseMultimediaButton.Size = new System.Drawing.Size(127, 42);
             this.PlayPlaylistChooseMultimediaButton.TabIndex = 3;
@@ -3599,6 +3614,18 @@
             this.PlaySongPanel.Size = new System.Drawing.Size(683, 786);
             this.PlaySongPanel.TabIndex = 13;
             // 
+            // PlaySongRateMessageTextBox
+            // 
+            this.PlaySongRateMessageTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlaySongRateMessageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlaySongRateMessageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlaySongRateMessageTextBox.ForeColor = System.Drawing.Color.White;
+            this.PlaySongRateMessageTextBox.Location = new System.Drawing.Point(396, 501);
+            this.PlaySongRateMessageTextBox.Name = "PlaySongRateMessageTextBox";
+            this.PlaySongRateMessageTextBox.Size = new System.Drawing.Size(83, 29);
+            this.PlaySongRateMessageTextBox.TabIndex = 44;
+            this.PlaySongRateMessageTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // PlaySongRateNumDomainUp
             // 
             this.PlaySongRateNumDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4197,35 +4224,23 @@
             this.UserProfileChangeInfoLabel.TabIndex = 0;
             this.UserProfileChangeInfoLabel.Text = "Change Settings";
             // 
-            // PlaySongRateMessageTextBox
-            // 
-            this.PlaySongRateMessageTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
-            this.PlaySongRateMessageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlaySongRateMessageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlaySongRateMessageTextBox.ForeColor = System.Drawing.Color.White;
-            this.PlaySongRateMessageTextBox.Location = new System.Drawing.Point(396, 501);
-            this.PlaySongRateMessageTextBox.Name = "PlaySongRateMessageTextBox";
-            this.PlaySongRateMessageTextBox.Size = new System.Drawing.Size(83, 29);
-            this.PlaySongRateMessageTextBox.TabIndex = 44;
-            this.PlaySongRateMessageTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // FyBuZz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(683, 786);
+            this.Controls.Add(this.PlayPlaylistPanel);
+            this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayVideoPanel);
-            this.Controls.Add(this.SearchPanel);
-            this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
             this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.SearcUserPanel);
             this.Controls.Add(this.RegisterPanel);
-            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.CreateVideoPanel);
@@ -4661,5 +4676,6 @@
         private System.Windows.Forms.Button PlayVideoRateVideoButton;
         private System.Windows.Forms.TextBox PlayVideoMessageLabel;
         private System.Windows.Forms.TextBox PlaySongRateMessageTextBox;
+        private System.Windows.Forms.CheckBox PlayPlaylistLoopCheckBox;
     }
 }
