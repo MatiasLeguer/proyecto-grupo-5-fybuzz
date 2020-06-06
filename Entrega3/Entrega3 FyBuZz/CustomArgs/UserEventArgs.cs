@@ -18,6 +18,9 @@ namespace Entrega3_FyBuZz.CustomArgs
         public string VerifiedText { get; set; }
         public string AddsOnText { get; set; }
         public string PrivacyText { get; set; }
+        public string ProfilenameText { get; set; }
+        public int WantToChangeText { get; set; }
+        public string ChangedText { get; set; }
         public List<string> FollowingListText { get; set; }
         public List<string> FollowersListText { get; set; }
         public User UserLogIn { get; set; }
