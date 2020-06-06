@@ -145,6 +145,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.ProfileSettingsLabel = new System.Windows.Forms.Label();
             this.SearchPanel = new System.Windows.Forms.Panel();
+            this.SearchOkMultAddedLabel = new System.Windows.Forms.Label();
             this.SearchFiltersCheBox = new System.Windows.Forms.CheckedListBox();
             this.SearchAndOrCheckBox = new System.Windows.Forms.CheckedListBox();
             this.SearchFiltersOnCheckBox = new System.Windows.Forms.CheckBox();
@@ -187,6 +188,9 @@
             this.AddShowShowLabel = new System.Windows.Forms.Label();
             this.AddShowAddLabel = new System.Windows.Forms.Label();
             this.DisplayPlaylistPanel = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.DisplayPlaylistCreatedPlaylistButton = new System.Windows.Forms.Button();
             this.DisplayPlaylistCreatedPlaylistImage3 = new System.Windows.Forms.PictureBox();
             this.DisplayPlaylistCreatedPlaylistImage2 = new System.Windows.Forms.PictureBox();
@@ -364,6 +368,7 @@
             this.UserProfileChangeInfoConfirmButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoGoBackButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoLabel = new System.Windows.Forms.Label();
+            this.PlayPlaylistMultTypeTextBox = new System.Windows.Forms.TextBox();
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -1730,6 +1735,7 @@
             // SearchPanel
             // 
             this.SearchPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchPanel.Controls.Add(this.SearchOkMultAddedLabel);
             this.SearchPanel.Controls.Add(this.SearchFiltersCheBox);
             this.SearchPanel.Controls.Add(this.SearchAndOrCheckBox);
             this.SearchPanel.Controls.Add(this.SearchFiltersOnCheckBox);
@@ -1749,6 +1755,15 @@
             this.SearchPanel.Name = "SearchPanel";
             this.SearchPanel.Size = new System.Drawing.Size(683, 786);
             this.SearchPanel.TabIndex = 7;
+            // 
+            // SearchOkMultAddedLabel
+            // 
+            this.SearchOkMultAddedLabel.AutoSize = true;
+            this.SearchOkMultAddedLabel.ForeColor = System.Drawing.Color.White;
+            this.SearchOkMultAddedLabel.Location = new System.Drawing.Point(630, 557);
+            this.SearchOkMultAddedLabel.Name = "SearchOkMultAddedLabel";
+            this.SearchOkMultAddedLabel.Size = new System.Drawing.Size(0, 17);
+            this.SearchOkMultAddedLabel.TabIndex = 36;
             // 
             // SearchFiltersCheBox
             // 
@@ -2227,6 +2242,9 @@
             // DisplayPlaylistPanel
             // 
             this.DisplayPlaylistPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.DisplayPlaylistPanel.Controls.Add(this.label16);
+            this.DisplayPlaylistPanel.Controls.Add(this.label15);
+            this.DisplayPlaylistPanel.Controls.Add(this.label14);
             this.DisplayPlaylistPanel.Controls.Add(this.DisplayPlaylistCreatedPlaylistButton);
             this.DisplayPlaylistPanel.Controls.Add(this.DisplayPlaylistCreatedPlaylistImage3);
             this.DisplayPlaylistPanel.Controls.Add(this.DisplayPlaylistCreatedPlaylistImage2);
@@ -2254,6 +2272,39 @@
             this.DisplayPlaylistPanel.Name = "DisplayPlaylistPanel";
             this.DisplayPlaylistPanel.Size = new System.Drawing.Size(683, 786);
             this.DisplayPlaylistPanel.TabIndex = 8;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(244, 328);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(48, 17);
+            this.label16.TabIndex = 46;
+            this.label16.Text = "Songs";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(79, 768);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(48, 17);
+            this.label15.TabIndex = 45;
+            this.label15.Text = "Songs";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(238, 768);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(51, 17);
+            this.label14.TabIndex = 44;
+            this.label14.Text = "Videos";
             // 
             // DisplayPlaylistCreatedPlaylistButton
             // 
@@ -2318,7 +2369,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(442, 325);
+            this.label7.Location = new System.Drawing.Point(423, 328);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 17);
             this.label7.TabIndex = 38;
@@ -2360,24 +2411,26 @@
             // DisplayPlaylistsFavoritePlaylist2
             // 
             this.DisplayPlaylistsFavoritePlaylist2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DisplayPlaylistsFavoritePlaylist2.Image = ((System.Drawing.Image)(resources.GetObject("DisplayPlaylistsFavoritePlaylist2.Image")));
             this.DisplayPlaylistsFavoritePlaylist2.Location = new System.Drawing.Point(213, 693);
             this.DisplayPlaylistsFavoritePlaylist2.Name = "DisplayPlaylistsFavoritePlaylist2";
             this.DisplayPlaylistsFavoritePlaylist2.Size = new System.Drawing.Size(102, 72);
             this.DisplayPlaylistsFavoritePlaylist2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DisplayPlaylistsFavoritePlaylist2.TabIndex = 34;
             this.DisplayPlaylistsFavoritePlaylist2.TabStop = false;
-            this.DisplayPlaylistsFavoritePlaylist2.Visible = false;
+            this.DisplayPlaylistsFavoritePlaylist2.Click += new System.EventHandler(this.DisplayPlaylistsFavoritePlaylist2_Click);
             // 
             // DisplayPlaylistsFavoritePlaylist1
             // 
             this.DisplayPlaylistsFavoritePlaylist1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DisplayPlaylistsFavoritePlaylist1.Image = ((System.Drawing.Image)(resources.GetObject("DisplayPlaylistsFavoritePlaylist1.Image")));
             this.DisplayPlaylistsFavoritePlaylist1.Location = new System.Drawing.Point(56, 693);
             this.DisplayPlaylistsFavoritePlaylist1.Name = "DisplayPlaylistsFavoritePlaylist1";
             this.DisplayPlaylistsFavoritePlaylist1.Size = new System.Drawing.Size(100, 72);
             this.DisplayPlaylistsFavoritePlaylist1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DisplayPlaylistsFavoritePlaylist1.TabIndex = 33;
             this.DisplayPlaylistsFavoritePlaylist1.TabStop = false;
-            this.DisplayPlaylistsFavoritePlaylist1.Visible = false;
+            this.DisplayPlaylistsFavoritePlaylist1.Click += new System.EventHandler(this.DisplayPlaylistsFavoritePlaylist1_Click);
             // 
             // DisplayPlaylistsFollowedPlaylist3
             // 
@@ -2508,6 +2561,7 @@
             // PlayPlaylistPanel
             // 
             this.PlayPlaylistPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistMultTypeTextBox);
             this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistLoopCheckBox);
             this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistPlayerPanel);
             this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistRandomButton);
@@ -4224,14 +4278,25 @@
             this.UserProfileChangeInfoLabel.TabIndex = 0;
             this.UserProfileChangeInfoLabel.Text = "Change Settings";
             // 
+            // PlayPlaylistMultTypeTextBox
+            // 
+            this.PlayPlaylistMultTypeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlayPlaylistMultTypeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayPlaylistMultTypeTextBox.ForeColor = System.Drawing.Color.White;
+            this.PlayPlaylistMultTypeTextBox.Location = new System.Drawing.Point(296, 176);
+            this.PlayPlaylistMultTypeTextBox.Name = "PlayPlaylistMultTypeTextBox";
+            this.PlayPlaylistMultTypeTextBox.Size = new System.Drawing.Size(100, 15);
+            this.PlayPlaylistMultTypeTextBox.TabIndex = 18;
+            // 
             // FyBuZz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(683, 786);
-            this.Controls.Add(this.PlayPlaylistPanel);
+            this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayVideoPanel);
@@ -4241,7 +4306,6 @@
             this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.SearcUserPanel);
             this.Controls.Add(this.RegisterPanel);
-            this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.CreateVideoPanel);
             this.Controls.Add(this.CreateSongPanel);
@@ -4677,5 +4741,10 @@
         private System.Windows.Forms.TextBox PlayVideoMessageLabel;
         private System.Windows.Forms.TextBox PlaySongRateMessageTextBox;
         private System.Windows.Forms.CheckBox PlayPlaylistLoopCheckBox;
+        private System.Windows.Forms.Label SearchOkMultAddedLabel;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox PlayPlaylistMultTypeTextBox;
     }
 }

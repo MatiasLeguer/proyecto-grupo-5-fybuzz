@@ -20,11 +20,14 @@ namespace Modelos
         protected List<Song> playlistEnColaSongs;
         protected List<Song> playlistFavoritosSongs = new List<Song>();
         protected List<Video> playlistEnColaVideos;
-        protected List<Video> playlistFavoritosVideos;
+        protected List<Video> playlistFavoritosVideos = new List<Video>();
         protected List<PlayList> followedPlayList = new List<PlayList>();
         protected List<PlayList> createdPlaylist = new List<PlayList>();
         protected string gender;
         protected int age;
+
+        private List<string> persVideoPlaylist = new List<string>();
+        private List<string> persSongPlaylist = new List<string>();
         //--------------------------------------------------------------------------------------------------
 
         //GETTERS Y SETTERS
@@ -34,11 +37,14 @@ namespace Modelos
         public string Gender { get => gender; set => gender = value; }
         public int Age { get => age; set => age = value; }
         public List<Song> PlaylistFavoritosSongs { get => playlistFavoritosSongs; set => playlistFavoritosSongs = value; }
-        public List<Song> PlaylistEnColaSongs { get => playlistEnColaSongs; set => playlistEnColaSongs = value; }
         public List<Video> PlaylistFavoritosVideos { get => playlistFavoritosVideos; set => playlistFavoritosVideos = value; }
+        public List<Song> PlaylistEnColaSongs { get => playlistEnColaSongs; set => playlistEnColaSongs = value; }
         public List<Video> PlaylistEnColaVideos { get => playlistEnColaVideos; set => playlistEnColaVideos = value; }
         public List<PlayList> FollowedPlayList { get => followedPlayList; set => followedPlayList = value; }
         public List<PlayList> CreatedPlaylist { get => createdPlaylist; set => createdPlaylist = value; }
+        public List<string> PersVideoPlaylist { get => persVideoPlaylist; set => persVideoPlaylist = value; }
+        public List<string> PersSongPlaylist { get => persSongPlaylist; set => persSongPlaylist = value; }
+
         //--------------------------------------------------------------------------------------------------
 
         //CONSTRUCTOR
