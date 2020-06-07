@@ -2124,6 +2124,7 @@
             this.PlaySongSkipSongButton.TabIndex = 33;
             this.PlaySongSkipSongButton.Text = "Skip";
             this.PlaySongSkipSongButton.UseVisualStyleBackColor = true;
+            this.PlaySongSkipSongButton.Click += new System.EventHandler(this.PlaySongSkipSongButton_Click);
             // 
             // PlaySongPlayButton
             // 
@@ -2166,6 +2167,7 @@
             this.PlaySongPreviousSongButton.TabIndex = 32;
             this.PlaySongPreviousSongButton.Text = "Previous";
             this.PlaySongPreviousSongButton.UseVisualStyleBackColor = true;
+            this.PlaySongPreviousSongButton.Click += new System.EventHandler(this.PlaySongPreviousSongButton_Click);
             // 
             // PlaySongStopButton
             // 
@@ -4355,9 +4357,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(683, 786);
-            this.Controls.Add(this.PlaySongPanel);
-            this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.PlayVideoPanel);
+            this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);

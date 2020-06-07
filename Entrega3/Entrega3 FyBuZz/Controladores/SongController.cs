@@ -27,6 +27,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.GetSongInformation += ReturnSongInfo;
             this.fyBuZz.GetAllSongInformation += ReturnAllSongsInfo;
             this.fyBuZz.PlaysSongRateButton_Clicked += RateSong;
+            this.fyBuZz.SkipOrPreviousSongButton_Clicked += OnSkipOrPreviousSongButton_Clicked;
         }
 
         public void Initialize()
@@ -104,6 +105,31 @@ namespace Entrega3_FyBuZz.Controladores
             }
             return allSongsInfo;
         }
-        
+
+        private Song OnSkipOrPreviousSongButton_Clicked(object sender, SongEventArgs e)
+        {
+            if(e.SkipOrPrevious == 0) //0 = skip
+            {
+                for (int i = 0; i < songDatabase.Count(); i++)
+                {
+                    if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i != (songDatabase.Count() - 1))) return songDatabase[i + 1];
+                    else if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i == (songDatabase.Count() - 1))) return songDatabase[0];
+
+                }
+                return null;
+            }
+            else
+            {
+                for (int i = 0; i < songDatabase.Count(); i++)
+                {
+                    if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i != 0)) return songDatabase[i - 1];
+                    else if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i == 0)) return songDatabase[(songDatabase.Count() - 1)];
+
+                }
+                return null;
+            }
+        }
+
+
     }
 }
