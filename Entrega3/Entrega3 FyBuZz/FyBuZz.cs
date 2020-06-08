@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using WMPLib;
 using System.Media;
 using Microsoft.SqlServer.Server;
+using System.Text.RegularExpressions;
 
 namespace Entrega3_FyBuZz
 {
@@ -28,6 +29,7 @@ namespace Entrega3_FyBuZz
         WindowsMediaPlayer windowsMediaPlayer = new WindowsMediaPlayer();
         WindowsMediaPlayer randomWMP = new WindowsMediaPlayer();
         SoundPlayer soundPlayer;
+        private List<string> badWords = new List<string>() { "fuck", "sex", "niggas", "sexo", "ass", "nigger", "culo", "viola", "violar", "spank", "puta", "hooker", "perra", "hoe", "cocaina", "alchohol", "blunt", "weed", "marihuana", "lcd", "kush", "krippy", "penis", "dick", "cock", "shit", "percocet" };
 
         public delegate List<string> UserGetterListEventHandler(object source, UserEventArgs args);
         public event UserGetterListEventHandler LogInLogInButton_Clicked2;
@@ -105,6 +107,9 @@ namespace Entrega3_FyBuZz
         public delegate List<string> GetSearchedMult(object sender, UserEventArgs args);
         public event GetSearchedMult ReturnSearchedMult_Done;
 
+        public delegate string AddPlaylistMult(object sender, PlaylistEventArgs args);
+        public event AddPlaylistMult AddPlaylistMult_Done;
+
 
 
         //Copiar lo mismo pero para video....
@@ -125,6 +130,7 @@ namespace Entrega3_FyBuZz
         public FyBuZz()
         {
             InitializeComponent();
+           
         }
         private void FyBuZz_Load(object sender, EventArgs e)
         {
@@ -141,6 +147,7 @@ namespace Entrega3_FyBuZz
             PasswordLogInTextBox.Clear();
             LogInInvalidCredentialsTetxbox.Clear();
             LogInPanel.BringToFront();
+            
         }
         private void WelcomeRegisterButton_Click(object sender, EventArgs e)
         {
@@ -840,6 +847,15 @@ namespace Entrega3_FyBuZz
             videoDataBase = OnSearchVideoButton_Click();
             List<PlayList> playlistDataBase = new List<PlayList>();
             playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+            int cont = 0;
+            foreach (object searched in SearchSearchResultsDomainUp.Items)
+            {
+                cont++;
+            }
+            for (int i = 0; i < cont; cont--)
+            {
+                SearchSearchResultsDomainUp.Items.RemoveAt(cont - 1);
+            }
 
             if (!filtersOn)
             {
@@ -988,7 +1004,13 @@ namespace Entrega3_FyBuZz
                     }
 
                 }
-            }   
+            }
+            if (SearchSearchResultsDomainUp.Items.Count == 0)
+            {
+                SearchInvalidCredentialsTextBox.AppendText("ERROR[!] Nothing found.");
+                Thread.Sleep(1000);
+                SearchInvalidCredentialsTextBox.Clear();
+            }
             PlaySongChoosePlsDomainUp.Visible = false;
             PlaySongChoosePlsDomainUp.ResetText();
             PlaySongChoosePlsDomainUp.ReadOnly = true;
@@ -1004,64 +1026,87 @@ namespace Entrega3_FyBuZz
             List<PlayList> playListsDataBase = new List<PlayList>();
             playListsDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
             List<Video> videoDataBase = OnSearchVideoButton_Click();
-
+            List<string> infoProfile = OnProfilesChooseProfile_Click2(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
 
             string multimediaType = SearchSearchResultsDomainUp.Text;
 
             if (multimediaType.Contains("Song:") == true && multimediaType.Contains("Artist:") == true)
             {
+                string[] MultimediaType = SearchSearchResultsDomainUp.Text.Split(':');
+                List<string> songMVCInfo = GetSongButton(MultimediaType[1], MultimediaType[3]);
                 soundPlayer.Stop();
                 windowsMediaPlayer.controls.pause();
                 foreach (Song song in songDataBase)
                 {
-                    if (song.Format == ".mp3")
+                    int badWordsCount = 0;
+                    if (songMVCInfo[5] != null)
                     {
-                        string result = SearchSearchResultsDomainUp.Text;
-                        string songInfo = song.SearchedInfoSong();
-                        if (result == song.SearchedInfoSong())
+                        string songLyrics = File.ReadAllText(songMVCInfo[5]);
+                        foreach (string badWord in badWords)
                         {
-                            AddingSearchedMult(ProfileDomainUp.Text, song.SongFile, null);
-                            Thread.Sleep(2000);
-                            PlayerPlayingLabel.Clear();
-                            SearchPlayingLabel.Clear();
-                            PlaySongProgressBar.Value = 0;
-                            PlaySongTimerTextBox.ResetText();
-
-                            windowsMediaPlayer.URL = song.SongFile;
-
-                            DurationTimer.Interval = 1000;
-                            PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
-                            SearchProgressBar.Maximum = (int)(song.Duration * 60);
-                            PlayPlaylistProgressBarBox.Maximum = (int)(song.Duration * 60);
-                            PlaySongPanel.BringToFront();
-                            PlayerPlayingLabel.AppendText("Song playing: " + song.Name +song.Format);
-                            SearchPlayingLabel.AppendText("Song playing: " + song.Name + song.Format);
-                            DurationTimer.Start();
-                            break;
+                            if (songLyrics.Contains(badWord) == true)
+                            {
+                                badWordsCount++;
+                            }
                         }
                     }
-                    else if (song.Format == ".wav")
+                    if (int.Parse(infoProfile[3]) < 16 && badWordsCount != 0)
                     {
-                        string result = SearchSearchResultsDomainUp.Text;
-                        if (result == song.SearchedInfoSong())
+                        SearchInvalidCredentialsTextBox.AppendText("Song with explicit content only 16+");
+                        Thread.Sleep(1000);
+                        SearchInvalidCredentialsTextBox.Clear();
+                    }
+                    else
+                    {
+                        if (songMVCInfo[6].Contains(".mp3") == true)
                         {
-                            AddingSearchedMult(ProfileDomainUp.Text, song.SongFile, null);
-                            Thread.Sleep(2000);
-                            PlayerPlayingLabel.Clear();
-                            SearchPlayingLabel.Clear();
-                            PlaySongProgressBar.Value = 0;
-                            PlaySongTimerTextBox.ResetText();
-                            soundPlayer.SoundLocation = song.SongFile;
-                            soundPlayer.Play();
-                            DurationTimer.Interval = 1000;
-                            PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
-                            SearchProgressBar.Maximum = (int)(song.Duration * 60);
-                            PlayPlaylistProgressBarBox.Maximum = (int)(song.Duration * 60);
-                            PlaySongPanel.BringToFront();
-                            PlayerPlayingLabel.AppendText("Song playing: " + song.Name + song.Format);
-                            SearchPlayingLabel.AppendText("Song playing: " + song.Name + song.Format);
-                            DurationTimer.Start();
-                            break;
+                            string result = SearchSearchResultsDomainUp.Text;
+                            string songInfo = song.SearchedInfoSong();
+                            if (result == song.SearchedInfoSong())
+                            {
+                                AddingSearchedMult(ProfileDomainUp.Text, song.SongFile, null);
+                                Thread.Sleep(2000);
+                                PlayerPlayingLabel.Clear();
+                                SearchPlayingLabel.Clear();
+                                PlaySongProgressBar.Value = 0;
+                                PlaySongTimerTextBox.ResetText();
+
+                                windowsMediaPlayer.URL = song.SongFile;
+
+                                DurationTimer.Interval = 1000;
+                                PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
+                                SearchProgressBar.Maximum = (int)(song.Duration * 60);
+                                PlayPlaylistProgressBarBox.Maximum = (int)(song.Duration * 60);
+                                PlaySongPanel.BringToFront();
+                                PlayerPlayingLabel.AppendText("Song playing: " + song.Name + song.Format);
+                                SearchPlayingLabel.AppendText("Song playing: " + song.Name + song.Format);
+                                DurationTimer.Start();
+                                break;
+                            }
+                        }
+                        else if (song.Format == ".wav")
+                        {
+                            string result = SearchSearchResultsDomainUp.Text;
+                            if (result == song.SearchedInfoSong())
+                            {
+                                AddingSearchedMult(ProfileDomainUp.Text, song.SongFile, null);
+                                Thread.Sleep(2000);
+                                PlayerPlayingLabel.Clear();
+                                SearchPlayingLabel.Clear();
+                                PlaySongProgressBar.Value = 0;
+                                PlaySongTimerTextBox.ResetText();
+                                soundPlayer.SoundLocation = song.SongFile;
+                                soundPlayer.Play();
+                                DurationTimer.Interval = 1000;
+                                PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
+                                SearchProgressBar.Maximum = (int)(song.Duration * 60);
+                                PlayPlaylistProgressBarBox.Maximum = (int)(song.Duration * 60);
+                                PlaySongPanel.BringToFront();
+                                PlayerPlayingLabel.AppendText("Song playing: " + song.Name + song.Format);
+                                SearchPlayingLabel.AppendText("Song playing: " + song.Name + song.Format);
+                                DurationTimer.Start();
+                                break;
+                            }
                         }
                     }
                 }
@@ -1088,15 +1133,27 @@ namespace Entrega3_FyBuZz
 
             else if(multimediaType.Contains("Video:") == true)
             {
-                foreach(Video video in videoDataBase)
+                string[] MultimediaType = SearchSearchResultsDomainUp.Text.Split(':');
+                List<string> videoMVCInfo = GetVideoButton(MultimediaType[1], MultimediaType[3], MultimediaType[5]);
+                if (int.Parse(videoMVCInfo[4]) > int.Parse(infoProfile[3])) 
                 {
-                    string result = SearchSearchResultsDomainUp.Text;
-                    if (result == video.SearchedInfoVideo())
+                    SearchInvalidCredentialsTextBox.AppendText("Video has age restriction");
+                    Thread.Sleep(1000);
+                    SearchInvalidCredentialsTextBox.Clear();
+    
+                }
+                else
+                {
+                    foreach (Video video in videoDataBase)
                     {
-                        AddingSearchedMult(ProfileDomainUp.Text, null, video.FileName);
-                        Thread.Sleep(2000);
-                        PlayVideoPanel.BringToFront();
-                        wmpVideo.URL = video.FileName;
+                        string result = SearchSearchResultsDomainUp.Text;
+                        if (result == video.SearchedInfoVideo())
+                        {
+                            AddingSearchedMult(ProfileDomainUp.Text, null, video.FileName);
+                            Thread.Sleep(2000);
+                            PlayVideoPanel.BringToFront();
+                            wmpVideo.URL = video.FileName;
+                        }
                     }
                 }
             }
@@ -1198,6 +1255,37 @@ namespace Entrega3_FyBuZz
             {
                 SearchSearchResultsDomainUp.Items.RemoveAt(cont-1);
             }
+        }
+        //SHOW SONG LYRICS
+        private void PlaySongShowLyrics_Click(object sender, EventArgs e)
+        {
+            PlaySongDisplayLyrics.Visible = false;
+            PlaySongDisplayLyrics.Clear();
+            string[] searchedSong = SearchSearchResultsDomainUp.Text.Split(':');
+            List<string> infoSong = GetSongButton(searchedSong[1], searchedSong[3]);
+
+            string strRegex = @"^.*([a-zA-Z]).*$";
+            Regex myRegex = new Regex(strRegex, RegexOptions.Multiline);
+            if (infoSong[5].Contains(".srt") && infoSong[5] != null)
+            {
+                string lyricsFile = File.ReadAllText(infoSong[5]);
+
+                foreach (Match myMatch in myRegex.Matches(lyricsFile))
+                {
+                    if (myMatch.Success)
+                    {
+                        PlaySongDisplayLyrics.Visible = true;
+                        PlaySongDisplayLyrics.AppendText(myMatch.Value + "\n");
+                    }
+                }
+            }
+            else
+            {
+                PlaySongMessageTextBox.AppendText("ERROR[!] Couldn't find lyrics");
+                Thread.Sleep(2000);
+                PlaySongMessageTextBox.Clear();
+            }
+
         }
         //Rate Song
         private void PlaysSongRateButton_Click(object sender, EventArgs e)
@@ -1524,12 +1612,17 @@ namespace Entrega3_FyBuZz
                 string songStudio = CreateSongStudioTextBox.Text;
                 double songDuration = double.Parse(CreateSongDurationTextBox.Text);
                 string songFormat = CreateSongFormatTextBox.Text;
-                string songLyrics = CreateSongLyricsTextBox.Text;
+                string songLyricsSource = CreateSongLyricsTextBox.Text;
+                string songLyrics = songLyricsSource.Split('\\')[songLyricsSource.Split('\\').Length - 1];
                 string songFileSource = CreateSongSongFileTextBox.Text;
                 string songFile = songFileSource.Split('\\')[songFileSource.Split('\\').Length-1];
                 if(File.Exists(songFile) == false)
                 {
-                    OnCreateSongCreateSongButton_Click(songName, songArtist, songAlbum, songDiscography, songGender, songPublishDate, songStudio, songDuration, songFormat, songLyrics, songFileSource, songFile);
+                    OnCreateSongCreateSongButton_Click(songName, songArtist, songAlbum, songDiscography, songGender, songPublishDate, songStudio, songDuration, songFormat, songLyrics, songLyricsSource, songFileSource, songFile);
+                    DisplayStartPanel.BringToFront();
+                    List<Song> songDataBase = OnSearchSongButton_Click();
+                    AddPlaylistMult_Did(songDataBase[songDataBase.Count-1], null);
+                    
                 }
                 else
                 {
@@ -1557,7 +1650,15 @@ namespace Entrega3_FyBuZz
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string filename = openFileDialog.FileName;
-                CreateSongSongFileTextBox.Text = filename;
+                if (filename.Contains(".mp3") == true || filename.Contains(".wav") == true)
+                {
+                    CreateSongSongFileTextBox.Text = filename;
+                }
+                else
+                {
+                    CreateSongInvalidCredentialTextBox.AppendText("ERROR[!] wrong file format");
+                }
+                
             }
         }
 
@@ -2191,6 +2292,8 @@ namespace Entrega3_FyBuZz
             if(File.Exists(videoFileName) == false)
             {
                 OnCreateVideoSaveButton_Clicked(videoName, actors, directors, releaseDate, videoDimension, videoQuality, videoCategory, videoDescription, videoDuration, videoFormat, videoSubtitles, videoFileSource, videoFileName, "true");
+                List<Video> videoDataBase = OnSearchVideoButton_Click();
+                AddPlaylistMult_Did(null, videoDataBase[videoDataBase.Count - 1]);
             }
             else
             {
@@ -2430,6 +2533,15 @@ namespace Entrega3_FyBuZz
             }
             return persMultList;
         }
+        public void AddPlaylistMult_Did(Song song, Video video)
+        {
+            string result = null;
+
+            if(AddPlaylistMult_Done != null)
+            {
+                result = AddPlaylistMult_Done(this, new PlaylistEventArgs() { SongText = song, VideoText = video });
+            }
+        }
 
         //SIN MVC
 
@@ -2528,11 +2640,11 @@ namespace Entrega3_FyBuZz
             }
             return null;
         }
-        public void OnCreateSongCreateSongButton_Click(string sName, string sArtist, string sAlbum, string sDiscography, string sGender, DateTime sPublishDate, string sStudio, double sDuration, string sFormat, string sLyrics, string sSource,string songFile)
+        public void OnCreateSongCreateSongButton_Click(string sName, string sArtist, string sAlbum, string sDiscography, string sGender, DateTime sPublishDate, string sStudio, double sDuration, string sFormat, string sLyrics, string sLyricsSource, string sSource,string songFile)
         {
             if (CreateSongCreateSongButton_Clicked != null)
             {
-                bool result = CreateSongCreateSongButton_Clicked(this, new SongEventArgs() { NameText = sName, AlbumText = sAlbum, ArtistText = sArtist, DateText = sPublishDate, DiscographyText = sDiscography, DurationText = sDuration, FormatText = sFormat, GenderText = sGender, LyricsText = sLyrics, StudioText = sStudio, FileDestName = sSource,FileNameText = songFile});
+                bool result = CreateSongCreateSongButton_Clicked(this, new SongEventArgs() { NameText = sName, AlbumText = sAlbum, ArtistText = sArtist, DateText = sPublishDate, DiscographyText = sDiscography, DurationText = sDuration, FormatText = sFormat, GenderText = sGender, LyricsText = sLyrics, StudioText = sStudio, FileDestName = sSource,FileNameText = songFile, FileLyricsSource = sLyricsSource});
                 if (!result)
                 {
                     CreateSongInvalidCredentialTextBox.AppendText("An Error has ocurred please try again");
@@ -2748,6 +2860,25 @@ namespace Entrega3_FyBuZz
         private void SearchProgressBar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filename = openFileDialog.FileName;
+                if (filename.Contains(".srt") == true)
+                {
+                    CreateSongLyricsTextBox.Text = filename;
+                }
+                else
+                {
+                    CreateSongInvalidCredentialTextBox.AppendText("ERROR[!] wrong file format");
+                }
+                
+            }
         }
     }
 }

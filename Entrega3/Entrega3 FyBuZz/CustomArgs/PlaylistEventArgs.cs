@@ -18,5 +18,7 @@ namespace Entrega3_FyBuZz.CustomArgs
         public string RestultText { get; set; }
         public int ChoosenIndex { get; set; }
         public string SearchedPlaylistNameText { get; set; }
+        public Song SongText { get; set; }
+        public Video VideoText { get; set; }
     }
 }
