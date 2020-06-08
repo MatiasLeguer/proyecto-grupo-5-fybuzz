@@ -13,7 +13,9 @@ namespace Entrega3_FyBuZz.Controladores
     public class VideoController
     {
         FyBuZz fyBuzz;
-        List<Video> videoDataBase = new List<Video>() { new Video("Top 10 N Words", "Barack Obama", "Barack Obama", "31/05/2020", "16:9", "720", "16", "nibba", 0.22, "y", ".mp4", "Top 10 N Words.mp4", true)};
+        List<Video> videoDataBase = new List<Video>() { new Video("Top 10 N Words", "Barack Obama", "Barack Obama", "31/05/2020", "16:9", "720", "16", "nibba", 0.22, "y", ".mp4", "Top 10 N Words.mp4", true),
+                                                        new Video("crash_bandicoot_gameplay", "crash", "Crash bandicoot", "31/05/2020", "16:9", "720", "0", "crash woah", 2.59, "y", ".mov", "crash_bandicoot_gameplay.mov", true),
+                                                        new Video("wii-sports-remix", "Wii", "Wii sports", "31/05/2020", "16:9", "720", "0", "wii remix yo", 2.10, "n", ".avi", "wii-sports-remix.avi", true)};
         DataBase database = new DataBase();
 
         public VideoController(Form fyBuzz)
@@ -25,6 +27,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuzz.GetAllVideosInformation += ReturnAllVideosInfo;
             this.fyBuzz.GetVideoInformation += ReturnVideoInfo;
             this.fyBuzz.PlaysVideoRateButton_Clicked += RateVideo;
+            this.fyBuzz.SkipOrPreviousVideoButton_Clicked += OnSkipOrPreviousVideoButton_Clicked;
         }
 
         public void Initialize()
@@ -102,5 +105,53 @@ namespace Entrega3_FyBuZz.Controladores
             return result;
         }
 
+
+        public Video OnSkipOrPreviousVideoButton_Clicked(object sender, VideoEventArgs e)
+        {
+            if(e.previousOrSkip == 0)
+            {
+                if(e.playlistVideo == null)
+                {
+                    for (int i = 0; i < videoDataBase.Count(); i++)
+                    {
+                        if (((e.NameText.Contains(videoDataBase[i].InfoVideo()[0])) && (e.ActorsText.Contains(videoDataBase[i].InfoVideo()[1]))) && (i != (videoDataBase.Count() - 1))) return videoDataBase[i + 1];
+                        else if (((e.NameText.Contains(videoDataBase[i].InfoVideo()[0])) && (e.ActorsText.Contains(videoDataBase[i].InfoVideo()[1]))) && (i == (videoDataBase.Count() - 1))) return videoDataBase[0];
+
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < e.playlistVideo.Videos.Count(); i++)
+                    {
+                        if (((e.NameText.Contains(e.playlistVideo.Videos[i].InfoVideo()[0])) && (e.ActorsText.Contains(e.playlistVideo.Videos[i].InfoVideo()[1]))) && (i != (e.playlistVideo.Videos.Count() - 1))) return e.playlistVideo.Videos[i + 1];
+                        else if (((e.NameText.Contains(e.playlistVideo.Videos[i].InfoVideo()[0])) && (e.ActorsText.Contains(e.playlistVideo.Videos[i].InfoVideo()[1]))) && (i == (e.playlistVideo.Videos.Count() - 1))) return e.playlistVideo.Videos[0];
+
+                    }
+                }
+
+            }
+            else
+            {
+                if(e.playlistVideo == null)
+                {
+                    for (int i = 0; i < videoDataBase.Count(); i++)
+                    {
+                        if (((e.NameText.Contains(videoDataBase[i].InfoVideo()[0])) && (e.ActorsText.Contains(videoDataBase[i].InfoVideo()[1]))) && (i != 0)) return videoDataBase[i - 1];
+                        else if (((e.NameText.Contains(videoDataBase[i].InfoVideo()[0])) && (e.ActorsText.Contains(videoDataBase[i].InfoVideo()[1]))) && (i == 0)) return videoDataBase[(videoDataBase.Count() - 1)];
+
+                    }
+                }
+
+                else
+                {
+                    for(int i = 0; i < e.playlistVideo.Videos.Count(); i++)
+                    {
+                        if (((e.NameText.Contains(e.playlistVideo.Videos[i].InfoVideo()[0])) && (e.ActorsText.Contains(e.playlistVideo.Videos[i].InfoVideo()[1]))) && (i != 0)) return e.playlistVideo.Videos[i - 1];
+                        else if (((e.NameText.Contains(e.playlistVideo.Videos[i].InfoVideo()[0])) && (e.ActorsText.Contains(e.playlistVideo.Videos[i].InfoVideo()[1]))) && (i == 0)) return e.playlistVideo.Videos[(e.playlistVideo.Videos.Count() - 1)];
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

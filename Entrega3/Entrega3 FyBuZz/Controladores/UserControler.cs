@@ -153,11 +153,14 @@ namespace Entrega3_FyBuZz.Controladores
             }
             return userProfileList;
         }
+
         private Profile OnProfilesChooseProfile_Click(object sender, ProfileEventArgs e)
+
         {
             List<string> profileGetterString = new List<string>();
             int u = UserIndex(e);
             int pAge = DateTime.Now.Year - e.BirthdayText.Year;
+
             Profile prof = new Profile(e.ProfileNameText,"..",e.ProfileTypeText,e.EmailText,e.GenderText, pAge);
             foreach(Profile profile in userDataBase[u].Perfiles)
             {

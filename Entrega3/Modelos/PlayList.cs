@@ -20,18 +20,21 @@ namespace Modelos
         private string profileCreator;
         private Dictionary<string, List<Song>> dicCanciones;
         private Dictionary<string, List<Video>> dicVideos;
+
+
         //--------------------------------------------------------------------------------------------------
 
         //GETTERS Y SETTERS:
         //--------------------------------------------------------------------------------------------------
-        public Dictionary<string, List<Song>> DicCanciones { get => dicCanciones; }
-        public Dictionary<string, List<Video>> DicVideos { get => dicVideos; }
+
         public string Format { get => format; }
         public string NamePlayList { get => namePlayList; }
         public string Creator { get => creator; set => creator = value; }
         public string ProfileCreator { get => profileCreator; set => profileCreator = value; }
         public List<Song> Songs { get => songs; set => songs = value; }
         public List<Video> Videos { get => videos; set => videos = value; }
+        public Dictionary<string, List<Song>> DicCanciones { get => dicCanciones; set => dicCanciones = value; }
+        public Dictionary<string, List<Video>> DicVideos { get => dicVideos; set => dicVideos = value; }
         //--------------------------------------------------------------------------------------------------
 
         //CONSTRUCTOR
@@ -50,15 +53,29 @@ namespace Modelos
 
         //MÉTODO ADD
         //--------------------------------------------------------------------------------------------------
-        public void AddToPlayList()                             //Agrega las canciones y videos a un diccionario de canciones o videos.
+        public void AddToPlayListSong(Song s)                             //Agrega las canciones y videos a un diccionario de canciones o videos.
         {
             if (format == ".mp3" || format == ".wav")
             {
-                dicCanciones.Add(namePlayList, songs);
+                if(s != null)
+                {
+                    songs.Add(s);
+                }
+
+
             }
-            if (format == ".mp4" || format == ".mov")
+
+        }
+
+        public void AddToPlaylistVideo(Video v)
+        {
+            if (format == ".mp4" || format == ".mov" || format == ".avi")
             {
-                dicVideos.Add(namePlayList, videos);
+                if (v != null)
+                {
+                    videos.Add(v);
+                }
+
             }
         }
         //--------------------------------------------------------------------------------------------------
