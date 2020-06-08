@@ -38,6 +38,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.UserProfileChangeInfoConfirmButton_Clicked += OnUserProfileChangeInfoConfirmButton_Click;
             this.fyBuZz.AddSearchedMult_Done += AddSearchedMultimedia;
             this.fyBuZz.ReturnSearchedMult_Done += ReturnSearchMultList;
+            this.fyBuZz.AdminMethods_Done += AdminMethods;
         }
 
         public void Initialize()
@@ -108,6 +109,7 @@ namespace Entrega3_FyBuZz.Controladores
                     userGetterString.Add(user.Verified.ToString());
                     userGetterString.Add(user.AdsOn.ToString());
                     userGetterString.Add(user.Privacy.ToString());
+                    userGetterString.Add(user.Banned.ToString());
                 }
             }
             if(userGetterString.Count == 0)
@@ -343,6 +345,49 @@ namespace Entrega3_FyBuZz.Controladores
                 }
             }
             return searchMultList;
+        }
+        private string AdminMethods(object sender, UserEventArgs e)
+        {
+            string result = null;
+            if (e.WantToChangeText == 0)
+            {
+                foreach (User user in userDataBase)
+                {
+                    if (e.UsernameText == user.Username)
+                    {
+                        userDataBase.Remove(user);
+                        result = "User erased";
+                        break;
+                    }
+                }
+            }
+            else if (e.WantToChangeText == 1)
+            {
+                foreach (User user in userDataBase)
+                {
+                    if (e.UsernameText == user.Username)
+                    {
+                        user.Banned = 1;
+                        result = "User banned";
+                        break;
+                    }
+                }
+            }
+            else if (e.WantToChangeText == 2)
+            {
+                foreach (User user in userDataBase)
+                {
+                    if (e.UsernameText == user.Username)
+                    {
+                        user.Banned = 0;
+                        result = "User unBanned";
+                        break;
+                    }
+                }
+            }
+
+            dataBase.Save_Users(userDataBase);
+            return result;
         }
     }
     
