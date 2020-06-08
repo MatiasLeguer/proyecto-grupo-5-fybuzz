@@ -119,6 +119,9 @@ namespace Entrega3_FyBuZz
         public delegate string AddPlaylistMult(object sender, PlaylistEventArgs args);
         public event AddPlaylistMult AddPlaylistMult_Done;
 
+        public delegate string AdminMenu(object sender, UserEventArgs args);
+        public event AdminMenu AdminMethods_Done;
+
 
 
         //Copiar lo mismo pero para video....
@@ -198,7 +201,7 @@ namespace Entrega3_FyBuZz
             string pass = PasswordLogInTextBox.Text;
             userGetter = OnLogInLogInButton_Clicked2(username);
             //user = OnLoginButtonClicked(username, pass);
-            if (userGetter != null && userGetter[1] == pass)
+            if (userGetter != null && userGetter[1] == pass && userGetter[9] != "1")
             {
                 ProfilesInvalidCredentialTextBox.Clear();
                 ProfilePanel.BringToFront();
@@ -218,6 +221,15 @@ namespace Entrega3_FyBuZz
         }
         private void ProfileGoBack_Click(object sender, EventArgs e)
         {
+            int cont = 0;
+            foreach (object searched in ProfileDomainUp.Items)
+            {
+                cont++;
+            }
+            for (int i = 0; i < cont; cont--)
+            {
+                ProfileDomainUp.Items.RemoveAt(cont - 1);
+            }
             LogInPanel.BringToFront();
             UserLogInTextBox.Clear();
             PasswordLogInTextBox.Clear();
@@ -365,7 +377,25 @@ namespace Entrega3_FyBuZz
 
         private void DisplayStartAdminMenuButton_Click(object sender, EventArgs e)
         {
-            AdminMenuPanel.BringToFront();
+            List<string> listUser = OnLogInLogInButton_Clicked2(UserLogInTextBox.Text);
+            List<User> userDatabase = OnSearchUserButton_Click();
+            if(listUser[3] == "admin")
+            {
+                foreach(User user in userDatabase)
+                {
+                    if(user.Username != null)
+                    {
+                        AdminMenuAllUsers.Items.Add(user.Username);
+                    }
+                }
+                AdminMenuPanel.BringToFront();
+            }
+            else
+            {
+                DisplayStartInvalidCredentials.AppendText("Only admins can acces the Admin Menu");
+                Thread.Sleep(2000);
+                DisplayStartInvalidCredentials.Clear();
+            }
         }
 
         private void DisplayPlaylistGoBackButton_Click(object sender, EventArgs e)
@@ -380,6 +410,17 @@ namespace Entrega3_FyBuZz
 
         private void AdminMenuGoBackButton_Click(object sender, EventArgs e)
         {
+            AdminMenuMessageBox.Clear();
+            int cont = 0;
+            foreach (object searched in AdminMenuAllUsers.Items)
+            {
+                cont++;
+            }
+            for (int i = 0; i < cont; cont--)
+            {
+                AdminMenuAllUsers.Items.RemoveAt(cont - 1);
+            }
+
             DisplayStartPanel.BringToFront();
         }
 
@@ -510,11 +551,11 @@ namespace Entrega3_FyBuZz
                 if (result == ex)
                 {
                     SearchSearchResultsDomainUp.Text = ex;
-                    if (playList.Format == ".mp3" || playList.Format == ".wav")
+                    if (playList.Format == ".mp4" || playList.Format == ".mov" || playList.Format == ".avi")
                     {
-                        foreach (Song song in playList.Songs)
+                        foreach (Video video in playList.Videos)
                         {
-                            PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                            PlayPlaylistShowMultimedia.Items.Add(video.SearchedInfoVideo());
                         }
                     }
                 }
@@ -1137,6 +1178,13 @@ namespace Entrega3_FyBuZz
                                 PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
                             }
                         }
+                        else if(playList.Format == ".mp4" || playList.Format == ".mov" || playList.Format == ".avi")
+                        {
+                            foreach(Video video in playList.Videos)
+                            {
+                                PlayPlaylistShowMultimedia.Items.Add(video.SearchedInfoVideo());
+                            }
+                        }
                     }
                 }
                 PlayPlaylistLabel.Text = "Playlist: " + plName;
@@ -1176,9 +1224,8 @@ namespace Entrega3_FyBuZz
         }
      
         private void SearchFollowButton_Click(object sender, EventArgs e)
-        {
-            SearcUserPanel.BringToFront();
-            List<string> userGetter = OnLogInLogInButton_Clicked2(SearchSearchTextBox.Text);
+        {   
+            List<string> userGetter = OnLogInLogInButton_Clicked2(SearchSearchTextBox.Text); //El user que busco
             if (userGetter[8] != "True")
             {
                 SearUserName.Visible = true;
@@ -1190,6 +1237,7 @@ namespace Entrega3_FyBuZz
                 SearcUserEmailTextBox.AppendText(userGetter[2]);
                 SearchUserFollowers.AppendText(userGetter[4]);
                 SearchUserFollowing.AppendText(userGetter[5]);
+                SearcUserPanel.BringToFront();
             }
             else
             {
@@ -1197,6 +1245,7 @@ namespace Entrega3_FyBuZz
                 SearcUserEmailTextBox.Visible = true;
                 SearUserName.AppendText(userGetter[0]);
                 SearcUserEmailTextBox.AppendText("This user is private");
+                SearcUserPanel.BringToFront();
             }
         }
 
@@ -2513,7 +2562,7 @@ namespace Entrega3_FyBuZz
             if(LogInLogInButton_Clicked2 != null)
             {
                 userGetterStringList = LogInLogInButton_Clicked2(this, new UserEventArgs() { UsernameText = username });
-                if (userGetterStringList != null && userGetterStringList[1] == PasswordLogInTextBox.Text)
+                if (userGetterStringList != null && userGetterStringList[1] == PasswordLogInTextBox.Text && userGetterStringList[9] != "1")
                 {
                     LogInInvalidCredentialsTetxbox.AppendText("Log-In Succesfull");
                     Thread.Sleep(2000);
@@ -2532,7 +2581,7 @@ namespace Entrega3_FyBuZz
                     LogInInvalidCredentialsTetxbox.AppendText("Incorrect Username or Password");
                     Thread.Sleep(2000);
                     LogInInvalidCredentialsTetxbox.Visible = true;
-                    return null;
+                    return userGetterStringList;
                 }
                 
             }
@@ -3205,6 +3254,15 @@ namespace Entrega3_FyBuZz
         private void PlayVideoGoBackButton_Click(object sender, EventArgs e)
         {
             SearchPanel.BringToFront();
+            int cont = 0;
+            foreach (object searched in SearchSearchResultsDomainUp.Items)
+            {
+                cont++;
+            }
+            for (int i = 0; i < cont; cont--)
+            {
+                SearchSearchResultsDomainUp.Items.RemoveAt(cont - 1);
+            }
         }
 
 
@@ -3278,6 +3336,55 @@ namespace Entrega3_FyBuZz
                 }
                 
             }
+        }
+
+        private void PlayVideoMessageLabel_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PlayVideoMessageAlertTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        
+        //Admin Menu
+        private void AdminMenuEraseUserButton_Click(object sender, EventArgs e)
+        {
+            AdminMenuMessageBox.Clear();
+            string username = AdminMenuAllUsers.Text;
+            AdminMethods(username, 0);
+        }
+
+        private void AdminMenuBanUserButton_Click(object sender, EventArgs e)
+        {
+            AdminMenuMessageBox.Clear();
+            string username = AdminMenuAllUsers.Text;
+            AdminMethods(username, 1);
+        }
+
+        private void AdminMenuBanUser_Click(object sender, EventArgs e) //Unbanea
+        {
+            AdminMenuMessageBox.Clear();
+            string username = AdminMenuAllUsers.Text;
+            AdminMethods(username, 2);
+        }
+        //Metodo interno para banear y borrar usuarios
+        public void AdminMethods(string username, int choice)
+        {
+            if(AdminMethods_Done != null)
+            {
+                string result = AdminMethods_Done(this, new UserEventArgs() { UsernameText = username, WantToChangeText = choice });
+                if(result != null)
+                {
+                    AdminMenuMessageBox.AppendText(result);
+                }
+                else
+                {
+                    AdminMenuMessageBox.AppendText("ERROR[!]");
+                }
+            }
+            
         }
     }
 }

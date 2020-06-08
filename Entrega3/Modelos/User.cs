@@ -25,6 +25,7 @@ namespace Modelos
         protected bool privacy;
         protected List<PlayList> profilePlaylists = new List<PlayList>();
         protected List<Profile> perfiles = new List<Profile>();
+        private int banned;
 
         //--------------------------------------------------------------------------------------------------
 
@@ -45,6 +46,8 @@ namespace Modelos
         public List<string> FollowingList { get => followingList; set => followingList = value; }
         public List<string> FollowerList { get => followerList; set => followerList = value; }
         public List<PlayList> ProfilePlaylists { get => profilePlaylists; set => profilePlaylists = value; }
+        public int Banned { get => banned; set => banned = value; }
+
         //--------------------------------------------------------------------------------------------------
 
 
@@ -97,6 +100,10 @@ namespace Modelos
                 verified = false;
                 return verified;
             }
+        }
+        public string GetName()
+        {
+            return username;
         }
         //--------------------------------------------------------------------------------------------------
 
