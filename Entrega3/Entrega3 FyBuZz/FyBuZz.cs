@@ -1735,6 +1735,7 @@ namespace Entrega3_FyBuZz
 
         private void PlayVideoGoBackButton_Click(object sender, EventArgs e)
         {
+            wmpVideo.Ctlcontrols.stop();
             SearchPanel.BringToFront();
         }
 
@@ -1976,7 +1977,7 @@ namespace Entrega3_FyBuZz
                             playlistIndex++;
                         }
                     }
-                    else
+                    else //Cuando entro de displayPlaylist
                     {
                         foreach (Song song in songDataBase)
                         {
@@ -2035,19 +2036,13 @@ namespace Entrega3_FyBuZz
                             {
                                 if (multimediaType == choosenPL.Videos[playlistIndex].SearchedInfoVideo())
                                 {
+                                    wmpVideo.Ctlcontrols.stop();
                                     PlayPlaylistMessageBox.Clear();
-                                    PlaySongProgressBar.Value = 0;
                                     PlaySongTimerTextBox.Clear();
-                                    //Los metodos para reproducir video
-                                    windowsMediaPlayer.URL = choosenPL.Videos[playlistIndex].FileName;
-                                    DurationTimer.Interval = 1000;
-                                    PlaySongProgressBar.Maximum = (int)(choosenPL.Videos[playlistIndex].Duration * 60);
-                                    SearchProgressBar.Maximum = (int)(choosenPL.Videos[playlistIndex].Duration * 60);
-
-                                    PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
-                                    SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
-                                    DurationTimer.Start();
-                                    windowsMediaPlayer.controls.play();
+                                    wmpVideo.URL = choosenPL.Videos[playlistIndex].FileName;
+                                    PlayVideoPanel.BringToFront();
+                                    wmpVideo.Ctlcontrols.play();
+                                    break;
                                 }
                                 if (playlistIndex == choosenPL.Videos.Count())
                                 {
@@ -2063,19 +2058,14 @@ namespace Entrega3_FyBuZz
                                 if (multimediaType == choosenPL.Videos[playlistIndex].SearchedInfoVideo())
                                 {
 
+                                    wmpVideo.Ctlcontrols.stop();
                                     PlayPlaylistMessageBox.Clear();
-                                    PlaySongProgressBar.Value = 0;
-                                    PlaySongTimerTextBox.ResetText();
-                                    //Los metodos para reproducir video
-                                    soundPlayer.SoundLocation = choosenPL.Videos[playlistIndex].FileName;
-                                    soundPlayer.Play();
-                                    DurationTimer.Interval = 1000;
-                                    PlaySongProgressBar.Maximum = (int)(choosenPL.Videos[playlistIndex].Duration * 60);
-                                    SearchProgressBar.Maximum = (int)(choosenPL.Videos[playlistIndex].Duration * 60);
+                                    PlaySongTimerTextBox.Clear();
+                                    wmpVideo.URL = choosenPL.Videos[playlistIndex].FileName;
 
-                                    PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
-                                    SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
-                                    DurationTimer.Start();
+                                    PlayVideoPanel.BringToFront();
+                                    wmpVideo.Ctlcontrols.play();
+                                    break;
 
 
                                 }
@@ -2093,22 +2083,14 @@ namespace Entrega3_FyBuZz
                             {
                                 if (multimediaType == choosenPL.Videos[playlistIndex].SearchedInfoVideo())
                                 {
-
+                                    wmpVideo.Ctlcontrols.stop();
                                     PlayPlaylistMessageBox.Clear();
-                                    PlaySongProgressBar.Value = 0;
-                                    PlaySongTimerTextBox.ResetText();
-                                    //Los metodos para reproducir video
-                                    soundPlayer.SoundLocation = choosenPL.Videos[playlistIndex].FileName;
-                                    soundPlayer.Play();
-                                    DurationTimer.Interval = 1000;
-                                    PlaySongProgressBar.Maximum = (int)(choosenPL.Videos[playlistIndex].Duration * 60);
-                                    SearchProgressBar.Maximum = (int)(choosenPL.Videos[playlistIndex].Duration * 60);
+                                    PlaySongTimerTextBox.Clear();
+                                    wmpVideo.URL = choosenPL.Videos[playlistIndex].FileName;
 
-                                    PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
-                                    SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
-                                    DurationTimer.Start();
-
-
+                                    PlayVideoPanel.BringToFront();
+                                    wmpVideo.Ctlcontrols.play();
+                                    break;
                                 }
                             }
                         }
@@ -2121,37 +2103,42 @@ namespace Entrega3_FyBuZz
                             {
                                 if (video.FileName.Contains(".mp4"))
                                 {
+                                    wmpVideo.Ctlcontrols.stop();
                                     PlayPlaylistMessageBox.Clear();
-                                    PlaySongProgressBar.Value = 0;
                                     PlaySongTimerTextBox.Clear();
-                                    /*METODOS VIDEOS
-                                    windowsMediaPlayer.URL = song.SongFile;
-                                    DurationTimer.Interval = 1000;
-                                    PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
-                                    SearchProgressBar.Maximum = (int)(song.Duration * 60);
+                                    wmpVideo.URL = choosenPL.Videos[playlistIndex].FileName;
 
-                                    PlayPlaylistMessageBox.AppendText("Playlist playing: " + song.Name + song.Format);
-                                    SearchPlayingLabel.AppendText("Playlist playing: " + song.Name + song.Format);
-                                    DurationTimer.Start();
-                                    windowsMediaPlayer.controls.play();
+                                    PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
+                                    SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
+                                    PlayVideoPanel.BringToFront();
+                                    wmpVideo.Ctlcontrols.play();
                                     break;
                                 }
-                                else if (song.SongFile.Contains(".wav"))
+                                else if (video.FileName.Contains(".mov"))
                                 {
+                                    wmpVideo.Ctlcontrols.stop();
                                     PlayPlaylistMessageBox.Clear();
-                                    PlaySongProgressBar.Value = 0;
-                                    PlaySongTimerTextBox.ResetText();
-                                    string file = song.SongFile;
-                                    soundPlayer.SoundLocation = file;
-                                    soundPlayer.Play();
-                                    DurationTimer.Interval = 1000;
-                                    PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
-                                    SearchProgressBar.Maximum = (int)(song.Duration * 60);
+                                    PlaySongTimerTextBox.Clear();
+                                    wmpVideo.URL = choosenPL.Videos[playlistIndex].FileName;
 
-                                    PlayPlaylistMessageBox.AppendText("Playlist playing: " + song.Name + song.Format);
-                                    SearchPlayingLabel.AppendText("Playlist playing: " + song.Name + song.Format);
-                                    DurationTimer.Start();
-                                    break;*/
+                                    PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
+                                    SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
+                                    PlayVideoPanel.BringToFront();
+                                    wmpVideo.Ctlcontrols.play();
+                                    break;
+                                }
+                                else if (video.FileName.Contains(".avi"))
+                                {
+                                    wmpVideo.Ctlcontrols.stop();
+                                    PlayPlaylistMessageBox.Clear();
+                                    PlaySongTimerTextBox.Clear();
+                                    wmpVideo.URL = choosenPL.Videos[playlistIndex].FileName;
+
+                                    PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
+                                    SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
+                                    PlayVideoPanel.BringToFront();
+                                    wmpVideo.Ctlcontrols.play();
+                                    break;
                                 }
                                 playlistIndex++;
                             }
@@ -2285,100 +2272,74 @@ namespace Entrega3_FyBuZz
                         {
                             if (video.FileName.Contains(".mp4"))
                             {
+                                wmpVideo.Ctlcontrols.stop();
                                 PlayPlaylistMessageBox.Clear();
-                                PlaySongProgressBar.Value = 0;
                                 PlaySongTimerTextBox.Clear();
-                                /*METODOS VIDEOS
-                                windowsMediaPlayer.URL = song.SongFile;
-                                DurationTimer.Interval = 1000;
-                                PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
-                                SearchProgressBar.Maximum = (int)(song.Duration * 60);
+                                wmpVideo.URL = choosenPL.Videos[playlistIndex].FileName;
 
-                                PlayPlaylistMessageBox.AppendText("Playlist playing: " + song.Name + song.Format);
-                                SearchPlayingLabel.AppendText("Playlist playing: " + song.Name + song.Format);
-                                DurationTimer.Start();
-                                windowsMediaPlayer.controls.play();
+                                PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
+                                SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
+                                PlayVideoPanel.BringToFront();
+                                wmpVideo.Ctlcontrols.play();
                                 break;
                             }
-                            else if (song.SongFile.Contains(".wav"))
+                            else if (video.FileName.Contains(".mov"))
                             {
+                                wmpVideo.Ctlcontrols.stop();
                                 PlayPlaylistMessageBox.Clear();
-                                PlaySongProgressBar.Value = 0;
-                                PlaySongTimerTextBox.ResetText();
-                                string file = song.SongFile;
-                                soundPlayer.SoundLocation = file;
-                                soundPlayer.Play();
-                                DurationTimer.Interval = 1000;
-                                PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
-                                SearchProgressBar.Maximum = (int)(song.Duration * 60);
+                                PlaySongTimerTextBox.Clear();
+                                wmpVideo.URL = choosenPL.Videos[playlistIndex].FileName;
 
-                                PlayPlaylistMessageBox.AppendText("Playlist playing: " + song.Name + song.Format);
-                                SearchPlayingLabel.AppendText("Playlist playing: " + song.Name + song.Format);
-                                DurationTimer.Start();
+                                PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
+                                SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
+                                PlayVideoPanel.BringToFront();
+                                wmpVideo.Ctlcontrols.play();
                                 break;
-                            }*/
-                                playlistIndex++;
                             }
+                            else if (video.FileName.Contains(".avi"))
+                            {
+                                wmpVideo.Ctlcontrols.stop();
+                                PlayPlaylistMessageBox.Clear();
+                                PlaySongTimerTextBox.Clear();
+                                wmpVideo.URL = choosenPL.Videos[playlistIndex].FileName;
 
+                                PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
+                                SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
+                                PlayVideoPanel.BringToFront();
+                                wmpVideo.Ctlcontrols.play();
+                                break;
+                            }
+                            playlistIndex++;
                         }
                     }
                 }
-
             }
             else if (choosenPL != null && choosenPL.Videos.Count() != 0)
             {
-                int playlistIndex = PlayPlaylistShowMultimedia.SelectedIndex;
+                int playlistIndex = random.Next(choosenPL.Videos.Count());
                 if (choosenPL.Videos[playlistIndex].Format == ".mp4")
                 {
-
-                    PlayPlaylistMessageBox.Clear();
-                    PlaySongProgressBar.Value = 0;
-                    PlaySongTimerTextBox.Clear();
-                    //Los metodos para reproducir video
-                    windowsMediaPlayer.URL = choosenPL.Videos[playlistIndex].FileName;
-                    DurationTimer.Interval = 1000;
-                    PlaySongProgressBar.Maximum = (int)(choosenPL.Videos[playlistIndex].Duration * 60);
-                    SearchProgressBar.Maximum = (int)(choosenPL.Videos[playlistIndex].Duration * 60);
-
-                    PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
-                    SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
-                    DurationTimer.Start();
-                    windowsMediaPlayer.controls.play();
+                    wmpVideo.Ctlcontrols.stop();
+                    wmpVideo.URL = choosenPL.Videos[playlistIndex].FileName;
+                    PlayVideoPanel.BringToFront();
+                    wmpVideo.Ctlcontrols.play();
 
                 }
                 else if (choosenPL.Videos[playlistIndex].Format == ".mov")
                 {
 
-                    PlayPlaylistMessageBox.Clear();
-                    PlaySongProgressBar.Value = 0;
-                    PlaySongTimerTextBox.ResetText();
-                    //Los metodos para reproducir video
-                    soundPlayer.SoundLocation = choosenPL.Videos[playlistIndex].FileName;
-                    soundPlayer.Play();
-                    DurationTimer.Interval = 1000;
-                    PlaySongProgressBar.Maximum = (int)(choosenPL.Videos[playlistIndex].Duration * 60);
-                    SearchProgressBar.Maximum = (int)(choosenPL.Videos[playlistIndex].Duration * 60);
-
-                    PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
-                    SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
-                    DurationTimer.Start();
+                    wmpVideo.Ctlcontrols.stop();
+                    wmpVideo.URL = choosenPL.Videos[playlistIndex].FileName;
+                    PlayVideoPanel.BringToFront();
+                    wmpVideo.Ctlcontrols.play();
 
                 }
                 else if (choosenPL.Videos[playlistIndex].Format == ".avi")
                 {
-                    PlayPlaylistMessageBox.Clear();
-                    PlaySongProgressBar.Value = 0;
-                    PlaySongTimerTextBox.ResetText();
-                    //Los metodos para reproducir video
-                    soundPlayer.SoundLocation = choosenPL.Videos[playlistIndex].FileName;
-                    soundPlayer.Play();
-                    DurationTimer.Interval = 1000;
-                    PlaySongProgressBar.Maximum = (int)(choosenPL.Videos[playlistIndex].Duration * 60);
-                    SearchProgressBar.Maximum = (int)(choosenPL.Videos[playlistIndex].Duration * 60);
-
-                    PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
-                    SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Videos[playlistIndex].Name + choosenPL.Videos[playlistIndex].Format);
-                    DurationTimer.Start();
+                    wmpVideo.Ctlcontrols.stop();
+                    wmpVideo.URL = choosenPL.Videos[playlistIndex].FileName;
+                    PlayVideoPanel.BringToFront();
+                    wmpVideo.Ctlcontrols.play();
                 }
             }
         }

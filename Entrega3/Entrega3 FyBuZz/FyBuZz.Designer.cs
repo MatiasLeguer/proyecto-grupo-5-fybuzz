@@ -4477,6 +4477,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(712, 786);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.PlayVideoPanel);
+            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
             this.Controls.Add(this.SearcUserPanel);
             this.Controls.Add(this.SearchPanel);
@@ -4492,9 +4494,7 @@
             this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.LogInPanel);
             this.Controls.Add(this.RegisterPanel);
-            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.AdminMenuPanel);
-            this.Controls.Add(this.PlayVideoPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FyBuZz";
             this.Text = "FyBuZz";
