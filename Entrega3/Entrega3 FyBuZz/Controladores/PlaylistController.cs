@@ -29,6 +29,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.DisplayPlaylistsGlobalPlaylist_Clicked += OnDisplayPlaylistsGlobalPlaylist_Clicked;
             this.fyBuZz.CreatePlaylistCreatePlaylistButton_Clicked += CreatePlaylistButton_Clicked;
             this.fyBuZz.PlaySongChoosePlsButton_Clicked += PlaySongChoosePlsButton_Clicked;
+            this.fyBuZz.AddPlaylistMult_Done += addMult;
         }
         public void Initialize()
         {
@@ -114,6 +115,37 @@ namespace Entrega3_FyBuZz.Controladores
             }
 
             return description;
+        }
+        private string addMult(object sender, PlaylistEventArgs e)
+        {
+            string result = null;
+            foreach(PlayList playlist in playlistDataBase)
+            {
+                if(e.SongText != null)
+                {
+                    if(playlist.NamePlayList == "FyBuZz Global Songs")
+                    {
+                        if(playlist.Songs.Contains(e.SongText) == false)
+                        {
+                            playlist.Songs.Add(e.SongText);
+                            result = "Song Added.";
+                        }
+                    }
+                }
+                else if(e.VideoText != null)
+                {
+                    if(playlist.NamePlayList == "FyBuZz Global Videos")
+                    {
+                        if(playlist.Videos.Contains(e.VideoText) == false)
+                        {
+                            playlist.Videos.Add(e.VideoText);
+                            result = "Video added";
+                        }
+                    }
+                }
+            }
+            dataBase.Save_PLs(playlistDataBase);
+            return result;
         }
 
         //Aqui deberia haber un metodo para ponerle play a la mult de la playlist

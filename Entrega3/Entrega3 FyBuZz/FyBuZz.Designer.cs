@@ -240,6 +240,8 @@
             this.AdminMenuEraseUserButton = new System.Windows.Forms.Button();
             this.AdminMenuLabel = new System.Windows.Forms.Label();
             this.CreateSongPanel = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.CreateSongInvalidCredentialTextBox = new System.Windows.Forms.TextBox();
             this.CreateSongSongFileButton = new System.Windows.Forms.Button();
             this.CreateSongSongFileTextBox = new System.Windows.Forms.TextBox();
@@ -314,6 +316,8 @@
             this.DurationTimer = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.PlaySongPanel = new System.Windows.Forms.Panel();
+            this.PlaySongDisplayLyrics = new System.Windows.Forms.TextBox();
+            this.PlaySongShowLyrics = new System.Windows.Forms.Button();
             this.PlaySongRateMessageTextBox = new System.Windows.Forms.TextBox();
             this.PlaySongRateNumDomainUp = new System.Windows.Forms.NumericUpDown();
             this.PlaysSongRateButton = new System.Windows.Forms.Button();
@@ -443,7 +447,7 @@
             this.WelcomePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WelcomePanel.Location = new System.Drawing.Point(0, 0);
             this.WelcomePanel.Name = "WelcomePanel";
-            this.WelcomePanel.Size = new System.Drawing.Size(683, 786);
+            this.WelcomePanel.Size = new System.Drawing.Size(712, 786);
             this.WelcomePanel.TabIndex = 0;
             this.WelcomePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.WelcomePanel_Paint);
             // 
@@ -527,7 +531,7 @@
             this.RegisterPanel.Location = new System.Drawing.Point(0, 0);
             this.RegisterPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RegisterPanel.Name = "RegisterPanel";
-            this.RegisterPanel.Size = new System.Drawing.Size(683, 786);
+            this.RegisterPanel.Size = new System.Drawing.Size(712, 786);
             this.RegisterPanel.TabIndex = 1;
             // 
             // RegisterLogo
@@ -768,7 +772,7 @@
             this.LogInPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LogInPanel.Location = new System.Drawing.Point(0, 0);
             this.LogInPanel.Name = "LogInPanel";
-            this.LogInPanel.Size = new System.Drawing.Size(683, 786);
+            this.LogInPanel.Size = new System.Drawing.Size(712, 786);
             this.LogInPanel.TabIndex = 2;
             // 
             // LogInLogo
@@ -877,7 +881,7 @@
             this.ProfilePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProfilePanel.Location = new System.Drawing.Point(0, 0);
             this.ProfilePanel.Name = "ProfilePanel";
-            this.ProfilePanel.Size = new System.Drawing.Size(683, 786);
+            this.ProfilePanel.Size = new System.Drawing.Size(712, 786);
             this.ProfilePanel.TabIndex = 3;
             this.ProfilePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ProfilePanel_Paint);
             // 
@@ -989,7 +993,7 @@
             this.CreateProfilePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreateProfilePanel.Location = new System.Drawing.Point(0, 0);
             this.CreateProfilePanel.Name = "CreateProfilePanel";
-            this.CreateProfilePanel.Size = new System.Drawing.Size(683, 786);
+            this.CreateProfilePanel.Size = new System.Drawing.Size(712, 786);
             this.CreateProfilePanel.TabIndex = 4;
             // 
             // CreateProfilePicCheckedListBox
@@ -1207,7 +1211,7 @@
             this.DisplayStartPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DisplayStartPanel.Location = new System.Drawing.Point(0, 0);
             this.DisplayStartPanel.Name = "DisplayStartPanel";
-            this.DisplayStartPanel.Size = new System.Drawing.Size(683, 786);
+            this.DisplayStartPanel.Size = new System.Drawing.Size(712, 786);
             this.DisplayStartPanel.TabIndex = 5;
             // 
             // DisplayStartLabel
@@ -1328,7 +1332,7 @@
             this.AccountProfileSettingsPanel.Location = new System.Drawing.Point(0, 0);
             this.AccountProfileSettingsPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AccountProfileSettingsPanel.Name = "AccountProfileSettingsPanel";
-            this.AccountProfileSettingsPanel.Size = new System.Drawing.Size(683, 786);
+            this.AccountProfileSettingsPanel.Size = new System.Drawing.Size(712, 786);
             this.AccountProfileSettingsPanel.TabIndex = 6;
             // 
             // AccountProfileSettingsSplitContainer
@@ -1753,7 +1757,7 @@
             this.SearchPanel.Location = new System.Drawing.Point(0, 0);
             this.SearchPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchPanel.Name = "SearchPanel";
-            this.SearchPanel.Size = new System.Drawing.Size(683, 786);
+            this.SearchPanel.Size = new System.Drawing.Size(712, 786);
             this.SearchPanel.TabIndex = 7;
             // 
             // SearchPlayingPanel
@@ -1768,9 +1772,9 @@
             this.SearchPlayingPanel.Controls.Add(this.SearchPrevButton);
             this.SearchPlayingPanel.Controls.Add(this.SearchPauseBotton);
             this.SearchPlayingPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SearchPlayingPanel.Location = new System.Drawing.Point(0, 602);
+            this.SearchPlayingPanel.Location = new System.Drawing.Point(0, 604);
             this.SearchPlayingPanel.Name = "SearchPlayingPanel";
-            this.SearchPlayingPanel.Size = new System.Drawing.Size(683, 184);
+            this.SearchPlayingPanel.Size = new System.Drawing.Size(712, 182);
             this.SearchPlayingPanel.TabIndex = 32;
             this.SearchPlayingPanel.Visible = false;
             // 
@@ -1929,11 +1933,13 @@
             this.SearchInvalidCredentialsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchInvalidCredentialsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchInvalidCredentialsTextBox.ForeColor = System.Drawing.Color.White;
-            this.SearchInvalidCredentialsTextBox.Location = new System.Drawing.Point(146, 610);
+            this.SearchInvalidCredentialsTextBox.Location = new System.Drawing.Point(151, 442);
             this.SearchInvalidCredentialsTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchInvalidCredentialsTextBox.Name = "SearchInvalidCredentialsTextBox";
+            this.SearchInvalidCredentialsTextBox.ReadOnly = true;
             this.SearchInvalidCredentialsTextBox.Size = new System.Drawing.Size(391, 20);
             this.SearchInvalidCredentialsTextBox.TabIndex = 31;
+            this.SearchInvalidCredentialsTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // SearchSelectMultButton
             // 
@@ -2033,7 +2039,7 @@
             this.PlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.PlayerPanel.Location = new System.Drawing.Point(0, 602);
             this.PlayerPanel.Name = "PlayerPanel";
-            this.PlayerPanel.Size = new System.Drawing.Size(683, 184);
+            this.PlayerPanel.Size = new System.Drawing.Size(712, 184);
             this.PlayerPanel.TabIndex = 15;
             // 
             // PlayerPlayingLabel
@@ -2127,7 +2133,7 @@
             this.AddShowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddShowPanel.Location = new System.Drawing.Point(0, 0);
             this.AddShowPanel.Name = "AddShowPanel";
-            this.AddShowPanel.Size = new System.Drawing.Size(683, 786);
+            this.AddShowPanel.Size = new System.Drawing.Size(712, 786);
             this.AddShowPanel.TabIndex = 7;
             // 
             // AddShowInvalidCredentialsLabel
@@ -2270,7 +2276,7 @@
             this.DisplayPlaylistPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DisplayPlaylistPanel.Location = new System.Drawing.Point(0, 0);
             this.DisplayPlaylistPanel.Name = "DisplayPlaylistPanel";
-            this.DisplayPlaylistPanel.Size = new System.Drawing.Size(683, 786);
+            this.DisplayPlaylistPanel.Size = new System.Drawing.Size(712, 786);
             this.DisplayPlaylistPanel.TabIndex = 8;
             // 
             // label16
@@ -2572,7 +2578,7 @@
             this.PlayPlaylistPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayPlaylistPanel.Location = new System.Drawing.Point(0, 0);
             this.PlayPlaylistPanel.Name = "PlayPlaylistPanel";
-            this.PlayPlaylistPanel.Size = new System.Drawing.Size(683, 786);
+            this.PlayPlaylistPanel.Size = new System.Drawing.Size(712, 786);
             this.PlayPlaylistPanel.TabIndex = 8;
             this.PlayPlaylistPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PlayPlaylistPanel_Paint);
             // 
@@ -2611,7 +2617,7 @@
             this.PlayPlaylistPlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.PlayPlaylistPlayerPanel.Location = new System.Drawing.Point(0, 637);
             this.PlayPlaylistPlayerPanel.Name = "PlayPlaylistPlayerPanel";
-            this.PlayPlaylistPlayerPanel.Size = new System.Drawing.Size(683, 149);
+            this.PlayPlaylistPlayerPanel.Size = new System.Drawing.Size(712, 149);
             this.PlayPlaylistPlayerPanel.TabIndex = 16;
             this.PlayPlaylistPlayerPanel.Visible = false;
             // 
@@ -2754,7 +2760,7 @@
             this.AdminMenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AdminMenuPanel.Location = new System.Drawing.Point(0, 0);
             this.AdminMenuPanel.Name = "AdminMenuPanel";
-            this.AdminMenuPanel.Size = new System.Drawing.Size(683, 786);
+            this.AdminMenuPanel.Size = new System.Drawing.Size(712, 786);
             this.AdminMenuPanel.TabIndex = 9;
             // 
             // AdminMenuEraseUserPanel
@@ -2845,6 +2851,8 @@
             // CreateSongPanel
             // 
             this.CreateSongPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.CreateSongPanel.Controls.Add(this.label17);
+            this.CreateSongPanel.Controls.Add(this.button3);
             this.CreateSongPanel.Controls.Add(this.CreateSongInvalidCredentialTextBox);
             this.CreateSongPanel.Controls.Add(this.CreateSongSongFileButton);
             this.CreateSongPanel.Controls.Add(this.CreateSongSongFileTextBox);
@@ -2875,8 +2883,30 @@
             this.CreateSongPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreateSongPanel.Location = new System.Drawing.Point(0, 0);
             this.CreateSongPanel.Name = "CreateSongPanel";
-            this.CreateSongPanel.Size = new System.Drawing.Size(683, 786);
+            this.CreateSongPanel.Size = new System.Drawing.Size(712, 786);
             this.CreateSongPanel.TabIndex = 10;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(38, 160);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(96, 20);
+            this.label17.TabIndex = 30;
+            this.label17.Text = "Song Name";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(598, 615);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(35, 27);
+            this.button3.TabIndex = 29;
+            this.button3.Text = "...";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // CreateSongInvalidCredentialTextBox
             // 
@@ -2884,7 +2914,7 @@
             this.CreateSongInvalidCredentialTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CreateSongInvalidCredentialTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongInvalidCredentialTextBox.ForeColor = System.Drawing.Color.White;
-            this.CreateSongInvalidCredentialTextBox.Location = new System.Drawing.Point(59, 570);
+            this.CreateSongInvalidCredentialTextBox.Location = new System.Drawing.Point(59, 688);
             this.CreateSongInvalidCredentialTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongInvalidCredentialTextBox.Name = "CreateSongInvalidCredentialTextBox";
             this.CreateSongInvalidCredentialTextBox.Size = new System.Drawing.Size(322, 20);
@@ -2892,22 +2922,22 @@
             // 
             // CreateSongSongFileButton
             // 
-            this.CreateSongSongFileButton.Location = new System.Drawing.Point(248, 422);
+            this.CreateSongSongFileButton.Location = new System.Drawing.Point(597, 654);
             this.CreateSongSongFileButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongSongFileButton.Name = "CreateSongSongFileButton";
-            this.CreateSongSongFileButton.Size = new System.Drawing.Size(89, 22);
+            this.CreateSongSongFileButton.Size = new System.Drawing.Size(35, 27);
             this.CreateSongSongFileButton.TabIndex = 27;
-            this.CreateSongSongFileButton.Text = "Choose File";
+            this.CreateSongSongFileButton.Text = "...";
             this.CreateSongSongFileButton.UseVisualStyleBackColor = true;
             this.CreateSongSongFileButton.Click += new System.EventHandler(this.CreateSongSongFileButton_Click);
             // 
             // CreateSongSongFileTextBox
             // 
             this.CreateSongSongFileTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongSongFileTextBox.Location = new System.Drawing.Point(335, 422);
+            this.CreateSongSongFileTextBox.Location = new System.Drawing.Point(295, 654);
             this.CreateSongSongFileTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongSongFileTextBox.Name = "CreateSongSongFileTextBox";
-            this.CreateSongSongFileTextBox.Size = new System.Drawing.Size(249, 27);
+            this.CreateSongSongFileTextBox.Size = new System.Drawing.Size(296, 27);
             this.CreateSongSongFileTextBox.TabIndex = 26;
             // 
             // CreateSongSongFileLabel
@@ -2915,7 +2945,7 @@
             this.CreateSongSongFileLabel.AutoSize = true;
             this.CreateSongSongFileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongSongFileLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongSongFileLabel.Location = new System.Drawing.Point(28, 425);
+            this.CreateSongSongFileLabel.Location = new System.Drawing.Point(35, 657);
             this.CreateSongSongFileLabel.Name = "CreateSongSongFileLabel";
             this.CreateSongSongFileLabel.Size = new System.Drawing.Size(79, 20);
             this.CreateSongSongFileLabel.TabIndex = 25;
@@ -2923,7 +2953,7 @@
             // 
             // CreateSongCreateSongButton
             // 
-            this.CreateSongCreateSongButton.Location = new System.Drawing.Point(529, 721);
+            this.CreateSongCreateSongButton.Location = new System.Drawing.Point(502, 718);
             this.CreateSongCreateSongButton.Name = "CreateSongCreateSongButton";
             this.CreateSongCreateSongButton.Size = new System.Drawing.Size(154, 41);
             this.CreateSongCreateSongButton.TabIndex = 23;
@@ -2933,7 +2963,7 @@
             // 
             // CreateSongGoBackButton
             // 
-            this.CreateSongGoBackButton.Location = new System.Drawing.Point(35, 41);
+            this.CreateSongGoBackButton.Location = new System.Drawing.Point(35, 25);
             this.CreateSongGoBackButton.Name = "CreateSongGoBackButton";
             this.CreateSongGoBackButton.Size = new System.Drawing.Size(118, 53);
             this.CreateSongGoBackButton.TabIndex = 22;
@@ -2944,7 +2974,7 @@
             // CreateSongPublishDateTime
             // 
             this.CreateSongPublishDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongPublishDateTime.Location = new System.Drawing.Point(285, 260);
+            this.CreateSongPublishDateTime.Location = new System.Drawing.Point(296, 412);
             this.CreateSongPublishDateTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongPublishDateTime.Name = "CreateSongPublishDateTime";
             this.CreateSongPublishDateTime.Size = new System.Drawing.Size(299, 27);
@@ -2953,7 +2983,7 @@
             // CreateSongArtistTextBox
             // 
             this.CreateSongArtistTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongArtistTextBox.Location = new System.Drawing.Point(285, 124);
+            this.CreateSongArtistTextBox.Location = new System.Drawing.Point(296, 217);
             this.CreateSongArtistTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongArtistTextBox.Name = "CreateSongArtistTextBox";
             this.CreateSongArtistTextBox.Size = new System.Drawing.Size(299, 27);
@@ -2962,7 +2992,7 @@
             // CreateSongAlbumTextBox
             // 
             this.CreateSongAlbumTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongAlbumTextBox.Location = new System.Drawing.Point(285, 157);
+            this.CreateSongAlbumTextBox.Location = new System.Drawing.Point(295, 258);
             this.CreateSongAlbumTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongAlbumTextBox.Name = "CreateSongAlbumTextBox";
             this.CreateSongAlbumTextBox.Size = new System.Drawing.Size(299, 27);
@@ -2971,7 +3001,7 @@
             // CreateSongDiscographyTextBox
             // 
             this.CreateSongDiscographyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongDiscographyTextBox.Location = new System.Drawing.Point(285, 194);
+            this.CreateSongDiscographyTextBox.Location = new System.Drawing.Point(295, 307);
             this.CreateSongDiscographyTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongDiscographyTextBox.Name = "CreateSongDiscographyTextBox";
             this.CreateSongDiscographyTextBox.Size = new System.Drawing.Size(299, 27);
@@ -2980,7 +3010,7 @@
             // CreateSongGenderTextBox
             // 
             this.CreateSongGenderTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongGenderTextBox.Location = new System.Drawing.Point(285, 228);
+            this.CreateSongGenderTextBox.Location = new System.Drawing.Point(296, 363);
             this.CreateSongGenderTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongGenderTextBox.Name = "CreateSongGenderTextBox";
             this.CreateSongGenderTextBox.Size = new System.Drawing.Size(299, 27);
@@ -2989,7 +3019,7 @@
             // CreateSongStudioTextBox
             // 
             this.CreateSongStudioTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongStudioTextBox.Location = new System.Drawing.Point(285, 293);
+            this.CreateSongStudioTextBox.Location = new System.Drawing.Point(295, 463);
             this.CreateSongStudioTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongStudioTextBox.Name = "CreateSongStudioTextBox";
             this.CreateSongStudioTextBox.Size = new System.Drawing.Size(299, 27);
@@ -2998,7 +3028,7 @@
             // CreateSongDurationTextBox
             // 
             this.CreateSongDurationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongDurationTextBox.Location = new System.Drawing.Point(285, 322);
+            this.CreateSongDurationTextBox.Location = new System.Drawing.Point(296, 510);
             this.CreateSongDurationTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongDurationTextBox.Name = "CreateSongDurationTextBox";
             this.CreateSongDurationTextBox.Size = new System.Drawing.Size(299, 27);
@@ -3007,7 +3037,7 @@
             // CreateSongFormatTextBox
             // 
             this.CreateSongFormatTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongFormatTextBox.Location = new System.Drawing.Point(285, 350);
+            this.CreateSongFormatTextBox.Location = new System.Drawing.Point(296, 565);
             this.CreateSongFormatTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongFormatTextBox.Name = "CreateSongFormatTextBox";
             this.CreateSongFormatTextBox.Size = new System.Drawing.Size(299, 27);
@@ -3016,11 +3046,11 @@
             // CreateSongLyricsTextBox
             // 
             this.CreateSongLyricsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongLyricsTextBox.Location = new System.Drawing.Point(285, 381);
+            this.CreateSongLyricsTextBox.Location = new System.Drawing.Point(296, 612);
             this.CreateSongLyricsTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongLyricsTextBox.Multiline = true;
             this.CreateSongLyricsTextBox.Name = "CreateSongLyricsTextBox";
-            this.CreateSongLyricsTextBox.Size = new System.Drawing.Size(336, 32);
+            this.CreateSongLyricsTextBox.Size = new System.Drawing.Size(296, 27);
             this.CreateSongLyricsTextBox.TabIndex = 13;
             // 
             // CreateSongLyricsLabel
@@ -3028,7 +3058,7 @@
             this.CreateSongLyricsLabel.AutoSize = true;
             this.CreateSongLyricsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongLyricsLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongLyricsLabel.Location = new System.Drawing.Point(27, 386);
+            this.CreateSongLyricsLabel.Location = new System.Drawing.Point(40, 621);
             this.CreateSongLyricsLabel.Name = "CreateSongLyricsLabel";
             this.CreateSongLyricsLabel.Size = new System.Drawing.Size(55, 20);
             this.CreateSongLyricsLabel.TabIndex = 11;
@@ -3037,7 +3067,7 @@
             // CreateSongNameTextBox
             // 
             this.CreateSongNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongNameTextBox.Location = new System.Drawing.Point(285, 93);
+            this.CreateSongNameTextBox.Location = new System.Drawing.Point(296, 160);
             this.CreateSongNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongNameTextBox.Name = "CreateSongNameTextBox";
             this.CreateSongNameTextBox.Size = new System.Drawing.Size(299, 27);
@@ -3048,18 +3078,18 @@
             this.CreateSongFormatLabel.AutoSize = true;
             this.CreateSongFormatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongFormatLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongFormatLabel.Location = new System.Drawing.Point(28, 354);
+            this.CreateSongFormatLabel.Location = new System.Drawing.Point(39, 569);
             this.CreateSongFormatLabel.Name = "CreateSongFormatLabel";
-            this.CreateSongFormatLabel.Size = new System.Drawing.Size(171, 20);
+            this.CreateSongFormatLabel.Size = new System.Drawing.Size(168, 20);
             this.CreateSongFormatLabel.TabIndex = 9;
-            this.CreateSongFormatLabel.Text = "Format(.mp3 or .mp4)";
+            this.CreateSongFormatLabel.Text = "Format(.mp3 or .wav)";
             // 
             // CreateSongDurationLabel
             // 
             this.CreateSongDurationLabel.AutoSize = true;
             this.CreateSongDurationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongDurationLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongDurationLabel.Location = new System.Drawing.Point(28, 324);
+            this.CreateSongDurationLabel.Location = new System.Drawing.Point(39, 512);
             this.CreateSongDurationLabel.Name = "CreateSongDurationLabel";
             this.CreateSongDurationLabel.Size = new System.Drawing.Size(73, 20);
             this.CreateSongDurationLabel.TabIndex = 8;
@@ -3070,7 +3100,7 @@
             this.CreateSongStudioLabel.AutoSize = true;
             this.CreateSongStudioLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongStudioLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongStudioLabel.Location = new System.Drawing.Point(28, 294);
+            this.CreateSongStudioLabel.Location = new System.Drawing.Point(39, 461);
             this.CreateSongStudioLabel.Name = "CreateSongStudioLabel";
             this.CreateSongStudioLabel.Size = new System.Drawing.Size(56, 20);
             this.CreateSongStudioLabel.TabIndex = 7;
@@ -3081,7 +3111,7 @@
             this.CreateSongPublishDateLabel.AutoSize = true;
             this.CreateSongPublishDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongPublishDateLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongPublishDateLabel.Location = new System.Drawing.Point(28, 264);
+            this.CreateSongPublishDateLabel.Location = new System.Drawing.Point(38, 421);
             this.CreateSongPublishDateLabel.Name = "CreateSongPublishDateLabel";
             this.CreateSongPublishDateLabel.Size = new System.Drawing.Size(105, 20);
             this.CreateSongPublishDateLabel.TabIndex = 6;
@@ -3092,7 +3122,7 @@
             this.CreateSongGenderLabel.AutoSize = true;
             this.CreateSongGenderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongGenderLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongGenderLabel.Location = new System.Drawing.Point(28, 230);
+            this.CreateSongGenderLabel.Location = new System.Drawing.Point(39, 365);
             this.CreateSongGenderLabel.Name = "CreateSongGenderLabel";
             this.CreateSongGenderLabel.Size = new System.Drawing.Size(64, 20);
             this.CreateSongGenderLabel.TabIndex = 5;
@@ -3103,7 +3133,7 @@
             this.CreateSongDiscographyLabel.AutoSize = true;
             this.CreateSongDiscographyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongDiscographyLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongDiscographyLabel.Location = new System.Drawing.Point(27, 196);
+            this.CreateSongDiscographyLabel.Location = new System.Drawing.Point(37, 309);
             this.CreateSongDiscographyLabel.Name = "CreateSongDiscographyLabel";
             this.CreateSongDiscographyLabel.Size = new System.Drawing.Size(103, 20);
             this.CreateSongDiscographyLabel.TabIndex = 4;
@@ -3114,7 +3144,7 @@
             this.CreateSongAlbumLabel.AutoSize = true;
             this.CreateSongAlbumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongAlbumLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongAlbumLabel.Location = new System.Drawing.Point(27, 159);
+            this.CreateSongAlbumLabel.Location = new System.Drawing.Point(37, 260);
             this.CreateSongAlbumLabel.Name = "CreateSongAlbumLabel";
             this.CreateSongAlbumLabel.Size = new System.Drawing.Size(56, 20);
             this.CreateSongAlbumLabel.TabIndex = 3;
@@ -3125,7 +3155,7 @@
             this.CreateSongArtistLabel.AutoSize = true;
             this.CreateSongArtistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongArtistLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongArtistLabel.Location = new System.Drawing.Point(27, 126);
+            this.CreateSongArtistLabel.Location = new System.Drawing.Point(38, 219);
             this.CreateSongArtistLabel.Name = "CreateSongArtistLabel";
             this.CreateSongArtistLabel.Size = new System.Drawing.Size(123, 20);
             this.CreateSongArtistLabel.TabIndex = 2;
@@ -3136,7 +3166,7 @@
             this.CreateSongNameLabel.AutoSize = true;
             this.CreateSongNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongNameLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongNameLabel.Location = new System.Drawing.Point(32, 125);
+            this.CreateSongNameLabel.Location = new System.Drawing.Point(43, 218);
             this.CreateSongNameLabel.Name = "CreateSongNameLabel";
             this.CreateSongNameLabel.Size = new System.Drawing.Size(53, 20);
             this.CreateSongNameLabel.TabIndex = 1;
@@ -3188,7 +3218,7 @@
             this.CreateVideoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreateVideoPanel.Location = new System.Drawing.Point(0, 0);
             this.CreateVideoPanel.Name = "CreateVideoPanel";
-            this.CreateVideoPanel.Size = new System.Drawing.Size(683, 786);
+            this.CreateVideoPanel.Size = new System.Drawing.Size(712, 786);
             this.CreateVideoPanel.TabIndex = 11;
             // 
             // CreateVideoMessageTextBox
@@ -3500,7 +3530,7 @@
             this.CreatePlaylistPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreatePlaylistPanel.Location = new System.Drawing.Point(0, 0);
             this.CreatePlaylistPanel.Name = "CreatePlaylistPanel";
-            this.CreatePlaylistPanel.Size = new System.Drawing.Size(683, 786);
+            this.CreatePlaylistPanel.Size = new System.Drawing.Size(712, 786);
             this.CreatePlaylistPanel.TabIndex = 12;
             // 
             // CreatePlaylistInvalidCredentialstextBox
@@ -3658,6 +3688,8 @@
             // PlaySongPanel
             // 
             this.PlaySongPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlaySongPanel.Controls.Add(this.PlaySongDisplayLyrics);
+            this.PlaySongPanel.Controls.Add(this.PlaySongShowLyrics);
             this.PlaySongPanel.Controls.Add(this.PlaySongRateMessageTextBox);
             this.PlaySongPanel.Controls.Add(this.PlaySongRateNumDomainUp);
             this.PlaySongPanel.Controls.Add(this.PlaysSongRateButton);
@@ -3673,10 +3705,35 @@
             this.PlaySongPanel.Controls.Add(this.PlaySongImageBoxImage);
             this.PlaySongPanel.Controls.Add(this.PlaySongLabel);
             this.PlaySongPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PlaySongPanel.ForeColor = System.Drawing.Color.Black;
             this.PlaySongPanel.Location = new System.Drawing.Point(0, 0);
             this.PlaySongPanel.Name = "PlaySongPanel";
-            this.PlaySongPanel.Size = new System.Drawing.Size(683, 786);
+            this.PlaySongPanel.Size = new System.Drawing.Size(712, 786);
             this.PlaySongPanel.TabIndex = 13;
+            // 
+            // PlaySongDisplayLyrics
+            // 
+            this.PlaySongDisplayLyrics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlaySongDisplayLyrics.ForeColor = System.Drawing.Color.White;
+            this.PlaySongDisplayLyrics.Location = new System.Drawing.Point(23, 115);
+            this.PlaySongDisplayLyrics.Multiline = true;
+            this.PlaySongDisplayLyrics.Name = "PlaySongDisplayLyrics";
+            this.PlaySongDisplayLyrics.ReadOnly = true;
+            this.PlaySongDisplayLyrics.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.PlaySongDisplayLyrics.Size = new System.Drawing.Size(636, 225);
+            this.PlaySongDisplayLyrics.TabIndex = 46;
+            this.PlaySongDisplayLyrics.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlaySongDisplayLyrics.Visible = false;
+            // 
+            // PlaySongShowLyrics
+            // 
+            this.PlaySongShowLyrics.Location = new System.Drawing.Point(562, 30);
+            this.PlaySongShowLyrics.Name = "PlaySongShowLyrics";
+            this.PlaySongShowLyrics.Size = new System.Drawing.Size(81, 45);
+            this.PlaySongShowLyrics.TabIndex = 45;
+            this.PlaySongShowLyrics.Text = "Lyrics";
+            this.PlaySongShowLyrics.UseVisualStyleBackColor = true;
+            this.PlaySongShowLyrics.Click += new System.EventHandler(this.PlaySongShowLyrics_Click);
             // 
             // PlaySongRateMessageTextBox
             // 
@@ -3844,7 +3901,7 @@
             this.PlayVideoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayVideoPanel.Location = new System.Drawing.Point(0, 0);
             this.PlayVideoPanel.Name = "PlayVideoPanel";
-            this.PlayVideoPanel.Size = new System.Drawing.Size(683, 786);
+            this.PlayVideoPanel.Size = new System.Drawing.Size(712, 786);
             this.PlayVideoPanel.TabIndex = 14;
             // 
             // PlayVideoRateDomainUp
@@ -3968,7 +4025,7 @@
             this.SearcUserPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearcUserPanel.Location = new System.Drawing.Point(0, 0);
             this.SearcUserPanel.Name = "SearcUserPanel";
-            this.SearcUserPanel.Size = new System.Drawing.Size(683, 786);
+            this.SearcUserPanel.Size = new System.Drawing.Size(712, 786);
             this.SearcUserPanel.TabIndex = 15;
             // 
             // label9
@@ -4105,7 +4162,7 @@
             this.UserProfileChangeInfoPanel.ForeColor = System.Drawing.Color.Black;
             this.UserProfileChangeInfoPanel.Location = new System.Drawing.Point(0, 0);
             this.UserProfileChangeInfoPanel.Name = "UserProfileChangeInfoPanel";
-            this.UserProfileChangeInfoPanel.Size = new System.Drawing.Size(683, 786);
+            this.UserProfileChangeInfoPanel.Size = new System.Drawing.Size(712, 786);
             this.UserProfileChangeInfoPanel.TabIndex = 16;
             // 
             // UserProfileChangeInfoProfilePicImage
@@ -4293,13 +4350,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(683, 786);
+            this.ClientSize = new System.Drawing.Size(712, 786);
+            this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.WelcomePanel);
-            this.Controls.Add(this.PlayPlaylistPanel);
+            this.Controls.Add(this.DisplayPlaylistPanel);
+            this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.SearchPanel);
+            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.AdminMenuPanel);
-            this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
@@ -4309,9 +4368,7 @@
             this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.CreateVideoPanel);
-            this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.CreateProfilePanel);
-            this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.LogInPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FyBuZz";
@@ -4746,5 +4803,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox PlayPlaylistMultTypeTextBox;
+        private System.Windows.Forms.Button PlaySongShowLyrics;
+        private System.Windows.Forms.TextBox PlaySongDisplayLyrics;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button button3;
     }
 }
