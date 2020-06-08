@@ -26,6 +26,8 @@ namespace Entrega3_FyBuZz.CustomArgs
         public User UserLogIn { get; set; }
         public User UserSearched { get; set; }
         public Profile ProfileUserLogIn {get;set;}
+        public string SongFileText { get; set; }
+        public string VideoFileText { get; set; }
         
 
     }

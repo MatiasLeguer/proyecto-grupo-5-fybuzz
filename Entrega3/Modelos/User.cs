@@ -25,6 +25,7 @@ namespace Modelos
         protected bool privacy;
         protected List<PlayList> profilePlaylists = new List<PlayList>();
         protected List<Profile> perfiles = new List<Profile>();
+
         //--------------------------------------------------------------------------------------------------
 
 

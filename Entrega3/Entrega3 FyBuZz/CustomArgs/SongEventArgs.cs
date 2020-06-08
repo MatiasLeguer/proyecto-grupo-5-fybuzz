@@ -23,7 +23,7 @@ namespace Entrega3_FyBuZz.CustomArgs
         public string FileDestName { get; set; }
         public int RankingText { get; set; }
         public int SkipOrPrevious { get; set; }
-
         public PlayList playlistSong { get; set; }
+        public string FileLyricsSource { get; set; }
     }
 }

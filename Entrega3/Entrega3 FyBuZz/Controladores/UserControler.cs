@@ -14,6 +14,7 @@ namespace Entrega3_FyBuZz.Controladores
     public class UserControler
     {
         List<User> userDataBase = new List<User>() { new User() };
+
         DataBase dataBase = new DataBase();
         static DataBase data = new DataBase();
         Modelos.Menu menu = new Modelos.Menu();
@@ -35,6 +36,8 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.SearchUserButton_Clicked += OnSearchUserButton_Click;
             this.fyBuZz.SearchFollowButton_Clicked += OnSearchFollowButton_Click;
             this.fyBuZz.UserProfileChangeInfoConfirmButton_Clicked += OnUserProfileChangeInfoConfirmButton_Click;
+            this.fyBuZz.AddSearchedMult_Done += AddSearchedMultimedia;
+            this.fyBuZz.ReturnSearchedMult_Done += ReturnSearchMultList;
         }
 
         public void Initialize()
@@ -292,5 +295,55 @@ namespace Entrega3_FyBuZz.Controladores
             dataBase.Save_Users(userDataBase);
             return result;
         }
+        private bool AddSearchedMultimedia(object sender, UserEventArgs e)
+        {
+            bool added = false;
+            Profile usedProfile = null;
+            foreach(User user in userDataBase)
+            {
+                foreach(Profile profile in user.Perfiles)
+                {
+                    if(profile.ProfileName == e.ProfilenameText)
+                    {
+                        usedProfile = profile;
+                    }
+                }
+            }
+            if(e.SongFileText != null && usedProfile.PersSongPlaylist.Contains(e.SongFileText) == false)
+            {
+                usedProfile.PersSongPlaylist.Add(e.SongFileText);
+                added = true;
+            }
+            else if(e.VideoFileText != null && usedProfile.PersVideoPlaylist.Contains(e.VideoFileText) == false)
+            {
+                usedProfile.PersVideoPlaylist.Add(e.VideoFileText);
+                added = true;
+            }
+            dataBase.Save_Users(userDataBase);
+            return added;
+        }
+        private List<string> ReturnSearchMultList(object sender, UserEventArgs e)
+        {
+            List<string> searchMultList = new List<string>();
+            foreach (User user in userDataBase)
+            {
+                foreach (Profile profile in user.Perfiles)
+                {
+                    if (profile.ProfileName == e.ProfilenameText)
+                    {
+                        if(e.VideoFileText == "Video")
+                        {
+                            searchMultList = profile.PersVideoPlaylist;
+                        }
+                        else if(e.SongFileText == "Song")
+                        {
+                            searchMultList = profile.PersSongPlaylist;
+                        }
+                    }
+                }
+            }
+            return searchMultList;
+        }
     }
+    
 }
