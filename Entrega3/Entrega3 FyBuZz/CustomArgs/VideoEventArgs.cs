@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Entrega3_FyBuZz.CustomArgs
         public string FileDestText { get; set; }
         public string FileNameText { get; set; }
         public int RankingText { get; set; }
-
+        public int previousOrSkip { get; set; }
+        public PlayList playlistVideo { get; set; }
     }
 }

@@ -104,6 +104,9 @@ namespace Entrega3_FyBuZz
         public delegate Song SkipOrPreviousSongEventHandler(object source, SongEventArgs args);
         public event SkipOrPreviousSongEventHandler SkipOrPreviousSongButton_Clicked;
 
+        public delegate Video SkipOrPreviousVideoEventHandler(object source, VideoEventArgs args);
+        public event SkipOrPreviousVideoEventHandler SkipOrPreviousVideoButton_Clicked;
+
 
 
         //Copiar lo mismo pero para video....
@@ -1016,11 +1019,13 @@ namespace Entrega3_FyBuZz
             else if(multimediaType.Contains("PlayList Name:") == true)
             {
                 string result = SearchSearchResultsDomainUp.Text;
+                string plName = "";
                 foreach (PlayList playList in playListsDataBase)
                 {
                     string ex = playList.DisplayInfoPlayList();
                     if(result == ex)
                     {
+                        plName = playList.NamePlayList;
                         if(playList.Format == ".mp3" || playList.Format == ".wav")
                         {
                             foreach(Song song in playList.Songs)
@@ -1030,6 +1035,7 @@ namespace Entrega3_FyBuZz
                         }
                     }
                 }
+                PlayPlaylistLabel.Text = "Playlist: " + plName;
                 PlayPlaylistPanel.BringToFront();
             }
 
@@ -1312,33 +1318,7 @@ namespace Entrega3_FyBuZz
             }
         }
 
-        private void PlaySongPreviousButton_Click(object sender, EventArgs e)
-        {
-            List<Song> songDataBase = new List<Song>();
-            songDataBase = OnSearchSongButton_Click();
-            foreach (Song song in songDataBase)
-            {
-                if (song.Format == ".mp3")
-                {
-                    windowsMediaPlayer.controls.previous();
-                    break;
-                }
-            }
-        }
 
-        private void PlaySongSkipButton_Click(object sender, EventArgs e)
-        {
-            List<Song> songDataBase = new List<Song>();
-            songDataBase = OnSearchSongButton_Click();
-            foreach (Song song in songDataBase)
-            {
-                if (song.Format == ".mp3")
-                {
-                    windowsMediaPlayer.controls.next();
-                    break;
-                }
-            }
-        }
 
         //Change User Profile Info Panel
         private void UserProfileChangeInfoGoBackButton_Click(object sender, EventArgs e)
@@ -1625,12 +1605,171 @@ namespace Entrega3_FyBuZz
 
         private void PlayPlaylistPreviousButton_Click(object sender, EventArgs e)
         {
+            string[] infoPlName = PlayPlaylistLabel.Text.Split(':');
+            string plName = infoPlName[1];
+            int indexPl = 0;
+            List<PlayList> allPl = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+            for(int i = 0; i < allPl.Count(); i++)
+            {
+                if(plName.Contains(allPl[i].NamePlayList))
+                {
+                    indexPl = i;
+                    break;
+                }
+            }
+
+            if(allPl[indexPl].Format == ".mp3" || allPl[indexPl].Format == ".wav")
+            {
+                string[] infoSong = PlayPlaylistShowMultimedia.Text.Split(':');
+                string nameSong = infoSong[1];
+                string artistSong = infoSong[3];
+                int previousSong = 1;
+
+                Song songP = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, allPl[indexPl]);
+                if (songP != null)
+                {
+                  
+                    PlayPlaylistMessageBox.Clear();
+                    if (songP.Format == ".mp3")
+                    {
+                        windowsMediaPlayer.controls.stop();
+                        soundPlayer.Stop();
+                        windowsMediaPlayer.URL = songP.SongFile;
+                        windowsMediaPlayer.controls.play();
+                    }
+                    else if (songP.Format == ".wav")
+                    {
+                        windowsMediaPlayer.controls.stop();
+                        soundPlayer.Stop();
+                        soundPlayer.SoundLocation = songP.SongFile;
+                        soundPlayer.Play();
+
+                    }
+                   
+                    PlayPlaylistMessageBox.AppendText("Song playing: " + songP.Name + songP.Format);
+                    PlayPlaylistShowMultimedia.UpButton();
+                }
+                else
+                {
+                    PlayPlaylistMessageBox.Clear();
+                    PlayPlaylistMessageBox.AppendText("ERROR[!] ~Song wasn't previoused!");
+                }
+            }
+            else if(allPl[indexPl].Format == ".mp4" || allPl[indexPl].Format == ".avi" || allPl[indexPl].Format == ".mov")
+            {
+                string[] infoVideo = SearchSearchResultsDomainUp.Text.Split(':');
+                string nameVideo = infoVideo[1];
+                string nameActor = infoVideo[3];
+                int previous = 1;
+
+                Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, null);
+
+                if (video != null)
+                {
+                    PlayVideoMessageAlertTextBox.Clear();
+
+                    wmpVideo.Ctlcontrols.stop();
+                    wmpVideo.URL = video.FileName;
+                    wmpVideo.Ctlcontrols.play();
+
+                    PlayPlaylistMessageBox.AppendText("Video Playing: " + video.Name + video.Format);
+                    PlayPlaylistShowMultimedia.UpButton();
+                }
+                else
+                {
+                    PlayPlaylistMessageBox.Clear();
+                    PlayPlaylistMessageBox.AppendText("Video wasn't previoused!");
+                }
+            }
+
+
+
 
         }
 
         private void PlayPlaylistSkipButton_Click(object sender, EventArgs e)
         {
+            string[] infoPlName = PlayPlaylistLabel.Text.Split(':');
+            string plName = infoPlName[1];
+            int indexPl = 0;
+            List<PlayList> allPl = OnDisplayPlaylistsGlobalPlaylist_Click();
 
+            for (int i = 0; i < allPl.Count(); i++)
+            {
+                if (plName.Contains(allPl[i].NamePlayList))
+                {
+                    indexPl = i;
+                    break;
+                }
+            }
+
+            if (allPl[indexPl].Format == ".mp3" || allPl[indexPl].Format == ".wav")
+            {
+                string[] infoSong = PlayPlaylistShowMultimedia.Text.Split(':');
+                string nameSong = infoSong[1];
+                string artistSong = infoSong[3];
+                int skipSong = 0;
+
+                Song songS = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, skipSong, allPl[indexPl]);
+
+                if (songS != null)
+                {
+
+                    PlayPlaylistMessageBox.Clear();
+                    if (songS.Format == ".mp3")
+                    {
+                        windowsMediaPlayer.controls.stop();
+                        soundPlayer.Stop();
+                        windowsMediaPlayer.URL = songS.SongFile;
+                        windowsMediaPlayer.controls.play();
+                    }
+                    else if (songS.Format == ".wav")
+                    {
+                        windowsMediaPlayer.controls.stop();
+                        soundPlayer.Stop();
+                        soundPlayer.SoundLocation = songS.SongFile;
+                        soundPlayer.Play();
+                    }
+
+                    PlayPlaylistMessageBox.AppendText("Song playing: " + songS.Name + songS.Format);
+
+                    PlayPlaylistShowMultimedia.DownButton();
+                }
+                else
+                {
+                    PlayPlaylistMessageBox.Clear();
+                    PlayPlaylistMessageBox.AppendText("ERROR[!] ~Song wasn't skipped!");
+                }
+            }
+            else if(allPl[indexPl].Format == ".mp4" || allPl[indexPl].Format == ".avi" || allPl[indexPl].Format == ".mov")
+            {
+                string[] infoVideo = SearchSearchResultsDomainUp.Text.Split(':');
+                string nameVideo = infoVideo[1];
+                string nameActor = infoVideo[3];
+                int previous = 0;
+
+                Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, allPl[indexPl]);
+
+                if (video != null)
+                {
+                    PlayPlaylistMessageBox.Clear();
+
+                    wmpVideo.Ctlcontrols.stop();
+                    wmpVideo.URL = video.FileName;
+                    wmpVideo.Ctlcontrols.play();
+
+                    PlayPlaylistMessageBox.AppendText("Video Playing: " + video.Name + video.Format);
+                    PlayPlaylistShowMultimedia.DownButton();
+                }
+                else
+                {
+                    PlayPlaylistMessageBox.Clear();
+                    PlayPlaylistMessageBox.AppendText("Video wasn't Skipped!");
+                }
+            }
+
+            
         }
 
         //CREATE VIDEO PANEL -->AL APRETAR ADD VIDEO
@@ -1911,11 +2050,11 @@ namespace Entrega3_FyBuZz
             }
         }
 
-        public Song OnSkipOrPreviousSongButton_Clicked(string nameSong, string ArtistSong, int skipOrPreviousSong)
+        public Song OnSkipOrPreviousSongButton_Clicked(string nameSong, string ArtistSong, int skipOrPreviousSong, PlayList playlist)
         {
             if(SkipOrPreviousSongButton_Clicked != null)
             {
-                Song song = SkipOrPreviousSongButton_Clicked(this, new SongEventArgs() { NameText = nameSong, ArtistText = ArtistSong, SkipOrPrevious = skipOrPreviousSong });
+                Song song = SkipOrPreviousSongButton_Clicked(this, new SongEventArgs() { NameText = nameSong, ArtistText = ArtistSong, SkipOrPrevious = skipOrPreviousSong, playlistSong = playlist});
                 PlayerPlayingLabel.Clear();
                 if (song != null)
                 {
@@ -2032,7 +2171,7 @@ namespace Entrega3_FyBuZz
             string artistSong = infoSong[3];
             int previousSong = 1;
 
-            Song songP = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong);
+            Song songP = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null);
             if(songP != null)
             {
                 PlayerPlayingLabel.Clear();
@@ -2073,7 +2212,7 @@ namespace Entrega3_FyBuZz
             string artistSong = infoSong[3];
             int previousSong = 0;
 
-            Song songS = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong);
+            Song songS = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null);
             
             if(songS != null)
             {
@@ -2203,6 +2342,44 @@ namespace Entrega3_FyBuZz
             return null;
         }
 
+        public Video OnSkipOrPreviousVideoButton_Click(string nameVideo, string nameActor, int skipOrPrevious, PlayList playlist)
+        {
+            if(SkipOrPreviousVideoButton_Clicked != null)
+            {
+                Video video = SkipOrPreviousVideoButton_Clicked(this, new VideoEventArgs() { NameText = nameVideo, ActorsText = nameActor, previousOrSkip = skipOrPrevious, playlistVideo = playlist });
+                PlayVideoMessageAlertTextBox.Clear();
+                if(video != null)
+                {
+                    if(skipOrPrevious == 0)
+                    {
+                        PlayVideoMessageAlertTextBox.AppendText("Video has been skipped!");
+                    }
+                    else
+                    {
+                        PlayVideoMessageAlertTextBox.AppendText("Video has been previoused!");
+                    }
+                    return video;
+                }
+                else
+                {
+                    if (skipOrPrevious == 0)
+                    {
+                        PlayVideoMessageAlertTextBox.AppendText("ERROR[!] ~ Video couldn't be skipped!");
+                    }
+                    else
+                    {
+                        PlayVideoMessageAlertTextBox.AppendText("ERROR[!] ~ Video couldn't be previoused!");
+                    }
+                    return null;
+                }
+            }
+            else
+            {
+                PlayVideoMessageAlertTextBox.Clear();
+                PlayVideoMessageAlertTextBox.AppendText("ERROR[!] ~Something went horribly wrong!");
+                return null;
+            }
+        }
 
 
         // CLOSE/GO BACK
@@ -2344,8 +2521,12 @@ namespace Entrega3_FyBuZz
             }
             return null;
         }
-        
 
+
+        private void SearchProgressBar_Click(object sender, EventArgs e)
+        {
+
+        }
 
         //PlayVideoPanel
         //--------------------------------------
@@ -2356,11 +2537,57 @@ namespace Entrega3_FyBuZz
         }
 
 
-        private void SearchProgressBar_Click(object sender, EventArgs e)
-        {
 
+        private void PlayVideoPreviousButton_Click(object sender, EventArgs e)
+        {
+            string[] infoVideo = SearchSearchResultsDomainUp.Text.Split(':');
+            string nameVideo = infoVideo[1];
+            string nameActor = infoVideo[3];
+            int previous = 1;
+
+            Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, null);
+
+            if(video != null)
+            {
+                PlayVideoMessageAlertTextBox.Clear();
+
+                wmpVideo.Ctlcontrols.stop();
+                wmpVideo.URL = video.FileName;
+                wmpVideo.Ctlcontrols.play();
+
+                PlayVideoMessageAlertTextBox.AppendText("Video Playing: " + video.Name + video.Format);
+            }
+            else
+            {
+                PlayVideoMessageAlertTextBox.Clear();
+                PlayVideoMessageAlertTextBox.AppendText("Video wasn't previoused!");
+            }
         }
 
+        private void PlayVideoSkipButton_Click(object sender, EventArgs e)
+        {
+            string[] infoVideo = SearchSearchResultsDomainUp.Text.Split(':');
+            string nameVideo = infoVideo[1];
+            string nameActor = infoVideo[3];
+            int previous = 0;
 
+            Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, null);
+
+            if (video != null)
+            {
+                PlayVideoMessageAlertTextBox.Clear();
+
+                wmpVideo.Ctlcontrols.stop();
+                wmpVideo.URL = video.FileName;
+                wmpVideo.Ctlcontrols.play();
+
+                PlayVideoMessageAlertTextBox.AppendText("Video Playing: " + video.Name + video.Format);
+            }
+            else
+            {
+                PlayVideoMessageAlertTextBox.Clear();
+                PlayVideoMessageAlertTextBox.AppendText("Video wasn't Skipped!");
+            }
+        }
     }
 }
