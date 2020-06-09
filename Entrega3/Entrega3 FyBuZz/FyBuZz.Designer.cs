@@ -4696,6 +4696,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1024, 768);
+            this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.CreateVideoPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
@@ -4710,7 +4711,6 @@
             this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.CreateProfilePanel);
             this.Controls.Add(this.ProfilePanel);
-            this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.LogInPanel);
