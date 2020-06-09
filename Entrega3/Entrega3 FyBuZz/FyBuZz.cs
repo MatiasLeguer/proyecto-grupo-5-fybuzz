@@ -4011,9 +4011,9 @@ namespace Entrega3_FyBuZz
             UserProfilChangeInfoMessageBox.Clear();
             UserProfileChangeInfoInvalidBox.Clear();
             UserProfileChangeInfoPanel.BringToFront();
-            UserProfilChangeInfoMessageBox.AppendText("Change Profilename.");
+            UserProfilChangeInfoMessageBox.AppendText("Change Accountype.");
             UserProfileChangeInfoNewProfilenameTextBox.Visible = true;
-            label13.Visible = true;
+            label10.Visible = true;
         }
 
         //ONEVENT
