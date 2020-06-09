@@ -77,9 +77,10 @@ namespace Modelos
 
         }
 
-        public List<string> infoUser()                             //Entrega el username y el email del usuario
+        public List<string> InfoUser()                             //Entrega el username y el email del usuario
         {
-            return new List<string> { username, email };
+            List<string> infoU = new List<string>() { username, email };
+            return infoU;
         }
 
         public string SearchedInfoUser()                          //Entrega un string con el username y el email del usuario
