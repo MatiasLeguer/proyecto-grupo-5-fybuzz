@@ -117,11 +117,8 @@ namespace Entrega3_FyBuZz.Controladores
                 {
                     if (e.playlistVideo == null)
                     {
-                        for(int i = e.NumText; i < videoDataBase.Count() - 1; i++)
-                        {
-                            if (i == videoDataBase.Count() - 1) return videoDataBase[0];
-                            else return videoDataBase[i + 1];
-                        }
+                            if (e.NumberText == videoDataBase.Count() - 1) return videoDataBase[0];
+                            else return videoDataBase[e.NumberText + 1];
                     }
                     else
                     {
@@ -158,12 +155,8 @@ namespace Entrega3_FyBuZz.Controladores
             {
                 if (e.playlistVideo == null)
                 {
-                    for (int i = 0; i < videoDataBase.Count(); i++)
-                    {
-                        if (((e.NameText.Contains(videoDataBase[i].InfoVideo()[0])) && (e.ActorsText.Contains(videoDataBase[i].InfoVideo()[1]))) && (i != 0)) return videoDataBase[i - 1];
-                        else if (((e.NameText.Contains(videoDataBase[i].InfoVideo()[0])) && (e.ActorsText.Contains(videoDataBase[i].InfoVideo()[1]))) && (i == 0)) return videoDataBase[(videoDataBase.Count() - 1)];
-
-                    }
+                    if (e.NumberText == 0) return videoDataBase[videoDataBase.Count() - 1];
+                    else return videoDataBase[e.NumberText - 1];
                 }
 
                 else

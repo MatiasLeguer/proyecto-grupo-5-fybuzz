@@ -158,6 +158,8 @@ namespace Entrega3_FyBuZz
         //--------------------------------------------------------------------------------
         private string ProfileName { get; set; }
         private List<string> queueListSongs = new List<string>();
+        private int songIndex = -1;
+        private int videoIndex = -1;
 
         //--------------------------------------------------------------------------------
 
@@ -1778,13 +1780,31 @@ namespace Entrega3_FyBuZz
         }
         private void PlaySongPreviousSongButton_Click(object sender, EventArgs e)
         {
+            List<List<string>> songInfoMVC = ReturnAllSongsInfo();
             string[] infoSong = SearchSearchResultsDomainUp.Text.Split(':');
 
             string nameSong = infoSong[1];
             string artistSong = infoSong[3];
+
+            if (songIndex == -1)
+            {
+                int cont = 0;
+                foreach (List<string> infoSongEsp in songInfoMVC)
+                {
+                    if (nameSong.Contains(infoSongEsp[0]) && artistSong.Contains(infoSongEsp[1]))
+                    {
+                        break;
+                    }
+                    cont++;
+                }
+                songIndex = cont;
+            }
+
+
             int previousSong = 1;
 
-            Song songP = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null, queueListSongs, 0);
+
+            Song songP = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null, queueListSongs, songIndex);
             if (songP != null)
             {
                 PlayerPlayingLabel.Clear();
@@ -1813,11 +1833,13 @@ namespace Entrega3_FyBuZz
                 PlayerPlayingLabel.Clear();
                 PlayerPlayingLabel.AppendText("ERROR[!] ~Song wasn't previoused!");
             }
+            if (songIndex == 0)  songIndex = songInfoMVC.Count() - 1;
+            else songIndex--;
 
 
 
         }
-        int u = -1;
+
         private void PlaySongSkipSongButton_Click(object sender, EventArgs e)
         {
             List<List<string>> songInfoMVC = ReturnAllSongsInfo();
@@ -1826,7 +1848,7 @@ namespace Entrega3_FyBuZz
             string nameSong = infoSong[1];
             string artistSong = infoSong[3];
 
-            if (u == -1)
+            if (songIndex == -1)
             {
                 int cont = 0;
                 foreach (List<string> infoSongEsp in songInfoMVC)
@@ -1837,14 +1859,13 @@ namespace Entrega3_FyBuZz
                     }
                     cont++;
                 }
-                u = cont;
+                songIndex = cont;
             }
 
-            int x = u;
             int previousSong = 0;
-            if (u == songInfoMVC.Count() - 1) u = -1;
+            if (songIndex == songInfoMVC.Count() - 1) songIndex = -1;
 
-            Song songS = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null, queueListSongs, u);
+            Song songS = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null, queueListSongs, songIndex);
 
             if (songS != null)
             {
@@ -1874,7 +1895,7 @@ namespace Entrega3_FyBuZz
                 PlayerPlayingLabel.Clear();
                 PlayerPlayingLabel.AppendText("ERROR[!] ~Song wasn't skipped!");
             }
-            u++;
+            songIndex++;
         }
 
 
@@ -1957,7 +1978,7 @@ namespace Entrega3_FyBuZz
                     }
                     else
                     {
-                        PlayerPlayingLabel.AppendText("song has benn previoused!");
+                        PlayerPlayingLabel.AppendText("song has been previoused!");
                         return song;
                     }
                 }
@@ -2154,12 +2175,31 @@ namespace Entrega3_FyBuZz
 
         private void PlayVideoPreviousButton_Click(object sender, EventArgs e)
         {
+            List<List<string>> videoInfoMVC = ReturnAllVideosInfo();
             string[] infoVideo = SearchSearchResultsDomainUp.Text.Split(':');
             string nameVideo = infoVideo[1];
             string nameActor = infoVideo[3];
+            string nameDirector = infoVideo[5];
+
+
+            if (videoIndex == -1)
+            {
+                int cont = 0;
+                foreach (List<string> infoVideoEsp in videoInfoMVC)
+                {
+                    if (nameVideo.Contains(infoVideoEsp[0]) && nameActor.Contains(infoVideoEsp[1]) && nameDirector.Contains(infoVideoEsp[2]))
+                    {
+                        break;
+                    }
+                    cont++;
+                }
+                videoIndex = cont;
+            }
+
+
             int previous = 1;
 
-            Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, null, queueListSongs,0);
+            Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, null, queueListSongs, videoIndex);
 
             if (video != null)
             {
@@ -2176,9 +2216,12 @@ namespace Entrega3_FyBuZz
                 PlayVideoMessageAlertTextBox.Clear();
                 PlayVideoMessageAlertTextBox.AppendText("Video wasn't previoused!");
             }
+
+            if (videoIndex == 0) videoIndex = videoInfoMVC.Count() - 1;
+            else videoIndex--;
         }
 
-        int v = 0;
+
         private void PlayVideoSkipButton_Click(object sender, EventArgs e)
         {
             List<List<string>> videoInfoMVC = ReturnAllVideosInfo();
@@ -2187,24 +2230,23 @@ namespace Entrega3_FyBuZz
             string nameActor = infoVideo[3];
             string nameDirector = infoVideo[5];
 
-            if (v == -1)
+            if (videoIndex == -1)
             {
                 int cont = 0;
                 foreach (List<string> infoVideoEsp in videoInfoMVC)
                 {
-                    if (nameVideo.Contains(infoVideoEsp[0]) && nameActor.Contains(infoVideoEsp[1]) && nameDirector.Contains(infoVideo[2]))
+                    if ((nameVideo.Contains(infoVideoEsp[0])) && (nameActor.Contains(infoVideoEsp[1]) && nameDirector.Contains(infoVideoEsp[2])))
                     {
                         break;
                     }
                     cont++;
                 }
-                v = cont;
+                videoIndex = cont;
             }
             int previous = 0;
+            if (videoIndex == videoInfoMVC.Count() - 1) videoIndex = -1;
 
-            Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, null, queueListSongs,v);
-
-            if (v == videoInfoMVC.Count() - 1) v = -1;
+            Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, null, queueListSongs, videoIndex);
 
             if (video != null)
             {
@@ -2221,7 +2263,7 @@ namespace Entrega3_FyBuZz
                 PlayVideoMessageAlertTextBox.Clear();
                 PlayVideoMessageAlertTextBox.AppendText("Video wasn't Skipped!");
             }
-            v++;
+            videoIndex++;
         }
         //ONEVENT
 
@@ -2267,7 +2309,7 @@ namespace Entrega3_FyBuZz
         {
             if (SkipOrPreviousVideoButton_Clicked != null)
             {
-                Video video = SkipOrPreviousVideoButton_Clicked(this, new VideoEventArgs() { NameText = nameVideo, ActorsText = nameActor, previousOrSkip = skipOrPrevious, playlistVideo = playlist, OnQueue = onQueue, NumText = num });
+                Video video = SkipOrPreviousVideoButton_Clicked(this, new VideoEventArgs() { NameText = nameVideo, ActorsText = nameActor, previousOrSkip = skipOrPrevious, playlistVideo = playlist, OnQueue = onQueue, NumberText = num });
                 PlayVideoMessageAlertTextBox.Clear();
                 if (video != null)
                 {
