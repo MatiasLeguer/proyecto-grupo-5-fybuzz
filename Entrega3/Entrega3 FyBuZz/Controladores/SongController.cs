@@ -113,22 +113,51 @@ namespace Entrega3_FyBuZz.Controladores
         {
             if(e.SkipOrPrevious == 0) //0 = skip
             {
-                if(e.playlistSong == null)
+                if (e.OnQueueText.Count == 0)
                 {
-                    for (int i = 0; i < songDatabase.Count(); i++)
+                    if (e.playlistSong == null)
                     {
-                        if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i != (songDatabase.Count() - 1))) return songDatabase[i + 1];
-                        else if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i == (songDatabase.Count() - 1))) return songDatabase[0];
+                        for (int i = 0; i < songDatabase.Count(); i++)
+                        {
+                            List<Song> hola = songDatabase;
+                            if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i != (songDatabase.Count() - 1)))
+                            {
+                                return songDatabase[i + 1];
+                            }
+                            else if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i == (songDatabase.Count() - 1)))
+                            {
+                                return songDatabase[0];
+                            }
 
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < e.playlistSong.Songs.Count(); i++)
+                        {
+                            if (((e.NameText.Contains(e.playlistSong.Songs[i].InfoSong()[0])) && (e.ArtistText.Contains(e.playlistSong.Songs[i].InfoSong()[1]))) && (i != (e.playlistSong.Songs.Count() - 1))) return e.playlistSong.Songs[i + 1];
+                            else if (((e.NameText.Contains(e.playlistSong.Songs[i].InfoSong()[0])) && (e.ArtistText.Contains(e.playlistSong.Songs[i].InfoSong()[1]))) && (i == (e.playlistSong.Songs.Count() - 1))) return e.playlistSong.Songs[0];
+
+                        }
                     }
                 }
                 else
                 {
-                    for (int i = 0; i < e.playlistSong.Songs.Count(); i++)
+                    int n = 0;
+                    foreach(string songfile in e.OnQueueText)
                     {
-                        if (((e.NameText.Contains(e.playlistSong.Songs[i].InfoSong()[0])) && (e.ArtistText.Contains(e.playlistSong.Songs[i].InfoSong()[1]))) && (i != (e.playlistSong.Songs.Count() - 1))) return e.playlistSong.Songs[i + 1];
-                        else if (((e.NameText.Contains(e.playlistSong.Songs[i].InfoSong()[0])) && (e.ArtistText.Contains(e.playlistSong.Songs[i].InfoSong()[1]))) && (i == (e.playlistSong.Songs.Count() - 1))) return e.playlistSong.Songs[0];
-
+                        if (songfile.Contains(".mp4") == false && songfile.Contains(".avi") == false && songfile.Contains(".mov") == false)
+                        {
+                            foreach (Song song in songDatabase)
+                            {
+                                if (songfile.Contains(song.SongFile))
+                                {
+                                    e.OnQueueText.RemoveAt(n);
+                                    return song;
+                                }
+                            }
+                        }
+                        n++;
                     }
                 }
 
@@ -138,10 +167,10 @@ namespace Entrega3_FyBuZz.Controladores
             {
                 if(e.playlistSong == null)
                 {
-                    for (int i = 0; i < songDatabase.Count(); i++)
+                    for (int i = 0; i <= songDatabase.Count(); i++)
                     {
-                        if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i != 0)) return songDatabase[i - 1];
-                        else if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i == 0)) return songDatabase[(songDatabase.Count() - 1)];
+                        if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i != 0) && (i != songDatabase.Count())) return songDatabase[i - 1];
+                        else if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i == songDatabase.Count())) return songDatabase[(songDatabase.Count() - 1)];
 
                     }
                 }

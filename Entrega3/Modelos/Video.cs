@@ -71,7 +71,7 @@ namespace Modelos
         //--------------------------------------------------------------------------------------------------
         public List<string> InfoVideo()                    //Entrega una lista de strings con la infromación de la clase video.
         {
-            return new List<string>() { name, actors, directors, quality, category, rated.ToString(), ranking.ToString(), description,fileName }; //Agregar más atributos?
+            return new List<string>() { name, actors, directors, quality, category, rated.ToString(), ranking.ToString(), description, fileName }; //Agregar más atributos?
         }
         public string DisplayInfoVideo()                   //Entrega un string con la información de la clase video
         {

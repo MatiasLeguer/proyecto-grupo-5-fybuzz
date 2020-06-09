@@ -144,9 +144,10 @@ namespace Entrega3_FyBuZz
         //ATRIBUTOS
         //--------------------------------------------------------------------------------
         private string ProfileName { get; set; }
-        private List<string> queueList = new List<string>();
-        private List<string> QueueList { get => queueList; set => queueList = value; }
+        private List<string> queueListSongs = new List<string>();
 
+        private List<string> queueListVideos = new List<string>();
+        private List<string> QueueListVideos { get => queueListVideos; set => queueListVideos = value; }
         //--------------------------------------------------------------------------------
 
 
@@ -1358,17 +1359,18 @@ namespace Entrega3_FyBuZz
             if (searchedMult[0].Contains("Song") == true)
             {
                 List<string> songInfo = GetSongButton(searchedMult[1], searchedMult[3]);
-                queueList.Add(songInfo[6]);
-            }
-            //Esto deberia ir cuando haya un panel con el botton de agregar a la cola en videos.
-            else if (searchedMult[0].Contains("Video") == true)
-            {
-                List<string> videoInfo = GetVideoButton(searchedMult[1], searchedMult[2], searchedMult[3]);
-                queueList.Add(videoInfo[8]);
+                queueListSongs.Add(songInfo[6]);
             }
 
-            //Agrega a la queue.
-            //Falta ver cuando se le da play a queue, es decir, si es con un boton, con tiempo o algo. No se.
+        }
+        private void PlayVideoQueue_Click(object sender, EventArgs e)
+        {
+            string[] searchedMult = SearchSearchResultsDomainUp.Text.Split(':');
+            if (searchedMult[0].Contains("Video") == true)
+            {
+                List<string> videoInfo = GetVideoButton(searchedMult[1], searchedMult[3], searchedMult[5]);
+                queueListSongs.Add(videoInfo[8]);
+            }
         }
         private void PlaySongAddToPlaylistButton_Click(object sender, EventArgs e)
         {
@@ -1478,11 +1480,12 @@ namespace Entrega3_FyBuZz
         private void PlaySongPreviousSongButton_Click(object sender, EventArgs e)
         {
             string[] infoSong = SearchSearchResultsDomainUp.Text.Split(':');
+
             string nameSong = infoSong[1];
             string artistSong = infoSong[3];
             int previousSong = 1;
 
-            Song songP = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null);
+            Song songP = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null, queueListSongs);
             if (songP != null)
             {
                 PlayerPlayingLabel.Clear();
@@ -1518,12 +1521,20 @@ namespace Entrega3_FyBuZz
 
         private void PlaySongSkipSongButton_Click(object sender, EventArgs e)
         {
-            string[] infoSong = SearchSearchResultsDomainUp.Text.Split(':');
+            string[] infoSong = null;
+            if (SearchQueueDomainUp.Items.Count == 0)
+            {
+                infoSong = SearchSearchResultsDomainUp.Text.Split(':');
+            }
+            else
+            {
+                infoSong = SearchQueueDomainUp.Text.Split(':');
+            }
             string nameSong = infoSong[1];
             string artistSong = infoSong[3];
             int previousSong = 0;
 
-            Song songS = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null);
+            Song songS = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null, queueListSongs);
 
             if (songS != null)
             {
@@ -1544,7 +1555,6 @@ namespace Entrega3_FyBuZz
                     soundPlayer.SoundLocation = songS.SongFile;
                     soundPlayer.Play();
                 }
-
                 PlayerPlayingLabel.AppendText("Song playing: " + songS.Name + songS.Format);
                 SearchPlayingLabel.AppendText("Song playing: " + songS.Name + songS.Format);
                 SearchSearchResultsDomainUp.DownButton();
@@ -1602,11 +1612,11 @@ namespace Entrega3_FyBuZz
         }
         //ONEVENT
 
-        public Song OnSkipOrPreviousSongButton_Clicked(string nameSong, string ArtistSong, int skipOrPreviousSong, PlayList playlist)
+        public Song OnSkipOrPreviousSongButton_Clicked(string nameSong, string ArtistSong, int skipOrPreviousSong, PlayList playlist, List<string> onQueue)
         {
             if (SkipOrPreviousSongButton_Clicked != null)
             {
-                Song song = SkipOrPreviousSongButton_Clicked(this, new SongEventArgs() { NameText = nameSong, ArtistText = ArtistSong, SkipOrPrevious = skipOrPreviousSong, playlistSong = playlist });
+                Song song = SkipOrPreviousSongButton_Clicked(this, new SongEventArgs() { NameText = nameSong, ArtistText = ArtistSong, SkipOrPrevious = skipOrPreviousSong, playlistSong = playlist, OnQueueText = onQueue });
                 PlayerPlayingLabel.Clear();
                 if (song != null)
                 {
@@ -1748,7 +1758,7 @@ namespace Entrega3_FyBuZz
             string nameActor = infoVideo[3];
             int previous = 1;
 
-            Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, null);
+            Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, null, queueListSongs);
 
             if (video != null)
             {
@@ -1774,7 +1784,7 @@ namespace Entrega3_FyBuZz
             string nameActor = infoVideo[3];
             int previous = 0;
 
-            Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, null);
+            Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, null, queueListSongs);
 
             if (video != null)
             {
@@ -1816,11 +1826,11 @@ namespace Entrega3_FyBuZz
         }
 
 
-        public Video OnSkipOrPreviousVideoButton_Click(string nameVideo, string nameActor, int skipOrPrevious, PlayList playlist)
+        public Video OnSkipOrPreviousVideoButton_Click(string nameVideo, string nameActor, int skipOrPrevious, PlayList playlist, List<string> onQueue)
         {
             if (SkipOrPreviousVideoButton_Clicked != null)
             {
-                Video video = SkipOrPreviousVideoButton_Clicked(this, new VideoEventArgs() { NameText = nameVideo, ActorsText = nameActor, previousOrSkip = skipOrPrevious, playlistVideo = playlist });
+                Video video = SkipOrPreviousVideoButton_Clicked(this, new VideoEventArgs() { NameText = nameVideo, ActorsText = nameActor, previousOrSkip = skipOrPrevious, playlistVideo = playlist, OnQueue = onQueue });
                 PlayVideoMessageAlertTextBox.Clear();
                 if (video != null)
                 {
@@ -2408,7 +2418,7 @@ namespace Entrega3_FyBuZz
                 string artistSong = infoSong[3];
                 int previousSong = 1;
 
-                Song songP = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, allPl[indexPl]);
+                Song songP = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, allPl[indexPl], queueListSongs);
                 if (songP != null)
                 {
 
@@ -2445,7 +2455,7 @@ namespace Entrega3_FyBuZz
                 string nameActor = infoVideo[3];
                 int previous = 1;
 
-                Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, null);
+                Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, null, queueListSongs);
 
                 if (video != null)
                 {
@@ -2485,7 +2495,6 @@ namespace Entrega3_FyBuZz
                     break;
                 }
             }
-
             if (allPl[indexPl].Format == ".mp3" || allPl[indexPl].Format == ".wav")
             {
                 string[] infoSong = PlayPlaylistShowMultimedia.Text.Split(':');
@@ -2493,7 +2502,7 @@ namespace Entrega3_FyBuZz
                 string artistSong = infoSong[3];
                 int skipSong = 0;
 
-                Song songS = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, skipSong, allPl[indexPl]);
+                Song songS = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, skipSong, allPl[indexPl], queueListSongs);
 
                 if (songS != null)
                 {
@@ -2531,7 +2540,7 @@ namespace Entrega3_FyBuZz
                 string nameActor = infoVideo[3];
                 int previous = 0;
 
-                Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, allPl[indexPl]);
+                Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, allPl[indexPl], queueListSongs);
 
                 if (video != null)
                 {
@@ -3557,8 +3566,7 @@ namespace Entrega3_FyBuZz
         {
 
         }
-        
-        
+
         
     }
 }

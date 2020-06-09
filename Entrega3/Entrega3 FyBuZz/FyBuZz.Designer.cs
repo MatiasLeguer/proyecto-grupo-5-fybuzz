@@ -377,6 +377,8 @@
             this.UserProfileChangeInfoConfirmButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoGoBackButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoLabel = new System.Windows.Forms.Label();
+            this.SearchQueueDomainUp = new System.Windows.Forms.DomainUpDown();
+            this.PlayVideoQueue = new System.Windows.Forms.Button();
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -1761,6 +1763,7 @@
             // SearchPanel
             // 
             this.SearchPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchPanel.Controls.Add(this.SearchQueueDomainUp);
             this.SearchPanel.Controls.Add(this.SearchSearchButton);
             this.SearchPanel.Controls.Add(this.SearchPlayingPanel);
             this.SearchPanel.Controls.Add(this.SearchOkMultAddedLabel);
@@ -3955,6 +3958,7 @@
             // PlayVideoPanel
             // 
             this.PlayVideoPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlayVideoPanel.Controls.Add(this.PlayVideoQueue);
             this.PlayVideoPanel.Controls.Add(this.PlayVideoPreviousButton);
             this.PlayVideoPanel.Controls.Add(this.PlayVideoSkipButton);
             this.PlayVideoPanel.Controls.Add(this.PlayVideoMessageAlertTextBox);
@@ -4470,6 +4474,25 @@
             this.UserProfileChangeInfoLabel.TabIndex = 0;
             this.UserProfileChangeInfoLabel.Text = "Change Settings";
             // 
+            // SearchQueueDomainUp
+            // 
+            this.SearchQueueDomainUp.Location = new System.Drawing.Point(535, 115);
+            this.SearchQueueDomainUp.Name = "SearchQueueDomainUp";
+            this.SearchQueueDomainUp.Size = new System.Drawing.Size(159, 22);
+            this.SearchQueueDomainUp.TabIndex = 37;
+            this.SearchQueueDomainUp.Text = "Queue";
+            this.SearchQueueDomainUp.Visible = false;
+            // 
+            // PlayVideoQueue
+            // 
+            this.PlayVideoQueue.Location = new System.Drawing.Point(41, 570);
+            this.PlayVideoQueue.Name = "PlayVideoQueue";
+            this.PlayVideoQueue.Size = new System.Drawing.Size(115, 34);
+            this.PlayVideoQueue.TabIndex = 49;
+            this.PlayVideoQueue.Text = "Add Queue";
+            this.PlayVideoQueue.UseVisualStyleBackColor = true;
+            this.PlayVideoQueue.Click += new System.EventHandler(this.PlayVideoQueue_Click);
+            // 
             // FyBuZz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -4478,10 +4501,10 @@
             this.ClientSize = new System.Drawing.Size(712, 786);
             this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.PlayVideoPanel);
+            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
             this.Controls.Add(this.SearcUserPanel);
-            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
             this.Controls.Add(this.DisplayPlaylistPanel);
@@ -4935,5 +4958,7 @@
         private System.Windows.Forms.DomainUpDown AdminMenuAllUsers;
         private System.Windows.Forms.Button AdminMenuBanUser;
         private System.Windows.Forms.TextBox AdminMenuMessageBox;
+        private System.Windows.Forms.DomainUpDown SearchQueueDomainUp;
+        private System.Windows.Forms.Button PlayVideoQueue;
     }
 }
