@@ -25,5 +25,7 @@ namespace Entrega3_FyBuZz.CustomArgs
         public int SkipOrPrevious { get; set; }
         public PlayList playlistSong { get; set; }
         public string FileLyricsSource { get; set; }
+        public List<string> OnQueueText { get; set; }
+        public int NumberText { get; set; }
     }
 }

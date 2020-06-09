@@ -26,5 +26,8 @@ namespace Entrega3_FyBuZz.CustomArgs
         public int RankingText { get; set; }
         public int previousOrSkip { get; set; }
         public PlayList playlistVideo { get; set; }
+        public List<string> OnQueue { get; set; }
+        public int NumText { get; set; }
+        public string VideoSubSource { get; set; }
     }
 }
