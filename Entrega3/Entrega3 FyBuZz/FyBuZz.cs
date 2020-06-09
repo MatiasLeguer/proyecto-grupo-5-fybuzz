@@ -1563,6 +1563,10 @@ namespace Entrega3_FyBuZz
         {
             PlaySongMessageTextBox.Clear();
             string[] searchedMult = SearchSearchResultsDomainUp.Text.Split(':');
+            if (SearchSearchResultsDomainUp.Text.Contains("Song: ") == false)
+            {
+                searchedMult = PlayPlaylistShowMultimedia.Text.Split(':');
+            }
             List<string> infoSong = GetSongButton(searchedMult[1], searchedMult[3]);
             LikeSong_Did(searchedMult[1], searchedMult[3]);
             AddLikedMult(ProfileDomainUp.Text, infoSong[6], null);
@@ -1593,6 +1597,10 @@ namespace Entrega3_FyBuZz
         private void PlaySongAddQueueButton_Click(object sender, EventArgs e)
         {
             string[] searchedMult = SearchSearchResultsDomainUp.Text.Split(':');
+            if (SearchSearchResultsDomainUp.Text.Contains("Song: ") == false)
+            {
+                searchedMult = PlayPlaylistShowMultimedia.Text.Split(':');
+            }
             if (searchedMult[0].Contains("Song") == true)
             {
                 List<string> songInfo = GetSongButton(searchedMult[1], searchedMult[3]);
@@ -1603,6 +1611,10 @@ namespace Entrega3_FyBuZz
         private void PlayVideoQueue_Click(object sender, EventArgs e)
         {
             string[] searchedMult = SearchSearchResultsDomainUp.Text.Split(':');
+            if (SearchSearchResultsDomainUp.Text.Contains("Video: ") == false)
+            {
+                searchedMult = PlayPlaylistShowMultimedia.Text.Split(':');
+            }
             if (searchedMult[0].Contains("Video") == true)
             {
                 List<string> videoInfo = GetVideoButton(searchedMult[1], searchedMult[3], searchedMult[5]);
@@ -1854,6 +1866,10 @@ namespace Entrega3_FyBuZz
             PlaySongRateNumDomainUp.Visible = true;
             int userRate = (int)PlaySongRateNumDomainUp.Value;
             string[] infoSong = SearchSearchResultsDomainUp.Text.Split(':');
+            if (SearchSearchResultsDomainUp.Text.Contains("Song: ") == false)
+            {
+                infoSong = PlayPlaylistShowMultimedia.Text.Split(':');
+            }
             PlaysSongRateButton_Click(userRate, infoSong[1], infoSong[3]);
             List<string> infoSongList = GetSongButton(infoSong[1], infoSong[3]);
             PlaySongRateMessageTextBox.AppendText(infoSongList[7]);
@@ -1991,6 +2007,10 @@ namespace Entrega3_FyBuZz
         {
             PlayVideoMessageAlertTextBox.Clear();
             string[] searchedMult = SearchSearchResultsDomainUp.Text.Split(':');
+            if(SearchSearchResultsDomainUp.Text.Contains("Video: ") == false)
+            {
+                searchedMult = PlayPlaylistShowMultimedia.Text.Split(':');
+            }
             List<string> infoVideo = GetVideoButton(searchedMult[1], searchedMult[3], searchedMult[5]);
             LikeVideo_Did(searchedMult[1], searchedMult[3], searchedMult[5]);
             AddLikedMult(ProfileDomainUp.Text, null, infoVideo[8]);
@@ -2050,6 +2070,10 @@ namespace Entrega3_FyBuZz
             PlayVideoRateDomainUp.Visible = true;
             int userRate = (int)PlayVideoRateDomainUp.Value;
             string[] infoVideo = SearchSearchResultsDomainUp.Text.Split(':');
+            if (SearchSearchResultsDomainUp.Text.Contains("Video: ") == false)
+            {
+                infoVideo = PlayPlaylistShowMultimedia.Text.Split(':');
+            }
             PlaysVideoRateButton_Click(userRate, infoVideo[1], infoVideo[3], infoVideo[5]);
             List<string> infoVideoList = GetVideoButton(infoVideo[1], infoVideo[3], infoVideo[5]);
             VideoRate.AppendText(infoVideoList[6]);
@@ -2263,6 +2287,7 @@ namespace Entrega3_FyBuZz
             PlayPlaylistPlayerPanel.Visible = true;
             List<Song> songDataBase = new List<Song>();
             List<PlayList> playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+            List<PlayList> privPls = GetPrivPlaylist();
             PlayList choosenPL = null;
             List<Video> videoDataBase = OnSearchVideoButton_Click();
             songDataBase = OnSearchSongButton_Click();
@@ -2272,6 +2297,13 @@ namespace Entrega3_FyBuZz
             if (userInfo[3] != "standard")
             {
                 foreach (PlayList playList in playlistDataBase)
+                {
+                    if (searched.Contains(playList.NamePlayList) == true)
+                    {
+                        choosenPL = playList;
+                    }
+                }
+                foreach (PlayList playList in privPls)
                 {
                     if (searched.Contains(playList.NamePlayList) == true)
                     {
