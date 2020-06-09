@@ -4107,6 +4107,25 @@ namespace Entrega3_FyBuZz
             }
         }
 
+        //TEXTBOX WATERMARK
+        private void UserProfileChangeInfoNewProfilenameTextBox_Enter(object sender, EventArgs e)
+        {
+            if(UserProfileChangeInfoNewProfilenameTextBox.Text == "7999 or above")
+            {
+                UserProfileChangeInfoNewProfilenameTextBox.Text = "";
+                UserProfileChangeInfoNewProfilenameTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void UserProfileChangeInfoNewProfilenameTextBox_Leave(object sender, EventArgs e)
+        {
+            if (UserProfileChangeInfoNewProfilenameTextBox.Text == "")
+            {
+                UserProfileChangeInfoNewProfilenameTextBox.Text = "7999 or above";
+                UserProfileChangeInfoNewProfilenameTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
         //GO BACK/CLOSE
 
         private void UserProfileChangeInfoGoBackButton_Click(object sender, EventArgs e)
