@@ -28,6 +28,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.GetAllSongInformation += ReturnAllSongsInfo;
             this.fyBuZz.PlaysSongRateButton_Clicked += RateSong;
             this.fyBuZz.SkipOrPreviousSongButton_Clicked += OnSkipOrPreviousSongButton_Clicked;
+            this.fyBuZz.LikedSong_Done += LikeSong;
         }
 
         public void Initialize()
@@ -178,6 +179,20 @@ namespace Entrega3_FyBuZz.Controladores
                 return null;
             }
         }
+        private string LikeSong(object sender, SongEventArgs e)
+        {
+            string result = null;
+            foreach(Song song in songDatabase)
+            {
+                if(e.NameText.Contains(song.Name) && e.ArtistText.Contains(song.Artist))
+                {
+                    song.Likes = song.Likes + 1;
+                    result = "Song liked";
+                }
+            }
+            dataBase.Save_Songs(songDatabase);
+            return result;
+        } 
 
     }
 }

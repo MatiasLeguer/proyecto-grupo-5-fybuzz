@@ -19,8 +19,10 @@ namespace Modelos
         protected string profileMail;
         protected List<Song> playlistEnColaSongs;
         protected List<Song> playlistFavoritosSongs = new List<Song>();
+        private List<string> playlistFavoritosSongs2 = new List<string>();
         protected List<Video> playlistEnColaVideos;
         protected List<Video> playlistFavoritosVideos = new List<Video>();
+        private List<string> playlistFavoritosVideos2 = new List<string>();
         protected List<PlayList> followedPlayList = new List<PlayList>();
         protected List<PlayList> createdPlaylist = new List<PlayList>();
         protected string gender;
@@ -44,6 +46,8 @@ namespace Modelos
         public List<PlayList> CreatedPlaylist { get => createdPlaylist; set => createdPlaylist = value; }
         public List<string> PersVideoPlaylist { get => persVideoPlaylist; set => persVideoPlaylist = value; }
         public List<string> PersSongPlaylist { get => persSongPlaylist; set => persSongPlaylist = value; }
+        public List<string> PlaylistFavoritosSongs2 { get => playlistFavoritosSongs2; set => playlistFavoritosSongs2 = value; }
+        public List<string> PlaylistFavoritosVideos2 { get => playlistFavoritosVideos2; set => playlistFavoritosVideos2 = value; }
 
         //--------------------------------------------------------------------------------------------------
 

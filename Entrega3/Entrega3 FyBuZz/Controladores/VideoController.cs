@@ -28,6 +28,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuzz.GetVideoInformation += ReturnVideoInfo;
             this.fyBuzz.PlaysVideoRateButton_Clicked += RateVideo;
             this.fyBuzz.SkipOrPreviousVideoButton_Clicked += OnSkipOrPreviousVideoButton_Clicked;
+            this.fyBuzz.LikedVideo_Done += LikeVideo;
         }
 
         public void Initialize()
@@ -175,6 +176,20 @@ namespace Entrega3_FyBuZz.Controladores
                 }
             }
             return null;
+        }
+        private string LikeVideo(object sender, VideoEventArgs e)
+        {
+            string result = null;
+            foreach (Video video in videoDataBase)
+            {
+                if (e.NameText.Contains(video.Name) && e.ActorsText.Contains(video.Actors) && e.DirectorsText.Contains(video.Directors))
+                {
+                    video.Likes = video.Likes + 1;
+                    result = "Video liked";
+                }
+            }
+            database.Save_Videos(videoDataBase);
+            return result;
         }
     }
 }
