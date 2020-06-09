@@ -277,6 +277,46 @@ namespace Entrega3_FyBuZz
             }
         }
 
+        //TEXT BOX WATERMARK
+
+            
+        private void UsernameRegisterTextBox_Enter(object sender, EventArgs e)
+        {
+            if(UsernameRegisterTextBox.Text == "Ahoward")
+            {
+                UsernameRegisterTextBox.Text = "";
+                UsernameRegisterTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void UsernameRegisterTextBox_Leave(object sender, EventArgs e)
+        {
+            if(UsernameRegisterTextBox.Text == "")
+            {
+                UsernameRegisterTextBox.Text = "Ahoward";
+                UsernameRegisterTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void EmailRegisterTextBox_Enter(object sender, EventArgs e)
+        {
+            if (EmailRegisterTextBox.Text == "ahoward@uandes.cl")
+            {
+                EmailRegisterTextBox.Text = "";
+                EmailRegisterTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void EmailRegisterTextBox_Leave(object sender, EventArgs e)
+        {
+            if (EmailRegisterTextBox.Text == "")
+            {
+                EmailRegisterTextBox.Text = "ahoward@uandes.cl";
+                EmailRegisterTextBox.ForeColor = Color.DimGray;
+            }
+
+        }
+
         //GO BACK/CLOSE
         private void GobackRegisterButton_Click(object sender, EventArgs e)
         {
@@ -525,6 +565,25 @@ namespace Entrega3_FyBuZz
                     ProfilePanel.BringToFront();
                     ProfilesInvalidCredentialTextBox.AppendText("Only premium Users can create profiles");
                 }
+            }
+        }
+
+        //TEXTBOX WATERMARK
+        private void CreateProfileProfileNameTextBox_Enter(object sender, EventArgs e)
+        {
+            if(CreateProfileProfileNameTextBox.Text == "Andres")
+            {
+                CreateProfileProfileNameTextBox.Text = "";
+                CreateProfileProfileNameTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateProfileProfileNameTextBox_Leave(object sender, EventArgs e)
+        {
+            if(CreateProfileProfileNameTextBox.Text == "")
+            {
+                CreateProfileProfileNameTextBox.Text = "Andres";
+                CreateProfileProfileNameTextBox.ForeColor = Color.DimGray;
             }
         }
 
@@ -1332,7 +1391,25 @@ namespace Entrega3_FyBuZz
         }
 
 
-        //ONEVENT
+        //TEXTBOX WATERMARK
+
+        private void SearchSearchTextBox_Enter(object sender, EventArgs e)
+        {
+            if(SearchSearchTextBox.Text == "Search Songs,Video, Playlists or Users")
+            {
+                SearchSearchTextBox.Text = "";
+                SearchSearchTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void SearchSearchTextBox_Leave(object sender, EventArgs e)
+        {
+            if (SearchSearchTextBox.Text == "")
+            {
+                SearchSearchTextBox.Text = "Search Songs,Video, Playlists or Users";
+                SearchSearchTextBox.ForeColor = Color.DimGray;
+            }
+        }
 
         //GO BACK/CLOSE
 
@@ -2875,6 +2952,153 @@ namespace Entrega3_FyBuZz
             }
         }
 
+        //TEXT BOX WATERMARK
+
+
+        private void CreateSongNameTextBox_Enter(object sender, EventArgs e)
+        {
+            if(CreateSongNameTextBox.Text == "Safaera")
+            {
+                CreateSongNameTextBox.Text = "";
+                CreateSongNameTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateSongNameTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateSongNameTextBox.Text == "")
+            {
+                CreateSongNameTextBox.Text = "Safaera";
+                CreateSongNameTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateSongArtistTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateSongArtistTextBox.Text == "Bad Bunny")
+            {
+                CreateSongArtistTextBox.Text = "";
+                CreateSongArtistTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateSongArtistTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateSongArtistTextBox.Text == "")
+            {
+                CreateSongArtistTextBox.Text = "Bad Bunny";
+                CreateSongArtistTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateSongAlbumTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateSongAlbumTextBox.Text == "YHLQMDLG")
+            {
+                CreateSongAlbumTextBox.Text = "";
+                CreateSongAlbumTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateSongAlbumTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateSongAlbumTextBox.Text == "")
+            {
+                CreateSongAlbumTextBox.Text = "YHLQMDLG";
+                CreateSongAlbumTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateSongDiscographyTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateSongDiscographyTextBox.Text == "Rimas entertainment LLC")
+            {
+                CreateSongDiscographyTextBox.Text = "";
+                CreateSongDiscographyTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateSongDiscographyTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateSongDiscographyTextBox.Text == "")
+            {
+                CreateSongDiscographyTextBox.Text = "Rimas entertainment LLC";
+                CreateSongDiscographyTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateSongGenderTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateSongGenderTextBox.Text == "Trap")
+            {
+                CreateSongGenderTextBox.Text = "";
+                CreateSongGenderTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateSongGenderTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateSongGenderTextBox.Text == "")
+            {
+                CreateSongGenderTextBox.Text = "Trap";
+                CreateSongGenderTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateSongStudioTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateSongStudioTextBox.Text == "BB Rcds")
+            {
+                CreateSongStudioTextBox.Text = "";
+                CreateSongStudioTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateSongStudioTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateSongStudioTextBox.Text == "")
+            {
+                CreateSongStudioTextBox.Text = "BB Rcds";
+                CreateSongStudioTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateSongDurationTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateSongDurationTextBox.Text == "4,9 (Colocar comma)")
+            {
+                CreateSongDurationTextBox.Text = "";
+                CreateSongDurationTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateSongDurationTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateSongDurationTextBox.Text == "")
+            {
+                CreateSongDurationTextBox.Text = "4,9 (Colocar comma)";
+                CreateSongDurationTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateSongFormatTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateSongFormatTextBox.Text == "(.mp3 || .wav)")
+            {
+                CreateSongFormatTextBox.Text = "";
+                CreateSongFormatTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateSongFormatTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateSongFormatTextBox.Text == "")
+            {
+                CreateSongFormatTextBox.Text = "(.mp3 || .wav)";
+                CreateSongFormatTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
         //GO BACK/CLOSE
         private void CreateSongGoBackButton_Click(object sender, EventArgs e)
         {
@@ -2986,7 +3210,174 @@ namespace Entrega3_FyBuZz
             }
         }
 
+        //TEXTBOX WATERMARK
+        private void CreateVideoNameTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateVideoNameTextBox.Text == "Cats fighting with swords")
+            {
+                CreateVideoNameTextBox.Text = "";
+                CreateVideoNameTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateVideoNameTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateVideoNameTextBox.Text == "")
+            {
+                CreateVideoNameTextBox.Text = "Cats fighting with swords";
+                CreateVideoNameTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateVideoActorsTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateVideoActorsTextBox.Text == "Cats")
+            {
+                CreateVideoActorsTextBox.Text = "";
+                CreateVideoActorsTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateVideoActorsTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateVideoActorsTextBox.Text == "")
+            {
+                CreateVideoActorsTextBox.Text = "Cats";
+                CreateVideoActorsTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateVideoDirectorsTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateVideoDirectorsTextBox.Text == "Human")
+            {
+                CreateVideoDirectorsTextBox.Text = "";
+                CreateVideoDirectorsTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateVideoDirectorsTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateVideoDirectorsTextBox.Text == "")
+            {
+                CreateVideoDirectorsTextBox.Text = "Human";
+                CreateVideoDirectorsTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateVideoDimensionTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateVideoDimensionTextBox.Text == "1024X768")
+            {
+                CreateVideoDimensionTextBox.Text = "";
+                CreateVideoDimensionTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateVideoDimensionTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateVideoDimensionTextBox.Text == "")
+            {
+                CreateVideoDimensionTextBox.Text = "1024X768";
+                CreateVideoDimensionTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateVideoQualityTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateVideoQualityTextBox.Text == "480")
+            {
+                CreateVideoQualityTextBox.Text = "";
+                CreateVideoQualityTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateVideoQualityTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateVideoQualityTextBox.Text == "")
+            {
+                CreateVideoQualityTextBox.Text = "480";
+                CreateVideoQualityTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateVideoCategoryTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateVideoCategoryTextBox.Text == "0")
+            {
+                CreateVideoCategoryTextBox.Text = "";
+                CreateVideoCategoryTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateVideoCategoryTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateVideoCategoryTextBox.Text == "")
+            {
+                CreateVideoCategoryTextBox.Text = "0";
+                CreateVideoCategoryTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateVideoDescriptionTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateVideoDescriptionTextBox.Text == "My cats are fighting")
+            {
+                CreateVideoDescriptionTextBox.Text = "";
+                CreateVideoDescriptionTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateVideoDescriptionTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateVideoDescriptionTextBox.Text == "")
+            {
+                CreateVideoDescriptionTextBox.Text = "My cats are fighting";
+                CreateVideoDescriptionTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateVideoDurationTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateVideoDurationTextBox.Text == "2,45 (Con comma)")
+            {
+                CreateVideoDurationTextBox.Text = "";
+                CreateVideoDurationTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateVideoDurationTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateVideoDurationTextBox.Text == "")
+            {
+                CreateVideoDurationTextBox.Text = "2,45 (Con comma)";
+                CreateVideoDurationTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void CreateVideoFormatTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreateVideoFormatTextBox.Text == "(.mp4 || .avi || .mov)")
+            {
+                CreateVideoFormatTextBox.Text = "";
+                CreateVideoFormatTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreateVideoFormatTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreateVideoFormatTextBox.Text == "")
+            {
+                CreateVideoFormatTextBox.Text = "(.mp4 || .avi || .mov)";
+                CreateVideoFormatTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
         //GO BACK/CLOSE
+        private void CreateVideoGoBackButton_Click(object sender, EventArgs e)
+        {
+            AddShowPanel.BringToFront();
+        }
         //-------------------------------------------------------------------------------------------
 
 
@@ -3027,6 +3418,25 @@ namespace Entrega3_FyBuZz
                     Thread.Sleep(2000);
                     DisplayStartPanel.BringToFront();
                 }
+            }
+        }
+
+        //TEXTBOX WATERMARK
+        private void CreatePlaylistNameTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CreatePlaylistNameTextBox.Text == "Ahoward's Playlist")
+            {
+                CreatePlaylistNameTextBox.Text = "";
+                CreatePlaylistNameTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void CreatePlaylistNameTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CreatePlaylistNameTextBox.Text == "")
+            {
+                CreatePlaylistNameTextBox.Text = "Ahoward's Playlist";
+                CreatePlaylistNameTextBox.ForeColor = Color.DimGray;
             }
         }
 
@@ -3672,17 +4082,6 @@ namespace Entrega3_FyBuZz
 
         }
 
-        private void PlayVideoMessageLabel_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void PlayVideoMessageAlertTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        
-        
-        
     }
 }
