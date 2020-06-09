@@ -25,6 +25,7 @@ namespace Modelos
         protected string fileName;
         protected int cantRated;
         protected int accummulativeRated;
+        private string subtitleFile;
         //--------------------------------------------------------------------------------------------------
 
         //GETTERS Y SETTERS:
@@ -38,6 +39,8 @@ namespace Modelos
         public int Ranking { get => ranking; set => ranking = value; }
         public int CantRated { get; set; }
         public int AccumulativeRated { get; set; }
+        public string SubtitleFile { get => subtitleFile; set => subtitleFile = value; }
+
         //--------------------------------------------------------------------------------------------------
 
         //CONSTRUCTOR:
@@ -71,7 +74,7 @@ namespace Modelos
         //--------------------------------------------------------------------------------------------------
         public List<string> InfoVideo()                    //Entrega una lista de strings con la infromación de la clase video.
         {
-            return new List<string>() { name, actors, directors, quality, category, rated.ToString(), ranking.ToString(), description,fileName }; //Agregar más atributos?
+            return new List<string>() { name, actors, directors, quality, category, rated.ToString(), ranking.ToString(), description, fileName, subtitles}; //Agregar más atributos?
         }
         public string DisplayInfoVideo()                   //Entrega un string con la información de la clase video
         {

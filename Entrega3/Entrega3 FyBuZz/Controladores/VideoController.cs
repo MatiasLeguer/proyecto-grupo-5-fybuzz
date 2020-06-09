@@ -45,6 +45,7 @@ namespace Entrega3_FyBuZz.Controladores
         public bool OnCreateVideoSaveButton_Clicked(object sender, VideoEventArgs e)
         {
             File.Copy(e.FileDestText, e.FileNameText);
+            File.Copy(e.VideoSubSource, e.SubtitlesText);
             List<string> infoMult = new List<string>() {e.NameText, e.ActorsText, e.DirectorsText, e.ReleaseDateText, e.DimensionText, e.QualityText, e.Categorytext, e.DescriptionText, e.DurationText, e.SubtitlesText, e.FormatText, e.FileNameText, e.VideoImage};
             string description = database.AddMult(1, infoMult, null, null, videoDataBase, null, null, null, null);
             if(description == null)
@@ -55,6 +56,7 @@ namespace Entrega3_FyBuZz.Controladores
             else
             {
                 File.Delete(e.FileNameText);
+                File.Delete(e.SubtitlesText);
                 return false;
             }
         }
@@ -108,31 +110,52 @@ namespace Entrega3_FyBuZz.Controladores
 
         public Video OnSkipOrPreviousVideoButton_Clicked(object sender, VideoEventArgs e)
         {
-            if(e.previousOrSkip == 0)
+            if (e.previousOrSkip == 0)
             {
-                if(e.playlistVideo == null)
+                if (e.OnQueue.Count == 0)
                 {
-                    for (int i = 0; i < videoDataBase.Count(); i++)
+                    if (e.playlistVideo == null)
                     {
-                        if (((e.NameText.Contains(videoDataBase[i].InfoVideo()[0])) && (e.ActorsText.Contains(videoDataBase[i].InfoVideo()[1]))) && (i != (videoDataBase.Count() - 1))) return videoDataBase[i + 1];
-                        else if (((e.NameText.Contains(videoDataBase[i].InfoVideo()[0])) && (e.ActorsText.Contains(videoDataBase[i].InfoVideo()[1]))) && (i == (videoDataBase.Count() - 1))) return videoDataBase[0];
+                        for(int i = e.NumText; i < videoDataBase.Count() - 1; i++)
+                        {
+                            if (i == videoDataBase.Count() - 1) return videoDataBase[0];
+                            else return videoDataBase[i + 1];
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < e.playlistVideo.Videos.Count(); i++)
+                        {
+                            if (((e.NameText.Contains(e.playlistVideo.Videos[i].InfoVideo()[0])) && (e.ActorsText.Contains(e.playlistVideo.Videos[i].InfoVideo()[1]))) && (i != (e.playlistVideo.Videos.Count() - 1))) return e.playlistVideo.Videos[i + 1];
+                            else if (((e.NameText.Contains(e.playlistVideo.Videos[i].InfoVideo()[0])) && (e.ActorsText.Contains(e.playlistVideo.Videos[i].InfoVideo()[1]))) && (i == (e.playlistVideo.Videos.Count() - 1))) return e.playlistVideo.Videos[0];
 
+                        }
                     }
                 }
                 else
                 {
-                    for (int i = 0; i < e.playlistVideo.Videos.Count(); i++)
+                    int n = 0;
+                    foreach (string videoFile in e.OnQueue)
                     {
-                        if (((e.NameText.Contains(e.playlistVideo.Videos[i].InfoVideo()[0])) && (e.ActorsText.Contains(e.playlistVideo.Videos[i].InfoVideo()[1]))) && (i != (e.playlistVideo.Videos.Count() - 1))) return e.playlistVideo.Videos[i + 1];
-                        else if (((e.NameText.Contains(e.playlistVideo.Videos[i].InfoVideo()[0])) && (e.ActorsText.Contains(e.playlistVideo.Videos[i].InfoVideo()[1]))) && (i == (e.playlistVideo.Videos.Count() - 1))) return e.playlistVideo.Videos[0];
-
+                        if (videoFile.Contains(".mp3") == false && videoFile.Contains(".wav") == false)
+                        {
+                            foreach (Video video in videoDataBase)
+                            {
+                                if (videoFile.Contains(video.FileName))
+                                {
+                                    e.OnQueue.RemoveAt(n);
+                                    return video;
+                                }
+                            }
+                            n++;
+                        }
                     }
-                }
 
+                }
             }
             else
             {
-                if(e.playlistVideo == null)
+                if (e.playlistVideo == null)
                 {
                     for (int i = 0; i < videoDataBase.Count(); i++)
                     {
@@ -144,7 +167,7 @@ namespace Entrega3_FyBuZz.Controladores
 
                 else
                 {
-                    for(int i = 0; i < e.playlistVideo.Videos.Count(); i++)
+                    for (int i = 0; i < e.playlistVideo.Videos.Count(); i++)
                     {
                         if (((e.NameText.Contains(e.playlistVideo.Videos[i].InfoVideo()[0])) && (e.ActorsText.Contains(e.playlistVideo.Videos[i].InfoVideo()[1]))) && (i != 0)) return e.playlistVideo.Videos[i - 1];
                         else if (((e.NameText.Contains(e.playlistVideo.Videos[i].InfoVideo()[0])) && (e.ActorsText.Contains(e.playlistVideo.Videos[i].InfoVideo()[1]))) && (i == 0)) return e.playlistVideo.Videos[(e.playlistVideo.Videos.Count() - 1)];
