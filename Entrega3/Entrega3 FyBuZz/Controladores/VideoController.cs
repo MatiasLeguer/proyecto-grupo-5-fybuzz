@@ -45,6 +45,7 @@ namespace Entrega3_FyBuZz.Controladores
         public bool OnCreateVideoSaveButton_Clicked(object sender, VideoEventArgs e)
         {
             File.Copy(e.FileDestText, e.FileNameText);
+            File.Copy(e.VideoSubSource, e.SubtitlesText);
             List<string> infoMult = new List<string>() {e.NameText, e.ActorsText, e.DirectorsText, e.ReleaseDateText, e.DimensionText, e.QualityText, e.Categorytext, e.DescriptionText, e.DurationText, e.SubtitlesText, e.FormatText, e.FileNameText, e.VideoImage};
             string description = database.AddMult(1, infoMult, null, null, videoDataBase, null, null, null, null);
             if(description == null)
@@ -55,6 +56,7 @@ namespace Entrega3_FyBuZz.Controladores
             else
             {
                 File.Delete(e.FileNameText);
+                File.Delete(e.SubtitlesText);
                 return false;
             }
         }
@@ -114,11 +116,10 @@ namespace Entrega3_FyBuZz.Controladores
                 {
                     if (e.playlistVideo == null)
                     {
-                        for (int i = 0; i < videoDataBase.Count(); i++)
+                        for(int i = e.NumText; i < videoDataBase.Count() - 1; i++)
                         {
-                            if (((e.NameText.Contains(videoDataBase[i].InfoVideo()[0])) && (e.ActorsText.Contains(videoDataBase[i].InfoVideo()[1]))) && (i != (videoDataBase.Count() - 1))) return videoDataBase[i + 1];
-                            else if (((e.NameText.Contains(videoDataBase[i].InfoVideo()[0])) && (e.ActorsText.Contains(videoDataBase[i].InfoVideo()[1]))) && (i == (videoDataBase.Count() - 1))) return videoDataBase[0];
-
+                            if (i == videoDataBase.Count() - 1) return videoDataBase[0];
+                            else return videoDataBase[i + 1];
                         }
                     }
                     else

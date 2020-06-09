@@ -116,19 +116,11 @@ namespace Entrega3_FyBuZz.Controladores
                 if (e.OnQueueText.Count == 0)
                 {
                     if (e.playlistSong == null)
-                    {
-                        for (int i = 0; i < songDatabase.Count(); i++)
+                    { 
+                        for (int i = e.NumberText; i < songDatabase.Count() - 1; i++)
                         {
-                            List<Song> hola = songDatabase;
-                            if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i != (songDatabase.Count() - 1)))
-                            {
-                                return songDatabase[i + 1];
-                            }
-                            else if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i == (songDatabase.Count() - 1)))
-                            {
-                                return songDatabase[0];
-                            }
-
+                            if (i == songDatabase.Count() - 1) return songDatabase[0];
+                            else return songDatabase[i + 1];
                         }
                     }
                     else
@@ -167,11 +159,10 @@ namespace Entrega3_FyBuZz.Controladores
             {
                 if(e.playlistSong == null)
                 {
-                    for (int i = 0; i <= songDatabase.Count(); i++)
+                    for (int i = e.NumberText; i < songDatabase.Count(); i--)
                     {
-                        if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i != 0) && (i != songDatabase.Count())) return songDatabase[i - 1];
-                        else if (((e.NameText.Contains(songDatabase[i].InfoSong()[0])) && (e.ArtistText.Contains(songDatabase[i].InfoSong()[1]))) && (i == songDatabase.Count())) return songDatabase[(songDatabase.Count() - 1)];
-
+                        if (i == 0) return songDatabase[songDatabase.Count() - 1];
+                        else return songDatabase[i - 1];
                     }
                 }
                 else
