@@ -271,6 +271,7 @@
             this.CreateSongNameLabel = new System.Windows.Forms.Label();
             this.CreateSongLabel = new System.Windows.Forms.Label();
             this.CreateVideoPanel = new System.Windows.Forms.Panel();
+            this.CreateVideoSearcheSub = new System.Windows.Forms.Button();
             this.CreateVideoMessageTextBox = new System.Windows.Forms.TextBox();
             this.CreateVideoSaveButton = new System.Windows.Forms.Button();
             this.CreateVideoLoadVideoButton = new System.Windows.Forms.Button();
@@ -317,6 +318,7 @@
             this.DurationTimer = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.PlaySongPanel = new System.Windows.Forms.Panel();
+            this.PlaySongLikeButton = new System.Windows.Forms.Button();
             this.PlaySongDisplayLyrics = new System.Windows.Forms.TextBox();
             this.PlaySongShowLyrics = new System.Windows.Forms.Button();
             this.PlaySongRateMessageTextBox = new System.Windows.Forms.TextBox();
@@ -332,6 +334,9 @@
             this.PlaySongImageBoxImage = new System.Windows.Forms.PictureBox();
             this.PlaySongLabel = new System.Windows.Forms.Label();
             this.PlayVideoPanel = new System.Windows.Forms.Panel();
+            this.VideoRate = new System.Windows.Forms.TextBox();
+            this.PlayVideoLyrics = new System.Windows.Forms.Button();
+            this.PlayVideoShowLyrics = new System.Windows.Forms.TextBox();
             this.PlayVideoQueue = new System.Windows.Forms.Button();
             this.PlayVideoPreviousButton = new System.Windows.Forms.Button();
             this.PlayVideoSkipButton = new System.Windows.Forms.Button();
@@ -377,11 +382,6 @@
             this.UserProfileChangeInfoConfirmButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoGoBackButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoLabel = new System.Windows.Forms.Label();
-            this.PlayVideoShowLyrics = new System.Windows.Forms.TextBox();
-            this.PlayVideoLyrics = new System.Windows.Forms.Button();
-            this.CreateVideoSearcheSub = new System.Windows.Forms.Button();
-            this.VideoRate = new System.Windows.Forms.TextBox();
-            this.PlaySongLikeButton = new System.Windows.Forms.Button();
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -3280,6 +3280,16 @@
             this.CreateVideoPanel.Size = new System.Drawing.Size(712, 830);
             this.CreateVideoPanel.TabIndex = 11;
             // 
+            // CreateVideoSearcheSub
+            // 
+            this.CreateVideoSearcheSub.Location = new System.Drawing.Point(491, 505);
+            this.CreateVideoSearcheSub.Name = "CreateVideoSearcheSub";
+            this.CreateVideoSearcheSub.Size = new System.Drawing.Size(75, 29);
+            this.CreateVideoSearcheSub.TabIndex = 30;
+            this.CreateVideoSearcheSub.Text = "Examine";
+            this.CreateVideoSearcheSub.UseVisualStyleBackColor = true;
+            this.CreateVideoSearcheSub.Click += new System.EventHandler(this.CreateVideoSearcheSub_Click);
+            // 
             // CreateVideoMessageTextBox
             // 
             this.CreateVideoMessageTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
@@ -3770,6 +3780,16 @@
             this.PlaySongPanel.Size = new System.Drawing.Size(712, 830);
             this.PlaySongPanel.TabIndex = 13;
             // 
+            // PlaySongLikeButton
+            // 
+            this.PlaySongLikeButton.Location = new System.Drawing.Point(519, 582);
+            this.PlaySongLikeButton.Name = "PlaySongLikeButton";
+            this.PlaySongLikeButton.Size = new System.Drawing.Size(110, 33);
+            this.PlaySongLikeButton.TabIndex = 47;
+            this.PlaySongLikeButton.Text = "Like";
+            this.PlaySongLikeButton.UseVisualStyleBackColor = true;
+            this.PlaySongLikeButton.Click += new System.EventHandler(this.PlaySongLikeButton_Click);
+            // 
             // PlaySongDisplayLyrics
             // 
             this.PlaySongDisplayLyrics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
@@ -3970,6 +3990,42 @@
             this.PlayVideoPanel.Name = "PlayVideoPanel";
             this.PlayVideoPanel.Size = new System.Drawing.Size(712, 830);
             this.PlayVideoPanel.TabIndex = 14;
+            // 
+            // VideoRate
+            // 
+            this.VideoRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.VideoRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.VideoRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VideoRate.ForeColor = System.Drawing.Color.White;
+            this.VideoRate.Location = new System.Drawing.Point(292, 615);
+            this.VideoRate.Name = "VideoRate";
+            this.VideoRate.Size = new System.Drawing.Size(120, 29);
+            this.VideoRate.TabIndex = 53;
+            // 
+            // PlayVideoLyrics
+            // 
+            this.PlayVideoLyrics.Location = new System.Drawing.Point(530, 569);
+            this.PlayVideoLyrics.Name = "PlayVideoLyrics";
+            this.PlayVideoLyrics.Size = new System.Drawing.Size(114, 31);
+            this.PlayVideoLyrics.TabIndex = 51;
+            this.PlayVideoLyrics.Text = "Subtitles";
+            this.PlayVideoLyrics.UseVisualStyleBackColor = true;
+            this.PlayVideoLyrics.Click += new System.EventHandler(this.PlayVideoLyrics_Click);
+            // 
+            // PlayVideoShowLyrics
+            // 
+            this.PlayVideoShowLyrics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlayVideoShowLyrics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayVideoShowLyrics.ForeColor = System.Drawing.Color.White;
+            this.PlayVideoShowLyrics.Location = new System.Drawing.Point(24, 311);
+            this.PlayVideoShowLyrics.Multiline = true;
+            this.PlayVideoShowLyrics.Name = "PlayVideoShowLyrics";
+            this.PlayVideoShowLyrics.ReadOnly = true;
+            this.PlayVideoShowLyrics.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.PlayVideoShowLyrics.Size = new System.Drawing.Size(646, 49);
+            this.PlayVideoShowLyrics.TabIndex = 50;
+            this.PlayVideoShowLyrics.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayVideoShowLyrics.Visible = false;
             // 
             // PlayVideoQueue
             // 
@@ -4479,71 +4535,15 @@
             this.UserProfileChangeInfoLabel.TabIndex = 0;
             this.UserProfileChangeInfoLabel.Text = "Change Settings";
             // 
-            // PlayVideoShowLyrics
-            // 
-            this.PlayVideoShowLyrics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
-            this.PlayVideoShowLyrics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayVideoShowLyrics.ForeColor = System.Drawing.Color.White;
-            this.PlayVideoShowLyrics.Location = new System.Drawing.Point(24, 311);
-            this.PlayVideoShowLyrics.Multiline = true;
-            this.PlayVideoShowLyrics.Name = "PlayVideoShowLyrics";
-            this.PlayVideoShowLyrics.ReadOnly = true;
-            this.PlayVideoShowLyrics.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.PlayVideoShowLyrics.Size = new System.Drawing.Size(646, 49);
-            this.PlayVideoShowLyrics.TabIndex = 50;
-            this.PlayVideoShowLyrics.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PlayVideoShowLyrics.Visible = false;
-            // 
-            // PlayVideoLyrics
-            // 
-            this.PlayVideoLyrics.Location = new System.Drawing.Point(530, 569);
-            this.PlayVideoLyrics.Name = "PlayVideoLyrics";
-            this.PlayVideoLyrics.Size = new System.Drawing.Size(114, 31);
-            this.PlayVideoLyrics.TabIndex = 51;
-            this.PlayVideoLyrics.Text = "Subtitles";
-            this.PlayVideoLyrics.UseVisualStyleBackColor = true;
-            this.PlayVideoLyrics.Click += new System.EventHandler(this.PlayVideoLyrics_Click);
-            // 
-            // CreateVideoSearcheSub
-            // 
-            this.CreateVideoSearcheSub.Location = new System.Drawing.Point(491, 505);
-            this.CreateVideoSearcheSub.Name = "CreateVideoSearcheSub";
-            this.CreateVideoSearcheSub.Size = new System.Drawing.Size(75, 29);
-            this.CreateVideoSearcheSub.TabIndex = 30;
-            this.CreateVideoSearcheSub.Text = "Examine";
-            this.CreateVideoSearcheSub.UseVisualStyleBackColor = true;
-            this.CreateVideoSearcheSub.Click += new System.EventHandler(this.CreateVideoSearcheSub_Click);
-            // 
-            // VideoRate
-            // 
-            this.VideoRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
-            this.VideoRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.VideoRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VideoRate.ForeColor = System.Drawing.Color.White;
-            this.VideoRate.Location = new System.Drawing.Point(292, 615);
-            this.VideoRate.Name = "VideoRate";
-            this.VideoRate.Size = new System.Drawing.Size(120, 29);
-            this.VideoRate.TabIndex = 53;
-            // 
-            // PlaySongLikeButton
-            // 
-            this.PlaySongLikeButton.Location = new System.Drawing.Point(519, 582);
-            this.PlaySongLikeButton.Name = "PlaySongLikeButton";
-            this.PlaySongLikeButton.Size = new System.Drawing.Size(110, 33);
-            this.PlaySongLikeButton.TabIndex = 47;
-            this.PlaySongLikeButton.Text = "Like";
-            this.PlaySongLikeButton.UseVisualStyleBackColor = true;
-            this.PlaySongLikeButton.Click += new System.EventHandler(this.PlaySongLikeButton_Click);
-            // 
             // FyBuZz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(712, 830);
+            this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.PlaySongPanel);
-            this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.CreateVideoPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.DisplayStartPanel);
