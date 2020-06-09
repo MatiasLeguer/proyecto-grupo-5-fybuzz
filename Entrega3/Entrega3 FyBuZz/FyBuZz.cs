@@ -1991,6 +1991,14 @@ namespace Entrega3_FyBuZz
             }
         }
 
+        private void PlayVideoFullScreenButton_Click(object sender, EventArgs e)
+        {
+            if(wmpVideo.URL.Length > 0)
+            {
+                wmpVideo.fullScreen = true;
+            }
+        }
+
         private void PlayVideoSelectPlButton_Click(object sender, EventArgs e)
         {
             List<Video> videoDataBase = new List<Video>();
@@ -4313,5 +4321,7 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
+
+
     }
 }
