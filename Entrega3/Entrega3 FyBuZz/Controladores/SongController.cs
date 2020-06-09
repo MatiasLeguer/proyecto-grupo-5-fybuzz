@@ -118,11 +118,8 @@ namespace Entrega3_FyBuZz.Controladores
                 {
                     if (e.playlistSong == null)
                     { 
-                        for (int i = e.NumberText; i < songDatabase.Count() - 1; i++)
-                        {
-                            if (i == songDatabase.Count() - 1) return songDatabase[0];
-                            else return songDatabase[i + 1];
-                        }
+                        if (e.NumberText == (songDatabase.Count() - 1)) return songDatabase[0];
+                        else return songDatabase[e.NumberText + 1];
                     }
                     else
                     {
@@ -160,11 +157,8 @@ namespace Entrega3_FyBuZz.Controladores
             {
                 if(e.playlistSong == null)
                 {
-                    for (int i = e.NumberText; i < songDatabase.Count(); i--)
-                    {
-                        if (i == 0) return songDatabase[songDatabase.Count() - 1];
-                        else return songDatabase[i - 1];
-                    }
+                    if (e.NumberText == 0) return songDatabase[songDatabase.Count() - 1];
+                    else return songDatabase[e.NumberText - 1];
                 }
                 else
                 {
