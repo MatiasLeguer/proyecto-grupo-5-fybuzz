@@ -761,6 +761,8 @@ namespace Entrega3_FyBuZz
             bool filtersOn = SearchFiltersOnCheckBox.Checked;
             List<List<string>> allSongInfo = ReturnAllSongsInfo();
             List<List<string>> allVideosInfo = ReturnAllVideosInfo();
+
+
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSongButton_Click();
             List<User> userDataBase = new List<User>();
@@ -769,6 +771,8 @@ namespace Entrega3_FyBuZz
             videoDataBase = OnSearchVideoButton_Click();
             List<PlayList> playlistDataBase = new List<PlayList>();
             playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+
+
             int cont = 0;
             foreach (object searched in SearchSearchResultsDomainUp.Items)
             {
@@ -781,40 +785,160 @@ namespace Entrega3_FyBuZz
 
             if (!filtersOn)
             {
+                string auxSearch = "";
+                string auxS = "";
+                int lengthRemove = 0;
+
                 foreach (Song song in songDataBase)
                 {
+                    foreach(string s in song.InfoSong())
+                    {
+                        auxSearch = search;
+                        auxS = s;
+                        lengthRemove = 0;
 
-                    if (song.InfoSong().Contains(search))
-                    {
-                        SearchSearchResultsDomainUp.Visible = true;
-                        SearchSearchResultsDomainUp.Items.Add(song.SearchedInfoSong());
-                    }
-                }
-                foreach (User user in userDataBase)
-                {
-                    if (user.infoUser().Contains(search))
-                    {
-                        SearchSearchResultsDomainUp.Visible = true;
-                        SearchSearchResultsDomainUp.Items.Add("User: " + user.SearchedInfoUser());
-                    }
-                }
-                foreach (PlayList playlist in playlistDataBase)
-                {
-                    if (playlist.InfoPlayList().Contains(search))
-                    {
-                        SearchSearchResultsDomainUp.Visible = true;
-                        SearchSearchResultsDomainUp.Items.Add(playlist.DisplayInfoPlayList());
+                        if (s.Length > auxSearch.Length)
+                        {
+                            lengthRemove = auxS.Length - auxSearch.Length;
+                            auxS = auxS.Remove(auxSearch.Length, lengthRemove);
+                        }
+                        else if(s.Length < auxSearch.Length)
+                        {
+                            lengthRemove = auxSearch.Length - auxS.Length;
+                            auxSearch = auxSearch.Remove(auxS.Length, lengthRemove);
+                        }
+
+                        auxSearch = auxSearch.ToLower();
+                        auxS = auxS.ToLower();
+
+                        for (int j = auxS.Length - 1; j >= 0; j--)
+                        {
+                            if(auxSearch == auxS)
+                            {
+                                SearchSearchResultsDomainUp.Visible = true;
+                                SearchSearchResultsDomainUp.Items.Add(song.SearchedInfoSong());
+                                break;
+                            }
+                            auxSearch = auxSearch.Remove(j);
+                            auxS = auxS.Remove(j);
+                        }
                     }
                 }
 
                 foreach (Video video in videoDataBase)
                 {
-                    if (video.InfoVideo().Contains(search))
+                    foreach (string s in video.InfoVideo())
                     {
-                        SearchSearchResultsDomainUp.Visible = true;
-                        SearchSearchResultsDomainUp.Items.Add(video.SearchedInfoVideo());
+                        auxSearch = search;
+                        auxS = s;
+                        lengthRemove = 0;
+
+                        if (s.Length > auxSearch.Length)
+                        {
+                            lengthRemove = auxS.Length - auxSearch.Length;
+                            auxS = auxS.Remove(auxSearch.Length, lengthRemove);
+                        }
+                        else if (s.Length < auxSearch.Length)
+                        {
+                            lengthRemove = auxSearch.Length - auxS.Length;
+                            auxSearch = auxSearch.Remove(auxS.Length, lengthRemove);
+                        }
+
+                        auxSearch = auxSearch.ToLower();
+                        auxS = auxS.ToLower();
+
+                        for (int j = auxS.Length - 1; j >= 0; j--)
+                        {
+                            if (auxSearch == auxS)
+                            {
+                                SearchSearchResultsDomainUp.Visible = true;
+                                SearchSearchResultsDomainUp.Items.Add(video.SearchedInfoVideo());
+                                break;
+                            }
+                            auxSearch = auxSearch.Remove(j);
+                            auxS = auxS.Remove(j);
+                        }
                     }
                 }
+
+                foreach (PlayList playlist in playlistDataBase)
+                {
+                    foreach (string s in playlist.InfoPlayList())
+                    {
+                        auxSearch = search;
+                        auxS = s;
+                        lengthRemove = 0;
+
+                        if (s.Length > auxSearch.Length)
+                        {
+                            lengthRemove = auxS.Length - auxSearch.Length;
+                            auxS = auxS.Remove(auxSearch.Length, lengthRemove);
+                        }
+                        else if (s.Length < auxSearch.Length)
+                        {
+                            lengthRemove = auxSearch.Length - auxS.Length;
+                            auxSearch = auxSearch.Remove(auxS.Length, lengthRemove);
+                        }
+
+                        auxSearch = auxSearch.ToLower();
+                        auxS = auxS.ToLower();
+
+                        for (int j = auxS.Length - 1; j >= 0; j--)
+                        {
+                            if (auxSearch == auxS)
+                            {
+                                SearchSearchResultsDomainUp.Visible = true;
+                                SearchSearchResultsDomainUp.Items.Add(playlist.DisplayInfoPlayList());
+                                break;
+                            }
+                            auxSearch = auxSearch.Remove(j);
+                            auxS = auxS.Remove(j);
+                        }
+                    }
+                }
+                foreach (User user in userDataBase)
+                {
+                    if(user.Username != null)
+                    {
+                        foreach (string s in user.InfoUser())
+                        {
+                            auxSearch = search;
+                            auxS = s;
+                            lengthRemove = 0;
+
+                            if (s.Length > auxSearch.Length)
+                            {
+                                lengthRemove = auxS.Length - auxSearch.Length;
+                                auxS = auxS.Remove(auxSearch.Length, lengthRemove);
+                            }
+                            else if (s.Length < auxSearch.Length)
+                            {
+                                lengthRemove = auxSearch.Length - auxS.Length;
+                                auxSearch = auxSearch.Remove(auxS.Length, lengthRemove);
+                            }
+
+                            auxSearch = auxSearch.ToLower();
+                            auxS = auxS.ToLower();
+
+                            for (int j = auxS.Length - 1; j >= 0; j--)
+                            {
+                                if (auxSearch == auxS)
+                                {
+                                    SearchSearchResultsDomainUp.Visible = true;
+                                    SearchSearchResultsDomainUp.Items.Add("User: " + user.SearchedInfoUser());
+                                    break;
+                                }
+                                auxSearch = auxSearch.Remove(j);
+                                auxS = auxS.Remove(j);
+                            }
+                        }
+                    }
+                    
+
+                }
+
+
+
             }
             else
             {

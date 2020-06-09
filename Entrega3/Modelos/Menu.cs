@@ -1579,10 +1579,10 @@ namespace Modelos
                 for (int i = 0; i < diceUserGlobal.Count(); i++)
                 {
                     //Se recorre la lista de información del usuario.
-                    for (int x = 0; x < diceUserGlobal[i].infoUser().Count(); x++)
+                    for (int x = 0; x < diceUserGlobal[i].InfoUser().Count(); x++)
                     {
                         //Si es que encuentra una coincidencia con lo que escribío el usuario, se agrega la información de este a la lista searchEngine.
-                        if (diceUserGlobal[i].infoUser()[x] == searching)
+                        if (diceUserGlobal[i].InfoUser()[x] == searching)
                         {
                             //Condiciones que permiten observar o no la informacíon, dependiendo si es que esta se encuentra privada o no.
                             if (diceUserGlobal[i].Privacy != true)
