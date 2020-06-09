@@ -427,13 +427,16 @@ namespace Entrega3_FyBuZz
         {
 
             int cont = 0;
-            foreach (object searched in ProfileDomainUp.Items)
+            if (ProfileDomainUp.SelectedIndex != -1)
             {
-                cont++;
-            }
-            for (int i = 0; i < cont; cont--)
-            {
-                ProfileDomainUp.Items.RemoveAt(cont - 1);
+                foreach (object searched in ProfileDomainUp.Items)
+                {
+                    cont++;
+                }
+                for (int i = 0; i < cont; cont--)
+                {
+                    ProfileDomainUp.Items.RemoveAt(cont - 1);
+                }
             }
             LogInPanel.BringToFront();
 
@@ -453,22 +456,29 @@ namespace Entrega3_FyBuZz
         //-------------------------------------------------------------------------------------------
         private void ProfilesChooseProfile_Click(object sender, EventArgs e)
         {
+            ProfilesInvalidCredentialTextBox.Clear();
             soundPlayer = new SoundPlayer();
             string username = UserLogInTextBox.Text;
 
             string password = PasswordLogInTextBox.Text;
             string profileProfileName = ProfileDomainUp.Text;
+            
             List<string> profileGetterString = OnProfilesChooseProfile_Click2(profileProfileName, username, password);
-            List<string> userInfo = OnLogInLogInButton_Clicked2(UserLogInTextBox.Text);
-
-            if(userInfo[3] == "admin")
+            if (profileGetterString != null)
             {
-                DisplayStartAdminMenuButton.Visible = true;
+                List<string> userInfo = OnLogInLogInButton_Clicked2(UserLogInTextBox.Text);
+                if (userInfo[3] == "admin")
+                {
+                    DisplayStartAdminMenuButton.Visible = true;
+                }
+
+                ProfileName = profileProfileName;
+                DisplayStartPanel.BringToFront();
             }
-
-            ProfileName = profileProfileName;
-            DisplayStartPanel.BringToFront();
-
+            else
+            {
+                ProfilesInvalidCredentialTextBox.AppendText("ERROR [!]You have to choose a profile");
+            }
 
             //Creo que cada vez que necesite el perfil debo llamar a este método con el parametro
             //que venga del "ProfileDomainUp.Text"
@@ -503,12 +513,19 @@ namespace Entrega3_FyBuZz
             if (ProfilesChooseProfile_Clicked2 != null)
             {
                 List<string> choosenProfile = ProfilesChooseProfile_Clicked2(this, new ProfileEventArgs() { ProfileNameText = pName, UsernameText = usr, PasswordText = pass });
-                ProfilesInvalidCredentialTextBox.ResetText();
-                ProfilesInvalidCredentialTextBox.AppendText("Entering FyBuZz with... " + choosenProfile[0]);
+                if (choosenProfile != null)
+                {
+                    ProfilesInvalidCredentialTextBox.ResetText();
+                    ProfilesInvalidCredentialTextBox.AppendText("Entering FyBuZz with... " + choosenProfile[0]);
 
-                Thread.Sleep(2000);
-
-                return choosenProfile;
+                    Thread.Sleep(2000);
+                    return choosenProfile;
+                }
+                else
+                {
+                    return null;
+                }
+                
             }
             else
             {
@@ -520,14 +537,19 @@ namespace Entrega3_FyBuZz
         private void ProfileGoBack_Click(object sender, EventArgs e)
         {
             int cont = 0;
-            foreach(object searched in ProfileDomainUp.Items)
+            if(ProfileDomainUp.SelectedIndex != -1)
             {
-                cont++;
+                foreach (object searched in ProfileDomainUp.Items)
+                {
+                    cont++;
+                }
+
+                for (int i = 0; i < cont; cont--)
+                {
+                    ProfileDomainUp.Items.Remove(cont - 1);
+                }
             }
-            for(int i = 0; i < cont; cont--)
-            {
-                ProfileDomainUp.Items.Remove(cont - 1);
-            }
+           
             LogInPanel.BringToFront();
             UserLogInTextBox.Clear();
             PasswordLogInTextBox.Clear();
@@ -823,13 +845,16 @@ namespace Entrega3_FyBuZz
 
 
             int cont = 0;
-            foreach (object searched in SearchSearchResultsDomainUp.Items)
+            if (SearchSearchResultsDomainUp.SelectedIndex != -1)
             {
-                cont++;
-            }
-            for (int i = 0; i < cont; cont--)
-            {
-                SearchSearchResultsDomainUp.Items.RemoveAt(cont - 1);
+                foreach (object searched in SearchSearchResultsDomainUp.Items)
+                {
+                    cont++;
+                }
+                for (int i = 0; i < cont; cont--)
+                {
+                    SearchSearchResultsDomainUp.Items.RemoveAt(cont - 1);
+                }
             }
 
             if (!filtersOn)
@@ -1318,29 +1343,40 @@ namespace Entrega3_FyBuZz
 
         private void SearchViewUserButton_Click(object sender, EventArgs e)
         {
-            SearcUserPanel.BringToFront();
+            
             List<string> userGetter = OnLogInLogInButton_Clicked2(SearchSearchTextBox.Text);
-            if (userGetter[8] != "True")
+            if (SearchSearchResultsDomainUp.Text.Contains("User: "))
             {
-                SearUserName.Visible = true;
-                SearcUserEmailTextBox.Visible = true;
-                SearchUserFollowers.Visible = true;
-                SearchUserFollowing.Visible = true;
+                if (userGetter[8] != "True")
+                {
+                    SearUserName.Visible = true;
+                    SearcUserEmailTextBox.Visible = true;
+                    SearchUserFollowers.Visible = true;
+                    SearchUserFollowing.Visible = true;
 
-                SearUserName.AppendText(userGetter[0]);
-                SearcUserEmailTextBox.AppendText(userGetter[2]);
-                SearchUserFollowers.AppendText(userGetter[4]);
-                SearchUserFollowing.AppendText(userGetter[5]);
+                    SearUserName.AppendText(userGetter[0]);
+                    SearcUserEmailTextBox.AppendText(userGetter[2]);
+                    SearchUserFollowers.AppendText(userGetter[4]);
+                    SearchUserFollowing.AppendText(userGetter[5]);
+                    SearcUserPanel.BringToFront();
+                }
+                else
+                {
+                    SearUserName.Visible = true;
+                    SearcUserEmailTextBox.Visible = true;
+                    SearUserName.AppendText(userGetter[0]);
+                    SearcUserEmailTextBox.AppendText("This user is private");
+                    SearcUserPanel.BringToFront();
+                }
                 SearcUserPanel.BringToFront();
             }
             else
             {
-                SearUserName.Visible = true;
-                SearcUserEmailTextBox.Visible = true;
-                SearUserName.AppendText(userGetter[0]);
-                SearcUserEmailTextBox.AppendText("This user is private");
-                SearcUserPanel.BringToFront();
+                SearchInvalidCredentialsTextBox.AppendText("ERROR [!] That is not a User");
+                Thread.Sleep(2000);
+                SearchInvalidCredentialsTextBox.Clear();
             }
+
         }
 
         //!SEARCH PLAY PANEL
@@ -1523,11 +1559,25 @@ namespace Entrega3_FyBuZz
 
         private void SearchUserGoBack_Click(object sender, EventArgs e)
         {
+            if (SearchSearchResultsDomainUp.SelectedIndex != -1)
+            {
+                int cont = 0;
+                foreach (object searched in SearchSearchResultsDomainUp.Items)
+                {
+                    cont++;
+                }
+                for (int i = 0; i < cont; cont--)
+                {
+                    SearchSearchResultsDomainUp.Items.RemoveAt(cont - 1);
+                }
+            }
+            
             SearchPanel.BringToFront();
             SearUserName.Clear();
             SearcUserEmailTextBox.Clear();
             SearchUserFollowers.Clear();
             SearchUserFollowing.Clear();
+
         }
         //-------------------------------------------------------------------------------------------
 
@@ -1967,13 +2017,16 @@ namespace Entrega3_FyBuZz
             SearchPanel.BringToFront();
             SearchSearchResultsDomainUp.ResetText();
             int cont = 0;
-            foreach (object searched in SearchSearchResultsDomainUp.Items)
+            if (SearchSearchResultsDomainUp.SelectedIndex != -1)
             {
-                cont++;
-            }
-            for (int i = 0; i < cont; cont--)
-            {
-                SearchSearchResultsDomainUp.Items.RemoveAt(cont - 1);
+                foreach (object searched in SearchSearchResultsDomainUp.Items)
+                {
+                    cont++;
+                }
+                for (int i = 0; i < cont; cont--)
+                {
+                    SearchSearchResultsDomainUp.Items.RemoveAt(cont - 1);
+                }
             }
         }
         //-------------------------------------------------------------------------------------------
@@ -2082,13 +2135,16 @@ namespace Entrega3_FyBuZz
         private void PlayVideoGoBackButton_Click(object sender, EventArgs e)
         {
             int cont1 = 0;
-            foreach (object searched in PlayPlaylistShowMultimedia.Items)
+            if (SearchSearchResultsDomainUp.SelectedIndex != -1)
             {
-                cont1++;
-            }
-            for (int i = 0; i < cont1; cont1--)
-            {
-                PlayPlaylistShowMultimedia.Items.RemoveAt(cont1 - 1);
+                foreach (object searched in PlayPlaylistShowMultimedia.Items)
+                {
+                    cont1++;
+                }
+                for (int i = 0; i < cont1; cont1--)
+                {
+                    PlayPlaylistShowMultimedia.Items.RemoveAt(cont1 - 1);
+                }
             }
             wmpVideo.Ctlcontrols.stop();
             SearchPanel.BringToFront();
@@ -2277,6 +2333,7 @@ namespace Entrega3_FyBuZz
 
         private void PlayPlaylistChooseMultimediaButton_Click(object sender, EventArgs e)
         {
+            PlayPlaylistMultTypeTextBox.Clear();
             soundPlayer.Stop();
             windowsMediaPlayer.controls.stop();
             PlayPlaylistProgressBarBox.Value = 0;
@@ -3224,6 +3281,28 @@ namespace Entrega3_FyBuZz
 
         private void AddShowAddPlaylistButton_Click(object sender, EventArgs e)
         {
+            CreatePlaylistNameTextBox.Clear();
+            CreatePlaylistFileNameTextBox.Clear();
+            CreatePlaylistPrivacyCheckBox.CheckState = CheckState.Unchecked;
+            CreatePlaylistFileNameTextBox.Clear();
+
+            CreatePlaylistInvalidCredentialstextBox.Clear();
+            if (CreatePlaylistFormatDomainUp.SelectedIndex != -1)
+            {
+                int cont = 0;
+                if (SearchSearchResultsDomainUp.SelectedIndex != -1)
+                {
+                    foreach (object searched in CreatePlaylistFormatDomainUp.Items)
+                    {
+                        cont++;
+                    }
+                    for (int i = 0; i < cont; cont--)
+                    {
+                        CreatePlaylistFormatDomainUp.Items.RemoveAt(cont - 1);
+                    }
+                }
+            }
+
             Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
             if (profile.ProfileType != "viewer")
             {
@@ -4234,6 +4313,34 @@ namespace Entrega3_FyBuZz
         //ONEVENT
 
         //GO BACK/CLOSE
+        private void UserProfileGoBack_Click(object sender, EventArgs e)
+        {
+            if (AccountSettingsFollowerListDomainUp.SelectedIndex != -1)
+            {
+                int cont = 0;
+                foreach (object searched in AccountSettingsFollowerListDomainUp.Items)
+                {
+                    cont++;
+                }
+                for (int i = 0; i < cont; cont--)
+                {
+                    AccountSettingsFollowerListDomainUp.Items.RemoveAt(cont - 1);
+                }
+            }
+            if (AccountSettingsFollowingListDomaiUp.SelectedIndex != -1)
+            {
+                int cont = 0;
+                foreach (object searched in AccountSettingsFollowingListDomaiUp.Items)
+                {
+                    cont++;
+                }
+                for (int i = 0; i < cont; cont--)
+                {
+                    AccountSettingsFollowingListDomaiUp.Items.RemoveAt(cont - 1);
+                }
+            }
+            DisplayStartPanel.BringToFront();
+        }
 
         private void AccountProfileSettingsGoBackButton_Click(object sender, EventArgs e)
         {
@@ -4371,22 +4478,53 @@ namespace Entrega3_FyBuZz
         private void AdminMenuEraseUserButton_Click(object sender, EventArgs e)
         {
             AdminMenuMessageBox.Clear();
-            string username = AdminMenuAllUsers.Text;
-            AdminMethods(username, 0);
+            if (AdminMenuAllUsers.SelectedIndex != -1)
+            {      
+                string username = AdminMenuAllUsers.Text;
+                int index = AdminMenuAllUsers.SelectedIndex;
+                AdminMethods(username, 0);
+                if (AdminMenuAllUsers.SelectedIndex != -1)
+            
+                if (AdminMenuAllUsers.SelectedIndex != -1)
+                {
+                    AdminMenuAllUsers.Items.RemoveAt(index);
+                }
+            }
+            else
+            {
+                AdminMenuMessageBox.AppendText("Please select a valid User");
+            }
+
         }
 
         private void AdminMenuBanUserButton_Click(object sender, EventArgs e)
         {
             AdminMenuMessageBox.Clear();
-            string username = AdminMenuAllUsers.Text;
-            AdminMethods(username, 1);
+            if (AdminMenuAllUsers.SelectedIndex != -1)
+            {
+                string username = AdminMenuAllUsers.Text;
+                AdminMethods(username, 1);
+
+            }
+            else
+            {
+                AdminMenuMessageBox.AppendText("Please select a valid User");
+            }
         }
 
         private void AdminMenuBanUser_Click(object sender, EventArgs e) //Unbanea
         {
             AdminMenuMessageBox.Clear();
-            string username = AdminMenuAllUsers.Text;
-            AdminMethods(username, 2);
+            if (AdminMenuAllUsers.SelectedIndex != -1)
+            {
+                string username = AdminMenuAllUsers.Text;
+                AdminMethods(username, 2);
+
+            }
+            else
+            {
+                AdminMenuMessageBox.AppendText("Please select a valid User");
+            }
         }
         //-------------------------------------------------------------------------------------------
 
@@ -4413,14 +4551,17 @@ namespace Entrega3_FyBuZz
         private void AdminMenuGoBackButton_Click(object sender, EventArgs e)
         {
             AdminMenuMessageBox.Clear();
-            int cont = 0;
-            foreach (object searched in AdminMenuAllUsers.Items)
+            if (AdminMenuAllUsers.SelectedIndex != -1)
             {
-                cont++;
-            }
-            for (int i = 0; i < cont; cont--)
-            {
-                AdminMenuAllUsers.Items.RemoveAt(cont - 1);
+                int cont = 0;
+                foreach (object searched in AdminMenuAllUsers.Items)
+                {
+                    cont++;
+                }
+                for (int i = 0; i < cont; cont--)
+                {
+                    AdminMenuAllUsers.Items.RemoveAt(cont - 1);
+                }
             }
 
             DisplayStartPanel.BringToFront();
@@ -4574,5 +4715,7 @@ namespace Entrega3_FyBuZz
         {
 
         }
+
+        
     }
 }
