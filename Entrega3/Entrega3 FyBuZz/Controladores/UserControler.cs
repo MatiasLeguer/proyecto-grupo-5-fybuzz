@@ -39,6 +39,8 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.AddSearchedMult_Done += AddSearchedMultimedia;
             this.fyBuZz.ReturnSearchedMult_Done += ReturnSearchMultList;
             this.fyBuZz.AdminMethods_Done += AdminMethods;
+            this.fyBuZz.AddedLikedMult += AddLikedMultimedia;
+            this.fyBuZz.ReturnLikedMult_Done += ReturnLikedMultList;
         }
 
         public void Initialize()
@@ -323,6 +325,55 @@ namespace Entrega3_FyBuZz.Controladores
             }
             dataBase.Save_Users(userDataBase);
             return added;
+        }
+        private bool AddLikedMultimedia(object sender, UserEventArgs e)
+        {
+            bool added = false;
+            Profile usedProfile = null;
+            foreach (User user in userDataBase)
+            {
+                foreach (Profile profile in user.Perfiles)
+                {
+                    if (profile.ProfileName == e.ProfilenameText)
+                    {
+                        usedProfile = profile;
+                    }
+                }
+            }
+            if (e.SongFileText != null && usedProfile.PlaylistFavoritosSongs2.Contains(e.SongFileText) == false)
+            {
+                usedProfile.PlaylistFavoritosSongs2.Add(e.SongFileText);
+                added = true;
+            }
+            else if (e.VideoFileText != null && usedProfile.PlaylistFavoritosVideos2.Contains(e.VideoFileText) == false)
+            {
+                usedProfile.PlaylistFavoritosVideos2.Add(e.VideoFileText);
+                added = true;
+            }
+            dataBase.Save_Users(userDataBase);
+            return added;
+        }
+        private List<string> ReturnLikedMultList(object sender, UserEventArgs e)
+        {
+            List<string> searchMultList = new List<string>();
+            foreach (User user in userDataBase)
+            {
+                foreach (Profile profile in user.Perfiles)
+                {
+                    if (profile.ProfileName == e.ProfilenameText)
+                    {
+                        if (e.VideoFileText == "Video")
+                        {
+                            searchMultList = profile.PlaylistFavoritosVideos2;
+                        }
+                        else if (e.SongFileText == "Song")
+                        {
+                            searchMultList = profile.PlaylistFavoritosSongs2;
+                        }
+                    }
+                }
+            }
+            return searchMultList;
         }
         private List<string> ReturnSearchMultList(object sender, UserEventArgs e)
         {
