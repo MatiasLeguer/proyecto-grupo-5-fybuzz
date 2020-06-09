@@ -45,7 +45,6 @@ namespace Entrega3_FyBuZz
         //--------------------------------------------------------------------------------
 
         WindowsMediaPlayer windowsMediaPlayer = new WindowsMediaPlayer();
-        WindowsMediaPlayer randomWMP = new WindowsMediaPlayer();
         SoundPlayer soundPlayer;
         private List<string> badWords = new List<string>() { "fuck", "sex", "niggas", "sexo", "ass", "nigger", "culo", "viola", "violar", "spank", "puta", "hooker", "perra", "hoe", "cocaina", "alchohol", "blunt", "weed", "marihuana", "lcd", "kush", "krippy", "penis", "dick", "cock", "shit", "percocet" };
 
@@ -152,13 +151,14 @@ namespace Entrega3_FyBuZz
         public delegate List<string> GetLikedMult(object sender, UserEventArgs args);
         public event GetLikedMult ReturnLikedMult_Done;
 
+        public delegate List<PlayList> GetPrivatePlaylists(object sender, PlaylistEventArgs args);
+        public event GetPrivatePlaylists ReturnPrivatePls;
+
         //ATRIBUTOS
         //--------------------------------------------------------------------------------
         private string ProfileName { get; set; }
         private List<string> queueListSongs = new List<string>();
 
-        private List<string> queueListVideos = new List<string>();
-        private List<string> QueueListVideos { get => queueListVideos; set => queueListVideos = value; }
         //--------------------------------------------------------------------------------
 
 
@@ -178,13 +178,7 @@ namespace Entrega3_FyBuZz
 
 
         /*      PINO PLS VE A DONDE VA ESTO THANKS LOV U UwU         */
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ListViewGroup listViewUsers = new ListViewGroup("Users");
 
-
-            //listView1.Items.Add();
-        }
 
 
         private void button3_Click(object sender, EventArgs e)
@@ -824,6 +818,8 @@ namespace Entrega3_FyBuZz
             videoDataBase = OnSearchVideoButton_Click();
             List<PlayList> playlistDataBase = new List<PlayList>();
             playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
+            List<PlayList> privatePls = new List<PlayList>();
+            privatePls = GetPrivPlaylist();
 
 
             int cont = 0;
@@ -946,6 +942,17 @@ namespace Entrega3_FyBuZz
                             }
                             auxSearch = auxSearch.Remove(j);
                             auxS = auxS.Remove(j);
+                        }
+                    }
+                }
+                foreach(PlayList privatePl in privatePls)
+                {
+                    if (privatePl.NamePlayList != "")
+                    {
+                        if (ProfileDomainUp.Text.Contains(privatePl.ProfileCreator) && UserLogInTextBox.Text.Contains(privatePl.Creator))
+                        {
+                            SearchSearchResultsDomainUp.Visible = true;
+                            SearchSearchResultsDomainUp.Items.Add(privatePl.DisplayInfoPlayList());
                         }
                     }
                 }
@@ -1125,6 +1132,8 @@ namespace Entrega3_FyBuZz
             List<PlayList> playListsDataBase = new List<PlayList>();
             playListsDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
             List<Video> videoDataBase = OnSearchVideoButton_Click();
+            List<PlayList> privatePls = new List<PlayList>();
+            privatePls = GetPrivPlaylist();
             List<string> infoProfile = OnProfilesChooseProfile_Click2(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
 
             string multimediaType = SearchSearchResultsDomainUp.Text;
@@ -1237,8 +1246,33 @@ namespace Entrega3_FyBuZz
                         }
                     }
                 }
-                PlayPlaylistLabel.Text = "Playlist: " + plName;
-                PlayPlaylistPanel.BringToFront();
+                if (PlayPlaylistShowMultimedia.Items.Count == 0)
+                {
+                    foreach (PlayList privatePl in privatePls)
+                    {
+                        string ex = privatePl.DisplayInfoPlayList();
+                        if (privatePl.NamePlayList != "" && result == ex)
+                        {
+                            plName = privatePl.NamePlayList;
+                            if (privatePl.Format == ".mp3" || privatePl.Format == ".wav")
+                            {
+                                foreach (Song song in privatePl.Songs)
+                                {
+                                    PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                                }
+                            }
+                            else if (privatePl.Format == ".mp4" || privatePl.Format == ".mov" || privatePl.Format == ".avi")
+                            {
+                                foreach (Video video in privatePl.Videos)
+                                {
+                                    PlayPlaylistShowMultimedia.Items.Add(video.SearchedInfoVideo());
+                                }
+                            }
+                        }
+                    }
+                    PlayPlaylistLabel.Text = "Playlist: " + plName;
+                    PlayPlaylistPanel.BringToFront();
+                }
             }
 
             else if (multimediaType.Contains("Video:") == true)
@@ -3993,7 +4027,11 @@ namespace Entrega3_FyBuZz
             UserProfileChangeInfoPanel.BringToFront();
             UserProfilChangeInfoMessageBox.AppendText("Change Username.");
             UserProfileChangeInfoNewUsernameTextBox.Visible = true;
+            UserProfileChangeInfoNewPasswordTextBox.Visible = false;
+            UserProfileChangeInfoNewProfilenameTextBox.Visible = false;
             label12.Visible = true;
+            label10.Visible = false;
+            label11.Visible = false;
         }
 
         private void UserSettinChangePasswordButton_Click(object sender, EventArgs e)
@@ -4003,6 +4041,10 @@ namespace Entrega3_FyBuZz
             UserProfileChangeInfoPanel.BringToFront();
             UserProfilChangeInfoMessageBox.AppendText("Change Password.");
             UserProfileChangeInfoNewPasswordTextBox.Visible = true;
+            UserProfileChangeInfoNewUsernameTextBox.Visible = false;
+            UserProfileChangeInfoNewProfilenameTextBox.Visible = false;
+            label12.Visible = false;
+            label10.Visible = false;
             label11.Visible = true;
         }
 
@@ -4013,7 +4055,11 @@ namespace Entrega3_FyBuZz
             UserProfileChangeInfoPanel.BringToFront();
             UserProfilChangeInfoMessageBox.AppendText("Change Accountype.");
             UserProfileChangeInfoNewProfilenameTextBox.Visible = true;
+            UserProfileChangeInfoNewUsernameTextBox.Visible = false;
+            UserProfileChangeInfoNewPasswordTextBox.Visible = false;
             label10.Visible = true;
+            label12.Visible = false;
+            label11.Visible = false;
         }
 
         //ONEVENT
@@ -4340,7 +4386,24 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
+        public List<PlayList> GetPrivPlaylist()
+        {
+            List<PlayList> privatePls = new List<PlayList>();
+            if (ReturnPrivatePls != null)
+            {
+                privatePls = ReturnPrivatePls(this, new PlaylistEventArgs());
+            }
+            return privatePls;
+        }
 
+        private void ProfilesWelcomeTextBox_TextChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void SearchInvalidCredentialsTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
