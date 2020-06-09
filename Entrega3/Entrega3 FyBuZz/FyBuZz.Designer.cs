@@ -385,6 +385,7 @@
             this.UserProfileChangeInfoConfirmButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoGoBackButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoLabel = new System.Windows.Forms.Label();
+            this.UserProfileGoBack = new System.Windows.Forms.Button();
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -480,7 +481,7 @@
             this.WelcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WelcomeLabel.ForeColor = System.Drawing.Color.White;
-            this.WelcomeLabel.Location = new System.Drawing.Point(306, 76);
+            this.WelcomeLabel.Location = new System.Drawing.Point(297, 73);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(510, 55);
             this.WelcomeLabel.TabIndex = 0;
@@ -933,6 +934,7 @@
             this.ProfilesInvalidCredentialTextBox.ForeColor = System.Drawing.Color.White;
             this.ProfilesInvalidCredentialTextBox.Location = new System.Drawing.Point(244, 394);
             this.ProfilesInvalidCredentialTextBox.Name = "ProfilesInvalidCredentialTextBox";
+            this.ProfilesInvalidCredentialTextBox.ReadOnly = true;
             this.ProfilesInvalidCredentialTextBox.Size = new System.Drawing.Size(537, 45);
             this.ProfilesInvalidCredentialTextBox.TabIndex = 10;
             this.ProfilesInvalidCredentialTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -972,6 +974,7 @@
             this.ProfileDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileDomainUp.Location = new System.Drawing.Point(315, 304);
             this.ProfileDomainUp.Name = "ProfileDomainUp";
+            this.ProfileDomainUp.ReadOnly = true;
             this.ProfileDomainUp.Size = new System.Drawing.Size(406, 45);
             this.ProfileDomainUp.TabIndex = 6;
             this.ProfileDomainUp.Text = "Profiles:";
@@ -1378,6 +1381,7 @@
             // 
             // AccountProfileSettingsSplitContainer.Panel1
             // 
+            this.AccountProfileSettingsSplitContainer.Panel1.Controls.Add(this.UserProfileGoBack);
             this.AccountProfileSettingsSplitContainer.Panel1.Controls.Add(this.UserSettinChangePasswordButton);
             this.AccountProfileSettingsSplitContainer.Panel1.Controls.Add(this.AccountSettingAccounTypeChangeButton);
             this.AccountProfileSettingsSplitContainer.Panel1.Controls.Add(this.UserSettinChangeUsernameButton);
@@ -1424,7 +1428,7 @@
             // 
             this.UserSettinChangePasswordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserSettinChangePasswordButton.ForeColor = System.Drawing.Color.Black;
-            this.UserSettinChangePasswordButton.Location = new System.Drawing.Point(368, 119);
+            this.UserSettinChangePasswordButton.Location = new System.Drawing.Point(614, 123);
             this.UserSettinChangePasswordButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserSettinChangePasswordButton.Name = "UserSettinChangePasswordButton";
             this.UserSettinChangePasswordButton.Size = new System.Drawing.Size(113, 27);
@@ -1437,7 +1441,7 @@
             // 
             this.AccountSettingAccounTypeChangeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingAccounTypeChangeButton.ForeColor = System.Drawing.Color.Black;
-            this.AccountSettingAccounTypeChangeButton.Location = new System.Drawing.Point(368, 196);
+            this.AccountSettingAccounTypeChangeButton.Location = new System.Drawing.Point(614, 200);
             this.AccountSettingAccounTypeChangeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AccountSettingAccounTypeChangeButton.Name = "AccountSettingAccounTypeChangeButton";
             this.AccountSettingAccounTypeChangeButton.Size = new System.Drawing.Size(113, 28);
@@ -1450,7 +1454,7 @@
             // 
             this.UserSettinChangeUsernameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserSettinChangeUsernameButton.ForeColor = System.Drawing.Color.Black;
-            this.UserSettinChangeUsernameButton.Location = new System.Drawing.Point(368, 75);
+            this.UserSettinChangeUsernameButton.Location = new System.Drawing.Point(614, 79);
             this.UserSettinChangeUsernameButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserSettinChangeUsernameButton.Name = "UserSettinChangeUsernameButton";
             this.UserSettinChangeUsernameButton.Size = new System.Drawing.Size(114, 27);
@@ -1462,7 +1466,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(519, 25);
+            this.pictureBox5.Location = new System.Drawing.Point(824, 32);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(140, 127);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1473,7 +1477,7 @@
             // 
             this.AccountProfileSettingsLabelUsername.AutoSize = true;
             this.AccountProfileSettingsLabelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountProfileSettingsLabelUsername.Location = new System.Drawing.Point(178, 78);
+            this.AccountProfileSettingsLabelUsername.Location = new System.Drawing.Point(424, 82);
             this.AccountProfileSettingsLabelUsername.Name = "AccountProfileSettingsLabelUsername";
             this.AccountProfileSettingsLabelUsername.Size = new System.Drawing.Size(0, 20);
             this.AccountProfileSettingsLabelUsername.TabIndex = 52;
@@ -1481,7 +1485,7 @@
             // AccountSettingsFollowerListDomainUp
             // 
             this.AccountSettingsFollowerListDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsFollowerListDomainUp.Location = new System.Drawing.Point(247, 234);
+            this.AccountSettingsFollowerListDomainUp.Location = new System.Drawing.Point(493, 238);
             this.AccountSettingsFollowerListDomainUp.Name = "AccountSettingsFollowerListDomainUp";
             this.AccountSettingsFollowerListDomainUp.Size = new System.Drawing.Size(229, 27);
             this.AccountSettingsFollowerListDomainUp.TabIndex = 51;
@@ -1490,7 +1494,7 @@
             // AccountSettingsFollowingListDomaiUp
             // 
             this.AccountSettingsFollowingListDomaiUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsFollowingListDomaiUp.Location = new System.Drawing.Point(247, 275);
+            this.AccountSettingsFollowingListDomaiUp.Location = new System.Drawing.Point(493, 279);
             this.AccountSettingsFollowingListDomaiUp.Name = "AccountSettingsFollowingListDomaiUp";
             this.AccountSettingsFollowingListDomaiUp.Size = new System.Drawing.Size(229, 27);
             this.AccountSettingsFollowingListDomaiUp.TabIndex = 50;
@@ -1501,7 +1505,7 @@
             this.AccountSettingsFollowingTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.AccountSettingsFollowingTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsFollowingTextBox.ForeColor = System.Drawing.Color.White;
-            this.AccountSettingsFollowingTextBox.Location = new System.Drawing.Point(177, 275);
+            this.AccountSettingsFollowingTextBox.Location = new System.Drawing.Point(423, 279);
             this.AccountSettingsFollowingTextBox.Name = "AccountSettingsFollowingTextBox";
             this.AccountSettingsFollowingTextBox.Size = new System.Drawing.Size(36, 27);
             this.AccountSettingsFollowingTextBox.TabIndex = 12;
@@ -1511,7 +1515,7 @@
             this.AccountSettingsFollowersTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.AccountSettingsFollowersTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsFollowersTextBox.ForeColor = System.Drawing.Color.White;
-            this.AccountSettingsFollowersTextBox.Location = new System.Drawing.Point(177, 234);
+            this.AccountSettingsFollowersTextBox.Location = new System.Drawing.Point(423, 238);
             this.AccountSettingsFollowersTextBox.Name = "AccountSettingsFollowersTextBox";
             this.AccountSettingsFollowersTextBox.Size = new System.Drawing.Size(36, 27);
             this.AccountSettingsFollowersTextBox.TabIndex = 11;
@@ -1521,7 +1525,7 @@
             this.AccountSettingsAccountTypeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.AccountSettingsAccountTypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsAccountTypeTextBox.ForeColor = System.Drawing.Color.White;
-            this.AccountSettingsAccountTypeTextBox.Location = new System.Drawing.Point(177, 195);
+            this.AccountSettingsAccountTypeTextBox.Location = new System.Drawing.Point(423, 199);
             this.AccountSettingsAccountTypeTextBox.Name = "AccountSettingsAccountTypeTextBox";
             this.AccountSettingsAccountTypeTextBox.ReadOnly = true;
             this.AccountSettingsAccountTypeTextBox.Size = new System.Drawing.Size(178, 27);
@@ -1532,7 +1536,7 @@
             this.AccountSettingsEmailTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.AccountSettingsEmailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsEmailTextBox.ForeColor = System.Drawing.Color.White;
-            this.AccountSettingsEmailTextBox.Location = new System.Drawing.Point(177, 156);
+            this.AccountSettingsEmailTextBox.Location = new System.Drawing.Point(423, 160);
             this.AccountSettingsEmailTextBox.Name = "AccountSettingsEmailTextBox";
             this.AccountSettingsEmailTextBox.ReadOnly = true;
             this.AccountSettingsEmailTextBox.Size = new System.Drawing.Size(178, 27);
@@ -1543,7 +1547,7 @@
             this.AccountSettingsPasswordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.AccountSettingsPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsPasswordTextBox.ForeColor = System.Drawing.Color.White;
-            this.AccountSettingsPasswordTextBox.Location = new System.Drawing.Point(177, 119);
+            this.AccountSettingsPasswordTextBox.Location = new System.Drawing.Point(423, 123);
             this.AccountSettingsPasswordTextBox.Name = "AccountSettingsPasswordTextBox";
             this.AccountSettingsPasswordTextBox.ReadOnly = true;
             this.AccountSettingsPasswordTextBox.Size = new System.Drawing.Size(178, 27);
@@ -1554,7 +1558,7 @@
             this.AccountSettingsUsernameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.AccountSettingsUsernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsUsernameTextBox.ForeColor = System.Drawing.Color.White;
-            this.AccountSettingsUsernameTextBox.Location = new System.Drawing.Point(177, 78);
+            this.AccountSettingsUsernameTextBox.Location = new System.Drawing.Point(423, 82);
             this.AccountSettingsUsernameTextBox.Name = "AccountSettingsUsernameTextBox";
             this.AccountSettingsUsernameTextBox.ReadOnly = true;
             this.AccountSettingsUsernameTextBox.Size = new System.Drawing.Size(178, 27);
@@ -1564,7 +1568,7 @@
             // 
             this.AccountSettingsFollowersLabel.AutoSize = true;
             this.AccountSettingsFollowersLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsFollowersLabel.Location = new System.Drawing.Point(40, 241);
+            this.AccountSettingsFollowersLabel.Location = new System.Drawing.Point(286, 245);
             this.AccountSettingsFollowersLabel.Name = "AccountSettingsFollowersLabel";
             this.AccountSettingsFollowersLabel.Size = new System.Drawing.Size(81, 20);
             this.AccountSettingsFollowersLabel.TabIndex = 6;
@@ -1574,7 +1578,7 @@
             // 
             this.AccountSettingsPasswordLabel.AutoSize = true;
             this.AccountSettingsPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsPasswordLabel.Location = new System.Drawing.Point(38, 119);
+            this.AccountSettingsPasswordLabel.Location = new System.Drawing.Point(284, 123);
             this.AccountSettingsPasswordLabel.Name = "AccountSettingsPasswordLabel";
             this.AccountSettingsPasswordLabel.Size = new System.Drawing.Size(83, 20);
             this.AccountSettingsPasswordLabel.TabIndex = 5;
@@ -1584,7 +1588,7 @@
             // 
             this.AccountSettingsAccountTypeLabel.AutoSize = true;
             this.AccountSettingsAccountTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsAccountTypeLabel.Location = new System.Drawing.Point(38, 201);
+            this.AccountSettingsAccountTypeLabel.Location = new System.Drawing.Point(284, 205);
             this.AccountSettingsAccountTypeLabel.Name = "AccountSettingsAccountTypeLabel";
             this.AccountSettingsAccountTypeLabel.Size = new System.Drawing.Size(111, 20);
             this.AccountSettingsAccountTypeLabel.TabIndex = 4;
@@ -1594,7 +1598,7 @@
             // 
             this.AccountSettingsFollowingLabel.AutoSize = true;
             this.AccountSettingsFollowingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsFollowingLabel.Location = new System.Drawing.Point(38, 282);
+            this.AccountSettingsFollowingLabel.Location = new System.Drawing.Point(284, 286);
             this.AccountSettingsFollowingLabel.Name = "AccountSettingsFollowingLabel";
             this.AccountSettingsFollowingLabel.Size = new System.Drawing.Size(79, 20);
             this.AccountSettingsFollowingLabel.TabIndex = 3;
@@ -1604,7 +1608,7 @@
             // 
             this.AccountSettingsEmalLabel.AutoSize = true;
             this.AccountSettingsEmalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsEmalLabel.Location = new System.Drawing.Point(38, 159);
+            this.AccountSettingsEmalLabel.Location = new System.Drawing.Point(284, 163);
             this.AccountSettingsEmalLabel.Name = "AccountSettingsEmalLabel";
             this.AccountSettingsEmalLabel.Size = new System.Drawing.Size(51, 20);
             this.AccountSettingsEmalLabel.TabIndex = 2;
@@ -1614,7 +1618,7 @@
             // 
             this.AccountSettingsUsernameLabel.AutoSize = true;
             this.AccountSettingsUsernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsUsernameLabel.Location = new System.Drawing.Point(38, 78);
+            this.AccountSettingsUsernameLabel.Location = new System.Drawing.Point(284, 82);
             this.AccountSettingsUsernameLabel.Name = "AccountSettingsUsernameLabel";
             this.AccountSettingsUsernameLabel.Size = new System.Drawing.Size(86, 20);
             this.AccountSettingsUsernameLabel.TabIndex = 1;
@@ -1623,7 +1627,7 @@
             // AccountSettingsLabel
             // 
             this.AccountSettingsLabel.AutoSize = true;
-            this.AccountSettingsLabel.Location = new System.Drawing.Point(35, 25);
+            this.AccountSettingsLabel.Location = new System.Drawing.Point(281, 29);
             this.AccountSettingsLabel.Name = "AccountSettingsLabel";
             this.AccountSettingsLabel.Size = new System.Drawing.Size(263, 38);
             this.AccountSettingsLabel.TabIndex = 0;
@@ -1633,7 +1637,7 @@
             // 
             this.ProfileSettingsChangeProfilePicButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsChangeProfilePicButton.ForeColor = System.Drawing.Color.Black;
-            this.ProfileSettingsChangeProfilePicButton.Location = new System.Drawing.Point(545, 204);
+            this.ProfileSettingsChangeProfilePicButton.Location = new System.Drawing.Point(646, 218);
             this.ProfileSettingsChangeProfilePicButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ProfileSettingsChangeProfilePicButton.Name = "ProfileSettingsChangeProfilePicButton";
             this.ProfileSettingsChangeProfilePicButton.Size = new System.Drawing.Size(125, 30);
@@ -1658,7 +1662,7 @@
             // ProfileSettingsProfilePicImageBox
             // 
             this.ProfileSettingsProfilePicImageBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ProfileSettingsProfilePicImageBox.Location = new System.Drawing.Point(526, 99);
+            this.ProfileSettingsProfilePicImageBox.Location = new System.Drawing.Point(627, 113);
             this.ProfileSettingsProfilePicImageBox.Name = "ProfileSettingsProfilePicImageBox";
             this.ProfileSettingsProfilePicImageBox.Size = new System.Drawing.Size(144, 101);
             this.ProfileSettingsProfilePicImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1670,7 +1674,7 @@
             this.ProfileSettingsBirthdayTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.ProfileSettingsBirthdayTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsBirthdayTextBox.ForeColor = System.Drawing.Color.White;
-            this.ProfileSettingsBirthdayTextBox.Location = new System.Drawing.Point(178, 204);
+            this.ProfileSettingsBirthdayTextBox.Location = new System.Drawing.Point(385, 222);
             this.ProfileSettingsBirthdayTextBox.Name = "ProfileSettingsBirthdayTextBox";
             this.ProfileSettingsBirthdayTextBox.ReadOnly = true;
             this.ProfileSettingsBirthdayTextBox.Size = new System.Drawing.Size(178, 27);
@@ -1681,7 +1685,7 @@
             this.ProfileSettingsGenderTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.ProfileSettingsGenderTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsGenderTextBox.ForeColor = System.Drawing.Color.White;
-            this.ProfileSettingsGenderTextBox.Location = new System.Drawing.Point(178, 162);
+            this.ProfileSettingsGenderTextBox.Location = new System.Drawing.Point(385, 180);
             this.ProfileSettingsGenderTextBox.Name = "ProfileSettingsGenderTextBox";
             this.ProfileSettingsGenderTextBox.ReadOnly = true;
             this.ProfileSettingsGenderTextBox.Size = new System.Drawing.Size(178, 27);
@@ -1692,7 +1696,7 @@
             this.ProfileSettingsProfileTypeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.ProfileSettingsProfileTypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsProfileTypeTextBox.ForeColor = System.Drawing.Color.White;
-            this.ProfileSettingsProfileTypeTextBox.Location = new System.Drawing.Point(178, 116);
+            this.ProfileSettingsProfileTypeTextBox.Location = new System.Drawing.Point(385, 134);
             this.ProfileSettingsProfileTypeTextBox.Name = "ProfileSettingsProfileTypeTextBox";
             this.ProfileSettingsProfileTypeTextBox.ReadOnly = true;
             this.ProfileSettingsProfileTypeTextBox.Size = new System.Drawing.Size(178, 27);
@@ -1703,7 +1707,7 @@
             this.ProfileSettingsNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.ProfileSettingsNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsNameTextBox.ForeColor = System.Drawing.Color.White;
-            this.ProfileSettingsNameTextBox.Location = new System.Drawing.Point(178, 72);
+            this.ProfileSettingsNameTextBox.Location = new System.Drawing.Point(385, 90);
             this.ProfileSettingsNameTextBox.Name = "ProfileSettingsNameTextBox";
             this.ProfileSettingsNameTextBox.ReadOnly = true;
             this.ProfileSettingsNameTextBox.Size = new System.Drawing.Size(178, 27);
@@ -1713,7 +1717,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(37, 207);
+            this.label1.Location = new System.Drawing.Point(244, 225);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 20);
             this.label1.TabIndex = 18;
@@ -1723,7 +1727,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(525, 71);
+            this.label2.Location = new System.Drawing.Point(626, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 20);
             this.label2.TabIndex = 17;
@@ -1733,7 +1737,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(37, 165);
+            this.label3.Location = new System.Drawing.Point(244, 183);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 20);
             this.label3.TabIndex = 16;
@@ -1743,7 +1747,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(39, 122);
+            this.label5.Location = new System.Drawing.Point(246, 140);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(98, 20);
             this.label5.TabIndex = 14;
@@ -1753,7 +1757,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(39, 75);
+            this.label6.Location = new System.Drawing.Point(246, 93);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 20);
             this.label6.TabIndex = 13;
@@ -1762,7 +1766,7 @@
             // ProfileSettingsLabel
             // 
             this.ProfileSettingsLabel.AutoSize = true;
-            this.ProfileSettingsLabel.Location = new System.Drawing.Point(35, 21);
+            this.ProfileSettingsLabel.Location = new System.Drawing.Point(384, 18);
             this.ProfileSettingsLabel.Name = "ProfileSettingsLabel";
             this.ProfileSettingsLabel.Size = new System.Drawing.Size(236, 38);
             this.ProfileSettingsLabel.TabIndex = 1;
@@ -1850,6 +1854,7 @@
             this.SearchPlayingLabel.ForeColor = System.Drawing.Color.White;
             this.SearchPlayingLabel.Location = new System.Drawing.Point(283, 10);
             this.SearchPlayingLabel.Name = "SearchPlayingLabel";
+            this.SearchPlayingLabel.ReadOnly = true;
             this.SearchPlayingLabel.Size = new System.Drawing.Size(410, 15);
             this.SearchPlayingLabel.TabIndex = 35;
             this.SearchPlayingLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2039,6 +2044,7 @@
             this.SearchSearchResultsDomainUp.Location = new System.Drawing.Point(258, 469);
             this.SearchSearchResultsDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchSearchResultsDomainUp.Name = "SearchSearchResultsDomainUp";
+            this.SearchSearchResultsDomainUp.ReadOnly = true;
             this.SearchSearchResultsDomainUp.Size = new System.Drawing.Size(540, 36);
             this.SearchSearchResultsDomainUp.TabIndex = 10;
             this.SearchSearchResultsDomainUp.Text = "Search Results:";
@@ -2643,6 +2649,7 @@
             // PlayPlaylistPanel
             // 
             this.PlayPlaylistPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistLabel);
             this.PlayPlaylistPanel.Controls.Add(this.pictureBox6);
             this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistMultTypeTextBox);
             this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistLoopCheckBox);
@@ -2651,7 +2658,6 @@
             this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistChooseMultimediaButton);
             this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistGoBackButton);
             this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistShowMultimedia);
-            this.PlayPlaylistPanel.Controls.Add(this.PlayPlaylistLabel);
             this.PlayPlaylistPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayPlaylistPanel.Location = new System.Drawing.Point(0, 0);
             this.PlayPlaylistPanel.MinimumSize = new System.Drawing.Size(1024, 768);
@@ -2717,8 +2723,9 @@
             this.PlayPlaylistMessageBox.BackColor = System.Drawing.Color.Black;
             this.PlayPlaylistMessageBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayPlaylistMessageBox.ForeColor = System.Drawing.Color.White;
-            this.PlayPlaylistMessageBox.Location = new System.Drawing.Point(164, 35);
+            this.PlayPlaylistMessageBox.Location = new System.Drawing.Point(300, 37);
             this.PlayPlaylistMessageBox.Name = "PlayPlaylistMessageBox";
+            this.PlayPlaylistMessageBox.ReadOnly = true;
             this.PlayPlaylistMessageBox.Size = new System.Drawing.Size(410, 15);
             this.PlayPlaylistMessageBox.TabIndex = 35;
             this.PlayPlaylistMessageBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2825,6 +2832,7 @@
             this.PlayPlaylistShowMultimedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayPlaylistShowMultimedia.Location = new System.Drawing.Point(238, 372);
             this.PlayPlaylistShowMultimedia.Name = "PlayPlaylistShowMultimedia";
+            this.PlayPlaylistShowMultimedia.ReadOnly = true;
             this.PlayPlaylistShowMultimedia.Size = new System.Drawing.Size(542, 27);
             this.PlayPlaylistShowMultimedia.TabIndex = 1;
             this.PlayPlaylistShowMultimedia.Text = "Multimedia in Playlist:";
@@ -2867,7 +2875,7 @@
             this.AdminMenuMessageBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.AdminMenuMessageBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AdminMenuMessageBox.ForeColor = System.Drawing.Color.White;
-            this.AdminMenuMessageBox.Location = new System.Drawing.Point(191, 766);
+            this.AdminMenuMessageBox.Location = new System.Drawing.Point(346, 398);
             this.AdminMenuMessageBox.Name = "AdminMenuMessageBox";
             this.AdminMenuMessageBox.Size = new System.Drawing.Size(278, 15);
             this.AdminMenuMessageBox.TabIndex = 11;
@@ -2878,13 +2886,14 @@
             this.AdminMenuAllUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminMenuAllUsers.Location = new System.Drawing.Point(297, 447);
             this.AdminMenuAllUsers.Name = "AdminMenuAllUsers";
+            this.AdminMenuAllUsers.ReadOnly = true;
             this.AdminMenuAllUsers.Size = new System.Drawing.Size(402, 27);
             this.AdminMenuAllUsers.TabIndex = 10;
             this.AdminMenuAllUsers.Text = "Please select a User:";
             // 
             // AdminMenuBanUser
             // 
-            this.AdminMenuBanUser.Location = new System.Drawing.Point(364, 653);
+            this.AdminMenuBanUser.Location = new System.Drawing.Point(366, 648);
             this.AdminMenuBanUser.Name = "AdminMenuBanUser";
             this.AdminMenuBanUser.Size = new System.Drawing.Size(278, 63);
             this.AdminMenuBanUser.TabIndex = 9;
@@ -2920,16 +2929,16 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(357, 168);
+            this.pictureBox4.Location = new System.Drawing.Point(384, 170);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(278, 255);
+            this.pictureBox4.Size = new System.Drawing.Size(221, 200);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 5;
             this.pictureBox4.TabStop = false;
             // 
             // AdminMenuBanUserButton
             // 
-            this.AdminMenuBanUserButton.Location = new System.Drawing.Point(364, 576);
+            this.AdminMenuBanUserButton.Location = new System.Drawing.Point(366, 571);
             this.AdminMenuBanUserButton.Name = "AdminMenuBanUserButton";
             this.AdminMenuBanUserButton.Size = new System.Drawing.Size(278, 63);
             this.AdminMenuBanUserButton.TabIndex = 2;
@@ -2952,7 +2961,7 @@
             this.AdminMenuLabel.AutoSize = true;
             this.AdminMenuLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminMenuLabel.ForeColor = System.Drawing.Color.White;
-            this.AdminMenuLabel.Location = new System.Drawing.Point(305, 36);
+            this.AdminMenuLabel.Location = new System.Drawing.Point(349, 37);
             this.AdminMenuLabel.Name = "AdminMenuLabel";
             this.AdminMenuLabel.Size = new System.Drawing.Size(306, 58);
             this.AdminMenuLabel.TabIndex = 0;
@@ -4709,30 +4718,42 @@
             this.UserProfileChangeInfoLabel.TabIndex = 0;
             this.UserProfileChangeInfoLabel.Text = "Change Settings";
             // 
+            // UserProfileGoBack
+            // 
+            this.UserProfileGoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserProfileGoBack.ForeColor = System.Drawing.Color.Black;
+            this.UserProfileGoBack.Location = new System.Drawing.Point(45, 42);
+            this.UserProfileGoBack.Name = "UserProfileGoBack";
+            this.UserProfileGoBack.Size = new System.Drawing.Size(115, 45);
+            this.UserProfileGoBack.TabIndex = 56;
+            this.UserProfileGoBack.Text = "Go Back";
+            this.UserProfileGoBack.UseVisualStyleBackColor = true;
+            this.UserProfileGoBack.Click += new System.EventHandler(this.UserProfileGoBack_Click);
+            // 
             // FyBuZz
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 721);
-            this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.AdminMenuPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
-            this.Controls.Add(this.PlayVideoPanel);
+            this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.SearchPanel);
-            this.Controls.Add(this.AccountProfileSettingsPanel);
-            this.Controls.Add(this.AddShowPanel);
-            this.Controls.Add(this.PlaySongPanel);
-            this.Controls.Add(this.SearcUserPanel);
-            this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.ProfilePanel);
+            this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.CreatePlaylistPanel);
+            this.Controls.Add(this.AddShowPanel);
+            this.Controls.Add(this.AccountProfileSettingsPanel);
+            this.Controls.Add(this.SearcUserPanel);
+            this.Controls.Add(this.PlayVideoPanel);
+            this.Controls.Add(this.PlaySongPanel);
+            this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
             this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.LogInPanel);
-            this.Controls.Add(this.DisplayPlaylistPanel);
-            this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.CreateProfilePanel);
             this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.CreateVideoPanel);
-            this.Controls.Add(this.AdminMenuPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximumSize = new System.Drawing.Size(1024, 768);
@@ -5184,5 +5205,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button PlayVideoFullScreenButton;
         private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Button UserProfileGoBack;
     }
 }
