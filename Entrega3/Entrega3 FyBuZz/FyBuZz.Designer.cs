@@ -551,7 +551,7 @@
             this.RegisterPanel.Location = new System.Drawing.Point(0, 0);
             this.RegisterPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RegisterPanel.Name = "RegisterPanel";
-            this.RegisterPanel.Size = new System.Drawing.Size(1002, 712);
+            this.RegisterPanel.Size = new System.Drawing.Size(977, 712);
             this.RegisterPanel.TabIndex = 1;
             // 
             // RegisterLogo
@@ -813,7 +813,7 @@
             this.LogInPanel.Location = new System.Drawing.Point(0, 0);
             this.LogInPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LogInPanel.Name = "LogInPanel";
-            this.LogInPanel.Size = new System.Drawing.Size(1002, 712);
+            this.LogInPanel.Size = new System.Drawing.Size(977, 712);
             this.LogInPanel.TabIndex = 2;
             // 
             // LogInLogo
@@ -929,7 +929,7 @@
             this.ProfilePanel.Location = new System.Drawing.Point(0, 0);
             this.ProfilePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProfilePanel.Name = "ProfilePanel";
-            this.ProfilePanel.Size = new System.Drawing.Size(1002, 712);
+            this.ProfilePanel.Size = new System.Drawing.Size(977, 712);
             this.ProfilePanel.TabIndex = 3;
             // 
             // ProfilesWelcomeTextBox
@@ -1048,7 +1048,7 @@
             this.CreateProfilePanel.Location = new System.Drawing.Point(0, 0);
             this.CreateProfilePanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateProfilePanel.Name = "CreateProfilePanel";
-            this.CreateProfilePanel.Size = new System.Drawing.Size(1002, 712);
+            this.CreateProfilePanel.Size = new System.Drawing.Size(977, 712);
             this.CreateProfilePanel.TabIndex = 4;
             // 
             // CreateProfilePicCheckedListBox
@@ -1282,7 +1282,7 @@
             this.DisplayStartPanel.Location = new System.Drawing.Point(0, 0);
             this.DisplayStartPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DisplayStartPanel.Name = "DisplayStartPanel";
-            this.DisplayStartPanel.Size = new System.Drawing.Size(1002, 712);
+            this.DisplayStartPanel.Size = new System.Drawing.Size(977, 712);
             this.DisplayStartPanel.TabIndex = 5;
             // 
             // DisplayStartLabel
@@ -1404,7 +1404,7 @@
             this.AccountProfileSettingsPanel.Location = new System.Drawing.Point(0, 0);
             this.AccountProfileSettingsPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AccountProfileSettingsPanel.Name = "AccountProfileSettingsPanel";
-            this.AccountProfileSettingsPanel.Size = new System.Drawing.Size(1002, 712);
+            this.AccountProfileSettingsPanel.Size = new System.Drawing.Size(977, 712);
             this.AccountProfileSettingsPanel.TabIndex = 6;
             // 
             // AccountProfileSettingsSplitContainer
@@ -1857,7 +1857,7 @@
             this.SearchPanel.Location = new System.Drawing.Point(0, 0);
             this.SearchPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchPanel.Name = "SearchPanel";
-            this.SearchPanel.Size = new System.Drawing.Size(1002, 712);
+            this.SearchPanel.Size = new System.Drawing.Size(977, 712);
             this.SearchPanel.TabIndex = 7;
             // 
             // SearchQueueDomainUp
@@ -1896,7 +1896,7 @@
             this.SearchPlayingPanel.Location = new System.Drawing.Point(0, 527);
             this.SearchPlayingPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SearchPlayingPanel.Name = "SearchPlayingPanel";
-            this.SearchPlayingPanel.Size = new System.Drawing.Size(1002, 185);
+            this.SearchPlayingPanel.Size = new System.Drawing.Size(977, 185);
             this.SearchPlayingPanel.TabIndex = 32;
             this.SearchPlayingPanel.Visible = false;
             // 
@@ -2163,7 +2163,7 @@
             this.PlayerPanel.Location = new System.Drawing.Point(0, 470);
             this.PlayerPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PlayerPanel.Name = "PlayerPanel";
-            this.PlayerPanel.Size = new System.Drawing.Size(1002, 242);
+            this.PlayerPanel.Size = new System.Drawing.Size(977, 242);
             this.PlayerPanel.TabIndex = 15;
             // 
             // PlayerPlayingLabel
@@ -2263,7 +2263,7 @@
             this.AddShowPanel.Location = new System.Drawing.Point(0, 0);
             this.AddShowPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AddShowPanel.Name = "AddShowPanel";
-            this.AddShowPanel.Size = new System.Drawing.Size(1002, 712);
+            this.AddShowPanel.Size = new System.Drawing.Size(977, 712);
             this.AddShowPanel.TabIndex = 7;
             // 
             // AddShowInvalidCredentialsLabel
@@ -2416,7 +2416,7 @@
             this.DisplayPlaylistPanel.Location = new System.Drawing.Point(0, 0);
             this.DisplayPlaylistPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DisplayPlaylistPanel.Name = "DisplayPlaylistPanel";
-            this.DisplayPlaylistPanel.Size = new System.Drawing.Size(1002, 712);
+            this.DisplayPlaylistPanel.Size = new System.Drawing.Size(977, 712);
             this.DisplayPlaylistPanel.TabIndex = 8;
             // 
             // label19
@@ -2746,7 +2746,7 @@
             this.PlayPlaylistPanel.Location = new System.Drawing.Point(0, 0);
             this.PlayPlaylistPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PlayPlaylistPanel.Name = "PlayPlaylistPanel";
-            this.PlayPlaylistPanel.Size = new System.Drawing.Size(1002, 712);
+            this.PlayPlaylistPanel.Size = new System.Drawing.Size(977, 712);
             this.PlayPlaylistPanel.TabIndex = 8;
             // 
             // pictureBox6
@@ -2798,7 +2798,7 @@
             this.PlayPlaylistPlayerPanel.Location = new System.Drawing.Point(0, 506);
             this.PlayPlaylistPlayerPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayPlaylistPlayerPanel.Name = "PlayPlaylistPlayerPanel";
-            this.PlayPlaylistPlayerPanel.Size = new System.Drawing.Size(1002, 206);
+            this.PlayPlaylistPlayerPanel.Size = new System.Drawing.Size(977, 206);
             this.PlayPlaylistPlayerPanel.TabIndex = 16;
             this.PlayPlaylistPlayerPanel.Visible = false;
             // 
@@ -2952,7 +2952,7 @@
             this.AdminMenuPanel.Location = new System.Drawing.Point(0, 0);
             this.AdminMenuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AdminMenuPanel.Name = "AdminMenuPanel";
-            this.AdminMenuPanel.Size = new System.Drawing.Size(1002, 712);
+            this.AdminMenuPanel.Size = new System.Drawing.Size(977, 712);
             this.AdminMenuPanel.TabIndex = 9;
             // 
             // AdminMenuMessageBox
@@ -3094,7 +3094,7 @@
             this.CreateSongPanel.Location = new System.Drawing.Point(0, 0);
             this.CreateSongPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CreateSongPanel.Name = "CreateSongPanel";
-            this.CreateSongPanel.Size = new System.Drawing.Size(1002, 712);
+            this.CreateSongPanel.Size = new System.Drawing.Size(977, 712);
             this.CreateSongPanel.TabIndex = 10;
             // 
             // label17
@@ -3468,7 +3468,7 @@
             this.CreateVideoPanel.Location = new System.Drawing.Point(0, 0);
             this.CreateVideoPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CreateVideoPanel.Name = "CreateVideoPanel";
-            this.CreateVideoPanel.Size = new System.Drawing.Size(1002, 712);
+            this.CreateVideoPanel.Size = new System.Drawing.Size(977, 712);
             this.CreateVideoPanel.TabIndex = 11;
             // 
             // CreateVideoGoBackButton
@@ -3840,7 +3840,7 @@
             this.CreatePlaylistPanel.Location = new System.Drawing.Point(0, 0);
             this.CreatePlaylistPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CreatePlaylistPanel.Name = "CreatePlaylistPanel";
-            this.CreatePlaylistPanel.Size = new System.Drawing.Size(1002, 712);
+            this.CreatePlaylistPanel.Size = new System.Drawing.Size(977, 712);
             this.CreatePlaylistPanel.TabIndex = 12;
             // 
             // CreatePlaylistInvalidCredentialstextBox
@@ -4023,7 +4023,7 @@
             this.PlaySongPanel.Location = new System.Drawing.Point(0, 0);
             this.PlaySongPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PlaySongPanel.Name = "PlaySongPanel";
-            this.PlaySongPanel.Size = new System.Drawing.Size(1002, 712);
+            this.PlaySongPanel.Size = new System.Drawing.Size(977, 712);
             this.PlaySongPanel.TabIndex = 13;
             // 
             // PlaySongLikeButton
@@ -4238,7 +4238,7 @@
             this.PlayVideoPanel.Location = new System.Drawing.Point(0, 0);
             this.PlayVideoPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PlayVideoPanel.Name = "PlayVideoPanel";
-            this.PlayVideoPanel.Size = new System.Drawing.Size(1002, 712);
+            this.PlayVideoPanel.Size = new System.Drawing.Size(977, 712);
             this.PlayVideoPanel.TabIndex = 14;
             // 
             // PlayVideoFullScreenButton
@@ -4471,7 +4471,7 @@
             this.SearcUserPanel.Location = new System.Drawing.Point(0, 0);
             this.SearcUserPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearcUserPanel.Name = "SearcUserPanel";
-            this.SearcUserPanel.Size = new System.Drawing.Size(1002, 712);
+            this.SearcUserPanel.Size = new System.Drawing.Size(977, 712);
             this.SearcUserPanel.TabIndex = 15;
             // 
             // label9
@@ -4615,7 +4615,7 @@
             this.UserProfileChangeInfoPanel.Location = new System.Drawing.Point(0, 0);
             this.UserProfileChangeInfoPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserProfileChangeInfoPanel.Name = "UserProfileChangeInfoPanel";
-            this.UserProfileChangeInfoPanel.Size = new System.Drawing.Size(1002, 712);
+            this.UserProfileChangeInfoPanel.Size = new System.Drawing.Size(977, 712);
             this.UserProfileChangeInfoPanel.TabIndex = 16;
             // 
             // UserProfileChangeInfoProfilePicImage
@@ -4814,7 +4814,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.ClientSize = new System.Drawing.Size(977, 712);
             this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
@@ -4836,7 +4836,7 @@
             this.Controls.Add(this.PlaySongPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.MinimumSize = new System.Drawing.Size(1024, 768);
+            this.MinimumSize = new System.Drawing.Size(999, 768);
             this.Name = "FyBuZz";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FyBuZz";
