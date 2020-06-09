@@ -277,19 +277,19 @@ namespace Entrega3_FyBuZz.Controladores
                 {
                     if (user.Username == e.UsernameText && user.Password == e.PasswordText)
                     {
-                        int cont2 = 0;
-                        foreach (Profile profile in user.Perfiles)
+
+                        if(user.Accountype == "standard" && int.Parse(e.ChangedText) >= 7999)
                         {
-                            if (profile.ProfileName == e.ChangedText)
-                            {
-                                cont2++;
-                                result = null;
-                            }
-                            if (cont2 == 0)
-                            {
-                                profile.ProfileName = e.ChangedText;
-                                result = "Succesfully changed Profilename";
-                            }
+                            user.Accountype = "premium";
+                            result = "Succesfully changed AccounType";
+                        }
+                        else if(user.Accountype != "standard")
+                        {
+                            return null;
+                        }
+                        else if(int.Parse(e.ChangedText) < 7999)
+                        {
+                            return null;
                         }
                         
 
