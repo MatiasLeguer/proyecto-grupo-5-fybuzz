@@ -79,7 +79,7 @@ namespace Entrega3_FyBuZz.Controladores
         private string OnCreateProfileCreateProfileButton_Clicked(object sender, ProfileEventArgs e)
         {
             int u = UserIndex(e);
-            if (userDataBase[u].Accountype == "premium")
+            if (userDataBase[u].Accountype != "standard")
             {   
                 int pAge = DateTime.Now.Year - e.BirthdayText.Year;
                 string pPic = "...";

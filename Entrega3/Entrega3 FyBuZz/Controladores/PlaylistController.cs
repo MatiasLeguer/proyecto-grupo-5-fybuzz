@@ -31,6 +31,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.PlaySongChoosePlsButton_Clicked += PlaySongChoosePlsButton_Clicked;
             this.fyBuZz.PlayVideoSelectPlButton_Clicked += OnPlayVideoSelectPlButton_Clicked;
             this.fyBuZz.AddPlaylistMult_Done += addMult;
+            this.fyBuZz.ReturnPrivatePls += ReturnPrivatePlaylists;
         }
         public void Initialize()
         {
@@ -53,6 +54,10 @@ namespace Entrega3_FyBuZz.Controladores
         private List<PlayList> OnDisplayPlaylistsGlobalPlaylist_Clicked(object sender, PlaylistEventArgs e)
         {
             return playlistDataBase;
+        }
+        private List<PlayList> ReturnPrivatePlaylists(object sender, PlaylistEventArgs e)
+        {
+            return privatePlaylistsDatabase;
         }
 
         private string CreatePlaylistButton_Clicked(object sender, PlaylistEventArgs e)
@@ -115,8 +120,32 @@ namespace Entrega3_FyBuZz.Controladores
                             description = "ERROR[!]";
                         }
                     }
+                } 
+            }
+            foreach (PlayList playlist in privatePlaylistsDatabase)
+            {
+                if (playlist.NamePlayList == e.SearchedPlaylistNameText)
+                {
+                    foreach (Song song in e.SongDataBaseText)
+                    {
+                        string result = e.RestultText;
+                        int choosenPl = e.ChoosenIndex;
+                        if (result == song.SearchedInfoSong() && (e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Contains(song) == false || playlist.Songs.Contains(song) == false))
+                        {
+                            e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Add(song);
+                            playlist.Songs.Add(song);
+                            dataBase.Save_PLs(playlistDataBase);
+                            dataBase.Save_PLs_Priv(privatePlaylistsDatabase);
+                            return description;
+
+                        }
+                        else
+                        {
+                            description = "ERROR[!]";
+                        }
+                    }
                 }
-                
+
             }
 
             return description;
@@ -149,6 +178,7 @@ namespace Entrega3_FyBuZz.Controladores
                     }
                 }
             }
+            
             dataBase.Save_PLs(playlistDataBase);
             return result;
         }
@@ -166,6 +196,38 @@ namespace Entrega3_FyBuZz.Controladores
                         int indexDomainUpDownPl = e.ChoosenIndex;
 
                         if (resultado == video.SearchedInfoVideo() && playlist.Videos.Contains(video) == true) 
+                        {
+                            description = "ERROR[!] ~ The video is already in this playlist";
+                            break;
+                        }
+
+                        else if (resultado == video.SearchedInfoVideo() && playlist.Videos.Contains(video) == false)
+                        {
+                            playlist.Videos.Add(video);
+                            dataBase.Save_PLs(playlistDataBase);
+                            dataBase.Save_PLs_Priv(privatePlaylistsDatabase);
+
+                            return description;
+                        }
+                    }
+                    if (description != null)
+                    {
+                        return description;
+                    }
+                    return "ERROR[!] ~the video wasn't found in the database";
+
+                }
+            }
+            foreach (PlayList playlist in privatePlaylistsDatabase)
+            {
+                if (playlist.NamePlayList == e.SearchedPlaylistNameText)
+                {
+                    foreach (Video video in e.videoDataBaseText)
+                    {
+                        string resultado = e.RestultText;
+                        int indexDomainUpDownPl = e.ChoosenIndex;
+
+                        if (resultado == video.SearchedInfoVideo() && playlist.Videos.Contains(video) == true)
                         {
                             description = "ERROR[!] ~ The video is already in this playlist";
                             break;
