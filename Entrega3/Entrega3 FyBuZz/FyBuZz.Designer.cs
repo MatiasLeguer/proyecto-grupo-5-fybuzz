@@ -30,12 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FyBuZz));
-            this.WelcomePanel = new System.Windows.Forms.Panel();
-            this.WelcomeLogInButton = new System.Windows.Forms.Button();
-            this.WelcomeLabel = new System.Windows.Forms.Label();
-            this.WelcomeLogo = new System.Windows.Forms.PictureBox();
-            this.WelcomeCloseFyBuZz = new System.Windows.Forms.Button();
-            this.WelcomeRegisterButton = new System.Windows.Forms.Button();
             this.RegisterPanel = new System.Windows.Forms.Panel();
             this.RegisterLogo = new System.Windows.Forms.PictureBox();
             this.RegisterInvalidCredencialsTextBox = new System.Windows.Forms.TextBox();
@@ -109,6 +103,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.AccountProfileSettingsPanel = new System.Windows.Forms.Panel();
             this.AccountProfileSettingsSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.UserProfileGoBack = new System.Windows.Forms.Button();
             this.UserSettinChangePasswordButton = new System.Windows.Forms.Button();
             this.AccountSettingAccounTypeChangeButton = new System.Windows.Forms.Button();
             this.UserSettinChangeUsernameButton = new System.Windows.Forms.Button();
@@ -214,6 +209,7 @@
             this.DisplayPlaylistLogo = new System.Windows.Forms.PictureBox();
             this.DisplayPlaylistLabel = new System.Windows.Forms.Label();
             this.PlayPlaylistPanel = new System.Windows.Forms.Panel();
+            this.PlayPlaylistLabel = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.PlayPlaylistMultTypeTextBox = new System.Windows.Forms.TextBox();
             this.PlayPlaylistLoopCheckBox = new System.Windows.Forms.CheckBox();
@@ -229,7 +225,6 @@
             this.PlayPlaylistChooseMultimediaButton = new System.Windows.Forms.Button();
             this.PlayPlaylistGoBackButton = new System.Windows.Forms.Button();
             this.PlayPlaylistShowMultimedia = new System.Windows.Forms.DomainUpDown();
-            this.PlayPlaylistLabel = new System.Windows.Forms.Label();
             this.AdminMenuPanel = new System.Windows.Forms.Panel();
             this.AdminMenuMessageBox = new System.Windows.Forms.TextBox();
             this.AdminMenuAllUsers = new System.Windows.Forms.DomainUpDown();
@@ -385,9 +380,22 @@
             this.UserProfileChangeInfoConfirmButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoGoBackButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoLabel = new System.Windows.Forms.Label();
-            this.UserProfileGoBack = new System.Windows.Forms.Button();
-            this.WelcomePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
+            this.WelcomeRegisterButton = new System.Windows.Forms.Button();
+            this.WelcomeCloseFyBuZz = new System.Windows.Forms.Button();
+            this.WelcomeLogo = new System.Windows.Forms.PictureBox();
+            this.WelcomeLabel = new System.Windows.Forms.Label();
+            this.WelcomeLogInButton = new System.Windows.Forms.Button();
+            this.WelcomePanelAboutUsButton = new System.Windows.Forms.Button();
+            this.WelcomePanelIntegrantesLabel = new System.Windows.Forms.Label();
+            this.WelcomePanelIntegrante1Label = new System.Windows.Forms.Label();
+            this.WelcomePanelIntegrante2Label = new System.Windows.Forms.Label();
+            this.WelcomePanelIntegrante3Label = new System.Windows.Forms.Label();
+            this.WelcomePanel = new System.Windows.Forms.Panel();
+            this.WelcomePanelProyectoLabel = new System.Windows.Forms.Label();
+            this.WelcomePanelProyectoNombreLabel = new System.Windows.Forms.Label();
+            this.WelcomePanelProfesoresLabel = new System.Windows.Forms.Label();
+            this.WelcomePanelHowardLabel = new System.Windows.Forms.Label();
+            this.WelcomePanelDiazLabel = new System.Windows.Forms.Label();
             this.RegisterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RegisterLogo)).BeginInit();
             this.LogInPanel.SuspendLayout();
@@ -446,80 +454,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.SearchUserImage2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchUserImage1)).BeginInit();
             this.UserProfileChangeInfoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
+            this.WelcomePanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // WelcomePanel
-            // 
-            this.WelcomePanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.WelcomePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
-            this.WelcomePanel.Controls.Add(this.WelcomeLogInButton);
-            this.WelcomePanel.Controls.Add(this.WelcomeLabel);
-            this.WelcomePanel.Controls.Add(this.WelcomeLogo);
-            this.WelcomePanel.Controls.Add(this.WelcomeCloseFyBuZz);
-            this.WelcomePanel.Controls.Add(this.WelcomeRegisterButton);
-            this.WelcomePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WelcomePanel.Location = new System.Drawing.Point(0, 0);
-            this.WelcomePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.WelcomePanel.MinimumSize = new System.Drawing.Size(1024, 768);
-            this.WelcomePanel.Name = "WelcomePanel";
-            this.WelcomePanel.Size = new System.Drawing.Size(1024, 768);
-            this.WelcomePanel.TabIndex = 0;
-            // 
-            // WelcomeLogInButton
-            // 
-            this.WelcomeLogInButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.WelcomeLogInButton.Location = new System.Drawing.Point(308, 414);
-            this.WelcomeLogInButton.Name = "WelcomeLogInButton";
-            this.WelcomeLogInButton.Size = new System.Drawing.Size(354, 89);
-            this.WelcomeLogInButton.TabIndex = 1;
-            this.WelcomeLogInButton.Text = "Log-In";
-            this.WelcomeLogInButton.UseVisualStyleBackColor = true;
-            this.WelcomeLogInButton.Click += new System.EventHandler(this.WelcomeLogInButton_Click);
-            // 
-            // WelcomeLabel
-            // 
-            this.WelcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WelcomeLabel.ForeColor = System.Drawing.Color.White;
-            this.WelcomeLabel.Location = new System.Drawing.Point(297, 73);
-            this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(510, 55);
-            this.WelcomeLabel.TabIndex = 0;
-            this.WelcomeLabel.Text = "Welcome to FyBuZz";
-            // 
-            // WelcomeLogo
-            // 
-            this.WelcomeLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.WelcomeLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
-            this.WelcomeLogo.Image = ((System.Drawing.Image)(resources.GetObject("WelcomeLogo.Image")));
-            this.WelcomeLogo.Location = new System.Drawing.Point(341, 146);
-            this.WelcomeLogo.Name = "WelcomeLogo";
-            this.WelcomeLogo.Size = new System.Drawing.Size(291, 222);
-            this.WelcomeLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.WelcomeLogo.TabIndex = 4;
-            this.WelcomeLogo.TabStop = false;
-            // 
-            // WelcomeCloseFyBuZz
-            // 
-            this.WelcomeCloseFyBuZz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.WelcomeCloseFyBuZz.Location = new System.Drawing.Point(308, 615);
-            this.WelcomeCloseFyBuZz.Name = "WelcomeCloseFyBuZz";
-            this.WelcomeCloseFyBuZz.Size = new System.Drawing.Size(354, 80);
-            this.WelcomeCloseFyBuZz.TabIndex = 3;
-            this.WelcomeCloseFyBuZz.Text = "Close FyBuZz";
-            this.WelcomeCloseFyBuZz.UseVisualStyleBackColor = true;
-            this.WelcomeCloseFyBuZz.Click += new System.EventHandler(this.WelcomeCloseFyBuZz_Click);
-            // 
-            // WelcomeRegisterButton
-            // 
-            this.WelcomeRegisterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.WelcomeRegisterButton.Location = new System.Drawing.Point(308, 520);
-            this.WelcomeRegisterButton.Name = "WelcomeRegisterButton";
-            this.WelcomeRegisterButton.Size = new System.Drawing.Size(354, 80);
-            this.WelcomeRegisterButton.TabIndex = 2;
-            this.WelcomeRegisterButton.Text = "Register";
-            this.WelcomeRegisterButton.UseVisualStyleBackColor = true;
-            this.WelcomeRegisterButton.Click += new System.EventHandler(this.WelcomeRegisterButton_Click);
             // 
             // RegisterPanel
             // 
@@ -935,7 +872,7 @@
             this.ProfilesInvalidCredentialTextBox.Location = new System.Drawing.Point(244, 394);
             this.ProfilesInvalidCredentialTextBox.Name = "ProfilesInvalidCredentialTextBox";
             this.ProfilesInvalidCredentialTextBox.ReadOnly = true;
-            this.ProfilesInvalidCredentialTextBox.Size = new System.Drawing.Size(537, 45);
+            this.ProfilesInvalidCredentialTextBox.Size = new System.Drawing.Size(537, 52);
             this.ProfilesInvalidCredentialTextBox.TabIndex = 10;
             this.ProfilesInvalidCredentialTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -975,7 +912,7 @@
             this.ProfileDomainUp.Location = new System.Drawing.Point(315, 304);
             this.ProfileDomainUp.Name = "ProfileDomainUp";
             this.ProfileDomainUp.ReadOnly = true;
-            this.ProfileDomainUp.Size = new System.Drawing.Size(406, 45);
+            this.ProfileDomainUp.Size = new System.Drawing.Size(406, 52);
             this.ProfileDomainUp.TabIndex = 6;
             this.ProfileDomainUp.Text = "Profiles:";
             // 
@@ -1424,6 +1361,18 @@
             this.AccountProfileSettingsSplitContainer.SplitterDistance = 329;
             this.AccountProfileSettingsSplitContainer.TabIndex = 2;
             // 
+            // UserProfileGoBack
+            // 
+            this.UserProfileGoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserProfileGoBack.ForeColor = System.Drawing.Color.Black;
+            this.UserProfileGoBack.Location = new System.Drawing.Point(45, 42);
+            this.UserProfileGoBack.Name = "UserProfileGoBack";
+            this.UserProfileGoBack.Size = new System.Drawing.Size(115, 45);
+            this.UserProfileGoBack.TabIndex = 56;
+            this.UserProfileGoBack.Text = "Go Back";
+            this.UserProfileGoBack.UseVisualStyleBackColor = true;
+            this.UserProfileGoBack.Click += new System.EventHandler(this.UserProfileGoBack_Click);
+            // 
             // UserSettinChangePasswordButton
             // 
             this.UserSettinChangePasswordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1855,7 +1804,7 @@
             this.SearchPlayingLabel.Location = new System.Drawing.Point(283, 10);
             this.SearchPlayingLabel.Name = "SearchPlayingLabel";
             this.SearchPlayingLabel.ReadOnly = true;
-            this.SearchPlayingLabel.Size = new System.Drawing.Size(410, 15);
+            this.SearchPlayingLabel.Size = new System.Drawing.Size(410, 19);
             this.SearchPlayingLabel.TabIndex = 35;
             this.SearchPlayingLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -2045,7 +1994,7 @@
             this.SearchSearchResultsDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchSearchResultsDomainUp.Name = "SearchSearchResultsDomainUp";
             this.SearchSearchResultsDomainUp.ReadOnly = true;
-            this.SearchSearchResultsDomainUp.Size = new System.Drawing.Size(540, 36);
+            this.SearchSearchResultsDomainUp.Size = new System.Drawing.Size(540, 41);
             this.SearchSearchResultsDomainUp.TabIndex = 10;
             this.SearchSearchResultsDomainUp.Text = "Search Results:";
             this.SearchSearchResultsDomainUp.Visible = false;
@@ -2665,6 +2614,18 @@
             this.PlayPlaylistPanel.Size = new System.Drawing.Size(1024, 768);
             this.PlayPlaylistPanel.TabIndex = 8;
             // 
+            // PlayPlaylistLabel
+            // 
+            this.PlayPlaylistLabel.AutoSize = true;
+            this.PlayPlaylistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayPlaylistLabel.ForeColor = System.Drawing.Color.White;
+            this.PlayPlaylistLabel.Location = new System.Drawing.Point(349, 91);
+            this.PlayPlaylistLabel.Name = "PlayPlaylistLabel";
+            this.PlayPlaylistLabel.Size = new System.Drawing.Size(355, 69);
+            this.PlayPlaylistLabel.TabIndex = 0;
+            this.PlayPlaylistLabel.Text = "Play Playlist";
+            this.PlayPlaylistLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
@@ -2723,20 +2684,20 @@
             this.PlayPlaylistMessageBox.BackColor = System.Drawing.Color.Black;
             this.PlayPlaylistMessageBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayPlaylistMessageBox.ForeColor = System.Drawing.Color.White;
-            this.PlayPlaylistMessageBox.Location = new System.Drawing.Point(300, 37);
+            this.PlayPlaylistMessageBox.Location = new System.Drawing.Point(485, 56);
             this.PlayPlaylistMessageBox.Name = "PlayPlaylistMessageBox";
             this.PlayPlaylistMessageBox.ReadOnly = true;
-            this.PlayPlaylistMessageBox.Size = new System.Drawing.Size(410, 15);
+            this.PlayPlaylistMessageBox.Size = new System.Drawing.Size(410, 19);
             this.PlayPlaylistMessageBox.TabIndex = 35;
             this.PlayPlaylistMessageBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // PlayPlaylistSkipButton
             // 
             this.PlayPlaylistSkipButton.ForeColor = System.Drawing.Color.Black;
-            this.PlayPlaylistSkipButton.Location = new System.Drawing.Point(620, 62);
+            this.PlayPlaylistSkipButton.Location = new System.Drawing.Point(310, 9);
             this.PlayPlaylistSkipButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayPlaylistSkipButton.Name = "PlayPlaylistSkipButton";
-            this.PlayPlaylistSkipButton.Size = new System.Drawing.Size(79, 30);
+            this.PlayPlaylistSkipButton.Size = new System.Drawing.Size(98, 30);
             this.PlayPlaylistSkipButton.TabIndex = 33;
             this.PlayPlaylistSkipButton.Text = "Skip";
             this.PlayPlaylistSkipButton.UseVisualStyleBackColor = true;
@@ -2745,10 +2706,10 @@
             // PlayPlaylistPlayButton
             // 
             this.PlayPlaylistPlayButton.ForeColor = System.Drawing.Color.Black;
-            this.PlayPlaylistPlayButton.Location = new System.Drawing.Point(401, 62);
+            this.PlayPlaylistPlayButton.Location = new System.Drawing.Point(170, 8);
             this.PlayPlaylistPlayButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayPlaylistPlayButton.Name = "PlayPlaylistPlayButton";
-            this.PlayPlaylistPlayButton.Size = new System.Drawing.Size(95, 30);
+            this.PlayPlaylistPlayButton.Size = new System.Drawing.Size(98, 30);
             this.PlayPlaylistPlayButton.TabIndex = 30;
             this.PlayPlaylistPlayButton.Text = "Play";
             this.PlayPlaylistPlayButton.UseVisualStyleBackColor = true;
@@ -2766,7 +2727,7 @@
             // 
             // PlayPlaylistProgressBarBox
             // 
-            this.PlayPlaylistProgressBarBox.Location = new System.Drawing.Point(238, 102);
+            this.PlayPlaylistProgressBarBox.Location = new System.Drawing.Point(485, 18);
             this.PlayPlaylistProgressBarBox.Name = "PlayPlaylistProgressBarBox";
             this.PlayPlaylistProgressBarBox.Size = new System.Drawing.Size(499, 16);
             this.PlayPlaylistProgressBarBox.TabIndex = 7;
@@ -2774,10 +2735,10 @@
             // PlayPlaylistPreviousButton
             // 
             this.PlayPlaylistPreviousButton.ForeColor = System.Drawing.Color.Black;
-            this.PlayPlaylistPreviousButton.Location = new System.Drawing.Point(284, 62);
+            this.PlayPlaylistPreviousButton.Location = new System.Drawing.Point(310, 47);
             this.PlayPlaylistPreviousButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayPlaylistPreviousButton.Name = "PlayPlaylistPreviousButton";
-            this.PlayPlaylistPreviousButton.Size = new System.Drawing.Size(105, 30);
+            this.PlayPlaylistPreviousButton.Size = new System.Drawing.Size(98, 30);
             this.PlayPlaylistPreviousButton.TabIndex = 32;
             this.PlayPlaylistPreviousButton.Text = "Previous";
             this.PlayPlaylistPreviousButton.UseVisualStyleBackColor = true;
@@ -2786,7 +2747,7 @@
             // PlayPlaylistPauseButton
             // 
             this.PlayPlaylistPauseButton.ForeColor = System.Drawing.Color.Black;
-            this.PlayPlaylistPauseButton.Location = new System.Drawing.Point(512, 62);
+            this.PlayPlaylistPauseButton.Location = new System.Drawing.Point(170, 47);
             this.PlayPlaylistPauseButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayPlaylistPauseButton.Name = "PlayPlaylistPauseButton";
             this.PlayPlaylistPauseButton.Size = new System.Drawing.Size(98, 30);
@@ -2833,22 +2794,10 @@
             this.PlayPlaylistShowMultimedia.Location = new System.Drawing.Point(238, 372);
             this.PlayPlaylistShowMultimedia.Name = "PlayPlaylistShowMultimedia";
             this.PlayPlaylistShowMultimedia.ReadOnly = true;
-            this.PlayPlaylistShowMultimedia.Size = new System.Drawing.Size(542, 27);
+            this.PlayPlaylistShowMultimedia.Size = new System.Drawing.Size(542, 31);
             this.PlayPlaylistShowMultimedia.TabIndex = 1;
             this.PlayPlaylistShowMultimedia.Text = "Multimedia in Playlist:";
             this.PlayPlaylistShowMultimedia.Wrap = true;
-            // 
-            // PlayPlaylistLabel
-            // 
-            this.PlayPlaylistLabel.AutoSize = true;
-            this.PlayPlaylistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayPlaylistLabel.ForeColor = System.Drawing.Color.White;
-            this.PlayPlaylistLabel.Location = new System.Drawing.Point(349, 91);
-            this.PlayPlaylistLabel.Name = "PlayPlaylistLabel";
-            this.PlayPlaylistLabel.Size = new System.Drawing.Size(355, 69);
-            this.PlayPlaylistLabel.TabIndex = 0;
-            this.PlayPlaylistLabel.Text = "Play Playlist";
-            this.PlayPlaylistLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // AdminMenuPanel
             // 
@@ -2887,7 +2836,7 @@
             this.AdminMenuAllUsers.Location = new System.Drawing.Point(297, 447);
             this.AdminMenuAllUsers.Name = "AdminMenuAllUsers";
             this.AdminMenuAllUsers.ReadOnly = true;
-            this.AdminMenuAllUsers.Size = new System.Drawing.Size(402, 27);
+            this.AdminMenuAllUsers.Size = new System.Drawing.Size(402, 31);
             this.AdminMenuAllUsers.TabIndex = 10;
             this.AdminMenuAllUsers.Text = "Please select a User:";
             // 
@@ -4718,34 +4667,214 @@
             this.UserProfileChangeInfoLabel.TabIndex = 0;
             this.UserProfileChangeInfoLabel.Text = "Change Settings";
             // 
-            // UserProfileGoBack
+            // WelcomeRegisterButton
             // 
-            this.UserProfileGoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserProfileGoBack.ForeColor = System.Drawing.Color.Black;
-            this.UserProfileGoBack.Location = new System.Drawing.Point(45, 42);
-            this.UserProfileGoBack.Name = "UserProfileGoBack";
-            this.UserProfileGoBack.Size = new System.Drawing.Size(115, 45);
-            this.UserProfileGoBack.TabIndex = 56;
-            this.UserProfileGoBack.Text = "Go Back";
-            this.UserProfileGoBack.UseVisualStyleBackColor = true;
-            this.UserProfileGoBack.Click += new System.EventHandler(this.UserProfileGoBack_Click);
+            this.WelcomeRegisterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.WelcomeRegisterButton.Location = new System.Drawing.Point(308, 520);
+            this.WelcomeRegisterButton.Name = "WelcomeRegisterButton";
+            this.WelcomeRegisterButton.Size = new System.Drawing.Size(354, 80);
+            this.WelcomeRegisterButton.TabIndex = 2;
+            this.WelcomeRegisterButton.Text = "Register";
+            this.WelcomeRegisterButton.UseVisualStyleBackColor = true;
+            this.WelcomeRegisterButton.Click += new System.EventHandler(this.WelcomeRegisterButton_Click);
+            // 
+            // WelcomeCloseFyBuZz
+            // 
+            this.WelcomeCloseFyBuZz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.WelcomeCloseFyBuZz.Location = new System.Drawing.Point(308, 615);
+            this.WelcomeCloseFyBuZz.Name = "WelcomeCloseFyBuZz";
+            this.WelcomeCloseFyBuZz.Size = new System.Drawing.Size(354, 80);
+            this.WelcomeCloseFyBuZz.TabIndex = 3;
+            this.WelcomeCloseFyBuZz.Text = "Close FyBuZz";
+            this.WelcomeCloseFyBuZz.UseVisualStyleBackColor = true;
+            this.WelcomeCloseFyBuZz.Click += new System.EventHandler(this.WelcomeCloseFyBuZz_Click);
+            // 
+            // WelcomeLogo
+            // 
+            this.WelcomeLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.WelcomeLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.WelcomeLogo.Image = ((System.Drawing.Image)(resources.GetObject("WelcomeLogo.Image")));
+            this.WelcomeLogo.Location = new System.Drawing.Point(341, 146);
+            this.WelcomeLogo.Name = "WelcomeLogo";
+            this.WelcomeLogo.Size = new System.Drawing.Size(291, 222);
+            this.WelcomeLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.WelcomeLogo.TabIndex = 4;
+            this.WelcomeLogo.TabStop = false;
+            // 
+            // WelcomeLabel
+            // 
+            this.WelcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WelcomeLabel.ForeColor = System.Drawing.Color.White;
+            this.WelcomeLabel.Location = new System.Drawing.Point(297, 73);
+            this.WelcomeLabel.Name = "WelcomeLabel";
+            this.WelcomeLabel.Size = new System.Drawing.Size(510, 55);
+            this.WelcomeLabel.TabIndex = 0;
+            this.WelcomeLabel.Text = "Welcome to FyBuZz";
+            // 
+            // WelcomeLogInButton
+            // 
+            this.WelcomeLogInButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.WelcomeLogInButton.Location = new System.Drawing.Point(308, 414);
+            this.WelcomeLogInButton.Name = "WelcomeLogInButton";
+            this.WelcomeLogInButton.Size = new System.Drawing.Size(354, 89);
+            this.WelcomeLogInButton.TabIndex = 1;
+            this.WelcomeLogInButton.Text = "Log-In";
+            this.WelcomeLogInButton.UseVisualStyleBackColor = true;
+            this.WelcomeLogInButton.Click += new System.EventHandler(this.WelcomeLogInButton_Click);
+            // 
+            // WelcomePanelAboutUsButton
+            // 
+            this.WelcomePanelAboutUsButton.Location = new System.Drawing.Point(17, 23);
+            this.WelcomePanelAboutUsButton.Name = "WelcomePanelAboutUsButton";
+            this.WelcomePanelAboutUsButton.Size = new System.Drawing.Size(165, 69);
+            this.WelcomePanelAboutUsButton.TabIndex = 5;
+            this.WelcomePanelAboutUsButton.Text = "About Us";
+            this.WelcomePanelAboutUsButton.UseVisualStyleBackColor = true;
+            this.WelcomePanelAboutUsButton.Click += new System.EventHandler(this.WelcomePanelAboutUsButton_Click);
+            // 
+            // WelcomePanelIntegrantesLabel
+            // 
+            this.WelcomePanelIntegrantesLabel.AutoSize = true;
+            this.WelcomePanelIntegrantesLabel.ForeColor = System.Drawing.Color.White;
+            this.WelcomePanelIntegrantesLabel.Location = new System.Drawing.Point(16, 114);
+            this.WelcomePanelIntegrantesLabel.Name = "WelcomePanelIntegrantesLabel";
+            this.WelcomePanelIntegrantesLabel.Size = new System.Drawing.Size(95, 20);
+            this.WelcomePanelIntegrantesLabel.TabIndex = 6;
+            this.WelcomePanelIntegrantesLabel.Text = "Integrantes:";
+            this.WelcomePanelIntegrantesLabel.Visible = false;
+            // 
+            // WelcomePanelIntegrante1Label
+            // 
+            this.WelcomePanelIntegrante1Label.AutoSize = true;
+            this.WelcomePanelIntegrante1Label.ForeColor = System.Drawing.Color.White;
+            this.WelcomePanelIntegrante1Label.Location = new System.Drawing.Point(29, 142);
+            this.WelcomePanelIntegrante1Label.Name = "WelcomePanelIntegrante1Label";
+            this.WelcomePanelIntegrante1Label.Size = new System.Drawing.Size(117, 20);
+            this.WelcomePanelIntegrante1Label.TabIndex = 7;
+            this.WelcomePanelIntegrante1Label.Text = "Diego Pinochet";
+            this.WelcomePanelIntegrante1Label.Visible = false;
+            // 
+            // WelcomePanelIntegrante2Label
+            // 
+            this.WelcomePanelIntegrante2Label.AutoSize = true;
+            this.WelcomePanelIntegrante2Label.ForeColor = System.Drawing.Color.White;
+            this.WelcomePanelIntegrante2Label.Location = new System.Drawing.Point(29, 171);
+            this.WelcomePanelIntegrante2Label.Name = "WelcomePanelIntegrante2Label";
+            this.WelcomePanelIntegrante2Label.Size = new System.Drawing.Size(110, 20);
+            this.WelcomePanelIntegrante2Label.TabIndex = 8;
+            this.WelcomePanelIntegrante2Label.Text = "Matias Leguer";
+            this.WelcomePanelIntegrante2Label.Visible = false;
+            // 
+            // WelcomePanelIntegrante3Label
+            // 
+            this.WelcomePanelIntegrante3Label.AutoSize = true;
+            this.WelcomePanelIntegrante3Label.ForeColor = System.Drawing.Color.White;
+            this.WelcomePanelIntegrante3Label.Location = new System.Drawing.Point(29, 204);
+            this.WelcomePanelIntegrante3Label.Name = "WelcomePanelIntegrante3Label";
+            this.WelcomePanelIntegrante3Label.Size = new System.Drawing.Size(116, 20);
+            this.WelcomePanelIntegrante3Label.TabIndex = 9;
+            this.WelcomePanelIntegrante3Label.Text = "Jacobo Giraldo";
+            this.WelcomePanelIntegrante3Label.Visible = false;
+            // 
+            // WelcomePanel
+            // 
+            this.WelcomePanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.WelcomePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.WelcomePanel.Controls.Add(this.WelcomePanelDiazLabel);
+            this.WelcomePanel.Controls.Add(this.WelcomePanelHowardLabel);
+            this.WelcomePanel.Controls.Add(this.WelcomePanelProfesoresLabel);
+            this.WelcomePanel.Controls.Add(this.WelcomePanelProyectoNombreLabel);
+            this.WelcomePanel.Controls.Add(this.WelcomePanelProyectoLabel);
+            this.WelcomePanel.Controls.Add(this.WelcomePanelIntegrante3Label);
+            this.WelcomePanel.Controls.Add(this.WelcomePanelIntegrante2Label);
+            this.WelcomePanel.Controls.Add(this.WelcomePanelIntegrante1Label);
+            this.WelcomePanel.Controls.Add(this.WelcomePanelIntegrantesLabel);
+            this.WelcomePanel.Controls.Add(this.WelcomePanelAboutUsButton);
+            this.WelcomePanel.Controls.Add(this.WelcomeLogInButton);
+            this.WelcomePanel.Controls.Add(this.WelcomeLabel);
+            this.WelcomePanel.Controls.Add(this.WelcomeLogo);
+            this.WelcomePanel.Controls.Add(this.WelcomeCloseFyBuZz);
+            this.WelcomePanel.Controls.Add(this.WelcomeRegisterButton);
+            this.WelcomePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WelcomePanel.Location = new System.Drawing.Point(0, 0);
+            this.WelcomePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.WelcomePanel.MinimumSize = new System.Drawing.Size(1024, 768);
+            this.WelcomePanel.Name = "WelcomePanel";
+            this.WelcomePanel.Size = new System.Drawing.Size(1024, 768);
+            this.WelcomePanel.TabIndex = 0;
+            // 
+            // WelcomePanelProyectoLabel
+            // 
+            this.WelcomePanelProyectoLabel.AutoSize = true;
+            this.WelcomePanelProyectoLabel.ForeColor = System.Drawing.Color.White;
+            this.WelcomePanelProyectoLabel.Location = new System.Drawing.Point(16, 255);
+            this.WelcomePanelProyectoLabel.Name = "WelcomePanelProyectoLabel";
+            this.WelcomePanelProyectoLabel.Size = new System.Drawing.Size(75, 20);
+            this.WelcomePanelProyectoLabel.TabIndex = 10;
+            this.WelcomePanelProyectoLabel.Text = "Proyecto:";
+            this.WelcomePanelProyectoLabel.Visible = false;
+            // 
+            // WelcomePanelProyectoNombreLabel
+            // 
+            this.WelcomePanelProyectoNombreLabel.AutoSize = true;
+            this.WelcomePanelProyectoNombreLabel.ForeColor = System.Drawing.Color.White;
+            this.WelcomePanelProyectoNombreLabel.Location = new System.Drawing.Point(29, 294);
+            this.WelcomePanelProyectoNombreLabel.Name = "WelcomePanelProyectoNombreLabel";
+            this.WelcomePanelProyectoNombreLabel.Size = new System.Drawing.Size(306, 20);
+            this.WelcomePanelProyectoNombreLabel.TabIndex = 11;
+            this.WelcomePanelProyectoNombreLabel.Text = "FyBuZz Programación orientada a objetos";
+            this.WelcomePanelProyectoNombreLabel.Visible = false;
+            // 
+            // WelcomePanelProfesoresLabel
+            // 
+            this.WelcomePanelProfesoresLabel.AutoSize = true;
+            this.WelcomePanelProfesoresLabel.ForeColor = System.Drawing.Color.White;
+            this.WelcomePanelProfesoresLabel.Location = new System.Drawing.Point(16, 339);
+            this.WelcomePanelProfesoresLabel.Name = "WelcomePanelProfesoresLabel";
+            this.WelcomePanelProfesoresLabel.Size = new System.Drawing.Size(90, 20);
+            this.WelcomePanelProfesoresLabel.TabIndex = 12;
+            this.WelcomePanelProfesoresLabel.Text = "Profesores:";
+            this.WelcomePanelProfesoresLabel.Visible = false;
+            // 
+            // WelcomePanelHowardLabel
+            // 
+            this.WelcomePanelHowardLabel.AutoSize = true;
+            this.WelcomePanelHowardLabel.ForeColor = System.Drawing.Color.White;
+            this.WelcomePanelHowardLabel.Location = new System.Drawing.Point(29, 376);
+            this.WelcomePanelHowardLabel.Name = "WelcomePanelHowardLabel";
+            this.WelcomePanelHowardLabel.Size = new System.Drawing.Size(119, 20);
+            this.WelcomePanelHowardLabel.TabIndex = 13;
+            this.WelcomePanelHowardLabel.Text = "Andres Howard";
+            this.WelcomePanelHowardLabel.Visible = false;
+            // 
+            // WelcomePanelDiazLabel
+            // 
+            this.WelcomePanelDiazLabel.AutoSize = true;
+            this.WelcomePanelDiazLabel.ForeColor = System.Drawing.Color.White;
+            this.WelcomePanelDiazLabel.Location = new System.Drawing.Point(29, 413);
+            this.WelcomePanelDiazLabel.Name = "WelcomePanelDiazLabel";
+            this.WelcomePanelDiazLabel.Size = new System.Drawing.Size(90, 20);
+            this.WelcomePanelDiazLabel.TabIndex = 14;
+            this.WelcomePanelDiazLabel.Text = "Carlos Diaz";
+            this.WelcomePanelDiazLabel.Visible = false;
             // 
             // FyBuZz
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1006, 721);
-            this.Controls.Add(this.AdminMenuPanel);
+            this.ClientSize = new System.Drawing.Size(1002, 701);
+            this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
+            this.Controls.Add(this.PlayVideoPanel);
+            this.Controls.Add(this.AdminMenuPanel);
             this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.ProfilePanel);
-            this.Controls.Add(this.WelcomePanel);
-            this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
             this.Controls.Add(this.SearcUserPanel);
-            this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
@@ -4757,13 +4886,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximumSize = new System.Drawing.Size(1024, 768);
-            this.MinimumSize = new System.Drawing.Size(1024, 768);
+            this.MinimumSize = new System.Drawing.Size(1024, 678);
             this.Name = "FyBuZz";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FyBuZz";
             this.Load += new System.EventHandler(this.FyBuZz_Load);
-            this.WelcomePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).EndInit();
             this.RegisterPanel.ResumeLayout(false);
             this.RegisterPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RegisterLogo)).EndInit();
@@ -4844,17 +4971,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.SearchUserImage1)).EndInit();
             this.UserProfileChangeInfoPanel.ResumeLayout(false);
             this.UserProfileChangeInfoPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).EndInit();
+            this.WelcomePanel.ResumeLayout(false);
+            this.WelcomePanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel WelcomePanel;
-        private System.Windows.Forms.Button WelcomeCloseFyBuZz;
-        private System.Windows.Forms.Button WelcomeRegisterButton;
-        private System.Windows.Forms.Button WelcomeLogInButton;
-        private System.Windows.Forms.Label WelcomeLabel;
         private System.Windows.Forms.Panel RegisterPanel;
         private System.Windows.Forms.Label RegisterUsernameLabel;
         private System.Windows.Forms.Label RegisterLabel;
@@ -4887,7 +5011,6 @@
         private System.Windows.Forms.TextBox LogInInvalidCredentialsTetxbox;
         private System.Windows.Forms.Panel ProfilePanel;
         private System.Windows.Forms.Label ProfileProfilesLabel;
-        private System.Windows.Forms.PictureBox WelcomeLogo;
         private System.Windows.Forms.PictureBox LogInLogo;
         private System.Windows.Forms.PictureBox RegisterLogo;
         private System.Windows.Forms.PictureBox ProfileLogo;
@@ -5206,5 +5329,21 @@
         private System.Windows.Forms.Button PlayVideoFullScreenButton;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button UserProfileGoBack;
+        private System.Windows.Forms.Button WelcomeRegisterButton;
+        private System.Windows.Forms.Button WelcomeCloseFyBuZz;
+        private System.Windows.Forms.PictureBox WelcomeLogo;
+        private System.Windows.Forms.Label WelcomeLabel;
+        private System.Windows.Forms.Button WelcomeLogInButton;
+        private System.Windows.Forms.Button WelcomePanelAboutUsButton;
+        private System.Windows.Forms.Label WelcomePanelIntegrantesLabel;
+        private System.Windows.Forms.Label WelcomePanelIntegrante1Label;
+        private System.Windows.Forms.Label WelcomePanelIntegrante2Label;
+        private System.Windows.Forms.Label WelcomePanelIntegrante3Label;
+        private System.Windows.Forms.Panel WelcomePanel;
+        private System.Windows.Forms.Label WelcomePanelDiazLabel;
+        private System.Windows.Forms.Label WelcomePanelHowardLabel;
+        private System.Windows.Forms.Label WelcomePanelProfesoresLabel;
+        private System.Windows.Forms.Label WelcomePanelProyectoNombreLabel;
+        private System.Windows.Forms.Label WelcomePanelProyectoLabel;
     }
 }
