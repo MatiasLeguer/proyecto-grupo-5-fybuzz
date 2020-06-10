@@ -2575,8 +2575,15 @@ namespace Entrega3_FyBuZz
                     List<string> choosenPLPers = ReturnSearchedMult(ProfileDomainUp.Text, "Song", null);
                     int playlistIndex = PlayPlaylistShowMultimedia.SelectedIndex;
 
+                    int cont = 0;
+                    if(choosenPL.Songs.Count() == 0)
+                    {
+                        PlayPlaylistMultTypeTextBox.Clear();
+                        PlayPlaylistMultTypeTextBox.AppendText("No cancion");
+                        cont++;
+                    }
+                    if (choosenPL != null && cont == 0)
 
-                    if (choosenPL != null)
                     {
                         while (playlistIndex < choosenPL.Songs.Count())
                         {
@@ -2738,7 +2745,13 @@ namespace Entrega3_FyBuZz
                 {
                     List<string> choosenPLPers = ReturnSearchedMult(ProfileDomainUp.Text, null, "Video");
                     int playlistIndex = PlayPlaylistShowMultimedia.SelectedIndex;
-                    if (choosenPL != null)
+                    int cont = 0;
+                    if(PlayPlaylistShowMultimedia.Items.Count == 0)
+                    {
+                        PlayPlaylistMessageBox.AppendText("no videos");
+                        cont++;
+                    }
+                    if (choosenPL != null && cont == 0)
                     {
                         while (playlistIndex < choosenPL.Videos.Count())
                         {
@@ -2830,7 +2843,7 @@ namespace Entrega3_FyBuZz
                             }
                         }
                     }
-                    else
+                    else if (choosenPL == null && cont == 0)
                     {
                         foreach (Video video in videoDataBase)
                         {

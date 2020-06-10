@@ -383,6 +383,7 @@
             this.UserProfileChangeInfoConfirmButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoGoBackButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoLabel = new System.Windows.Forms.Label();
+
             this.WelcomeRegisterButton = new System.Windows.Forms.Button();
             this.WelcomeCloseFyBuZz = new System.Windows.Forms.Button();
             this.WelcomeLogo = new System.Windows.Forms.PictureBox();
@@ -399,6 +400,7 @@
             this.WelcomePanelProfesoresLabel = new System.Windows.Forms.Label();
             this.WelcomePanelProyectoNombreLabel = new System.Windows.Forms.Label();
             this.WelcomePanelProyectoLabel = new System.Windows.Forms.Label();
+
             this.RegisterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RegisterLogo)).BeginInit();
             this.LogInPanel.SuspendLayout();
@@ -4916,9 +4918,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.PlaySongPanel);
-            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.DisplayStartPanel);
