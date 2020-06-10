@@ -1382,9 +1382,9 @@ namespace Entrega3_FyBuZz
                             }
                         }
                     }
-                    PlayPlaylistLabel.Text = "Playlist: " + plName;
-                    PlayPlaylistPanel.BringToFront();
                 }
+                PlayPlaylistLabel.Text = "Playlist: " + plName;
+                PlayPlaylistPanel.BringToFront();
             }
 
             else if (multimediaType.Contains("Video:") == true)
@@ -1580,6 +1580,9 @@ namespace Entrega3_FyBuZz
 
         private void SearchGoBackButton_Click(object sender, EventArgs e)
         {
+            windowsMediaPlayer.controls.stop();
+            soundPlayer.Stop();
+
             SearchDisplayMoreMultimediaInfo.Clear();
             SearchDisplayMoreMultimediaInfo.Visible = false;
             SearchSearchTextBox.Text = "Search Songs,Video, Playlists or Users";
@@ -2126,6 +2129,9 @@ namespace Entrega3_FyBuZz
 
         private void PlaySongGoBackButton_Click(object sender, EventArgs e)
         {
+            windowsMediaPlayer.controls.stop();
+            soundPlayer.Stop();
+
             PlaySongRateMessageTextBox.Clear();
             SearchPlayingLabel.Text = PlayerPlayingLabel.Text;
             SearchSearchTextBox.Text = "Search Songs,Video, Playlists or Users";
@@ -2568,6 +2574,7 @@ namespace Entrega3_FyBuZz
                     
                     List<string> choosenPLPers = ReturnSearchedMult(ProfileDomainUp.Text, "Song", null);
                     int playlistIndex = PlayPlaylistShowMultimedia.SelectedIndex;
+
 
                     if (choosenPL != null)
                     {
@@ -3359,6 +3366,8 @@ namespace Entrega3_FyBuZz
         //GO BACK/CLOSE
         private void PlayPlaylistGoBackButton_Click(object sender, EventArgs e)
         {
+            windowsMediaPlayer.controls.stop();
+            soundPlayer.Stop();
             PlayPlaylistLabel.Text = "Playlist";
             SearchSearchTextBox.Text = "Search Songs,Video, Playlists or Users";
             SearchSearchResultsDomainUp.Visible = false;
