@@ -145,6 +145,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.ProfileSettingsLabel = new System.Windows.Forms.Label();
             this.SearchPanel = new System.Windows.Forms.Panel();
+            this.SearchDisplayMoreMultimediaInfo = new System.Windows.Forms.TextBox();
+            this.SearchMoreInfoButton = new System.Windows.Forms.Button();
             this.SearchQueueDomainUp = new System.Windows.Forms.DomainUpDown();
             this.SearchSearchButton = new System.Windows.Forms.Button();
             this.SearchPlayingPanel = new System.Windows.Forms.Panel();
@@ -387,8 +389,6 @@
             this.UserProfileChangeInfoConfirmButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoGoBackButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoLabel = new System.Windows.Forms.Label();
-            this.SearchMoreInfoButton = new System.Windows.Forms.Button();
-            this.SearchDisplayMoreMultimediaInfo = new System.Windows.Forms.TextBox();
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -1825,6 +1825,30 @@
             this.SearchPanel.Name = "SearchPanel";
             this.SearchPanel.Size = new System.Drawing.Size(1024, 768);
             this.SearchPanel.TabIndex = 7;
+            // 
+            // SearchDisplayMoreMultimediaInfo
+            // 
+            this.SearchDisplayMoreMultimediaInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchDisplayMoreMultimediaInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchDisplayMoreMultimediaInfo.ForeColor = System.Drawing.Color.White;
+            this.SearchDisplayMoreMultimediaInfo.Location = new System.Drawing.Point(31, 118);
+            this.SearchDisplayMoreMultimediaInfo.Multiline = true;
+            this.SearchDisplayMoreMultimediaInfo.Name = "SearchDisplayMoreMultimediaInfo";
+            this.SearchDisplayMoreMultimediaInfo.ReadOnly = true;
+            this.SearchDisplayMoreMultimediaInfo.Size = new System.Drawing.Size(259, 255);
+            this.SearchDisplayMoreMultimediaInfo.TabIndex = 39;
+            this.SearchDisplayMoreMultimediaInfo.TabStop = false;
+            this.SearchDisplayMoreMultimediaInfo.Visible = false;
+            // 
+            // SearchMoreInfoButton
+            // 
+            this.SearchMoreInfoButton.Location = new System.Drawing.Point(34, 79);
+            this.SearchMoreInfoButton.Name = "SearchMoreInfoButton";
+            this.SearchMoreInfoButton.Size = new System.Drawing.Size(148, 32);
+            this.SearchMoreInfoButton.TabIndex = 38;
+            this.SearchMoreInfoButton.Text = "More multimedia Info";
+            this.SearchMoreInfoButton.UseVisualStyleBackColor = true;
+            this.SearchMoreInfoButton.Click += new System.EventHandler(this.SearchMoreInfoButton_Click);
             // 
             // SearchQueueDomainUp
             // 
@@ -4757,39 +4781,15 @@
             this.UserProfileChangeInfoLabel.TabIndex = 0;
             this.UserProfileChangeInfoLabel.Text = "Change Settings";
             // 
-            // SearchMoreInfoButton
-            // 
-            this.SearchMoreInfoButton.Location = new System.Drawing.Point(34, 79);
-            this.SearchMoreInfoButton.Name = "SearchMoreInfoButton";
-            this.SearchMoreInfoButton.Size = new System.Drawing.Size(148, 32);
-            this.SearchMoreInfoButton.TabIndex = 38;
-            this.SearchMoreInfoButton.Text = "More multimedia Info";
-            this.SearchMoreInfoButton.UseVisualStyleBackColor = true;
-            this.SearchMoreInfoButton.Click += new System.EventHandler(this.SearchMoreInfoButton_Click);
-            // 
-            // SearchDisplayMoreMultimediaInfo
-            // 
-            this.SearchDisplayMoreMultimediaInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
-            this.SearchDisplayMoreMultimediaInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchDisplayMoreMultimediaInfo.ForeColor = System.Drawing.Color.White;
-            this.SearchDisplayMoreMultimediaInfo.Location = new System.Drawing.Point(31, 118);
-            this.SearchDisplayMoreMultimediaInfo.Multiline = true;
-            this.SearchDisplayMoreMultimediaInfo.Name = "SearchDisplayMoreMultimediaInfo";
-            this.SearchDisplayMoreMultimediaInfo.ReadOnly = true;
-            this.SearchDisplayMoreMultimediaInfo.Size = new System.Drawing.Size(259, 255);
-            this.SearchDisplayMoreMultimediaInfo.TabIndex = 39;
-            this.SearchDisplayMoreMultimediaInfo.TabStop = false;
-            this.SearchDisplayMoreMultimediaInfo.Visible = false;
-            // 
             // FyBuZz
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 721);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.PlaySongPanel);
-            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.DisplayStartPanel);
