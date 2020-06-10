@@ -153,6 +153,12 @@ namespace Entrega3_FyBuZz
         public delegate List<PlayList> GetPrivatePlaylists(object sender, PlaylistEventArgs args);
         public event GetPrivatePlaylists ReturnPrivatePls;
 
+        public delegate bool DeleteProfile(object sender, UserEventArgs args);
+        public event DeleteProfile ProfileDeleted;
+
+        public delegate List<string> ReturnSongInfo_Done(object sender, SongEventArgs args);
+        public event ReturnSongInfo_Done ReturnSongInfo_Did;
+
         //ATRIBUTOS
         //--------------------------------------------------------------------------------
         private string ProfileName { get; set; }
@@ -532,6 +538,18 @@ namespace Entrega3_FyBuZz
             //Creo que cada vez que necesite el perfil debo llamar a este método con el parametro
             //que venga del "ProfileDomainUp.Text"
         }
+        private void ProfileDeletePorfileButton_Click(object sender, EventArgs e)
+        {
+            string profileName = ProfileDomainUp.Text;
+            string username = UserLogInTextBox.Text;
+            DeleteProfile_Did(username, profileName);
+            DeleteProfile_Did(username, profileName);
+            ProfilesInvalidCredentialTextBox.AppendText("Profile Deleted, FyBuZz Restarting...");
+            Thread.Sleep(2500);
+            Application.Restart();
+
+        }
+        
 
         private void ProfileCreateProfileButton_Click(object sender, EventArgs e)
         {
@@ -555,6 +573,21 @@ namespace Entrega3_FyBuZz
             else
             {
                 return null;
+            }
+        }
+        public void DeleteProfile_Did(string uName, string pName)
+        {
+            if (ProfileDeleted != null)
+            {
+                bool result = ProfileDeleted(this, new UserEventArgs() { UsernameText = uName, ProfilenameText = pName });
+                if (result)
+                {
+
+                }
+                else
+                {
+                    ProfilesInvalidCredentialTextBox.AppendText("ERROR[!] Couldn't delete Profile");
+                }
             }
         }
         public List<string> OnProfilesChooseProfile_Click2(string pName, string usr, string pass)
@@ -873,6 +906,9 @@ namespace Entrega3_FyBuZz
         {
             SearchSearchResultsDomainUp.ReadOnly = true;
             SearchSearchResultsDomainUp.Text = "Searched Results:";
+
+            SearchDisplayMoreMultimediaInfo.Clear();
+            SearchDisplayMoreMultimediaInfo.Visible = false;
 
             string search = SearchSearchTextBox.Text; //Bad Bunny and Trap and ... and ...
 
@@ -1195,11 +1231,12 @@ namespace Entrega3_FyBuZz
             PlaySongChoosePlsDomainUp.ResetText();
             PlaySongChoosePlsDomainUp.ReadOnly = true;
             PlaySongMessageTextBox.Clear();
-
         }
 
         private void SearchSelectMultButton_Click(object sender, EventArgs e)
         {
+            SearchDisplayMoreMultimediaInfo.Clear();
+            SearchDisplayMoreMultimediaInfo.Visible = false;
             soundPlayer = new SoundPlayer();
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSongButton_Click();
@@ -1209,6 +1246,7 @@ namespace Entrega3_FyBuZz
             List<PlayList> privatePls = new List<PlayList>();
             privatePls = GetPrivPlaylist();
             List<string> infoProfile = OnProfilesChooseProfile_Click2(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+
 
             string multimediaType = SearchSearchResultsDomainUp.Text;
 
@@ -1368,12 +1406,26 @@ namespace Entrega3_FyBuZz
                         if (result == video.SearchedInfoVideo())
                         {
                             AddingSearchedMult(ProfileDomainUp.Text, null, video.FileName);
-                            Thread.Sleep(2000);
                             PlayVideoPanel.BringToFront();
                             wmpVideo.URL = video.FileName;
+                            wmpVideo.Ctlcontrols.play();
                         }
                     }
                 }
+                int cont1 = 0;
+                if (PlayVideoSelectPlDomainUp.SelectedIndex != -1)
+                {
+                    foreach (object searched in PlayVideoSelectPlDomainUp.Items)
+                    {
+                        cont1++;
+                    }
+                    for (int i = 0; i < cont1; cont1--)
+                    {
+                        PlayVideoSelectPlDomainUp.Items.RemoveAt(cont1 - 1);
+                    }
+                }
+                PlayVideoSelectPlDomainUp.Visible = true;
+                PlayVideoSelectPlButton.Visible = true;
             }
             PlaySongRateNumDomainUp.Refresh();
             PlaySongRateMessageTextBox.Clear();
@@ -1528,6 +1580,8 @@ namespace Entrega3_FyBuZz
 
         private void SearchGoBackButton_Click(object sender, EventArgs e)
         {
+            SearchDisplayMoreMultimediaInfo.Clear();
+            SearchDisplayMoreMultimediaInfo.Visible = false;
             SearchSearchTextBox.Text = "Search Songs,Video, Playlists or Users";
             SearchSearchResultsDomainUp.Visible = false;
             //SearchSearchResultsDomainUp.Items.Clear();
@@ -1749,7 +1803,6 @@ namespace Entrega3_FyBuZz
             songDataBase = OnSearchSongButton_Click();
             Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
             PlaySongChoosePlsButton_Click(songDataBase, profile, result, choosenPl, searchedPlaylistName);
-            SearchSearchResultsDomainUp.ResetText();
         }
 
 
@@ -1882,8 +1935,6 @@ namespace Entrega3_FyBuZz
             }
             if (songIndex == 0)  songIndex = songInfoMVC.Count() - 1;
             else songIndex--;
-
-
 
         }
 
@@ -2202,18 +2253,48 @@ namespace Entrega3_FyBuZz
 
         private void PlayVideoGoBackButton_Click(object sender, EventArgs e)
         {
+            if (PlayPlaylistShowMultimedia.SelectedIndex != -1)
+            {
+                int cont = 0;
+                foreach (object searched in PlayPlaylistShowMultimedia.Items)
+                {
+                    cont++;
+                }
+                for (int i = 0; i < cont; cont--)
+                {
+                    PlayPlaylistShowMultimedia.Items.RemoveAt(cont - 1);
+                }
+            }
             int cont1 = 0;
             if (SearchSearchResultsDomainUp.SelectedIndex != -1)
             {
-                foreach (object searched in PlayPlaylistShowMultimedia.Items)
+                foreach (object searched in SearchSearchResultsDomainUp.Items)
                 {
                     cont1++;
                 }
                 for (int i = 0; i < cont1; cont1--)
                 {
-                    PlayPlaylistShowMultimedia.Items.RemoveAt(cont1 - 1);
+                    SearchSearchResultsDomainUp.Items.RemoveAt(cont1 - 1);
                 }
             }
+            SearchSearchResultsDomainUp.ResetText();
+            SearchSearchResultsDomainUp.Text = "Searched Results:";
+            SearchSearchResultsDomainUp.Visible = false;
+            if (PlayVideoSelectPlDomainUp.SelectedIndex != -1)
+            {
+                foreach (object searched in PlayVideoSelectPlDomainUp.Items)
+                {
+                    cont1++;
+                }
+                for (int i = 0; i < cont1; cont1--)
+                {
+                    PlayVideoSelectPlDomainUp.Items.RemoveAt(cont1 - 1);
+                }
+            }
+            PlayVideoSelectPlDomainUp.Visible = true;
+            PlayVideoSelectPlButton.Visible = true;
+
+            SearchSearchTextBox.Clear();
             wmpVideo.Ctlcontrols.stop();
             SearchPanel.BringToFront();
         }
@@ -2422,6 +2503,21 @@ namespace Entrega3_FyBuZz
 
         private void PlayPlaylistChooseMultimediaButton_Click(object sender, EventArgs e)
         {
+            int cont1 = 0;
+            if (PlayVideoSelectPlDomainUp.SelectedIndex != -1)
+            {
+                foreach (object x in PlayVideoSelectPlDomainUp.Items)
+                {
+                    cont1++;
+                }
+                for (int i = 0; i < cont1; cont1--)
+                {
+                    PlayVideoSelectPlDomainUp.Items.RemoveAt(cont1 - 1);
+                }
+            }
+            PlayVideoSelectPlDomainUp.Visible = false;
+            PlayVideoSelectPlButton.Visible = false;
+
             PlayPlaylistMultTypeTextBox.Clear();
             soundPlayer.Stop();
             windowsMediaPlayer.controls.stop();
@@ -2788,6 +2884,21 @@ namespace Entrega3_FyBuZz
         }
         private void PlayPlaylistRandomButton_Click(object sender, EventArgs e)
         {
+            int cont1 = 0;
+            if (PlayVideoSelectPlDomainUp.SelectedIndex != -1)
+            {
+                foreach (object x in PlayVideoSelectPlDomainUp.Items)
+                {
+                    cont1++;
+                }
+                for (int i = 0; i < cont1; cont1--)
+                {
+                    PlayVideoSelectPlDomainUp.Items.RemoveAt(cont1 - 1);
+                }
+            }
+            PlayVideoSelectPlDomainUp.Visible = true;
+            PlayVideoSelectPlButton.Visible = true;
+
             PlayPlaylistProgressBarBox.Value = 0;
             PlayPlaylistTimerBox.Clear();
             soundPlayer.Stop();
@@ -3242,9 +3353,6 @@ namespace Entrega3_FyBuZz
                     }
                 }
             }
-
-
-
         }
         //ONEVENT
 
@@ -4734,7 +4842,47 @@ namespace Entrega3_FyBuZz
         {
 
         }
+        public List<string> ReturnInfoSong2(string sName, string sArtist)
+        {
+            List<string> result = new List<string>();
+            if (ReturnSongInfo_Did != null)
+            {
+                result = ReturnSongInfo_Did(this, new SongEventArgs() { NameText = sName, ArtistText = sArtist });
+            }
+            return result;
+        }
 
+        private void SearchMoreInfoButton_Click(object sender, EventArgs e)
+        {
+            SearchDisplayMoreMultimediaInfo.Clear();
+            SearchDisplayMoreMultimediaInfo.Visible = true;
+            string[] infoMult = SearchSearchResultsDomainUp.Text.Split(':');
+            List<string> infoMultimedia = new List<string>();
 
+            if(infoMult.Contains("Song"))
+            {
+                int n = 0; 
+                infoMultimedia = ReturnInfoSong2(infoMult[1], infoMult[3]);
+                List<string> information = new List<string>() { "Album: ", "Artists: ", "Discography: ", "Gender: ", "Studio: ", 
+                                                               "Lyrics File: ", "Song File: ", "Ranking: ","Name: "};
+                foreach(string info in infoMultimedia)
+                {
+                    SearchDisplayMoreMultimediaInfo.AppendText(information[n] + info + "\r\n");
+                    n++;
+                }
+            }
+            else if(infoMult.Contains("Video"))
+            {
+                int n = 0;
+                infoMultimedia = GetVideoButton(infoMult[1], infoMult[3], infoMult[5]);
+                List<string> information = new List<string>() { "Name: ", "Actor: ", "Director: ", "Quality: ", "Category: ",
+                                                               "Rated: ", "Ranking: ", "Description: ","Video File: ", "Subtitiles File: "};
+                foreach (string info in infoMultimedia)
+                {
+                    SearchDisplayMoreMultimediaInfo.AppendText(information[n] + info + "\r\n");
+                    n++;
+                }
+            }
+        }
     }
 }
