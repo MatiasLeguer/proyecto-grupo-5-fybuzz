@@ -2185,7 +2185,7 @@ namespace Entrega3_FyBuZz
         {
             PlayVideoMessageAlertTextBox.Clear();
             string[] searchedMult = SearchSearchResultsDomainUp.Text.Split(':');
-            if(SearchSearchResultsDomainUp.Text.Contains("Video: ") == false)
+            if(SearchSearchResultsDomainUp.Text.Contains("Video:") == false)
             {
                 searchedMult = PlayPlaylistShowMultimedia.Text.Split(':');
             }
