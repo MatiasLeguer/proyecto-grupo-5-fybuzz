@@ -29,6 +29,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.PlaysSongRateButton_Clicked += RateSong;
             this.fyBuZz.SkipOrPreviousSongButton_Clicked += OnSkipOrPreviousSongButton_Clicked;
             this.fyBuZz.LikedSong_Done += LikeSong;
+            this.fyBuZz.ReturnSongInfo_Did += ReturnSongInfo2;
         }
 
         public void Initialize()
@@ -95,6 +96,21 @@ namespace Entrega3_FyBuZz.Controladores
                     songInfo.Add(song.Lyrics);
                     songInfo.Add(song.SongFile);
                     songInfo.Add(song.Ranking.ToString());
+                    songInfo.Add(song.Name);
+                    break;
+                }
+            }
+            return songInfo;
+        }
+        private List<string> ReturnSongInfo2(object sender, SongEventArgs e)
+        {
+            List<string> songInfo = new List<string>();
+            foreach (Song song in songDatabase)
+            {
+
+                if (e.NameText.Contains(song.Name) == true && e.ArtistText.Contains(song.Artist) == true)
+                {
+                    return song.InfoSong();
                 }
             }
             return songInfo;

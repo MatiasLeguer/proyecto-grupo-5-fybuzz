@@ -157,6 +157,9 @@ namespace Entrega3_FyBuZz
         public delegate bool DeleteProfile(object sender, UserEventArgs args);
         public event DeleteProfile ProfileDeleted;
 
+        public delegate List<string> ReturnSongInfo_Done(object sender, SongEventArgs args);
+        public event ReturnSongInfo_Done ReturnSongInfo_Did;
+
         //ATRIBUTOS
         //--------------------------------------------------------------------------------
         private string ProfileName { get; set; }
@@ -857,6 +860,9 @@ namespace Entrega3_FyBuZz
             SearchSearchResultsDomainUp.ReadOnly = true;
             SearchSearchResultsDomainUp.Text = "Searched Results:";
 
+            SearchDisplayMoreMultimediaInfo.Clear();
+            SearchDisplayMoreMultimediaInfo.Visible = false;
+
             string search = SearchSearchTextBox.Text; //Bad Bunny and Trap and ... and ...
 
             bool filtersOn = SearchFiltersOnCheckBox.Checked;
@@ -1182,7 +1188,8 @@ namespace Entrega3_FyBuZz
 
         private void SearchSelectMultButton_Click(object sender, EventArgs e)
         {
-
+            SearchDisplayMoreMultimediaInfo.Clear();
+            SearchDisplayMoreMultimediaInfo.Visible = false;
             soundPlayer = new SoundPlayer();
             List<Song> songDataBase = new List<Song>();
             songDataBase = OnSearchSongButton_Click();
@@ -1526,6 +1533,8 @@ namespace Entrega3_FyBuZz
 
         private void SearchGoBackButton_Click(object sender, EventArgs e)
         {
+            SearchDisplayMoreMultimediaInfo.Clear();
+            SearchDisplayMoreMultimediaInfo.Visible = false;
             SearchSearchTextBox.Text = "Search Songs,Video, Playlists or Users";
             SearchSearchResultsDomainUp.Visible = false;
             //SearchSearchResultsDomainUp.Items.Clear();
@@ -4857,7 +4866,47 @@ namespace Entrega3_FyBuZz
         {
 
         }
+        public List<string> ReturnInfoSong2(string sName, string sArtist)
+        {
+            List<string> result = new List<string>();
+            if (ReturnSongInfo_Did != null)
+            {
+                result = ReturnSongInfo_Did(this, new SongEventArgs() { NameText = sName, ArtistText = sArtist });
+            }
+            return result;
+        }
 
-       
+        private void SearchMoreInfoButton_Click(object sender, EventArgs e)
+        {
+            SearchDisplayMoreMultimediaInfo.Clear();
+            SearchDisplayMoreMultimediaInfo.Visible = true;
+            string[] infoMult = SearchSearchResultsDomainUp.Text.Split(':');
+            List<string> infoMultimedia = new List<string>();
+
+            if(infoMult.Contains("Song"))
+            {
+                int n = 0; 
+                infoMultimedia = ReturnInfoSong2(infoMult[1], infoMult[3]);
+                List<string> information = new List<string>() { "Album: ", "Artists: ", "Discography: ", "Gender: ", "Studio: ", 
+                                                               "Lyrics File: ", "Song File: ", "Ranking: ","Name: "};
+                foreach(string info in infoMultimedia)
+                {
+                    SearchDisplayMoreMultimediaInfo.AppendText(information[n] + info + "\r\n");
+                    n++;
+                }
+            }
+            else if(infoMult.Contains("Video"))
+            {
+                int n = 0;
+                infoMultimedia = GetVideoButton(infoMult[1], infoMult[3], infoMult[5]);
+                List<string> information = new List<string>() { "Name: ", "Actor: ", "Director: ", "Quality: ", "Category: ",
+                                                               "Rated: ", "Ranking: ", "Description: ","Video File: ", "Subtitiles File: "};
+                foreach (string info in infoMultimedia)
+                {
+                    SearchDisplayMoreMultimediaInfo.AppendText(information[n] + info + "\r\n");
+                    n++;
+                }
+            }
+        }
     }
 }

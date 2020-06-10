@@ -69,6 +69,7 @@
             this.PasswordLogInLabel = new System.Windows.Forms.Label();
             this.LogInLogInLabel = new System.Windows.Forms.Label();
             this.ProfilePanel = new System.Windows.Forms.Panel();
+            this.ProfileDeletePorfileButton = new System.Windows.Forms.Button();
             this.ProfilesWelcomeTextBox = new System.Windows.Forms.TextBox();
             this.ProfilesInvalidCredentialTextBox = new System.Windows.Forms.TextBox();
             this.ProfilesChooseProfile = new System.Windows.Forms.Button();
@@ -386,7 +387,8 @@
             this.UserProfileChangeInfoConfirmButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoGoBackButton = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoLabel = new System.Windows.Forms.Label();
-            this.ProfileDeletePorfileButton = new System.Windows.Forms.Button();
+            this.SearchMoreInfoButton = new System.Windows.Forms.Button();
+            this.SearchDisplayMoreMultimediaInfo = new System.Windows.Forms.TextBox();
             this.WelcomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WelcomeLogo)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -914,6 +916,16 @@
             this.ProfilePanel.Name = "ProfilePanel";
             this.ProfilePanel.Size = new System.Drawing.Size(1024, 768);
             this.ProfilePanel.TabIndex = 3;
+            // 
+            // ProfileDeletePorfileButton
+            // 
+            this.ProfileDeletePorfileButton.Location = new System.Drawing.Point(426, 558);
+            this.ProfileDeletePorfileButton.Name = "ProfileDeletePorfileButton";
+            this.ProfileDeletePorfileButton.Size = new System.Drawing.Size(198, 59);
+            this.ProfileDeletePorfileButton.TabIndex = 12;
+            this.ProfileDeletePorfileButton.Text = "Delete Profile";
+            this.ProfileDeletePorfileButton.UseVisualStyleBackColor = true;
+            this.ProfileDeletePorfileButton.Click += new System.EventHandler(this.ProfileDeletePorfileButton_Click);
             // 
             // ProfilesWelcomeTextBox
             // 
@@ -1789,6 +1801,8 @@
             // SearchPanel
             // 
             this.SearchPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchPanel.Controls.Add(this.SearchDisplayMoreMultimediaInfo);
+            this.SearchPanel.Controls.Add(this.SearchMoreInfoButton);
             this.SearchPanel.Controls.Add(this.SearchQueueDomainUp);
             this.SearchPanel.Controls.Add(this.SearchSearchButton);
             this.SearchPanel.Controls.Add(this.SearchPlayingPanel);
@@ -4743,15 +4757,29 @@
             this.UserProfileChangeInfoLabel.TabIndex = 0;
             this.UserProfileChangeInfoLabel.Text = "Change Settings";
             // 
-            // ProfileDeletePorfileButton
+            // SearchMoreInfoButton
             // 
-            this.ProfileDeletePorfileButton.Location = new System.Drawing.Point(426, 558);
-            this.ProfileDeletePorfileButton.Name = "ProfileDeletePorfileButton";
-            this.ProfileDeletePorfileButton.Size = new System.Drawing.Size(198, 59);
-            this.ProfileDeletePorfileButton.TabIndex = 12;
-            this.ProfileDeletePorfileButton.Text = "Delete Profile";
-            this.ProfileDeletePorfileButton.UseVisualStyleBackColor = true;
-            this.ProfileDeletePorfileButton.Click += new System.EventHandler(this.ProfileDeletePorfileButton_Click);
+            this.SearchMoreInfoButton.Location = new System.Drawing.Point(34, 79);
+            this.SearchMoreInfoButton.Name = "SearchMoreInfoButton";
+            this.SearchMoreInfoButton.Size = new System.Drawing.Size(148, 32);
+            this.SearchMoreInfoButton.TabIndex = 38;
+            this.SearchMoreInfoButton.Text = "More multimedia Info";
+            this.SearchMoreInfoButton.UseVisualStyleBackColor = true;
+            this.SearchMoreInfoButton.Click += new System.EventHandler(this.SearchMoreInfoButton_Click);
+            // 
+            // SearchDisplayMoreMultimediaInfo
+            // 
+            this.SearchDisplayMoreMultimediaInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchDisplayMoreMultimediaInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchDisplayMoreMultimediaInfo.ForeColor = System.Drawing.Color.White;
+            this.SearchDisplayMoreMultimediaInfo.Location = new System.Drawing.Point(31, 118);
+            this.SearchDisplayMoreMultimediaInfo.Multiline = true;
+            this.SearchDisplayMoreMultimediaInfo.Name = "SearchDisplayMoreMultimediaInfo";
+            this.SearchDisplayMoreMultimediaInfo.ReadOnly = true;
+            this.SearchDisplayMoreMultimediaInfo.Size = new System.Drawing.Size(259, 255);
+            this.SearchDisplayMoreMultimediaInfo.TabIndex = 39;
+            this.SearchDisplayMoreMultimediaInfo.TabStop = false;
+            this.SearchDisplayMoreMultimediaInfo.Visible = false;
             // 
             // FyBuZz
             // 
@@ -4760,9 +4788,9 @@
             this.ClientSize = new System.Drawing.Size(1006, 721);
             this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.SearchPanel);
+            this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.PlayVideoPanel);
-            this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
@@ -5230,5 +5258,7 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button UserProfileGoBack;
         private System.Windows.Forms.Button ProfileDeletePorfileButton;
+        private System.Windows.Forms.Button SearchMoreInfoButton;
+        private System.Windows.Forms.TextBox SearchDisplayMoreMultimediaInfo;
     }
 }
