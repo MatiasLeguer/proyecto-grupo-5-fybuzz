@@ -41,6 +41,7 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.AdminMethods_Done += AdminMethods;
             this.fyBuZz.AddedLikedMult += AddLikedMultimedia;
             this.fyBuZz.ReturnLikedMult_Done += ReturnLikedMultList;
+            this.fyBuZz.ProfileDeleted += DeleteProfile;
         }
 
         public void Initialize()
@@ -439,6 +440,28 @@ namespace Entrega3_FyBuZz.Controladores
 
             dataBase.Save_Users(userDataBase);
             return result;
+        }
+        private bool DeleteProfile(object sender, UserEventArgs e)
+        {
+            foreach(User user in userDataBase)
+            {
+                if(user.Username == e.UsernameText)
+                {
+                    int cont = 0;
+                    foreach(Profile profile in user.Perfiles)
+                    {
+                        if(profile.ProfileName == e.ProfilenameText)
+                        {
+                            user.Perfiles.RemoveAt(cont);
+                            dataBase.Save_Users(userDataBase);
+                            return true;
+                        }
+                        cont++;
+                    }
+                    break;
+                }
+            }
+            return false;
         }
     }
     
