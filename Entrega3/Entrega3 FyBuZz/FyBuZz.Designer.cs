@@ -4231,7 +4231,7 @@
             this.PlayVideoMessageAlertTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.PlayVideoMessageAlertTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayVideoMessageAlertTextBox.ForeColor = System.Drawing.Color.Silver;
-            this.PlayVideoMessageAlertTextBox.Location = new System.Drawing.Point(569, 560);
+            this.PlayVideoMessageAlertTextBox.Location = new System.Drawing.Point(569, 569);
             this.PlayVideoMessageAlertTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoMessageAlertTextBox.Name = "PlayVideoMessageAlertTextBox";
             this.PlayVideoMessageAlertTextBox.ReadOnly = true;
@@ -4240,7 +4240,7 @@
             // 
             // PlayVideoSelectPlButton
             // 
-            this.PlayVideoSelectPlButton.Location = new System.Drawing.Point(857, 522);
+            this.PlayVideoSelectPlButton.Location = new System.Drawing.Point(829, 524);
             this.PlayVideoSelectPlButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoSelectPlButton.Name = "PlayVideoSelectPlButton";
             this.PlayVideoSelectPlButton.Size = new System.Drawing.Size(117, 31);
@@ -4256,6 +4256,7 @@
             this.PlayVideoSelectPlDomainUp.Location = new System.Drawing.Point(569, 524);
             this.PlayVideoSelectPlDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoSelectPlDomainUp.Name = "PlayVideoSelectPlDomainUp";
+            this.PlayVideoSelectPlDomainUp.ReadOnly = true;
             this.PlayVideoSelectPlDomainUp.Size = new System.Drawing.Size(243, 30);
             this.PlayVideoSelectPlDomainUp.TabIndex = 6;
             this.PlayVideoSelectPlDomainUp.Text = "Playlists:";
@@ -4921,9 +4922,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.SearchPanel);
-            this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.ProfilePanel);
