@@ -908,6 +908,7 @@
             this.ProfileGoBack.TabIndex = 8;
             this.ProfileGoBack.Text = "Go Back";
             this.ProfileGoBack.UseVisualStyleBackColor = true;
+            this.ProfileGoBack.Visible = false;
             this.ProfileGoBack.Click += new System.EventHandler(this.ProfileGoBack_Click);
             // 
             // ProfileCreateProfileButton
@@ -2227,6 +2228,7 @@
             this.AddShowShowPlaylistButton.TabIndex = 8;
             this.AddShowShowPlaylistButton.Text = "Playlist";
             this.AddShowShowPlaylistButton.UseVisualStyleBackColor = true;
+            this.AddShowShowPlaylistButton.Visible = false;
             // 
             // AddShowShowVideoButton
             // 
@@ -2236,6 +2238,7 @@
             this.AddShowShowVideoButton.TabIndex = 7;
             this.AddShowShowVideoButton.Text = "Video";
             this.AddShowShowVideoButton.UseVisualStyleBackColor = true;
+            this.AddShowShowVideoButton.Visible = false;
             // 
             // AddShowShowSongButton
             // 
@@ -2245,6 +2248,7 @@
             this.AddShowShowSongButton.TabIndex = 6;
             this.AddShowShowSongButton.Text = "Song";
             this.AddShowShowSongButton.UseVisualStyleBackColor = true;
+            this.AddShowShowSongButton.Visible = false;
             // 
             // AddShowAddPlaylistButton
             // 
@@ -2286,6 +2290,7 @@
             this.AddShowShowLabel.Size = new System.Drawing.Size(486, 69);
             this.AddShowShowLabel.TabIndex = 2;
             this.AddShowShowLabel.Text = "Show Multimedia";
+            this.AddShowShowLabel.Visible = false;
             // 
             // AddShowAddLabel
             // 
@@ -4916,12 +4921,14 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
-            this.Controls.Add(this.PlayVideoPanel);
-            this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.DisplayStartPanel);
+            this.Controls.Add(this.ProfilePanel);
+            this.Controls.Add(this.LogInPanel);
+            this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
             this.Controls.Add(this.SearcUserPanel);
             this.Controls.Add(this.RegisterPanel);
@@ -4929,8 +4936,6 @@
             this.Controls.Add(this.AdminMenuPanel);
             this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
-            this.Controls.Add(this.AddShowPanel);
-            this.Controls.Add(this.LogInPanel);
             this.Controls.Add(this.CreateProfilePanel);
             this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.CreateVideoPanel);
