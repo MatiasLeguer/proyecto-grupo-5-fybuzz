@@ -1949,7 +1949,7 @@
             this.SearchFiltersCheBox.Location = new System.Drawing.Point(426, 351);
             this.SearchFiltersCheBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchFiltersCheBox.Name = "SearchFiltersCheBox";
-            this.SearchFiltersCheBox.Size = new System.Drawing.Size(321, 26);
+            this.SearchFiltersCheBox.Size = new System.Drawing.Size(321, 4);
             this.SearchFiltersCheBox.TabIndex = 33;
             this.SearchFiltersCheBox.Visible = false;
             // 
@@ -1965,7 +1965,7 @@
             this.SearchAndOrCheckBox.Location = new System.Drawing.Point(319, 351);
             this.SearchAndOrCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchAndOrCheckBox.Name = "SearchAndOrCheckBox";
-            this.SearchAndOrCheckBox.Size = new System.Drawing.Size(105, 26);
+            this.SearchAndOrCheckBox.Size = new System.Drawing.Size(105, 4);
             this.SearchAndOrCheckBox.TabIndex = 35;
             this.SearchAndOrCheckBox.Visible = false;
             // 
@@ -3813,6 +3813,7 @@
             this.CreatePlaylistFileNameTextBox.Location = new System.Drawing.Point(335, 373);
             this.CreatePlaylistFileNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreatePlaylistFileNameTextBox.Name = "CreatePlaylistFileNameTextBox";
+            this.CreatePlaylistFileNameTextBox.ReadOnly = true;
             this.CreatePlaylistFileNameTextBox.Size = new System.Drawing.Size(243, 36);
             this.CreatePlaylistFileNameTextBox.TabIndex = 6;
             this.CreatePlaylistFileNameTextBox.Text = "Choose File (.jpg)";
@@ -3823,9 +3824,12 @@
             this.CreatePlaylistFormatDomainUp.Items.Add(".mp3");
             this.CreatePlaylistFormatDomainUp.Items.Add(".wav");
             this.CreatePlaylistFormatDomainUp.Items.Add(".mp4");
+            this.CreatePlaylistFormatDomainUp.Items.Add(".avi");
+            this.CreatePlaylistFormatDomainUp.Items.Add(".mov");
             this.CreatePlaylistFormatDomainUp.Location = new System.Drawing.Point(335, 300);
             this.CreatePlaylistFormatDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreatePlaylistFormatDomainUp.Name = "CreatePlaylistFormatDomainUp";
+            this.CreatePlaylistFormatDomainUp.ReadOnly = true;
             this.CreatePlaylistFormatDomainUp.Size = new System.Drawing.Size(390, 36);
             this.CreatePlaylistFormatDomainUp.TabIndex = 5;
             this.CreatePlaylistFormatDomainUp.Text = "Playlist Multimedia Format";
@@ -3929,6 +3933,7 @@
             this.PlaySongSongPlaying.Name = "PlaySongSongPlaying";
             this.PlaySongSongPlaying.Size = new System.Drawing.Size(373, 22);
             this.PlaySongSongPlaying.TabIndex = 48;
+            this.PlaySongSongPlaying.Visible = false;
             // 
             // PlaySongLikeButton
             // 
@@ -4250,7 +4255,7 @@
             this.PlayVideoMessageAlertTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.PlayVideoMessageAlertTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayVideoMessageAlertTextBox.ForeColor = System.Drawing.Color.Silver;
-            this.PlayVideoMessageAlertTextBox.Location = new System.Drawing.Point(569, 560);
+            this.PlayVideoMessageAlertTextBox.Location = new System.Drawing.Point(569, 569);
             this.PlayVideoMessageAlertTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoMessageAlertTextBox.Name = "PlayVideoMessageAlertTextBox";
             this.PlayVideoMessageAlertTextBox.ReadOnly = true;
@@ -4259,7 +4264,7 @@
             // 
             // PlayVideoSelectPlButton
             // 
-            this.PlayVideoSelectPlButton.Location = new System.Drawing.Point(857, 522);
+            this.PlayVideoSelectPlButton.Location = new System.Drawing.Point(829, 524);
             this.PlayVideoSelectPlButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoSelectPlButton.Name = "PlayVideoSelectPlButton";
             this.PlayVideoSelectPlButton.Size = new System.Drawing.Size(117, 31);
@@ -4275,6 +4280,7 @@
             this.PlayVideoSelectPlDomainUp.Location = new System.Drawing.Point(569, 524);
             this.PlayVideoSelectPlDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoSelectPlDomainUp.Name = "PlayVideoSelectPlDomainUp";
+            this.PlayVideoSelectPlDomainUp.ReadOnly = true;
             this.PlayVideoSelectPlDomainUp.Size = new System.Drawing.Size(243, 26);
             this.PlayVideoSelectPlDomainUp.TabIndex = 6;
             this.PlayVideoSelectPlDomainUp.Text = "Playlists:";
@@ -4940,6 +4946,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 712);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.SearchPanel);
@@ -4954,7 +4961,6 @@
             this.Controls.Add(this.AccountProfileSettingsPanel);
             this.Controls.Add(this.AdminMenuPanel);
             this.Controls.Add(this.DisplayPlaylistPanel);
-            this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.CreateProfilePanel);
             this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.CreateVideoPanel);
