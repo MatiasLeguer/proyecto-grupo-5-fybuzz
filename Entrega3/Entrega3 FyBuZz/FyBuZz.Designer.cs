@@ -316,6 +316,7 @@
             this.DurationTimer = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.PlaySongPanel = new System.Windows.Forms.Panel();
+            this.PlaySongSongPlaying = new System.Windows.Forms.TextBox();
             this.PlaySongLikeButton = new System.Windows.Forms.Button();
             this.PlaySongDisplayLyrics = new System.Windows.Forms.TextBox();
             this.PlaySongShowLyrics = new System.Windows.Forms.Button();
@@ -332,6 +333,7 @@
             this.PlaySongImageBoxImage = new System.Windows.Forms.PictureBox();
             this.PlaySongLabel = new System.Windows.Forms.Label();
             this.PlayVideoPanel = new System.Windows.Forms.Panel();
+            this.PlayVideoVideoPlaying = new System.Windows.Forms.TextBox();
             this.PlayVideoFullScreenButton = new System.Windows.Forms.Button();
             this.PlayVideoLikeButton = new System.Windows.Forms.Button();
             this.VideoRate = new System.Windows.Forms.TextBox();
@@ -3811,6 +3813,7 @@
             this.CreatePlaylistFileNameTextBox.Location = new System.Drawing.Point(335, 373);
             this.CreatePlaylistFileNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreatePlaylistFileNameTextBox.Name = "CreatePlaylistFileNameTextBox";
+            this.CreatePlaylistFileNameTextBox.ReadOnly = true;
             this.CreatePlaylistFileNameTextBox.Size = new System.Drawing.Size(243, 41);
             this.CreatePlaylistFileNameTextBox.TabIndex = 6;
             this.CreatePlaylistFileNameTextBox.Text = "Choose File (.jpg)";
@@ -3821,9 +3824,12 @@
             this.CreatePlaylistFormatDomainUp.Items.Add(".mp3");
             this.CreatePlaylistFormatDomainUp.Items.Add(".wav");
             this.CreatePlaylistFormatDomainUp.Items.Add(".mp4");
+            this.CreatePlaylistFormatDomainUp.Items.Add(".avi");
+            this.CreatePlaylistFormatDomainUp.Items.Add(".mov");
             this.CreatePlaylistFormatDomainUp.Location = new System.Drawing.Point(335, 300);
             this.CreatePlaylistFormatDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreatePlaylistFormatDomainUp.Name = "CreatePlaylistFormatDomainUp";
+            this.CreatePlaylistFormatDomainUp.ReadOnly = true;
             this.CreatePlaylistFormatDomainUp.Size = new System.Drawing.Size(390, 41);
             this.CreatePlaylistFormatDomainUp.TabIndex = 5;
             this.CreatePlaylistFormatDomainUp.Text = "Playlist Multimedia Format";
@@ -3896,6 +3902,7 @@
             // PlaySongPanel
             // 
             this.PlaySongPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlaySongPanel.Controls.Add(this.PlaySongSongPlaying);
             this.PlaySongPanel.Controls.Add(this.PlaySongLikeButton);
             this.PlaySongPanel.Controls.Add(this.PlaySongDisplayLyrics);
             this.PlaySongPanel.Controls.Add(this.PlaySongShowLyrics);
@@ -3919,6 +3926,14 @@
             this.PlaySongPanel.Name = "PlaySongPanel";
             this.PlaySongPanel.Size = new System.Drawing.Size(1024, 768);
             this.PlaySongPanel.TabIndex = 13;
+            // 
+            // PlaySongSongPlaying
+            // 
+            this.PlaySongSongPlaying.Location = new System.Drawing.Point(314, 32);
+            this.PlaySongSongPlaying.Name = "PlaySongSongPlaying";
+            this.PlaySongSongPlaying.Size = new System.Drawing.Size(373, 26);
+            this.PlaySongSongPlaying.TabIndex = 48;
+            this.PlaySongSongPlaying.Visible = false;
             // 
             // PlaySongLikeButton
             // 
@@ -4113,6 +4128,7 @@
             // PlayVideoPanel
             // 
             this.PlayVideoPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlayVideoPanel.Controls.Add(this.PlayVideoVideoPlaying);
             this.PlayVideoPanel.Controls.Add(this.PlayVideoFullScreenButton);
             this.PlayVideoPanel.Controls.Add(this.PlayVideoLikeButton);
             this.PlayVideoPanel.Controls.Add(this.VideoRate);
@@ -4136,6 +4152,14 @@
             this.PlayVideoPanel.Name = "PlayVideoPanel";
             this.PlayVideoPanel.Size = new System.Drawing.Size(1024, 768);
             this.PlayVideoPanel.TabIndex = 14;
+            // 
+            // PlayVideoVideoPlaying
+            // 
+            this.PlayVideoVideoPlaying.Location = new System.Drawing.Point(231, 26);
+            this.PlayVideoVideoPlaying.Name = "PlayVideoVideoPlaying";
+            this.PlayVideoVideoPlaying.Size = new System.Drawing.Size(428, 26);
+            this.PlayVideoVideoPlaying.TabIndex = 56;
+            this.PlayVideoVideoPlaying.Visible = false;
             // 
             // PlayVideoFullScreenButton
             // 
@@ -4922,6 +4946,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.SearchPanel);
@@ -4936,7 +4961,6 @@
             this.Controls.Add(this.AccountProfileSettingsPanel);
             this.Controls.Add(this.AdminMenuPanel);
             this.Controls.Add(this.DisplayPlaylistPanel);
-            this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.CreateProfilePanel);
             this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.CreateVideoPanel);
@@ -5405,5 +5429,7 @@
         private System.Windows.Forms.Button ProfileDeletePorfileButton;
         private System.Windows.Forms.Button SearchMoreInfoButton;
         private System.Windows.Forms.TextBox SearchDisplayMoreMultimediaInfo;
+        private System.Windows.Forms.TextBox PlayVideoVideoPlaying;
+        private System.Windows.Forms.TextBox PlaySongSongPlaying;
     }
 }

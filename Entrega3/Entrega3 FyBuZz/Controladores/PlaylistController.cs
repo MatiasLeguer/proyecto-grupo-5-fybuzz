@@ -78,9 +78,40 @@ namespace Entrega3_FyBuZz.Controladores
             {
                 if (playList.Creator == e.CreatorText.Username && playList.ProfileCreator == e.ProfileCreatorText.ProfileName)
                 {
-                    if(e.ProfileCreatorText.CreatedPlaylist.Contains(playList) == false) e.ProfileCreatorText.CreatedPlaylist.Add(playList);
-                    if(e.CreatorText.ProfilePlaylists.Contains(playList) == false) e.CreatorText.ProfilePlaylists.Add(playList);
+                    if (e.ProfileCreatorText.CreatedPlaylist.Count == 0)
+                    {
+                        e.ProfileCreatorText.CreatedPlaylist.Add(playList);
+                    }
+                    else
+                    {
+                        int cont = 0;
+                        foreach (PlayList pl in e.ProfileCreatorText.CreatedPlaylist)
+                        {
+                            if (pl.NamePlayList == playList.NamePlayList) cont++; 
+                        }
+                        if(cont == 0)
+                        {
+                            e.ProfileCreatorText.CreatedPlaylist.Add(playList);
+                        }
+                    }
+                    if (e.CreatorText.ProfilePlaylists.Count == 0)
+                    {
+                        e.CreatorText.ProfilePlaylists.Add(playList);
+                    }
+                    else
+                    {
+                        int cont = 0;
+                        foreach (PlayList pl in e.CreatorText.ProfilePlaylists)
+                        {
+                            if (pl.NamePlayList == playList.NamePlayList) cont++;
+                        }
+                        if (cont == 0)
+                        {
+                            e.CreatorText.ProfilePlaylists.Add(playList);
+                        }
+                    }
                 }
+                
             }
             foreach (PlayList playList in privatePlaylistsDatabase)
             {
@@ -103,12 +134,12 @@ namespace Entrega3_FyBuZz.Controladores
                 {
                     foreach (Song song in e.SongDataBaseText)
                     {
-                        string result = e.RestultText;
+                        string[] result = e.RestultText.Split(':');
                         int choosenPl = e.ChoosenIndex;
-                        if (result == song.SearchedInfoSong() && (e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Contains(song) == false || playlist.Songs.Contains(song) == false))
+                        if (result[0].Contains(song.Name) && result[1].Contains(song.Artist) && (e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Contains(song) == false || playlist.Songs.Contains(song) == false) && result[2].Contains(e.ProfileCreatorText.CreatedPlaylist[choosenPl].Format))
                         {
                             e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Add(song);
-                            playlist.Songs.Add(song);
+                            //playlist.Songs.Add(song);
                             dataBase.Save_PLs(playlistDataBase);
                             dataBase.Save_PLs_Priv(privatePlaylistsDatabase);
                             return description;
@@ -127,12 +158,12 @@ namespace Entrega3_FyBuZz.Controladores
                 {
                     foreach (Song song in e.SongDataBaseText)
                     {
-                        string result = e.RestultText;
+                        string[] result = e.RestultText.Split(':');
                         int choosenPl = e.ChoosenIndex;
-                        if (result == song.SearchedInfoSong() && (e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Contains(song) == false || playlist.Songs.Contains(song) == false))
+                        if (result[0].Contains(song.Name) && result[1].Contains(song.Artist) && (e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Contains(song) == false || playlist.Songs.Contains(song) == false) && result[2].Contains(e.ProfileCreatorText.CreatedPlaylist[choosenPl].Format))
                         {
                             e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Add(song);
-                            playlist.Songs.Add(song);
+                            //playlist.Songs.Add(song);
                             dataBase.Save_PLs(playlistDataBase);
                             dataBase.Save_PLs_Priv(privatePlaylistsDatabase);
                             return description;
@@ -191,16 +222,16 @@ namespace Entrega3_FyBuZz.Controladores
                 {
                     foreach(Video video in e.videoDataBaseText)
                     {
-                        string resultado = e.RestultText;
+                        string[] resultado = e.RestultText.Split(':');
                         int indexDomainUpDownPl = e.ChoosenIndex;
 
-                        if (resultado == video.SearchedInfoVideo() && playlist.Videos.Contains(video) == true) 
+                        if (resultado[0].Contains(video.Name) && resultado[1].Contains(video.Actors) && resultado[2].Contains(video.Directors) && playlist.Videos.Contains(video) == true && resultado[3].Contains(playlist.Format) == false) 
                         {
                             description = "ERROR[!] ~ The video is already in this playlist";
                             break;
                         }
 
-                        else if (resultado == video.SearchedInfoVideo() && playlist.Videos.Contains(video) == false)
+                        else if (resultado[0].Contains(video.Name) && resultado[1].Contains(video.Actors) && resultado[2].Contains(video.Directors) && playlist.Videos.Contains(video) == false && resultado[3].Contains(playlist.Format))
                         {
                             playlist.Videos.Add(video);
                             dataBase.Save_PLs(playlistDataBase);
