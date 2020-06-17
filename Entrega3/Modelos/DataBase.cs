@@ -264,7 +264,7 @@ namespace Modelos
                     }
                     if (description == null)
                     {
-                        Song cancion = new Song(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], double.Parse(multInfo[7]), multInfo[8], multInfo[9],multInfo[10]);
+                        Song cancion = new Song(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], double.Parse(multInfo[7]), multInfo[8], multInfo[9],multInfo[10], multInfo[11]);
                         listSongsGlobal.Add(cancion);
                     }
                     break;
@@ -284,7 +284,7 @@ namespace Modelos
 
                     if (description == null)
                     {
-                        Video video = new Video(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], multInfo[7], double.Parse(multInfo[8]), multInfo[9], multInfo[10], multInfo[11], Convert.ToBoolean(multInfo[12]));
+                        Video video = new Video(multInfo[0], multInfo[1], multInfo[2], multInfo[3], multInfo[4], multInfo[5], multInfo[6], multInfo[7], double.Parse(multInfo[8]), multInfo[9], multInfo[10], multInfo[11], multInfo[12]);
                         listVideosGlobal.Add(video);
 
                         //Escribir de alguna forma de que se ha agregado al sistema.
@@ -305,7 +305,7 @@ namespace Modelos
 
                     if (description == null)
                     {
-                        PlayList playlist = new PlayList(multInfo[0], multInfo[1], username, profileUsername);
+                        PlayList playlist = new PlayList(multInfo[0], multInfo[1], username, profileUsername, multInfo[2]);
                         if (privacy == "n") listPLsGlobal.Add(playlist);
                         else if (privacy == "y") listPLsPriv.Add(playlist);
                     }
