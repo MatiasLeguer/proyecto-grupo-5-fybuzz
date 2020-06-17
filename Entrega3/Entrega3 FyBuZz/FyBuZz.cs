@@ -393,7 +393,6 @@ namespace Entrega3_FyBuZz
 
         private void LogInLogInButton_Click(object sender, EventArgs e)
         {
-            ProfilesWelcomeTextBox.Clear();
             LogInInvalidCredentialsTetxbox.Clear();
             List<string> userGetter = new List<string>();
             string username = UserLogInTextBox.Text;
@@ -413,6 +412,7 @@ namespace Entrega3_FyBuZz
                 LogInInvalidCredentialsTetxbox.Visible = true;
             }
             LogInInvalidCredentialsTetxbox.Clear();
+            ProfilesWelcomeTextBox.Clear();
         }
         //ONEVENT
 
@@ -858,6 +858,18 @@ namespace Entrega3_FyBuZz
 
         private void DisplayStartLogOutButton_Click(object sender, EventArgs e)
         {
+            int cont = 0;
+            if (ProfileDomainUp.SelectedIndex != -1)
+            {
+                foreach (object searched in ProfileDomainUp.Items)
+                {
+                    cont++;
+                }
+                for (int i = 0; i < cont; cont--)
+                {
+                    ProfileDomainUp.Items.RemoveAt(cont - 1);
+                }
+            }
             LogInPanel.BringToFront();
             UserLogInTextBox.ResetText();
             PasswordLogInTextBox.ResetText();
@@ -954,6 +966,7 @@ namespace Entrega3_FyBuZz
                 {
                     foreach(string s in song.InfoSong())
                     {
+                        int aux = 0;
                         auxSearch = search;
                         auxS = s;
                         lengthRemove = 0;
@@ -983,6 +996,10 @@ namespace Entrega3_FyBuZz
                             auxSearch = auxSearch.Remove(j);
                             auxS = auxS.Remove(j);
                         }
+                        if (aux != 0)
+                        {
+                            break;
+                        }
                     }
                 }
 
@@ -990,6 +1007,7 @@ namespace Entrega3_FyBuZz
                 {
                     foreach (string s in video.InfoVideo())
                     {
+                        int aux = 0;
                         auxSearch = search;
                         auxS = s;
                         lengthRemove = 0;
@@ -1019,6 +1037,10 @@ namespace Entrega3_FyBuZz
                             auxSearch = auxSearch.Remove(j);
                             auxS = auxS.Remove(j);
                         }
+                        if (aux != 0)
+                        {
+                            break;
+                        }
                     }
                 }
 
@@ -1026,6 +1048,7 @@ namespace Entrega3_FyBuZz
                 {
                     foreach (string s in playlist.InfoPlayList())
                     {
+                        int indicador = 0;
                         auxSearch = search;
                         auxS = s;
                         lengthRemove = 0;
@@ -1046,15 +1069,22 @@ namespace Entrega3_FyBuZz
 
                         for (int j = auxS.Length - 1; j > 0; j--)
                         {
+                            
                             if (auxSearch == auxS)
                             {
                                 SearchSearchResultsDomainUp.Visible = true;
                                 SearchSearchResultsDomainUp.Items.Add(playlist.DisplayInfoPlayList());
+                                indicador++;
                                 break;
                             }
                             auxSearch = auxSearch.Remove(j);
                             auxS = auxS.Remove(j);
                         }
+                        if(indicador != 0)
+                        {
+                            break;
+                        }
+
                     }
                 }
                 foreach(PlayList privatePl in privatePls)
@@ -1074,6 +1104,7 @@ namespace Entrega3_FyBuZz
                     {
                         foreach (string s in user.InfoUser())
                         {
+                            int aux = 0;
                             auxSearch = search;
                             auxS = s;
                             lengthRemove = 0;
@@ -1103,13 +1134,15 @@ namespace Entrega3_FyBuZz
                                 auxSearch = auxSearch.Remove(j);
                                 auxS = auxS.Remove(j);
                             }
+                            if (aux != 0)
+                            {
+                                break;
+                            }
                         }
                     }
                     
 
                 }
-
-
 
             }
             else
@@ -1457,8 +1490,8 @@ namespace Entrega3_FyBuZz
 
         private void SearchViewUserButton_Click(object sender, EventArgs e)
         {
-            
-            List<string> userGetter = OnLogInLogInButton_Clicked2(SearchSearchTextBox.Text);
+            string[] searcheduser = SearchSearchResultsDomainUp.Text.Split(':');
+            List<string> userGetter = OnLogInLogInButton_Clicked2(searcheduser[2]);
             if (SearchSearchResultsDomainUp.Text.Contains("User: "))
             {
                 if (userGetter[8] != "True")
@@ -2299,20 +2332,18 @@ namespace Entrega3_FyBuZz
 
         private void PlayVideoQueue_Click(object sender, EventArgs e)
         {
+
             string[] searchedMult = PlayVideoVideoPlaying.Text.Split(':');
             if (searchedMult[3] == ".mov" || searchedMult[3] == ".avi" || searchedMult[3] == ".mp4")
             {
                 List<string> videoInfo = GetVideoButton(searchedMult[0], searchedMult[1], searchedMult[2]);
                 queueListSongs.Add(videoInfo[8]);
                 PlayVideoMessageAlertTextBox.AppendText("Video added to Queue");
+
                 Thread.Sleep(1000);
                 PlayVideoMessageAlertTextBox.Clear();
             }
         }
-
-        
-
-
 
         private void PlayVideoPreviousButton_Click(object sender, EventArgs e)
         {
@@ -2565,7 +2596,6 @@ namespace Entrega3_FyBuZz
             SearchPanel.BringToFront();
         }
         //-------------------------------------------------------------------------------------------
-
 
 
 
@@ -3445,6 +3475,7 @@ namespace Entrega3_FyBuZz
         //GO BACK/CLOSE
         private void PlayPlaylistGoBackButton_Click(object sender, EventArgs e)
         {
+            PlayPlaylistShowMultimedia.ResetText();
             SearchPlayingLabel.Clear();
             windowsMediaPlayer.controls.stop();
             soundPlayer.Stop();
@@ -3497,13 +3528,25 @@ namespace Entrega3_FyBuZz
             else
             {
                 AddShowInvalidCredentialsLabel.Text = "You don´t have permission to create multimedia";
+                Thread.Sleep(1000);
+                AddShowInvalidCredentialsLabel.ResetText();
             }
 
         }
 
         private void AddShowAddVideoButton_Click(object sender, EventArgs e)
         {
-            CreateVideoPanel.BringToFront();
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            if (profile.ProfileType != "viewer")
+            {
+                CreateVideoPanel.BringToFront();
+            }
+            else
+            {
+                AddShowInvalidCredentialsLabel.Text = "You don´t have permission to create multimedia";
+                Thread.Sleep(1000);
+                AddShowInvalidCredentialsLabel.ResetText();
+            }
         }
 
         private void AddShowAddPlaylistButton_Click(object sender, EventArgs e)
@@ -3538,6 +3581,8 @@ namespace Entrega3_FyBuZz
             else
             {
                 AddShowInvalidCredentialsLabel.Text = "You don´t have permission to create multimedia";
+                Thread.Sleep(1000);
+                AddShowInvalidCredentialsLabel.ResetText();
             }
         }
         //ONEVENT
