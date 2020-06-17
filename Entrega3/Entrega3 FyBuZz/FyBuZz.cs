@@ -393,7 +393,6 @@ namespace Entrega3_FyBuZz
 
         private void LogInLogInButton_Click(object sender, EventArgs e)
         {
-            ProfilesWelcomeTextBox.Clear();
             LogInInvalidCredentialsTetxbox.Clear();
             List<string> userGetter = new List<string>();
             string username = UserLogInTextBox.Text;
@@ -413,6 +412,7 @@ namespace Entrega3_FyBuZz
                 LogInInvalidCredentialsTetxbox.Visible = true;
             }
             LogInInvalidCredentialsTetxbox.Clear();
+            ProfilesWelcomeTextBox.Clear();
         }
         //ONEVENT
 
@@ -858,6 +858,18 @@ namespace Entrega3_FyBuZz
 
         private void DisplayStartLogOutButton_Click(object sender, EventArgs e)
         {
+            int cont = 0;
+            if (ProfileDomainUp.SelectedIndex != -1)
+            {
+                foreach (object searched in ProfileDomainUp.Items)
+                {
+                    cont++;
+                }
+                for (int i = 0; i < cont; cont--)
+                {
+                    ProfileDomainUp.Items.RemoveAt(cont - 1);
+                }
+            }
             LogInPanel.BringToFront();
             UserLogInTextBox.ResetText();
             PasswordLogInTextBox.ResetText();
@@ -1478,8 +1490,8 @@ namespace Entrega3_FyBuZz
 
         private void SearchViewUserButton_Click(object sender, EventArgs e)
         {
-            
-            List<string> userGetter = OnLogInLogInButton_Clicked2(SearchSearchTextBox.Text);
+            string[] searcheduser = SearchSearchResultsDomainUp.Text.Split(':');
+            List<string> userGetter = OnLogInLogInButton_Clicked2(searcheduser[2]);
             if (SearchSearchResultsDomainUp.Text.Contains("User: "))
             {
                 if (userGetter[8] != "True")
@@ -3463,6 +3475,7 @@ namespace Entrega3_FyBuZz
         //GO BACK/CLOSE
         private void PlayPlaylistGoBackButton_Click(object sender, EventArgs e)
         {
+            PlayPlaylistShowMultimedia.ResetText();
             SearchPlayingLabel.Clear();
             windowsMediaPlayer.controls.stop();
             soundPlayer.Stop();
@@ -3515,13 +3528,25 @@ namespace Entrega3_FyBuZz
             else
             {
                 AddShowInvalidCredentialsLabel.Text = "You don´t have permission to create multimedia";
+                Thread.Sleep(1000);
+                AddShowInvalidCredentialsLabel.ResetText();
             }
 
         }
 
         private void AddShowAddVideoButton_Click(object sender, EventArgs e)
         {
-            CreateVideoPanel.BringToFront();
+            Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+            if (profile.ProfileType != "viewer")
+            {
+                CreateVideoPanel.BringToFront();
+            }
+            else
+            {
+                AddShowInvalidCredentialsLabel.Text = "You don´t have permission to create multimedia";
+                Thread.Sleep(1000);
+                AddShowInvalidCredentialsLabel.ResetText();
+            }
         }
 
         private void AddShowAddPlaylistButton_Click(object sender, EventArgs e)
@@ -3556,6 +3581,8 @@ namespace Entrega3_FyBuZz
             else
             {
                 AddShowInvalidCredentialsLabel.Text = "You don´t have permission to create multimedia";
+                Thread.Sleep(1000);
+                AddShowInvalidCredentialsLabel.ResetText();
             }
         }
         //ONEVENT

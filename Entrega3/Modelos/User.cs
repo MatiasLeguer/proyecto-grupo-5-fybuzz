@@ -85,7 +85,7 @@ namespace Modelos
 
         public string SearchedInfoUser()                          //Entrega un string con el username y el email del usuario
         {
-            return "Name: " + username + " " + "Email: " + email;
+            return "Name:" + username + ":" + "Email:" + email;
         }
 
         public bool GetVerification()                            //Decide si tiene o no verificacion a partir de sus seguidores

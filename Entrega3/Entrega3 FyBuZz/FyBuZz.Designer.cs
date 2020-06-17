@@ -1949,7 +1949,7 @@
             this.SearchFiltersCheBox.Location = new System.Drawing.Point(426, 351);
             this.SearchFiltersCheBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchFiltersCheBox.Name = "SearchFiltersCheBox";
-            this.SearchFiltersCheBox.Size = new System.Drawing.Size(321, 4);
+            this.SearchFiltersCheBox.Size = new System.Drawing.Size(321, 26);
             this.SearchFiltersCheBox.TabIndex = 33;
             this.SearchFiltersCheBox.Visible = false;
             // 
@@ -1965,7 +1965,7 @@
             this.SearchAndOrCheckBox.Location = new System.Drawing.Point(319, 351);
             this.SearchAndOrCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchAndOrCheckBox.Name = "SearchAndOrCheckBox";
-            this.SearchAndOrCheckBox.Size = new System.Drawing.Size(105, 4);
+            this.SearchAndOrCheckBox.Size = new System.Drawing.Size(105, 26);
             this.SearchAndOrCheckBox.TabIndex = 35;
             this.SearchAndOrCheckBox.Visible = false;
             // 
@@ -4945,25 +4945,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 712);
+            this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.PlayPlaylistPanel);
+            this.Controls.Add(this.AddShowPanel);
+            this.Controls.Add(this.LogInPanel);
+            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayVideoPanel);
-            this.Controls.Add(this.SearchPanel);
-            this.Controls.Add(this.PlayPlaylistPanel);
-            this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.ProfilePanel);
-            this.Controls.Add(this.LogInPanel);
-            this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
             this.Controls.Add(this.SearcUserPanel);
             this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
             this.Controls.Add(this.AdminMenuPanel);
-            this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.CreateProfilePanel);
             this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.CreateVideoPanel);
+            this.Controls.Add(this.DisplayPlaylistPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximumSize = new System.Drawing.Size(1024, 768);
