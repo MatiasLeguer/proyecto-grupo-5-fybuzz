@@ -21,5 +21,7 @@ namespace Entrega3_FyBuZz.CustomArgs
         public string SearchedPlaylistNameText { get; set; }
         public Song SongText { get; set; }
         public Video VideoText { get; set; }
+        public string PicFile { get; set; }
+        public string PicSource { get; set; }
     }
 }

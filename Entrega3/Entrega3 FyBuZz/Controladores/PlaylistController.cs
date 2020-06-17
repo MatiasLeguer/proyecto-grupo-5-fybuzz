@@ -13,11 +13,11 @@ namespace Entrega3_FyBuZz.Controladores
 {
     public class PlaylistController
     {
-        List<PlayList> playlistDataBase = new List<PlayList>() { new PlayList("Programming hard", ".wav","FyBuZz", "FyBuZz"),
-                                                                 new PlayList("FyBuZz Global Songs",".mp3","FyBuZz","FyBuZz"),
-                                                                 new PlayList("FyBuZz Global Videos",".mp4","FyBuZz","FyBuZz")};
+        List<PlayList> playlistDataBase = new List<PlayList>() { new PlayList("Programming hard", ".wav","FyBuZz", "FyBuZz","Logo (1).jpg"),
+                                                                 new PlayList("FyBuZz Global Songs",".mp3","FyBuZz","FyBuZz","Logo (1).jpg"),
+                                                                 new PlayList("FyBuZz Global Videos",".mp4","FyBuZz","FyBuZz","Logo (1).jpg")};
         
-        List<PlayList> privatePlaylistsDatabase = new List<PlayList>() { new PlayList("","","","")};
+        List<PlayList> privatePlaylistsDatabase = new List<PlayList>() { new PlayList("","","","", null)};
         DataBase dataBase = new DataBase();
         FyBuZz fyBuZz;
 
@@ -36,12 +36,12 @@ namespace Entrega3_FyBuZz.Controladores
         public void Initialize()
         {
             //Agrega multimedia a las playlist que vienen con el programa
-            playlistDataBase[0].Songs.Add(new Song("Aplausos durante el confinamiento", "la gente", "covid 2020", "covid disc", "Indie", "12/05/2020", "covid stdio", 4, "[Insert Aplausos]", ".wav", "aplausosduranteelconfinamiento_01.wav"));
-            playlistDataBase[1].Songs.Add(new Song("Safaera", "Bad Bunny", "YHLQMDLM", "Rimas entertainment LLC", "Trap", "20/01/2020", "BB Rcds.", 4.9, "Tú tiene' un culo cabrón", ".mp3", "Bad Bunny ft Jowell & Randy ft Ñengo Flow - Safaera.mp3"));
-            playlistDataBase[1].Songs.Add(new Song("MAS DE UNA CITA", "Bad Bunny Zion & Lenox", "LAS QUE NO IBAN A SALIR", "Rimas entertainment LLC", "Trap", "10/05/2020", "Z&L Rcds.", 3.5, "Se necesita, ey, más de una cita, ey", ".mp3", "02-Bad-Bunny-Zion-Lennox-MÁS-DE-UNA-CITA.mp3"));
-            playlistDataBase[1].Songs.Add(new Song("Aplausos durante el confinamiento", "la gente", "covid 2020", "covid disc", "Indie", "12/05/2020", "covid stdio", 4, "[Insert Aplausos]", ".wav", "aplausosduranteelconfinamiento_01.wav"));
-            playlistDataBase[2].Videos.Add(new Video("crash_bandicoot_gameplay", "crash", "Crash bandicoot", "31/05/2020", "16:9", "720", "0", "crash woah", 2.59, "y", ".mov", "crash_bandicoot_gameplay.mov", true));
-            playlistDataBase[2].Videos.Add(new Video("wii-sports-remix", "Wii", "Wii sports", "31/05/2020", "16:9", "720", "0", "wii remix yo", 2.10, "n", ".avi", "wii-sports-remix.avi", true));
+            playlistDataBase[0].Songs.Add(new Song("Aplausos durante el confinamiento", "la gente", "covid 2020", "covid disc", "Indie", "12/05/2020", "covid stdio", 4, "[Insert Aplausos]", ".wav", "aplausosduranteelconfinamiento_01.wav","Logo (1).jpg"));
+            playlistDataBase[1].Songs.Add(new Song("Safaera", "Bad Bunny", "YHLQMDLM", "Rimas entertainment LLC", "Trap", "20/01/2020", "BB Rcds.", 4.9, "Tú tiene' un culo cabrón", ".mp3", "Bad Bunny ft Jowell & Randy ft Ñengo Flow - Safaera.mp3", "Logo (1).jpg"));
+            playlistDataBase[1].Songs.Add(new Song("MAS DE UNA CITA", "Bad Bunny Zion & Lenox", "LAS QUE NO IBAN A SALIR", "Rimas entertainment LLC", "Trap", "10/05/2020", "Z&L Rcds.", 3.5, "Se necesita, ey, más de una cita, ey", ".mp3", "02-Bad-Bunny-Zion-Lennox-MÁS-DE-UNA-CITA.mp3", "Logo (1).jpg"));
+            playlistDataBase[1].Songs.Add(new Song("Aplausos durante el confinamiento", "la gente", "covid 2020", "covid disc", "Indie", "12/05/2020", "covid stdio", 4, "[Insert Aplausos]", ".wav", "aplausosduranteelconfinamiento_01.wav", "Logo (1).jpg"));
+            playlistDataBase[2].Videos.Add(new Video("crash_bandicoot_gameplay", "crash", "Crash bandicoot", "31/05/2020", "16:9", "720", "0", "crash woah", 2.59, "y", ".mov", "crash_bandicoot_gameplay.mov", "Crash - Bandicoot - N - Sane - Trilogy - 1280x720 - 1024x768.jpg"));
+            playlistDataBase[2].Videos.Add(new Video("wii-sports-remix", "Wii", "Wii sports", "31/05/2020", "16:9", "720", "0", "wii remix yo", 2.10, "n", ".avi", "wii-sports-remix.avi", null));
             //playlistDataBase[2].Videos.Add(); Agregar videos.
             if (File.Exists("AllPlaylists.bin") != true) dataBase.Save_PLs(playlistDataBase);
             playlistDataBase = dataBase.Load_PLs();
@@ -61,7 +61,8 @@ namespace Entrega3_FyBuZz.Controladores
 
         private string CreatePlaylistButton_Clicked(object sender, PlaylistEventArgs e)
         {
-            List<string> infoMult = new List<string> { e.NameText, e.FormatText};
+            File.Copy(e.PicFile, e.PicSource);
+            List<string> infoMult = new List<string> { e.NameText, e.FormatText, e.PicSource};
 
             string privacy = null;
             if(e.PrivacyText == true)
@@ -121,9 +122,18 @@ namespace Entrega3_FyBuZz.Controladores
                     //usr.ProfilePlaylists.Add(playList); Si la PL es privada no se agrega al usuario, por lo tanto no se puede seguir.
                 }
             }
-            dataBase.Save_PLs(playlistDataBase);
-            dataBase.Save_PLs_Priv(privatePlaylistsDatabase);
-            return description;
+            if (description == null)
+            {
+                dataBase.Save_PLs(playlistDataBase);
+                dataBase.Save_PLs_Priv(privatePlaylistsDatabase);
+                return description;
+            }
+            else
+            {
+                File.Delete(e.PicSource);
+                return description;
+            }
+            
         }
         private string PlaySongChoosePlsButton_Clicked(object sender, PlaylistEventArgs e)
         {

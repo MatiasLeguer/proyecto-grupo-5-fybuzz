@@ -27,5 +27,7 @@ namespace Entrega3_FyBuZz.CustomArgs
         public string FileLyricsSource { get; set; }
         public List<string> OnQueueText { get; set; }
         public int NumberText { get; set; }
+        public string PicFile { get; set; }
+        public string PicSource {get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace Modelos
         protected string category;
         protected string description;
         protected int rated;
-        protected bool image;
+        private string image;
         protected string subtitles;
         protected string actors;
         protected string directors;
@@ -40,12 +40,13 @@ namespace Modelos
         public int CantRated { get; set; }
         public int AccumulativeRated { get; set; }
         public string SubtitleFile { get => subtitleFile; set => subtitleFile = value; }
+        public string Image { get => image; set => image = value; }
 
         //--------------------------------------------------------------------------------------------------
 
         //CONSTRUCTOR:
         //--------------------------------------------------------------------------------------------------
-        public Video(string name, string actors, string directors, string date, string videoDimension, string quality, string category, string description, double duration, string subtitles, string format, string fileName, bool image)
+        public Video(string name, string actors, string directors, string date, string videoDimension, string quality, string category, string description, double duration, string subtitles, string format, string fileName, string image)
         {
             this.name = name;
             this.actors = actors;

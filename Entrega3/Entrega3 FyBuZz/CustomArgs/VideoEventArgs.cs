@@ -17,7 +17,8 @@ namespace Entrega3_FyBuZz.CustomArgs
         public string QualityText { get; set; }
         public string Categorytext { get; set; }
         public string DescriptionText { get; set; }
-        public string VideoImage { get; set; }  /* Falta pasar bien la imagen */
+        public string VideoImageFile { get; set; } 
+        public string VideoImageDest { get; set; }
         public string DurationText { get; set; }
         public string FormatText { get; set; }
         public string SubtitlesText { get; set; }
