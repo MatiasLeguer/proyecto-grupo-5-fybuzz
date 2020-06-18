@@ -1092,7 +1092,7 @@ namespace Entrega3_FyBuZz
                         if (ProfileDomainUp.Text.Contains(privatePl.ProfileCreator) && UserLogInTextBox.Text.Contains(privatePl.Creator))
                         {
                             SearchSearchResultsDomainUp.Visible = true;
-                            SearchSearchResultsDomainUp.Items.Add(privatePl.DisplayInfoPlayList());
+                            SearchSearchResultsDomainUp.Items.Add(privatePl.DisplayInfoPlayList() + " (private)");
                         }
                     }
                 }
@@ -1433,6 +1433,7 @@ namespace Entrega3_FyBuZz
                             foreach (Song song in playList.Songs)
                             {
                                 PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                                PlayPlaylistIsPrivate.Clear();
                             }
                         }
                         else if(playList.Format == ".mp4" || playList.Format == ".mov" || playList.Format == ".avi")
@@ -1440,6 +1441,7 @@ namespace Entrega3_FyBuZz
                             foreach(Video video in playList.Videos)
                             {
                                 PlayPlaylistShowMultimedia.Items.Add(video.SearchedInfoVideo());
+                                PlayPlaylistIsPrivate.Clear();
                             }
                         }
                     }
@@ -1450,7 +1452,7 @@ namespace Entrega3_FyBuZz
                     {
                         
                         string ex = privatePl.DisplayInfoPlayList();
-                        if (privatePl.NamePlayList != "" && result == ex)
+                        if (privatePl.NamePlayList != "" && result.Contains(ex))
                         {
                             if (privatePl.Image != null)
                             {
@@ -1467,6 +1469,7 @@ namespace Entrega3_FyBuZz
                                 foreach (Song song in privatePl.Songs)
                                 {
                                     PlayPlaylistShowMultimedia.Items.Add(song.SearchedInfoSong());
+                                    PlayPlaylistIsPrivate.AppendText("private");
                                 }
                             }
                             else if (privatePl.Format == ".mp4" || privatePl.Format == ".mov" || privatePl.Format == ".avi")
@@ -1474,6 +1477,7 @@ namespace Entrega3_FyBuZz
                                 foreach (Video video in privatePl.Videos)
                                 {
                                     PlayPlaylistShowMultimedia.Items.Add(video.SearchedInfoVideo());
+                                    PlayPlaylistIsPrivate.AppendText("private");
                                 }
                             }
                         }
@@ -3382,11 +3386,19 @@ namespace Entrega3_FyBuZz
             string[] infoPlName = PlayPlaylistLabel.Text.Split(':');
             string plName = infoPlName[1];
             int indexPl = 0;
-            List<PlayList> allPl = OnDisplayPlaylistsGlobalPlaylist_Click();
+            List<PlayList> allPl;
+            if (PlayPlaylistIsPrivate.Text.Contains("private"))
+            {
+                allPl = GetPrivPlaylist();
+            }
+            else
+            {
+                allPl = OnDisplayPlaylistsGlobalPlaylist_Click();
+            }
 
             for (int i = 0; i < allPl.Count(); i++)
             {
-                if (plName.Contains(allPl[i].NamePlayList))
+                if (allPl[i].NamePlayList != "" && plName.Contains(allPl[i].NamePlayList))
                 {
                     indexPl = i;
                     break;
@@ -3466,11 +3478,19 @@ namespace Entrega3_FyBuZz
             {
                 string plName = infoPlName[1];
                 int indexPl = 0;
-                List<PlayList> allPl = OnDisplayPlaylistsGlobalPlaylist_Click();
+                List<PlayList> allPl;
+                if (PlayPlaylistIsPrivate.Text.Contains("private"))
+                {
+                    allPl = GetPrivPlaylist();
+                }
+                else
+                {
+                    allPl = OnDisplayPlaylistsGlobalPlaylist_Click();
+                }
 
                 for (int i = 0; i < allPl.Count(); i++)
                 {
-                    if (plName.Contains(allPl[i].NamePlayList))
+                    if (allPl[i].NamePlayList != "" && plName.Contains(allPl[i].NamePlayList))
                     {
                         indexPl = i;
                         break;

@@ -49,7 +49,6 @@ namespace Modelos
             this.creator = Creator;
             this.profileCreator = ProfileCreator;
             this.image = image;
-
         }
         //--------------------------------------------------------------------------------------------------
 
