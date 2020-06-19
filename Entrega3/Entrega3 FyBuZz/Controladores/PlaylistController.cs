@@ -146,10 +146,10 @@ namespace Entrega3_FyBuZz.Controladores
                     {
                         string[] result = e.RestultText.Split(':');
                         int choosenPl = e.ChoosenIndex;
-                        if (result[0].Contains(song.Name) && result[1].Contains(song.Artist) && (e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Contains(song) == false || playlist.Songs.Contains(song) == false) && result[2].Contains(e.ProfileCreatorText.CreatedPlaylist[choosenPl].Format))
+                        if (result[0].Contains(song.Name) && result[1].Contains(song.Artist) && (e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Contains(song) == false || playlist.Songs.Contains(song) == false))
                         {
                             e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Add(song);
-                            //playlist.Songs.Add(song);
+                            playlist.Songs.Add(song);
                             dataBase.Save_PLs(playlistDataBase);
                             dataBase.Save_PLs_Priv(privatePlaylistsDatabase);
                             return description;
@@ -173,7 +173,7 @@ namespace Entrega3_FyBuZz.Controladores
                         if (result[0].Contains(song.Name) && result[1].Contains(song.Artist) && (e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Contains(song) == false || playlist.Songs.Contains(song) == false) && result[2].Contains(e.ProfileCreatorText.CreatedPlaylist[choosenPl].Format))
                         {
                             e.ProfileCreatorText.CreatedPlaylist[choosenPl].Songs.Add(song);
-                            //playlist.Songs.Add(song);
+                            playlist.Songs.Add(song);
                             dataBase.Save_PLs(playlistDataBase);
                             dataBase.Save_PLs_Priv(privatePlaylistsDatabase);
                             return description;
@@ -235,13 +235,13 @@ namespace Entrega3_FyBuZz.Controladores
                         string[] resultado = e.RestultText.Split(':');
                         int indexDomainUpDownPl = e.ChoosenIndex;
 
-                        if (resultado[0].Contains(video.Name) && resultado[1].Contains(video.Actors) && resultado[2].Contains(video.Directors) && playlist.Videos.Contains(video) == true && resultado[3].Contains(playlist.Format) == false) 
+                        if (resultado[0].Contains(video.Name) && resultado[1].Contains(video.Actors) && resultado[2].Contains(video.Directors) && playlist.Videos.Contains(video) == true) 
                         {
                             description = "ERROR[!] ~ The video is already in this playlist";
                             break;
                         }
 
-                        else if (resultado[0].Contains(video.Name) && resultado[1].Contains(video.Actors) && resultado[2].Contains(video.Directors) && playlist.Videos.Contains(video) == false && resultado[3].Contains(playlist.Format))
+                        else if (resultado[0].Contains(video.Name) && resultado[1].Contains(video.Actors) && resultado[2].Contains(video.Directors) && playlist.Videos.Contains(video) == false)
                         {
                             playlist.Videos.Add(video);
                             dataBase.Save_PLs(playlistDataBase);

@@ -92,6 +92,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CreateProfileLabel = new System.Windows.Forms.Label();
             this.DisplayStartPanel = new System.Windows.Forms.Panel();
+            this.DisplayStartMultimediaInfoDomainUp = new System.Windows.Forms.DomainUpDown();
+            this.DisplayStartChooseSharedMult = new System.Windows.Forms.Button();
+            this.DisplayStartNotificationDomainUp = new System.Windows.Forms.DomainUpDown();
             this.DisplayStartLabel = new System.Windows.Forms.Label();
             this.DisplayStartLogOutButton = new System.Windows.Forms.Button();
             this.DisplayStartAdminMenuButton = new System.Windows.Forms.Button();
@@ -212,6 +215,7 @@
             this.DisplayPlaylistLogo = new System.Windows.Forms.PictureBox();
             this.DisplayPlaylistLabel = new System.Windows.Forms.Label();
             this.PlayPlaylistPanel = new System.Windows.Forms.Panel();
+            this.PlayPlaylistIsPrivate = new System.Windows.Forms.TextBox();
             this.PlayPlaylistLabel = new System.Windows.Forms.Label();
             this.PlayPlaylistImageBox = new System.Windows.Forms.PictureBox();
             this.PlayPlaylistMultTypeTextBox = new System.Windows.Forms.TextBox();
@@ -322,6 +326,9 @@
             this.DurationTimer = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.PlaySongPanel = new System.Windows.Forms.Panel();
+            this.PlaySongChooseUserButton = new System.Windows.Forms.Button();
+            this.PlaySongChooseUserDomainUp = new System.Windows.Forms.DomainUpDown();
+            this.PlaySongShareButton = new System.Windows.Forms.Button();
             this.PlaySongSongPlaying = new System.Windows.Forms.TextBox();
             this.PlaySongLikeButton = new System.Windows.Forms.Button();
             this.PlaySongDisplayLyrics = new System.Windows.Forms.TextBox();
@@ -339,6 +346,9 @@
             this.PlaySongImageBoxImage = new System.Windows.Forms.PictureBox();
             this.PlaySongLabel = new System.Windows.Forms.Label();
             this.PlayVideoPanel = new System.Windows.Forms.Panel();
+            this.PlayVideoChooseUserButton = new System.Windows.Forms.Button();
+            this.PlayVideoChooseUserDomainUp = new System.Windows.Forms.DomainUpDown();
+            this.PlayVideoShareButton = new System.Windows.Forms.Button();
             this.PlayVideoVideoImageBox = new System.Windows.Forms.PictureBox();
             this.PlayVideoVideoPlaying = new System.Windows.Forms.TextBox();
             this.PlayVideoFullScreenButton = new System.Windows.Forms.Button();
@@ -408,7 +418,6 @@
             this.WelcomePanelProfesoresLabel = new System.Windows.Forms.Label();
             this.WelcomePanelProyectoNombreLabel = new System.Windows.Forms.Label();
             this.WelcomePanelProyectoLabel = new System.Windows.Forms.Label();
-            this.PlayPlaylistIsPrivate = new System.Windows.Forms.TextBox();
             this.RegisterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RegisterLogo)).BeginInit();
             this.LogInPanel.SuspendLayout();
@@ -1197,6 +1206,9 @@
             // DisplayStartPanel
             // 
             this.DisplayStartPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartMultimediaInfoDomainUp);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartChooseSharedMult);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartNotificationDomainUp);
             this.DisplayStartPanel.Controls.Add(this.DisplayStartLabel);
             this.DisplayStartPanel.Controls.Add(this.DisplayStartLogOutButton);
             this.DisplayStartPanel.Controls.Add(this.DisplayStartAdminMenuButton);
@@ -1213,6 +1225,33 @@
             this.DisplayStartPanel.Name = "DisplayStartPanel";
             this.DisplayStartPanel.Size = new System.Drawing.Size(1024, 768);
             this.DisplayStartPanel.TabIndex = 5;
+            // 
+            // DisplayStartMultimediaInfoDomainUp
+            // 
+            this.DisplayStartMultimediaInfoDomainUp.Location = new System.Drawing.Point(114, 598);
+            this.DisplayStartMultimediaInfoDomainUp.Name = "DisplayStartMultimediaInfoDomainUp";
+            this.DisplayStartMultimediaInfoDomainUp.Size = new System.Drawing.Size(184, 22);
+            this.DisplayStartMultimediaInfoDomainUp.TabIndex = 43;
+            this.DisplayStartMultimediaInfoDomainUp.Text = "domainUpDown1";
+            this.DisplayStartMultimediaInfoDomainUp.Visible = false;
+            // 
+            // DisplayStartChooseSharedMult
+            // 
+            this.DisplayStartChooseSharedMult.Location = new System.Drawing.Point(433, 557);
+            this.DisplayStartChooseSharedMult.Name = "DisplayStartChooseSharedMult";
+            this.DisplayStartChooseSharedMult.Size = new System.Drawing.Size(104, 31);
+            this.DisplayStartChooseSharedMult.TabIndex = 42;
+            this.DisplayStartChooseSharedMult.Text = "Play";
+            this.DisplayStartChooseSharedMult.UseVisualStyleBackColor = true;
+            this.DisplayStartChooseSharedMult.Click += new System.EventHandler(this.DisplayStartChooseSharedMult_Click);
+            // 
+            // DisplayStartNotificationDomainUp
+            // 
+            this.DisplayStartNotificationDomainUp.Location = new System.Drawing.Point(298, 518);
+            this.DisplayStartNotificationDomainUp.Name = "DisplayStartNotificationDomainUp";
+            this.DisplayStartNotificationDomainUp.Size = new System.Drawing.Size(372, 22);
+            this.DisplayStartNotificationDomainUp.TabIndex = 41;
+            this.DisplayStartNotificationDomainUp.Text = "Someone shared Mulltimedia with you...please select one";
             // 
             // DisplayStartLabel
             // 
@@ -1237,10 +1276,10 @@
             // 
             // DisplayStartAdminMenuButton
             // 
-            this.DisplayStartAdminMenuButton.Location = new System.Drawing.Point(726, 527);
+            this.DisplayStartAdminMenuButton.Location = new System.Drawing.Point(776, 527);
             this.DisplayStartAdminMenuButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DisplayStartAdminMenuButton.Name = "DisplayStartAdminMenuButton";
-            this.DisplayStartAdminMenuButton.Size = new System.Drawing.Size(220, 49);
+            this.DisplayStartAdminMenuButton.Size = new System.Drawing.Size(170, 49);
             this.DisplayStartAdminMenuButton.TabIndex = 14;
             this.DisplayStartAdminMenuButton.Text = "Admin Menu";
             this.DisplayStartAdminMenuButton.UseVisualStyleBackColor = true;
@@ -2673,6 +2712,14 @@
             this.PlayPlaylistPanel.Size = new System.Drawing.Size(1024, 768);
             this.PlayPlaylistPanel.TabIndex = 8;
             // 
+            // PlayPlaylistIsPrivate
+            // 
+            this.PlayPlaylistIsPrivate.Location = new System.Drawing.Point(374, 34);
+            this.PlayPlaylistIsPrivate.Name = "PlayPlaylistIsPrivate";
+            this.PlayPlaylistIsPrivate.Size = new System.Drawing.Size(224, 22);
+            this.PlayPlaylistIsPrivate.TabIndex = 20;
+            this.PlayPlaylistIsPrivate.Visible = false;
+            // 
             // PlayPlaylistLabel
             // 
             this.PlayPlaylistLabel.AutoSize = true;
@@ -3980,6 +4027,9 @@
             // PlaySongPanel
             // 
             this.PlaySongPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlaySongPanel.Controls.Add(this.PlaySongChooseUserButton);
+            this.PlaySongPanel.Controls.Add(this.PlaySongChooseUserDomainUp);
+            this.PlaySongPanel.Controls.Add(this.PlaySongShareButton);
             this.PlaySongPanel.Controls.Add(this.PlaySongSongPlaying);
             this.PlaySongPanel.Controls.Add(this.PlaySongLikeButton);
             this.PlaySongPanel.Controls.Add(this.PlaySongDisplayLyrics);
@@ -4005,6 +4055,40 @@
             this.PlaySongPanel.Size = new System.Drawing.Size(1024, 768);
             this.PlaySongPanel.TabIndex = 13;
             // 
+            // PlaySongChooseUserButton
+            // 
+            this.PlaySongChooseUserButton.Location = new System.Drawing.Point(906, 436);
+            this.PlaySongChooseUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PlaySongChooseUserButton.Name = "PlaySongChooseUserButton";
+            this.PlaySongChooseUserButton.Size = new System.Drawing.Size(75, 26);
+            this.PlaySongChooseUserButton.TabIndex = 51;
+            this.PlaySongChooseUserButton.Text = "Choose";
+            this.PlaySongChooseUserButton.UseVisualStyleBackColor = true;
+            this.PlaySongChooseUserButton.Visible = false;
+            this.PlaySongChooseUserButton.Click += new System.EventHandler(this.PlaySongChooseUserButton_Click);
+            // 
+            // PlaySongChooseUserDomainUp
+            // 
+            this.PlaySongChooseUserDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlaySongChooseUserDomainUp.Location = new System.Drawing.Point(709, 436);
+            this.PlaySongChooseUserDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PlaySongChooseUserDomainUp.Name = "PlaySongChooseUserDomainUp";
+            this.PlaySongChooseUserDomainUp.Size = new System.Drawing.Size(171, 27);
+            this.PlaySongChooseUserDomainUp.TabIndex = 50;
+            this.PlaySongChooseUserDomainUp.Text = "Choose User";
+            this.PlaySongChooseUserDomainUp.Visible = false;
+            // 
+            // PlaySongShareButton
+            // 
+            this.PlaySongShareButton.Location = new System.Drawing.Point(823, 377);
+            this.PlaySongShareButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PlaySongShareButton.Name = "PlaySongShareButton";
+            this.PlaySongShareButton.Size = new System.Drawing.Size(92, 36);
+            this.PlaySongShareButton.TabIndex = 49;
+            this.PlaySongShareButton.Text = "Share";
+            this.PlaySongShareButton.UseVisualStyleBackColor = true;
+            this.PlaySongShareButton.Click += new System.EventHandler(this.PlaySongShareButton_Click);
+            // 
             // PlaySongSongPlaying
             // 
             this.PlaySongSongPlaying.Location = new System.Drawing.Point(314, 32);
@@ -4015,7 +4099,7 @@
             // 
             // PlaySongLikeButton
             // 
-            this.PlaySongLikeButton.Location = new System.Drawing.Point(681, 379);
+            this.PlaySongLikeButton.Location = new System.Drawing.Point(643, 378);
             this.PlaySongLikeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlaySongLikeButton.Name = "PlaySongLikeButton";
             this.PlaySongLikeButton.Size = new System.Drawing.Size(92, 36);
@@ -4101,7 +4185,7 @@
             // 
             // PlaySongAddQueueButton
             // 
-            this.PlaySongAddQueueButton.Location = new System.Drawing.Point(547, 379);
+            this.PlaySongAddQueueButton.Location = new System.Drawing.Point(509, 378);
             this.PlaySongAddQueueButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlaySongAddQueueButton.Name = "PlaySongAddQueueButton";
             this.PlaySongAddQueueButton.Size = new System.Drawing.Size(103, 37);
@@ -4112,10 +4196,10 @@
             // 
             // PlaySongChoosePlsButton
             // 
-            this.PlaySongChoosePlsButton.Location = new System.Drawing.Point(618, 439);
+            this.PlaySongChoosePlsButton.Location = new System.Drawing.Point(274, 441);
             this.PlaySongChoosePlsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlaySongChoosePlsButton.Name = "PlaySongChoosePlsButton";
-            this.PlaySongChoosePlsButton.Size = new System.Drawing.Size(77, 26);
+            this.PlaySongChoosePlsButton.Size = new System.Drawing.Size(75, 26);
             this.PlaySongChoosePlsButton.TabIndex = 40;
             this.PlaySongChoosePlsButton.Text = "Choose";
             this.PlaySongChoosePlsButton.UseVisualStyleBackColor = true;
@@ -4125,10 +4209,10 @@
             // PlaySongChoosePlsDomainUp
             // 
             this.PlaySongChoosePlsDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlaySongChoosePlsDomainUp.Location = new System.Drawing.Point(272, 439);
+            this.PlaySongChoosePlsDomainUp.Location = new System.Drawing.Point(77, 441);
             this.PlaySongChoosePlsDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlaySongChoosePlsDomainUp.Name = "PlaySongChoosePlsDomainUp";
-            this.PlaySongChoosePlsDomainUp.Size = new System.Drawing.Size(338, 27);
+            this.PlaySongChoosePlsDomainUp.Size = new System.Drawing.Size(171, 27);
             this.PlaySongChoosePlsDomainUp.TabIndex = 39;
             this.PlaySongChoosePlsDomainUp.Text = "Choose PlayList";
             this.PlaySongChoosePlsDomainUp.Visible = false;
@@ -4149,7 +4233,7 @@
             // 
             // PlaySongDownloadSongButton
             // 
-            this.PlaySongDownloadSongButton.Location = new System.Drawing.Point(374, 379);
+            this.PlaySongDownloadSongButton.Location = new System.Drawing.Point(336, 378);
             this.PlaySongDownloadSongButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlaySongDownloadSongButton.Name = "PlaySongDownloadSongButton";
             this.PlaySongDownloadSongButton.Size = new System.Drawing.Size(141, 36);
@@ -4160,7 +4244,7 @@
             // 
             // PlaySongAddToPlaylistButton
             // 
-            this.PlaySongAddToPlaylistButton.Location = new System.Drawing.Point(227, 379);
+            this.PlaySongAddToPlaylistButton.Location = new System.Drawing.Point(143, 379);
             this.PlaySongAddToPlaylistButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlaySongAddToPlaylistButton.Name = "PlaySongAddToPlaylistButton";
             this.PlaySongAddToPlaylistButton.Size = new System.Drawing.Size(110, 35);
@@ -4205,6 +4289,9 @@
             // PlayVideoPanel
             // 
             this.PlayVideoPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlayVideoPanel.Controls.Add(this.PlayVideoChooseUserButton);
+            this.PlayVideoPanel.Controls.Add(this.PlayVideoChooseUserDomainUp);
+            this.PlayVideoPanel.Controls.Add(this.PlayVideoShareButton);
             this.PlayVideoPanel.Controls.Add(this.PlayVideoVideoImageBox);
             this.PlayVideoPanel.Controls.Add(this.PlayVideoVideoPlaying);
             this.PlayVideoPanel.Controls.Add(this.PlayVideoFullScreenButton);
@@ -4230,6 +4317,40 @@
             this.PlayVideoPanel.Name = "PlayVideoPanel";
             this.PlayVideoPanel.Size = new System.Drawing.Size(1024, 768);
             this.PlayVideoPanel.TabIndex = 14;
+            // 
+            // PlayVideoChooseUserButton
+            // 
+            this.PlayVideoChooseUserButton.Location = new System.Drawing.Point(208, 639);
+            this.PlayVideoChooseUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PlayVideoChooseUserButton.Name = "PlayVideoChooseUserButton";
+            this.PlayVideoChooseUserButton.Size = new System.Drawing.Size(75, 26);
+            this.PlayVideoChooseUserButton.TabIndex = 60;
+            this.PlayVideoChooseUserButton.Text = "Choose";
+            this.PlayVideoChooseUserButton.UseVisualStyleBackColor = true;
+            this.PlayVideoChooseUserButton.Visible = false;
+            this.PlayVideoChooseUserButton.Click += new System.EventHandler(this.PlayVideoChooseUserButton_Click);
+            // 
+            // PlayVideoChooseUserDomainUp
+            // 
+            this.PlayVideoChooseUserDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayVideoChooseUserDomainUp.Location = new System.Drawing.Point(11, 639);
+            this.PlayVideoChooseUserDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PlayVideoChooseUserDomainUp.Name = "PlayVideoChooseUserDomainUp";
+            this.PlayVideoChooseUserDomainUp.Size = new System.Drawing.Size(171, 27);
+            this.PlayVideoChooseUserDomainUp.TabIndex = 59;
+            this.PlayVideoChooseUserDomainUp.Text = "Choose User";
+            this.PlayVideoChooseUserDomainUp.Visible = false;
+            // 
+            // PlayVideoShareButton
+            // 
+            this.PlayVideoShareButton.Location = new System.Drawing.Point(125, 580);
+            this.PlayVideoShareButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PlayVideoShareButton.Name = "PlayVideoShareButton";
+            this.PlayVideoShareButton.Size = new System.Drawing.Size(92, 36);
+            this.PlayVideoShareButton.TabIndex = 58;
+            this.PlayVideoShareButton.Text = "Share";
+            this.PlayVideoShareButton.UseVisualStyleBackColor = true;
+            this.PlayVideoShareButton.Click += new System.EventHandler(this.PlayVideoShareButton_Click);
             // 
             // PlayVideoVideoImageBox
             // 
@@ -4260,7 +4381,7 @@
             // 
             // PlayVideoLikeButton
             // 
-            this.PlayVideoLikeButton.Location = new System.Drawing.Point(253, 600);
+            this.PlayVideoLikeButton.Location = new System.Drawing.Point(323, 602);
             this.PlayVideoLikeButton.Name = "PlayVideoLikeButton";
             this.PlayVideoLikeButton.Size = new System.Drawing.Size(106, 37);
             this.PlayVideoLikeButton.TabIndex = 54;
@@ -4274,7 +4395,7 @@
             this.VideoRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.VideoRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VideoRate.ForeColor = System.Drawing.Color.White;
-            this.VideoRate.Location = new System.Drawing.Point(389, 640);
+            this.VideoRate.Location = new System.Drawing.Point(459, 642);
             this.VideoRate.Name = "VideoRate";
             this.VideoRate.ReadOnly = true;
             this.VideoRate.Size = new System.Drawing.Size(120, 29);
@@ -4387,7 +4508,7 @@
             // PlayVideoRateDomainUp
             // 
             this.PlayVideoRateDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayVideoRateDomainUp.Location = new System.Drawing.Point(546, 600);
+            this.PlayVideoRateDomainUp.Location = new System.Drawing.Point(616, 602);
             this.PlayVideoRateDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoRateDomainUp.Maximum = new decimal(new int[] {
             5,
@@ -4410,7 +4531,7 @@
             // 
             // PlayVideoRateVideoButton
             // 
-            this.PlayVideoRateVideoButton.Location = new System.Drawing.Point(387, 601);
+            this.PlayVideoRateVideoButton.Location = new System.Drawing.Point(457, 603);
             this.PlayVideoRateVideoButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoRateVideoButton.Name = "PlayVideoRateVideoButton";
             this.PlayVideoRateVideoButton.Size = new System.Drawing.Size(108, 25);
@@ -4425,7 +4546,7 @@
             this.PlayVideoMessageLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayVideoMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayVideoMessageLabel.ForeColor = System.Drawing.Color.White;
-            this.PlayVideoMessageLabel.Location = new System.Drawing.Point(258, 569);
+            this.PlayVideoMessageLabel.Location = new System.Drawing.Point(328, 571);
             this.PlayVideoMessageLabel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoMessageLabel.Name = "PlayVideoMessageLabel";
             this.PlayVideoMessageLabel.ReadOnly = true;
@@ -5027,31 +5148,23 @@
             this.WelcomePanelProyectoLabel.Text = "Proyecto:";
             this.WelcomePanelProyectoLabel.Visible = false;
             // 
-            // PlayPlaylistIsPrivate
-            // 
-            this.PlayPlaylistIsPrivate.Location = new System.Drawing.Point(374, 34);
-            this.PlayPlaylistIsPrivate.Name = "PlayPlaylistIsPrivate";
-            this.PlayPlaylistIsPrivate.Size = new System.Drawing.Size(224, 22);
-            this.PlayPlaylistIsPrivate.TabIndex = 20;
-            this.PlayPlaylistIsPrivate.Visible = false;
-            // 
             // FyBuZz
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 712);
             this.Controls.Add(this.WelcomePanel);
-            this.Controls.Add(this.PlayPlaylistPanel);
-            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.PlaySongPanel);
+            this.Controls.Add(this.PlayVideoPanel);
+            this.Controls.Add(this.DisplayStartPanel);
+            this.Controls.Add(this.ProfilePanel);
+            this.Controls.Add(this.SearchPanel);
+            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
-            this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.CreateVideoPanel);
-            this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.AddShowPanel);
             this.Controls.Add(this.LogInPanel);
-            this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
             this.Controls.Add(this.SearcUserPanel);
             this.Controls.Add(this.RegisterPanel);
@@ -5535,5 +5648,14 @@
         private System.Windows.Forms.TextBox CreateSongImageTextBox;
         private System.Windows.Forms.Label CreateSongImageLabel;
         private System.Windows.Forms.TextBox PlayPlaylistIsPrivate;
+        private System.Windows.Forms.Button PlaySongChooseUserButton;
+        private System.Windows.Forms.DomainUpDown PlaySongChooseUserDomainUp;
+        private System.Windows.Forms.Button PlaySongShareButton;
+        private System.Windows.Forms.Button DisplayStartChooseSharedMult;
+        private System.Windows.Forms.DomainUpDown DisplayStartNotificationDomainUp;
+        private System.Windows.Forms.DomainUpDown DisplayStartMultimediaInfoDomainUp;
+        private System.Windows.Forms.Button PlayVideoChooseUserButton;
+        private System.Windows.Forms.DomainUpDown PlayVideoChooseUserDomainUp;
+        private System.Windows.Forms.Button PlayVideoShareButton;
     }
 }
