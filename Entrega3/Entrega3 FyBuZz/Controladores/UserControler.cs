@@ -42,6 +42,8 @@ namespace Entrega3_FyBuZz.Controladores
             this.fyBuZz.AddedLikedMult += AddLikedMultimedia;
             this.fyBuZz.ReturnLikedMult_Done += ReturnLikedMultList;
             this.fyBuZz.ProfileDeleted += DeleteProfile;
+            this.fyBuZz.SharedMultSetter += SetSharedMult;
+            this.fyBuZz.SharedMultGetter += GetSharedMult;
         }
 
         public void Initialize()
@@ -462,6 +464,34 @@ namespace Entrega3_FyBuZz.Controladores
                 }
             }
             return false;
+        }
+
+        private string SetSharedMult(object sender, UserEventArgs e)
+        {
+            string description = null;
+            foreach(User user in userDataBase)
+            {
+                if(user.Username == e.UsernameText)
+                {
+                    user.SharedMult = e.SharedMult;             //<Nombre del usuario que te lo comportio> + "//" + <archivo>
+                    description = "Shared succesfully";
+                }
+            }
+            dataBase.Save_Users(userDataBase);
+            return description;
+        }
+
+        private List<string> GetSharedMult(Object sender, UserEventArgs e)
+        {
+            List<string> description = new List<string>();
+            foreach(User user in userDataBase)
+            {
+                if (user.Username == e.UsernameText)
+                {
+                    description = user.SharedMult;
+                }
+            }
+            return description;
         }
     }
     

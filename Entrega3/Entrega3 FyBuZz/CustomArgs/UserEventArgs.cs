@@ -28,6 +28,7 @@ namespace Entrega3_FyBuZz.CustomArgs
         public Profile ProfileUserLogIn {get;set;}
         public string SongFileText { get; set; }
         public string VideoFileText { get; set; }
+        public List<string> SharedMult { get; set; }
         
 
     }
