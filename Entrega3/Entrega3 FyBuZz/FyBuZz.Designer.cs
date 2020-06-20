@@ -1230,7 +1230,7 @@
             // 
             this.DisplayStartMultimediaInfoDomainUp.Location = new System.Drawing.Point(114, 598);
             this.DisplayStartMultimediaInfoDomainUp.Name = "DisplayStartMultimediaInfoDomainUp";
-            this.DisplayStartMultimediaInfoDomainUp.Size = new System.Drawing.Size(184, 22);
+            this.DisplayStartMultimediaInfoDomainUp.Size = new System.Drawing.Size(184, 26);
             this.DisplayStartMultimediaInfoDomainUp.TabIndex = 43;
             this.DisplayStartMultimediaInfoDomainUp.Text = "domainUpDown1";
             this.DisplayStartMultimediaInfoDomainUp.Visible = false;
@@ -1249,7 +1249,7 @@
             // 
             this.DisplayStartNotificationDomainUp.Location = new System.Drawing.Point(298, 518);
             this.DisplayStartNotificationDomainUp.Name = "DisplayStartNotificationDomainUp";
-            this.DisplayStartNotificationDomainUp.Size = new System.Drawing.Size(372, 22);
+            this.DisplayStartNotificationDomainUp.Size = new System.Drawing.Size(372, 26);
             this.DisplayStartNotificationDomainUp.TabIndex = 41;
             this.DisplayStartNotificationDomainUp.Text = "Someone shared Mulltimedia with you...please select one";
             // 
@@ -2716,7 +2716,7 @@
             // 
             this.PlayPlaylistIsPrivate.Location = new System.Drawing.Point(374, 34);
             this.PlayPlaylistIsPrivate.Name = "PlayPlaylistIsPrivate";
-            this.PlayPlaylistIsPrivate.Size = new System.Drawing.Size(224, 22);
+            this.PlayPlaylistIsPrivate.Size = new System.Drawing.Size(224, 26);
             this.PlayPlaylistIsPrivate.TabIndex = 20;
             this.PlayPlaylistIsPrivate.Visible = false;
             // 
@@ -3082,7 +3082,7 @@
             this.CreateSongImageTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongImageTextBox.Name = "CreateSongImageTextBox";
             this.CreateSongImageTextBox.ReadOnly = true;
-            this.CreateSongImageTextBox.Size = new System.Drawing.Size(359, 27);
+            this.CreateSongImageTextBox.Size = new System.Drawing.Size(359, 31);
             this.CreateSongImageTextBox.TabIndex = 32;
             // 
             // CreateSongImageLabel
@@ -3092,7 +3092,7 @@
             this.CreateSongImageLabel.ForeColor = System.Drawing.Color.White;
             this.CreateSongImageLabel.Location = new System.Drawing.Point(174, 583);
             this.CreateSongImageLabel.Name = "CreateSongImageLabel";
-            this.CreateSongImageLabel.Size = new System.Drawing.Size(97, 20);
+            this.CreateSongImageLabel.Size = new System.Drawing.Size(126, 25);
             this.CreateSongImageLabel.TabIndex = 31;
             this.CreateSongImageLabel.Text = "Song Image";
             // 
@@ -3479,7 +3479,7 @@
             this.CreateVideoImageTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoImageTextBox.Name = "CreateVideoImageTextBox";
             this.CreateVideoImageTextBox.ReadOnly = true;
-            this.CreateVideoImageTextBox.Size = new System.Drawing.Size(321, 22);
+            this.CreateVideoImageTextBox.Size = new System.Drawing.Size(321, 26);
             this.CreateVideoImageTextBox.TabIndex = 32;
             // 
             // CreateVideoImageLabel
@@ -3489,7 +3489,7 @@
             this.CreateVideoImageLabel.ForeColor = System.Drawing.Color.White;
             this.CreateVideoImageLabel.Location = new System.Drawing.Point(223, 602);
             this.CreateVideoImageLabel.Name = "CreateVideoImageLabel";
-            this.CreateVideoImageLabel.Size = new System.Drawing.Size(117, 24);
+            this.CreateVideoImageLabel.Size = new System.Drawing.Size(135, 26);
             this.CreateVideoImageLabel.TabIndex = 31;
             this.CreateVideoImageLabel.Text = "Video Image";
             // 
@@ -3940,7 +3940,7 @@
             this.CreatePlaylistImageTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreatePlaylistImageTextBox.Name = "CreatePlaylistImageTextBox";
             this.CreatePlaylistImageTextBox.ReadOnly = true;
-            this.CreatePlaylistImageTextBox.Size = new System.Drawing.Size(307, 36);
+            this.CreatePlaylistImageTextBox.Size = new System.Drawing.Size(307, 41);
             this.CreatePlaylistImageTextBox.TabIndex = 6;
             // 
             // CreatePlaylistFormatDomainUp
@@ -4073,7 +4073,7 @@
             this.PlaySongChooseUserDomainUp.Location = new System.Drawing.Point(709, 436);
             this.PlaySongChooseUserDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlaySongChooseUserDomainUp.Name = "PlaySongChooseUserDomainUp";
-            this.PlaySongChooseUserDomainUp.Size = new System.Drawing.Size(171, 27);
+            this.PlaySongChooseUserDomainUp.Size = new System.Drawing.Size(171, 31);
             this.PlaySongChooseUserDomainUp.TabIndex = 50;
             this.PlaySongChooseUserDomainUp.Text = "Choose User";
             this.PlaySongChooseUserDomainUp.Visible = false;
@@ -4212,7 +4212,7 @@
             this.PlaySongChoosePlsDomainUp.Location = new System.Drawing.Point(77, 441);
             this.PlaySongChoosePlsDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlaySongChoosePlsDomainUp.Name = "PlaySongChoosePlsDomainUp";
-            this.PlaySongChoosePlsDomainUp.Size = new System.Drawing.Size(171, 27);
+            this.PlaySongChoosePlsDomainUp.Size = new System.Drawing.Size(171, 31);
             this.PlaySongChoosePlsDomainUp.TabIndex = 39;
             this.PlaySongChoosePlsDomainUp.Text = "Choose PlayList";
             this.PlaySongChoosePlsDomainUp.Visible = false;
@@ -4336,7 +4336,7 @@
             this.PlayVideoChooseUserDomainUp.Location = new System.Drawing.Point(11, 639);
             this.PlayVideoChooseUserDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoChooseUserDomainUp.Name = "PlayVideoChooseUserDomainUp";
-            this.PlayVideoChooseUserDomainUp.Size = new System.Drawing.Size(171, 27);
+            this.PlayVideoChooseUserDomainUp.Size = new System.Drawing.Size(171, 31);
             this.PlayVideoChooseUserDomainUp.TabIndex = 59;
             this.PlayVideoChooseUserDomainUp.Text = "Choose User";
             this.PlayVideoChooseUserDomainUp.Visible = false;
@@ -5152,7 +5152,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1006, 712);
+            this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayVideoPanel);
