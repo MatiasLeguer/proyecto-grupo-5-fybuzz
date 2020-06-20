@@ -23,6 +23,7 @@ namespace Interfaz_FyBuzz_MOD1
             MultimediaIOptionsPanel.Visible = false;
             PlayListsOptionsPanel.Visible = false;
             CreateOptionsPanel.Visible = false;
+            AccountSettingsPanel.Visible = false;
         }
 
         private void OcultarSubMenus()
@@ -33,6 +34,8 @@ namespace Interfaz_FyBuzz_MOD1
                 PlayListsOptionsPanel.Visible = false;
             if (CreateOptionsPanel.Visible == true)
                 CreateOptionsPanel.Visible = false;
+            if (AccountSettingsPanel.Visible == true)
+                AccountSettingsPanel.Visible = false;
         }
 
         private void MostrarSubMenus(Panel SubMenu)
@@ -62,72 +65,71 @@ namespace Interfaz_FyBuzz_MOD1
             MostrarSubMenus(CreateOptionsPanel);
         }
 
+     
+
         private void SongsButton_Click(object sender, EventArgs e)
         {
             //Codigo de Los Cabros....
-            OpenOverGeneralPanel(new Form2());
+            
             OcultarSubMenus();
         }
 
         private void VideosButton_Click(object sender, EventArgs e)
         {
             //Codigo de Los Cabros....
-            OpenOverGeneralPanel(new Form2());
+            
             OcultarSubMenus();
         }
 
         private void PrivatePlsButton_Click(object sender, EventArgs e)
         {
             //Codigo de Los Cabros....
-            OpenOverGeneralPanel(new Form3());
+            
             OcultarSubMenus();
         }
 
         private void GlobalPlsButton_Click(object sender, EventArgs e)
         {
             //Codigo de Los Cabros....
-            OpenOverGeneralPanel(new Form3());
+            
             OcultarSubMenus();
         }
 
         private void FavoritePlsButton_Click(object sender, EventArgs e)
         {
             //Codigo de Los Cabros....
-            OpenOverGeneralPanel(new Form3());
             OcultarSubMenus();
         }
 
         private void CreateSongsButton_Click(object sender, EventArgs e)
         {
             //Codigo de Los Cabros....
-            OpenOverGeneralPanel(new Form4());
             OcultarSubMenus();
         }
 
         private void CreateVideosButton_Click(object sender, EventArgs e)
         {
             //Codigo de Los Cabros....
-            OpenOverGeneralPanel(new Form4());
             OcultarSubMenus();
         }
 
         private void CreatePlayListsButton_Click(object sender, EventArgs e)
         {
             //Codigo de Los Cabros....
-            OpenOverGeneralPanel(new Form4());
             OcultarSubMenus();
         }
 
         private void CreateProfilesButton_Click(object sender, EventArgs e)
         {
             //Codigo de Los Cabros....
-            OpenOverGeneralPanel(new Form4());
             OcultarSubMenus();
         }
 
-        private void AboutUsButton_Click(object sender, EventArgs e)
+        private void AccountSettingsButton_Click(object sender, EventArgs e)
         {
             //Codigo de Los Cabros....
+            MostrarSubMenus(AccountSettingsPanel);
+            
             
         }
 
@@ -136,19 +138,38 @@ namespace Interfaz_FyBuzz_MOD1
 
         }
 
-        private Form DisplayActivo = null;
-        private void OpenOverGeneralPanel(Form DisplayForm)
+        private void BackWardMediaButton_Click(object sender, EventArgs e)
         {
-            if (DisplayActivo != null)
-                DisplayActivo.Close();
-            DisplayActivo = DisplayForm;
-            DisplayForm.TopLevel = false;
-            DisplayForm.FormBorderStyle = FormBorderStyle.None;
-            DisplayForm.Dock = DockStyle.Fill;
-            GeneralPanel.Controls.Add(DisplayForm);
-            GeneralPanel.Tag = DisplayForm;
-            DisplayForm.BringToFront();
-            DisplayForm.Show();
+
+        }
+
+        private void UserInfoButton_Click(object sender, EventArgs e)
+        {
+            OcultarSubMenus();
+        }
+
+        private void ProfilesInfoButton_Click(object sender, EventArgs e)
+        {
+            OcultarSubMenus();
+        }
+
+        private void AboutUsButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CreateSongNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CreateSongPanel_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
