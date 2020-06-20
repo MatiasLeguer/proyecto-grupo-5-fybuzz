@@ -255,11 +255,11 @@ namespace Modelos
             // es la lista global de playlist que viene de database, pero hay que conectarla
 
             //objeto playlist de canciones favoritas
-            PlayList favSongs = new PlayList(".mp3", "FavoriteSongs", usr.Username, userProfile.ProfileName);
+            PlayList favSongs = new PlayList(".mp3", "FavoriteSongs", usr.Username, userProfile.ProfileName, null);
             Dictionary<string, List<Song>> playlistFavSongs = favSongs.DicCanciones;
 
             //objeto Playlist de videos favoritos
-            PlayList favVideos = new PlayList(".mp3", "FavoriteVideos", usr.Username, userProfile.ProfileName);
+            PlayList favVideos = new PlayList(".mp3", "FavoriteVideos", usr.Username, userProfile.ProfileName, null);
             Dictionary<string, List<Video>> playlistFavVideos = favVideos.DicVideos;
 
             //Lista de todas las playlists

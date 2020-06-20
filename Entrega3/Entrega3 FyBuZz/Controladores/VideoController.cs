@@ -13,8 +13,8 @@ namespace Entrega3_FyBuZz.Controladores
     public class VideoController
     {
         FyBuZz fyBuzz;
-        List<Video> videoDataBase = new List<Video>() { new Video("crash_bandicoot_gameplay", "crash", "Crash bandicoot", "31/05/2020", "16:9", "720", "0", "crash woah", 2.59, "y", ".mov", "crash_bandicoot_gameplay.mov", true),
-                                                        new Video("wii-sports-remix", "Wii", "Wii sports", "31/05/2020", "16:9", "720", "0", "wii remix yo", 2.10, "n", ".avi", "wii-sports-remix.avi", true)};
+        List<Video> videoDataBase = new List<Video>() { new Video("crash_bandicoot_gameplay", "crash", "Crash bandicoot", "31/05/2020", "16:9", "720", "0", "crash woah", 2.59, "y", ".mov", "crash_bandicoot_gameplay.mov", "Crash-Bandicoot-N-Sane-Trilogy-1280x720-1024x768.jpg"),
+                                                        new Video("wii-sports-remix", "Wii", "Wii sports", "31/05/2020", "16:9", "720", "0", "wii remix yo", 2.10, "n", ".avi", "wii-sports-remix.avi", null)};
         DataBase database = new DataBase();
 
         public VideoController(Form fyBuzz)
@@ -46,7 +46,8 @@ namespace Entrega3_FyBuZz.Controladores
         {
             File.Copy(e.FileDestText, e.FileNameText);
             File.Copy(e.VideoSubSource, e.SubtitlesText);
-            List<string> infoMult = new List<string>() {e.NameText, e.ActorsText, e.DirectorsText, e.ReleaseDateText, e.DimensionText, e.QualityText, e.Categorytext, e.DescriptionText, e.DurationText, e.SubtitlesText, e.FormatText, e.FileNameText, e.VideoImage};
+            File.Copy(e.VideoImageDest, e.VideoImageFile);
+            List<string> infoMult = new List<string>() {e.NameText, e.ActorsText, e.DirectorsText, e.ReleaseDateText, e.DimensionText, e.QualityText, e.Categorytext, e.DescriptionText, e.DurationText, e.SubtitlesText, e.FormatText, e.FileNameText, e.VideoImageFile};
             string description = database.AddMult(1, infoMult, null, null, videoDataBase, null, null, null, null);
             if(description == null)
             {
@@ -55,6 +56,7 @@ namespace Entrega3_FyBuZz.Controladores
             }
             else
             {
+                File.Delete(e.VideoImageFile);
                 File.Delete(e.FileNameText);
                 File.Delete(e.SubtitlesText);
                 return false;

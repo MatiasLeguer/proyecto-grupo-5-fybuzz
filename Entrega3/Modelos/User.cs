@@ -26,6 +26,7 @@ namespace Modelos
         protected List<PlayList> profilePlaylists = new List<PlayList>();
         protected List<Profile> perfiles = new List<Profile>();
         private int banned;
+        private List<string> sharedMult = new List<string>();
 
         //--------------------------------------------------------------------------------------------------
 
@@ -47,6 +48,7 @@ namespace Modelos
         public List<string> FollowerList { get => followerList; set => followerList = value; }
         public List<PlayList> ProfilePlaylists { get => profilePlaylists; set => profilePlaylists = value; }
         public int Banned { get => banned; set => banned = value; }
+        public List<string> SharedMult { get => sharedMult; set => sharedMult = value; }
 
         //--------------------------------------------------------------------------------------------------
 

@@ -18,6 +18,7 @@ namespace Modelos
         private int followers;
         private string creator;
         private string profileCreator;
+        private string image;
         private Dictionary<string, List<Song>> dicCanciones;
         private Dictionary<string, List<Video>> dicVideos;
 
@@ -35,17 +36,19 @@ namespace Modelos
         public List<Video> Videos { get => videos; set => videos = value; }
         public Dictionary<string, List<Song>> DicCanciones { get => dicCanciones; set => dicCanciones = value; }
         public Dictionary<string, List<Video>> DicVideos { get => dicVideos; set => dicVideos = value; }
+        public string Image { get => image; set => image = value; }
+
         //--------------------------------------------------------------------------------------------------
 
         //CONSTRUCTOR
         //--------------------------------------------------------------------------------------------------
-        public PlayList(string Nombre, string Formato, string Creator, string ProfileCreator)
+        public PlayList(string Nombre, string Formato, string Creator, string ProfileCreator, string image)
         {
             format = Formato;
             namePlayList = Nombre;
             this.creator = Creator;
             this.profileCreator = ProfileCreator;
-
+            this.image = image;
         }
         //--------------------------------------------------------------------------------------------------
 
