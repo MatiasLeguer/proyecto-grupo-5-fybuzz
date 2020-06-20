@@ -1266,7 +1266,7 @@
             // 
             // DisplayStartLogOutButton
             // 
-            this.DisplayStartLogOutButton.Location = new System.Drawing.Point(17, 16);
+            this.DisplayStartLogOutButton.Location = new System.Drawing.Point(785, 266);
             this.DisplayStartLogOutButton.Name = "DisplayStartLogOutButton";
             this.DisplayStartLogOutButton.Size = new System.Drawing.Size(143, 37);
             this.DisplayStartLogOutButton.TabIndex = 15;
@@ -1288,7 +1288,7 @@
             // 
             // DisplayStartCloseButton
             // 
-            this.DisplayStartCloseButton.Location = new System.Drawing.Point(18, 119);
+            this.DisplayStartCloseButton.Location = new System.Drawing.Point(786, 369);
             this.DisplayStartCloseButton.Name = "DisplayStartCloseButton";
             this.DisplayStartCloseButton.Size = new System.Drawing.Size(142, 49);
             this.DisplayStartCloseButton.TabIndex = 13;
@@ -1298,7 +1298,7 @@
             // 
             // DisplayStartLogOutProfileButton
             // 
-            this.DisplayStartLogOutProfileButton.Location = new System.Drawing.Point(18, 62);
+            this.DisplayStartLogOutProfileButton.Location = new System.Drawing.Point(786, 312);
             this.DisplayStartLogOutProfileButton.Name = "DisplayStartLogOutProfileButton";
             this.DisplayStartLogOutProfileButton.Size = new System.Drawing.Size(142, 46);
             this.DisplayStartLogOutProfileButton.TabIndex = 12;
@@ -5085,7 +5085,6 @@
             this.WelcomePanel.Controls.Add(this.WelcomeLogo);
             this.WelcomePanel.Controls.Add(this.WelcomeCloseFyBuZz);
             this.WelcomePanel.Controls.Add(this.WelcomeRegisterButton);
-            this.WelcomePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WelcomePanel.Location = new System.Drawing.Point(0, 0);
             this.WelcomePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.WelcomePanel.MinimumSize = new System.Drawing.Size(1024, 768);
@@ -5154,24 +5153,24 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 712);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.DisplayPlaylistPanel);
+            this.Controls.Add(this.PlayPlaylistPanel);
+            this.Controls.Add(this.DisplayStartPanel);
+            this.Controls.Add(this.LogInPanel);
+            this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayVideoPanel);
-            this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.SearchPanel);
-            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.CreateSongPanel);
-            this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.CreateVideoPanel);
             this.Controls.Add(this.AddShowPanel);
-            this.Controls.Add(this.LogInPanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
             this.Controls.Add(this.SearcUserPanel);
             this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
             this.Controls.Add(this.AdminMenuPanel);
             this.Controls.Add(this.CreateProfilePanel);
-            this.Controls.Add(this.DisplayPlaylistPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximumSize = new System.Drawing.Size(1024, 768);

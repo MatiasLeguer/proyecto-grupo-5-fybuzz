@@ -493,6 +493,28 @@ namespace Entrega3_FyBuZz.Controladores
             }
             return description;
         }
+
+        /*private List<Song> GetPrivPersPlaylist(object sender, UserEventArgs e)
+        {
+            List<Song> plSongs = new List<Song>();
+            foreach(User user in userDataBase)
+            {
+                if(user.Username == e.UsernameText)
+                {
+                    foreach (Profile profile in user.Perfiles)
+                    {
+                        if(profile.ProfileName == e.ProfilenameText)
+                        {
+                            if (e.playlistType.Contains("Favorite"))
+                            {
+                                plSongs = profile.
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }*/
     }
     
 }

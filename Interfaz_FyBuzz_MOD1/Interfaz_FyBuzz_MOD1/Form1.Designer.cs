@@ -126,7 +126,7 @@
             this.AboutUsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.AboutUsButton.Location = new System.Drawing.Point(0, 721);
             this.AboutUsButton.Name = "AboutUsButton";
-            this.AboutUsButton.Size = new System.Drawing.Size(233, 45);
+            this.AboutUsButton.Size = new System.Drawing.Size(229, 45);
             this.AboutUsButton.TabIndex = 10;
             this.AboutUsButton.Text = "About FyBuzz";
             this.AboutUsButton.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@
             this.AccountSettingsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.AccountSettingsPanel.Location = new System.Drawing.Point(0, 633);
             this.AccountSettingsPanel.Name = "AccountSettingsPanel";
-            this.AccountSettingsPanel.Size = new System.Drawing.Size(233, 88);
+            this.AccountSettingsPanel.Size = new System.Drawing.Size(229, 88);
             this.AccountSettingsPanel.TabIndex = 8;
             // 
             // ProfilesInfoButton
@@ -152,7 +152,7 @@
             this.ProfilesInfoButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.ProfilesInfoButton.Location = new System.Drawing.Point(0, 40);
             this.ProfilesInfoButton.Name = "ProfilesInfoButton";
-            this.ProfilesInfoButton.Size = new System.Drawing.Size(233, 40);
+            this.ProfilesInfoButton.Size = new System.Drawing.Size(229, 40);
             this.ProfilesInfoButton.TabIndex = 1;
             this.ProfilesInfoButton.Text = "Profiles Info";
             this.ProfilesInfoButton.UseVisualStyleBackColor = true;
@@ -167,7 +167,7 @@
             this.UserInfoButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.UserInfoButton.Location = new System.Drawing.Point(0, 0);
             this.UserInfoButton.Name = "UserInfoButton";
-            this.UserInfoButton.Size = new System.Drawing.Size(233, 40);
+            this.UserInfoButton.Size = new System.Drawing.Size(229, 40);
             this.UserInfoButton.TabIndex = 0;
             this.UserInfoButton.Text = "User Info";
             this.UserInfoButton.UseVisualStyleBackColor = true;
@@ -183,7 +183,7 @@
             this.AccountSettingsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.AccountSettingsButton.Location = new System.Drawing.Point(0, 588);
             this.AccountSettingsButton.Name = "AccountSettingsButton";
-            this.AccountSettingsButton.Size = new System.Drawing.Size(233, 45);
+            this.AccountSettingsButton.Size = new System.Drawing.Size(229, 45);
             this.AccountSettingsButton.TabIndex = 7;
             this.AccountSettingsButton.Text = "Account Settings";
             this.AccountSettingsButton.UseVisualStyleBackColor = true;
@@ -199,7 +199,7 @@
             this.CreateOptionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.CreateOptionsPanel.Location = new System.Drawing.Point(0, 423);
             this.CreateOptionsPanel.Name = "CreateOptionsPanel";
-            this.CreateOptionsPanel.Size = new System.Drawing.Size(233, 165);
+            this.CreateOptionsPanel.Size = new System.Drawing.Size(229, 165);
             this.CreateOptionsPanel.TabIndex = 6;
             // 
             // CreateProfilesButton
@@ -211,7 +211,7 @@
             this.CreateProfilesButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.CreateProfilesButton.Location = new System.Drawing.Point(0, 120);
             this.CreateProfilesButton.Name = "CreateProfilesButton";
-            this.CreateProfilesButton.Size = new System.Drawing.Size(233, 40);
+            this.CreateProfilesButton.Size = new System.Drawing.Size(229, 40);
             this.CreateProfilesButton.TabIndex = 3;
             this.CreateProfilesButton.Text = "Profiles";
             this.CreateProfilesButton.UseVisualStyleBackColor = true;
@@ -226,7 +226,7 @@
             this.CreatePlayListsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.CreatePlayListsButton.Location = new System.Drawing.Point(0, 80);
             this.CreatePlayListsButton.Name = "CreatePlayListsButton";
-            this.CreatePlayListsButton.Size = new System.Drawing.Size(233, 40);
+            this.CreatePlayListsButton.Size = new System.Drawing.Size(229, 40);
             this.CreatePlayListsButton.TabIndex = 2;
             this.CreatePlayListsButton.Text = "PlayLists";
             this.CreatePlayListsButton.UseVisualStyleBackColor = true;
@@ -241,7 +241,7 @@
             this.CreateVideosButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.CreateVideosButton.Location = new System.Drawing.Point(0, 40);
             this.CreateVideosButton.Name = "CreateVideosButton";
-            this.CreateVideosButton.Size = new System.Drawing.Size(233, 40);
+            this.CreateVideosButton.Size = new System.Drawing.Size(229, 40);
             this.CreateVideosButton.TabIndex = 1;
             this.CreateVideosButton.Text = "Videos";
             this.CreateVideosButton.UseVisualStyleBackColor = true;
@@ -256,7 +256,7 @@
             this.CreateSongsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.CreateSongsButton.Location = new System.Drawing.Point(0, 0);
             this.CreateSongsButton.Name = "CreateSongsButton";
-            this.CreateSongsButton.Size = new System.Drawing.Size(233, 40);
+            this.CreateSongsButton.Size = new System.Drawing.Size(229, 40);
             this.CreateSongsButton.TabIndex = 0;
             this.CreateSongsButton.Text = "Songs";
             this.CreateSongsButton.UseVisualStyleBackColor = true;
@@ -272,7 +272,7 @@
             this.CreateButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.CreateButton.Location = new System.Drawing.Point(0, 378);
             this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(233, 45);
+            this.CreateButton.Size = new System.Drawing.Size(229, 45);
             this.CreateButton.TabIndex = 5;
             this.CreateButton.Text = "Create What U Want";
             this.CreateButton.UseVisualStyleBackColor = true;
@@ -287,7 +287,7 @@
             this.PlayListsOptionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.PlayListsOptionsPanel.Location = new System.Drawing.Point(0, 252);
             this.PlayListsOptionsPanel.Name = "PlayListsOptionsPanel";
-            this.PlayListsOptionsPanel.Size = new System.Drawing.Size(233, 126);
+            this.PlayListsOptionsPanel.Size = new System.Drawing.Size(229, 126);
             this.PlayListsOptionsPanel.TabIndex = 4;
             // 
             // FavoritePlsButton
@@ -299,7 +299,7 @@
             this.FavoritePlsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.FavoritePlsButton.Location = new System.Drawing.Point(0, 80);
             this.FavoritePlsButton.Name = "FavoritePlsButton";
-            this.FavoritePlsButton.Size = new System.Drawing.Size(233, 40);
+            this.FavoritePlsButton.Size = new System.Drawing.Size(229, 40);
             this.FavoritePlsButton.TabIndex = 2;
             this.FavoritePlsButton.Text = "Favorite PlayLists";
             this.FavoritePlsButton.UseVisualStyleBackColor = true;
@@ -314,7 +314,7 @@
             this.GlobalPlsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.GlobalPlsButton.Location = new System.Drawing.Point(0, 40);
             this.GlobalPlsButton.Name = "GlobalPlsButton";
-            this.GlobalPlsButton.Size = new System.Drawing.Size(233, 40);
+            this.GlobalPlsButton.Size = new System.Drawing.Size(229, 40);
             this.GlobalPlsButton.TabIndex = 1;
             this.GlobalPlsButton.Text = "Global PlayLists";
             this.GlobalPlsButton.UseVisualStyleBackColor = true;
@@ -329,7 +329,7 @@
             this.PrivatePlsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.PrivatePlsButton.Location = new System.Drawing.Point(0, 0);
             this.PrivatePlsButton.Name = "PrivatePlsButton";
-            this.PrivatePlsButton.Size = new System.Drawing.Size(233, 40);
+            this.PrivatePlsButton.Size = new System.Drawing.Size(229, 40);
             this.PrivatePlsButton.TabIndex = 0;
             this.PrivatePlsButton.Text = "Private PlayLists";
             this.PrivatePlsButton.UseVisualStyleBackColor = true;
@@ -345,7 +345,7 @@
             this.PlayListsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.PlayListsButton.Location = new System.Drawing.Point(0, 207);
             this.PlayListsButton.Name = "PlayListsButton";
-            this.PlayListsButton.Size = new System.Drawing.Size(233, 45);
+            this.PlayListsButton.Size = new System.Drawing.Size(229, 45);
             this.PlayListsButton.TabIndex = 3;
             this.PlayListsButton.Text = "PlayLists";
             this.PlayListsButton.UseVisualStyleBackColor = true;
@@ -359,7 +359,7 @@
             this.MultimediaIOptionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.MultimediaIOptionsPanel.Location = new System.Drawing.Point(0, 122);
             this.MultimediaIOptionsPanel.Name = "MultimediaIOptionsPanel";
-            this.MultimediaIOptionsPanel.Size = new System.Drawing.Size(233, 85);
+            this.MultimediaIOptionsPanel.Size = new System.Drawing.Size(229, 85);
             this.MultimediaIOptionsPanel.TabIndex = 2;
             // 
             // VideosButton
@@ -371,7 +371,7 @@
             this.VideosButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.VideosButton.Location = new System.Drawing.Point(0, 40);
             this.VideosButton.Name = "VideosButton";
-            this.VideosButton.Size = new System.Drawing.Size(233, 40);
+            this.VideosButton.Size = new System.Drawing.Size(229, 40);
             this.VideosButton.TabIndex = 1;
             this.VideosButton.Text = "Videos";
             this.VideosButton.UseVisualStyleBackColor = true;
@@ -386,7 +386,7 @@
             this.SongsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.SongsButton.Location = new System.Drawing.Point(0, 0);
             this.SongsButton.Name = "SongsButton";
-            this.SongsButton.Size = new System.Drawing.Size(233, 40);
+            this.SongsButton.Size = new System.Drawing.Size(229, 40);
             this.SongsButton.TabIndex = 0;
             this.SongsButton.Text = "Songs";
             this.SongsButton.UseVisualStyleBackColor = true;
@@ -402,7 +402,7 @@
             this.MultimediaButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.MultimediaButton.Location = new System.Drawing.Point(0, 77);
             this.MultimediaButton.Name = "MultimediaButton";
-            this.MultimediaButton.Size = new System.Drawing.Size(233, 45);
+            this.MultimediaButton.Size = new System.Drawing.Size(229, 45);
             this.MultimediaButton.TabIndex = 1;
             this.MultimediaButton.Text = "Multimedia";
             this.MultimediaButton.UseVisualStyleBackColor = true;
@@ -414,7 +414,7 @@
             this.LogoFyBuzz.Dock = System.Windows.Forms.DockStyle.Top;
             this.LogoFyBuzz.Location = new System.Drawing.Point(0, 0);
             this.LogoFyBuzz.Name = "LogoFyBuzz";
-            this.LogoFyBuzz.Size = new System.Drawing.Size(233, 77);
+            this.LogoFyBuzz.Size = new System.Drawing.Size(229, 77);
             this.LogoFyBuzz.TabIndex = 0;
             // 
             // pictureBox1
@@ -559,6 +559,7 @@
             this.PlayMediaButton.Size = new System.Drawing.Size(57, 51);
             this.PlayMediaButton.TabIndex = 2;
             this.PlayMediaButton.UseVisualStyleBackColor = true;
+            this.PlayMediaButton.Click += new System.EventHandler(this.PlayMediaButton_Click);
             // 
             // PauseMediaButton
             // 
@@ -587,6 +588,7 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
@@ -673,7 +675,7 @@
             this.RegisterMessageTextBox.Location = new System.Drawing.Point(226, 356);
             this.RegisterMessageTextBox.Name = "RegisterMessageTextBox";
             this.RegisterMessageTextBox.ReadOnly = true;
-            this.RegisterMessageTextBox.Size = new System.Drawing.Size(203, 16);
+            this.RegisterMessageTextBox.Size = new System.Drawing.Size(203, 20);
             this.RegisterMessageTextBox.TabIndex = 7;
             this.RegisterMessageTextBox.Text = "Dont have a FyBuzz Account?";
             // 
@@ -687,7 +689,7 @@
             this.UserMessageTextBox.Location = new System.Drawing.Point(119, 277);
             this.UserMessageTextBox.Name = "UserMessageTextBox";
             this.UserMessageTextBox.ReadOnly = true;
-            this.UserMessageTextBox.Size = new System.Drawing.Size(114, 25);
+            this.UserMessageTextBox.Size = new System.Drawing.Size(114, 31);
             this.UserMessageTextBox.TabIndex = 8;
             this.UserMessageTextBox.Text = "Username:";
             // 
@@ -701,7 +703,7 @@
             this.PasswordMessageBox.Location = new System.Drawing.Point(122, 307);
             this.PasswordMessageBox.Name = "PasswordMessageBox";
             this.PasswordMessageBox.ReadOnly = true;
-            this.PasswordMessageBox.Size = new System.Drawing.Size(98, 25);
+            this.PasswordMessageBox.Size = new System.Drawing.Size(98, 31);
             this.PasswordMessageBox.TabIndex = 9;
             this.PasswordMessageBox.Text = "Password:";
             // 
@@ -748,7 +750,7 @@
             // 
             this.CreateSongPublishDateTime.Location = new System.Drawing.Point(222, 221);
             this.CreateSongPublishDateTime.Name = "CreateSongPublishDateTime";
-            this.CreateSongPublishDateTime.Size = new System.Drawing.Size(240, 23);
+            this.CreateSongPublishDateTime.Size = new System.Drawing.Size(240, 26);
             this.CreateSongPublishDateTime.TabIndex = 21;
             // 
             // CreateSongDurationTextBox
@@ -843,7 +845,7 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 561);
             this.Controls.Add(this.WelcomePanel);

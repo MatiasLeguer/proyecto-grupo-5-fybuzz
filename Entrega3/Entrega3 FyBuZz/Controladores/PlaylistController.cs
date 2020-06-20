@@ -61,67 +61,72 @@ namespace Entrega3_FyBuZz.Controladores
 
         private string CreatePlaylistButton_Clicked(object sender, PlaylistEventArgs e)
         {
-            File.Copy(e.PicFile, e.PicSource);
-            List<string> infoMult = new List<string> { e.NameText, e.FormatText, e.PicSource};
+            string description = "";
+            if (File.Exists(e.PicSource) == false)
+            {
+                File.Copy(e.PicFile, e.PicSource);
+                List<string> infoMult = new List<string> { e.NameText, e.FormatText, e.PicSource };
 
-            string privacy = null;
-            if(e.PrivacyText == true)
-            {
-                privacy = "y";
-            }
-            else
-            {
-                privacy = "n";
-            }
-
-            string description = dataBase.AddMult(2, infoMult, null, playlistDataBase, null, e.CreatorText.Username, e.ProfileCreatorText.ProfileName, privacy, privatePlaylistsDatabase );
-            foreach (PlayList playList in playlistDataBase)
-            {
-                if (playList.Creator == e.CreatorText.Username && playList.ProfileCreator == e.ProfileCreatorText.ProfileName)
+                string privacy = null;
+                if (e.PrivacyText == true)
                 {
-                    if (e.ProfileCreatorText.CreatedPlaylist.Count == 0)
+                    privacy = "y";
+                }
+                else
+                {
+                    privacy = "n";
+                }
+
+                description = dataBase.AddMult(2, infoMult, null, playlistDataBase, null, e.CreatorText.Username, e.ProfileCreatorText.ProfileName, privacy, privatePlaylistsDatabase);
+                foreach (PlayList playList in playlistDataBase)
+                {
+                    if (playList.Creator == e.CreatorText.Username && playList.ProfileCreator == e.ProfileCreatorText.ProfileName)
                     {
-                        e.ProfileCreatorText.CreatedPlaylist.Add(playList);
-                    }
-                    else
-                    {
-                        int cont = 0;
-                        foreach (PlayList pl in e.ProfileCreatorText.CreatedPlaylist)
-                        {
-                            if (pl.NamePlayList == playList.NamePlayList) cont++; 
-                        }
-                        if(cont == 0)
+                        if (e.ProfileCreatorText.CreatedPlaylist.Count == 0)
                         {
                             e.ProfileCreatorText.CreatedPlaylist.Add(playList);
                         }
-                    }
-                    if (e.CreatorText.ProfilePlaylists.Count == 0)
-                    {
-                        e.CreatorText.ProfilePlaylists.Add(playList);
-                    }
-                    else
-                    {
-                        int cont = 0;
-                        foreach (PlayList pl in e.CreatorText.ProfilePlaylists)
+                        else
                         {
-                            if (pl.NamePlayList == playList.NamePlayList) cont++;
+                            int cont = 0;
+                            foreach (PlayList pl in e.ProfileCreatorText.CreatedPlaylist)
+                            {
+                                if (pl.NamePlayList == playList.NamePlayList) cont++;
+                            }
+                            if (cont == 0)
+                            {
+                                e.ProfileCreatorText.CreatedPlaylist.Add(playList);
+                            }
                         }
-                        if (cont == 0)
+                        if (e.CreatorText.ProfilePlaylists.Count == 0)
                         {
                             e.CreatorText.ProfilePlaylists.Add(playList);
                         }
+                        else
+                        {
+                            int cont = 0;
+                            foreach (PlayList pl in e.CreatorText.ProfilePlaylists)
+                            {
+                                if (pl.NamePlayList == playList.NamePlayList) cont++;
+                            }
+                            if (cont == 0)
+                            {
+                                e.CreatorText.ProfilePlaylists.Add(playList);
+                            }
+                        }
+                    }
+
+                }
+                foreach (PlayList playList in privatePlaylistsDatabase)
+                {
+                    if (playList.Creator == e.CreatorText.Username && playList.ProfileCreator == e.ProfileCreatorText.ProfileName)
+                    {
+                        if (e.ProfileCreatorText.CreatedPlaylist.Contains(playList) == false) e.ProfileCreatorText.CreatedPlaylist.Add(playList);
+                        //usr.ProfilePlaylists.Add(playList); Si la PL es privada no se agrega al usuario, por lo tanto no se puede seguir.
                     }
                 }
-                
             }
-            foreach (PlayList playList in privatePlaylistsDatabase)
-            {
-                if (playList.Creator == e.CreatorText.Username && playList.ProfileCreator == e.ProfileCreatorText.ProfileName)
-                {
-                    if (e.ProfileCreatorText.CreatedPlaylist.Contains(playList) == false) e.ProfileCreatorText.CreatedPlaylist.Add(playList);
-                    //usr.ProfilePlaylists.Add(playList); Si la PL es privada no se agrega al usuario, por lo tanto no se puede seguir.
-                }
-            }
+            
             if (description == null)
             {
                 dataBase.Save_PLs(playlistDataBase);
