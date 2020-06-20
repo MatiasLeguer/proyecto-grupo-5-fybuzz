@@ -2302,6 +2302,7 @@ namespace Entrega3_FyBuZz
             if(wmpVideo.URL.Length > 0)
             {
                 wmpVideo.fullScreen = true;
+
             }
         }
 
