@@ -29,6 +29,7 @@ namespace Entrega3_FyBuZz.CustomArgs
         public string SongFileText { get; set; }
         public string VideoFileText { get; set; }
         public List<string> SharedMult { get; set; }
+        public string playlistType { get; set; }
         
 
     }

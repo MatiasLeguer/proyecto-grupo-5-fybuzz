@@ -44,11 +44,16 @@ namespace Entrega3_FyBuZz.Controladores
 
         public bool OnCreateVideoSaveButton_Clicked(object sender, VideoEventArgs e)
         {
-            File.Copy(e.FileDestText, e.FileNameText);
-            File.Copy(e.VideoSubSource, e.SubtitlesText);
-            File.Copy(e.VideoImageDest, e.VideoImageFile);
-            List<string> infoMult = new List<string>() {e.NameText, e.ActorsText, e.DirectorsText, e.ReleaseDateText, e.DimensionText, e.QualityText, e.Categorytext, e.DescriptionText, e.DurationText, e.SubtitlesText, e.FormatText, e.FileNameText, e.VideoImageFile};
-            string description = database.AddMult(1, infoMult, null, null, videoDataBase, null, null, null, null);
+            string description = "";
+            if (File.Exists(e.FileNameText) == false && File.Exists(e.SubtitlesText) == false && File.Exists(e.VideoImageFile) == false)
+            {
+                File.Copy(e.FileDestText, e.FileNameText);
+                File.Copy(e.VideoSubSource, e.SubtitlesText);
+                File.Copy(e.VideoImageDest, e.VideoImageFile);
+                List<string> infoMult = new List<string>() { e.NameText, e.ActorsText, e.DirectorsText, e.ReleaseDateText, e.DimensionText, e.QualityText, e.Categorytext, e.DescriptionText, e.DurationText, e.SubtitlesText, e.FormatText, e.FileNameText, e.VideoImageFile };
+                description = database.AddMult(1, infoMult, null, null, videoDataBase, null, null, null, null);
+            }
+            
             if(description == null)
             {
                 database.Save_Videos(videoDataBase);
