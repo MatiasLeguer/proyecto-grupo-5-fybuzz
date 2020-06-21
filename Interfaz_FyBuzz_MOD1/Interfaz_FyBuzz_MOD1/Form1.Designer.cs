@@ -54,6 +54,7 @@
             this.LogoFyBuzz = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PlayerPanel = new System.Windows.Forms.Panel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.RateMediaButton = new FontAwesome.Sharp.IconButton();
             this.LikeMediaButton = new FontAwesome.Sharp.IconButton();
             this.InfoMediaButton = new FontAwesome.Sharp.IconButton();
@@ -72,17 +73,6 @@
             this.UserMessageTextBox = new System.Windows.Forms.TextBox();
             this.PasswordMessageBox = new System.Windows.Forms.TextBox();
             this.WelcomePanel = new System.Windows.Forms.Panel();
-            this.CreateSongPanel = new System.Windows.Forms.Panel();
-            this.CreateSongPublishDateTime = new System.Windows.Forms.DateTimePicker();
-            this.CreateSongDurationTextBox = new System.Windows.Forms.TextBox();
-            this.CreateSongLyricsTextBox = new System.Windows.Forms.TextBox();
-            this.CreateSongStudioTextBox = new System.Windows.Forms.TextBox();
-            this.CreateSongFormatTextBox = new System.Windows.Forms.TextBox();
-            this.CreateSongGenderTextBox = new System.Windows.Forms.TextBox();
-            this.CreateSongDiscographyTextBox = new System.Windows.Forms.TextBox();
-            this.CreateSongAlbumTextBox = new System.Windows.Forms.TextBox();
-            this.CreateSongArtistTextBox = new System.Windows.Forms.TextBox();
-            this.CreateSongNameTextBox = new System.Windows.Forms.TextBox();
             this.SideMenuPanel.SuspendLayout();
             this.AccountSettingsPanel.SuspendLayout();
             this.CreateOptionsPanel.SuspendLayout();
@@ -93,7 +83,6 @@
             this.PlayerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.WelcomePanel.SuspendLayout();
-            this.CreateSongPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // SideMenuPanel
@@ -115,6 +104,7 @@
             this.SideMenuPanel.Name = "SideMenuPanel";
             this.SideMenuPanel.Size = new System.Drawing.Size(250, 561);
             this.SideMenuPanel.TabIndex = 0;
+            this.SideMenuPanel.Visible = false;
             // 
             // AboutUsButton
             // 
@@ -416,6 +406,7 @@
             this.LogoFyBuzz.Name = "LogoFyBuzz";
             this.LogoFyBuzz.Size = new System.Drawing.Size(233, 77);
             this.LogoFyBuzz.TabIndex = 0;
+            this.LogoFyBuzz.Visible = false;
             // 
             // pictureBox1
             // 
@@ -431,6 +422,7 @@
             // PlayerPanel
             // 
             this.PlayerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(44)))));
+            this.PlayerPanel.Controls.Add(this.iconButton1);
             this.PlayerPanel.Controls.Add(this.RateMediaButton);
             this.PlayerPanel.Controls.Add(this.LikeMediaButton);
             this.PlayerPanel.Controls.Add(this.InfoMediaButton);
@@ -444,6 +436,29 @@
             this.PlayerPanel.Name = "PlayerPanel";
             this.PlayerPanel.Size = new System.Drawing.Size(684, 127);
             this.PlayerPanel.TabIndex = 1;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Download;
+            this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.iconButton1.IconSize = 35;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.Location = new System.Drawing.Point(289, 52);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(131, 33);
+            this.iconButton1.TabIndex = 9;
+            this.iconButton1.Text = "DownLoad";
+            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.iconButton1.UseVisualStyleBackColor = true;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // RateMediaButton
             // 
@@ -708,7 +723,6 @@
             // WelcomePanel
             // 
             this.WelcomePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.WelcomePanel.Controls.Add(this.CreateSongPanel);
             this.WelcomePanel.Controls.Add(this.PasswordMessageBox);
             this.WelcomePanel.Controls.Add(this.UserMessageTextBox);
             this.WelcomePanel.Controls.Add(this.RegisterMessageTextBox);
@@ -723,123 +737,6 @@
             this.WelcomePanel.Size = new System.Drawing.Size(684, 434);
             this.WelcomePanel.TabIndex = 2;
             this.WelcomePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.GeneralPanel_Paint);
-            // 
-            // CreateSongPanel
-            // 
-            this.CreateSongPanel.AutoScroll = true;
-            this.CreateSongPanel.Controls.Add(this.CreateSongPublishDateTime);
-            this.CreateSongPanel.Controls.Add(this.CreateSongDurationTextBox);
-            this.CreateSongPanel.Controls.Add(this.CreateSongLyricsTextBox);
-            this.CreateSongPanel.Controls.Add(this.CreateSongStudioTextBox);
-            this.CreateSongPanel.Controls.Add(this.CreateSongFormatTextBox);
-            this.CreateSongPanel.Controls.Add(this.CreateSongGenderTextBox);
-            this.CreateSongPanel.Controls.Add(this.CreateSongDiscographyTextBox);
-            this.CreateSongPanel.Controls.Add(this.CreateSongAlbumTextBox);
-            this.CreateSongPanel.Controls.Add(this.CreateSongArtistTextBox);
-            this.CreateSongPanel.Controls.Add(this.CreateSongNameTextBox);
-            this.CreateSongPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CreateSongPanel.Location = new System.Drawing.Point(0, 0);
-            this.CreateSongPanel.Name = "CreateSongPanel";
-            this.CreateSongPanel.Size = new System.Drawing.Size(684, 434);
-            this.CreateSongPanel.TabIndex = 10;
-            this.CreateSongPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.CreateSongPanel_Paint);
-            // 
-            // CreateSongPublishDateTime
-            // 
-            this.CreateSongPublishDateTime.Location = new System.Drawing.Point(222, 221);
-            this.CreateSongPublishDateTime.Name = "CreateSongPublishDateTime";
-            this.CreateSongPublishDateTime.Size = new System.Drawing.Size(240, 23);
-            this.CreateSongPublishDateTime.TabIndex = 21;
-            // 
-            // CreateSongDurationTextBox
-            // 
-            this.CreateSongDurationTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
-            this.CreateSongDurationTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CreateSongDurationTextBox.Location = new System.Drawing.Point(222, 279);
-            this.CreateSongDurationTextBox.Multiline = true;
-            this.CreateSongDurationTextBox.Name = "CreateSongDurationTextBox";
-            this.CreateSongDurationTextBox.Size = new System.Drawing.Size(240, 24);
-            this.CreateSongDurationTextBox.TabIndex = 20;
-            // 
-            // CreateSongLyricsTextBox
-            // 
-            this.CreateSongLyricsTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
-            this.CreateSongLyricsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CreateSongLyricsTextBox.Location = new System.Drawing.Point(222, 339);
-            this.CreateSongLyricsTextBox.Multiline = true;
-            this.CreateSongLyricsTextBox.Name = "CreateSongLyricsTextBox";
-            this.CreateSongLyricsTextBox.Size = new System.Drawing.Size(240, 24);
-            this.CreateSongLyricsTextBox.TabIndex = 19;
-            // 
-            // CreateSongStudioTextBox
-            // 
-            this.CreateSongStudioTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
-            this.CreateSongStudioTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CreateSongStudioTextBox.Location = new System.Drawing.Point(222, 250);
-            this.CreateSongStudioTextBox.Multiline = true;
-            this.CreateSongStudioTextBox.Name = "CreateSongStudioTextBox";
-            this.CreateSongStudioTextBox.Size = new System.Drawing.Size(240, 24);
-            this.CreateSongStudioTextBox.TabIndex = 18;
-            // 
-            // CreateSongFormatTextBox
-            // 
-            this.CreateSongFormatTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
-            this.CreateSongFormatTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CreateSongFormatTextBox.Location = new System.Drawing.Point(222, 309);
-            this.CreateSongFormatTextBox.Multiline = true;
-            this.CreateSongFormatTextBox.Name = "CreateSongFormatTextBox";
-            this.CreateSongFormatTextBox.Size = new System.Drawing.Size(240, 24);
-            this.CreateSongFormatTextBox.TabIndex = 17;
-            // 
-            // CreateSongGenderTextBox
-            // 
-            this.CreateSongGenderTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
-            this.CreateSongGenderTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CreateSongGenderTextBox.Location = new System.Drawing.Point(222, 191);
-            this.CreateSongGenderTextBox.Multiline = true;
-            this.CreateSongGenderTextBox.Name = "CreateSongGenderTextBox";
-            this.CreateSongGenderTextBox.Size = new System.Drawing.Size(240, 24);
-            this.CreateSongGenderTextBox.TabIndex = 16;
-            // 
-            // CreateSongDiscographyTextBox
-            // 
-            this.CreateSongDiscographyTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
-            this.CreateSongDiscographyTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CreateSongDiscographyTextBox.Location = new System.Drawing.Point(222, 161);
-            this.CreateSongDiscographyTextBox.Multiline = true;
-            this.CreateSongDiscographyTextBox.Name = "CreateSongDiscographyTextBox";
-            this.CreateSongDiscographyTextBox.Size = new System.Drawing.Size(240, 24);
-            this.CreateSongDiscographyTextBox.TabIndex = 15;
-            // 
-            // CreateSongAlbumTextBox
-            // 
-            this.CreateSongAlbumTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
-            this.CreateSongAlbumTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CreateSongAlbumTextBox.Location = new System.Drawing.Point(222, 131);
-            this.CreateSongAlbumTextBox.Multiline = true;
-            this.CreateSongAlbumTextBox.Name = "CreateSongAlbumTextBox";
-            this.CreateSongAlbumTextBox.Size = new System.Drawing.Size(240, 24);
-            this.CreateSongAlbumTextBox.TabIndex = 14;
-            // 
-            // CreateSongArtistTextBox
-            // 
-            this.CreateSongArtistTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
-            this.CreateSongArtistTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CreateSongArtistTextBox.Location = new System.Drawing.Point(222, 101);
-            this.CreateSongArtistTextBox.Multiline = true;
-            this.CreateSongArtistTextBox.Name = "CreateSongArtistTextBox";
-            this.CreateSongArtistTextBox.Size = new System.Drawing.Size(240, 24);
-            this.CreateSongArtistTextBox.TabIndex = 13;
-            // 
-            // CreateSongNameTextBox
-            // 
-            this.CreateSongNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
-            this.CreateSongNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CreateSongNameTextBox.Location = new System.Drawing.Point(222, 71);
-            this.CreateSongNameTextBox.Multiline = true;
-            this.CreateSongNameTextBox.Name = "CreateSongNameTextBox";
-            this.CreateSongNameTextBox.Size = new System.Drawing.Size(240, 24);
-            this.CreateSongNameTextBox.TabIndex = 12;
             // 
             // Form1
             // 
@@ -865,8 +762,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.WelcomePanel.ResumeLayout(false);
             this.WelcomePanel.PerformLayout();
-            this.CreateSongPanel.ResumeLayout(false);
-            this.CreateSongPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -915,17 +810,7 @@
         private System.Windows.Forms.TextBox UserMessageTextBox;
         private System.Windows.Forms.TextBox PasswordMessageBox;
         private System.Windows.Forms.Panel WelcomePanel;
-        private System.Windows.Forms.Panel CreateSongPanel;
-        private System.Windows.Forms.DateTimePicker CreateSongPublishDateTime;
-        private System.Windows.Forms.TextBox CreateSongDurationTextBox;
-        private System.Windows.Forms.TextBox CreateSongLyricsTextBox;
-        private System.Windows.Forms.TextBox CreateSongStudioTextBox;
-        private System.Windows.Forms.TextBox CreateSongFormatTextBox;
-        private System.Windows.Forms.TextBox CreateSongGenderTextBox;
-        private System.Windows.Forms.TextBox CreateSongDiscographyTextBox;
-        private System.Windows.Forms.TextBox CreateSongAlbumTextBox;
-        private System.Windows.Forms.TextBox CreateSongArtistTextBox;
-        private System.Windows.Forms.TextBox CreateSongNameTextBox;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }
 

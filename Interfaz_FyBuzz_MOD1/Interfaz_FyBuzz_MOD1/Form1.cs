@@ -172,5 +172,10 @@ namespace Interfaz_FyBuzz_MOD1
         {
 
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
