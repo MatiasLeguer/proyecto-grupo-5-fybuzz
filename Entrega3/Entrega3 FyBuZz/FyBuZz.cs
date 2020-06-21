@@ -5931,6 +5931,19 @@ namespace Entrega3_FyBuZz
 
         }
 
-        
+        private void PlayPlaylistMultTypeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PlayVideoPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void AccountProfileSettingsSplitContainer_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
