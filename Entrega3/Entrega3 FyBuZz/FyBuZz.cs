@@ -2804,7 +2804,6 @@ namespace Entrega3_FyBuZz
             PlayVideoSelectPlDomainUp.Visible = false;
             PlayVideoSelectPlButton.Visible = false;
 
-            PlayPlaylistMultTypeTextBox.Clear();
             soundPlayer.Stop();
             windowsMediaPlayer.controls.stop();
             PlayPlaylistProgressBarBox.Value = 0;
@@ -2858,8 +2857,6 @@ namespace Entrega3_FyBuZz
                     int cont = 0;
                     if(choosenPL.Songs.Count() == 0)
                     {
-                        PlayPlaylistMultTypeTextBox.Clear();
-                        PlayPlaylistMultTypeTextBox.AppendText("No cancion");
                         cont++;
                     }
                     if (choosenPL != null && cont == 0)
@@ -3495,94 +3492,244 @@ namespace Entrega3_FyBuZz
             string plName = infoPlName[1];
             int indexPl = 0;
             List<PlayList> allPl;
-            if (PlayPlaylistIsPrivate.Text.Contains("private"))
+            if (PlayPlaylistLabel.Text.Contains("X") == false)
             {
-                allPl = GetPrivPlaylist();
-            }
-            else
-            {
-                allPl = OnDisplayPlaylistsGlobalPlaylist_Click();
-            }
 
-            for (int i = 0; i < allPl.Count(); i++)
-            {
-                if (allPl[i].NamePlayList != "" && plName.Contains(allPl[i].NamePlayList))
+
+                if (PlayPlaylistIsPrivate.Text.Contains("private"))
                 {
-                    indexPl = i;
-                    break;
-                }
-            }
-
-            if (allPl[indexPl].Format == ".mp3" || allPl[indexPl].Format == ".wav")
-            {
-                string[] infoSong = PlayPlaylistShowMultimedia.Text.Split(':');
-                string nameSong = infoSong[1];
-                string artistSong = infoSong[3];
-                int previousSong = 1;
-
-                Song songP = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, allPl[indexPl], queueListSongs,0);
-
-                if (songP != null)
-                {
-
-                    PlayPlaylistMessageBox.Clear();
-                    if (songP.Format == ".mp3")
-                    {
-                        windowsMediaPlayer.controls.stop();
-                        soundPlayer.Stop();
-                        windowsMediaPlayer.URL = songP.SongFile;
-                        windowsMediaPlayer.controls.play();
-                    }
-                    else if (songP.Format == ".wav")
-                    {
-                        windowsMediaPlayer.controls.stop();
-                        soundPlayer.Stop();
-                        soundPlayer.SoundLocation = songP.SongFile;
-                        soundPlayer.Play();
-
-                    }
-
-                    PlayPlaylistMessageBox.AppendText("Song playing: " + songP.Name + songP.Format);
-                    PlayPlaylistShowMultimedia.UpButton();
+                    allPl = GetPrivPlaylist();
                 }
                 else
                 {
-                    PlayPlaylistMessageBox.Clear();
-                    PlayPlaylistMessageBox.AppendText("ERROR[!] ~Song wasn't previoused!");
+                    allPl = OnDisplayPlaylistsGlobalPlaylist_Click();
+                }
+
+                for (int i = 0; i < allPl.Count(); i++)
+                {
+                    if (allPl[i].NamePlayList != "" && plName.Contains(allPl[i].NamePlayList))
+                    {
+                        indexPl = i;
+                        break;
+                    }
+                }
+
+                if (allPl[indexPl].Format == ".mp3" || allPl[indexPl].Format == ".wav")
+                {
+                    string[] infoSong = PlayPlaylistShowMultimedia.Text.Split(':');
+                    string nameSong = infoSong[1];
+                    string artistSong = infoSong[3];
+                    int previousSong = 1;
+
+                    Song songP = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, allPl[indexPl], queueListSongs, 0);
+
+                    if (songP != null)
+                    {
+
+                        PlayPlaylistMessageBox.Clear();
+                        if (songP.Format == ".mp3")
+                        {
+                            windowsMediaPlayer.controls.stop();
+                            soundPlayer.Stop();
+                            windowsMediaPlayer.URL = songP.SongFile;
+                            windowsMediaPlayer.controls.play();
+                        }
+                        else if (songP.Format == ".wav")
+                        {
+                            windowsMediaPlayer.controls.stop();
+                            soundPlayer.Stop();
+                            soundPlayer.SoundLocation = songP.SongFile;
+                            soundPlayer.Play();
+
+                        }
+
+                        PlayPlaylistMessageBox.AppendText("Song playing: " + songP.Name + songP.Format);
+                        PlayPlaylistShowMultimedia.UpButton();
+                    }
+                    else
+                    {
+                        PlayPlaylistMessageBox.Clear();
+                        PlayPlaylistMessageBox.AppendText("ERROR[!] ~Song wasn't previoused!");
+                    }
+                }
+                else if (allPl[indexPl].Format == ".mp4" || allPl[indexPl].Format == ".avi" || allPl[indexPl].Format == ".mov")
+                {
+                    string[] infoVideo = SearchSearchResultsDomainUp.Text.Split(':');
+                    string nameVideo = infoVideo[1];
+                    string nameActor = infoVideo[3];
+                    int previous = 1;
+
+                    Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, allPl[indexPl], queueListSongs, 0);
+
+                    if (video != null)
+                    {
+                        PlayVideoMessageAlertTextBox.Clear();
+
+                        wmpVideo.Ctlcontrols.stop();
+                        wmpVideo.URL = video.FileName;
+                        wmpVideo.Ctlcontrols.play();
+
+                        PlayPlaylistMessageBox.AppendText("Video Playing: " + video.Name + video.Format);
+                        PlayPlaylistShowMultimedia.UpButton();
+                    }
+                    else
+                    {
+                        PlayPlaylistMessageBox.Clear();
+                        PlayPlaylistMessageBox.AppendText("Video wasn't previoused!");
+                    }
                 }
             }
-            else if (allPl[indexPl].Format == ".mp4" || allPl[indexPl].Format == ".avi" || allPl[indexPl].Format == ".mov")
+            else if (PlayPlaylistLabel.Text.Contains("X"))
             {
-                string[] infoVideo = SearchSearchResultsDomainUp.Text.Split(':');
-                string nameVideo = infoVideo[1];
-                string nameActor = infoVideo[3];
-                int previous = 1;
+                int index = PlayPlaylistShowMultimedia.SelectedIndex;
+                Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+                List<string> favSongPls = new List<string>();
+                List<string> favVideoPls = new List<string>();
+                List<string> persSongList = new List<string>();
+                List<string> persVideoList = new List<string>();
+                List<Song> songDataBase = OnSearchSongButton_Click();
+                List<Video> videoDataBase = OnSearchVideoButton_Click();
+                string contains = PlayPlaylistMultTypeTextBox.Text;
 
-                Video video = OnSkipOrPreviousVideoButton_Click(nameVideo, nameActor, previous, allPl[indexPl], queueListSongs,0);
-
-                if (video != null)
+                if (contains.Contains("Song Favorite"))
                 {
-                    PlayVideoMessageAlertTextBox.Clear();
+                    favSongPls = ReturnLikeMult(profile.ProfileName, "Song", null);
 
-                    wmpVideo.Ctlcontrols.stop();
-                    wmpVideo.URL = video.FileName;
-                    wmpVideo.Ctlcontrols.play();
+                    foreach (Song song in songDataBase)
+                    {
+                        if (index == 0)
+                        {
+                            index = favSongPls.Count();
+                        }
 
-                    PlayPlaylistMessageBox.AppendText("Video Playing: " + video.Name + video.Format);
-                    PlayPlaylistShowMultimedia.UpButton();
+
+                        if (song.SongFile == favSongPls[index - 1])
+                        {
+                            PlayPlaylistMessageBox.Clear();
+                            if (song.Format == ".mp3")
+                            {
+                                windowsMediaPlayer.controls.stop();
+                                soundPlayer.Stop();
+                                windowsMediaPlayer.URL = song.SongFile;
+                                windowsMediaPlayer.controls.play();
+                            }
+                            else if (song.Format == ".wav")
+                            {
+                                windowsMediaPlayer.controls.stop();
+                                soundPlayer.Stop();
+                                soundPlayer.SoundLocation = song.SongFile;
+                                soundPlayer.Play();
+                            }
+
+                            PlayPlaylistMessageBox.AppendText("Song playing: " + song.Name + song.Format);
+                            PlayPlaylistShowMultimedia.DownButton();
+                        }
+
+                    }
                 }
-                else
+
+                else if (PlayPlaylistMultTypeTextBox.Text.Contains("Video Favorite"))
                 {
-                    PlayPlaylistMessageBox.Clear();
-                    PlayPlaylistMessageBox.AppendText("Video wasn't previoused!");
+                    favVideoPls = ReturnLikeMult(profile.ProfileName, null, "Video");
+                    foreach (Video video in videoDataBase)
+                    {
+                        if (index == 0)
+                        {
+                            index = favVideoPls.Count();
+                        }
+
+                        if (video.FileName == favVideoPls[index - 1])
+                        {
+                            PlayPlaylistMessageBox.Clear();
+
+                            wmpVideo.Ctlcontrols.stop();
+                            wmpVideo.URL = video.FileName;
+                            wmpVideo.Ctlcontrols.play();
+
+                            PlayPlaylistMessageBox.AppendText("Video Playing: " + video.Name + video.Format);
+                            PlayPlaylistShowMultimedia.DownButton();
+                        }
+                        else
+                        {
+                            PlayPlaylistMessageBox.Clear();
+                            PlayPlaylistMessageBox.AppendText("Video wasn't Skipped!");
+                        }
+
+                    }
                 }
+                else if (PlayPlaylistMultTypeTextBox.Text.Contains("Song Preference"))
+                {
+                    persSongList = ReturnSearchedMult(ProfileDomainUp.Text, "Song", null);
+                    foreach (Song song in songDataBase)
+                    {
+                        if (index == 0)
+                        {
+                            index = persSongList.Count();
+                        }
+
+                        if (song.SongFile == persSongList[index - 1])
+                        {
+                            PlayPlaylistMessageBox.Clear();
+                            if (song.Format == ".mp3")
+                            {
+                                windowsMediaPlayer.controls.stop();
+                                soundPlayer.Stop();
+                                windowsMediaPlayer.URL = song.SongFile;
+                                windowsMediaPlayer.controls.play();
+                            }
+                            else if (song.Format == ".wav")
+                            {
+                                windowsMediaPlayer.controls.stop();
+                                soundPlayer.Stop();
+                                soundPlayer.SoundLocation = song.SongFile;
+                                soundPlayer.Play();
+                            }
+
+                            PlayPlaylistMessageBox.AppendText("Song playing: " + song.Name + song.Format);
+                            PlayPlaylistShowMultimedia.DownButton();
+                        }
+
+                    }
+                }
+                else if (PlayPlaylistMultTypeTextBox.Text.Contains("Video Preference"))
+                {
+                    persVideoList = ReturnSearchedMult(ProfileDomainUp.Text, "Video", null);
+                    foreach (Video video in videoDataBase)
+                    {
+                        if (index == 0)
+                        {
+                            index = persVideoList.Count();
+                        }
+
+
+                        if (video.FileName == persVideoList[index - 1])
+                        {
+                            PlayPlaylistMessageBox.Clear();
+
+                            wmpVideo.Ctlcontrols.stop();
+                            wmpVideo.URL = video.FileName;
+                            wmpVideo.Ctlcontrols.play();
+
+                            PlayPlaylistMessageBox.AppendText("Video Playing: " + video.Name + video.Format);
+                            PlayPlaylistShowMultimedia.DownButton();
+                        }
+                        else
+                        {
+                            PlayPlaylistMessageBox.Clear();
+                            PlayPlaylistMessageBox.AppendText("Video wasn't Skipped!");
+                        }
+
+                    }
+                }
+
             }
         }
 
         private void PlayPlaylistSkipButton_Click(object sender, EventArgs e)
         {
+
             string[] infoPlName = PlayPlaylistLabel.Text.Split(':');
-            if (infoPlName != null)
+            if (PlayPlaylistLabel.Text.Contains("X") == false)
             {
                 string plName = infoPlName[1];
                 int indexPl = 0;
@@ -3668,6 +3815,150 @@ namespace Entrega3_FyBuZz
                         PlayPlaylistMessageBox.AppendText("Video wasn't Skipped!");
                     }
                 }
+            }
+            else if(PlayPlaylistLabel.Text.Contains("X"))
+            {
+                int index = PlayPlaylistShowMultimedia.SelectedIndex;
+                Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
+                List<string> favSongPls = new List<string>();
+                List<string> favVideoPls = new List<string>();
+                List<string> persSongList = new List<string>();
+                List<string> persVideoList = new List<string>();
+                List<Song> songDataBase = OnSearchSongButton_Click();
+                List<Video> videoDataBase = OnSearchVideoButton_Click();
+                string contains = PlayPlaylistMultTypeTextBox.Text;
+
+                if (contains.Contains("Song Favorite"))
+                {
+                    favSongPls = ReturnLikeMult(profile.ProfileName, "Song", null);
+
+                    foreach (Song song in songDataBase)
+                    {
+                        if (index >= favSongPls.Count() - 1)
+                        {
+                            index = -1;
+                        }
+
+
+                        if (song.SongFile == favSongPls[index + 1])
+                        {
+                            PlayPlaylistMessageBox.Clear();
+                            if (song.Format == ".mp3")
+                            {
+                                windowsMediaPlayer.controls.stop();
+                                soundPlayer.Stop();
+                                windowsMediaPlayer.URL = song.SongFile;
+                                windowsMediaPlayer.controls.play();
+                            }
+                            else if (song.Format == ".wav")
+                            {
+                                windowsMediaPlayer.controls.stop();
+                                soundPlayer.Stop();
+                                soundPlayer.SoundLocation = song.SongFile;
+                                soundPlayer.Play();
+                            }
+
+                            PlayPlaylistMessageBox.AppendText("Song playing: " + song.Name + song.Format);
+                            PlayPlaylistShowMultimedia.DownButton();
+                        }
+
+                    }
+                }
+
+                else if (PlayPlaylistMultTypeTextBox.Text.Contains("Video Favorite"))
+                {
+                    favVideoPls = ReturnLikeMult(profile.ProfileName, null, "Video");
+                    foreach (Video video in videoDataBase)
+                    {
+                        if (index >= favVideoPls.Count() - 1)
+                        {
+                            index = -1;
+                        }
+
+                        if (video.FileName == favVideoPls[index + 1])
+                        {
+                            PlayPlaylistMessageBox.Clear();
+
+                            wmpVideo.Ctlcontrols.stop();
+                            wmpVideo.URL = video.FileName;
+                            wmpVideo.Ctlcontrols.play();
+
+                            PlayPlaylistMessageBox.AppendText("Video Playing: " + video.Name + video.Format);
+                            PlayPlaylistShowMultimedia.DownButton();
+                        }
+                        else
+                        {
+                            PlayPlaylistMessageBox.Clear();
+                            PlayPlaylistMessageBox.AppendText("Video wasn't Skipped!");
+                        }
+
+                    }
+                }
+                else if (PlayPlaylistMultTypeTextBox.Text.Contains("Song Preference"))
+                {
+                    persSongList = ReturnSearchedMult(ProfileDomainUp.Text, "Song", null);
+                    foreach (Song song in songDataBase)
+                    {
+                        if (index >= persSongList.Count() - 1)
+                        {
+                            index = -1;
+                        }
+
+                        if (song.SongFile == persSongList[index + 1])
+                        {
+                            PlayPlaylistMessageBox.Clear();
+                            if (song.Format == ".mp3")
+                            {
+                                windowsMediaPlayer.controls.stop();
+                                soundPlayer.Stop();
+                                windowsMediaPlayer.URL = song.SongFile;
+                                windowsMediaPlayer.controls.play();
+                            }
+                            else if (song.Format == ".wav")
+                            {
+                                windowsMediaPlayer.controls.stop();
+                                soundPlayer.Stop();
+                                soundPlayer.SoundLocation = song.SongFile;
+                                soundPlayer.Play();
+                            }
+
+                            PlayPlaylistMessageBox.AppendText("Song playing: " + song.Name + song.Format);
+                            PlayPlaylistShowMultimedia.DownButton();
+                        }
+
+                    }
+                }
+                else if (PlayPlaylistMultTypeTextBox.Text.Contains("Video Preference"))
+                {
+                    persVideoList = ReturnSearchedMult(ProfileDomainUp.Text, "Video", null);
+                    foreach (Video video in videoDataBase)
+                    {
+                        if(index >= persVideoList.Count() - 1)
+                        {
+                            index = -1;
+                        }
+
+
+                        if (video.FileName == persVideoList[index + 1])
+                        {
+                            PlayPlaylistMessageBox.Clear();
+
+                            wmpVideo.Ctlcontrols.stop();
+                            wmpVideo.URL = video.FileName;
+                            wmpVideo.Ctlcontrols.play();
+
+                            PlayPlaylistMessageBox.AppendText("Video Playing: " + video.Name + video.Format);
+                            PlayPlaylistShowMultimedia.DownButton();
+                        }
+                        else
+                        {
+                            PlayPlaylistMessageBox.Clear();
+                            PlayPlaylistMessageBox.AppendText("Video wasn't Skipped!");
+                        }
+
+                    }
+                }
+                
             }
         }
         //ONEVENT
@@ -4676,6 +4967,7 @@ namespace Entrega3_FyBuZz
                 }
                             
             }
+            PlayPlaylistLabel.Text = "Play Playlist: X";
             PlayPlaylistMultTypeTextBox.AppendText("Song Favorite");
             PlayPlaylistPanel.BringToFront();
         }
@@ -4698,6 +4990,7 @@ namespace Entrega3_FyBuZz
                 }
 
             }
+            PlayPlaylistLabel.Text = "Play Playlist: X";
             PlayPlaylistMultTypeTextBox.AppendText("Video Favorite");
             PlayPlaylistPanel.BringToFront();
         }
@@ -5658,5 +5951,6 @@ namespace Entrega3_FyBuZz
         {
 
         }
+
     }
 }

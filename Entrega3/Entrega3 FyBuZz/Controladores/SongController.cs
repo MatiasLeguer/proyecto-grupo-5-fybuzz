@@ -60,11 +60,17 @@ namespace Entrega3_FyBuZz.Controladores
         {
             string date = e.DateText.ToShortDateString();
             string duration = e.DurationText.ToString();
-            File.Copy(e.FileDestName, e.FileNameText);
-            File.Copy(e.FileLyricsSource, e.LyricsText);
-            File.Copy(e.PicSource, e.PicFile);
-            List<string> infoMult = new List<string> {e.NameText, e.ArtistText, e.AlbumText, e.DiscographyText, e.GenderText,date, e.StudioText, duration, e.LyricsText, e.FormatText, e.FileNameText, e.PicFile};
-            string description = dataBase.AddMult(0, infoMult, songDatabase, null, null, null, null, null, null);
+            string description = "";
+            if (File.Exists(e.PicFile) == false && File.Exists(e.LyricsText) == false && File.Exists(e.FileNameText) == false)
+            {
+                File.Copy(e.FileDestName, e.FileNameText);
+                File.Copy(e.FileLyricsSource, e.LyricsText);
+                File.Copy(e.PicSource, e.PicFile);
+
+                List<string> infoMult = new List<string> { e.NameText, e.ArtistText, e.AlbumText, e.DiscographyText, e.GenderText, date, e.StudioText, duration, e.LyricsText, e.FormatText, e.FileNameText, e.PicFile };
+                description = dataBase.AddMult(0, infoMult, songDatabase, null, null, null, null, null, null);
+            }
+
             if (description == null)
             {
                 dataBase.Save_Songs(songDatabase);
