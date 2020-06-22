@@ -442,6 +442,7 @@ namespace Entrega3_FyBuZz
         //-------------------------------------------------------------------------------------------
         private void ProfilesChooseProfile_Click_1(object sender, EventArgs e)
         {
+            AdminMenuButton.Visible = false;
             SharedMultNotificationButton.Visible = false;
             DisplayStartChooseSharedMult.Visible = false;
             DisplayStartNotificationDomainUp.Visible = false;
@@ -466,7 +467,7 @@ namespace Entrega3_FyBuZz
                 List<string> userInfo = OnLogInLogInButton_Clicked2(UserLogInTextBox.Text);
                 if (userInfo[3] == "admin")
                 {
-                    DisplayStartAdminMenuButton.Visible = true;
+                    AdminMenuButton.Visible = true;
                 }
 
                 ProfileName = profileProfileName;
@@ -525,6 +526,13 @@ namespace Entrega3_FyBuZz
                     AddsPanel2.Visible = true;
                 }
                 if(DisplayStartNotificationDomainUp.Items.Count != 0)
+                {
+                    SharedMultNotificationButton.Visible = true;
+                }
+
+                Profile profileGetter = OnProfilesChooseProfile_Click(profileProfileName, username, password);
+
+                if (profileGetter.SharedMult.Count != 0)
                 {
                     SharedMultNotificationButton.Visible = true;
                 }
@@ -819,6 +827,34 @@ namespace Entrega3_FyBuZz
 
         private void DisplayStartLogOutButton_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void DisplayStartLogOutProfileButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void DisplayStartProfileLogOutButton_Click(object sender, EventArgs e)
+        {
+            AccountSettingsUsernameTextBox.Clear();
+            AccountSettingsPasswordTextBox.Clear();
+            AccountSettingsAccountTypeTextBox.Clear();
+            AccountSettingsEmailTextBox.Clear();
+            AccountSettingsFollowersTextBox.Clear();
+            AccountSettingsFollowingTextBox.Clear();
+
+            ProfileSettingsNameTextBox.Clear();
+            ProfileSettingsProfileTypeTextBox.Clear();
+            ProfileSettingsGenderTextBox.Clear();
+            ProfileSettingsBirthdayTextBox.Clear();
+            //ProfileSettingsProfilePicImageBox.Image.Dispose();
+
+            ProfilesInvalidCredentialTextBox.Clear();
+            ProfilePanel.BringToFront();
+        }
+
+        private void DisplayStartLogOutFybuzzButton_Click(object sender, EventArgs e)
+        {
             int cont = 0;
             if (ProfileDomainUp.SelectedIndex != -1)
             {
@@ -839,25 +875,6 @@ namespace Entrega3_FyBuZz
             ProfilesInvalidCredentialTextBox.Clear();
             ProfileDomainUp.ResetText();
             ProfilesInvalidCredentialTextBox.Clear();
-        }
-
-        private void DisplayStartLogOutProfileButton_Click(object sender, EventArgs e)
-        {
-            AccountSettingsUsernameTextBox.Clear();
-            AccountSettingsPasswordTextBox.Clear();
-            AccountSettingsAccountTypeTextBox.Clear();
-            AccountSettingsEmailTextBox.Clear();
-            AccountSettingsFollowersTextBox.Clear();
-            AccountSettingsFollowingTextBox.Clear();
-
-            ProfileSettingsNameTextBox.Clear();
-            ProfileSettingsProfileTypeTextBox.Clear();
-            ProfileSettingsGenderTextBox.Clear();
-            ProfileSettingsBirthdayTextBox.Clear();
-            //ProfileSettingsProfilePicImageBox.Image.Dispose();
-
-            ProfilesInvalidCredentialTextBox.Clear();
-            ProfilePanel.BringToFront();
         }
 
         private void DisplayPlaylistGoBackButton_Click(object sender, EventArgs e)
@@ -1751,6 +1768,10 @@ namespace Entrega3_FyBuZz
 
         private void SearchGoBackButton_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void SearchGoBackButton_Click_1(object sender, EventArgs e)
+        {
             windowsMediaPlayer.Ctlcontrols.stop();
             soundPlayer.Stop();
 
@@ -1779,6 +1800,36 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
+        private void PlayVideoLyrics_Click_1(object sender, EventArgs e)
+        {
+            PlaySongDisplayLyrics.Visible = false;
+            PlaySongDisplayLyrics.Clear();
+            string[] searchedVideo = PlayVideoVideoPlaying.Text.Split(':');
+            List<string> infoVideo = GetVideoButton(searchedVideo[0], searchedVideo[1], searchedVideo[2]);
+
+            if (infoVideo[9] != null && infoVideo[9].Contains(".srt"))
+            {
+                string strRegex = @"^.*([a-zA-Z]).*$";
+                Regex myRegex = new Regex(strRegex, RegexOptions.Multiline);
+
+                string lyricsFile = File.ReadAllText(infoVideo[9]);
+
+                foreach (Match myMatch in myRegex.Matches(lyricsFile))
+                {
+                    if (myMatch.Success)
+                    {
+                        PlayVideoShowLyrics.Visible = true;
+                        PlayVideoShowLyrics.AppendText(myMatch.Value + "\n");
+                    }
+                }
+            }
+            else
+            {
+                PlayVideoMessageAlertTextBox.AppendText("ERROR[!] Couldn't find subtitles");
+                Thread.Sleep(2000);
+                PlayVideoMessageAlertTextBox.Clear();
+            }
+        }
         //-------------------------------------------------------------------------------------------
 
 
@@ -1788,6 +1839,10 @@ namespace Entrega3_FyBuZz
         //-------------------------------------------------------------------------------------------
 
         private void SearchUserFollowButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void SearchUserFollowButton_Click_1(object sender, EventArgs e)
         {
             List<User> userDataBase = new List<User>();
             userDataBase = OnSearchUserButton_Click();
@@ -1848,6 +1903,11 @@ namespace Entrega3_FyBuZz
 
         private void SearchUserGoBack_Click(object sender, EventArgs e)
         {
+            
+
+        }
+        private void SearchUserGoBack_Click_1(object sender, EventArgs e)
+        {
             if (SearchSearchResultsDomainUp.SelectedIndex != -1)
             {
                 int cont = 0;
@@ -1860,13 +1920,12 @@ namespace Entrega3_FyBuZz
                     SearchSearchResultsDomainUp.Items.RemoveAt(cont - 1);
                 }
             }
-            
+
             SearchPanel.BringToFront();
             SearUserName.Clear();
             SearcUserEmailTextBox.Clear();
             SearchUserFollowers.Clear();
             SearchUserFollowing.Clear();
-
         }
         //-------------------------------------------------------------------------------------------
 
@@ -2431,6 +2490,10 @@ namespace Entrega3_FyBuZz
         //-------------------------------------------------------------------------------------------
         private void PlayVideoAddToPlaylistButton_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void PlayVideoAddToPlaylistButton_Click_1(object sender, EventArgs e)
+        {
             PlayVideoSelectPlDomainUp.ResetText();
 
             Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
@@ -2453,6 +2516,10 @@ namespace Entrega3_FyBuZz
         }
         private void PlayVideoLikeButton_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void PlayVideoLikeButton_Click_1(object sender, EventArgs e)
+        {
             PlayVideoMessageAlertTextBox.Clear();
             string[] searchedMult = SearchSearchResultsDomainUp.Text.Split(':');
             List<string> infoVideo = new List<string>();
@@ -2472,7 +2539,7 @@ namespace Entrega3_FyBuZz
                 infoVideo = GetVideoButton(searchedMult[0], searchedMult[1], searchedMult[2]);
                 LikeVideo_Did(searchedMult[0], searchedMult[1], searchedMult[2]);
             }
-            
+
             AddLikedMult(ProfileDomainUp.Text, null, infoVideo[8]);
         }
         private void PlayVideoLyrics_Click(object sender, EventArgs e)
@@ -2508,7 +2575,11 @@ namespace Entrega3_FyBuZz
 
         private void PlayVideoFullScreenButton_Click(object sender, EventArgs e)
         {
-            if(wmpVideo.URL.Length > 0)
+            
+        }
+        private void PlayVideoFullScreenButton_Click_1(object sender, EventArgs e)
+        {
+            if (wmpVideo.URL.Length > 0)
             {
                 wmpVideo.fullScreen = true;
             }
@@ -2516,17 +2587,24 @@ namespace Entrega3_FyBuZz
 
         private void PlayVideoSelectPlButton_Click(object sender, EventArgs e)
         {
+
+        }
+        private void PlayVideoSelectPlButton_Click_1(object sender, EventArgs e)
+        {
             List<Video> videoDataBase = new List<Video>();
             string result = PlayVideoVideoPlaying.Text;
             string searchedPlaylistName = PlayVideoSelectPlDomainUp.Text;
             videoDataBase = OnSearchVideoButton_Click();
             OnPlayVideoSelectPlButton_Clicked(result, videoDataBase, searchedPlaylistName);
             SearchSearchResultsDomainUp.ResetText();
-
-
         }
 
+
         private void PlayVideoRateVideoButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void PlayVideoRateVideoButton_Click_1(object sender, EventArgs e)
         {
             VideoRate.Clear();
             PlayVideoRateDomainUp.Visible = true;
@@ -2545,13 +2623,16 @@ namespace Entrega3_FyBuZz
                 PlaysVideoRateButton_Click(userRate, infoVideo[0], infoVideo[1], infoVideo[2]);
                 infoVideoList = GetVideoButton(infoVideo[0], infoVideo[1], infoVideo[2]);
             }
-           
+
             VideoRate.AppendText(infoVideoList[6]);
         }
 
         private void PlayVideoQueue_Click(object sender, EventArgs e)
         {
 
+        }
+        private void PlayVideoQueue_Click_1(object sender, EventArgs e)
+        {
             string[] searchedMult = PlayVideoVideoPlaying.Text.Split(':');
             if (searchedMult[3] == ".mov" || searchedMult[3] == ".avi" || searchedMult[3] == ".mp4")
             {
@@ -2686,6 +2767,7 @@ namespace Entrega3_FyBuZz
                 }
             }
         }
+        
         public void LikeVideo_Did(string vName, string vActor, string vDirector)
         {
             if (LikedVideo_Done != null)
@@ -2824,6 +2906,77 @@ namespace Entrega3_FyBuZz
 
         private void PlayPlaylistChooseMultimediaButton_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void PlayVideoGoBackButton_Click_1(object sender, EventArgs e)
+        {
+            windowsMediaPlayer.Ctlcontrols.stop();
+            soundPlayer.Stop();
+
+            SearchDisplayMoreMultimediaInfo.Clear();
+            SearchDisplayMoreMultimediaInfo.Visible = false;
+            SearchSearchTextBox.Text = "Search Songs,Video, Playlists or Users";
+            SearchSearchResultsDomainUp.Visible = false;
+            //SearchSearchResultsDomainUp.Items.Clear();
+            SearchSearchResultsDomainUp.Text = "Searched Results:";
+            DisplayStartPanel.BringToFront();
+            if (windowsMediaPlayer.URL != null)
+            {
+                PlayerPanel.BringToFront();
+                PlayerPanel.Dock = DockStyle.Bottom;
+            }
+            int cont = 0;
+            if (SearchSearchResultsDomainUp.SelectedIndex != -1)
+            {
+                foreach (object searched in SearchSearchResultsDomainUp.Items)
+                {
+                    cont++;
+                }
+                for (int i = 0; i < cont; cont--)
+                {
+                    SearchSearchResultsDomainUp.Items.RemoveAt(cont - 1);
+                }
+            }
+        }
+
+        private void PlayVideoInfoVideo_Click(object sender, EventArgs e)
+        {
+            SearchDisplayMoreMultimediaInfo.Clear();
+            SearchDisplayMoreMultimediaInfo.Visible = true;
+            string[] infoMult = SearchSearchResultsDomainUp.Text.Split(':');
+            List<string> infoMultimedia = new List<string>();
+
+            int n = 0;
+            infoMultimedia = GetVideoButton(infoMult[1], infoMult[3], infoMult[5]);
+            List<string> information = new List<string>() { "Name: ", "Actor: ", "Director: ", "Quality: ", "Category: ",
+                                                               "Rated: ", "Ranking: ", "Description: ","Video File: ", "Subtitiles File: "};
+            foreach (string info in infoMultimedia)
+            {
+                SearchDisplayMoreMultimediaInfo.AppendText(information[n] + info + "\r\n");
+                n++;
+            }
+        }
+
+        private void InfoMediaButton_Click(object sender, EventArgs e)
+        {
+            SearchDisplayMoreMultimediaInfo.Clear();
+            SearchDisplayMoreMultimediaInfo.Visible = true;
+            string[] infoMult = SearchSearchResultsDomainUp.Text.Split(':');
+            List<string> infoMultimedia = new List<string>();
+
+            int n = 0;
+            infoMultimedia = ReturnInfoSong2(infoMult[1], infoMult[3]);
+            List<string> information = new List<string>() { "Album: ", "Artists: ", "Discography: ", "Gender: ", "Studio: ",
+                                                               "Lyrics File: ", "Song File: ", "Ranking: ","Name: "};
+            foreach (string info in infoMultimedia)
+            {
+                SearchDisplayMoreMultimediaInfo.AppendText(information[n] + info + "\r\n");
+                n++;
+            }
+        }
+
+        private void PlayPlaylistChooseMultimediaButton_Click_1(object sender, EventArgs e)
+        {
             int cont1 = 0;
             if (PlayVideoSelectPlDomainUp.SelectedIndex != -1)
             {
@@ -2885,12 +3038,12 @@ namespace Entrega3_FyBuZz
 
                 if (multimediaType.Contains("Song:") == true && multimediaType.Contains("Artist:") == true)
                 {
-                    
+
                     List<string> choosenPLPers = ReturnSearchedMult(ProfileDomainUp.Text, "Song", null);
                     int playlistIndex = PlayPlaylistShowMultimedia.SelectedIndex;
 
                     int cont = 0;
-                    if(choosenPL.Songs.Count() == 0)
+                    if (choosenPL.Songs.Count() == 0)
                     {
                         cont++;
                     }
@@ -2915,7 +3068,8 @@ namespace Entrega3_FyBuZz
                                     PlayPlaylistMessageBox.AppendText("ERROR[!] Age restriction");
                                     break;
                                 }
-                                else {
+                                else
+                                {
                                     if (multimediaType == choosenPL.Songs[playlistIndex].SearchedInfoSong())
                                     {
                                         PlayPlaylistMessageBox.Clear();
@@ -3058,7 +3212,7 @@ namespace Entrega3_FyBuZz
                     List<string> choosenPLPers = ReturnSearchedMult(ProfileDomainUp.Text, null, "Video");
                     int playlistIndex = PlayPlaylistShowMultimedia.SelectedIndex;
                     int cont = 0;
-                    if(PlayPlaylistShowMultimedia.Items.Count == 0)
+                    if (PlayPlaylistShowMultimedia.Items.Count == 0)
                     {
                         PlayPlaylistMessageBox.AppendText("no videos");
                         cont++;
@@ -3216,6 +3370,10 @@ namespace Entrega3_FyBuZz
         }
         private void PlayPlaylistRandomButton_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void PlayPlaylistRandomButton_Click_1(object sender, EventArgs e)
+        {
             int cont1 = 0;
             if (PlayVideoSelectPlDomainUp.SelectedIndex != -1)
             {
@@ -3235,7 +3393,7 @@ namespace Entrega3_FyBuZz
             PlayPlaylistTimerBox.Clear();
             soundPlayer.Stop();
             windowsMediaPlayer.Ctlcontrols.stop();
-            
+
 
             PlayPlaylistPlayerPanel.Visible = true;
             List<Song> songDataBase = new List<Song>();
@@ -3309,7 +3467,7 @@ namespace Entrega3_FyBuZz
             {
                 soundPlayer.Stop();
                 windowsMediaPlayer.Ctlcontrols.stop();
-                             
+
                 if (PlayPlaylistMultTypeTextBox.Text.Contains("Song"))
                 {
                     List<string> choosenPLPers = ReturnSearchedMult(ProfileDomainUp.Text, "Song", null);
@@ -3335,8 +3493,8 @@ namespace Entrega3_FyBuZz
                             PlayPlaylistMessageBox.AppendText("ERROR[!] Age restriction");
                             break;
                         }
-                        else 
-                        { 
+                        else
+                        {
                             if (choosenPLPers[playlistIndex].Contains(song.SongFile) == true)
                             {
                                 if (song.SongFile.Contains(".mp3"))
@@ -3395,8 +3553,8 @@ namespace Entrega3_FyBuZz
                         {
                             if (PlayPlaylistMultTypeTextBox.Text.Contains("Favorite"))
                             {
-                                    choosenPLPers = ReturnLikeMult(ProfileDomainUp.Text, null, "Video");
-                                    playlistIndex = random.Next(choosenPLPers.Count());
+                                choosenPLPers = ReturnLikeMult(ProfileDomainUp.Text, null, "Video");
+                                playlistIndex = random.Next(choosenPLPers.Count());
                             }
                             if (choosenPLPers[playlistIndex].Contains(video.FileName) == true)
                             {
@@ -3475,7 +3633,7 @@ namespace Entrega3_FyBuZz
                         wmpVideo.Ctlcontrols.play();
                     }
                 }
-                
+
             }
             PlayPlaylistMessageBox.Clear();
         }
@@ -5795,15 +5953,7 @@ namespace Entrega3_FyBuZz
             }
             else if(infoMult.Contains("Video"))
             {
-                int n = 0;
-                infoMultimedia = GetVideoButton(infoMult[1], infoMult[3], infoMult[5]);
-                List<string> information = new List<string>() { "Name: ", "Actor: ", "Director: ", "Quality: ", "Category: ",
-                                                               "Rated: ", "Ranking: ", "Description: ","Video File: ", "Subtitiles File: "};
-                foreach (string info in infoMultimedia)
-                {
-                    SearchDisplayMoreMultimediaInfo.AppendText(information[n] + info + "\r\n");
-                    n++;
-                }
+                
             }
         }
         //---------------------------------------------//
@@ -5849,6 +5999,10 @@ namespace Entrega3_FyBuZz
         }
         //--------Video-----------
         private void PlayVideoShareButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void PlayVideoShareButton_Click_1(object sender, EventArgs e)
         {
             int cont = 0;
             if (PlayVideoChooseUserDomainUp.SelectedIndex != -1)
@@ -6426,10 +6580,10 @@ namespace Entrega3_FyBuZz
 
         private void DisplayStartProfileInfo_Click(object sender, EventArgs e)
         {
-            ProfileSettingsNameTextBox.Clear();
-            ProfileSettingsProfileTypeTextBox.Clear();
-            ProfileSettingsGenderTextBox.Clear();
-            ProfileSettingsBirthdayTextBox.Clear();
+            DisplayStartProfNameTextBox.Clear();
+            DisplayStartProfGenderTextBox.Clear();
+            DisplayStartProfTypeTextBox.Clear();
+            DisplayStartProfAgeTextBox.Clear();
 
             DisplayStartNotificationDomainUp.Visible = false;
             DisplayStartChooseSharedMult.Visible = false;
@@ -6570,5 +6724,14 @@ namespace Entrega3_FyBuZz
             }
             
         }
+
+        
+
+        private void SharedMultNotificationButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        
     }
 }
