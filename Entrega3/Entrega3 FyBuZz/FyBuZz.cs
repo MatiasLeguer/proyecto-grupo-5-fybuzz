@@ -235,7 +235,7 @@ namespace Entrega3_FyBuZz
             else
             {
                 LogInInvalidCredentialsTetxbox.Clear();
-                LogInInvalidCredentialsTetxbox.AppendText("Incorrect Username or Password");
+                LogInInvalidCredentialsTetxbox.Text = "Incorrect Username or Password";
                 Thread.Sleep(2000);
                 LogInInvalidCredentialsTetxbox.Visible = true;
             }
@@ -440,6 +440,7 @@ namespace Entrega3_FyBuZz
         //-------------------------------------------------------------------------------------------
         private void ProfilesChooseProfile_Click_1(object sender, EventArgs e)
         {
+            SharedMultNotificationButton.Visible = false;
             DisplayStartChooseSharedMult.Visible = false;
             DisplayStartNotificationDomainUp.Visible = false;
 
@@ -519,6 +520,10 @@ namespace Entrega3_FyBuZz
                 {
                     AddsPanel1.Visible = true;
                     AddsPanel2.Visible = true;
+                }
+                if(DisplayStartNotificationDomainUp.Items.Count != 0)
+                {
+                    SharedMultNotificationButton.Visible = true;
                 }
                 DisplayStartPanel.BringToFront();
             }
@@ -5286,6 +5291,10 @@ namespace Entrega3_FyBuZz
 
         private void UserProfileChangeInfoConfirmButton_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void UserProfileChangeInfoConfirmButton_Click_1(object sender, EventArgs e)
+        {
             UserProfilChangeInfoMessageBox.Clear();
             UserProfileChangeInfoInvalidBox.Clear();
             int wantToChange = 0;
@@ -5381,6 +5390,10 @@ namespace Entrega3_FyBuZz
         //GO BACK/CLOSE
 
         private void UserProfileChangeInfoGoBackButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void UserProfileChangeInfoGoBackButton_Click_1(object sender, EventArgs e)
         {
             DisplayStartPanel.BringToFront();
             UserProfileChangeInfoPasswordTextBox.Clear();
@@ -5806,6 +5819,10 @@ namespace Entrega3_FyBuZz
 
         private void DisplayStartChooseSharedMult_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void DisplayStartChooseSharedMult_Click_1(object sender, EventArgs e)
+        {
             int index = DisplayStartNotificationDomainUp.SelectedIndex;
 
             string mult = DisplayStartMultimediaInfoDomainUp.Items[index].ToString();
@@ -6075,11 +6092,17 @@ namespace Entrega3_FyBuZz
 
         private void AboutFyBuZzButton_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void SideButtonAboutUs_Click(object sender, EventArgs e)
+        {
             MostrarSubMenus(AboutUsInfoTextPanel);
         }
 
         private void PrivatePlsButton_Click(object sender, EventArgs e)
         {
+            DisplayStartErrorPanel.Visible = false;
+            DisplayStartErrorMessage.Visible = false;
             OcultarSubMenus();
             Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
             
@@ -6099,9 +6122,9 @@ namespace Entrega3_FyBuZz
             }
             else
             {
+                DisplayStartErrorPanel.Visible = true;
                 DisplayStartErrorMessage.Visible = true;
-                Thread.Sleep(3000);
-                DisplayStartErrorMessage.Visible = false;
+
             }
         }
 
@@ -6128,6 +6151,9 @@ namespace Entrega3_FyBuZz
 
         private void FavoritePlsButton_Click(object sender, EventArgs e)
         {
+            DisplayStartErrorPanel.Visible = false;
+            DisplayStartErrorMessage.Visible = false;
+
             OcultarSubMenus();
             Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
             
@@ -6147,9 +6173,9 @@ namespace Entrega3_FyBuZz
             }
             else
             {
+                DisplayStartErrorPanel.Visible = true;
                 DisplayStartErrorMessage.Visible = true;
-                Thread.Sleep(3000);
-                DisplayStartErrorMessage.Visible = false;
+
             }
         }
 
@@ -6297,5 +6323,75 @@ namespace Entrega3_FyBuZz
                 PlaySongSkipSongButton.PerformClick();
             }
         }
+
+        private void DisplayStartProfileInfo_Click(object sender, EventArgs e)
+        {
+            ProfileSettingsNameTextBox.Clear();
+            ProfileSettingsProfileTypeTextBox.Clear();
+            ProfileSettingsGenderTextBox.Clear();
+            ProfileSettingsBirthdayTextBox.Clear();
+
+            DisplayStartNotificationDomainUp.Visible = false;
+            DisplayStartChooseSharedMult.Visible = false;
+
+            string username = UserLogInTextBox.Text;
+
+            string password = PasswordLogInTextBox.Text;
+            string profileProfileName = ProfileDomainUp.Text;
+
+            List<string> profileGetterString = OnProfilesChooseProfile_Click2(profileProfileName, username, password);
+
+            DisplayStartProfNameTextBox.AppendText(profileGetterString[0]);
+            DisplayStartProfTypeTextBox.AppendText(profileGetterString[1]);
+            DisplayStartProfGenderTextBox.AppendText(profileGetterString[2]);
+            DisplayStartProfAgeTextBox.AppendText(profileGetterString[3]);
+
+
+            if (DisplayStartNotificationDomainUp.Items.Count != 0)
+            {
+                DisplayStartNotificationDomainUp.Visible = true;
+                DisplayStartChooseSharedMult.Visible = true;
+            }
+            if(AddsPanel2.Visible == false)
+            {
+                DisplayStartProfileInfoPanel.Visible = true;
+            }
+            else
+            {
+                AddsPanel2.Visible = false;
+                DisplayStartProfileInfoPanel.Visible = true;
+            }
+            
+        }
+
+        private void ProfileInfoAccountSettingsButton_Click(object sender, EventArgs e)
+        {
+            List<string> userGetter = OnLogInLogInButton_Clicked2(UserLogInTextBox.Text);
+            DisplayStartProfileInfoPanel.Visible = false;
+            if (userGetter[3] == "standard")
+            {
+                AddsPanel2.Visible = true;
+            }
+            AccountSettingsUsernameTextBox.AppendText(userGetter[0]);
+            AccountSettingsPasswordTextBox.AppendText(userGetter[1]);
+            AccountSettingsEmailTextBox.AppendText(userGetter[2]);
+            AccountSettingsAccountTypeTextBox.AppendText(userGetter[3]);
+            AccountSettingsFollowersTextBox.AppendText(userGetter[4]);
+            AccountSettingsFollowingTextBox.AppendText(userGetter[5]);
+
+            AccountProfileSettingsPanel.BringToFront();
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            List<string> userGetter = OnLogInLogInButton_Clicked2(UserLogInTextBox.Text);
+            DisplayStartProfileInfoPanel.Visible = false;
+            if (userGetter[3] == "standard")
+            {
+                AddsPanel2.Visible = true;
+            }
+        }
+
+        
     }
 }
