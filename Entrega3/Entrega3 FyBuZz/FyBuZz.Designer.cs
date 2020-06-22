@@ -152,7 +152,6 @@
             this.SearchSkipButton = new System.Windows.Forms.Button();
             this.SearchPlayButton = new System.Windows.Forms.Button();
             this.SearchTimerTextBox = new System.Windows.Forms.TextBox();
-            this.SearchProgressBar = new System.Windows.Forms.ProgressBar();
             this.SearchPrevButton = new System.Windows.Forms.Button();
             this.SearchPauseBotton = new System.Windows.Forms.Button();
             this.SearchOkMultAddedLabel = new System.Windows.Forms.Label();
@@ -168,11 +167,13 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.SearchSearchLabel = new System.Windows.Forms.Label();
             this.PlayerPanel = new System.Windows.Forms.Panel();
+            this.PlayerPanelMtrackVolumeBar = new XComponent.SliderBar.MACTrackBar();
+            this.windowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.PlayerPanelMtrackProgressBar = new XComponent.SliderBar.MACTrackBar();
             this.PlayerPlayingLabel = new System.Windows.Forms.TextBox();
             this.PlaySongSkipSongButton = new System.Windows.Forms.Button();
             this.PlaySongPlayButton = new System.Windows.Forms.Button();
             this.PlaySongTimerTextBox = new System.Windows.Forms.TextBox();
-            this.PlaySongProgressBar = new System.Windows.Forms.ProgressBar();
             this.PlaySongPreviousSongButton = new System.Windows.Forms.Button();
             this.PlaySongStopButton = new System.Windows.Forms.Button();
             this.AddShowPanel = new System.Windows.Forms.Panel();
@@ -323,7 +324,6 @@
             this.CreatePlaylistFormatLabel = new System.Windows.Forms.Label();
             this.CreatePlaylistNameLabel = new System.Windows.Forms.Label();
             this.CreatePlaylistLabel = new System.Windows.Forms.Label();
-            this.DurationTimer = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.PlaySongPanel = new System.Windows.Forms.Panel();
             this.PlaySongChooseUserButton = new System.Windows.Forms.Button();
@@ -418,6 +418,8 @@
             this.WelcomePanelProfesoresLabel = new System.Windows.Forms.Label();
             this.WelcomePanelProyectoNombreLabel = new System.Windows.Forms.Label();
             this.WelcomePanelProyectoLabel = new System.Windows.Forms.Label();
+            this.ProgressTimer = new System.Windows.Forms.Timer(this.components);
+            this.TimerWav = new System.Windows.Forms.Timer(this.components);
             this.RegisterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RegisterLogo)).BeginInit();
             this.LogInPanel.SuspendLayout();
@@ -443,6 +445,7 @@
             this.SearchPlayingPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.PlayerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.windowsMediaPlayer)).BeginInit();
             this.AddShowPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddShowLogo1)).BeginInit();
             this.DisplayPlaylistPanel.SuspendLayout();
@@ -1867,7 +1870,6 @@
             this.SearchPlayingPanel.Controls.Add(this.SearchSkipButton);
             this.SearchPlayingPanel.Controls.Add(this.SearchPlayButton);
             this.SearchPlayingPanel.Controls.Add(this.SearchTimerTextBox);
-            this.SearchPlayingPanel.Controls.Add(this.SearchProgressBar);
             this.SearchPlayingPanel.Controls.Add(this.SearchPrevButton);
             this.SearchPlayingPanel.Controls.Add(this.SearchPauseBotton);
             this.SearchPlayingPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -1932,13 +1934,6 @@
             this.SearchTimerTextBox.ReadOnly = true;
             this.SearchTimerTextBox.Size = new System.Drawing.Size(36, 19);
             this.SearchTimerTextBox.TabIndex = 34;
-            // 
-            // SearchProgressBar
-            // 
-            this.SearchProgressBar.Location = new System.Drawing.Point(238, 76);
-            this.SearchProgressBar.Name = "SearchProgressBar";
-            this.SearchProgressBar.Size = new System.Drawing.Size(499, 16);
-            this.SearchProgressBar.TabIndex = 7;
             // 
             // SearchPrevButton
             // 
@@ -2129,11 +2124,13 @@
             // PlayerPanel
             // 
             this.PlayerPanel.BackColor = System.Drawing.Color.Black;
+            this.PlayerPanel.Controls.Add(this.PlayerPanelMtrackVolumeBar);
+            this.PlayerPanel.Controls.Add(this.windowsMediaPlayer);
+            this.PlayerPanel.Controls.Add(this.PlayerPanelMtrackProgressBar);
             this.PlayerPanel.Controls.Add(this.PlayerPlayingLabel);
             this.PlayerPanel.Controls.Add(this.PlaySongSkipSongButton);
             this.PlayerPanel.Controls.Add(this.PlaySongPlayButton);
             this.PlayerPanel.Controls.Add(this.PlaySongTimerTextBox);
-            this.PlayerPanel.Controls.Add(this.PlaySongProgressBar);
             this.PlayerPanel.Controls.Add(this.PlaySongPreviousSongButton);
             this.PlayerPanel.Controls.Add(this.PlaySongStopButton);
             this.PlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -2141,6 +2138,67 @@
             this.PlayerPanel.Name = "PlayerPanel";
             this.PlayerPanel.Size = new System.Drawing.Size(1024, 194);
             this.PlayerPanel.TabIndex = 15;
+            // 
+            // PlayerPanelMtrackVolumeBar
+            // 
+            this.PlayerPanelMtrackVolumeBar.BackColor = System.Drawing.Color.Transparent;
+            this.PlayerPanelMtrackVolumeBar.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.PlayerPanelMtrackVolumeBar.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayerPanelMtrackVolumeBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(125)))), ((int)(((byte)(123)))));
+            this.PlayerPanelMtrackVolumeBar.IndentHeight = 6;
+            this.PlayerPanelMtrackVolumeBar.Location = new System.Drawing.Point(744, 4);
+            this.PlayerPanelMtrackVolumeBar.Maximum = 10;
+            this.PlayerPanelMtrackVolumeBar.Minimum = 0;
+            this.PlayerPanelMtrackVolumeBar.Name = "PlayerPanelMtrackVolumeBar";
+            this.PlayerPanelMtrackVolumeBar.Size = new System.Drawing.Size(110, 24);
+            this.PlayerPanelMtrackVolumeBar.TabIndex = 38;
+            this.PlayerPanelMtrackVolumeBar.TextTickStyle = System.Windows.Forms.TickStyle.None;
+            this.PlayerPanelMtrackVolumeBar.TickColor = System.Drawing.Color.Gold;
+            this.PlayerPanelMtrackVolumeBar.TickHeight = 4;
+            this.PlayerPanelMtrackVolumeBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.PlayerPanelMtrackVolumeBar.TrackerColor = System.Drawing.Color.Gold;
+            this.PlayerPanelMtrackVolumeBar.TrackerSize = new System.Drawing.Size(12, 12);
+            this.PlayerPanelMtrackVolumeBar.TrackLineColor = System.Drawing.Color.Silver;
+            this.PlayerPanelMtrackVolumeBar.TrackLineHeight = 3;
+            this.PlayerPanelMtrackVolumeBar.TrackLineSelectedColor = System.Drawing.Color.Gold;
+            this.PlayerPanelMtrackVolumeBar.Value = 0;
+            this.PlayerPanelMtrackVolumeBar.ValueChanged += new XComponent.SliderBar.ValueChangedHandler(this.PlayerPanelMtrackVolumeBar_ValueChanged);
+            // 
+            // windowsMediaPlayer
+            // 
+            this.windowsMediaPlayer.Enabled = true;
+            this.windowsMediaPlayer.Location = new System.Drawing.Point(917, 7);
+            this.windowsMediaPlayer.Name = "windowsMediaPlayer";
+            this.windowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("windowsMediaPlayer.OcxState")));
+            this.windowsMediaPlayer.Size = new System.Drawing.Size(64, 30);
+            this.windowsMediaPlayer.TabIndex = 37;
+            this.windowsMediaPlayer.Visible = false;
+            this.windowsMediaPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.windowsMediaPlayer_PlayStateChange);
+            // 
+            // PlayerPanelMtrackProgressBar
+            // 
+            this.PlayerPanelMtrackProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.PlayerPanelMtrackProgressBar.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.PlayerPanelMtrackProgressBar.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayerPanelMtrackProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(125)))), ((int)(((byte)(123)))));
+            this.PlayerPanelMtrackProgressBar.IndentHeight = 6;
+            this.PlayerPanelMtrackProgressBar.Location = new System.Drawing.Point(249, 58);
+            this.PlayerPanelMtrackProgressBar.Maximum = 10;
+            this.PlayerPanelMtrackProgressBar.Minimum = 0;
+            this.PlayerPanelMtrackProgressBar.Name = "PlayerPanelMtrackProgressBar";
+            this.PlayerPanelMtrackProgressBar.Size = new System.Drawing.Size(506, 24);
+            this.PlayerPanelMtrackProgressBar.TabIndex = 36;
+            this.PlayerPanelMtrackProgressBar.TextTickStyle = System.Windows.Forms.TickStyle.None;
+            this.PlayerPanelMtrackProgressBar.TickColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(146)))), ((int)(((byte)(148)))));
+            this.PlayerPanelMtrackProgressBar.TickHeight = 4;
+            this.PlayerPanelMtrackProgressBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.PlayerPanelMtrackProgressBar.TrackerColor = System.Drawing.Color.Gold;
+            this.PlayerPanelMtrackProgressBar.TrackerSize = new System.Drawing.Size(12, 12);
+            this.PlayerPanelMtrackProgressBar.TrackLineColor = System.Drawing.Color.Silver;
+            this.PlayerPanelMtrackProgressBar.TrackLineHeight = 3;
+            this.PlayerPanelMtrackProgressBar.TrackLineSelectedColor = System.Drawing.Color.Gold;
+            this.PlayerPanelMtrackProgressBar.Value = 0;
+            this.PlayerPanelMtrackProgressBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PlayerPanelMtrackProgressBar_MouseDown);
             // 
             // PlayerPlayingLabel
             // 
@@ -2187,13 +2245,6 @@
             this.PlaySongTimerTextBox.Name = "PlaySongTimerTextBox";
             this.PlaySongTimerTextBox.Size = new System.Drawing.Size(36, 19);
             this.PlaySongTimerTextBox.TabIndex = 34;
-            // 
-            // PlaySongProgressBar
-            // 
-            this.PlaySongProgressBar.Location = new System.Drawing.Point(248, 111);
-            this.PlaySongProgressBar.Name = "PlaySongProgressBar";
-            this.PlaySongProgressBar.Size = new System.Drawing.Size(499, 16);
-            this.PlaySongProgressBar.TabIndex = 7;
             // 
             // PlaySongPreviousSongButton
             // 
@@ -4016,10 +4067,6 @@
             this.CreatePlaylistLabel.TabIndex = 0;
             this.CreatePlaylistLabel.Text = "Create Playlist";
             // 
-            // DurationTimer
-            // 
-            this.DurationTimer.Tick += new System.EventHandler(this.DurationTimer_Tick);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -4027,6 +4074,7 @@
             // PlaySongPanel
             // 
             this.PlaySongPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.PlaySongPanel.Controls.Add(this.PlayerPanel);
             this.PlaySongPanel.Controls.Add(this.PlaySongChooseUserButton);
             this.PlaySongPanel.Controls.Add(this.PlaySongChooseUserDomainUp);
             this.PlaySongPanel.Controls.Add(this.PlaySongShareButton);
@@ -4043,7 +4091,6 @@
             this.PlaySongPanel.Controls.Add(this.PlaySongMessageTextBox);
             this.PlaySongPanel.Controls.Add(this.PlaySongDownloadSongButton);
             this.PlaySongPanel.Controls.Add(this.PlaySongAddToPlaylistButton);
-            this.PlaySongPanel.Controls.Add(this.PlayerPanel);
             this.PlaySongPanel.Controls.Add(this.PlaySongGoBackButton);
             this.PlaySongPanel.Controls.Add(this.PlaySongImageBoxImage);
             this.PlaySongPanel.Controls.Add(this.PlaySongLabel);
@@ -5147,21 +5194,31 @@
             this.WelcomePanelProyectoLabel.Text = "Proyecto:";
             this.WelcomePanelProyectoLabel.Visible = false;
             // 
+            // ProgressTimer
+            // 
+            this.ProgressTimer.Interval = 1;
+            this.ProgressTimer.Tick += new System.EventHandler(this.ProgressTimer_Tick);
+            // 
+            // TimerWav
+            // 
+            this.TimerWav.Interval = 1000;
+            this.TimerWav.Tick += new System.EventHandler(this.TimerWav_Tick);
+            // 
             // FyBuZz
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.SearchPanel);
+            this.Controls.Add(this.LogInPanel);
             this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.DisplayStartPanel);
-            this.Controls.Add(this.LogInPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
-            this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.ProfilePanel);
-            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.CreateVideoPanel);
             this.Controls.Add(this.AddShowPanel);
@@ -5214,6 +5271,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.PlayerPanel.ResumeLayout(false);
             this.PlayerPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.windowsMediaPlayer)).EndInit();
             this.AddShowPanel.ResumeLayout(false);
             this.AddShowPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddShowLogo1)).EndInit();
@@ -5443,7 +5501,6 @@
         private System.Windows.Forms.TextBox CreateSongSongFileTextBox;
         private System.Windows.Forms.Label CreateSongSongFileLabel;
         private System.Windows.Forms.Button SearchSelectMultButton;
-        private System.Windows.Forms.Timer DurationTimer;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox SearchInvalidCredentialsTextBox;
         private System.Windows.Forms.Label CreatePlaylistFormatLabel;
@@ -5499,7 +5556,6 @@
         private System.Windows.Forms.Button PlaySongSkipSongButton;
         private System.Windows.Forms.Button PlaySongPlayButton;
         private System.Windows.Forms.TextBox PlaySongTimerTextBox;
-        private System.Windows.Forms.ProgressBar PlaySongProgressBar;
         private System.Windows.Forms.Button PlaySongPreviousSongButton;
         private System.Windows.Forms.Button PlaySongStopButton;
         private System.Windows.Forms.Button PlaySongDownloadSongButton;
@@ -5532,7 +5588,6 @@
         private System.Windows.Forms.Button SearchSkipButton;
         private System.Windows.Forms.Button SearchPlayButton;
         private System.Windows.Forms.TextBox SearchTimerTextBox;
-        private System.Windows.Forms.ProgressBar SearchProgressBar;
         private System.Windows.Forms.Button SearchPrevButton;
         private System.Windows.Forms.Button SearchPauseBotton;
         private System.Windows.Forms.Button SearchPlayerToMultButton;
@@ -5656,5 +5711,10 @@
         private System.Windows.Forms.Button PlayVideoChooseUserButton;
         private System.Windows.Forms.DomainUpDown PlayVideoChooseUserDomainUp;
         private System.Windows.Forms.Button PlayVideoShareButton;
+        private XComponent.SliderBar.MACTrackBar PlayerPanelMtrackProgressBar;
+        private System.Windows.Forms.Timer ProgressTimer;
+        private AxWMPLib.AxWindowsMediaPlayer windowsMediaPlayer;
+        private XComponent.SliderBar.MACTrackBar PlayerPanelMtrackVolumeBar;
+        private System.Windows.Forms.Timer TimerWav;
     }
 }
