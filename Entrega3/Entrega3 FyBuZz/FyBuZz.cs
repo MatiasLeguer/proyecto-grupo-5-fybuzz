@@ -2071,6 +2071,8 @@ namespace Entrega3_FyBuZz
 
         }
 
+
+
         private void PlaySongSkipSongButton_Click(object sender, EventArgs e)
         {
             TimerWav.Stop();
