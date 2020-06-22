@@ -883,7 +883,11 @@ namespace Entrega3_FyBuZz
         }
         private void SearchSearchButton_Click_1(object sender, EventArgs e)
         {
-            SearchSearchResultsDomainUp.ReadOnly = true;
+            
+        }
+        private void SearchSearchButton_Click_2(object sender, EventArgs e)
+        {
+            //SearchSearchResultsDomainUp.ReadOnly = true;
             SearchSearchResultsDomainUp.Text = "Searched Results:";
 
             SearchDisplayMoreMultimediaInfo.Clear();
@@ -907,15 +911,18 @@ namespace Entrega3_FyBuZz
             privatePls = GetPrivPlaylist();
 
 
-            int cont = 0;
+            int cont1 = 0;
 
-            foreach (object searched in SearchSearchResultsDomainUp.Items)
+            if (SearchSearchResultsDomainUp.Items.Count != 0)
             {
-                cont++;
-            }
-            for (int i = 0; i < cont; cont--)
-            {
-                SearchSearchResultsDomainUp.Items.RemoveAt(cont - 1);
+                foreach (object searched in SearchSearchResultsDomainUp.Items)
+                {
+                    cont1++;
+                }
+                for (int i = 0; i < cont1; cont1--)
+                {
+                    SearchSearchResultsDomainUp.Items.Clear();
+                }
             }
 
 
@@ -1108,129 +1115,7 @@ namespace Entrega3_FyBuZz
                 }
 
             }
-            else
-            {
-                int cont1 = 0;
-                if (SearchSearchResultsDomainUp.SelectedIndex != -1)
-                {
-                    foreach (object searched in SearchSearchResultsDomainUp.Items)
-                    {
-                        cont1++;
-                    }
-                    for (int i = 0; i < cont1; cont1--)
-                    {
-                        SearchSearchResultsDomainUp.Items.RemoveAt(cont - 1);
-                    }
-                }
-                SearchAndOrCheckBox.Visible = true;
-                SearchFiltersCheBox.Visible = true;
-                string logic = null;
-                List<int> allChosenFilters = new List<int>();
-                foreach (object andOr in SearchAndOrCheckBox.CheckedItems)
-                {
-                    logic = andOr.ToString();
-                }
-                foreach (object filter in SearchFiltersCheBox.CheckedIndices)
-                {
-                    allChosenFilters.Add((int)filter);
-                }
-                if (logic == "And")
-                {
-                    foreach (List<string> songInfo in allSongInfo)
-                    {
-                        int contS = 0;
-                        for (int n = 0; n < allChosenFilters.Count(); n++)
-                        {
-                            if (allChosenFilters[n] <= 7)
-                            {
-                                int newIndex = allChosenFilters[n];
-                                if (songInfo[newIndex].Contains(search) == true)
-                                {
-                                    contS++;
-                                }
-
-                            }
-
-                        }
-                        if (contS >= allChosenFilters.Count())
-                        {
-                            SearchSearchResultsDomainUp.Visible = true;
-                            SearchSearchResultsDomainUp.Items.Add("Song: " + songInfo[0] + ": Artist: " + songInfo[1]);
-                        }
-
-                    }
-                    foreach (List<string> videoInfo in allVideosInfo)
-                    {
-                        int contS = 0;
-                        for (int n = 0; n < allChosenFilters.Count(); n++)
-                        {
-                            if (allChosenFilters[n] >= 7)
-                            {
-                                int newIndex = allChosenFilters[n] - 7;
-                                if (videoInfo[newIndex].Contains(search) == true)
-                                {
-                                    contS++;
-                                }
-                            }
-
-                        }
-                        if (contS >= allChosenFilters.Count())
-                        {
-                            SearchSearchResultsDomainUp.Visible = true;
-                            SearchSearchResultsDomainUp.Items.Add("Video: " + videoInfo[0] + ": Actors: " + videoInfo[1] + ": Directors:" + videoInfo[3]);
-                        }
-
-                    }
-                }
-                else
-                {
-                    foreach (List<string> songInfo in allSongInfo)
-                    {
-                        int contS = 0;
-                        for (int n = 0; n < allChosenFilters.Count(); n++)
-                        {
-                            if (allChosenFilters[n] <= 7)
-                            {
-                                int newIndex = allChosenFilters[n];
-                                if (songInfo[newIndex].Contains(search) == true)
-                                {
-                                    contS++;
-                                }
-                            }
-
-                        }
-                        if (contS != 0)
-                        {
-                            SearchSearchResultsDomainUp.Visible = true;
-                            SearchSearchResultsDomainUp.Items.Add("Song: " + songInfo[0] + ": Artist: " + songInfo[1]);
-                        }
-
-                    }
-                    foreach (List<string> videoInfo in allVideosInfo)
-                    {
-                        int contS = 0;
-                        for (int n = 0; n < allChosenFilters.Count(); n++)
-                        {
-                            if (allChosenFilters[n] >= 7)
-                            {
-                                int newIndex = allChosenFilters[n] - 7;
-                                if (videoInfo[newIndex].Contains(search) == true)
-                                {
-                                    contS++;
-                                }
-                            }
-
-                        }
-                        if (contS != 0)
-                        {
-                            SearchSearchResultsDomainUp.Visible = true;
-                            SearchSearchResultsDomainUp.Items.Add("Video: " + videoInfo[0] + ": Actors: " + videoInfo[1] + ": Directors:" + videoInfo[3]);
-                        }
-
-                    }
-
-                }
-            }
+           
             if (SearchSearchResultsDomainUp.Items.Count == 0)
             {
                 SearchInvalidCredentialsTextBox.AppendText("ERROR[!] Nothing found.");
@@ -1239,9 +1124,9 @@ namespace Entrega3_FyBuZz
             }
             SearchFiltersOnCheckBox.CheckState = CheckState.Unchecked;
             SearchAndOrCheckBox.ClearSelected();
-            SearchFiltersCheBox.ClearSelected();
-            SearchAndOrCheckBox.Visible = false;
-            SearchFiltersCheBox.Visible = false;
+            AllFiltersCheckbox.ClearSelected();
+            //SearchAndOrCheckBox.Visible = false;
+            //AllFiltersCheckbox.Visible = false;
 
             PlaySongChoosePlsDomainUp.Visible = false;
             PlaySongChoosePlsDomainUp.ResetText();
@@ -1250,6 +1135,11 @@ namespace Entrega3_FyBuZz
         }
 
         private void SearchSelectMultButton_Click(object sender, EventArgs e)
+        {
+            
+
+        }
+        private void SearchSelectMultButton_Click_1(object sender, EventArgs e)
         {
             TimerWav.Stop();
             ticks = 0;
@@ -1302,7 +1192,7 @@ namespace Entrega3_FyBuZz
                     }
                     else
                     {
-                        
+
                         if (songMVCInfo[6].Contains(".mp3") == true)
                         {
                             string result = SearchSearchResultsDomainUp.Text;
@@ -1383,7 +1273,7 @@ namespace Entrega3_FyBuZz
                 string plName = "";
                 foreach (PlayList playList in playListsDataBase)
                 {
-                   
+
                     string ex = playList.DisplayInfoPlayList();
                     if (result == ex)
                     {
@@ -1405,9 +1295,9 @@ namespace Entrega3_FyBuZz
                                 PlayPlaylistIsPrivate.Clear();
                             }
                         }
-                        else if(playList.Format == ".mp4" || playList.Format == ".mov" || playList.Format == ".avi")
+                        else if (playList.Format == ".mp4" || playList.Format == ".mov" || playList.Format == ".avi")
                         {
-                            foreach(Video video in playList.Videos)
+                            foreach (Video video in playList.Videos)
                             {
                                 PlayPlaylistShowMultimedia.Items.Add(video.SearchedInfoVideo());
                                 PlayPlaylistIsPrivate.Clear();
@@ -1419,7 +1309,7 @@ namespace Entrega3_FyBuZz
                 {
                     foreach (PlayList privatePl in privatePls)
                     {
-                        
+
                         string ex = privatePl.DisplayInfoPlayList();
                         if (privatePl.NamePlayList != "" && result.Contains(ex))
                         {
@@ -1475,7 +1365,7 @@ namespace Entrega3_FyBuZz
                         string result = SearchSearchResultsDomainUp.Text;
                         if (result == video.SearchedInfoVideo())
                         {
-                            if(video.Image != null)
+                            if (video.Image != null)
                             {
                                 PlayVideoVideoImageBox.Image = System.Drawing.Image.FromFile(video.Image);
                             }
@@ -1509,9 +1399,191 @@ namespace Entrega3_FyBuZz
             PlaySongRateNumDomainUp.Refresh();
             PlaySongRateMessageTextBox.Clear();
             SearchPlayingLabel.Clear();
+        }
+        private void AllFilterSearch_Click(object sender, EventArgs e)
+        {
+            //SearchSearchResultsDomainUp. = true;
+            SearchSearchResultsDomainUp.Text = "Searched Results:";
+
+            SearchDisplayMoreMultimediaInfo.Clear();
+            SearchDisplayMoreMultimediaInfo.Visible = false;
+
+            string search = SearchSearchTextBox.Text; //Bad Bunny and Trap and ... and ...
+
+            bool filtersOn = SearchFiltersOnCheckBox.Checked;
+            List<List<string>> allSongInfo = ReturnAllSongsInfo();
+            List<List<string>> allVideosInfo = ReturnAllVideosInfo();
+
+
+            int cont1 = 0;
+            if (SearchSearchResultsDomainUp.Items.Count != 0)
+            {
+                foreach (object searched in SearchSearchResultsDomainUp.Items)
+                {
+                    cont1++;
+                }
+                for (int i = 0; i < cont1; cont1--)
+                {
+                    SearchSearchResultsDomainUp.Items.Clear();
+                }
+            }
+
+            List<int> allChosenFilters = new List<int>();
+
+            foreach (object filter in AllFiltersCheckbox.CheckedIndices)
+            {
+                allChosenFilters.Add((int)filter);
+            }
+
+            foreach (List<string> songInfo in allSongInfo)
+            {
+                int contS = 0;
+                for (int n = 0; n < allChosenFilters.Count(); n++)
+                {
+                    if (allChosenFilters[n] <= 7)
+                    {
+                        int newIndex = allChosenFilters[n];
+                        if (songInfo[newIndex].Contains(search) == true)
+                        {
+                            contS++;
+                        }
+
+                    }
+
+                }
+                if (contS >= allChosenFilters.Count())
+                {
+                    SearchSearchResultsDomainUp.Visible = true;
+                    SearchSearchResultsDomainUp.Items.Add("Song: " + songInfo[0] + ": Artist: " + songInfo[1]);
+                }
+
+            }
+            foreach (List<string> videoInfo in allVideosInfo)
+            {
+                int contS = 0;
+                for (int n = 0; n < allChosenFilters.Count(); n++)
+                {
+                    if (allChosenFilters[n] >= 7)
+                    {
+                        int newIndex = allChosenFilters[n] - 7;
+                        if (videoInfo[newIndex].Contains(search) == true)
+                        {
+                            contS++;
+                        }
+                    }
+
+                }
+                if (contS >= allChosenFilters.Count())
+                {
+                    SearchSearchResultsDomainUp.Visible = true;
+                    SearchSearchResultsDomainUp.Items.Add("Video: " + videoInfo[0] + ": Actors: " + videoInfo[1] + ": Directors:" + videoInfo[3]);
+                }
+
+            }
 
         }
-        
+
+        private void OrFiltersSearch_Click(object sender, EventArgs e)
+        {
+            SearchSearchResultsDomainUp.Text = "Searched Results:";
+
+            SearchDisplayMoreMultimediaInfo.Clear();
+            SearchDisplayMoreMultimediaInfo.Visible = false;
+
+            string search = SearchSearchTextBox.Text; //Bad Bunny and Trap and ... and ...
+
+            bool filtersOn = SearchFiltersOnCheckBox.Checked;
+            List<List<string>> allSongInfo = ReturnAllSongsInfo();
+            List<List<string>> allVideosInfo = ReturnAllVideosInfo();
+
+            int cont1 = 0;
+            if (SearchSearchResultsDomainUp.Items.Count != 0)
+            {
+                foreach (object searched in SearchSearchResultsDomainUp.Items)
+                {
+                    cont1++;
+                }
+                for (int i = 0; i < cont1; cont1--)
+                {
+                    SearchSearchResultsDomainUp.Items.Clear();
+                }
+            }
+            //SearchAndOrCheckBox.Visible = true;
+            //SearchFiltersCheBox.Visible = true;
+            string logic = null;
+            List<int> allChosenFilters = new List<int>();
+            foreach (object andOr in SearchAndOrCheckBox.CheckedItems)
+            {
+                logic = andOr.ToString();
+            }
+            foreach (object filter in AllFiltersCheckbox.CheckedIndices)
+            {
+                allChosenFilters.Add((int)filter);
+            }
+            foreach (List<string> songInfo in allSongInfo)
+            {
+                int contS = 0;
+                for (int n = 0; n < allChosenFilters.Count(); n++)
+                {
+                    if (allChosenFilters[n] <= 7)
+                    {
+                        int newIndex = allChosenFilters[n];
+                        if (songInfo[newIndex].Contains(search) == true)
+                        {
+                            contS++;
+                        }
+
+                    }
+
+                }
+                if (contS > 0 )
+                {
+                    SearchSearchResultsDomainUp.Visible = true;
+                    SearchSearchResultsDomainUp.Items.Add("Song: " + songInfo[0] + ": Artist: " + songInfo[1]);
+                }
+            }
+
+            foreach (List<string> videoInfo in allVideosInfo)
+            {
+                int contS = 0;
+                for (int n = 0; n < allChosenFilters.Count(); n++)
+                {
+                    if (allChosenFilters[n] >= 7)
+                    {
+                        int newIndex = allChosenFilters[n] - 7;
+                        if (videoInfo[newIndex].Contains(search) == true)
+                        {
+                            contS++;
+                        }
+                    }
+
+                }
+                if (contS != 0)
+                {
+                    SearchSearchResultsDomainUp.Visible = true;
+                    SearchSearchResultsDomainUp.Items.Add("Video: " + videoInfo[0] + ": Actors: " + videoInfo[1] + ": Directors:" + videoInfo[3]);
+                }
+
+            }
+            if (SearchSearchResultsDomainUp.Items.Count == 0)
+            {
+                SearchInvalidCredentialsTextBox.AppendText("ERROR[!] Nothing found.");
+                Thread.Sleep(1000);
+                SearchInvalidCredentialsTextBox.Clear();
+            }
+            SearchFiltersOnCheckBox.CheckState = CheckState.Unchecked;
+            SearchAndOrCheckBox.ClearSelected();
+            AllFiltersCheckbox.ClearSelected();
+            //SearchAndOrCheckBox.Visible = false;
+            //AllFiltersCheckbox.Visible = false;
+
+            PlaySongChoosePlsDomainUp.Visible = false;
+            PlaySongChoosePlsDomainUp.ResetText();
+            PlaySongChoosePlsDomainUp.ReadOnly = true;
+            PlaySongMessageTextBox.Clear();
+
+        }
+
 
         private void SearchFiltersOnCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -1522,6 +1594,11 @@ namespace Entrega3_FyBuZz
         }
 
         private void SearchViewUserButton_Click(object sender, EventArgs e)
+        {
+            
+
+        }
+        private void SearchViewUserButton_Click_1(object sender, EventArgs e)
         {
             string[] searcheduser = SearchSearchResultsDomainUp.Text.Split(':');
             List<string> userGetter = OnLogInLogInButton_Clicked2(searcheduser[2]);
@@ -1556,7 +1633,22 @@ namespace Entrega3_FyBuZz
                 Thread.Sleep(2000);
                 SearchInvalidCredentialsTextBox.Clear();
             }
+            if (SearchSearchResultsDomainUp.Items.Count == 0)
+            {
+                SearchInvalidCredentialsTextBox.AppendText("ERROR[!] Nothing found.");
+                Thread.Sleep(1000);
+                SearchInvalidCredentialsTextBox.Clear();
+            }
+            SearchFiltersOnCheckBox.CheckState = CheckState.Unchecked;
+            SearchAndOrCheckBox.ClearSelected();
+            AllFiltersCheckbox.ClearSelected();
+            //SearchAndOrCheckBox.Visible = false;
+            //AllFiltersCheckbox.Visible = false;
 
+            PlaySongChoosePlsDomainUp.Visible = false;
+            PlaySongChoosePlsDomainUp.ResetText();
+            PlaySongChoosePlsDomainUp.ReadOnly = true;
+            PlaySongMessageTextBox.Clear();
         }
 
         //!SEARCH PLAY PANEL
@@ -2062,7 +2154,8 @@ namespace Entrega3_FyBuZz
                 }
                 PlayerPlayingLabel.AppendText("Song playing: " + songP.Name + songP.Format);
                 SearchPlayingLabel.AppendText("Song playing: " + songP.Name + songP.Format);
-                SearchSearchResultsDomainUp.UpButton();
+                //OJO ACA
+                SearchSearchResultsDomainUp.SelectedIndex = SearchSearchResultsDomainUp.SelectedIndex + 1;
             }
             else
             {
@@ -2134,7 +2227,8 @@ namespace Entrega3_FyBuZz
                 }
                 PlayerPlayingLabel.AppendText("Song playing: " + songS.Name + songS.Format);
                 SearchPlayingLabel.AppendText("Song playing: " + songS.Name + songS.Format);
-                SearchSearchResultsDomainUp.DownButton();
+                //OJO ACA
+                SearchSearchResultsDomainUp.SelectedIndex = SearchSearchResultsDomainUp.SelectedIndex - 1;
             }
             else
             {
@@ -2302,7 +2396,7 @@ namespace Entrega3_FyBuZz
             SearchPanel.BringToFront();
             SearchSearchResultsDomainUp.ResetText();
             int cont = 0;
-            if (SearchSearchResultsDomainUp.SelectedIndex != -1)
+            if (SearchSearchResultsDomainUp.Items.Count == 0)
             {
                 foreach (object searched in SearchSearchResultsDomainUp.Items)
                 {
@@ -6018,6 +6112,7 @@ namespace Entrega3_FyBuZz
         private void MultimediaButton_Click_1(object sender, EventArgs e)
         {
             MostrarSubMenus(MultimediaIOptionsPanel);
+            SearchPanel.BringToFront();
         }
 
         private void PlayListsButton_Click_1(object sender, EventArgs e)
@@ -6396,7 +6491,6 @@ namespace Entrega3_FyBuZz
                 AddsPanel2.Visible = true;
             }
         }
-
         private void SideMenuShowHideIconButton_Click(object sender, EventArgs e)
         {
             if (SideMenuPanel.Visible)
@@ -6457,6 +6551,24 @@ namespace Entrega3_FyBuZz
                     volumeIcon = true;
                     break;
             }
+        }
+
+
+
+        
+    
+
+        private void SearchFilterButton_Click(object sender, EventArgs e)
+        {
+            if(AllFiltersCheckbox.Visible == false)
+            {
+                AllFiltersCheckbox.Visible = true;
+            }
+            else
+            {
+                AllFiltersCheckbox.Visible = false;
+            }
+            
         }
     }
 }
