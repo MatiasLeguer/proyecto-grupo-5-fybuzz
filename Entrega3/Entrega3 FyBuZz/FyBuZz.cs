@@ -736,7 +736,7 @@ namespace Entrega3_FyBuZz
         private void DisplayStartSearchButton_Click(object sender, EventArgs e)
         {
             SearchPlayingLabel.Clear();
-            SearchPanel.BringToFront();
+            SearchPanelFeo.BringToFront();
         }
 
         private void DisplayStartSettingsButton_Click(object sender, EventArgs e)
@@ -879,6 +879,10 @@ namespace Entrega3_FyBuZz
             
         }
         private void SearchSearchButton_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+        private void SearchSearchButton_Click_2(object sender, EventArgs e)
         {
             SearchSearchResultsDomainUp.ReadOnly = true;
             SearchSearchResultsDomainUp.Text = "Searched Results:";
@@ -1766,7 +1770,7 @@ namespace Entrega3_FyBuZz
                 }
             }
             
-            SearchPanel.BringToFront();
+            SearchPanelFeo.BringToFront();
             SearUserName.Clear();
             SearcUserEmailTextBox.Clear();
             SearchUserFollowers.Clear();
@@ -2071,6 +2075,8 @@ namespace Entrega3_FyBuZz
 
         }
 
+
+
         private void PlaySongSkipSongButton_Click(object sender, EventArgs e)
         {
             TimerWav.Stop();
@@ -2294,7 +2300,7 @@ namespace Entrega3_FyBuZz
             SearchPlayingPanel.Visible = true;
             //SearchSearchResultsDomainUp.Items.Clear();
             SearchSearchResultsDomainUp.Text = "Searched Results:";
-            SearchPanel.BringToFront();
+            SearchPanelFeo.BringToFront();
             SearchSearchResultsDomainUp.ResetText();
             int cont = 0;
             if (SearchSearchResultsDomainUp.SelectedIndex != -1)
@@ -2713,7 +2719,7 @@ namespace Entrega3_FyBuZz
 
             SearchSearchTextBox.Clear();
             wmpVideo.Ctlcontrols.stop();
-            SearchPanel.BringToFront();
+            SearchPanelFeo.BringToFront();
         }
         //-------------------------------------------------------------------------------------------
 
@@ -3911,7 +3917,7 @@ namespace Entrega3_FyBuZz
             SearchSearchResultsDomainUp.Visible = false;
             SearchPlayingPanel.Visible = true;
             SearchSearchResultsDomainUp.Text = "Searched Results:";
-            SearchPanel.BringToFront();
+            SearchPanelFeo.BringToFront();
             SearchSearchResultsDomainUp.ResetText();
             //Borra el domain up de play playlist
             int cont1 = 0;
@@ -6013,6 +6019,7 @@ namespace Entrega3_FyBuZz
         private void MultimediaButton_Click_1(object sender, EventArgs e)
         {
             MostrarSubMenus(MultimediaIOptionsPanel);
+            SearchPanel.BringToFront();
         }
 
         private void PlayListsButton_Click_1(object sender, EventArgs e)
@@ -6392,6 +6399,10 @@ namespace Entrega3_FyBuZz
             }
         }
 
-        
+
+        private void SearchSearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
