@@ -158,6 +158,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.SearchGeneralTopPanel = new System.Windows.Forms.Panel();
+            this.SideMenuShowHideIconButton = new FontAwesome.Sharp.IconPictureBox();
             this.SharedMultNotificationButton = new FontAwesome.Sharp.IconButton();
             this.DisplayStartProfileInfo = new FontAwesome.Sharp.IconButton();
             this.DisplayStartMultimediaInfoDomainUp = new System.Windows.Forms.DomainUpDown();
@@ -305,10 +306,10 @@
             this.SearchAndOrCheckBox = new System.Windows.Forms.CheckedListBox();
             this.SearchFiltersOnCheckBox = new System.Windows.Forms.CheckBox();
             this.SearchInvalidCredentialsTextBox = new System.Windows.Forms.TextBox();
-            this.SearchSelectMultButton = new System.Windows.Forms.Button();
-            this.SearchGoBackButton = new System.Windows.Forms.Button();
-            this.SearchViewUserButton = new System.Windows.Forms.Button();
-            this.SearchSearchResultsDomainUp = new System.Windows.Forms.DomainUpDown();
+            this.SearchSelectMultButtonFeo = new System.Windows.Forms.Button();
+            this.SearchGoBackButtonFeo = new System.Windows.Forms.Button();
+            this.SearchViewUserButtonFeo = new System.Windows.Forms.Button();
+            this.SearchSearchResultsDomainUpFeo = new System.Windows.Forms.DomainUpDown();
             this.SearchSearchTextBoxFeo = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.SearchSearchLabel = new System.Windows.Forms.Label();
@@ -467,6 +468,7 @@
             this.label29 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.PlayerMultPanel = new System.Windows.Forms.Panel();
+            this.VolumeIconButton = new FontAwesome.Sharp.IconPictureBox();
             this.windowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.PlayerMultPanelMtrackVB = new XComponent.SliderBar.MACTrackBar();
             this.PlayerMultPanelMtrackPB = new XComponent.SliderBar.MACTrackBar();
@@ -537,14 +539,19 @@
             this.ProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.TimerWav = new System.Windows.Forms.Timer(this.components);
             this.SearchPanel = new System.Windows.Forms.Panel();
+            this.SearchViewUserButton = new FontAwesome.Sharp.IconButton();
+            this.SearchSelectMultButton = new FontAwesome.Sharp.IconButton();
+            this.SearchSearchResultsDomainUp = new System.Windows.Forms.ListBox();
+            this.SearchFilterPanel = new System.Windows.Forms.Panel();
+            this.OrFiltersSearch = new System.Windows.Forms.Button();
+            this.AllFilterSearch = new System.Windows.Forms.Button();
+            this.AllFiltersCheckbox = new System.Windows.Forms.CheckedListBox();
+            this.SearchFilterButton = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.SearchGoBackButton = new FontAwesome.Sharp.IconButton();
             this.SearchSearchButton = new FontAwesome.Sharp.IconButton();
             this.SearchSearchTextBox = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.SearchFilterPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.AllFiltersCheckbox = new System.Windows.Forms.CheckedListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.TimerSidePanel = new System.Windows.Forms.Timer(this.components);
             this.ProfilePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.AdminMenuPanel.SuspendLayout();
@@ -581,6 +588,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             this.SearchGeneralTopPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SideMenuShowHideIconButton)).BeginInit();
             this.CreateSongPanel.SuspendLayout();
             this.CreateVideoPanel.SuspendLayout();
             this.CreatePlaylistPanel.SuspendLayout();
@@ -625,6 +633,7 @@
             this.LogoFyBuzz.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.PlayerMultPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VolumeIconButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.windowsMediaPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlaySongRateNumDomainUp)).BeginInit();
             this.RegisterPanel.SuspendLayout();
@@ -633,8 +642,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayVideoVideoImageBox)).BeginInit();
             this.PlayVideoPanel.SuspendLayout();
             this.SearchPanel.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SearchFilterPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProfilePanel
@@ -2163,11 +2172,11 @@
             // 
             this.PersPlaylisLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PersPlaylisLabel.AutoSize = true;
-            this.PersPlaylisLabel.Font = new System.Drawing.Font("Century Gothic", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PersPlaylisLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PersPlaylisLabel.ForeColor = System.Drawing.Color.White;
             this.PersPlaylisLabel.Location = new System.Drawing.Point(100, 5);
             this.PersPlaylisLabel.Name = "PersPlaylisLabel";
-            this.PersPlaylisLabel.Size = new System.Drawing.Size(308, 32);
+            this.PersPlaylisLabel.Size = new System.Drawing.Size(313, 29);
             this.PersPlaylisLabel.TabIndex = 50;
             this.PersPlaylisLabel.Text = "Searched-Based Playlist";
             this.PersPlaylisLabel.Visible = false;
@@ -2246,11 +2255,11 @@
             // 
             this.FavPlaylistLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FavPlaylistLabel.AutoSize = true;
-            this.FavPlaylistLabel.Font = new System.Drawing.Font("Century Gothic", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FavPlaylistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FavPlaylistLabel.ForeColor = System.Drawing.Color.White;
             this.FavPlaylistLabel.Location = new System.Drawing.Point(134, 40);
             this.FavPlaylistLabel.Name = "FavPlaylistLabel";
-            this.FavPlaylistLabel.Size = new System.Drawing.Size(211, 32);
+            this.FavPlaylistLabel.Size = new System.Drawing.Size(224, 29);
             this.FavPlaylistLabel.TabIndex = 57;
             this.FavPlaylistLabel.Text = "Favorite Playlists";
             this.FavPlaylistLabel.Visible = false;
@@ -2327,11 +2336,11 @@
             // 
             this.GlobalPlaylistLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GlobalPlaylistLabel.AutoSize = true;
-            this.GlobalPlaylistLabel.Font = new System.Drawing.Font("Century Gothic", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GlobalPlaylistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GlobalPlaylistLabel.ForeColor = System.Drawing.Color.White;
             this.GlobalPlaylistLabel.Location = new System.Drawing.Point(143, 10);
             this.GlobalPlaylistLabel.Name = "GlobalPlaylistLabel";
-            this.GlobalPlaylistLabel.Size = new System.Drawing.Size(198, 32);
+            this.GlobalPlaylistLabel.Size = new System.Drawing.Size(204, 29);
             this.GlobalPlaylistLabel.TabIndex = 49;
             this.GlobalPlaylistLabel.Text = "Global Playlists";
             this.GlobalPlaylistLabel.Visible = false;
@@ -2437,6 +2446,7 @@
             // 
             this.SearchGeneralTopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.SearchGeneralTopPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SearchGeneralTopPanel.Controls.Add(this.SideMenuShowHideIconButton);
             this.SearchGeneralTopPanel.Controls.Add(this.SharedMultNotificationButton);
             this.SearchGeneralTopPanel.Controls.Add(this.DisplayStartProfileInfo);
             this.SearchGeneralTopPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -2445,6 +2455,23 @@
             this.SearchGeneralTopPanel.Size = new System.Drawing.Size(756, 69);
             this.SearchGeneralTopPanel.TabIndex = 48;
             this.SearchGeneralTopPanel.Visible = false;
+            // 
+            // SideMenuShowHideIconButton
+            // 
+            this.SideMenuShowHideIconButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SideMenuShowHideIconButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SideMenuShowHideIconButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.SideMenuShowHideIconButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SideMenuShowHideIconButton.IconChar = FontAwesome.Sharp.IconChar.Bars;
+            this.SideMenuShowHideIconButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SideMenuShowHideIconButton.IconSize = 42;
+            this.SideMenuShowHideIconButton.Location = new System.Drawing.Point(15, 13);
+            this.SideMenuShowHideIconButton.Name = "SideMenuShowHideIconButton";
+            this.SideMenuShowHideIconButton.Size = new System.Drawing.Size(42, 42);
+            this.SideMenuShowHideIconButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.SideMenuShowHideIconButton.TabIndex = 51;
+            this.SideMenuShowHideIconButton.TabStop = false;
+            this.SideMenuShowHideIconButton.Click += new System.EventHandler(this.SideMenuShowHideIconButton_Click);
             // 
             // SharedMultNotificationButton
             // 
@@ -3853,7 +3880,7 @@
             this.AccountProfileSettingsSplitContainer.Panel2.Controls.Add(this.ProfileSettingsLabel);
             this.AccountProfileSettingsSplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.AccountProfileSettingsSplitContainer.Size = new System.Drawing.Size(756, 611);
-            this.AccountProfileSettingsSplitContainer.SplitterDistance = 340;
+            this.AccountProfileSettingsSplitContainer.SplitterDistance = 338;
             this.AccountProfileSettingsSplitContainer.TabIndex = 2;
             // 
             // UserSettinChangePasswordButton
@@ -3867,7 +3894,7 @@
             this.UserSettinChangePasswordButton.IconChar = FontAwesome.Sharp.IconChar.Eraser;
             this.UserSettinChangePasswordButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.UserSettinChangePasswordButton.IconSize = 30;
-            this.UserSettinChangePasswordButton.Location = new System.Drawing.Point(348, 142);
+            this.UserSettinChangePasswordButton.Location = new System.Drawing.Point(350, 144);
             this.UserSettinChangePasswordButton.Name = "UserSettinChangePasswordButton";
             this.UserSettinChangePasswordButton.Rotation = 0D;
             this.UserSettinChangePasswordButton.Size = new System.Drawing.Size(155, 32);
@@ -3888,7 +3915,7 @@
             this.AccountSettingAccounTypeChangeButton.IconChar = FontAwesome.Sharp.IconChar.Eraser;
             this.AccountSettingAccounTypeChangeButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.AccountSettingAccounTypeChangeButton.IconSize = 30;
-            this.AccountSettingAccounTypeChangeButton.Location = new System.Drawing.Point(348, 217);
+            this.AccountSettingAccounTypeChangeButton.Location = new System.Drawing.Point(350, 219);
             this.AccountSettingAccounTypeChangeButton.Name = "AccountSettingAccounTypeChangeButton";
             this.AccountSettingAccounTypeChangeButton.Rotation = 0D;
             this.AccountSettingAccounTypeChangeButton.Size = new System.Drawing.Size(155, 34);
@@ -3909,7 +3936,7 @@
             this.UserSettinChangeUsernameButton.IconChar = FontAwesome.Sharp.IconChar.Eraser;
             this.UserSettinChangeUsernameButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.UserSettinChangeUsernameButton.IconSize = 30;
-            this.UserSettinChangeUsernameButton.Location = new System.Drawing.Point(349, 101);
+            this.UserSettinChangeUsernameButton.Location = new System.Drawing.Point(351, 103);
             this.UserSettinChangeUsernameButton.Name = "UserSettinChangeUsernameButton";
             this.UserSettinChangeUsernameButton.Rotation = 0D;
             this.UserSettinChangeUsernameButton.Size = new System.Drawing.Size(157, 32);
@@ -3944,7 +3971,7 @@
             this.UserProfileGoBackFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.UserProfileGoBackFeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserProfileGoBackFeo.ForeColor = System.Drawing.Color.Black;
-            this.UserProfileGoBackFeo.Location = new System.Drawing.Point(-18, 31);
+            this.UserProfileGoBackFeo.Location = new System.Drawing.Point(-16, 33);
             this.UserProfileGoBackFeo.Name = "UserProfileGoBackFeo";
             this.UserProfileGoBackFeo.Size = new System.Drawing.Size(115, 45);
             this.UserProfileGoBackFeo.TabIndex = 56;
@@ -3958,7 +3985,7 @@
             this.UserSettinChangePasswordButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.UserSettinChangePasswordButtonFeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserSettinChangePasswordButtonFeo.ForeColor = System.Drawing.Color.Black;
-            this.UserSettinChangePasswordButtonFeo.Location = new System.Drawing.Point(469, 42);
+            this.UserSettinChangePasswordButtonFeo.Location = new System.Drawing.Point(471, 44);
             this.UserSettinChangePasswordButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserSettinChangePasswordButtonFeo.Name = "UserSettinChangePasswordButtonFeo";
             this.UserSettinChangePasswordButtonFeo.Size = new System.Drawing.Size(113, 27);
@@ -3973,7 +4000,7 @@
             this.AccountSettingAccounTypeChangeButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingAccounTypeChangeButtonFeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingAccounTypeChangeButtonFeo.ForeColor = System.Drawing.Color.Black;
-            this.AccountSettingAccounTypeChangeButtonFeo.Location = new System.Drawing.Point(483, 31);
+            this.AccountSettingAccounTypeChangeButtonFeo.Location = new System.Drawing.Point(485, 33);
             this.AccountSettingAccounTypeChangeButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AccountSettingAccounTypeChangeButtonFeo.Name = "AccountSettingAccounTypeChangeButtonFeo";
             this.AccountSettingAccounTypeChangeButtonFeo.Size = new System.Drawing.Size(113, 28);
@@ -3988,7 +4015,7 @@
             this.UserSettinChangeUsernameButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.UserSettinChangeUsernameButtonFeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserSettinChangeUsernameButtonFeo.ForeColor = System.Drawing.Color.Black;
-            this.UserSettinChangeUsernameButtonFeo.Location = new System.Drawing.Point(-97, 90);
+            this.UserSettinChangeUsernameButtonFeo.Location = new System.Drawing.Point(-95, 92);
             this.UserSettinChangeUsernameButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserSettinChangeUsernameButtonFeo.Name = "UserSettinChangeUsernameButtonFeo";
             this.UserSettinChangeUsernameButtonFeo.Size = new System.Drawing.Size(114, 27);
@@ -4005,7 +4032,7 @@
             this.AccountProfileSettingsLabelUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountProfileSettingsLabelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountProfileSettingsLabelUsername.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountProfileSettingsLabelUsername.Location = new System.Drawing.Point(148, 126);
+            this.AccountProfileSettingsLabelUsername.Location = new System.Drawing.Point(150, 128);
             this.AccountProfileSettingsLabelUsername.Name = "AccountProfileSettingsLabelUsername";
             this.AccountProfileSettingsLabelUsername.Size = new System.Drawing.Size(0, 20);
             this.AccountProfileSettingsLabelUsername.TabIndex = 52;
@@ -4016,7 +4043,7 @@
             this.AccountSettingsFollowerListDomainUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsFollowerListDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsFollowerListDomainUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsFollowerListDomainUp.Location = new System.Drawing.Point(217, 266);
+            this.AccountSettingsFollowerListDomainUp.Location = new System.Drawing.Point(219, 268);
             this.AccountSettingsFollowerListDomainUp.Name = "AccountSettingsFollowerListDomainUp";
             this.AccountSettingsFollowerListDomainUp.Size = new System.Drawing.Size(229, 27);
             this.AccountSettingsFollowerListDomainUp.TabIndex = 51;
@@ -4028,7 +4055,7 @@
             this.AccountSettingsFollowingListDomaiUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsFollowingListDomaiUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsFollowingListDomaiUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsFollowingListDomaiUp.Location = new System.Drawing.Point(217, 305);
+            this.AccountSettingsFollowingListDomaiUp.Location = new System.Drawing.Point(219, 307);
             this.AccountSettingsFollowingListDomaiUp.Name = "AccountSettingsFollowingListDomaiUp";
             this.AccountSettingsFollowingListDomaiUp.Size = new System.Drawing.Size(229, 27);
             this.AccountSettingsFollowingListDomaiUp.TabIndex = 50;
@@ -4040,7 +4067,7 @@
             this.AccountSettingsFollowingTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsFollowingTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsFollowingTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsFollowingTextBox.Location = new System.Drawing.Point(147, 306);
+            this.AccountSettingsFollowingTextBox.Location = new System.Drawing.Point(149, 308);
             this.AccountSettingsFollowingTextBox.Name = "AccountSettingsFollowingTextBox";
             this.AccountSettingsFollowingTextBox.Size = new System.Drawing.Size(36, 27);
             this.AccountSettingsFollowingTextBox.TabIndex = 12;
@@ -4051,7 +4078,7 @@
             this.AccountSettingsFollowersTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsFollowersTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsFollowersTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsFollowersTextBox.Location = new System.Drawing.Point(147, 269);
+            this.AccountSettingsFollowersTextBox.Location = new System.Drawing.Point(149, 271);
             this.AccountSettingsFollowersTextBox.Name = "AccountSettingsFollowersTextBox";
             this.AccountSettingsFollowersTextBox.Size = new System.Drawing.Size(36, 27);
             this.AccountSettingsFollowersTextBox.TabIndex = 11;
@@ -4062,7 +4089,7 @@
             this.AccountSettingsAccountTypeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsAccountTypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsAccountTypeTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsAccountTypeTextBox.Location = new System.Drawing.Point(147, 223);
+            this.AccountSettingsAccountTypeTextBox.Location = new System.Drawing.Point(149, 225);
             this.AccountSettingsAccountTypeTextBox.Name = "AccountSettingsAccountTypeTextBox";
             this.AccountSettingsAccountTypeTextBox.ReadOnly = true;
             this.AccountSettingsAccountTypeTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4074,7 +4101,7 @@
             this.AccountSettingsEmailTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsEmailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsEmailTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsEmailTextBox.Location = new System.Drawing.Point(147, 184);
+            this.AccountSettingsEmailTextBox.Location = new System.Drawing.Point(149, 186);
             this.AccountSettingsEmailTextBox.Name = "AccountSettingsEmailTextBox";
             this.AccountSettingsEmailTextBox.ReadOnly = true;
             this.AccountSettingsEmailTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4086,7 +4113,7 @@
             this.AccountSettingsPasswordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsPasswordTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsPasswordTextBox.Location = new System.Drawing.Point(147, 147);
+            this.AccountSettingsPasswordTextBox.Location = new System.Drawing.Point(149, 149);
             this.AccountSettingsPasswordTextBox.Name = "AccountSettingsPasswordTextBox";
             this.AccountSettingsPasswordTextBox.ReadOnly = true;
             this.AccountSettingsPasswordTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4098,7 +4125,7 @@
             this.AccountSettingsUsernameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsUsernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsUsernameTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsUsernameTextBox.Location = new System.Drawing.Point(147, 106);
+            this.AccountSettingsUsernameTextBox.Location = new System.Drawing.Point(149, 108);
             this.AccountSettingsUsernameTextBox.Name = "AccountSettingsUsernameTextBox";
             this.AccountSettingsUsernameTextBox.ReadOnly = true;
             this.AccountSettingsUsernameTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4109,7 +4136,7 @@
             this.AccountSettingsFollowersLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsFollowersLabel.AutoSize = true;
             this.AccountSettingsFollowersLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsFollowersLabel.Location = new System.Drawing.Point(50, 271);
+            this.AccountSettingsFollowersLabel.Location = new System.Drawing.Point(52, 273);
             this.AccountSettingsFollowersLabel.Name = "AccountSettingsFollowersLabel";
             this.AccountSettingsFollowersLabel.Size = new System.Drawing.Size(81, 20);
             this.AccountSettingsFollowersLabel.TabIndex = 6;
@@ -4120,7 +4147,7 @@
             this.AccountSettingsPasswordLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsPasswordLabel.AutoSize = true;
             this.AccountSettingsPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsPasswordLabel.Location = new System.Drawing.Point(52, 151);
+            this.AccountSettingsPasswordLabel.Location = new System.Drawing.Point(54, 153);
             this.AccountSettingsPasswordLabel.Name = "AccountSettingsPasswordLabel";
             this.AccountSettingsPasswordLabel.Size = new System.Drawing.Size(83, 20);
             this.AccountSettingsPasswordLabel.TabIndex = 5;
@@ -4131,7 +4158,7 @@
             this.AccountSettingsAccountTypeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsAccountTypeLabel.AutoSize = true;
             this.AccountSettingsAccountTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsAccountTypeLabel.Location = new System.Drawing.Point(24, 229);
+            this.AccountSettingsAccountTypeLabel.Location = new System.Drawing.Point(26, 231);
             this.AccountSettingsAccountTypeLabel.Name = "AccountSettingsAccountTypeLabel";
             this.AccountSettingsAccountTypeLabel.Size = new System.Drawing.Size(111, 20);
             this.AccountSettingsAccountTypeLabel.TabIndex = 4;
@@ -4142,7 +4169,7 @@
             this.AccountSettingsFollowingLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsFollowingLabel.AutoSize = true;
             this.AccountSettingsFollowingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsFollowingLabel.Location = new System.Drawing.Point(50, 309);
+            this.AccountSettingsFollowingLabel.Location = new System.Drawing.Point(52, 311);
             this.AccountSettingsFollowingLabel.Name = "AccountSettingsFollowingLabel";
             this.AccountSettingsFollowingLabel.Size = new System.Drawing.Size(79, 20);
             this.AccountSettingsFollowingLabel.TabIndex = 3;
@@ -4153,7 +4180,7 @@
             this.AccountSettingsEmalLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsEmalLabel.AutoSize = true;
             this.AccountSettingsEmalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsEmalLabel.Location = new System.Drawing.Point(75, 190);
+            this.AccountSettingsEmalLabel.Location = new System.Drawing.Point(77, 192);
             this.AccountSettingsEmalLabel.Name = "AccountSettingsEmalLabel";
             this.AccountSettingsEmalLabel.Size = new System.Drawing.Size(51, 20);
             this.AccountSettingsEmalLabel.TabIndex = 2;
@@ -4164,7 +4191,7 @@
             this.AccountSettingsUsernameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsUsernameLabel.AutoSize = true;
             this.AccountSettingsUsernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsUsernameLabel.Location = new System.Drawing.Point(52, 110);
+            this.AccountSettingsUsernameLabel.Location = new System.Drawing.Point(54, 112);
             this.AccountSettingsUsernameLabel.Name = "AccountSettingsUsernameLabel";
             this.AccountSettingsUsernameLabel.Size = new System.Drawing.Size(86, 20);
             this.AccountSettingsUsernameLabel.TabIndex = 1;
@@ -4175,7 +4202,7 @@
             this.AccountSettingsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsLabel.AutoSize = true;
             this.AccountSettingsLabel.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsLabel.Location = new System.Drawing.Point(98, 54);
+            this.AccountSettingsLabel.Location = new System.Drawing.Point(100, 56);
             this.AccountSettingsLabel.Name = "AccountSettingsLabel";
             this.AccountSettingsLabel.Size = new System.Drawing.Size(293, 40);
             this.AccountSettingsLabel.TabIndex = 0;
@@ -4186,7 +4213,7 @@
             this.ProfileSettingsChangeProfilePicButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ProfileSettingsChangeProfilePicButtonFeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsChangeProfilePicButtonFeo.ForeColor = System.Drawing.Color.Black;
-            this.ProfileSettingsChangeProfilePicButtonFeo.Location = new System.Drawing.Point(389, 16);
+            this.ProfileSettingsChangeProfilePicButtonFeo.Location = new System.Drawing.Point(391, 18);
             this.ProfileSettingsChangeProfilePicButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ProfileSettingsChangeProfilePicButtonFeo.Name = "ProfileSettingsChangeProfilePicButtonFeo";
             this.ProfileSettingsChangeProfilePicButtonFeo.Size = new System.Drawing.Size(125, 30);
@@ -4200,7 +4227,7 @@
             this.AccountProfileSettingsGoBackButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountProfileSettingsGoBackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountProfileSettingsGoBackButton.ForeColor = System.Drawing.Color.Black;
-            this.AccountProfileSettingsGoBackButton.Location = new System.Drawing.Point(393, 10);
+            this.AccountProfileSettingsGoBackButton.Location = new System.Drawing.Point(395, 12);
             this.AccountProfileSettingsGoBackButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AccountProfileSettingsGoBackButton.Name = "AccountProfileSettingsGoBackButton";
             this.AccountProfileSettingsGoBackButton.Size = new System.Drawing.Size(117, 30);
@@ -4214,7 +4241,7 @@
             // 
             this.ProfileSettingsProfilePicImageBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ProfileSettingsProfilePicImageBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ProfileSettingsProfilePicImageBox.Location = new System.Drawing.Point(384, 84);
+            this.ProfileSettingsProfilePicImageBox.Location = new System.Drawing.Point(386, 86);
             this.ProfileSettingsProfilePicImageBox.Name = "ProfileSettingsProfilePicImageBox";
             this.ProfileSettingsProfilePicImageBox.Size = new System.Drawing.Size(144, 101);
             this.ProfileSettingsProfilePicImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -4228,7 +4255,7 @@
             this.ProfileSettingsBirthdayTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.ProfileSettingsBirthdayTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsBirthdayTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ProfileSettingsBirthdayTextBox.Location = new System.Drawing.Point(142, 193);
+            this.ProfileSettingsBirthdayTextBox.Location = new System.Drawing.Point(144, 195);
             this.ProfileSettingsBirthdayTextBox.Name = "ProfileSettingsBirthdayTextBox";
             this.ProfileSettingsBirthdayTextBox.ReadOnly = true;
             this.ProfileSettingsBirthdayTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4241,7 +4268,7 @@
             this.ProfileSettingsGenderTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.ProfileSettingsGenderTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsGenderTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ProfileSettingsGenderTextBox.Location = new System.Drawing.Point(142, 151);
+            this.ProfileSettingsGenderTextBox.Location = new System.Drawing.Point(144, 153);
             this.ProfileSettingsGenderTextBox.Name = "ProfileSettingsGenderTextBox";
             this.ProfileSettingsGenderTextBox.ReadOnly = true;
             this.ProfileSettingsGenderTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4254,7 +4281,7 @@
             this.ProfileSettingsProfileTypeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.ProfileSettingsProfileTypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsProfileTypeTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ProfileSettingsProfileTypeTextBox.Location = new System.Drawing.Point(142, 105);
+            this.ProfileSettingsProfileTypeTextBox.Location = new System.Drawing.Point(144, 107);
             this.ProfileSettingsProfileTypeTextBox.Name = "ProfileSettingsProfileTypeTextBox";
             this.ProfileSettingsProfileTypeTextBox.ReadOnly = true;
             this.ProfileSettingsProfileTypeTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4267,7 +4294,7 @@
             this.ProfileSettingsNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.ProfileSettingsNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsNameTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ProfileSettingsNameTextBox.Location = new System.Drawing.Point(142, 61);
+            this.ProfileSettingsNameTextBox.Location = new System.Drawing.Point(144, 63);
             this.ProfileSettingsNameTextBox.Name = "ProfileSettingsNameTextBox";
             this.ProfileSettingsNameTextBox.ReadOnly = true;
             this.ProfileSettingsNameTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4279,7 +4306,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(87, 199);
+            this.label1.Location = new System.Drawing.Point(89, 201);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 20);
             this.label1.TabIndex = 18;
@@ -4291,7 +4318,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(383, 56);
+            this.label2.Location = new System.Drawing.Point(385, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 20);
             this.label2.TabIndex = 17;
@@ -4303,7 +4330,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(69, 158);
+            this.label3.Location = new System.Drawing.Point(71, 160);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 20);
             this.label3.TabIndex = 16;
@@ -4315,7 +4342,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(41, 110);
+            this.label5.Location = new System.Drawing.Point(43, 112);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(98, 20);
             this.label5.TabIndex = 14;
@@ -4327,7 +4354,7 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(80, 63);
+            this.label6.Location = new System.Drawing.Point(82, 65);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 20);
             this.label6.TabIndex = 13;
@@ -4339,7 +4366,7 @@
             this.ProfileSettingsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ProfileSettingsLabel.AutoSize = true;
             this.ProfileSettingsLabel.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProfileSettingsLabel.Location = new System.Drawing.Point(114, 2);
+            this.ProfileSettingsLabel.Location = new System.Drawing.Point(116, 4);
             this.ProfileSettingsLabel.Name = "ProfileSettingsLabel";
             this.ProfileSettingsLabel.Size = new System.Drawing.Size(252, 40);
             this.ProfileSettingsLabel.TabIndex = 1;
@@ -4358,10 +4385,10 @@
             this.SearchPanelFeo.Controls.Add(this.SearchAndOrCheckBox);
             this.SearchPanelFeo.Controls.Add(this.SearchFiltersOnCheckBox);
             this.SearchPanelFeo.Controls.Add(this.SearchInvalidCredentialsTextBox);
-            this.SearchPanelFeo.Controls.Add(this.SearchSelectMultButton);
-            this.SearchPanelFeo.Controls.Add(this.SearchGoBackButton);
-            this.SearchPanelFeo.Controls.Add(this.SearchViewUserButton);
-            this.SearchPanelFeo.Controls.Add(this.SearchSearchResultsDomainUp);
+            this.SearchPanelFeo.Controls.Add(this.SearchSelectMultButtonFeo);
+            this.SearchPanelFeo.Controls.Add(this.SearchGoBackButtonFeo);
+            this.SearchPanelFeo.Controls.Add(this.SearchViewUserButtonFeo);
+            this.SearchPanelFeo.Controls.Add(this.SearchSearchResultsDomainUpFeo);
             this.SearchPanelFeo.Controls.Add(this.SearchSearchTextBoxFeo);
             this.SearchPanelFeo.Controls.Add(this.pictureBox3);
             this.SearchPanelFeo.Controls.Add(this.SearchSearchLabel);
@@ -4501,51 +4528,51 @@
             this.SearchInvalidCredentialsTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.SearchInvalidCredentialsTextBox.TextChanged += new System.EventHandler(this.SearchInvalidCredentialsTextBox_TextChanged);
             // 
-            // SearchSelectMultButton
+            // SearchSelectMultButtonFeo
             // 
-            this.SearchSelectMultButton.Location = new System.Drawing.Point(309, 524);
-            this.SearchSelectMultButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.SearchSelectMultButton.Name = "SearchSelectMultButton";
-            this.SearchSelectMultButton.Size = new System.Drawing.Size(160, 45);
-            this.SearchSelectMultButton.TabIndex = 30;
-            this.SearchSelectMultButton.Text = "Select Multimedia";
-            this.SearchSelectMultButton.UseVisualStyleBackColor = true;
-            this.SearchSelectMultButton.Click += new System.EventHandler(this.SearchSelectMultButton_Click);
+            this.SearchSelectMultButtonFeo.Location = new System.Drawing.Point(309, 524);
+            this.SearchSelectMultButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SearchSelectMultButtonFeo.Name = "SearchSelectMultButtonFeo";
+            this.SearchSelectMultButtonFeo.Size = new System.Drawing.Size(160, 45);
+            this.SearchSelectMultButtonFeo.TabIndex = 30;
+            this.SearchSelectMultButtonFeo.Text = "Select Multimedia";
+            this.SearchSelectMultButtonFeo.UseVisualStyleBackColor = true;
+            this.SearchSelectMultButtonFeo.Click += new System.EventHandler(this.SearchSelectMultButton_Click);
             // 
-            // SearchGoBackButton
+            // SearchGoBackButtonFeo
             // 
-            this.SearchGoBackButton.Location = new System.Drawing.Point(32, 25);
-            this.SearchGoBackButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.SearchGoBackButton.Name = "SearchGoBackButton";
-            this.SearchGoBackButton.Size = new System.Drawing.Size(88, 34);
-            this.SearchGoBackButton.TabIndex = 28;
-            this.SearchGoBackButton.Text = "Go Back";
-            this.SearchGoBackButton.UseVisualStyleBackColor = true;
-            this.SearchGoBackButton.Click += new System.EventHandler(this.SearchGoBackButton_Click);
+            this.SearchGoBackButtonFeo.Location = new System.Drawing.Point(32, 25);
+            this.SearchGoBackButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SearchGoBackButtonFeo.Name = "SearchGoBackButtonFeo";
+            this.SearchGoBackButtonFeo.Size = new System.Drawing.Size(88, 34);
+            this.SearchGoBackButtonFeo.TabIndex = 28;
+            this.SearchGoBackButtonFeo.Text = "Go Back";
+            this.SearchGoBackButtonFeo.UseVisualStyleBackColor = true;
+            this.SearchGoBackButtonFeo.Click += new System.EventHandler(this.SearchGoBackButton_Click);
             // 
-            // SearchViewUserButton
+            // SearchViewUserButtonFeo
             // 
-            this.SearchViewUserButton.Location = new System.Drawing.Point(557, 524);
-            this.SearchViewUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.SearchViewUserButton.Name = "SearchViewUserButton";
-            this.SearchViewUserButton.Size = new System.Drawing.Size(159, 45);
-            this.SearchViewUserButton.TabIndex = 27;
-            this.SearchViewUserButton.Text = "View User";
-            this.SearchViewUserButton.UseVisualStyleBackColor = true;
-            this.SearchViewUserButton.Click += new System.EventHandler(this.SearchViewUserButton_Click);
+            this.SearchViewUserButtonFeo.Location = new System.Drawing.Point(557, 524);
+            this.SearchViewUserButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SearchViewUserButtonFeo.Name = "SearchViewUserButtonFeo";
+            this.SearchViewUserButtonFeo.Size = new System.Drawing.Size(159, 45);
+            this.SearchViewUserButtonFeo.TabIndex = 27;
+            this.SearchViewUserButtonFeo.Text = "View User";
+            this.SearchViewUserButtonFeo.UseVisualStyleBackColor = true;
+            this.SearchViewUserButtonFeo.Click += new System.EventHandler(this.SearchViewUserButton_Click);
             // 
-            // SearchSearchResultsDomainUp
+            // SearchSearchResultsDomainUpFeo
             // 
-            this.SearchSearchResultsDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchSearchResultsDomainUp.Location = new System.Drawing.Point(258, 469);
-            this.SearchSearchResultsDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.SearchSearchResultsDomainUp.Name = "SearchSearchResultsDomainUp";
-            this.SearchSearchResultsDomainUp.ReadOnly = true;
-            this.SearchSearchResultsDomainUp.Size = new System.Drawing.Size(540, 36);
-            this.SearchSearchResultsDomainUp.TabIndex = 10;
-            this.SearchSearchResultsDomainUp.Text = "Search Results:";
-            this.SearchSearchResultsDomainUp.Visible = false;
-            this.SearchSearchResultsDomainUp.Wrap = true;
+            this.SearchSearchResultsDomainUpFeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchSearchResultsDomainUpFeo.Location = new System.Drawing.Point(258, 469);
+            this.SearchSearchResultsDomainUpFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SearchSearchResultsDomainUpFeo.Name = "SearchSearchResultsDomainUpFeo";
+            this.SearchSearchResultsDomainUpFeo.ReadOnly = true;
+            this.SearchSearchResultsDomainUpFeo.Size = new System.Drawing.Size(540, 36);
+            this.SearchSearchResultsDomainUpFeo.TabIndex = 10;
+            this.SearchSearchResultsDomainUpFeo.Text = "Search Results:";
+            this.SearchSearchResultsDomainUpFeo.Visible = false;
+            this.SearchSearchResultsDomainUpFeo.Wrap = true;
             // 
             // SearchSearchTextBoxFeo
             // 
@@ -6114,7 +6141,7 @@
             this.SideButtonAboutUs.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.SideButtonAboutUs.FlatAppearance.BorderSize = 3;
             this.SideButtonAboutUs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SideButtonAboutUs.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SideButtonAboutUs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SideButtonAboutUs.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.SideButtonAboutUs.Location = new System.Drawing.Point(0, 753);
             this.SideButtonAboutUs.Name = "SideButtonAboutUs";
@@ -6532,6 +6559,7 @@
             // 
             this.PlayerMultPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(44)))));
             this.PlayerMultPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PlayerMultPanel.Controls.Add(this.VolumeIconButton);
             this.PlayerMultPanel.Controls.Add(this.windowsMediaPlayer);
             this.PlayerMultPanel.Controls.Add(this.PlayerMultPanelMtrackVB);
             this.PlayerMultPanel.Controls.Add(this.PlayerMultPanelMtrackPB);
@@ -6550,6 +6578,21 @@
             this.PlayerMultPanel.Size = new System.Drawing.Size(756, 110);
             this.PlayerMultPanel.TabIndex = 18;
             this.PlayerMultPanel.Visible = false;
+            // 
+            // VolumeIconButton
+            // 
+            this.VolumeIconButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(44)))));
+            this.VolumeIconButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.VolumeIconButton.IconChar = FontAwesome.Sharp.IconChar.VolumeUp;
+            this.VolumeIconButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.VolumeIconButton.IconSize = 30;
+            this.VolumeIconButton.Location = new System.Drawing.Point(289, 54);
+            this.VolumeIconButton.Name = "VolumeIconButton";
+            this.VolumeIconButton.Size = new System.Drawing.Size(30, 30);
+            this.VolumeIconButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.VolumeIconButton.TabIndex = 48;
+            this.VolumeIconButton.TabStop = false;
+            this.VolumeIconButton.Click += new System.EventHandler(this.VolumeIconButton_Click);
             // 
             // windowsMediaPlayer
             // 
@@ -6570,7 +6613,7 @@
             this.PlayerMultPanelMtrackVB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(125)))), ((int)(((byte)(123)))));
             this.PlayerMultPanelMtrackVB.IndentHeight = 6;
             this.PlayerMultPanelMtrackVB.Location = new System.Drawing.Point(316, 51);
-            this.PlayerMultPanelMtrackVB.Maximum = 10;
+            this.PlayerMultPanelMtrackVB.Maximum = 100;
             this.PlayerMultPanelMtrackVB.Minimum = 0;
             this.PlayerMultPanelMtrackVB.Name = "PlayerMultPanelMtrackVB";
             this.PlayerMultPanelMtrackVB.Size = new System.Drawing.Size(121, 28);
@@ -7632,6 +7675,9 @@
             // SearchPanel
             // 
             this.SearchPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchPanel.Controls.Add(this.SearchViewUserButton);
+            this.SearchPanel.Controls.Add(this.SearchSelectMultButton);
+            this.SearchPanel.Controls.Add(this.SearchSearchResultsDomainUp);
             this.SearchPanel.Controls.Add(this.SearchFilterPanel);
             this.SearchPanel.Controls.Add(this.panel2);
             this.SearchPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -7640,79 +7686,111 @@
             this.SearchPanel.Size = new System.Drawing.Size(756, 611);
             this.SearchPanel.TabIndex = 20;
             // 
-            // SearchSearchButton
+            // SearchViewUserButton
             // 
-            this.SearchSearchButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SearchSearchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
-            this.SearchSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchSearchButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.SearchSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchSearchButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.SearchSearchButton.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.SearchSearchButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
-            this.SearchSearchButton.IconSize = 30;
-            this.SearchSearchButton.Location = new System.Drawing.Point(440, 35);
-            this.SearchSearchButton.Name = "SearchSearchButton";
-            this.SearchSearchButton.Rotation = 0D;
-            this.SearchSearchButton.Size = new System.Drawing.Size(173, 42);
-            this.SearchSearchButton.TabIndex = 50;
-            this.SearchSearchButton.Text = "SEARCH";
-            this.SearchSearchButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SearchSearchButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.SearchSearchButton.UseVisualStyleBackColor = false;
-            this.SearchSearchButton.Click += new System.EventHandler(this.SearchSearchButton_Click_2);
+            this.SearchViewUserButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SearchViewUserButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchViewUserButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SearchViewUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchViewUserButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.SearchViewUserButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchViewUserButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SearchViewUserButton.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.SearchViewUserButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SearchViewUserButton.IconSize = 30;
+            this.SearchViewUserButton.Location = new System.Drawing.Point(496, 519);
+            this.SearchViewUserButton.Name = "SearchViewUserButton";
+            this.SearchViewUserButton.Rotation = 0D;
+            this.SearchViewUserButton.Size = new System.Drawing.Size(137, 59);
+            this.SearchViewUserButton.TabIndex = 55;
+            this.SearchViewUserButton.Text = "View User";
+            this.SearchViewUserButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SearchViewUserButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.SearchViewUserButton.UseVisualStyleBackColor = false;
+            this.SearchViewUserButton.Click += new System.EventHandler(this.SearchViewUserButton_Click_1);
             // 
-            // SearchSearchTextBox
+            // SearchSelectMultButton
             // 
-            this.SearchSearchTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SearchSearchTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
-            this.SearchSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchSearchTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
-            this.SearchSearchTextBox.Location = new System.Drawing.Point(138, 42);
-            this.SearchSearchTextBox.Name = "SearchSearchTextBox";
-            this.SearchSearchTextBox.Size = new System.Drawing.Size(287, 29);
-            this.SearchSearchTextBox.TabIndex = 49;
-            this.SearchSearchTextBox.Text = "\r\nSearch Multimedia on FyBuzz";
-            this.SearchSearchTextBox.TextChanged += new System.EventHandler(this.SearchSearchTextBox_TextChanged);
+            this.SearchSelectMultButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SearchSelectMultButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearchSelectMultButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SearchSelectMultButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchSelectMultButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.SearchSelectMultButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchSelectMultButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SearchSelectMultButton.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.SearchSelectMultButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SearchSelectMultButton.IconSize = 30;
+            this.SearchSelectMultButton.Location = new System.Drawing.Point(259, 519);
+            this.SearchSelectMultButton.Name = "SearchSelectMultButton";
+            this.SearchSelectMultButton.Rotation = 0D;
+            this.SearchSelectMultButton.Size = new System.Drawing.Size(168, 59);
+            this.SearchSelectMultButton.TabIndex = 54;
+            this.SearchSelectMultButton.Text = "Choose Multimedia";
+            this.SearchSelectMultButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SearchSelectMultButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.SearchSelectMultButton.UseVisualStyleBackColor = false;
+            this.SearchSelectMultButton.Click += new System.EventHandler(this.SearchSelectMultButton_Click_1);
             // 
-            // panel2
+            // SearchSearchResultsDomainUp
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.SearchSearchButton);
-            this.panel2.Controls.Add(this.SearchSearchTextBox);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(756, 125);
-            this.panel2.TabIndex = 51;
+            this.SearchSearchResultsDomainUp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SearchSearchResultsDomainUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(20)))), ((int)(((byte)(34)))));
+            this.SearchSearchResultsDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchSearchResultsDomainUp.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.SearchSearchResultsDomainUp.FormattingEnabled = true;
+            this.SearchSearchResultsDomainUp.HorizontalScrollbar = true;
+            this.SearchSearchResultsDomainUp.ItemHeight = 29;
+            this.SearchSearchResultsDomainUp.Location = new System.Drawing.Point(259, 159);
+            this.SearchSearchResultsDomainUp.Name = "SearchSearchResultsDomainUp";
+            this.SearchSearchResultsDomainUp.Size = new System.Drawing.Size(378, 323);
+            this.SearchSearchResultsDomainUp.TabIndex = 53;
+            this.SearchSearchResultsDomainUp.Visible = false;
             // 
             // SearchFilterPanel
             // 
             this.SearchFilterPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.SearchFilterPanel.Controls.Add(this.button4);
-            this.SearchFilterPanel.Controls.Add(this.button2);
+            this.SearchFilterPanel.Controls.Add(this.OrFiltersSearch);
+            this.SearchFilterPanel.Controls.Add(this.AllFilterSearch);
             this.SearchFilterPanel.Controls.Add(this.AllFiltersCheckbox);
-            this.SearchFilterPanel.Controls.Add(this.button1);
+            this.SearchFilterPanel.Controls.Add(this.SearchFilterButton);
             this.SearchFilterPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.SearchFilterPanel.Location = new System.Drawing.Point(0, 125);
+            this.SearchFilterPanel.Location = new System.Drawing.Point(0, 96);
             this.SearchFilterPanel.Name = "SearchFilterPanel";
-            this.SearchFilterPanel.Size = new System.Drawing.Size(166, 486);
+            this.SearchFilterPanel.Size = new System.Drawing.Size(166, 515);
             this.SearchFilterPanel.TabIndex = 52;
             // 
-            // button1
+            // OrFiltersSearch
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
-            this.button1.FlatAppearance.BorderSize = 3;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 46);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Filters";
-            this.button1.UseVisualStyleBackColor = true;
+            this.OrFiltersSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.OrFiltersSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.OrFiltersSearch.FlatAppearance.BorderSize = 3;
+            this.OrFiltersSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OrFiltersSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OrFiltersSearch.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.OrFiltersSearch.Location = new System.Drawing.Point(0, 361);
+            this.OrFiltersSearch.Name = "OrFiltersSearch";
+            this.OrFiltersSearch.Size = new System.Drawing.Size(162, 70);
+            this.OrFiltersSearch.TabIndex = 5;
+            this.OrFiltersSearch.Text = "Search by: Separate Filters";
+            this.OrFiltersSearch.UseVisualStyleBackColor = true;
+            this.OrFiltersSearch.Click += new System.EventHandler(this.OrFiltersSearch_Click);
+            // 
+            // AllFilterSearch
+            // 
+            this.AllFilterSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AllFilterSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.AllFilterSearch.FlatAppearance.BorderSize = 3;
+            this.AllFilterSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AllFilterSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AllFilterSearch.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.AllFilterSearch.Location = new System.Drawing.Point(0, 292);
+            this.AllFilterSearch.Name = "AllFilterSearch";
+            this.AllFilterSearch.Size = new System.Drawing.Size(162, 69);
+            this.AllFilterSearch.TabIndex = 4;
+            this.AllFilterSearch.Text = "Search by: Mixed Filters";
+            this.AllFilterSearch.UseVisualStyleBackColor = true;
+            this.AllFilterSearch.Click += new System.EventHandler(this.AllFilterSearch_Click);
             // 
             // AllFiltersCheckbox
             // 
@@ -7741,46 +7819,105 @@
             this.AllFiltersCheckbox.Name = "AllFiltersCheckbox";
             this.AllFiltersCheckbox.Size = new System.Drawing.Size(162, 246);
             this.AllFiltersCheckbox.TabIndex = 3;
+            this.AllFiltersCheckbox.Visible = false;
             // 
-            // button2
+            // SearchFilterButton
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
-            this.button2.FlatAppearance.BorderSize = 3;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(0, 292);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(162, 46);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Search \"And\"";
-            this.button2.UseVisualStyleBackColor = true;
+            this.SearchFilterButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SearchFilterButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SearchFilterButton.FlatAppearance.BorderSize = 3;
+            this.SearchFilterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchFilterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchFilterButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SearchFilterButton.Location = new System.Drawing.Point(0, 0);
+            this.SearchFilterButton.Name = "SearchFilterButton";
+            this.SearchFilterButton.Size = new System.Drawing.Size(162, 46);
+            this.SearchFilterButton.TabIndex = 2;
+            this.SearchFilterButton.Text = "Filters";
+            this.SearchFilterButton.UseVisualStyleBackColor = true;
+            this.SearchFilterButton.Click += new System.EventHandler(this.SearchFilterButton_Click);
             // 
-            // button4
+            // panel2
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
-            this.button4.FlatAppearance.BorderSize = 3;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button4.Location = new System.Drawing.Point(0, 338);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(162, 46);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Search \"Or\"";
-            this.button4.UseVisualStyleBackColor = true;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.SearchGoBackButton);
+            this.panel2.Controls.Add(this.SearchSearchButton);
+            this.panel2.Controls.Add(this.SearchSearchTextBox);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(756, 96);
+            this.panel2.TabIndex = 51;
+            // 
+            // SearchGoBackButton
+            // 
+            this.SearchGoBackButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SearchGoBackButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SearchGoBackButton.FlatAppearance.BorderSize = 0;
+            this.SearchGoBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchGoBackButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.SearchGoBackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchGoBackButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SearchGoBackButton.IconChar = FontAwesome.Sharp.IconChar.Reply;
+            this.SearchGoBackButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SearchGoBackButton.IconSize = 50;
+            this.SearchGoBackButton.Location = new System.Drawing.Point(28, 11);
+            this.SearchGoBackButton.Name = "SearchGoBackButton";
+            this.SearchGoBackButton.Rotation = 0D;
+            this.SearchGoBackButton.Size = new System.Drawing.Size(63, 52);
+            this.SearchGoBackButton.TabIndex = 51;
+            this.SearchGoBackButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SearchGoBackButton.UseVisualStyleBackColor = true;
+            // 
+            // SearchSearchButton
+            // 
+            this.SearchSearchButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SearchSearchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
+            this.SearchSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchSearchButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.SearchSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchSearchButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SearchSearchButton.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.SearchSearchButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SearchSearchButton.IconSize = 30;
+            this.SearchSearchButton.Location = new System.Drawing.Point(440, 21);
+            this.SearchSearchButton.Name = "SearchSearchButton";
+            this.SearchSearchButton.Rotation = 0D;
+            this.SearchSearchButton.Size = new System.Drawing.Size(173, 42);
+            this.SearchSearchButton.TabIndex = 50;
+            this.SearchSearchButton.Text = "SEARCH";
+            this.SearchSearchButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SearchSearchButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.SearchSearchButton.UseVisualStyleBackColor = false;
+            this.SearchSearchButton.Click += new System.EventHandler(this.SearchSearchButton_Click_2);
+            // 
+            // SearchSearchTextBox
+            // 
+            this.SearchSearchTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SearchSearchTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
+            this.SearchSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchSearchTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SearchSearchTextBox.Location = new System.Drawing.Point(138, 28);
+            this.SearchSearchTextBox.Name = "SearchSearchTextBox";
+            this.SearchSearchTextBox.Size = new System.Drawing.Size(287, 29);
+            this.SearchSearchTextBox.TabIndex = 49;
+            this.SearchSearchTextBox.Text = "\r\nSearch Multimedia on FyBuzz";
+            // 
+            // TimerSidePanel
+            // 
+            this.TimerSidePanel.Interval = 1;
+            this.TimerSidePanel.Tick += new System.EventHandler(this.TimerSidePanel_Tick);
             // 
             // FyBuZz
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 721);
-            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.WelcomePanel);
-            this.Controls.Add(this.CreateSongPanel);
+            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.DisplayStartPanel);
+            this.Controls.Add(this.CreateVideoPanel);
+            this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
@@ -7789,7 +7926,6 @@
             this.Controls.Add(this.AdminMenuPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.CreateProfilePanel);
-            this.Controls.Add(this.CreateVideoPanel);
             this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayerMultPanel);
@@ -7851,6 +7987,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             this.SearchGeneralTopPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SideMenuShowHideIconButton)).EndInit();
             this.CreateSongPanel.ResumeLayout(false);
             this.CreateSongPanel.PerformLayout();
             this.CreateVideoPanel.ResumeLayout(false);
@@ -7911,6 +8048,8 @@
             this.LogoFyBuzz.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.PlayerMultPanel.ResumeLayout(false);
+            this.PlayerMultPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VolumeIconButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.windowsMediaPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlaySongRateNumDomainUp)).EndInit();
             this.RegisterPanel.ResumeLayout(false);
@@ -7921,9 +8060,9 @@
             this.PlayVideoPanel.ResumeLayout(false);
             this.PlayVideoPanel.PerformLayout();
             this.SearchPanel.ResumeLayout(false);
+            this.SearchFilterPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.SearchFilterPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -8000,8 +8139,8 @@
         private System.Windows.Forms.Label SearchSearchLabel;
         private System.Windows.Forms.Button SearchSearchButtonFeo;
         private System.Windows.Forms.TextBox SearchSearchTextBoxFeo;
-        private System.Windows.Forms.Button SearchViewUserButton;
-        private System.Windows.Forms.DomainUpDown SearchSearchResultsDomainUp;
+        private System.Windows.Forms.Button SearchViewUserButtonFeo;
+        private System.Windows.Forms.DomainUpDown SearchSearchResultsDomainUpFeo;
         private System.Windows.Forms.Panel AdminMenuPanel;
         private System.Windows.Forms.Label AdminMenuLabel;
         private System.Windows.Forms.Button AdminMenuBanUserButtonFeo;
@@ -8022,7 +8161,7 @@
         private System.Windows.Forms.PictureBox DisplayPlaylistsGlobalPlaylist3;
         private System.Windows.Forms.PictureBox DisplayPlaylistsGlobalPlaylist2;
         private System.Windows.Forms.PictureBox DisplayPlaylistsGlobalPlaylist1;
-        private System.Windows.Forms.Button SearchGoBackButton;
+        private System.Windows.Forms.Button SearchGoBackButtonFeo;
         private System.Windows.Forms.Button DisplayPlaylistGoBackButton;
         private System.Windows.Forms.Button AccountProfileSettingsGoBackButton;
         private System.Windows.Forms.Button AdminMenuGoBackButtonFeo;
@@ -8064,7 +8203,7 @@
         private System.Windows.Forms.Button CreateSongSongFileButton;
         private System.Windows.Forms.TextBox CreateSongSongFileTextBox;
         private System.Windows.Forms.Label CreateSongSongFileLabel;
-        private System.Windows.Forms.Button SearchSelectMultButton;
+        private System.Windows.Forms.Button SearchSelectMultButtonFeo;
         private System.Windows.Forms.Timer DurationTimer;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox SearchInvalidCredentialsTextBox;
@@ -8437,14 +8576,23 @@
         private System.Windows.Forms.Timer ProgressTimer;
         private System.Windows.Forms.Timer TimerWav;
         private AxWMPLib.AxWindowsMediaPlayer windowsMediaPlayer;
+
         private System.Windows.Forms.Panel SearchPanel;
         private FontAwesome.Sharp.IconButton SearchSearchButton;
         private System.Windows.Forms.TextBox SearchSearchTextBox;
         private System.Windows.Forms.Panel SearchFilterPanel;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button SearchFilterButton;
+        private System.Windows.Forms.Button OrFiltersSearch;
+        private System.Windows.Forms.Button AllFilterSearch;
         private System.Windows.Forms.CheckedListBox AllFiltersCheckbox;
+
+        private FontAwesome.Sharp.IconPictureBox SideMenuShowHideIconButton;
+        private FontAwesome.Sharp.IconPictureBox VolumeIconButton;
+        private System.Windows.Forms.Timer TimerSidePanel;
+        private System.Windows.Forms.ListBox SearchSearchResultsDomainUp;
+        private FontAwesome.Sharp.IconButton SearchGoBackButton;
+        private FontAwesome.Sharp.IconButton SearchViewUserButton;
+        private FontAwesome.Sharp.IconButton SearchSelectMultButton;
     }
 }
