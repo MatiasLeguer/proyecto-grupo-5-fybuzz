@@ -28,6 +28,7 @@ namespace Modelos
         public string Name { get => name; }
         public int Likes { get => likes; set => likes = value; }
         public int GeneralRep { get => generalRep; set => generalRep = value; }
+        public double PresentTime { get => presentTime; set => presentTime = value; }
         //--------------------------------------------------------------------------------------------------
 
         //MÉTODOS
