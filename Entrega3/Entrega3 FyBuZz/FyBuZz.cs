@@ -205,7 +205,11 @@ namespace Entrega3_FyBuZz
         //BUTTONS
         private void WelcomeRegisterButton_Click(object sender, EventArgs e)
         {
-
+            UserLogInTextBox.Clear();
+            PasswordLogInTextBox.Clear();
+            LogInInvalidCredentialsTetxbox.Clear();
+            LogInInvalidCredentialsTetxbox.Visible = false;
+            RegisterPanel.BringToFront();
         }
 
         private void LogInLogInButton_Click_1(object sender, EventArgs e)
@@ -445,6 +449,7 @@ namespace Entrega3_FyBuZz
 
             List<string> profileGetterString = OnProfilesChooseProfile_Click2(profileProfileName, username, password);
 
+
             List<Song> songDataBase = OnSearchSongButton_Click();
             List<Video> videoDataBase = OnSearchVideoButton_Click();
 
@@ -507,6 +512,11 @@ namespace Entrega3_FyBuZz
                 SideMenuPanel.Visible = true;
                 PlayerMultPanel.Visible = true;
                 SearchGeneralTopPanel.Visible = true;
+                if (userInfo[3] == "standard")
+                {
+                    AddsPanel1.Visible = true;
+                    AddsPanel2.Visible = true;
+                }
                 DisplayStartPanel.BringToFront();
             }
             else
@@ -6038,12 +6048,14 @@ namespace Entrega3_FyBuZz
             
             if (profile.PersSongPlaylist.Count() != 0)
             {
+                DisplayStartPersPlaylistPanel.Visible = true;
                 PersPlaylisLabel.Visible = true;
                 DisplayPlaylistPrefPlaylistSong.Visible = true;
                 PersPlaylistSongLabel.Visible = true;
             }
             if (profile.PersVideoPlaylist.Count() != 0)
             {
+                DisplayStartPersPlaylistPanel.Visible = true;
                 PersPlaylisLabel.Visible = true;
                 DisplayPlaylistPrefPlaylistVideo.Visible = true;
                 PersPlaylistVideoLabel.Visible = true;
@@ -6069,6 +6081,7 @@ namespace Entrega3_FyBuZz
         private void GlobalPlsButton_Click(object sender, EventArgs e)
         {
             OcultarSubMenus();
+            DisplayStartGlobalPlaylistPanel.Visible = true;
             DisplayPlaylistsGlobalPlaylistSong.Visible = true;
             DisplayPlaylistsGlobalPlaylistVideo.Visible = true;
             GlobalPlaylistLabel.Visible = true;
@@ -6083,12 +6096,14 @@ namespace Entrega3_FyBuZz
             
             if (profile.PlaylistFavoritosSongs2.Count() != 0)
             {
+                DisplayStartFavPlaylistPanel.Visible = true;
                 FavPlaylistLabel.Visible = true;
                 DisplayPlaylistsFavoritePlaylistSongs.Visible = true;
                 FavPlaylistSongLabel.Visible = true;
             }
             if (profile.PlaylistFavoritosVideos2.Count() != 0)
             {
+                DisplayStartFavPlaylistPanel.Visible = true;
                 FavPlaylistLabel.Visible = true;
                 DisplayPlaylistsFavoritePlaylistVideos.Visible = true;
                 FavPlaylistVideoLabel.Visible = true;
@@ -6183,6 +6198,9 @@ namespace Entrega3_FyBuZz
 
         }
 
-        
+        private void DisplayStartErrorMessage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
