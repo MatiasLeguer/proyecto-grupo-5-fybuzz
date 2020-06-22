@@ -112,6 +112,7 @@
             this.CreateProfileProfileNameLabel = new System.Windows.Forms.Label();
             this.CreateProfileLabel = new System.Windows.Forms.Label();
             this.DisplayStartPanel = new System.Windows.Forms.Panel();
+            this.DisplayStartErrorMessage = new System.Windows.Forms.Label();
             this.PersPlaylistSongLabel = new System.Windows.Forms.Label();
             this.PersPlaylistVideoLabel = new System.Windows.Forms.Label();
             this.FavPlaylistVideoLabel = new System.Windows.Forms.Label();
@@ -503,7 +504,19 @@
             this.PlayVideoQueue = new FontAwesome.Sharp.IconButton();
             this.PlayVideoLyrics = new FontAwesome.Sharp.IconButton();
             this.PlayVideoGoBackButton = new FontAwesome.Sharp.IconButton();
-            this.DisplayStartErrorMessage = new System.Windows.Forms.Label();
+            this.AddsPanel1 = new System.Windows.Forms.Panel();
+            this.AddsPanel2 = new System.Windows.Forms.Panel();
+            this.DisplayStartGlobalPlaylistPanel = new System.Windows.Forms.Panel();
+            this.DisplayStartFavPlaylistPanel = new System.Windows.Forms.Panel();
+            this.DisplayStartPersPlaylistPanel = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.ProfilePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.AdminMenuPanel.SuspendLayout();
@@ -576,6 +589,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayVideoRateDomainUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayVideoVideoImageBox)).BeginInit();
             this.PlayVideoPanel.SuspendLayout();
+            this.AddsPanel1.SuspendLayout();
+            this.AddsPanel2.SuspendLayout();
+            this.DisplayStartGlobalPlaylistPanel.SuspendLayout();
+            this.DisplayStartFavPlaylistPanel.SuspendLayout();
+            this.DisplayStartPersPlaylistPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProfilePanel
@@ -595,7 +620,7 @@
             this.ProfilePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProfilePanel.Location = new System.Drawing.Point(250, 0);
             this.ProfilePanel.Name = "ProfilePanel";
-            this.ProfilePanel.Size = new System.Drawing.Size(756, 610);
+            this.ProfilePanel.Size = new System.Drawing.Size(756, 611);
             this.ProfilePanel.TabIndex = 3;
             this.ProfilePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ProfilePanel_Paint);
             // 
@@ -780,7 +805,7 @@
             this.AdminMenuPanel.Location = new System.Drawing.Point(250, 0);
             this.AdminMenuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AdminMenuPanel.Name = "AdminMenuPanel";
-            this.AdminMenuPanel.Size = new System.Drawing.Size(756, 610);
+            this.AdminMenuPanel.Size = new System.Drawing.Size(756, 611);
             this.AdminMenuPanel.TabIndex = 9;
             // 
             // AdminMenuBanUser
@@ -1005,7 +1030,7 @@
             this.PlaySongPanel.ForeColor = System.Drawing.Color.Black;
             this.PlaySongPanel.Location = new System.Drawing.Point(250, 0);
             this.PlaySongPanel.Name = "PlaySongPanel";
-            this.PlaySongPanel.Size = new System.Drawing.Size(756, 610);
+            this.PlaySongPanel.Size = new System.Drawing.Size(756, 611);
             this.PlaySongPanel.TabIndex = 13;
             // 
             // PlaySongChooseUserButton
@@ -1159,7 +1184,7 @@
             this.PlayerPanel.Controls.Add(this.PlaySongPreviousSongButtonFeo);
             this.PlayerPanel.Controls.Add(this.PlaySongStopButtonFeo);
             this.PlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PlayerPanel.Location = new System.Drawing.Point(0, 598);
+            this.PlayerPanel.Location = new System.Drawing.Point(0, 599);
             this.PlayerPanel.Name = "PlayerPanel";
             this.PlayerPanel.Size = new System.Drawing.Size(756, 12);
             this.PlayerPanel.TabIndex = 15;
@@ -1505,7 +1530,7 @@
             this.CreateProfilePanel.Location = new System.Drawing.Point(250, 0);
             this.CreateProfilePanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateProfilePanel.Name = "CreateProfilePanel";
-            this.CreateProfilePanel.Size = new System.Drawing.Size(756, 610);
+            this.CreateProfilePanel.Size = new System.Drawing.Size(756, 611);
             this.CreateProfilePanel.TabIndex = 4;
             // 
             // CreateProfileCreateProfileButton
@@ -1766,24 +1791,15 @@
             // 
             // DisplayStartPanel
             // 
-            this.DisplayStartPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.DisplayStartPanel.Controls.Add(this.DisplayStartErrorMessage);
-            this.DisplayStartPanel.Controls.Add(this.PersPlaylistSongLabel);
-            this.DisplayStartPanel.Controls.Add(this.PersPlaylistVideoLabel);
-            this.DisplayStartPanel.Controls.Add(this.FavPlaylistVideoLabel);
-            this.DisplayStartPanel.Controls.Add(this.FavPlaylistSongLabel);
-            this.DisplayStartPanel.Controls.Add(this.GlobalPlaylistSongLabel);
-            this.DisplayStartPanel.Controls.Add(this.DisplayPlaylistsFavoritePlaylistVideos);
-            this.DisplayStartPanel.Controls.Add(this.DisplayPlaylistsFavoritePlaylistSongs);
-            this.DisplayStartPanel.Controls.Add(this.FavPlaylistLabel);
-            this.DisplayStartPanel.Controls.Add(this.GlobalPlaylistVideoLabel);
-            this.DisplayStartPanel.Controls.Add(this.DisplayPlaylistPrefPlaylistVideo);
-            this.DisplayStartPanel.Controls.Add(this.DisplayPlaylistPrefPlaylistSong);
-            this.DisplayStartPanel.Controls.Add(this.DisplayPlaylistsGlobalPlaylistVideo);
-            this.DisplayStartPanel.Controls.Add(this.DisplayPlaylistsGlobalPlaylistSong);
+            this.DisplayStartPanel.BackColor = System.Drawing.Color.Black;
+            this.DisplayStartPanel.Controls.Add(this.panel2);
+            this.DisplayStartPanel.Controls.Add(this.panel1);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartPersPlaylistPanel);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartFavPlaylistPanel);
+            this.DisplayStartPanel.Controls.Add(this.DisplayStartGlobalPlaylistPanel);
+            this.DisplayStartPanel.Controls.Add(this.AddsPanel2);
+            this.DisplayStartPanel.Controls.Add(this.AddsPanel1);
             this.DisplayStartPanel.Controls.Add(this.pictureBox14);
-            this.DisplayStartPanel.Controls.Add(this.PersPlaylisLabel);
-            this.DisplayStartPanel.Controls.Add(this.GlobalPlaylistLabel);
             this.DisplayStartPanel.Controls.Add(this.SearchGeneralTopPanel);
             this.DisplayStartPanel.Controls.Add(this.DisplayStartMultimediaInfoDomainUp);
             this.DisplayStartPanel.Controls.Add(this.DisplayStartChooseSharedMult);
@@ -1799,15 +1815,30 @@
             this.DisplayStartPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DisplayStartPanel.Location = new System.Drawing.Point(250, 0);
             this.DisplayStartPanel.Name = "DisplayStartPanel";
-            this.DisplayStartPanel.Size = new System.Drawing.Size(756, 610);
+            this.DisplayStartPanel.Size = new System.Drawing.Size(756, 611);
             this.DisplayStartPanel.TabIndex = 5;
+            // 
+            // DisplayStartErrorMessage
+            // 
+            this.DisplayStartErrorMessage.AutoSize = true;
+            this.DisplayStartErrorMessage.BackColor = System.Drawing.Color.Transparent;
+            this.DisplayStartErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisplayStartErrorMessage.ForeColor = System.Drawing.Color.White;
+            this.DisplayStartErrorMessage.Location = new System.Drawing.Point(81, 5);
+            this.DisplayStartErrorMessage.Name = "DisplayStartErrorMessage";
+            this.DisplayStartErrorMessage.Size = new System.Drawing.Size(344, 20);
+            this.DisplayStartErrorMessage.TabIndex = 65;
+            this.DisplayStartErrorMessage.Text = "ERROR[!] You don\'t have this type of Playlist";
+            this.DisplayStartErrorMessage.Visible = false;
+            this.DisplayStartErrorMessage.Click += new System.EventHandler(this.DisplayStartErrorMessage_Click);
             // 
             // PersPlaylistSongLabel
             // 
+            this.PersPlaylistSongLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PersPlaylistSongLabel.AutoSize = true;
             this.PersPlaylistSongLabel.BackColor = System.Drawing.Color.Transparent;
             this.PersPlaylistSongLabel.ForeColor = System.Drawing.Color.White;
-            this.PersPlaylistSongLabel.Location = new System.Drawing.Point(173, 559);
+            this.PersPlaylistSongLabel.Location = new System.Drawing.Point(46, 129);
             this.PersPlaylistSongLabel.Name = "PersPlaylistSongLabel";
             this.PersPlaylistSongLabel.Size = new System.Drawing.Size(48, 17);
             this.PersPlaylistSongLabel.TabIndex = 64;
@@ -1816,10 +1847,11 @@
             // 
             // PersPlaylistVideoLabel
             // 
+            this.PersPlaylistVideoLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PersPlaylistVideoLabel.AutoSize = true;
             this.PersPlaylistVideoLabel.BackColor = System.Drawing.Color.Transparent;
             this.PersPlaylistVideoLabel.ForeColor = System.Drawing.Color.White;
-            this.PersPlaylistVideoLabel.Location = new System.Drawing.Point(628, 569);
+            this.PersPlaylistVideoLabel.Location = new System.Drawing.Point(385, 125);
             this.PersPlaylistVideoLabel.Name = "PersPlaylistVideoLabel";
             this.PersPlaylistVideoLabel.Size = new System.Drawing.Size(51, 17);
             this.PersPlaylistVideoLabel.TabIndex = 63;
@@ -1828,10 +1860,11 @@
             // 
             // FavPlaylistVideoLabel
             // 
+            this.FavPlaylistVideoLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FavPlaylistVideoLabel.AutoSize = true;
             this.FavPlaylistVideoLabel.BackColor = System.Drawing.Color.Transparent;
             this.FavPlaylistVideoLabel.ForeColor = System.Drawing.Color.White;
-            this.FavPlaylistVideoLabel.Location = new System.Drawing.Point(628, 409);
+            this.FavPlaylistVideoLabel.Location = new System.Drawing.Point(385, 150);
             this.FavPlaylistVideoLabel.Name = "FavPlaylistVideoLabel";
             this.FavPlaylistVideoLabel.Size = new System.Drawing.Size(51, 17);
             this.FavPlaylistVideoLabel.TabIndex = 62;
@@ -1840,10 +1873,11 @@
             // 
             // FavPlaylistSongLabel
             // 
+            this.FavPlaylistSongLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FavPlaylistSongLabel.AutoSize = true;
             this.FavPlaylistSongLabel.BackColor = System.Drawing.Color.Transparent;
             this.FavPlaylistSongLabel.ForeColor = System.Drawing.Color.White;
-            this.FavPlaylistSongLabel.Location = new System.Drawing.Point(173, 411);
+            this.FavPlaylistSongLabel.Location = new System.Drawing.Point(46, 157);
             this.FavPlaylistSongLabel.Name = "FavPlaylistSongLabel";
             this.FavPlaylistSongLabel.Size = new System.Drawing.Size(48, 17);
             this.FavPlaylistSongLabel.TabIndex = 61;
@@ -1852,10 +1886,11 @@
             // 
             // GlobalPlaylistSongLabel
             // 
+            this.GlobalPlaylistSongLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GlobalPlaylistSongLabel.AutoSize = true;
             this.GlobalPlaylistSongLabel.BackColor = System.Drawing.Color.Transparent;
             this.GlobalPlaylistSongLabel.ForeColor = System.Drawing.Color.White;
-            this.GlobalPlaylistSongLabel.Location = new System.Drawing.Point(176, 229);
+            this.GlobalPlaylistSongLabel.Location = new System.Drawing.Point(51, 141);
             this.GlobalPlaylistSongLabel.Name = "GlobalPlaylistSongLabel";
             this.GlobalPlaylistSongLabel.Size = new System.Drawing.Size(48, 17);
             this.GlobalPlaylistSongLabel.TabIndex = 60;
@@ -1864,9 +1899,10 @@
             // 
             // DisplayPlaylistsFavoritePlaylistVideos
             // 
+            this.DisplayPlaylistsFavoritePlaylistVideos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DisplayPlaylistsFavoritePlaylistVideos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DisplayPlaylistsFavoritePlaylistVideos.Image = ((System.Drawing.Image)(resources.GetObject("DisplayPlaylistsFavoritePlaylistVideos.Image")));
-            this.DisplayPlaylistsFavoritePlaylistVideos.Location = new System.Drawing.Point(597, 322);
+            this.DisplayPlaylistsFavoritePlaylistVideos.Location = new System.Drawing.Point(354, 63);
             this.DisplayPlaylistsFavoritePlaylistVideos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DisplayPlaylistsFavoritePlaylistVideos.Name = "DisplayPlaylistsFavoritePlaylistVideos";
             this.DisplayPlaylistsFavoritePlaylistVideos.Size = new System.Drawing.Size(108, 84);
@@ -1878,9 +1914,10 @@
             // 
             // DisplayPlaylistsFavoritePlaylistSongs
             // 
+            this.DisplayPlaylistsFavoritePlaylistSongs.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DisplayPlaylistsFavoritePlaylistSongs.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DisplayPlaylistsFavoritePlaylistSongs.Image = ((System.Drawing.Image)(resources.GetObject("DisplayPlaylistsFavoritePlaylistSongs.Image")));
-            this.DisplayPlaylistsFavoritePlaylistSongs.Location = new System.Drawing.Point(142, 323);
+            this.DisplayPlaylistsFavoritePlaylistSongs.Location = new System.Drawing.Point(15, 69);
             this.DisplayPlaylistsFavoritePlaylistSongs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DisplayPlaylistsFavoritePlaylistSongs.Name = "DisplayPlaylistsFavoritePlaylistSongs";
             this.DisplayPlaylistsFavoritePlaylistSongs.Size = new System.Drawing.Size(107, 84);
@@ -1892,10 +1929,11 @@
             // 
             // FavPlaylistLabel
             // 
+            this.FavPlaylistLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FavPlaylistLabel.AutoSize = true;
             this.FavPlaylistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FavPlaylistLabel.ForeColor = System.Drawing.Color.White;
-            this.FavPlaylistLabel.Location = new System.Drawing.Point(311, 262);
+            this.FavPlaylistLabel.Location = new System.Drawing.Point(134, 40);
             this.FavPlaylistLabel.Name = "FavPlaylistLabel";
             this.FavPlaylistLabel.Size = new System.Drawing.Size(206, 29);
             this.FavPlaylistLabel.TabIndex = 57;
@@ -1904,10 +1942,11 @@
             // 
             // GlobalPlaylistVideoLabel
             // 
+            this.GlobalPlaylistVideoLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GlobalPlaylistVideoLabel.AutoSize = true;
             this.GlobalPlaylistVideoLabel.BackColor = System.Drawing.Color.Transparent;
             this.GlobalPlaylistVideoLabel.ForeColor = System.Drawing.Color.White;
-            this.GlobalPlaylistVideoLabel.Location = new System.Drawing.Point(627, 234);
+            this.GlobalPlaylistVideoLabel.Location = new System.Drawing.Point(385, 142);
             this.GlobalPlaylistVideoLabel.Name = "GlobalPlaylistVideoLabel";
             this.GlobalPlaylistVideoLabel.Size = new System.Drawing.Size(51, 17);
             this.GlobalPlaylistVideoLabel.TabIndex = 56;
@@ -1916,9 +1955,10 @@
             // 
             // DisplayPlaylistPrefPlaylistVideo
             // 
+            this.DisplayPlaylistPrefPlaylistVideo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DisplayPlaylistPrefPlaylistVideo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DisplayPlaylistPrefPlaylistVideo.Image = ((System.Drawing.Image)(resources.GetObject("DisplayPlaylistPrefPlaylistVideo.Image")));
-            this.DisplayPlaylistPrefPlaylistVideo.Location = new System.Drawing.Point(597, 480);
+            this.DisplayPlaylistPrefPlaylistVideo.Location = new System.Drawing.Point(354, 36);
             this.DisplayPlaylistPrefPlaylistVideo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DisplayPlaylistPrefPlaylistVideo.Name = "DisplayPlaylistPrefPlaylistVideo";
             this.DisplayPlaylistPrefPlaylistVideo.Size = new System.Drawing.Size(108, 84);
@@ -1930,9 +1970,10 @@
             // 
             // DisplayPlaylistPrefPlaylistSong
             // 
+            this.DisplayPlaylistPrefPlaylistSong.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DisplayPlaylistPrefPlaylistSong.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DisplayPlaylistPrefPlaylistSong.Image = ((System.Drawing.Image)(resources.GetObject("DisplayPlaylistPrefPlaylistSong.Image")));
-            this.DisplayPlaylistPrefPlaylistSong.Location = new System.Drawing.Point(142, 471);
+            this.DisplayPlaylistPrefPlaylistSong.Location = new System.Drawing.Point(15, 41);
             this.DisplayPlaylistPrefPlaylistSong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DisplayPlaylistPrefPlaylistSong.Name = "DisplayPlaylistPrefPlaylistSong";
             this.DisplayPlaylistPrefPlaylistSong.Size = new System.Drawing.Size(107, 84);
@@ -1944,9 +1985,10 @@
             // 
             // DisplayPlaylistsGlobalPlaylistVideo
             // 
+            this.DisplayPlaylistsGlobalPlaylistVideo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DisplayPlaylistsGlobalPlaylistVideo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DisplayPlaylistsGlobalPlaylistVideo.Image = ((System.Drawing.Image)(resources.GetObject("DisplayPlaylistsGlobalPlaylistVideo.Image")));
-            this.DisplayPlaylistsGlobalPlaylistVideo.Location = new System.Drawing.Point(597, 147);
+            this.DisplayPlaylistsGlobalPlaylistVideo.Location = new System.Drawing.Point(355, 55);
             this.DisplayPlaylistsGlobalPlaylistVideo.Name = "DisplayPlaylistsGlobalPlaylistVideo";
             this.DisplayPlaylistsGlobalPlaylistVideo.Size = new System.Drawing.Size(108, 84);
             this.DisplayPlaylistsGlobalPlaylistVideo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1957,9 +1999,10 @@
             // 
             // DisplayPlaylistsGlobalPlaylistSong
             // 
+            this.DisplayPlaylistsGlobalPlaylistSong.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DisplayPlaylistsGlobalPlaylistSong.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DisplayPlaylistsGlobalPlaylistSong.Image = ((System.Drawing.Image)(resources.GetObject("DisplayPlaylistsGlobalPlaylistSong.Image")));
-            this.DisplayPlaylistsGlobalPlaylistSong.Location = new System.Drawing.Point(141, 143);
+            this.DisplayPlaylistsGlobalPlaylistSong.Location = new System.Drawing.Point(16, 55);
             this.DisplayPlaylistsGlobalPlaylistSong.Name = "DisplayPlaylistsGlobalPlaylistSong";
             this.DisplayPlaylistsGlobalPlaylistSong.Size = new System.Drawing.Size(110, 84);
             this.DisplayPlaylistsGlobalPlaylistSong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1981,10 +2024,11 @@
             // 
             // PersPlaylisLabel
             // 
+            this.PersPlaylisLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PersPlaylisLabel.AutoSize = true;
             this.PersPlaylisLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PersPlaylisLabel.ForeColor = System.Drawing.Color.White;
-            this.PersPlaylisLabel.Location = new System.Drawing.Point(294, 428);
+            this.PersPlaylisLabel.Location = new System.Drawing.Point(100, 5);
             this.PersPlaylisLabel.Name = "PersPlaylisLabel";
             this.PersPlaylisLabel.Size = new System.Drawing.Size(290, 29);
             this.PersPlaylisLabel.TabIndex = 50;
@@ -1993,10 +2037,11 @@
             // 
             // GlobalPlaylistLabel
             // 
+            this.GlobalPlaylistLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GlobalPlaylistLabel.AutoSize = true;
             this.GlobalPlaylistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GlobalPlaylistLabel.ForeColor = System.Drawing.Color.White;
-            this.GlobalPlaylistLabel.Location = new System.Drawing.Point(326, 103);
+            this.GlobalPlaylistLabel.Location = new System.Drawing.Point(145, 10);
             this.GlobalPlaylistLabel.Name = "GlobalPlaylistLabel";
             this.GlobalPlaylistLabel.Size = new System.Drawing.Size(188, 29);
             this.GlobalPlaylistLabel.TabIndex = 49;
@@ -2013,7 +2058,7 @@
             this.SearchGeneralTopPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.SearchGeneralTopPanel.Location = new System.Drawing.Point(0, 0);
             this.SearchGeneralTopPanel.Name = "SearchGeneralTopPanel";
-            this.SearchGeneralTopPanel.Size = new System.Drawing.Size(756, 85);
+            this.SearchGeneralTopPanel.Size = new System.Drawing.Size(756, 69);
             this.SearchGeneralTopPanel.TabIndex = 48;
             this.SearchGeneralTopPanel.Visible = false;
             // 
@@ -2026,7 +2071,7 @@
             this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Weixin;
             this.iconButton3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.iconButton3.IconSize = 50;
-            this.iconButton3.Location = new System.Drawing.Point(130, 13);
+            this.iconButton3.Location = new System.Drawing.Point(130, 5);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Rotation = 0D;
             this.iconButton3.Size = new System.Drawing.Size(57, 51);
@@ -2045,7 +2090,7 @@
             this.SearchSearchButton.IconChar = FontAwesome.Sharp.IconChar.MapPin;
             this.SearchSearchButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.SearchSearchButton.IconSize = 30;
-            this.SearchSearchButton.Location = new System.Drawing.Point(523, 19);
+            this.SearchSearchButton.Location = new System.Drawing.Point(523, 11);
             this.SearchSearchButton.Name = "SearchSearchButton";
             this.SearchSearchButton.Rotation = 45D;
             this.SearchSearchButton.Size = new System.Drawing.Size(149, 42);
@@ -2062,7 +2107,7 @@
             this.SearchSearchTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.SearchSearchTextBox.Font = new System.Drawing.Font("Century Gothic", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchSearchTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
-            this.SearchSearchTextBox.Location = new System.Drawing.Point(221, 26);
+            this.SearchSearchTextBox.Location = new System.Drawing.Point(221, 18);
             this.SearchSearchTextBox.Name = "SearchSearchTextBox";
             this.SearchSearchTextBox.Size = new System.Drawing.Size(287, 30);
             this.SearchSearchTextBox.TabIndex = 47;
@@ -2218,7 +2263,7 @@
             this.CreateSongPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreateSongPanel.Location = new System.Drawing.Point(250, 0);
             this.CreateSongPanel.Name = "CreateSongPanel";
-            this.CreateSongPanel.Size = new System.Drawing.Size(756, 610);
+            this.CreateSongPanel.Size = new System.Drawing.Size(756, 611);
             this.CreateSongPanel.TabIndex = 10;
             // 
             // CreateSongGoBackButton
@@ -2679,7 +2724,7 @@
             this.CreateVideoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreateVideoPanel.Location = new System.Drawing.Point(250, 0);
             this.CreateVideoPanel.Name = "CreateVideoPanel";
-            this.CreateVideoPanel.Size = new System.Drawing.Size(756, 610);
+            this.CreateVideoPanel.Size = new System.Drawing.Size(756, 611);
             this.CreateVideoPanel.TabIndex = 11;
             // 
             // CreateVideoGoBackButton
@@ -3171,7 +3216,7 @@
             this.CreatePlaylistPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreatePlaylistPanel.Location = new System.Drawing.Point(250, 0);
             this.CreatePlaylistPanel.Name = "CreatePlaylistPanel";
-            this.CreatePlaylistPanel.Size = new System.Drawing.Size(756, 610);
+            this.CreatePlaylistPanel.Size = new System.Drawing.Size(756, 611);
             this.CreatePlaylistPanel.TabIndex = 12;
             this.CreatePlaylistPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.CreatePlaylistPanel_Paint);
             // 
@@ -3382,7 +3427,7 @@
             this.AccountProfileSettingsPanel.Location = new System.Drawing.Point(250, 0);
             this.AccountProfileSettingsPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AccountProfileSettingsPanel.Name = "AccountProfileSettingsPanel";
-            this.AccountProfileSettingsPanel.Size = new System.Drawing.Size(756, 610);
+            this.AccountProfileSettingsPanel.Size = new System.Drawing.Size(756, 611);
             this.AccountProfileSettingsPanel.TabIndex = 6;
             // 
             // AccountProfileSettingsSplitContainer
@@ -3440,7 +3485,7 @@
             this.AccountProfileSettingsSplitContainer.Panel2.Controls.Add(this.label6);
             this.AccountProfileSettingsSplitContainer.Panel2.Controls.Add(this.ProfileSettingsLabel);
             this.AccountProfileSettingsSplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.AccountProfileSettingsSplitContainer.Size = new System.Drawing.Size(756, 610);
+            this.AccountProfileSettingsSplitContainer.Size = new System.Drawing.Size(756, 611);
             this.AccountProfileSettingsSplitContainer.SplitterDistance = 284;
             this.AccountProfileSettingsSplitContainer.TabIndex = 2;
             // 
@@ -3455,7 +3500,7 @@
             this.UserSettinChangePasswordButton.IconChar = FontAwesome.Sharp.IconChar.Eraser;
             this.UserSettinChangePasswordButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.UserSettinChangePasswordButton.IconSize = 30;
-            this.UserSettinChangePasswordButton.Location = new System.Drawing.Point(424, 194);
+            this.UserSettinChangePasswordButton.Location = new System.Drawing.Point(413, 214);
             this.UserSettinChangePasswordButton.Name = "UserSettinChangePasswordButton";
             this.UserSettinChangePasswordButton.Rotation = 0D;
             this.UserSettinChangePasswordButton.Size = new System.Drawing.Size(155, 32);
@@ -3476,7 +3521,7 @@
             this.AccountSettingAccounTypeChangeButton.IconChar = FontAwesome.Sharp.IconChar.Eraser;
             this.AccountSettingAccounTypeChangeButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.AccountSettingAccounTypeChangeButton.IconSize = 30;
-            this.AccountSettingAccounTypeChangeButton.Location = new System.Drawing.Point(424, 270);
+            this.AccountSettingAccounTypeChangeButton.Location = new System.Drawing.Point(413, 290);
             this.AccountSettingAccounTypeChangeButton.Name = "AccountSettingAccounTypeChangeButton";
             this.AccountSettingAccounTypeChangeButton.Rotation = 0D;
             this.AccountSettingAccounTypeChangeButton.Size = new System.Drawing.Size(155, 34);
@@ -3497,7 +3542,7 @@
             this.UserSettinChangeUsernameButton.IconChar = FontAwesome.Sharp.IconChar.Eraser;
             this.UserSettinChangeUsernameButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.UserSettinChangeUsernameButton.IconSize = 30;
-            this.UserSettinChangeUsernameButton.Location = new System.Drawing.Point(426, 154);
+            this.UserSettinChangeUsernameButton.Location = new System.Drawing.Point(415, 174);
             this.UserSettinChangeUsernameButton.Name = "UserSettinChangeUsernameButton";
             this.UserSettinChangeUsernameButton.Rotation = 0D;
             this.UserSettinChangeUsernameButton.Size = new System.Drawing.Size(153, 32);
@@ -4716,7 +4761,7 @@
             this.PlayPlaylistPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayPlaylistPanel.Location = new System.Drawing.Point(250, 0);
             this.PlayPlaylistPanel.Name = "PlayPlaylistPanel";
-            this.PlayPlaylistPanel.Size = new System.Drawing.Size(756, 610);
+            this.PlayPlaylistPanel.Size = new System.Drawing.Size(756, 611);
             this.PlayPlaylistPanel.TabIndex = 8;
             // 
             // PlayPlaylistChooseMultimediaButton
@@ -4851,7 +4896,7 @@
             this.PlayPlaylistPlayerPanel.Controls.Add(this.PlayPlaylistPreviousButton);
             this.PlayPlaylistPlayerPanel.Controls.Add(this.PlayPlaylistPauseButton);
             this.PlayPlaylistPlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PlayPlaylistPlayerPanel.Location = new System.Drawing.Point(0, 587);
+            this.PlayPlaylistPlayerPanel.Location = new System.Drawing.Point(0, 588);
             this.PlayPlaylistPlayerPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayPlaylistPlayerPanel.Name = "PlayPlaylistPlayerPanel";
             this.PlayPlaylistPlayerPanel.Size = new System.Drawing.Size(756, 23);
@@ -5174,7 +5219,7 @@
             this.UserProfileChangeInfoPanel.Location = new System.Drawing.Point(250, 0);
             this.UserProfileChangeInfoPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserProfileChangeInfoPanel.Name = "UserProfileChangeInfoPanel";
-            this.UserProfileChangeInfoPanel.Size = new System.Drawing.Size(756, 610);
+            this.UserProfileChangeInfoPanel.Size = new System.Drawing.Size(756, 611);
             this.UserProfileChangeInfoPanel.TabIndex = 16;
             // 
             // UserProfileChangeInfoConfirmButton
@@ -5444,7 +5489,7 @@
             this.WelcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WelcomeLabel.ForeColor = System.Drawing.Color.White;
-            this.WelcomeLabel.Location = new System.Drawing.Point(29, -85);
+            this.WelcomeLabel.Location = new System.Drawing.Point(29, -84);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(510, 55);
             this.WelcomeLabel.TabIndex = 0;
@@ -5480,7 +5525,7 @@
             this.WelcomePanel.Location = new System.Drawing.Point(250, 0);
             this.WelcomePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.WelcomePanel.Name = "WelcomePanel";
-            this.WelcomePanel.Size = new System.Drawing.Size(756, 610);
+            this.WelcomePanel.Size = new System.Drawing.Size(756, 611);
             this.WelcomePanel.TabIndex = 0;
             this.WelcomePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.WelcomePanel_Paint);
             // 
@@ -6056,9 +6101,9 @@
             this.PlayerMultPanel.Controls.Add(this.PlaySongStopButton);
             this.PlayerMultPanel.Controls.Add(this.ProgressBarMedia);
             this.PlayerMultPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PlayerMultPanel.Location = new System.Drawing.Point(250, 610);
+            this.PlayerMultPanel.Location = new System.Drawing.Point(250, 611);
             this.PlayerMultPanel.Name = "PlayerMultPanel";
-            this.PlayerMultPanel.Size = new System.Drawing.Size(756, 111);
+            this.PlayerMultPanel.Size = new System.Drawing.Size(756, 110);
             this.PlayerMultPanel.TabIndex = 18;
             this.PlayerMultPanel.Visible = false;
             // 
@@ -6276,7 +6321,7 @@
             this.RegisterPanel.Location = new System.Drawing.Point(250, 0);
             this.RegisterPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RegisterPanel.Name = "RegisterPanel";
-            this.RegisterPanel.Size = new System.Drawing.Size(756, 610);
+            this.RegisterPanel.Size = new System.Drawing.Size(756, 611);
             this.RegisterPanel.TabIndex = 19;
             // 
             // RegisterMessageTextBox
@@ -6869,7 +6914,7 @@
             this.PlayVideoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayVideoPanel.Location = new System.Drawing.Point(250, 0);
             this.PlayVideoPanel.Name = "PlayVideoPanel";
-            this.PlayVideoPanel.Size = new System.Drawing.Size(756, 610);
+            this.PlayVideoPanel.Size = new System.Drawing.Size(756, 611);
             this.PlayVideoPanel.TabIndex = 14;
             this.PlayVideoPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PlayVideoPanel_Paint);
             // 
@@ -7078,18 +7123,152 @@
             this.PlayVideoGoBackButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PlayVideoGoBackButton.UseVisualStyleBackColor = true;
             // 
-            // DisplayStartErrorMessage
+            // AddsPanel1
             // 
-            this.DisplayStartErrorMessage.AutoSize = true;
-            this.DisplayStartErrorMessage.BackColor = System.Drawing.Color.Transparent;
-            this.DisplayStartErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DisplayStartErrorMessage.ForeColor = System.Drawing.Color.White;
-            this.DisplayStartErrorMessage.Location = new System.Drawing.Point(251, 406);
-            this.DisplayStartErrorMessage.Name = "DisplayStartErrorMessage";
-            this.DisplayStartErrorMessage.Size = new System.Drawing.Size(344, 20);
-            this.DisplayStartErrorMessage.TabIndex = 65;
-            this.DisplayStartErrorMessage.Text = "ERROR[!] You don\'t have this type of Playlist";
-            this.DisplayStartErrorMessage.Visible = false;
+            this.AddsPanel1.BackColor = System.Drawing.Color.White;
+            this.AddsPanel1.Controls.Add(this.pictureBox8);
+            this.AddsPanel1.Controls.Add(this.pictureBox5);
+            this.AddsPanel1.Controls.Add(this.pictureBox2);
+            this.AddsPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.AddsPanel1.Location = new System.Drawing.Point(0, 69);
+            this.AddsPanel1.Name = "AddsPanel1";
+            this.AddsPanel1.Size = new System.Drawing.Size(133, 542);
+            this.AddsPanel1.TabIndex = 66;
+            this.AddsPanel1.Visible = false;
+            // 
+            // AddsPanel2
+            // 
+            this.AddsPanel2.BackColor = System.Drawing.Color.White;
+            this.AddsPanel2.Controls.Add(this.pictureBox11);
+            this.AddsPanel2.Controls.Add(this.pictureBox10);
+            this.AddsPanel2.Controls.Add(this.pictureBox9);
+            this.AddsPanel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.AddsPanel2.Location = new System.Drawing.Point(631, 69);
+            this.AddsPanel2.Name = "AddsPanel2";
+            this.AddsPanel2.Size = new System.Drawing.Size(125, 542);
+            this.AddsPanel2.TabIndex = 67;
+            this.AddsPanel2.Visible = false;
+            // 
+            // DisplayStartGlobalPlaylistPanel
+            // 
+            this.DisplayStartGlobalPlaylistPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.DisplayStartGlobalPlaylistPanel.Controls.Add(this.GlobalPlaylistSongLabel);
+            this.DisplayStartGlobalPlaylistPanel.Controls.Add(this.GlobalPlaylistVideoLabel);
+            this.DisplayStartGlobalPlaylistPanel.Controls.Add(this.DisplayPlaylistsGlobalPlaylistVideo);
+            this.DisplayStartGlobalPlaylistPanel.Controls.Add(this.DisplayPlaylistsGlobalPlaylistSong);
+            this.DisplayStartGlobalPlaylistPanel.Controls.Add(this.GlobalPlaylistLabel);
+            this.DisplayStartGlobalPlaylistPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DisplayStartGlobalPlaylistPanel.Location = new System.Drawing.Point(133, 69);
+            this.DisplayStartGlobalPlaylistPanel.Name = "DisplayStartGlobalPlaylistPanel";
+            this.DisplayStartGlobalPlaylistPanel.Size = new System.Drawing.Size(498, 161);
+            this.DisplayStartGlobalPlaylistPanel.TabIndex = 68;
+            this.DisplayStartGlobalPlaylistPanel.Visible = false;
+            // 
+            // DisplayStartFavPlaylistPanel
+            // 
+            this.DisplayStartFavPlaylistPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.DisplayStartFavPlaylistPanel.Controls.Add(this.FavPlaylistVideoLabel);
+            this.DisplayStartFavPlaylistPanel.Controls.Add(this.FavPlaylistSongLabel);
+            this.DisplayStartFavPlaylistPanel.Controls.Add(this.DisplayPlaylistsFavoritePlaylistVideos);
+            this.DisplayStartFavPlaylistPanel.Controls.Add(this.DisplayPlaylistsFavoritePlaylistSongs);
+            this.DisplayStartFavPlaylistPanel.Controls.Add(this.FavPlaylistLabel);
+            this.DisplayStartFavPlaylistPanel.Location = new System.Drawing.Point(133, 230);
+            this.DisplayStartFavPlaylistPanel.Name = "DisplayStartFavPlaylistPanel";
+            this.DisplayStartFavPlaylistPanel.Size = new System.Drawing.Size(498, 381);
+            this.DisplayStartFavPlaylistPanel.TabIndex = 69;
+            this.DisplayStartFavPlaylistPanel.Visible = false;
+            // 
+            // DisplayStartPersPlaylistPanel
+            // 
+            this.DisplayStartPersPlaylistPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.DisplayStartPersPlaylistPanel.Controls.Add(this.PersPlaylistSongLabel);
+            this.DisplayStartPersPlaylistPanel.Controls.Add(this.PersPlaylistVideoLabel);
+            this.DisplayStartPersPlaylistPanel.Controls.Add(this.DisplayPlaylistPrefPlaylistVideo);
+            this.DisplayStartPersPlaylistPanel.Controls.Add(this.DisplayPlaylistPrefPlaylistSong);
+            this.DisplayStartPersPlaylistPanel.Controls.Add(this.PersPlaylisLabel);
+            this.DisplayStartPersPlaylistPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.DisplayStartPersPlaylistPanel.Location = new System.Drawing.Point(133, 449);
+            this.DisplayStartPersPlaylistPanel.Name = "DisplayStartPersPlaylistPanel";
+            this.DisplayStartPersPlaylistPanel.Size = new System.Drawing.Size(498, 162);
+            this.DisplayStartPersPlaylistPanel.TabIndex = 70;
+            this.DisplayStartPersPlaylistPanel.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(0, 1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(133, 132);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(0, 132);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(133, 284);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 1;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(0, 414);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(133, 128);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 2;
+            this.pictureBox8.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(1, 1);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(124, 128);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 3;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(0, 413);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(124, 128);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 4;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Location = new System.Drawing.Point(0, 127);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(127, 289);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox11.TabIndex = 5;
+            this.pictureBox11.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.DisplayStartErrorMessage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(133, 423);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(498, 26);
+            this.panel2.TabIndex = 72;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(133, 230);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(498, 25);
+            this.panel1.TabIndex = 71;
             // 
             // FyBuZz
             // 
@@ -7097,14 +7276,14 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 721);
             this.Controls.Add(this.WelcomePanel);
-            this.Controls.Add(this.DisplayStartPanel);
-            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.ProfilePanel);
+            this.Controls.Add(this.DisplayStartPanel);
+            this.Controls.Add(this.AdminMenuPanel);
+            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.CreateProfilePanel);
             this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.CreateVideoPanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
-            this.Controls.Add(this.AdminMenuPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
             this.Controls.Add(this.PlayVideoPanel);
@@ -7143,7 +7322,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.CreateProfilePic2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CreateProfilePic1)).EndInit();
             this.DisplayStartPanel.ResumeLayout(false);
-            this.DisplayStartPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistsFavoritePlaylistVideos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistsFavoritePlaylistSongs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayPlaylistPrefPlaylistVideo)).EndInit();
@@ -7221,6 +7399,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayVideoVideoImageBox)).EndInit();
             this.PlayVideoPanel.ResumeLayout(false);
             this.PlayVideoPanel.PerformLayout();
+            this.AddsPanel1.ResumeLayout(false);
+            this.AddsPanel2.ResumeLayout(false);
+            this.DisplayStartGlobalPlaylistPanel.ResumeLayout(false);
+            this.DisplayStartGlobalPlaylistPanel.PerformLayout();
+            this.DisplayStartFavPlaylistPanel.ResumeLayout(false);
+            this.DisplayStartFavPlaylistPanel.PerformLayout();
+            this.DisplayStartPersPlaylistPanel.ResumeLayout(false);
+            this.DisplayStartPersPlaylistPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -7700,5 +7894,18 @@
         private System.Windows.Forms.Label PersPlaylistSongLabel;
         private System.Windows.Forms.Label PersPlaylistVideoLabel;
         private System.Windows.Forms.Label DisplayStartErrorMessage;
+        private System.Windows.Forms.Panel DisplayStartPersPlaylistPanel;
+        private System.Windows.Forms.Panel DisplayStartFavPlaylistPanel;
+        private System.Windows.Forms.Panel DisplayStartGlobalPlaylistPanel;
+        private System.Windows.Forms.Panel AddsPanel2;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.Panel AddsPanel1;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }
