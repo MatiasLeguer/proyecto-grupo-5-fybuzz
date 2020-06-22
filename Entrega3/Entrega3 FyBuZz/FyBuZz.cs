@@ -174,6 +174,8 @@ namespace Entrega3_FyBuZz
         private string formatProgressBar = "";
         private double durationWav = 0;
         private int ticks = 0;
+        private bool isShowing;
+        private bool volumeIcon = false;
 
         //--------------------------------------------------------------------------------
 
@@ -513,7 +515,8 @@ namespace Entrega3_FyBuZz
 
                 }
 
-                SideMenuPanel.Visible = true;
+                //SideMenuPanel.Visible = true;
+                SideMenuPanel.Width = 0;
                 PlayerMultPanel.Visible = true;
                 SearchGeneralTopPanel.Visible = true;
                 if (userInfo[3] == "standard")
@@ -6394,6 +6397,66 @@ namespace Entrega3_FyBuZz
             }
         }
 
-        
+        private void SideMenuShowHideIconButton_Click(object sender, EventArgs e)
+        {
+            if (SideMenuPanel.Visible)
+            {
+                isShowing = false;
+                TimerSidePanel.Start();
+            }
+            else
+            {
+                isShowing = true;
+                SideMenuPanel.Show();
+                TimerSidePanel.Start();
+            }
+        }
+
+        private void TimerSidePanel_Tick(object sender, EventArgs e)
+        {
+            if (isShowing)
+            {
+                if(SideMenuPanel.Width >= 246)
+                {
+                    TimerSidePanel.Stop();
+                    SideMenuPanel.Width = 246;
+                }
+                else
+                {
+                    SideMenuPanel.Width += 35;
+                }
+            }
+            else
+            {
+                if (SideMenuPanel.Width <= 0)
+                {
+                    SideMenuPanel.Hide();
+                    TimerSidePanel.Stop();
+                    SideMenuPanel.Width = 0;
+                }
+                else
+                {
+                    SideMenuPanel.Width -= 35;
+                }
+            }
+        }
+
+        private void VolumeIconButton_Click(object sender, EventArgs e)
+        {
+            switch (volumeIcon)
+            {
+                case true:
+                    PlayerMultPanelMtrackVB.Value = 25;
+                    VolumeIconButton.IconChar = FontAwesome.Sharp.IconChar.VolumeUp;
+                    volumeIcon = false;
+                    break;
+
+                case false:
+                    PlayerMultPanelMtrackVB.Value = 0;
+                    VolumeIconButton.IconChar = FontAwesome.Sharp.IconChar.VolumeMute;
+                    volumeIcon = true;
+                    break;
+            }
+        }
     }
 }
