@@ -1091,10 +1091,10 @@
             this.PlaySongChooseUserButton.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
             this.PlaySongChooseUserButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongChooseUserButton.IconSize = 20;
-            this.PlaySongChooseUserButton.Location = new System.Drawing.Point(586, 484);
+            this.PlaySongChooseUserButton.Location = new System.Drawing.Point(586, 499);
             this.PlaySongChooseUserButton.Name = "PlaySongChooseUserButton";
             this.PlaySongChooseUserButton.Rotation = 0D;
-            this.PlaySongChooseUserButton.Size = new System.Drawing.Size(107, 33);
+            this.PlaySongChooseUserButton.Size = new System.Drawing.Size(135, 41);
             this.PlaySongChooseUserButton.TabIndex = 64;
             this.PlaySongChooseUserButton.Text = "Confirm";
             this.PlaySongChooseUserButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1111,10 +1111,10 @@
             this.PlaySongShareButton.IconChar = FontAwesome.Sharp.IconChar.SmileWink;
             this.PlaySongShareButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongShareButton.IconSize = 40;
-            this.PlaySongShareButton.Location = new System.Drawing.Point(573, 375);
+            this.PlaySongShareButton.Location = new System.Drawing.Point(581, 372);
             this.PlaySongShareButton.Name = "PlaySongShareButton";
             this.PlaySongShareButton.Rotation = 0D;
-            this.PlaySongShareButton.Size = new System.Drawing.Size(128, 59);
+            this.PlaySongShareButton.Size = new System.Drawing.Size(151, 59);
             this.PlaySongShareButton.TabIndex = 63;
             this.PlaySongShareButton.Text = "Share";
             this.PlaySongShareButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1151,7 +1151,7 @@
             this.PlaySongAddQueueButton.IconChar = FontAwesome.Sharp.IconChar.Quinscape;
             this.PlaySongAddQueueButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongAddQueueButton.IconSize = 40;
-            this.PlaySongAddQueueButton.Location = new System.Drawing.Point(342, 375);
+            this.PlaySongAddQueueButton.Location = new System.Drawing.Point(333, 373);
             this.PlaySongAddQueueButton.Name = "PlaySongAddQueueButton";
             this.PlaySongAddQueueButton.Rotation = 0D;
             this.PlaySongAddQueueButton.Size = new System.Drawing.Size(216, 59);
@@ -1171,10 +1171,10 @@
             this.PlaySongAddToPlaylistButton.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
             this.PlaySongAddToPlaylistButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongAddToPlaylistButton.IconSize = 40;
-            this.PlaySongAddToPlaylistButton.Location = new System.Drawing.Point(86, 374);
+            this.PlaySongAddToPlaylistButton.Location = new System.Drawing.Point(30, 374);
             this.PlaySongAddToPlaylistButton.Name = "PlaySongAddToPlaylistButton";
             this.PlaySongAddToPlaylistButton.Rotation = 0D;
-            this.PlaySongAddToPlaylistButton.Size = new System.Drawing.Size(245, 60);
+            this.PlaySongAddToPlaylistButton.Size = new System.Drawing.Size(276, 59);
             this.PlaySongAddToPlaylistButton.TabIndex = 60;
             this.PlaySongAddToPlaylistButton.Text = "Add To Playlist";
             this.PlaySongAddToPlaylistButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1191,10 +1191,10 @@
             this.PlaySongChoosePlsButton.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
             this.PlaySongChoosePlsButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongChoosePlsButton.IconSize = 20;
-            this.PlaySongChoosePlsButton.Location = new System.Drawing.Point(145, 484);
+            this.PlaySongChoosePlsButton.Location = new System.Drawing.Point(115, 504);
             this.PlaySongChoosePlsButton.Name = "PlaySongChoosePlsButton";
             this.PlaySongChoosePlsButton.Rotation = 0D;
-            this.PlaySongChoosePlsButton.Size = new System.Drawing.Size(107, 33);
+            this.PlaySongChoosePlsButton.Size = new System.Drawing.Size(122, 41);
             this.PlaySongChoosePlsButton.TabIndex = 59;
             this.PlaySongChoosePlsButton.Text = "Confirm";
             this.PlaySongChoosePlsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1211,10 +1211,10 @@
             this.PlaySongShowLyrics.IconChar = FontAwesome.Sharp.IconChar.MicrophoneAlt;
             this.PlaySongShowLyrics.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongShowLyrics.IconSize = 30;
-            this.PlaySongShowLyrics.Location = new System.Drawing.Point(561, 167);
+            this.PlaySongShowLyrics.Location = new System.Drawing.Point(555, 88);
             this.PlaySongShowLyrics.Name = "PlaySongShowLyrics";
             this.PlaySongShowLyrics.Rotation = 0D;
-            this.PlaySongShowLyrics.Size = new System.Drawing.Size(110, 35);
+            this.PlaySongShowLyrics.Size = new System.Drawing.Size(140, 50);
             this.PlaySongShowLyrics.TabIndex = 58;
             this.PlaySongShowLyrics.Text = "Lyrics";
             this.PlaySongShowLyrics.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1329,7 +1329,7 @@
             // PlaySongChooseUserDomainUp
             // 
             this.PlaySongChooseUserDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlaySongChooseUserDomainUp.Location = new System.Drawing.Point(550, 380);
+            this.PlaySongChooseUserDomainUp.Location = new System.Drawing.Point(563, 460);
             this.PlaySongChooseUserDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlaySongChooseUserDomainUp.Name = "PlaySongChooseUserDomainUp";
             this.PlaySongChooseUserDomainUp.Size = new System.Drawing.Size(171, 27);
@@ -1373,13 +1373,13 @@
             // 
             this.PlaySongDisplayLyrics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.PlaySongDisplayLyrics.ForeColor = System.Drawing.Color.White;
-            this.PlaySongDisplayLyrics.Location = new System.Drawing.Point(113, 155);
+            this.PlaySongDisplayLyrics.Location = new System.Drawing.Point(113, 171);
             this.PlaySongDisplayLyrics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlaySongDisplayLyrics.Multiline = true;
             this.PlaySongDisplayLyrics.Name = "PlaySongDisplayLyrics";
             this.PlaySongDisplayLyrics.ReadOnly = true;
             this.PlaySongDisplayLyrics.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.PlaySongDisplayLyrics.Size = new System.Drawing.Size(566, 149);
+            this.PlaySongDisplayLyrics.Size = new System.Drawing.Size(542, 133);
             this.PlaySongDisplayLyrics.TabIndex = 46;
             this.PlaySongDisplayLyrics.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlaySongDisplayLyrics.Visible = false;
@@ -1393,6 +1393,7 @@
             this.PlaySongShowLyricsFeo.TabIndex = 45;
             this.PlaySongShowLyricsFeo.Text = "Lyrics";
             this.PlaySongShowLyricsFeo.UseVisualStyleBackColor = true;
+            this.PlaySongShowLyricsFeo.Visible = false;
             this.PlaySongShowLyricsFeo.Click += new System.EventHandler(this.PlaySongShowLyrics_Click);
             // 
             // PlaySongRateMessageTextBox
@@ -1432,6 +1433,7 @@
             0,
             0,
             0});
+            this.PlaySongRateNumDomainUpFeo.Visible = false;
             // 
             // PlaysSongRateButtonFeo
             // 
@@ -1472,10 +1474,10 @@
             // PlaySongChoosePlsDomainUp
             // 
             this.PlaySongChoosePlsDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlaySongChoosePlsDomainUp.Location = new System.Drawing.Point(116, 382);
+            this.PlaySongChoosePlsDomainUp.Location = new System.Drawing.Point(66, 462);
             this.PlaySongChoosePlsDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlaySongChoosePlsDomainUp.Name = "PlaySongChoosePlsDomainUp";
-            this.PlaySongChoosePlsDomainUp.Size = new System.Drawing.Size(171, 27);
+            this.PlaySongChoosePlsDomainUp.Size = new System.Drawing.Size(218, 27);
             this.PlaySongChoosePlsDomainUp.TabIndex = 39;
             this.PlaySongChoosePlsDomainUp.Text = "Choose PlayList";
             this.PlaySongChoosePlsDomainUp.Visible = false;
@@ -1528,11 +1530,12 @@
             this.PlaySongGoBackButtonFeo.TabIndex = 33;
             this.PlaySongGoBackButtonFeo.Text = "Go Back";
             this.PlaySongGoBackButtonFeo.UseVisualStyleBackColor = true;
+            this.PlaySongGoBackButtonFeo.Visible = false;
             this.PlaySongGoBackButtonFeo.Click += new System.EventHandler(this.PlaySongGoBackButton_Click);
             // 
             // PlaySongImageBoxImage
             // 
-            this.PlaySongImageBoxImage.Location = new System.Drawing.Point(213, 153);
+            this.PlaySongImageBoxImage.Location = new System.Drawing.Point(235, 168);
             this.PlaySongImageBoxImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlaySongImageBoxImage.Name = "PlaySongImageBoxImage";
             this.PlaySongImageBoxImage.Size = new System.Drawing.Size(330, 148);
@@ -7530,7 +7533,7 @@
             // PlayVideoChooseUserDomainUp
             // 
             this.PlayVideoChooseUserDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayVideoChooseUserDomainUp.Location = new System.Drawing.Point(304, 561);
+            this.PlayVideoChooseUserDomainUp.Location = new System.Drawing.Point(225, 567);
             this.PlayVideoChooseUserDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoChooseUserDomainUp.Name = "PlayVideoChooseUserDomainUp";
             this.PlayVideoChooseUserDomainUp.Size = new System.Drawing.Size(171, 27);
@@ -7540,7 +7543,7 @@
             // 
             // PlayVideoChooseUserButton
             // 
-            this.PlayVideoChooseUserButton.Location = new System.Drawing.Point(496, 562);
+            this.PlayVideoChooseUserButton.Location = new System.Drawing.Point(417, 568);
             this.PlayVideoChooseUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoChooseUserButton.Name = "PlayVideoChooseUserButton";
             this.PlayVideoChooseUserButton.Size = new System.Drawing.Size(75, 26);
@@ -7714,7 +7717,7 @@
             this.PlayVideoShareButton.IconChar = FontAwesome.Sharp.IconChar.ShareAlt;
             this.PlayVideoShareButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayVideoShareButton.IconSize = 30;
-            this.PlayVideoShareButton.Location = new System.Drawing.Point(404, 56);
+            this.PlayVideoShareButton.Location = new System.Drawing.Point(23, 559);
             this.PlayVideoShareButton.Name = "PlayVideoShareButton";
             this.PlayVideoShareButton.Rotation = 0D;
             this.PlayVideoShareButton.Size = new System.Drawing.Size(123, 45);
@@ -8059,10 +8062,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 721);
+            this.Controls.Add(this.PlaySongPanel);
+            this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.WelcomePanel);
             this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.DisplayStartPanel);
-            this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.SearcUserPanel);
@@ -8074,7 +8078,6 @@
             this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.AdminMenuPanel);
             this.Controls.Add(this.CreateProfilePanel);
-            this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayerMultPanel);
             this.Controls.Add(this.SideMenuPanel);
             this.Controls.Add(this.DisplayPlaylistPanel);
