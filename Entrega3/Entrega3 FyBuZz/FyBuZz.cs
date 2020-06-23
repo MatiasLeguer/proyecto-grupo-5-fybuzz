@@ -1879,31 +1879,35 @@ namespace Entrega3_FyBuZz
         //-------------------------------------------------------------------------------------------
         private void PlaySongStopButton_Click(object sender, EventArgs e)
         {
-            string[] infoMult = PlaySongSongPlaying.Text.Split(':');
-            string songName = infoMult[0];
-            string artistName = infoMult[1];
-
-            List<Song> songDataBase = new List<Song>();
-            songDataBase = OnSearchSongButton_Click();
-            foreach (Song s in songDataBase)
+            if (PlaySongSongPlaying.Text.Length > 0)
             {
-                if (s.Name == songName && s.Artist == artistName)
+                string[] infoMult = PlaySongSongPlaying.Text.Split(':');
+                string songName = infoMult[0];
+                string artistName = infoMult[1];
+
+                List<Song> songDataBase = new List<Song>();
+                songDataBase = OnSearchSongButton_Click();
+                foreach (Song s in songDataBase)
                 {
-                    if (s.Format == ".mp3")
+                    if (s.Name == songName && s.Artist == artistName)
                     {
-                        windowsMediaPlayer.Ctlcontrols.pause();
-                        ProgressTimer.Stop();
-                        break;
+                        if (s.Format == ".mp3")
+                        {
+                            windowsMediaPlayer.Ctlcontrols.pause();
+                            ProgressTimer.Stop();
+                            break;
+                        }
+                        else if (s.Format == ".wav")
+                        {
+                            TimerWav.Stop();
+                            soundPlayer.Stop();
+                            break;
+                        }
+                        s.PresentTime = (double)PlayerMultPanelMtrackPB.Value;
                     }
-                    else if (s.Format == ".wav")
-                    {
-                        TimerWav.Stop();
-                        soundPlayer.Stop();
-                        break;
-                    }
-                    s.PresentTime = (double)PlayerMultPanelMtrackPB.Value;
                 }
             }
+
         }
         private void PlaySongLikeButton_Click(object sender, EventArgs e)
         {
@@ -1932,32 +1936,36 @@ namespace Entrega3_FyBuZz
 
         private void PlaySongPlayButton_Click_1(object sender, EventArgs e)
         {
-            string[] infoMult = PlaySongSongPlaying.Text.Split(':');
-            string songName = infoMult[0];
-            string artistName = infoMult[1];
-
-            List<Song> songDataBase = new List<Song>();
-            songDataBase = OnSearchSongButton_Click();
-            foreach (Song s in songDataBase)
+            if (PlaySongSongPlaying.Text.Length > 0)
             {
-                if (s.Name == songName && s.Artist == artistName)
+                string[] infoMult = PlaySongSongPlaying.Text.Split(':');
+                string songName = infoMult[0];
+                string artistName = infoMult[1];
+
+                List<Song> songDataBase = new List<Song>();
+                songDataBase = OnSearchSongButton_Click();
+                foreach (Song s in songDataBase)
                 {
-                    if (s.Format == ".mp3")
+                    if (s.Name == songName && s.Artist == artistName)
                     {
-                        formatProgressBar = s.Format;
-                        windowsMediaPlayer.Ctlcontrols.play();
-                        break;
-                    }
-                    else if (s.Format == ".wav")
-                    {
-                        formatProgressBar = s.Format;
-                        durationWav = (s.Duration * 60);
-                        soundPlayer.Play();
-                        TimerWav.Start();
-                        PlayerMultPanelMtrackPB.Maximum = (int)durationWav;
+                        if (s.Format == ".mp3")
+                        {
+                            formatProgressBar = s.Format;
+                            windowsMediaPlayer.Ctlcontrols.play();
+                            break;
+                        }
+                        else if (s.Format == ".wav")
+                        {
+                            formatProgressBar = s.Format;
+                            durationWav = (s.Duration * 60);
+                            soundPlayer.Play();
+                            TimerWav.Start();
+                            PlayerMultPanelMtrackPB.Maximum = (int)durationWav;
+                        }
                     }
                 }
             }
+            
         }
 
         private void PlaySongAddQueueButton_Click(object sender, EventArgs e)
@@ -2102,10 +2110,10 @@ namespace Entrega3_FyBuZz
             PlaySongDisplayLyrics.Visible = false;
             PlaySongDisplayLyrics.Clear();
             List<List<string>> songInfoMVC = ReturnAllSongsInfo();
-            string[] infoSong = SearchSearchResultsDomainUp.Text.Split(':');
+            string[] infoSong = PlaySongSongPlaying.Text.Split(':');
 
-            string nameSong = infoSong[1];
-            string artistSong = infoSong[3];
+            string nameSong = infoSong[0];
+            string artistSong = infoSong[1];
 
             if (songIndex == -1)
             {
@@ -2154,8 +2162,7 @@ namespace Entrega3_FyBuZz
                 }
                 PlayerPlayingLabel.AppendText("Song playing: " + songP.Name + songP.Format);
                 SearchPlayingLabel.AppendText("Song playing: " + songP.Name + songP.Format);
-                //OJO ACA
-                SearchSearchResultsDomainUp.SelectedIndex = SearchSearchResultsDomainUp.SelectedIndex + 1;
+               
             }
             else
             {
@@ -2176,10 +2183,10 @@ namespace Entrega3_FyBuZz
             PlaySongDisplayLyrics.Visible = false;
             PlaySongDisplayLyrics.Clear();
             List<List<string>> songInfoMVC = ReturnAllSongsInfo();
-            string[] infoSong = SearchSearchResultsDomainUp.Text.Split(':');
+            string[] infoSong = PlaySongSongPlaying.Text.Split(':');
 
-            string nameSong = infoSong[1];
-            string artistSong = infoSong[3];
+            string nameSong = infoSong[0];
+            string artistSong = infoSong[1];
 
             if (songIndex == -1)
             {
@@ -2227,8 +2234,6 @@ namespace Entrega3_FyBuZz
                 }
                 PlayerPlayingLabel.AppendText("Song playing: " + songS.Name + songS.Format);
                 SearchPlayingLabel.AppendText("Song playing: " + songS.Name + songS.Format);
-                //OJO ACA
-                SearchSearchResultsDomainUp.SelectedIndex = SearchSearchResultsDomainUp.SelectedIndex - 1;
             }
             else
             {
@@ -6570,5 +6575,6 @@ namespace Entrega3_FyBuZz
             }
             
         }
+
     }
 }
