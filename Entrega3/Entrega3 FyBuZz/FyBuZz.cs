@@ -524,7 +524,7 @@ namespace Entrega3_FyBuZz
 
                 Profile profileGetter = OnProfilesChooseProfile_Click(profileProfileName, username, password);
 
-                if (profileGetter.SharedMult != null)
+                if (DisplayStartNotificationDomainUp.Items.Count != 0)
                 {
                     SharedMultNotificationButton.Visible = true;
                 }
@@ -537,6 +537,7 @@ namespace Entrega3_FyBuZz
                     notification = 0;
                 }
                 DisplayStartProfileInfoPanel.Visible = false;
+                PlayerMultPanel.Visible = false;
                 DisplayStartPanel.BringToFront();
             }
             else
@@ -2593,6 +2594,11 @@ namespace Entrega3_FyBuZz
 
         private void PlaySongGoBackButton_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void PlaySongGoBackButton_Click_1(object sender, EventArgs e)
+        {
+            PlayerMultPanel.Visible = true;
             PlaySongChooseUserButton.Visible = false;
             PlaySongChooseUserDomainUp.Visible = false;
             PlaySongSkipSongButton.Visible = true;
@@ -4312,6 +4318,11 @@ namespace Entrega3_FyBuZz
         //GO BACK/CLOSE
         private void PlayPlaylistGoBackButton_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void PlayPlaylistGoBackButton_Click_1(object sender, EventArgs e)
+        {
+            PlayerMultPanel.Visible = true;
             PlayPlaylistShowMultimedia.ResetText();
             SearchPlayingLabel.Clear();
             windowsMediaPlayer.Ctlcontrols.stop();
@@ -6427,14 +6438,15 @@ namespace Entrega3_FyBuZz
         }
         private void MultimediaButton_Click_1(object sender, EventArgs e)
         {
-
+            SideMenuPanel.Width = 0;
+            SideMenuPanel.Hide();
             PlayerMultPanel.Visible = false;
             SearchPanel.BringToFront();
         }
 
         private void PlayListsButton_Click_1(object sender, EventArgs e)
         {
-            //Codigo de Los Cabros....
+            DisplayStartPanel.BringToFront();
             MostrarSubMenus(PlayListsOptionsPanel);
         }
 
@@ -6445,6 +6457,8 @@ namespace Entrega3_FyBuZz
 
         private void AccountSettingsButton_Click(object sender, EventArgs e)
         {
+            SideMenuPanel.Width = 0;
+            SideMenuPanel.Hide();
             //MostrarSubMenus(AccountSettingsPanel);
             AccountSettingsUsernameTextBox.Clear();
             AccountSettingsPasswordTextBox.Clear();
@@ -6504,6 +6518,8 @@ namespace Entrega3_FyBuZz
         }
         private void AdminMenuButton_Click(object sender, EventArgs e)
         {
+            SideMenuPanel.Width = 0;
+            SideMenuPanel.Hide();
             AdminMenuPanel.BringToFront();
         }
 
@@ -6784,6 +6800,8 @@ namespace Entrega3_FyBuZz
 
         private void ProfileInfoAccountSettingsButton_Click(object sender, EventArgs e)
         {
+            SideMenuPanel.Width = 0;
+            SideMenuPanel.Hide();
             List<string> userGetter = OnLogInLogInButton_Clicked2(UserLogInTextBox.Text);
             DisplayStartProfileInfoPanel.Visible = false;
             if (userGetter[3] == "standard")
@@ -6907,5 +6925,7 @@ namespace Entrega3_FyBuZz
 
         }
 
+
+        
     }
 }
