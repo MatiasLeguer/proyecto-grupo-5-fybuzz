@@ -176,6 +176,7 @@ namespace Entrega3_FyBuZz
         private int ticks = 0;
         private bool isShowing;
         private bool volumeIcon = false;
+        private bool isInPlaylist = false;
 
         //--------------------------------------------------------------------------------
 
@@ -1186,6 +1187,7 @@ namespace Entrega3_FyBuZz
 
             if (multimediaType.Contains("Song:") == true && multimediaType.Contains("Artist:") == true)
             {
+                
                 string[] MultimediaType = SearchSearchResultsDomainUp.Text.Split(':');
                 List<string> songMVCInfo = GetSongButton(MultimediaType[1], MultimediaType[3]);
                 soundPlayer.Stop();
@@ -1212,6 +1214,7 @@ namespace Entrega3_FyBuZz
                     }
                     else
                     {
+                        isInPlaylist = false;
 
                         if (songMVCInfo[6].Contains(".mp3") == true)
                         {
@@ -1288,7 +1291,7 @@ namespace Entrega3_FyBuZz
             }
             else if (multimediaType.Contains("PlayList Name:") == true)
             {
-
+                isInPlaylist = true;
                 string result = SearchSearchResultsDomainUp.Text;
                 string plName = "";
                 foreach (PlayList playList in playListsDataBase)
@@ -1941,34 +1944,63 @@ namespace Entrega3_FyBuZz
         //-------------------------------------------------------------------------------------------
         private void PlaySongStopButton_Click(object sender, EventArgs e)
         {
-            if (PlaySongSongPlaying.Text.Length > 0)
+
+            if (isInPlaylist)
             {
-                string[] infoMult = PlaySongSongPlaying.Text.Split(':');
-                string songName = infoMult[0];
-                string artistName = infoMult[1];
 
                 List<Song> songDataBase = new List<Song>();
                 songDataBase = OnSearchSongButton_Click();
-                foreach (Song s in songDataBase)
+                string ex = PlayPlaylistShowMultimedia.Text;
+                foreach (Song song in songDataBase)
                 {
-                    if (s.Name == songName && s.Artist == artistName)
+                    if (ex.Contains("Song:") && song.Format == ".mp3")
                     {
-                        if (s.Format == ".mp3")
-                        {
-                            windowsMediaPlayer.Ctlcontrols.pause();
-                            ProgressTimer.Stop();
-                            break;
-                        }
-                        else if (s.Format == ".wav")
-                        {
-                            TimerWav.Stop();
-                            soundPlayer.Stop();
-                            break;
-                        }
-                        s.PresentTime = (double)PlayerMultPanelMtrackPB.Value;
+                        formatProgressBar = song.Format;
+                        windowsMediaPlayer.Ctlcontrols.pause();
+                        ProgressTimer.Stop();
+                        break;
+                    }
+                    else if (ex.Contains("Song:") && song.Format == ".wav")
+                    {
+                        formatProgressBar = song.Format;
+                        soundPlayer.Stop();
+                        ProgressTimer.Stop();
                     }
                 }
             }
+
+            else
+            {
+                if (PlaySongSongPlaying.Text.Length > 0)
+                {
+                    string[] infoMult = PlaySongSongPlaying.Text.Split(':');
+                    string songName = infoMult[0];
+                    string artistName = infoMult[1];
+
+                    List<Song> songDataBase = new List<Song>();
+                    songDataBase = OnSearchSongButton_Click();
+                    foreach (Song s in songDataBase)
+                    {
+                        if (s.Name == songName && s.Artist == artistName)
+                        {
+                            if (s.Format == ".mp3")
+                            {
+                                windowsMediaPlayer.Ctlcontrols.pause();
+                                ProgressTimer.Stop();
+                                break;
+                            }
+                            else if (s.Format == ".wav")
+                            {
+                                TimerWav.Stop();
+                                soundPlayer.Stop();
+                                break;
+                            }
+                            s.PresentTime = (double)PlayerMultPanelMtrackPB.Value;
+                        }
+                    }
+                }
+            }
+            
 
         }
         private void PlaySongLikeButton_Click(object sender, EventArgs e)
@@ -1998,35 +2030,63 @@ namespace Entrega3_FyBuZz
 
         private void PlaySongPlayButton_Click_1(object sender, EventArgs e)
         {
-            if (PlaySongSongPlaying.Text.Length > 0)
+            if (isInPlaylist)
             {
-                string[] infoMult = PlaySongSongPlaying.Text.Split(':');
-                string songName = infoMult[0];
-                string artistName = infoMult[1];
-
                 List<Song> songDataBase = new List<Song>();
                 songDataBase = OnSearchSongButton_Click();
-                foreach (Song s in songDataBase)
+                string ex = PlayPlaylistShowMultimedia.Text;
+                foreach (Song song in songDataBase)
                 {
-                    if (s.Name == songName && s.Artist == artistName)
+                    if (ex.Contains("Song:") && song.Format == ".mp3")
                     {
-                        if (s.Format == ".mp3")
+                        formatProgressBar = song.Format;
+                        windowsMediaPlayer.Ctlcontrols.play();
+                        ProgressTimer.Start();
+                        break;
+                    }
+                    else if (ex.Contains("Song:") && song.Format == ".wav")
+                    {
+                        formatProgressBar = song.Format;
+                        soundPlayer.Play();
+                        ProgressTimer.Start();
+                    }
+                }
+            }
+            else
+            {
+                if (PlaySongSongPlaying.Text.Length > 0)
+                {
+                    string[] infoMult = PlaySongSongPlaying.Text.Split(':');
+                    string songName = infoMult[0];
+                    string artistName = infoMult[1];
+
+                    List<Song> songDataBase = new List<Song>();
+                    songDataBase = OnSearchSongButton_Click();
+                    foreach (Song s in songDataBase)
+                    {
+                        if (s.Name == songName && s.Artist == artistName)
                         {
-                            formatProgressBar = s.Format;
-                            windowsMediaPlayer.Ctlcontrols.play();
-                            break;
-                        }
-                        else if (s.Format == ".wav")
-                        {
-                            formatProgressBar = s.Format;
-                            durationWav = (s.Duration * 60);
-                            soundPlayer.Play();
-                            TimerWav.Start();
-                            PlayerMultPanelMtrackPB.Maximum = (int)durationWav;
+                            if (s.Format == ".mp3")
+                            {
+                                formatProgressBar = s.Format;
+                                windowsMediaPlayer.Ctlcontrols.play();
+                                break;
+                            }
+                            else if (s.Format == ".wav")
+                            {
+                                formatProgressBar = s.Format;
+                                durationWav = (s.Duration * 60);
+                                soundPlayer.Play();
+                                TimerWav.Start();
+                                PlayerMultPanelMtrackPB.Maximum = (int)durationWav;
+                            }
                         }
                     }
                 }
             }
+            
+            
+            
             
         }
 
@@ -2167,72 +2227,81 @@ namespace Entrega3_FyBuZz
         }
         private void PlaySongPreviousSongButton_Click(object sender, EventArgs e)
         {
-            TimerWav.Stop();
-            ticks = 0;
-            PlaySongDisplayLyrics.Visible = false;
-            PlaySongDisplayLyrics.Clear();
-            List<List<string>> songInfoMVC = ReturnAllSongsInfo();
-            string[] infoSong = PlaySongSongPlaying.Text.Split(':');
-
-            string nameSong = infoSong[0];
-            string artistSong = infoSong[1];
-
-            if (songIndex == -1)
+            if (isInPlaylist)
             {
-                int cont = 0;
-                foreach (List<string> infoSongEsp in songInfoMVC)
-                {
-                    if (nameSong.Contains(infoSongEsp[0]) && artistSong.Contains(infoSongEsp[1]))
-                    {
-                        break;
-                    }
-                    cont++;
-                }
-                songIndex = cont;
+                PlayPlaylistPreviousButton.PerformClick();
             }
 
-
-            int previousSong = 1;
-
-
-            Song songP = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null, queueListSongs, songIndex);
-            if (songP != null)
-            {
-                PlaySongSongPlaying.Clear();
-                PlaySongSongPlaying.AppendText(songP.Name + ":" + songP.Artist);
-                PlayerPlayingLabel.Clear();
-                SearchPlayingLabel.Clear();
-                if (songP.Format == ".mp3")
-                {
-                    windowsMediaPlayer.Ctlcontrols.stop();
-                    soundPlayer.Stop();
-                    formatProgressBar = songP.Format;
-                    windowsMediaPlayer.URL = songP.SongFile;
-                    windowsMediaPlayer.Ctlcontrols.play();
-                }
-                else if (songP.Format == ".wav")
-                {
-                    windowsMediaPlayer.Ctlcontrols.stop();
-                    soundPlayer.Stop();
-                    formatProgressBar = songP.Format;
-                    durationWav = (songP.Duration * 60);
-                    soundPlayer.SoundLocation = songP.SongFile;
-                    soundPlayer.Play();
-                    TimerWav.Start();
-                    PlayerMultPanelMtrackPB.Maximum = (int)durationWav;
-
-                }
-                PlayerPlayingLabel.AppendText("Song playing: " + songP.Name + songP.Format);
-                SearchPlayingLabel.AppendText("Song playing: " + songP.Name + songP.Format);
-               
-            }
             else
             {
-                PlayerPlayingLabel.Clear();
-                PlayerPlayingLabel.AppendText("ERROR[!] ~Song wasn't previoused!");
+                TimerWav.Stop();
+                ticks = 0;
+                PlaySongDisplayLyrics.Visible = false;
+                PlaySongDisplayLyrics.Clear();
+                List<List<string>> songInfoMVC = ReturnAllSongsInfo();
+                string[] infoSong = PlaySongSongPlaying.Text.Split(':');
+
+                string nameSong = infoSong[0];
+                string artistSong = infoSong[1];
+
+                if (songIndex == -1)
+                {
+                    int cont = 0;
+                    foreach (List<string> infoSongEsp in songInfoMVC)
+                    {
+                        if (nameSong.Contains(infoSongEsp[0]) && artistSong.Contains(infoSongEsp[1]))
+                        {
+                            break;
+                        }
+                        cont++;
+                    }
+                    songIndex = cont;
+                }
+
+
+                int previousSong = 1;
+
+
+                Song songP = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null, queueListSongs, songIndex);
+                if (songP != null)
+                {
+                    PlaySongSongPlaying.Clear();
+                    PlaySongSongPlaying.AppendText(songP.Name + ":" + songP.Artist);
+                    PlayerPlayingLabel.Clear();
+                    SearchPlayingLabel.Clear();
+                    if (songP.Format == ".mp3")
+                    {
+                        windowsMediaPlayer.Ctlcontrols.stop();
+                        soundPlayer.Stop();
+                        formatProgressBar = songP.Format;
+                        windowsMediaPlayer.URL = songP.SongFile;
+                        windowsMediaPlayer.Ctlcontrols.play();
+                    }
+                    else if (songP.Format == ".wav")
+                    {
+                        windowsMediaPlayer.Ctlcontrols.stop();
+                        soundPlayer.Stop();
+                        formatProgressBar = songP.Format;
+                        durationWav = (songP.Duration * 60);
+                        soundPlayer.SoundLocation = songP.SongFile;
+                        soundPlayer.Play();
+                        TimerWav.Start();
+                        PlayerMultPanelMtrackPB.Maximum = (int)durationWav;
+
+                    }
+                    PlayerPlayingLabel.AppendText("Song playing: " + songP.Name + songP.Format);
+                    SearchPlayingLabel.AppendText("Song playing: " + songP.Name + songP.Format);
+
+                }
+                else
+                {
+                    PlayerPlayingLabel.Clear();
+                    PlayerPlayingLabel.AppendText("ERROR[!] ~Song wasn't previoused!");
+                }
+                if (songIndex == 0) songIndex = songInfoMVC.Count() - 1;
+                else songIndex--;
             }
-            if (songIndex == 0) songIndex = songInfoMVC.Count() - 1;
-            else songIndex--;
+            
 
         }
 
@@ -2240,69 +2309,78 @@ namespace Entrega3_FyBuZz
 
         private void PlaySongSkipSongButton_Click(object sender, EventArgs e)
         {
-            TimerWav.Stop();
-            ticks = 0;
-            PlaySongDisplayLyrics.Visible = false;
-            PlaySongDisplayLyrics.Clear();
-            List<List<string>> songInfoMVC = ReturnAllSongsInfo();
-            string[] infoSong = PlaySongSongPlaying.Text.Split(':');
-
-            string nameSong = infoSong[0];
-            string artistSong = infoSong[1];
-
-            if (songIndex == -1)
+            if (isInPlaylist)
             {
-                int cont = 0;
-                foreach (List<string> infoSongEsp in songInfoMVC)
-                {
-                    if (nameSong.Contains(infoSongEsp[0]) && artistSong.Contains(infoSongEsp[1]))
-                    {
-                        break;
-                    }
-                    cont++;
-                }
-                songIndex = cont;
+                PlayPlaylistSkipButton.PerformClick();
             }
 
-            int previousSong = 0;
-            if (songIndex == songInfoMVC.Count() - 1) songIndex = -1;
-
-            Song songS = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null, queueListSongs, songIndex);
-
-            if (songS != null)
-            {
-                PlaySongSongPlaying.Clear();
-                PlaySongSongPlaying.AppendText(songS.Name + ":" + songS.Artist);
-                PlayerPlayingLabel.Clear();
-                SearchPlayingLabel.Clear();
-                if (songS.Format == ".mp3")
-                {
-                    windowsMediaPlayer.Ctlcontrols.stop();
-                    soundPlayer.Stop();
-                    formatProgressBar = songS.Format;
-                    windowsMediaPlayer.URL = songS.SongFile;
-                    windowsMediaPlayer.Ctlcontrols.play();
-                }
-                else if (songS.Format == ".wav")
-                {
-                    windowsMediaPlayer.Ctlcontrols.stop();
-                    soundPlayer.Stop();
-                    formatProgressBar = songS.Format;
-                    durationWav = (songS.Duration * 60);
-                    soundPlayer.SoundLocation = songS.SongFile;
-                    soundPlayer.Play();
-                    TimerWav.Start();
-                    PlayerMultPanelMtrackPB.Maximum = (int)durationWav;
-                }
-                PlayerPlayingLabel.AppendText("Song playing: " + songS.Name + songS.Format);
-                SearchPlayingLabel.AppendText("Song playing: " + songS.Name + songS.Format);
-            }
             else
             {
-                PlayerPlayingLabel.Clear();
-                PlayerPlayingLabel.AppendText("ERROR[!] ~Song wasn't skipped!");
+                TimerWav.Stop();
+                ticks = 0;
+                PlaySongDisplayLyrics.Visible = false;
+                PlaySongDisplayLyrics.Clear();
+                List<List<string>> songInfoMVC = ReturnAllSongsInfo();
+                string[] infoSong = PlaySongSongPlaying.Text.Split(':');
+
+                string nameSong = infoSong[0];
+                string artistSong = infoSong[1];
+
+                if (songIndex == -1)
+                {
+                    int cont = 0;
+                    foreach (List<string> infoSongEsp in songInfoMVC)
+                    {
+                        if (nameSong.Contains(infoSongEsp[0]) && artistSong.Contains(infoSongEsp[1]))
+                        {
+                            break;
+                        }
+                        cont++;
+                    }
+                    songIndex = cont;
+                }
+
+                int previousSong = 0;
+                if (songIndex == songInfoMVC.Count() - 1) songIndex = -1;
+
+                Song songS = OnSkipOrPreviousSongButton_Clicked(nameSong, artistSong, previousSong, null, queueListSongs, songIndex);
+
+                if (songS != null)
+                {
+                    PlaySongSongPlaying.Clear();
+                    PlaySongSongPlaying.AppendText(songS.Name + ":" + songS.Artist);
+                    PlayerPlayingLabel.Clear();
+                    SearchPlayingLabel.Clear();
+                    if (songS.Format == ".mp3")
+                    {
+                        windowsMediaPlayer.Ctlcontrols.stop();
+                        soundPlayer.Stop();
+                        formatProgressBar = songS.Format;
+                        windowsMediaPlayer.URL = songS.SongFile;
+                        windowsMediaPlayer.Ctlcontrols.play();
+                    }
+                    else if (songS.Format == ".wav")
+                    {
+                        windowsMediaPlayer.Ctlcontrols.stop();
+                        soundPlayer.Stop();
+                        formatProgressBar = songS.Format;
+                        durationWav = (songS.Duration * 60);
+                        soundPlayer.SoundLocation = songS.SongFile;
+                        soundPlayer.Play();
+                        TimerWav.Start();
+                        PlayerMultPanelMtrackPB.Maximum = (int)durationWav;
+                    }
+                    PlayerPlayingLabel.AppendText("Song playing: " + songS.Name + songS.Format);
+                    SearchPlayingLabel.AppendText("Song playing: " + songS.Name + songS.Format);
+                }
+                else
+                {
+                    PlayerPlayingLabel.Clear();
+                    PlayerPlayingLabel.AppendText("ERROR[!] ~Song wasn't skipped!");
+                }
+                songIndex++;
             }
-            songIndex++;
+            
         }
 
 
@@ -3084,13 +3162,11 @@ namespace Entrega3_FyBuZz
                                         PlaySongProgressBar.Value = 0;
                                         PlaySongTimerTextBox.Clear();
                                         windowsMediaPlayer.URL = choosenPL.Songs[playlistIndex].SongFile;
-                                        DurationTimer.Interval = 1000;
-                                        PlaySongProgressBar.Maximum = (int)(choosenPL.Songs[playlistIndex].Duration * 60);
-                                        SearchProgressBar.Maximum = (int)(choosenPL.Songs[playlistIndex].Duration * 60);
+                                        formatProgressBar = choosenPL.Songs[playlistIndex].Format;
 
                                         PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Songs[playlistIndex].Name + choosenPL.Songs[playlistIndex].Format);
                                         SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Songs[playlistIndex].Name + choosenPL.Songs[playlistIndex].Format);
-                                        DurationTimer.Start();
+                                        ProgressTimer.Start();
                                         windowsMediaPlayer.Ctlcontrols.play();
                                     }
                                     if (playlistIndex == choosenPL.Songs.Count())
@@ -3128,10 +3204,11 @@ namespace Entrega3_FyBuZz
                                         PlaySongProgressBar.Value = 0;
                                         PlaySongTimerTextBox.ResetText();
                                         soundPlayer.SoundLocation = choosenPL.Songs[playlistIndex].SongFile;
+                                        formatProgressBar = choosenPL.Songs[playlistIndex].Format;
                                         soundPlayer.Play();
-                                        DurationTimer.Interval = 1000;
-                                        PlaySongProgressBar.Maximum = (int)(choosenPL.Songs[playlistIndex].Duration * 60);
-                                        SearchProgressBar.Maximum = (int)(choosenPL.Songs[playlistIndex].Duration * 60);
+                                        durationWav = (choosenPL.Songs[playlistIndex].Duration*60);
+                                        ticks = 0;
+                                        TimerWav.Start();
 
                                         PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Songs[playlistIndex].Name + choosenPL.Songs[playlistIndex].Format);
                                         SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Songs[playlistIndex].Name + choosenPL.Songs[playlistIndex].Format);
@@ -3180,13 +3257,11 @@ namespace Entrega3_FyBuZz
                                         PlaySongTimerTextBox.Clear();
 
                                         windowsMediaPlayer.URL = song.SongFile;
-                                        DurationTimer.Interval = 1000;
-                                        PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
-                                        SearchProgressBar.Maximum = (int)(song.Duration * 60);
+                                        formatProgressBar = song.Format;
 
                                         PlayPlaylistMessageBox.AppendText("Playlist playing: " + song.Name + song.Format);
                                         SearchPlayingLabel.AppendText("Playlist playing: " + song.Name + song.Format);
-                                        DurationTimer.Start();
+                                        ProgressTimer.Start();
                                         windowsMediaPlayer.Ctlcontrols.play();
                                         break;
                                     }
@@ -3196,11 +3271,12 @@ namespace Entrega3_FyBuZz
                                         PlaySongProgressBar.Value = 0;
                                         PlaySongTimerTextBox.ResetText();
                                         string file = song.SongFile;
+                                        formatProgressBar = song.Format;
                                         soundPlayer.SoundLocation = file;
                                         soundPlayer.Play();
-                                        DurationTimer.Interval = 1000;
-                                        PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
-                                        SearchProgressBar.Maximum = (int)(song.Duration * 60);
+                                        durationWav = (song.Duration*60);
+                                        ticks = 0;
+                                        TimerWav.Start();
 
                                         PlayPlaylistMessageBox.AppendText("Playlist playing: " + song.Name + song.Format);
                                         SearchPlayingLabel.AppendText("Playlist playing: " + song.Name + song.Format);
@@ -3443,14 +3519,12 @@ namespace Entrega3_FyBuZz
                         PlayPlaylistProgressBarBox.Value = 0;
 
                         windowsMediaPlayer.URL = choosenPL.Songs[playlistIndex].SongFile;
-                        DurationTimer.Interval = 1000;
-                        PlaySongProgressBar.Maximum = (int)(choosenPL.Songs[playlistIndex].Duration * 60);
-                        SearchProgressBar.Maximum = (int)(choosenPL.Songs[playlistIndex].Duration * 60);
+                        formatProgressBar = choosenPL.Songs[playlistIndex].Format;
                         PlayPlaylistProgressBarBox.Maximum = (int)(choosenPL.Songs[playlistIndex].Duration * 60);
 
                         PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Songs[playlistIndex].Name + choosenPL.Songs[playlistIndex].Format);
                         SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Songs[playlistIndex].Name + choosenPL.Songs[playlistIndex].Format);
-                        DurationTimer.Start();
+                        ProgressTimer.Start();
                         windowsMediaPlayer.Ctlcontrols.play();
                     }
                     else if (choosenPL.Songs[playlistIndex].Format == ".wav")
@@ -3460,13 +3534,12 @@ namespace Entrega3_FyBuZz
                         PlaySongTimerTextBox.ResetText();
                         soundPlayer.SoundLocation = choosenPL.Songs[playlistIndex].SongFile;
                         soundPlayer.Play();
-                        DurationTimer.Interval = 1000;
-                        PlaySongProgressBar.Maximum = (int)(choosenPL.Songs[playlistIndex].Duration * 60);
-                        SearchProgressBar.Maximum = (int)(choosenPL.Songs[playlistIndex].Duration * 60);
+                        durationWav = (choosenPL.Songs[playlistIndex].Duration*60);
+                        ticks = 0;
+                        TimerWav.Start();
 
                         PlayPlaylistMessageBox.AppendText("Playlist playing: " + choosenPL.Songs[playlistIndex].Name + choosenPL.Songs[playlistIndex].Format);
                         SearchPlayingLabel.AppendText("Playlist playing: " + choosenPL.Songs[playlistIndex].Name + choosenPL.Songs[playlistIndex].Format);
-                        DurationTimer.Start();
 
                     }
                 }
@@ -3512,13 +3585,12 @@ namespace Entrega3_FyBuZz
                                     PlaySongTimerTextBox.Clear();
 
                                     windowsMediaPlayer.URL = song.SongFile;
-                                    DurationTimer.Interval = 1000;
-                                    PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
-                                    SearchProgressBar.Maximum = (int)(song.Duration * 60);
+                                    formatProgressBar = song.Format;
+
 
                                     PlayPlaylistMessageBox.AppendText("Playlist playing: " + song.Name + song.Format);
                                     SearchPlayingLabel.AppendText("Playlist playing: " + song.Name + song.Format);
-                                    DurationTimer.Start();
+                                    ProgressTimer.Start();
                                     windowsMediaPlayer.Ctlcontrols.play();
                                     break;
                                 }
@@ -3530,13 +3602,14 @@ namespace Entrega3_FyBuZz
                                     string file = song.SongFile;
                                     soundPlayer.SoundLocation = file;
                                     soundPlayer.Play();
-                                    DurationTimer.Interval = 1000;
-                                    PlaySongProgressBar.Maximum = (int)(song.Duration * 60);
-                                    SearchProgressBar.Maximum = (int)(song.Duration * 60);
+                                    durationWav = (song.Duration*60);
+                                    ticks = 0;
+                                    TimerWav.Start();
+
+                                   
 
                                     PlayPlaylistMessageBox.AppendText("Playlist playing: " + song.Name + song.Format);
                                     SearchPlayingLabel.AppendText("Playlist playing: " + song.Name + song.Format);
-                                    DurationTimer.Start();
                                     break;
                                 }
                                 playlistIndex++;
@@ -3656,12 +3729,16 @@ namespace Entrega3_FyBuZz
                 if (PlayPlaylistShowMultimedia.Text.Contains("Song:") && song.Format == ".mp3")
                 {
                     windowsMediaPlayer.Ctlcontrols.play();
-                    DurationTimer.Start();
+                    formatProgressBar = song.Format;
+                    ProgressTimer.Start();
                     break;
                 }
                 else if (PlayPlaylistShowMultimedia.Text.Contains("Song:") && song.Format == ".wav")
                 {
-                    DurationTimer.Start();
+                    formatProgressBar = song.Format;
+                    durationWav = (song.Duration*60);
+                    ticks = 0;
+                    TimerWav.Start();
                 }
             }
         }
@@ -5157,6 +5234,7 @@ namespace Entrega3_FyBuZz
 
         private void DisplayPlaylistsGlobalPlaylistSong_Click(object sender, EventArgs e)
         {
+            isInPlaylist = true;
             PlayPlaylistMultTypeTextBox.Clear();
             soundPlayer = new SoundPlayer();
             List<PlayList> playlistDataBase = new List<PlayList>();
@@ -5215,6 +5293,7 @@ namespace Entrega3_FyBuZz
         
         private void DisplayPlaylistsMoreGlobalPlaylistButton_Click(object sender, EventArgs e)
         {
+
             List<PlayList> playlistDataBase = new List<PlayList>();
             playlistDataBase = OnDisplayPlaylistsGlobalPlaylist_Click();
             if (playlistDataBase.Count > 3)
@@ -5311,6 +5390,7 @@ namespace Entrega3_FyBuZz
         }
         private void DisplayPlaylistsFavoritePlaylistSongs_Click(object sender, EventArgs e)
         {
+            isInPlaylist = true;
             PlayPlaylistMultTypeTextBox.Clear();
             Profile profile = OnProfilesChooseProfile_Click(ProfileDomainUp.Text, UserLogInTextBox.Text, PasswordLogInTextBox.Text);
             soundPlayer = new SoundPlayer();
@@ -5390,6 +5470,7 @@ namespace Entrega3_FyBuZz
         }
         private void DisplayPlaylistPrefPlaylistSong_Click(object sender, EventArgs e)
         {
+            isInPlaylist = true;
             PlayPlaylistMultTypeTextBox.Clear();
             PlayPlaylistMultTypeTextBox.Clear();
             List<string> persSongList = new List<string>();
@@ -6556,6 +6637,7 @@ namespace Entrega3_FyBuZz
                 PlayerMultPanelMtrackPB.Value = 0;
                 PlaySongSkipSongButton.PerformClick();
             }
+            
         }
 
         private void PlayerMultPanelMtrackVB_ValueChanged(object sender, decimal value)
