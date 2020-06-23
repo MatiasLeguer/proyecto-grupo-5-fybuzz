@@ -328,7 +328,7 @@ namespace Entrega3_FyBuZz
             if(UsernameRegisterTextBox.Text == "")
             {
                 UsernameRegisterTextBox.Text = "Ahoward";
-                UsernameRegisterTextBox.ForeColor = Color.DimGray;
+                UsernameRegisterTextBox.ForeColor = Color.Gold;
             }
         }
 
@@ -346,7 +346,7 @@ namespace Entrega3_FyBuZz
             if (EmailRegisterTextBox.Text == "")
             {
                 EmailRegisterTextBox.Text = "ahoward@uandes.cl";
-                EmailRegisterTextBox.ForeColor = Color.DimGray;
+                EmailRegisterTextBox.ForeColor = Color.Gold;
             }
 
         }
@@ -719,7 +719,7 @@ namespace Entrega3_FyBuZz
             if(CreateProfileProfileNameTextBox.Text == "")
             {
                 CreateProfileProfileNameTextBox.Text = "Andres";
-                CreateProfileProfileNameTextBox.ForeColor = Color.DimGray;
+                CreateProfileProfileNameTextBox.ForeColor = Color.Gold;
             }
         }
 
@@ -836,6 +836,11 @@ namespace Entrega3_FyBuZz
         }
         private void DisplayStartProfileLogOutButton_Click(object sender, EventArgs e)
         {
+            AddsPanel1.Visible = false;
+            AddsPanel2.Visible = false;
+            SideMenuPanel.Visible = false;
+            PlayerMultPanel.Visible = false;
+
             AccountSettingsUsernameTextBox.Clear();
             AccountSettingsPasswordTextBox.Clear();
             AccountSettingsAccountTypeTextBox.Clear();
@@ -856,6 +861,7 @@ namespace Entrega3_FyBuZz
         private void DisplayStartLogOutFybuzzButton_Click(object sender, EventArgs e)
         {
             int cont = 0;
+
             if (ProfileDomainUp.SelectedIndex != -1)
             {
                 foreach (object searched in ProfileDomainUp.Items)
@@ -875,6 +881,11 @@ namespace Entrega3_FyBuZz
             ProfilesInvalidCredentialTextBox.Clear();
             ProfileDomainUp.ResetText();
             ProfilesInvalidCredentialTextBox.Clear();
+
+            AddsPanel1.Visible = false;
+            AddsPanel2.Visible = false;
+            SideMenuPanel.Visible = false;
+            PlayerMultPanel.Visible = false;
         }
 
         private void DisplayPlaylistGoBackButton_Click(object sender, EventArgs e)
@@ -6053,6 +6064,7 @@ namespace Entrega3_FyBuZz
             return result;
             
         }
+
         public List<string> SharedMultGet(string username)
         {
             List<string> result = new List<string>();

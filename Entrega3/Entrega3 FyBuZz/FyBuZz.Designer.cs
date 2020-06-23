@@ -158,6 +158,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.SearchGeneralTopPanel = new System.Windows.Forms.Panel();
+            this.DisplayStartLogOutFybuzzButton = new FontAwesome.Sharp.IconButton();
+            this.DisplayStartProfileLogOutButton = new FontAwesome.Sharp.IconButton();
             this.SideMenuShowHideIconButton = new FontAwesome.Sharp.IconPictureBox();
             this.SharedMultNotificationButton = new FontAwesome.Sharp.IconButton();
             this.DisplayStartProfileInfo = new FontAwesome.Sharp.IconButton();
@@ -436,6 +438,7 @@
             this.UserMessageTextBox = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SideMenuPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SideButtonAboutUs = new System.Windows.Forms.Button();
             this.AboutUsInfoTextPanel = new System.Windows.Forms.Panel();
             this.label31 = new System.Windows.Forms.Label();
@@ -553,9 +556,6 @@
             this.SearchSearchButton = new FontAwesome.Sharp.IconButton();
             this.SearchSearchTextBox = new System.Windows.Forms.TextBox();
             this.TimerSidePanel = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.DisplayStartProfileLogOutButton = new FontAwesome.Sharp.IconButton();
-            this.DisplayStartLogOutFybuzzButton = new FontAwesome.Sharp.IconButton();
             this.ProfilePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.AdminMenuPanel.SuspendLayout();
@@ -2465,6 +2465,48 @@
             this.SearchGeneralTopPanel.Size = new System.Drawing.Size(756, 69);
             this.SearchGeneralTopPanel.TabIndex = 48;
             this.SearchGeneralTopPanel.Visible = false;
+            // 
+            // DisplayStartLogOutFybuzzButton
+            // 
+            this.DisplayStartLogOutFybuzzButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DisplayStartLogOutFybuzzButton.FlatAppearance.BorderSize = 0;
+            this.DisplayStartLogOutFybuzzButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DisplayStartLogOutFybuzzButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.DisplayStartLogOutFybuzzButton.Font = new System.Drawing.Font("Century Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisplayStartLogOutFybuzzButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.DisplayStartLogOutFybuzzButton.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
+            this.DisplayStartLogOutFybuzzButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.DisplayStartLogOutFybuzzButton.IconSize = 40;
+            this.DisplayStartLogOutFybuzzButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DisplayStartLogOutFybuzzButton.Location = new System.Drawing.Point(305, 1);
+            this.DisplayStartLogOutFybuzzButton.Name = "DisplayStartLogOutFybuzzButton";
+            this.DisplayStartLogOutFybuzzButton.Rotation = 0D;
+            this.DisplayStartLogOutFybuzzButton.Size = new System.Drawing.Size(228, 66);
+            this.DisplayStartLogOutFybuzzButton.TabIndex = 53;
+            this.DisplayStartLogOutFybuzzButton.Text = "Log-Out";
+            this.DisplayStartLogOutFybuzzButton.UseVisualStyleBackColor = true;
+            this.DisplayStartLogOutFybuzzButton.Click += new System.EventHandler(this.DisplayStartLogOutFybuzzButton_Click);
+            // 
+            // DisplayStartProfileLogOutButton
+            // 
+            this.DisplayStartProfileLogOutButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DisplayStartProfileLogOutButton.FlatAppearance.BorderSize = 0;
+            this.DisplayStartProfileLogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DisplayStartProfileLogOutButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.DisplayStartProfileLogOutButton.Font = new System.Drawing.Font("Century Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisplayStartProfileLogOutButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.DisplayStartProfileLogOutButton.IconChar = FontAwesome.Sharp.IconChar.UserTimes;
+            this.DisplayStartProfileLogOutButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.DisplayStartProfileLogOutButton.IconSize = 40;
+            this.DisplayStartProfileLogOutButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DisplayStartProfileLogOutButton.Location = new System.Drawing.Point(77, 1);
+            this.DisplayStartProfileLogOutButton.Name = "DisplayStartProfileLogOutButton";
+            this.DisplayStartProfileLogOutButton.Rotation = 0D;
+            this.DisplayStartProfileLogOutButton.Size = new System.Drawing.Size(228, 66);
+            this.DisplayStartProfileLogOutButton.TabIndex = 52;
+            this.DisplayStartProfileLogOutButton.Text = "Change Profile";
+            this.DisplayStartProfileLogOutButton.UseVisualStyleBackColor = true;
+            this.DisplayStartProfileLogOutButton.Click += new System.EventHandler(this.DisplayStartProfileLogOutButton_Click);
             // 
             // SideMenuShowHideIconButton
             // 
@@ -6197,6 +6239,21 @@
             this.SideMenuPanel.TabIndex = 17;
             this.SideMenuPanel.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.button1.FlatAppearance.BorderSize = 3;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Location = new System.Drawing.Point(0, 827);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(246, 65);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Search Multimedia";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // SideButtonAboutUs
             // 
             this.SideButtonAboutUs.Dock = System.Windows.Forms.DockStyle.Top;
@@ -7081,6 +7138,8 @@
             this.EmailRegisterTextBox.Size = new System.Drawing.Size(312, 26);
             this.EmailRegisterTextBox.TabIndex = 2;
             this.EmailRegisterTextBox.Text = "ahoward@uandes.cl";
+            this.EmailRegisterTextBox.Enter += new System.EventHandler(this.EmailRegisterTextBox_Enter);
+            this.EmailRegisterTextBox.Leave += new System.EventHandler(this.EmailRegisterTextBox_Leave);
             // 
             // UsernameRegisterTextBox
             // 
@@ -7093,6 +7152,8 @@
             this.UsernameRegisterTextBox.Size = new System.Drawing.Size(312, 26);
             this.UsernameRegisterTextBox.TabIndex = 1;
             this.UsernameRegisterTextBox.Text = "Ahoward";
+            this.UsernameRegisterTextBox.Enter += new System.EventHandler(this.UsernameRegisterTextBox_Enter);
+            this.UsernameRegisterTextBox.Leave += new System.EventHandler(this.UsernameRegisterTextBox_Leave);
             // 
             // ProfileTypeRegisterLabel
             // 
@@ -7993,75 +8054,18 @@
             this.TimerSidePanel.Interval = 1;
             this.TimerSidePanel.Tick += new System.EventHandler(this.TimerSidePanel_Tick);
             // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
-            this.button1.FlatAppearance.BorderSize = 3;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(0, 827);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(246, 65);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Search Multimedia";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // DisplayStartProfileLogOutButton
-            // 
-            this.DisplayStartProfileLogOutButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DisplayStartProfileLogOutButton.FlatAppearance.BorderSize = 0;
-            this.DisplayStartProfileLogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DisplayStartProfileLogOutButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.DisplayStartProfileLogOutButton.Font = new System.Drawing.Font("Century Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DisplayStartProfileLogOutButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.DisplayStartProfileLogOutButton.IconChar = FontAwesome.Sharp.IconChar.UserTimes;
-            this.DisplayStartProfileLogOutButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
-            this.DisplayStartProfileLogOutButton.IconSize = 40;
-            this.DisplayStartProfileLogOutButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DisplayStartProfileLogOutButton.Location = new System.Drawing.Point(77, 1);
-            this.DisplayStartProfileLogOutButton.Name = "DisplayStartProfileLogOutButton";
-            this.DisplayStartProfileLogOutButton.Rotation = 0D;
-            this.DisplayStartProfileLogOutButton.Size = new System.Drawing.Size(228, 66);
-            this.DisplayStartProfileLogOutButton.TabIndex = 52;
-            this.DisplayStartProfileLogOutButton.Text = "Change Profile";
-            this.DisplayStartProfileLogOutButton.UseVisualStyleBackColor = true;
-            this.DisplayStartProfileLogOutButton.Click += new System.EventHandler(this.DisplayStartProfileLogOutButton_Click);
-            // 
-            // DisplayStartLogOutFybuzzButton
-            // 
-            this.DisplayStartLogOutFybuzzButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DisplayStartLogOutFybuzzButton.FlatAppearance.BorderSize = 0;
-            this.DisplayStartLogOutFybuzzButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DisplayStartLogOutFybuzzButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.DisplayStartLogOutFybuzzButton.Font = new System.Drawing.Font("Century Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DisplayStartLogOutFybuzzButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.DisplayStartLogOutFybuzzButton.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
-            this.DisplayStartLogOutFybuzzButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
-            this.DisplayStartLogOutFybuzzButton.IconSize = 40;
-            this.DisplayStartLogOutFybuzzButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DisplayStartLogOutFybuzzButton.Location = new System.Drawing.Point(305, 1);
-            this.DisplayStartLogOutFybuzzButton.Name = "DisplayStartLogOutFybuzzButton";
-            this.DisplayStartLogOutFybuzzButton.Rotation = 0D;
-            this.DisplayStartLogOutFybuzzButton.Size = new System.Drawing.Size(228, 66);
-            this.DisplayStartLogOutFybuzzButton.TabIndex = 53;
-            this.DisplayStartLogOutFybuzzButton.Text = "Log-Out";
-            this.DisplayStartLogOutFybuzzButton.UseVisualStyleBackColor = true;
-            this.DisplayStartLogOutFybuzzButton.Click += new System.EventHandler(this.DisplayStartLogOutFybuzzButton_Click);
-            // 
             // FyBuZz
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 721);
             this.Controls.Add(this.WelcomePanel);
+            this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.DisplayStartPanel);
             this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.SearcUserPanel);
-            this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.CreateVideoPanel);
             this.Controls.Add(this.CreateSongPanel);
             this.Controls.Add(this.ProfilePanel);
