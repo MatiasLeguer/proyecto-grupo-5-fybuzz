@@ -165,7 +165,6 @@
             this.DisplayStartChooseSharedMultFeo = new System.Windows.Forms.Button();
             this.DisplayStartNotificationDomainUpFeo = new System.Windows.Forms.DomainUpDown();
             this.DisplayStartLogOutButton = new System.Windows.Forms.Button();
-            this.DisplayStartAdminMenuButton = new System.Windows.Forms.Button();
             this.DisplayStartCloseButton = new System.Windows.Forms.Button();
             this.DisplayStartLogOutProfileButton = new System.Windows.Forms.Button();
             this.DisplayStartSettingsButton = new System.Windows.Forms.Button();
@@ -386,18 +385,20 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.QueueTimer = new System.Windows.Forms.Timer(this.components);
             this.SearcUserPanel = new System.Windows.Forms.Panel();
+            this.SearchUserGoBack = new FontAwesome.Sharp.IconButton();
+            this.SearchUserFollowButton = new FontAwesome.Sharp.IconButton();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.SearchUserImage2 = new System.Windows.Forms.PictureBox();
             this.SearchUserImage1 = new System.Windows.Forms.PictureBox();
-            this.SearchUserFollowButton = new System.Windows.Forms.Button();
+            this.SearchUserFollowButtonFeo = new System.Windows.Forms.Button();
             this.SearchUserFollowers = new System.Windows.Forms.TextBox();
             this.SearchUserFollowing = new System.Windows.Forms.TextBox();
             this.SearcUserEmailTextBox = new System.Windows.Forms.TextBox();
             this.SearUserName = new System.Windows.Forms.TextBox();
             this.SearchUserLabel = new System.Windows.Forms.Label();
-            this.SearchUserGoBack = new System.Windows.Forms.Button();
+            this.SearchUserGoBackFeo = new System.Windows.Forms.Button();
             this.UserProfileChangeInfoPanel = new System.Windows.Forms.Panel();
             this.UserProfileChangeInfoConfirmButton = new FontAwesome.Sharp.IconButton();
             this.UserProfileChangeInfoGoBackButton = new FontAwesome.Sharp.IconButton();
@@ -528,7 +529,7 @@
             this.PlayVideoPanel = new System.Windows.Forms.Panel();
             this.PlayVideoRateVideoButton = new FontAwesome.Sharp.IconButton();
             this.PlayVideoLikeButton = new FontAwesome.Sharp.IconButton();
-            this.iconButton10 = new FontAwesome.Sharp.IconButton();
+            this.PlayVideoInfoVideo = new FontAwesome.Sharp.IconButton();
             this.PlayVideoFullScreenButton = new FontAwesome.Sharp.IconButton();
             this.PlayVideoSelectPlButton = new FontAwesome.Sharp.IconButton();
             this.PlayVideoShareButton = new FontAwesome.Sharp.IconButton();
@@ -552,6 +553,9 @@
             this.SearchSearchButton = new FontAwesome.Sharp.IconButton();
             this.SearchSearchTextBox = new System.Windows.Forms.TextBox();
             this.TimerSidePanel = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.DisplayStartProfileLogOutButton = new FontAwesome.Sharp.IconButton();
+            this.DisplayStartLogOutFybuzzButton = new FontAwesome.Sharp.IconButton();
             this.ProfilePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.AdminMenuPanel.SuspendLayout();
@@ -663,7 +667,7 @@
             this.ProfilePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProfilePanel.Location = new System.Drawing.Point(250, 0);
             this.ProfilePanel.Name = "ProfilePanel";
-            this.ProfilePanel.Size = new System.Drawing.Size(756, 611);
+            this.ProfilePanel.Size = new System.Drawing.Size(756, 621);
             this.ProfilePanel.TabIndex = 3;
             this.ProfilePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ProfilePanel_Paint);
             // 
@@ -672,7 +676,7 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(241, 70);
+            this.pictureBox1.Location = new System.Drawing.Point(241, 75);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(291, 222);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -691,7 +695,7 @@
             this.ProfileGoBack.IconChar = FontAwesome.Sharp.IconChar.Reply;
             this.ProfileGoBack.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.ProfileGoBack.IconSize = 50;
-            this.ProfileGoBack.Location = new System.Drawing.Point(5, 73);
+            this.ProfileGoBack.Location = new System.Drawing.Point(5, 78);
             this.ProfileGoBack.Name = "ProfileGoBack";
             this.ProfileGoBack.Rotation = 0D;
             this.ProfileGoBack.Size = new System.Drawing.Size(63, 52);
@@ -711,7 +715,7 @@
             this.ProfilesChooseProfile.IconChar = FontAwesome.Sharp.IconChar.Bullseye;
             this.ProfilesChooseProfile.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.ProfilesChooseProfile.IconSize = 50;
-            this.ProfilesChooseProfile.Location = new System.Drawing.Point(477, 526);
+            this.ProfilesChooseProfile.Location = new System.Drawing.Point(477, 531);
             this.ProfilesChooseProfile.Name = "ProfilesChooseProfile";
             this.ProfilesChooseProfile.Rotation = 0D;
             this.ProfilesChooseProfile.Size = new System.Drawing.Size(216, 68);
@@ -732,7 +736,7 @@
             this.ProfileDeletePorfileButto.IconChar = FontAwesome.Sharp.IconChar.Dizzy;
             this.ProfileDeletePorfileButto.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.ProfileDeletePorfileButto.IconSize = 50;
-            this.ProfileDeletePorfileButto.Location = new System.Drawing.Point(156, 526);
+            this.ProfileDeletePorfileButto.Location = new System.Drawing.Point(156, 531);
             this.ProfileDeletePorfileButto.Name = "ProfileDeletePorfileButto";
             this.ProfileDeletePorfileButto.Rotation = 0D;
             this.ProfileDeletePorfileButto.Size = new System.Drawing.Size(215, 68);
@@ -749,7 +753,7 @@
             this.ProfilesWelcomeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ProfilesWelcomeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfilesWelcomeTextBox.ForeColor = System.Drawing.Color.White;
-            this.ProfilesWelcomeTextBox.Location = new System.Drawing.Point(463, 46);
+            this.ProfilesWelcomeTextBox.Location = new System.Drawing.Point(463, 51);
             this.ProfilesWelcomeTextBox.Multiline = true;
             this.ProfilesWelcomeTextBox.Name = "ProfilesWelcomeTextBox";
             this.ProfilesWelcomeTextBox.Size = new System.Drawing.Size(25, 25);
@@ -764,7 +768,7 @@
             this.ProfilesInvalidCredentialTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.ProfilesInvalidCredentialTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfilesInvalidCredentialTextBox.ForeColor = System.Drawing.Color.White;
-            this.ProfilesInvalidCredentialTextBox.Location = new System.Drawing.Point(118, 360);
+            this.ProfilesInvalidCredentialTextBox.Location = new System.Drawing.Point(118, 365);
             this.ProfilesInvalidCredentialTextBox.Name = "ProfilesInvalidCredentialTextBox";
             this.ProfilesInvalidCredentialTextBox.ReadOnly = true;
             this.ProfilesInvalidCredentialTextBox.Size = new System.Drawing.Size(537, 45);
@@ -795,7 +799,7 @@
             // ProfileCreateProfileButton
             // 
             this.ProfileCreateProfileButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ProfileCreateProfileButton.Location = new System.Drawing.Point(631, 55);
+            this.ProfileCreateProfileButton.Location = new System.Drawing.Point(631, 60);
             this.ProfileCreateProfileButton.Name = "ProfileCreateProfileButton";
             this.ProfileCreateProfileButton.Size = new System.Drawing.Size(78, 18);
             this.ProfileCreateProfileButton.TabIndex = 7;
@@ -809,7 +813,7 @@
             this.ProfileDomainUp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ProfileDomainUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.ProfileDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProfileDomainUp.Location = new System.Drawing.Point(191, 310);
+            this.ProfileDomainUp.Location = new System.Drawing.Point(191, 315);
             this.ProfileDomainUp.Name = "ProfileDomainUp";
             this.ProfileDomainUp.ReadOnly = true;
             this.ProfileDomainUp.Size = new System.Drawing.Size(406, 45);
@@ -822,7 +826,7 @@
             this.ProfileProfilesLabel.AutoSize = true;
             this.ProfileProfilesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileProfilesLabel.ForeColor = System.Drawing.Color.White;
-            this.ProfileProfilesLabel.Location = new System.Drawing.Point(286, 0);
+            this.ProfileProfilesLabel.Location = new System.Drawing.Point(286, 5);
             this.ProfileProfilesLabel.Name = "ProfileProfilesLabel";
             this.ProfileProfilesLabel.Size = new System.Drawing.Size(200, 58);
             this.ProfileProfilesLabel.TabIndex = 0;
@@ -848,7 +852,7 @@
             this.AdminMenuPanel.Location = new System.Drawing.Point(250, 0);
             this.AdminMenuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AdminMenuPanel.Name = "AdminMenuPanel";
-            this.AdminMenuPanel.Size = new System.Drawing.Size(756, 611);
+            this.AdminMenuPanel.Size = new System.Drawing.Size(756, 621);
             this.AdminMenuPanel.TabIndex = 9;
             // 
             // AdminMenuBanUser
@@ -862,7 +866,7 @@
             this.AdminMenuBanUser.IconChar = FontAwesome.Sharp.IconChar.UserCheck;
             this.AdminMenuBanUser.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.AdminMenuBanUser.IconSize = 50;
-            this.AdminMenuBanUser.Location = new System.Drawing.Point(296, 505);
+            this.AdminMenuBanUser.Location = new System.Drawing.Point(296, 510);
             this.AdminMenuBanUser.Name = "AdminMenuBanUser";
             this.AdminMenuBanUser.Rotation = 0D;
             this.AdminMenuBanUser.Size = new System.Drawing.Size(216, 68);
@@ -883,7 +887,7 @@
             this.AdminMenuBanUserButton.IconChar = FontAwesome.Sharp.IconChar.UserAltSlash;
             this.AdminMenuBanUserButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.AdminMenuBanUserButton.IconSize = 50;
-            this.AdminMenuBanUserButton.Location = new System.Drawing.Point(296, 431);
+            this.AdminMenuBanUserButton.Location = new System.Drawing.Point(296, 436);
             this.AdminMenuBanUserButton.Name = "AdminMenuBanUserButton";
             this.AdminMenuBanUserButton.Rotation = 0D;
             this.AdminMenuBanUserButton.Size = new System.Drawing.Size(216, 68);
@@ -904,7 +908,7 @@
             this.AdminMenuEraseUserButton.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
             this.AdminMenuEraseUserButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.AdminMenuEraseUserButton.IconSize = 50;
-            this.AdminMenuEraseUserButton.Location = new System.Drawing.Point(295, 358);
+            this.AdminMenuEraseUserButton.Location = new System.Drawing.Point(295, 363);
             this.AdminMenuEraseUserButton.Name = "AdminMenuEraseUserButton";
             this.AdminMenuEraseUserButton.Rotation = 0D;
             this.AdminMenuEraseUserButton.Size = new System.Drawing.Size(216, 68);
@@ -926,7 +930,7 @@
             this.AdminMenuGoBackButton.IconChar = FontAwesome.Sharp.IconChar.Reply;
             this.AdminMenuGoBackButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.AdminMenuGoBackButton.IconSize = 50;
-            this.AdminMenuGoBackButton.Location = new System.Drawing.Point(12, 13);
+            this.AdminMenuGoBackButton.Location = new System.Drawing.Point(12, 18);
             this.AdminMenuGoBackButton.Name = "AdminMenuGoBackButton";
             this.AdminMenuGoBackButton.Rotation = 0D;
             this.AdminMenuGoBackButton.Size = new System.Drawing.Size(63, 52);
@@ -1073,7 +1077,7 @@
             this.PlaySongPanel.ForeColor = System.Drawing.Color.Black;
             this.PlaySongPanel.Location = new System.Drawing.Point(250, 0);
             this.PlaySongPanel.Name = "PlaySongPanel";
-            this.PlaySongPanel.Size = new System.Drawing.Size(756, 611);
+            this.PlaySongPanel.Size = new System.Drawing.Size(756, 621);
             this.PlaySongPanel.TabIndex = 13;
             // 
             // PlaySongChooseUserButton
@@ -1087,7 +1091,7 @@
             this.PlaySongChooseUserButton.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
             this.PlaySongChooseUserButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongChooseUserButton.IconSize = 20;
-            this.PlaySongChooseUserButton.Location = new System.Drawing.Point(586, 479);
+            this.PlaySongChooseUserButton.Location = new System.Drawing.Point(586, 484);
             this.PlaySongChooseUserButton.Name = "PlaySongChooseUserButton";
             this.PlaySongChooseUserButton.Rotation = 0D;
             this.PlaySongChooseUserButton.Size = new System.Drawing.Size(107, 33);
@@ -1107,7 +1111,7 @@
             this.PlaySongShareButton.IconChar = FontAwesome.Sharp.IconChar.SmileWink;
             this.PlaySongShareButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongShareButton.IconSize = 40;
-            this.PlaySongShareButton.Location = new System.Drawing.Point(573, 370);
+            this.PlaySongShareButton.Location = new System.Drawing.Point(573, 375);
             this.PlaySongShareButton.Name = "PlaySongShareButton";
             this.PlaySongShareButton.Rotation = 0D;
             this.PlaySongShareButton.Size = new System.Drawing.Size(128, 59);
@@ -1128,7 +1132,7 @@
             this.PlaySongGoBackButton.IconChar = FontAwesome.Sharp.IconChar.Reply;
             this.PlaySongGoBackButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongGoBackButton.IconSize = 50;
-            this.PlaySongGoBackButton.Location = new System.Drawing.Point(5, 66);
+            this.PlaySongGoBackButton.Location = new System.Drawing.Point(5, 71);
             this.PlaySongGoBackButton.Name = "PlaySongGoBackButton";
             this.PlaySongGoBackButton.Rotation = 0D;
             this.PlaySongGoBackButton.Size = new System.Drawing.Size(63, 52);
@@ -1147,7 +1151,7 @@
             this.PlaySongAddQueueButton.IconChar = FontAwesome.Sharp.IconChar.Quinscape;
             this.PlaySongAddQueueButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongAddQueueButton.IconSize = 40;
-            this.PlaySongAddQueueButton.Location = new System.Drawing.Point(342, 370);
+            this.PlaySongAddQueueButton.Location = new System.Drawing.Point(342, 375);
             this.PlaySongAddQueueButton.Name = "PlaySongAddQueueButton";
             this.PlaySongAddQueueButton.Rotation = 0D;
             this.PlaySongAddQueueButton.Size = new System.Drawing.Size(216, 59);
@@ -1167,7 +1171,7 @@
             this.PlaySongAddToPlaylistButton.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
             this.PlaySongAddToPlaylistButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongAddToPlaylistButton.IconSize = 40;
-            this.PlaySongAddToPlaylistButton.Location = new System.Drawing.Point(86, 369);
+            this.PlaySongAddToPlaylistButton.Location = new System.Drawing.Point(86, 374);
             this.PlaySongAddToPlaylistButton.Name = "PlaySongAddToPlaylistButton";
             this.PlaySongAddToPlaylistButton.Rotation = 0D;
             this.PlaySongAddToPlaylistButton.Size = new System.Drawing.Size(245, 60);
@@ -1187,7 +1191,7 @@
             this.PlaySongChoosePlsButton.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
             this.PlaySongChoosePlsButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongChoosePlsButton.IconSize = 20;
-            this.PlaySongChoosePlsButton.Location = new System.Drawing.Point(145, 479);
+            this.PlaySongChoosePlsButton.Location = new System.Drawing.Point(145, 484);
             this.PlaySongChoosePlsButton.Name = "PlaySongChoosePlsButton";
             this.PlaySongChoosePlsButton.Rotation = 0D;
             this.PlaySongChoosePlsButton.Size = new System.Drawing.Size(107, 33);
@@ -1207,7 +1211,7 @@
             this.PlaySongShowLyrics.IconChar = FontAwesome.Sharp.IconChar.MicrophoneAlt;
             this.PlaySongShowLyrics.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongShowLyrics.IconSize = 30;
-            this.PlaySongShowLyrics.Location = new System.Drawing.Point(561, 162);
+            this.PlaySongShowLyrics.Location = new System.Drawing.Point(561, 167);
             this.PlaySongShowLyrics.Name = "PlaySongShowLyrics";
             this.PlaySongShowLyrics.Rotation = 0D;
             this.PlaySongShowLyrics.Size = new System.Drawing.Size(110, 35);
@@ -1227,7 +1231,7 @@
             this.PlayerPanel.Controls.Add(this.PlaySongPreviousSongButtonFeo);
             this.PlayerPanel.Controls.Add(this.PlaySongStopButtonFeo);
             this.PlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PlayerPanel.Location = new System.Drawing.Point(0, 599);
+            this.PlayerPanel.Location = new System.Drawing.Point(0, 609);
             this.PlayerPanel.Name = "PlayerPanel";
             this.PlayerPanel.Size = new System.Drawing.Size(756, 12);
             this.PlayerPanel.TabIndex = 15;
@@ -1573,7 +1577,7 @@
             this.CreateProfilePanel.Location = new System.Drawing.Point(250, 0);
             this.CreateProfilePanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateProfilePanel.Name = "CreateProfilePanel";
-            this.CreateProfilePanel.Size = new System.Drawing.Size(756, 611);
+            this.CreateProfilePanel.Size = new System.Drawing.Size(756, 621);
             this.CreateProfilePanel.TabIndex = 4;
             // 
             // CreateProfileCreateProfileButton
@@ -1587,7 +1591,7 @@
             this.CreateProfileCreateProfileButton.IconChar = FontAwesome.Sharp.IconChar.Portrait;
             this.CreateProfileCreateProfileButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.CreateProfileCreateProfileButton.IconSize = 50;
-            this.CreateProfileCreateProfileButton.Location = new System.Drawing.Point(254, 508);
+            this.CreateProfileCreateProfileButton.Location = new System.Drawing.Point(254, 513);
             this.CreateProfileCreateProfileButton.Name = "CreateProfileCreateProfileButton";
             this.CreateProfileCreateProfileButton.Rotation = 0D;
             this.CreateProfileCreateProfileButton.Size = new System.Drawing.Size(252, 47);
@@ -1609,7 +1613,7 @@
             this.CreateProfileGoBackButton.IconChar = FontAwesome.Sharp.IconChar.Reply;
             this.CreateProfileGoBackButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.CreateProfileGoBackButton.IconSize = 50;
-            this.CreateProfileGoBackButton.Location = new System.Drawing.Point(5, 57);
+            this.CreateProfileGoBackButton.Location = new System.Drawing.Point(5, 62);
             this.CreateProfileGoBackButton.Name = "CreateProfileGoBackButton";
             this.CreateProfileGoBackButton.Rotation = 0D;
             this.CreateProfileGoBackButton.Size = new System.Drawing.Size(63, 52);
@@ -1631,7 +1635,7 @@
             "Pic2",
             "Pic3",
             "Pic4"});
-            this.CreateProfilePicCheckedListBox.Location = new System.Drawing.Point(325, 377);
+            this.CreateProfilePicCheckedListBox.Location = new System.Drawing.Point(325, 382);
             this.CreateProfilePicCheckedListBox.Name = "CreateProfilePicCheckedListBox";
             this.CreateProfilePicCheckedListBox.Size = new System.Drawing.Size(159, 22);
             this.CreateProfilePicCheckedListBox.TabIndex = 47;
@@ -1641,7 +1645,7 @@
             this.CreateProfilePic4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CreateProfilePic4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.CreateProfilePic4.Image = ((System.Drawing.Image)(resources.GetObject("CreateProfilePic4.Image")));
-            this.CreateProfilePic4.Location = new System.Drawing.Point(510, 409);
+            this.CreateProfilePic4.Location = new System.Drawing.Point(510, 414);
             this.CreateProfilePic4.Name = "CreateProfilePic4";
             this.CreateProfilePic4.Size = new System.Drawing.Size(99, 88);
             this.CreateProfilePic4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1653,7 +1657,7 @@
             this.CreateProfilePic3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CreateProfilePic3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.CreateProfilePic3.Image = ((System.Drawing.Image)(resources.GetObject("CreateProfilePic3.Image")));
-            this.CreateProfilePic3.Location = new System.Drawing.Point(391, 408);
+            this.CreateProfilePic3.Location = new System.Drawing.Point(391, 413);
             this.CreateProfilePic3.Name = "CreateProfilePic3";
             this.CreateProfilePic3.Size = new System.Drawing.Size(99, 88);
             this.CreateProfilePic3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1665,7 +1669,7 @@
             this.CreateProfilePic2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CreateProfilePic2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.CreateProfilePic2.Image = ((System.Drawing.Image)(resources.GetObject("CreateProfilePic2.Image")));
-            this.CreateProfilePic2.Location = new System.Drawing.Point(273, 408);
+            this.CreateProfilePic2.Location = new System.Drawing.Point(273, 413);
             this.CreateProfilePic2.Name = "CreateProfilePic2";
             this.CreateProfilePic2.Size = new System.Drawing.Size(99, 88);
             this.CreateProfilePic2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1677,7 +1681,7 @@
             this.CreateProfilePic1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CreateProfilePic1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.CreateProfilePic1.Image = ((System.Drawing.Image)(resources.GetObject("CreateProfilePic1.Image")));
-            this.CreateProfilePic1.Location = new System.Drawing.Point(153, 408);
+            this.CreateProfilePic1.Location = new System.Drawing.Point(153, 413);
             this.CreateProfilePic1.Name = "CreateProfilePic1";
             this.CreateProfilePic1.Size = new System.Drawing.Size(99, 88);
             this.CreateProfilePic1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1690,7 +1694,7 @@
             this.CreateProfileProfilePicLabel.AutoSize = true;
             this.CreateProfileProfilePicLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateProfileProfilePicLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateProfileProfilePicLabel.Location = new System.Drawing.Point(133, 376);
+            this.CreateProfileProfilePicLabel.Location = new System.Drawing.Point(133, 381);
             this.CreateProfileProfilePicLabel.Name = "CreateProfileProfilePicLabel";
             this.CreateProfileProfilePicLabel.Size = new System.Drawing.Size(120, 20);
             this.CreateProfileProfilePicLabel.TabIndex = 42;
@@ -1699,7 +1703,7 @@
             // CreateProfileCreateProfileButtonFeo
             // 
             this.CreateProfileCreateProfileButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateProfileCreateProfileButtonFeo.Location = new System.Drawing.Point(543, 513);
+            this.CreateProfileCreateProfileButtonFeo.Location = new System.Drawing.Point(543, 518);
             this.CreateProfileCreateProfileButtonFeo.Name = "CreateProfileCreateProfileButtonFeo";
             this.CreateProfileCreateProfileButtonFeo.Size = new System.Drawing.Size(120, 39);
             this.CreateProfileCreateProfileButtonFeo.TabIndex = 41;
@@ -1710,7 +1714,7 @@
             // CreateProfileGoBackButtonFeo
             // 
             this.CreateProfileGoBackButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateProfileGoBackButtonFeo.Location = new System.Drawing.Point(604, 113);
+            this.CreateProfileGoBackButtonFeo.Location = new System.Drawing.Point(604, 118);
             this.CreateProfileGoBackButtonFeo.Name = "CreateProfileGoBackButtonFeo";
             this.CreateProfileGoBackButtonFeo.Size = new System.Drawing.Size(61, 31);
             this.CreateProfileGoBackButtonFeo.TabIndex = 40;
@@ -1722,7 +1726,7 @@
             // 
             this.CreateProfileProfileBirthdayTimePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CreateProfileProfileBirthdayTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateProfileProfileBirthdayTimePicker.Location = new System.Drawing.Point(281, 285);
+            this.CreateProfileProfileBirthdayTimePicker.Location = new System.Drawing.Point(281, 290);
             this.CreateProfileProfileBirthdayTimePicker.Name = "CreateProfileProfileBirthdayTimePicker";
             this.CreateProfileProfileBirthdayTimePicker.Size = new System.Drawing.Size(312, 26);
             this.CreateProfileProfileBirthdayTimePicker.TabIndex = 39;
@@ -1736,7 +1740,7 @@
             this.CreateProfileProfileTypeDomainUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.CreateProfileProfileTypeDomainUp.Items.Add("creator");
             this.CreateProfileProfileTypeDomainUp.Items.Add("viewer");
-            this.CreateProfileProfileTypeDomainUp.Location = new System.Drawing.Point(280, 330);
+            this.CreateProfileProfileTypeDomainUp.Location = new System.Drawing.Point(280, 335);
             this.CreateProfileProfileTypeDomainUp.Name = "CreateProfileProfileTypeDomainUp";
             this.CreateProfileProfileTypeDomainUp.ReadOnly = true;
             this.CreateProfileProfileTypeDomainUp.Size = new System.Drawing.Size(312, 26);
@@ -1751,7 +1755,7 @@
             this.CreateProfileProfileGenderDomainUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.CreateProfileProfileGenderDomainUp.Items.Add("M");
             this.CreateProfileProfileGenderDomainUp.Items.Add("F");
-            this.CreateProfileProfileGenderDomainUp.Location = new System.Drawing.Point(281, 239);
+            this.CreateProfileProfileGenderDomainUp.Location = new System.Drawing.Point(281, 244);
             this.CreateProfileProfileGenderDomainUp.Name = "CreateProfileProfileGenderDomainUp";
             this.CreateProfileProfileGenderDomainUp.ReadOnly = true;
             this.CreateProfileProfileGenderDomainUp.Size = new System.Drawing.Size(312, 26);
@@ -1764,7 +1768,7 @@
             this.CreateProfileProfileNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateProfileProfileNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateProfileProfileNameTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateProfileProfileNameTextBox.Location = new System.Drawing.Point(281, 198);
+            this.CreateProfileProfileNameTextBox.Location = new System.Drawing.Point(281, 203);
             this.CreateProfileProfileNameTextBox.Name = "CreateProfileProfileNameTextBox";
             this.CreateProfileProfileNameTextBox.Size = new System.Drawing.Size(312, 26);
             this.CreateProfileProfileNameTextBox.TabIndex = 35;
@@ -1778,7 +1782,7 @@
             this.CreateProfileProfileTypeLabel.AutoSize = true;
             this.CreateProfileProfileTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateProfileProfileTypeLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateProfileProfileTypeLabel.Location = new System.Drawing.Point(151, 336);
+            this.CreateProfileProfileTypeLabel.Location = new System.Drawing.Point(151, 341);
             this.CreateProfileProfileTypeLabel.Name = "CreateProfileProfileTypeLabel";
             this.CreateProfileProfileTypeLabel.Size = new System.Drawing.Size(98, 20);
             this.CreateProfileProfileTypeLabel.TabIndex = 34;
@@ -1790,7 +1794,7 @@
             this.CreateProfileProfileBirthdayLabel.AutoSize = true;
             this.CreateProfileProfileBirthdayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateProfileProfileBirthdayLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateProfileProfileBirthdayLabel.Location = new System.Drawing.Point(175, 289);
+            this.CreateProfileProfileBirthdayLabel.Location = new System.Drawing.Point(175, 294);
             this.CreateProfileProfileBirthdayLabel.Name = "CreateProfileProfileBirthdayLabel";
             this.CreateProfileProfileBirthdayLabel.Size = new System.Drawing.Size(71, 20);
             this.CreateProfileProfileBirthdayLabel.TabIndex = 31;
@@ -1802,7 +1806,7 @@
             this.CreateProfileProfileGenderLabel.AutoSize = true;
             this.CreateProfileProfileGenderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateProfileProfileGenderLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateProfileProfileGenderLabel.Location = new System.Drawing.Point(181, 241);
+            this.CreateProfileProfileGenderLabel.Location = new System.Drawing.Point(181, 246);
             this.CreateProfileProfileGenderLabel.Name = "CreateProfileProfileGenderLabel";
             this.CreateProfileProfileGenderLabel.Size = new System.Drawing.Size(64, 20);
             this.CreateProfileProfileGenderLabel.TabIndex = 28;
@@ -1814,7 +1818,7 @@
             this.CreateProfileProfileNameLabel.AutoSize = true;
             this.CreateProfileProfileNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateProfileProfileNameLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateProfileProfileNameLabel.Location = new System.Drawing.Point(146, 201);
+            this.CreateProfileProfileNameLabel.Location = new System.Drawing.Point(146, 206);
             this.CreateProfileProfileNameLabel.Name = "CreateProfileProfileNameLabel";
             this.CreateProfileProfileNameLabel.Size = new System.Drawing.Size(106, 20);
             this.CreateProfileProfileNameLabel.TabIndex = 26;
@@ -1826,7 +1830,7 @@
             this.CreateProfileLabel.AutoSize = true;
             this.CreateProfileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateProfileLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateProfileLabel.Location = new System.Drawing.Point(199, 123);
+            this.CreateProfileLabel.Location = new System.Drawing.Point(199, 128);
             this.CreateProfileLabel.Name = "CreateProfileLabel";
             this.CreateProfileLabel.Size = new System.Drawing.Size(388, 58);
             this.CreateProfileLabel.TabIndex = 0;
@@ -1849,7 +1853,6 @@
             this.DisplayStartPanel.Controls.Add(this.DisplayStartChooseSharedMultFeo);
             this.DisplayStartPanel.Controls.Add(this.DisplayStartNotificationDomainUpFeo);
             this.DisplayStartPanel.Controls.Add(this.DisplayStartLogOutButton);
-            this.DisplayStartPanel.Controls.Add(this.DisplayStartAdminMenuButton);
             this.DisplayStartPanel.Controls.Add(this.DisplayStartCloseButton);
             this.DisplayStartPanel.Controls.Add(this.DisplayStartLogOutProfileButton);
             this.DisplayStartPanel.Controls.Add(this.DisplayStartSettingsButton);
@@ -1859,7 +1862,7 @@
             this.DisplayStartPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DisplayStartPanel.Location = new System.Drawing.Point(250, 0);
             this.DisplayStartPanel.Name = "DisplayStartPanel";
-            this.DisplayStartPanel.Size = new System.Drawing.Size(756, 611);
+            this.DisplayStartPanel.Size = new System.Drawing.Size(756, 621);
             this.DisplayStartPanel.TabIndex = 5;
             // 
             // DisplayStartProfileInfoPanel
@@ -1884,7 +1887,7 @@
             this.DisplayStartProfileInfoPanel.ForeColor = System.Drawing.Color.Black;
             this.DisplayStartProfileInfoPanel.Location = new System.Drawing.Point(252, 69);
             this.DisplayStartProfileInfoPanel.Name = "DisplayStartProfileInfoPanel";
-            this.DisplayStartProfileInfoPanel.Size = new System.Drawing.Size(385, 542);
+            this.DisplayStartProfileInfoPanel.Size = new System.Drawing.Size(385, 552);
             this.DisplayStartProfileInfoPanel.TabIndex = 73;
             this.DisplayStartProfileInfoPanel.Visible = false;
             // 
@@ -1893,14 +1896,19 @@
             this.DisplayStartChooseSharedMult.FlatAppearance.BorderSize = 0;
             this.DisplayStartChooseSharedMult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DisplayStartChooseSharedMult.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.DisplayStartChooseSharedMult.Font = new System.Drawing.Font("Century Gothic", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisplayStartChooseSharedMult.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.DisplayStartChooseSharedMult.IconChar = FontAwesome.Sharp.IconChar.Play;
             this.DisplayStartChooseSharedMult.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.DisplayStartChooseSharedMult.IconSize = 40;
-            this.DisplayStartChooseSharedMult.Location = new System.Drawing.Point(152, 465);
+            this.DisplayStartChooseSharedMult.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DisplayStartChooseSharedMult.Location = new System.Drawing.Point(88, 463);
             this.DisplayStartChooseSharedMult.Name = "DisplayStartChooseSharedMult";
             this.DisplayStartChooseSharedMult.Rotation = 0D;
-            this.DisplayStartChooseSharedMult.Size = new System.Drawing.Size(63, 58);
+            this.DisplayStartChooseSharedMult.Size = new System.Drawing.Size(204, 49);
             this.DisplayStartChooseSharedMult.TabIndex = 56;
+            this.DisplayStartChooseSharedMult.Text = "Play Shared Multimedia";
+            this.DisplayStartChooseSharedMult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.DisplayStartChooseSharedMult.UseVisualStyleBackColor = true;
             this.DisplayStartChooseSharedMult.Visible = false;
             this.DisplayStartChooseSharedMult.Click += new System.EventHandler(this.DisplayStartChooseSharedMult_Click_1);
@@ -1937,7 +1945,7 @@
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label24.Location = new System.Drawing.Point(260, 7);
+            this.label24.Location = new System.Drawing.Point(260, 12);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(113, 20);
             this.label24.TabIndex = 51;
@@ -1965,7 +1973,7 @@
             this.DisplayStartProfAgeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.DisplayStartProfAgeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DisplayStartProfAgeTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.DisplayStartProfAgeTextBox.Location = new System.Drawing.Point(95, 375);
+            this.DisplayStartProfAgeTextBox.Location = new System.Drawing.Point(95, 380);
             this.DisplayStartProfAgeTextBox.Name = "DisplayStartProfAgeTextBox";
             this.DisplayStartProfAgeTextBox.ReadOnly = true;
             this.DisplayStartProfAgeTextBox.Size = new System.Drawing.Size(178, 27);
@@ -1978,7 +1986,7 @@
             this.DisplayStartProfGenderTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.DisplayStartProfGenderTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DisplayStartProfGenderTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.DisplayStartProfGenderTextBox.Location = new System.Drawing.Point(95, 307);
+            this.DisplayStartProfGenderTextBox.Location = new System.Drawing.Point(95, 312);
             this.DisplayStartProfGenderTextBox.Name = "DisplayStartProfGenderTextBox";
             this.DisplayStartProfGenderTextBox.ReadOnly = true;
             this.DisplayStartProfGenderTextBox.Size = new System.Drawing.Size(178, 27);
@@ -1991,7 +1999,7 @@
             this.DisplayStartProfTypeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.DisplayStartProfTypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DisplayStartProfTypeTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.DisplayStartProfTypeTextBox.Location = new System.Drawing.Point(95, 244);
+            this.DisplayStartProfTypeTextBox.Location = new System.Drawing.Point(95, 249);
             this.DisplayStartProfTypeTextBox.Name = "DisplayStartProfTypeTextBox";
             this.DisplayStartProfTypeTextBox.ReadOnly = true;
             this.DisplayStartProfTypeTextBox.Size = new System.Drawing.Size(178, 27);
@@ -2004,7 +2012,7 @@
             this.DisplayStartProfNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.DisplayStartProfNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DisplayStartProfNameTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.DisplayStartProfNameTextBox.Location = new System.Drawing.Point(95, 173);
+            this.DisplayStartProfNameTextBox.Location = new System.Drawing.Point(95, 178);
             this.DisplayStartProfNameTextBox.Name = "DisplayStartProfNameTextBox";
             this.DisplayStartProfNameTextBox.ReadOnly = true;
             this.DisplayStartProfNameTextBox.Size = new System.Drawing.Size(178, 27);
@@ -2017,7 +2025,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label20.Location = new System.Drawing.Point(167, 350);
+            this.label20.Location = new System.Drawing.Point(167, 355);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(38, 20);
             this.label20.TabIndex = 27;
@@ -2029,7 +2037,7 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label21.Location = new System.Drawing.Point(146, 278);
+            this.label21.Location = new System.Drawing.Point(146, 283);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(64, 20);
             this.label21.TabIndex = 26;
@@ -2041,7 +2049,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label22.Location = new System.Drawing.Point(132, 209);
+            this.label22.Location = new System.Drawing.Point(132, 214);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(98, 20);
             this.label22.TabIndex = 25;
@@ -2053,7 +2061,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label23.Location = new System.Drawing.Point(152, 149);
+            this.label23.Location = new System.Drawing.Point(152, 154);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(53, 20);
             this.label23.TabIndex = 24;
@@ -2354,7 +2362,7 @@
             this.AddsPanel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.AddsPanel2.Location = new System.Drawing.Point(637, 69);
             this.AddsPanel2.Name = "AddsPanel2";
-            this.AddsPanel2.Size = new System.Drawing.Size(119, 542);
+            this.AddsPanel2.Size = new System.Drawing.Size(119, 552);
             this.AddsPanel2.TabIndex = 67;
             this.AddsPanel2.Visible = false;
             // 
@@ -2397,7 +2405,7 @@
             this.AddsPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.AddsPanel1.Location = new System.Drawing.Point(0, 69);
             this.AddsPanel1.Name = "AddsPanel1";
-            this.AddsPanel1.Size = new System.Drawing.Size(133, 542);
+            this.AddsPanel1.Size = new System.Drawing.Size(133, 552);
             this.AddsPanel1.TabIndex = 66;
             this.AddsPanel1.Visible = false;
             // 
@@ -2446,6 +2454,8 @@
             // 
             this.SearchGeneralTopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.SearchGeneralTopPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SearchGeneralTopPanel.Controls.Add(this.DisplayStartLogOutFybuzzButton);
+            this.SearchGeneralTopPanel.Controls.Add(this.DisplayStartProfileLogOutButton);
             this.SearchGeneralTopPanel.Controls.Add(this.SideMenuShowHideIconButton);
             this.SearchGeneralTopPanel.Controls.Add(this.SharedMultNotificationButton);
             this.SearchGeneralTopPanel.Controls.Add(this.DisplayStartProfileInfo);
@@ -2489,6 +2499,7 @@
             this.SharedMultNotificationButton.TabIndex = 50;
             this.SharedMultNotificationButton.UseVisualStyleBackColor = true;
             this.SharedMultNotificationButton.Visible = false;
+            this.SharedMultNotificationButton.Click += new System.EventHandler(this.SharedMultNotificationButton_Click);
             // 
             // DisplayStartProfileInfo
             // 
@@ -2524,6 +2535,7 @@
             this.DisplayStartChooseSharedMultFeo.TabIndex = 42;
             this.DisplayStartChooseSharedMultFeo.Text = "Play";
             this.DisplayStartChooseSharedMultFeo.UseVisualStyleBackColor = true;
+            this.DisplayStartChooseSharedMultFeo.Visible = false;
             this.DisplayStartChooseSharedMultFeo.Click += new System.EventHandler(this.DisplayStartChooseSharedMult_Click);
             // 
             // DisplayStartNotificationDomainUpFeo
@@ -2533,6 +2545,7 @@
             this.DisplayStartNotificationDomainUpFeo.Size = new System.Drawing.Size(139, 22);
             this.DisplayStartNotificationDomainUpFeo.TabIndex = 41;
             this.DisplayStartNotificationDomainUpFeo.Text = "Someone shared Mulltimedia with you...please select one";
+            this.DisplayStartNotificationDomainUpFeo.Visible = false;
             // 
             // DisplayStartLogOutButton
             // 
@@ -2542,19 +2555,8 @@
             this.DisplayStartLogOutButton.TabIndex = 15;
             this.DisplayStartLogOutButton.Text = "Log-Out";
             this.DisplayStartLogOutButton.UseVisualStyleBackColor = true;
+            this.DisplayStartLogOutButton.Visible = false;
             this.DisplayStartLogOutButton.Click += new System.EventHandler(this.DisplayStartLogOutButton_Click);
-            // 
-            // DisplayStartAdminMenuButton
-            // 
-            this.DisplayStartAdminMenuButton.Location = new System.Drawing.Point(807, 324);
-            this.DisplayStartAdminMenuButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DisplayStartAdminMenuButton.Name = "DisplayStartAdminMenuButton";
-            this.DisplayStartAdminMenuButton.Size = new System.Drawing.Size(190, 57);
-            this.DisplayStartAdminMenuButton.TabIndex = 14;
-            this.DisplayStartAdminMenuButton.Text = "Admin Menu";
-            this.DisplayStartAdminMenuButton.UseVisualStyleBackColor = true;
-            this.DisplayStartAdminMenuButton.Visible = false;
-            this.DisplayStartAdminMenuButton.Click += new System.EventHandler(this.DisplayStartAdminMenuButton_Click);
             // 
             // DisplayStartCloseButton
             // 
@@ -2564,6 +2566,7 @@
             this.DisplayStartCloseButton.TabIndex = 13;
             this.DisplayStartCloseButton.Text = "Close FyBuZz";
             this.DisplayStartCloseButton.UseVisualStyleBackColor = true;
+            this.DisplayStartCloseButton.Visible = false;
             this.DisplayStartCloseButton.Click += new System.EventHandler(this.DisplayStartCloseButton_Click);
             // 
             // DisplayStartLogOutProfileButton
@@ -2574,6 +2577,7 @@
             this.DisplayStartLogOutProfileButton.TabIndex = 12;
             this.DisplayStartLogOutProfileButton.Text = "Log-Out from Profile";
             this.DisplayStartLogOutProfileButton.UseVisualStyleBackColor = true;
+            this.DisplayStartLogOutProfileButton.Visible = false;
             this.DisplayStartLogOutProfileButton.Click += new System.EventHandler(this.DisplayStartLogOutProfileButton_Click);
             // 
             // DisplayStartSettingsButton
@@ -2585,6 +2589,7 @@
             this.DisplayStartSettingsButton.TabIndex = 10;
             this.DisplayStartSettingsButton.Text = "Account/Profile Settings";
             this.DisplayStartSettingsButton.UseVisualStyleBackColor = true;
+            this.DisplayStartSettingsButton.Visible = false;
             this.DisplayStartSettingsButton.Click += new System.EventHandler(this.DisplayStartSettingsButton_Click);
             // 
             // DisplayStartDisplayPlaylistButton
@@ -2596,6 +2601,7 @@
             this.DisplayStartDisplayPlaylistButton.TabIndex = 9;
             this.DisplayStartDisplayPlaylistButton.Text = "Display all Playlists";
             this.DisplayStartDisplayPlaylistButton.UseVisualStyleBackColor = true;
+            this.DisplayStartDisplayPlaylistButton.Visible = false;
             this.DisplayStartDisplayPlaylistButton.Click += new System.EventHandler(this.DisplayStartDisplayPlaylistButton_Click);
             // 
             // DisplayStartShowAddButton
@@ -2607,6 +2613,7 @@
             this.DisplayStartShowAddButton.TabIndex = 8;
             this.DisplayStartShowAddButton.Text = "Add/Show Songs, Videos or Playlists";
             this.DisplayStartShowAddButton.UseVisualStyleBackColor = true;
+            this.DisplayStartShowAddButton.Visible = false;
             this.DisplayStartShowAddButton.Click += new System.EventHandler(this.DisplayStartShowAddButton_Click);
             // 
             // DisplayStartSearchButton
@@ -2618,6 +2625,7 @@
             this.DisplayStartSearchButton.TabIndex = 7;
             this.DisplayStartSearchButton.Text = "Search Songs,Videos or Users";
             this.DisplayStartSearchButton.UseVisualStyleBackColor = true;
+            this.DisplayStartSearchButton.Visible = false;
             this.DisplayStartSearchButton.Click += new System.EventHandler(this.DisplayStartSearchButton_Click);
             // 
             // CreateSongPanel
@@ -2657,7 +2665,7 @@
             this.CreateSongPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreateSongPanel.Location = new System.Drawing.Point(250, 0);
             this.CreateSongPanel.Name = "CreateSongPanel";
-            this.CreateSongPanel.Size = new System.Drawing.Size(756, 611);
+            this.CreateSongPanel.Size = new System.Drawing.Size(756, 621);
             this.CreateSongPanel.TabIndex = 10;
             // 
             // CreateSongGoBackButton
@@ -2672,7 +2680,7 @@
             this.CreateSongGoBackButton.IconChar = FontAwesome.Sharp.IconChar.Reply;
             this.CreateSongGoBackButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.CreateSongGoBackButton.IconSize = 50;
-            this.CreateSongGoBackButton.Location = new System.Drawing.Point(5, 63);
+            this.CreateSongGoBackButton.Location = new System.Drawing.Point(5, 68);
             this.CreateSongGoBackButton.Name = "CreateSongGoBackButton";
             this.CreateSongGoBackButton.Rotation = 0D;
             this.CreateSongGoBackButton.Size = new System.Drawing.Size(63, 52);
@@ -2692,7 +2700,7 @@
             this.CreateSongCreateSongButton.IconChar = FontAwesome.Sharp.IconChar.Music;
             this.CreateSongCreateSongButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.CreateSongCreateSongButton.IconSize = 50;
-            this.CreateSongCreateSongButton.Location = new System.Drawing.Point(243, 513);
+            this.CreateSongCreateSongButton.Location = new System.Drawing.Point(243, 518);
             this.CreateSongCreateSongButton.Name = "CreateSongCreateSongButton";
             this.CreateSongCreateSongButton.Rotation = 0D;
             this.CreateSongCreateSongButton.Size = new System.Drawing.Size(225, 62);
@@ -2705,7 +2713,7 @@
             // CreateSongImageButton
             // 
             this.CreateSongImageButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateSongImageButton.Location = new System.Drawing.Point(506, 468);
+            this.CreateSongImageButton.Location = new System.Drawing.Point(506, 473);
             this.CreateSongImageButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongImageButton.Name = "CreateSongImageButton";
             this.CreateSongImageButton.Size = new System.Drawing.Size(90, 21);
@@ -2720,7 +2728,7 @@
             this.CreateSongImageTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateSongImageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongImageTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateSongImageTextBox.Location = new System.Drawing.Point(236, 466);
+            this.CreateSongImageTextBox.Location = new System.Drawing.Point(236, 471);
             this.CreateSongImageTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongImageTextBox.Name = "CreateSongImageTextBox";
             this.CreateSongImageTextBox.ReadOnly = true;
@@ -2733,7 +2741,7 @@
             this.CreateSongImageLabel.AutoSize = true;
             this.CreateSongImageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongImageLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongImageLabel.Location = new System.Drawing.Point(99, 465);
+            this.CreateSongImageLabel.Location = new System.Drawing.Point(99, 470);
             this.CreateSongImageLabel.Name = "CreateSongImageLabel";
             this.CreateSongImageLabel.Size = new System.Drawing.Size(97, 20);
             this.CreateSongImageLabel.TabIndex = 31;
@@ -2745,7 +2753,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(102, 136);
+            this.label17.Location = new System.Drawing.Point(102, 141);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(96, 20);
             this.label17.TabIndex = 30;
@@ -2754,7 +2762,7 @@
             // button3
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.Location = new System.Drawing.Point(504, 398);
+            this.button3.Location = new System.Drawing.Point(504, 403);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(94, 26);
@@ -2778,7 +2786,7 @@
             // CreateSongSongFileButton
             // 
             this.CreateSongSongFileButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateSongSongFileButton.Location = new System.Drawing.Point(504, 438);
+            this.CreateSongSongFileButton.Location = new System.Drawing.Point(504, 443);
             this.CreateSongSongFileButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongSongFileButton.Name = "CreateSongSongFileButton";
             this.CreateSongSongFileButton.Size = new System.Drawing.Size(92, 21);
@@ -2793,7 +2801,7 @@
             this.CreateSongSongFileTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateSongSongFileTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongSongFileTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateSongSongFileTextBox.Location = new System.Drawing.Point(237, 436);
+            this.CreateSongSongFileTextBox.Location = new System.Drawing.Point(237, 441);
             this.CreateSongSongFileTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongSongFileTextBox.Name = "CreateSongSongFileTextBox";
             this.CreateSongSongFileTextBox.ReadOnly = true;
@@ -2806,7 +2814,7 @@
             this.CreateSongSongFileLabel.AutoSize = true;
             this.CreateSongSongFileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongSongFileLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongSongFileLabel.Location = new System.Drawing.Point(115, 436);
+            this.CreateSongSongFileLabel.Location = new System.Drawing.Point(115, 441);
             this.CreateSongSongFileLabel.Name = "CreateSongSongFileLabel";
             this.CreateSongSongFileLabel.Size = new System.Drawing.Size(79, 20);
             this.CreateSongSongFileLabel.TabIndex = 25;
@@ -2816,7 +2824,7 @@
             // 
             this.CreateSongPublishDateTime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CreateSongPublishDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateSongPublishDateTime.Location = new System.Drawing.Point(239, 277);
+            this.CreateSongPublishDateTime.Location = new System.Drawing.Point(239, 282);
             this.CreateSongPublishDateTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongPublishDateTime.Name = "CreateSongPublishDateTime";
             this.CreateSongPublishDateTime.Size = new System.Drawing.Size(359, 27);
@@ -2828,7 +2836,7 @@
             this.CreateSongArtistTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateSongArtistTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongArtistTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateSongArtistTextBox.Location = new System.Drawing.Point(238, 165);
+            this.CreateSongArtistTextBox.Location = new System.Drawing.Point(238, 170);
             this.CreateSongArtistTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongArtistTextBox.Name = "CreateSongArtistTextBox";
             this.CreateSongArtistTextBox.Size = new System.Drawing.Size(360, 27);
@@ -2843,7 +2851,7 @@
             this.CreateSongAlbumTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateSongAlbumTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongAlbumTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateSongAlbumTextBox.Location = new System.Drawing.Point(238, 193);
+            this.CreateSongAlbumTextBox.Location = new System.Drawing.Point(238, 198);
             this.CreateSongAlbumTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongAlbumTextBox.Name = "CreateSongAlbumTextBox";
             this.CreateSongAlbumTextBox.Size = new System.Drawing.Size(360, 27);
@@ -2858,7 +2866,7 @@
             this.CreateSongDiscographyTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateSongDiscographyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongDiscographyTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateSongDiscographyTextBox.Location = new System.Drawing.Point(238, 220);
+            this.CreateSongDiscographyTextBox.Location = new System.Drawing.Point(238, 225);
             this.CreateSongDiscographyTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongDiscographyTextBox.Name = "CreateSongDiscographyTextBox";
             this.CreateSongDiscographyTextBox.Size = new System.Drawing.Size(360, 27);
@@ -2873,7 +2881,7 @@
             this.CreateSongGenderTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateSongGenderTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongGenderTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateSongGenderTextBox.Location = new System.Drawing.Point(238, 248);
+            this.CreateSongGenderTextBox.Location = new System.Drawing.Point(238, 253);
             this.CreateSongGenderTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongGenderTextBox.Name = "CreateSongGenderTextBox";
             this.CreateSongGenderTextBox.Size = new System.Drawing.Size(359, 27);
@@ -2888,7 +2896,7 @@
             this.CreateSongStudioTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateSongStudioTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongStudioTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateSongStudioTextBox.Location = new System.Drawing.Point(239, 307);
+            this.CreateSongStudioTextBox.Location = new System.Drawing.Point(239, 312);
             this.CreateSongStudioTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongStudioTextBox.Name = "CreateSongStudioTextBox";
             this.CreateSongStudioTextBox.Size = new System.Drawing.Size(360, 27);
@@ -2903,7 +2911,7 @@
             this.CreateSongDurationTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateSongDurationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongDurationTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateSongDurationTextBox.Location = new System.Drawing.Point(238, 336);
+            this.CreateSongDurationTextBox.Location = new System.Drawing.Point(238, 341);
             this.CreateSongDurationTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongDurationTextBox.Name = "CreateSongDurationTextBox";
             this.CreateSongDurationTextBox.Size = new System.Drawing.Size(359, 27);
@@ -2918,7 +2926,7 @@
             this.CreateSongFormatTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateSongFormatTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongFormatTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateSongFormatTextBox.Location = new System.Drawing.Point(237, 365);
+            this.CreateSongFormatTextBox.Location = new System.Drawing.Point(237, 370);
             this.CreateSongFormatTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongFormatTextBox.Name = "CreateSongFormatTextBox";
             this.CreateSongFormatTextBox.Size = new System.Drawing.Size(359, 27);
@@ -2933,7 +2941,7 @@
             this.CreateSongLyricsTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateSongLyricsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongLyricsTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateSongLyricsTextBox.Location = new System.Drawing.Point(239, 396);
+            this.CreateSongLyricsTextBox.Location = new System.Drawing.Point(239, 401);
             this.CreateSongLyricsTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongLyricsTextBox.Multiline = true;
             this.CreateSongLyricsTextBox.Name = "CreateSongLyricsTextBox";
@@ -2947,7 +2955,7 @@
             this.CreateSongLyricsLabel.AutoSize = true;
             this.CreateSongLyricsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongLyricsLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongLyricsLabel.Location = new System.Drawing.Point(139, 398);
+            this.CreateSongLyricsLabel.Location = new System.Drawing.Point(139, 403);
             this.CreateSongLyricsLabel.Name = "CreateSongLyricsLabel";
             this.CreateSongLyricsLabel.Size = new System.Drawing.Size(55, 20);
             this.CreateSongLyricsLabel.TabIndex = 11;
@@ -2959,7 +2967,7 @@
             this.CreateSongNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateSongNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongNameTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateSongNameTextBox.Location = new System.Drawing.Point(239, 136);
+            this.CreateSongNameTextBox.Location = new System.Drawing.Point(239, 141);
             this.CreateSongNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateSongNameTextBox.Name = "CreateSongNameTextBox";
             this.CreateSongNameTextBox.Size = new System.Drawing.Size(359, 27);
@@ -2974,7 +2982,7 @@
             this.CreateSongFormatLabel.AutoSize = true;
             this.CreateSongFormatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongFormatLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongFormatLabel.Location = new System.Drawing.Point(132, 364);
+            this.CreateSongFormatLabel.Location = new System.Drawing.Point(132, 369);
             this.CreateSongFormatLabel.Name = "CreateSongFormatLabel";
             this.CreateSongFormatLabel.Size = new System.Drawing.Size(62, 20);
             this.CreateSongFormatLabel.TabIndex = 9;
@@ -2986,7 +2994,7 @@
             this.CreateSongDurationLabel.AutoSize = true;
             this.CreateSongDurationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongDurationLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongDurationLabel.Location = new System.Drawing.Point(123, 336);
+            this.CreateSongDurationLabel.Location = new System.Drawing.Point(123, 341);
             this.CreateSongDurationLabel.Name = "CreateSongDurationLabel";
             this.CreateSongDurationLabel.Size = new System.Drawing.Size(73, 20);
             this.CreateSongDurationLabel.TabIndex = 8;
@@ -2998,7 +3006,7 @@
             this.CreateSongStudioLabel.AutoSize = true;
             this.CreateSongStudioLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongStudioLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongStudioLabel.Location = new System.Drawing.Point(137, 307);
+            this.CreateSongStudioLabel.Location = new System.Drawing.Point(137, 312);
             this.CreateSongStudioLabel.Name = "CreateSongStudioLabel";
             this.CreateSongStudioLabel.Size = new System.Drawing.Size(56, 20);
             this.CreateSongStudioLabel.TabIndex = 7;
@@ -3010,7 +3018,7 @@
             this.CreateSongPublishDateLabel.AutoSize = true;
             this.CreateSongPublishDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongPublishDateLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongPublishDateLabel.Location = new System.Drawing.Point(97, 277);
+            this.CreateSongPublishDateLabel.Location = new System.Drawing.Point(97, 282);
             this.CreateSongPublishDateLabel.Name = "CreateSongPublishDateLabel";
             this.CreateSongPublishDateLabel.Size = new System.Drawing.Size(105, 20);
             this.CreateSongPublishDateLabel.TabIndex = 6;
@@ -3022,7 +3030,7 @@
             this.CreateSongGenderLabel.AutoSize = true;
             this.CreateSongGenderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongGenderLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongGenderLabel.Location = new System.Drawing.Point(127, 249);
+            this.CreateSongGenderLabel.Location = new System.Drawing.Point(127, 254);
             this.CreateSongGenderLabel.Name = "CreateSongGenderLabel";
             this.CreateSongGenderLabel.Size = new System.Drawing.Size(64, 20);
             this.CreateSongGenderLabel.TabIndex = 5;
@@ -3034,7 +3042,7 @@
             this.CreateSongDiscographyLabel.AutoSize = true;
             this.CreateSongDiscographyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongDiscographyLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongDiscographyLabel.Location = new System.Drawing.Point(97, 221);
+            this.CreateSongDiscographyLabel.Location = new System.Drawing.Point(97, 226);
             this.CreateSongDiscographyLabel.Name = "CreateSongDiscographyLabel";
             this.CreateSongDiscographyLabel.Size = new System.Drawing.Size(103, 20);
             this.CreateSongDiscographyLabel.TabIndex = 4;
@@ -3046,7 +3054,7 @@
             this.CreateSongAlbumLabel.AutoSize = true;
             this.CreateSongAlbumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongAlbumLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongAlbumLabel.Location = new System.Drawing.Point(132, 193);
+            this.CreateSongAlbumLabel.Location = new System.Drawing.Point(132, 198);
             this.CreateSongAlbumLabel.Name = "CreateSongAlbumLabel";
             this.CreateSongAlbumLabel.Size = new System.Drawing.Size(56, 20);
             this.CreateSongAlbumLabel.TabIndex = 3;
@@ -3058,7 +3066,7 @@
             this.CreateSongArtistLabel.AutoSize = true;
             this.CreateSongArtistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongArtistLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongArtistLabel.Location = new System.Drawing.Point(88, 166);
+            this.CreateSongArtistLabel.Location = new System.Drawing.Point(88, 171);
             this.CreateSongArtistLabel.Name = "CreateSongArtistLabel";
             this.CreateSongArtistLabel.Size = new System.Drawing.Size(123, 20);
             this.CreateSongArtistLabel.TabIndex = 2;
@@ -3070,7 +3078,7 @@
             this.CreateSongLabel.AutoSize = true;
             this.CreateSongLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateSongLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateSongLabel.Location = new System.Drawing.Point(207, 26);
+            this.CreateSongLabel.Location = new System.Drawing.Point(207, 31);
             this.CreateSongLabel.Name = "CreateSongLabel";
             this.CreateSongLabel.Size = new System.Drawing.Size(317, 58);
             this.CreateSongLabel.TabIndex = 0;
@@ -3118,7 +3126,7 @@
             this.CreateVideoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreateVideoPanel.Location = new System.Drawing.Point(250, 0);
             this.CreateVideoPanel.Name = "CreateVideoPanel";
-            this.CreateVideoPanel.Size = new System.Drawing.Size(756, 611);
+            this.CreateVideoPanel.Size = new System.Drawing.Size(756, 621);
             this.CreateVideoPanel.TabIndex = 11;
             // 
             // CreateVideoGoBackButton
@@ -3133,7 +3141,7 @@
             this.CreateVideoGoBackButton.IconChar = FontAwesome.Sharp.IconChar.Reply;
             this.CreateVideoGoBackButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.CreateVideoGoBackButton.IconSize = 50;
-            this.CreateVideoGoBackButton.Location = new System.Drawing.Point(17, 71);
+            this.CreateVideoGoBackButton.Location = new System.Drawing.Point(17, 76);
             this.CreateVideoGoBackButton.Name = "CreateVideoGoBackButton";
             this.CreateVideoGoBackButton.Rotation = 0D;
             this.CreateVideoGoBackButton.Size = new System.Drawing.Size(63, 52);
@@ -3153,7 +3161,7 @@
             this.CreateVideoSaveButton.IconChar = FontAwesome.Sharp.IconChar.Video;
             this.CreateVideoSaveButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.CreateVideoSaveButton.IconSize = 50;
-            this.CreateVideoSaveButton.Location = new System.Drawing.Point(271, 543);
+            this.CreateVideoSaveButton.Location = new System.Drawing.Point(271, 548);
             this.CreateVideoSaveButton.Name = "CreateVideoSaveButton";
             this.CreateVideoSaveButton.Rotation = 0D;
             this.CreateVideoSaveButton.Size = new System.Drawing.Size(219, 59);
@@ -3166,7 +3174,7 @@
             // CreateVideoPicButton
             // 
             this.CreateVideoPicButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateVideoPicButton.Location = new System.Drawing.Point(485, 511);
+            this.CreateVideoPicButton.Location = new System.Drawing.Point(485, 516);
             this.CreateVideoPicButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoPicButton.Name = "CreateVideoPicButton";
             this.CreateVideoPicButton.Size = new System.Drawing.Size(82, 19);
@@ -3180,7 +3188,7 @@
             this.CreateVideoImageTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CreateVideoImageTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateVideoImageTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateVideoImageTextBox.Location = new System.Drawing.Point(244, 511);
+            this.CreateVideoImageTextBox.Location = new System.Drawing.Point(244, 516);
             this.CreateVideoImageTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoImageTextBox.Name = "CreateVideoImageTextBox";
             this.CreateVideoImageTextBox.ReadOnly = true;
@@ -3193,7 +3201,7 @@
             this.CreateVideoImageLabel.AutoSize = true;
             this.CreateVideoImageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoImageLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoImageLabel.Location = new System.Drawing.Point(112, 511);
+            this.CreateVideoImageLabel.Location = new System.Drawing.Point(112, 516);
             this.CreateVideoImageLabel.Name = "CreateVideoImageLabel";
             this.CreateVideoImageLabel.Size = new System.Drawing.Size(117, 24);
             this.CreateVideoImageLabel.TabIndex = 31;
@@ -3202,7 +3210,7 @@
             // CreateVideoGoBackButtonFeo
             // 
             this.CreateVideoGoBackButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateVideoGoBackButtonFeo.Location = new System.Drawing.Point(595, 41);
+            this.CreateVideoGoBackButtonFeo.Location = new System.Drawing.Point(595, 46);
             this.CreateVideoGoBackButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoGoBackButtonFeo.Name = "CreateVideoGoBackButtonFeo";
             this.CreateVideoGoBackButtonFeo.Size = new System.Drawing.Size(129, 56);
@@ -3214,7 +3222,7 @@
             // CreateVideoSearcheSub
             // 
             this.CreateVideoSearcheSub.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateVideoSearcheSub.Location = new System.Drawing.Point(484, 451);
+            this.CreateVideoSearcheSub.Location = new System.Drawing.Point(484, 456);
             this.CreateVideoSearcheSub.Name = "CreateVideoSearcheSub";
             this.CreateVideoSearcheSub.Size = new System.Drawing.Size(85, 21);
             this.CreateVideoSearcheSub.TabIndex = 30;
@@ -3236,7 +3244,7 @@
             // CreateVideoSaveButtonFeo
             // 
             this.CreateVideoSaveButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateVideoSaveButtonFeo.Location = new System.Drawing.Point(492, 537);
+            this.CreateVideoSaveButtonFeo.Location = new System.Drawing.Point(492, 542);
             this.CreateVideoSaveButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoSaveButtonFeo.Name = "CreateVideoSaveButtonFeo";
             this.CreateVideoSaveButtonFeo.Size = new System.Drawing.Size(85, 33);
@@ -3248,7 +3256,7 @@
             // CreateVideoLoadVideoButton
             // 
             this.CreateVideoLoadVideoButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateVideoLoadVideoButton.Location = new System.Drawing.Point(484, 480);
+            this.CreateVideoLoadVideoButton.Location = new System.Drawing.Point(484, 485);
             this.CreateVideoLoadVideoButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoLoadVideoButton.Name = "CreateVideoLoadVideoButton";
             this.CreateVideoLoadVideoButton.Size = new System.Drawing.Size(85, 24);
@@ -3262,7 +3270,7 @@
             this.CreateVideoLoadVideoTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CreateVideoLoadVideoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateVideoLoadVideoTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateVideoLoadVideoTextBox.Location = new System.Drawing.Point(246, 480);
+            this.CreateVideoLoadVideoTextBox.Location = new System.Drawing.Point(246, 485);
             this.CreateVideoLoadVideoTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoLoadVideoTextBox.Name = "CreateVideoLoadVideoTextBox";
             this.CreateVideoLoadVideoTextBox.ReadOnly = true;
@@ -3272,7 +3280,7 @@
             // CreateVideoReleaseDateDateTimePicker
             // 
             this.CreateVideoReleaseDateDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateVideoReleaseDateDateTimePicker.Location = new System.Drawing.Point(244, 234);
+            this.CreateVideoReleaseDateDateTimePicker.Location = new System.Drawing.Point(244, 239);
             this.CreateVideoReleaseDateDateTimePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoReleaseDateDateTimePicker.Name = "CreateVideoReleaseDateDateTimePicker";
             this.CreateVideoReleaseDateDateTimePicker.Size = new System.Drawing.Size(322, 22);
@@ -3284,7 +3292,7 @@
             this.CreateVideoSubtitlesTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateVideoSubtitlesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoSubtitlesTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateVideoSubtitlesTextBox.Location = new System.Drawing.Point(244, 448);
+            this.CreateVideoSubtitlesTextBox.Location = new System.Drawing.Point(244, 453);
             this.CreateVideoSubtitlesTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoSubtitlesTextBox.Name = "CreateVideoSubtitlesTextBox";
             this.CreateVideoSubtitlesTextBox.Size = new System.Drawing.Size(226, 26);
@@ -3296,7 +3304,7 @@
             this.CreateVideoFormatTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateVideoFormatTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoFormatTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateVideoFormatTextBox.Location = new System.Drawing.Point(244, 417);
+            this.CreateVideoFormatTextBox.Location = new System.Drawing.Point(244, 422);
             this.CreateVideoFormatTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoFormatTextBox.Name = "CreateVideoFormatTextBox";
             this.CreateVideoFormatTextBox.Size = new System.Drawing.Size(322, 26);
@@ -3311,7 +3319,7 @@
             this.CreateVideoDurationTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateVideoDurationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoDurationTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateVideoDurationTextBox.Location = new System.Drawing.Point(244, 385);
+            this.CreateVideoDurationTextBox.Location = new System.Drawing.Point(244, 390);
             this.CreateVideoDurationTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoDurationTextBox.Name = "CreateVideoDurationTextBox";
             this.CreateVideoDurationTextBox.Size = new System.Drawing.Size(322, 26);
@@ -3326,7 +3334,7 @@
             this.CreateVideoDescriptionTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateVideoDescriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoDescriptionTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateVideoDescriptionTextBox.Location = new System.Drawing.Point(244, 351);
+            this.CreateVideoDescriptionTextBox.Location = new System.Drawing.Point(244, 356);
             this.CreateVideoDescriptionTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoDescriptionTextBox.Name = "CreateVideoDescriptionTextBox";
             this.CreateVideoDescriptionTextBox.Size = new System.Drawing.Size(322, 26);
@@ -3341,7 +3349,7 @@
             this.CreateVideoCategoryTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateVideoCategoryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoCategoryTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateVideoCategoryTextBox.Location = new System.Drawing.Point(244, 322);
+            this.CreateVideoCategoryTextBox.Location = new System.Drawing.Point(244, 327);
             this.CreateVideoCategoryTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoCategoryTextBox.Name = "CreateVideoCategoryTextBox";
             this.CreateVideoCategoryTextBox.Size = new System.Drawing.Size(322, 26);
@@ -3356,7 +3364,7 @@
             this.CreateVideoQualityTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateVideoQualityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoQualityTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateVideoQualityTextBox.Location = new System.Drawing.Point(245, 292);
+            this.CreateVideoQualityTextBox.Location = new System.Drawing.Point(245, 297);
             this.CreateVideoQualityTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoQualityTextBox.Name = "CreateVideoQualityTextBox";
             this.CreateVideoQualityTextBox.Size = new System.Drawing.Size(322, 26);
@@ -3371,7 +3379,7 @@
             this.CreateVideoDimensionTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateVideoDimensionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoDimensionTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateVideoDimensionTextBox.Location = new System.Drawing.Point(244, 262);
+            this.CreateVideoDimensionTextBox.Location = new System.Drawing.Point(244, 267);
             this.CreateVideoDimensionTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoDimensionTextBox.Name = "CreateVideoDimensionTextBox";
             this.CreateVideoDimensionTextBox.Size = new System.Drawing.Size(322, 26);
@@ -3386,7 +3394,7 @@
             this.CreateVideoDirectorsTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateVideoDirectorsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoDirectorsTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateVideoDirectorsTextBox.Location = new System.Drawing.Point(244, 205);
+            this.CreateVideoDirectorsTextBox.Location = new System.Drawing.Point(244, 210);
             this.CreateVideoDirectorsTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoDirectorsTextBox.Name = "CreateVideoDirectorsTextBox";
             this.CreateVideoDirectorsTextBox.Size = new System.Drawing.Size(322, 26);
@@ -3401,7 +3409,7 @@
             this.CreateVideoActorsTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateVideoActorsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoActorsTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateVideoActorsTextBox.Location = new System.Drawing.Point(244, 177);
+            this.CreateVideoActorsTextBox.Location = new System.Drawing.Point(244, 182);
             this.CreateVideoActorsTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoActorsTextBox.Name = "CreateVideoActorsTextBox";
             this.CreateVideoActorsTextBox.Size = new System.Drawing.Size(322, 26);
@@ -3416,7 +3424,7 @@
             this.CreateVideoNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.CreateVideoNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoNameTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateVideoNameTextBox.Location = new System.Drawing.Point(245, 147);
+            this.CreateVideoNameTextBox.Location = new System.Drawing.Point(245, 152);
             this.CreateVideoNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateVideoNameTextBox.Name = "CreateVideoNameTextBox";
             this.CreateVideoNameTextBox.Size = new System.Drawing.Size(322, 26);
@@ -3431,7 +3439,7 @@
             this.CreateVideoLoadLabel.AutoSize = true;
             this.CreateVideoLoadLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoLoadLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoLoadLabel.Location = new System.Drawing.Point(120, 482);
+            this.CreateVideoLoadLabel.Location = new System.Drawing.Point(120, 487);
             this.CreateVideoLoadLabel.Name = "CreateVideoLoadLabel";
             this.CreateVideoLoadLabel.Size = new System.Drawing.Size(107, 24);
             this.CreateVideoLoadLabel.TabIndex = 13;
@@ -3443,7 +3451,7 @@
             this.CreateVideoSubtitlesLabel.AutoSize = true;
             this.CreateVideoSubtitlesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoSubtitlesLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoSubtitlesLabel.Location = new System.Drawing.Point(138, 452);
+            this.CreateVideoSubtitlesLabel.Location = new System.Drawing.Point(138, 457);
             this.CreateVideoSubtitlesLabel.Name = "CreateVideoSubtitlesLabel";
             this.CreateVideoSubtitlesLabel.Size = new System.Drawing.Size(80, 24);
             this.CreateVideoSubtitlesLabel.TabIndex = 12;
@@ -3455,7 +3463,7 @@
             this.CreateVideoFormatLabel.AutoSize = true;
             this.CreateVideoFormatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoFormatLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoFormatLabel.Location = new System.Drawing.Point(109, 419);
+            this.CreateVideoFormatLabel.Location = new System.Drawing.Point(109, 424);
             this.CreateVideoFormatLabel.Name = "CreateVideoFormatLabel";
             this.CreateVideoFormatLabel.Size = new System.Drawing.Size(124, 24);
             this.CreateVideoFormatLabel.TabIndex = 11;
@@ -3467,7 +3475,7 @@
             this.CreateVideoDuration.AutoSize = true;
             this.CreateVideoDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoDuration.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoDuration.Location = new System.Drawing.Point(103, 383);
+            this.CreateVideoDuration.Location = new System.Drawing.Point(103, 388);
             this.CreateVideoDuration.Name = "CreateVideoDuration";
             this.CreateVideoDuration.Size = new System.Drawing.Size(135, 24);
             this.CreateVideoDuration.TabIndex = 10;
@@ -3479,7 +3487,7 @@
             this.CreateVideoDescription.AutoSize = true;
             this.CreateVideoDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoDescription.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoDescription.Location = new System.Drawing.Point(84, 352);
+            this.CreateVideoDescription.Location = new System.Drawing.Point(84, 357);
             this.CreateVideoDescription.Name = "CreateVideoDescription";
             this.CreateVideoDescription.Size = new System.Drawing.Size(159, 24);
             this.CreateVideoDescription.TabIndex = 9;
@@ -3491,7 +3499,7 @@
             this.CreateVideoCategoryLabel.AutoSize = true;
             this.CreateVideoCategoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoCategoryLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoCategoryLabel.Location = new System.Drawing.Point(68, 320);
+            this.CreateVideoCategoryLabel.Location = new System.Drawing.Point(68, 325);
             this.CreateVideoCategoryLabel.Name = "CreateVideoCategoryLabel";
             this.CreateVideoCategoryLabel.Size = new System.Drawing.Size(176, 24);
             this.CreateVideoCategoryLabel.TabIndex = 8;
@@ -3503,7 +3511,7 @@
             this.CreateVideoQualityLabel.AutoSize = true;
             this.CreateVideoQualityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoQualityLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoQualityLabel.Location = new System.Drawing.Point(104, 294);
+            this.CreateVideoQualityLabel.Location = new System.Drawing.Point(104, 299);
             this.CreateVideoQualityLabel.Name = "CreateVideoQualityLabel";
             this.CreateVideoQualityLabel.Size = new System.Drawing.Size(122, 24);
             this.CreateVideoQualityLabel.TabIndex = 7;
@@ -3515,7 +3523,7 @@
             this.CreateVideoDimensionLabel.AutoSize = true;
             this.CreateVideoDimensionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoDimensionLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoDimensionLabel.Location = new System.Drawing.Point(90, 266);
+            this.CreateVideoDimensionLabel.Location = new System.Drawing.Point(90, 271);
             this.CreateVideoDimensionLabel.Name = "CreateVideoDimensionLabel";
             this.CreateVideoDimensionLabel.Size = new System.Drawing.Size(150, 24);
             this.CreateVideoDimensionLabel.TabIndex = 6;
@@ -3527,7 +3535,7 @@
             this.CreateVideoReleaseDateLabel.AutoSize = true;
             this.CreateVideoReleaseDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoReleaseDateLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoReleaseDateLabel.Location = new System.Drawing.Point(109, 237);
+            this.CreateVideoReleaseDateLabel.Location = new System.Drawing.Point(109, 242);
             this.CreateVideoReleaseDateLabel.Name = "CreateVideoReleaseDateLabel";
             this.CreateVideoReleaseDateLabel.Size = new System.Drawing.Size(122, 24);
             this.CreateVideoReleaseDateLabel.TabIndex = 5;
@@ -3539,7 +3547,7 @@
             this.CreateVideoDirectorsLabel.AutoSize = true;
             this.CreateVideoDirectorsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoDirectorsLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoDirectorsLabel.Location = new System.Drawing.Point(132, 209);
+            this.CreateVideoDirectorsLabel.Location = new System.Drawing.Point(132, 214);
             this.CreateVideoDirectorsLabel.Name = "CreateVideoDirectorsLabel";
             this.CreateVideoDirectorsLabel.Size = new System.Drawing.Size(84, 24);
             this.CreateVideoDirectorsLabel.TabIndex = 4;
@@ -3551,7 +3559,7 @@
             this.CreateVideoactorsLabel.AutoSize = true;
             this.CreateVideoactorsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoactorsLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoactorsLabel.Location = new System.Drawing.Point(155, 179);
+            this.CreateVideoactorsLabel.Location = new System.Drawing.Point(155, 184);
             this.CreateVideoactorsLabel.Name = "CreateVideoactorsLabel";
             this.CreateVideoactorsLabel.Size = new System.Drawing.Size(63, 24);
             this.CreateVideoactorsLabel.TabIndex = 3;
@@ -3563,7 +3571,7 @@
             this.CreateVideoNameLabel.AutoSize = true;
             this.CreateVideoNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoNameLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoNameLabel.Location = new System.Drawing.Point(160, 151);
+            this.CreateVideoNameLabel.Location = new System.Drawing.Point(160, 156);
             this.CreateVideoNameLabel.Name = "CreateVideoNameLabel";
             this.CreateVideoNameLabel.Size = new System.Drawing.Size(61, 24);
             this.CreateVideoNameLabel.TabIndex = 2;
@@ -3583,7 +3591,7 @@
             this.CreateVideoLabel.AutoSize = true;
             this.CreateVideoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateVideoLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateVideoLabel.Location = new System.Drawing.Point(213, 64);
+            this.CreateVideoLabel.Location = new System.Drawing.Point(213, 69);
             this.CreateVideoLabel.Name = "CreateVideoLabel";
             this.CreateVideoLabel.Size = new System.Drawing.Size(329, 58);
             this.CreateVideoLabel.TabIndex = 0;
@@ -3610,7 +3618,7 @@
             this.CreatePlaylistPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreatePlaylistPanel.Location = new System.Drawing.Point(250, 0);
             this.CreatePlaylistPanel.Name = "CreatePlaylistPanel";
-            this.CreatePlaylistPanel.Size = new System.Drawing.Size(756, 611);
+            this.CreatePlaylistPanel.Size = new System.Drawing.Size(756, 621);
             this.CreatePlaylistPanel.TabIndex = 12;
             this.CreatePlaylistPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.CreatePlaylistPanel_Paint);
             // 
@@ -3625,7 +3633,7 @@
             this.CreatePlaylistCreatePlaylistButton.IconChar = FontAwesome.Sharp.IconChar.PlayCircle;
             this.CreatePlaylistCreatePlaylistButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.CreatePlaylistCreatePlaylistButton.IconSize = 50;
-            this.CreatePlaylistCreatePlaylistButton.Location = new System.Drawing.Point(304, 450);
+            this.CreatePlaylistCreatePlaylistButton.Location = new System.Drawing.Point(304, 455);
             this.CreatePlaylistCreatePlaylistButton.Name = "CreatePlaylistCreatePlaylistButton";
             this.CreatePlaylistCreatePlaylistButton.Rotation = 0D;
             this.CreatePlaylistCreatePlaylistButton.Size = new System.Drawing.Size(219, 66);
@@ -3647,7 +3655,7 @@
             this.CreatePlaylistGoBack.IconChar = FontAwesome.Sharp.IconChar.Reply;
             this.CreatePlaylistGoBack.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.CreatePlaylistGoBack.IconSize = 50;
-            this.CreatePlaylistGoBack.Location = new System.Drawing.Point(12, 67);
+            this.CreatePlaylistGoBack.Location = new System.Drawing.Point(12, 72);
             this.CreatePlaylistGoBack.Name = "CreatePlaylistGoBack";
             this.CreatePlaylistGoBack.Rotation = 0D;
             this.CreatePlaylistGoBack.Size = new System.Drawing.Size(63, 52);
@@ -3821,7 +3829,7 @@
             this.AccountProfileSettingsPanel.Location = new System.Drawing.Point(250, 0);
             this.AccountProfileSettingsPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AccountProfileSettingsPanel.Name = "AccountProfileSettingsPanel";
-            this.AccountProfileSettingsPanel.Size = new System.Drawing.Size(756, 611);
+            this.AccountProfileSettingsPanel.Size = new System.Drawing.Size(756, 621);
             this.AccountProfileSettingsPanel.TabIndex = 6;
             // 
             // AccountProfileSettingsSplitContainer
@@ -3879,8 +3887,8 @@
             this.AccountProfileSettingsSplitContainer.Panel2.Controls.Add(this.label6);
             this.AccountProfileSettingsSplitContainer.Panel2.Controls.Add(this.ProfileSettingsLabel);
             this.AccountProfileSettingsSplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.AccountProfileSettingsSplitContainer.Size = new System.Drawing.Size(756, 611);
-            this.AccountProfileSettingsSplitContainer.SplitterDistance = 338;
+            this.AccountProfileSettingsSplitContainer.Size = new System.Drawing.Size(756, 621);
+            this.AccountProfileSettingsSplitContainer.SplitterDistance = 369;
             this.AccountProfileSettingsSplitContainer.TabIndex = 2;
             // 
             // UserSettinChangePasswordButton
@@ -3894,7 +3902,7 @@
             this.UserSettinChangePasswordButton.IconChar = FontAwesome.Sharp.IconChar.Eraser;
             this.UserSettinChangePasswordButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.UserSettinChangePasswordButton.IconSize = 30;
-            this.UserSettinChangePasswordButton.Location = new System.Drawing.Point(350, 144);
+            this.UserSettinChangePasswordButton.Location = new System.Drawing.Point(350, 174);
             this.UserSettinChangePasswordButton.Name = "UserSettinChangePasswordButton";
             this.UserSettinChangePasswordButton.Rotation = 0D;
             this.UserSettinChangePasswordButton.Size = new System.Drawing.Size(155, 32);
@@ -3915,7 +3923,7 @@
             this.AccountSettingAccounTypeChangeButton.IconChar = FontAwesome.Sharp.IconChar.Eraser;
             this.AccountSettingAccounTypeChangeButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.AccountSettingAccounTypeChangeButton.IconSize = 30;
-            this.AccountSettingAccounTypeChangeButton.Location = new System.Drawing.Point(350, 219);
+            this.AccountSettingAccounTypeChangeButton.Location = new System.Drawing.Point(350, 249);
             this.AccountSettingAccounTypeChangeButton.Name = "AccountSettingAccounTypeChangeButton";
             this.AccountSettingAccounTypeChangeButton.Rotation = 0D;
             this.AccountSettingAccounTypeChangeButton.Size = new System.Drawing.Size(155, 34);
@@ -3936,7 +3944,7 @@
             this.UserSettinChangeUsernameButton.IconChar = FontAwesome.Sharp.IconChar.Eraser;
             this.UserSettinChangeUsernameButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.UserSettinChangeUsernameButton.IconSize = 30;
-            this.UserSettinChangeUsernameButton.Location = new System.Drawing.Point(351, 103);
+            this.UserSettinChangeUsernameButton.Location = new System.Drawing.Point(351, 133);
             this.UserSettinChangeUsernameButton.Name = "UserSettinChangeUsernameButton";
             this.UserSettinChangeUsernameButton.Rotation = 0D;
             this.UserSettinChangeUsernameButton.Size = new System.Drawing.Size(157, 32);
@@ -3971,7 +3979,7 @@
             this.UserProfileGoBackFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.UserProfileGoBackFeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserProfileGoBackFeo.ForeColor = System.Drawing.Color.Black;
-            this.UserProfileGoBackFeo.Location = new System.Drawing.Point(-16, 33);
+            this.UserProfileGoBackFeo.Location = new System.Drawing.Point(-16, 63);
             this.UserProfileGoBackFeo.Name = "UserProfileGoBackFeo";
             this.UserProfileGoBackFeo.Size = new System.Drawing.Size(115, 45);
             this.UserProfileGoBackFeo.TabIndex = 56;
@@ -3985,7 +3993,7 @@
             this.UserSettinChangePasswordButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.UserSettinChangePasswordButtonFeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserSettinChangePasswordButtonFeo.ForeColor = System.Drawing.Color.Black;
-            this.UserSettinChangePasswordButtonFeo.Location = new System.Drawing.Point(471, 44);
+            this.UserSettinChangePasswordButtonFeo.Location = new System.Drawing.Point(471, 74);
             this.UserSettinChangePasswordButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserSettinChangePasswordButtonFeo.Name = "UserSettinChangePasswordButtonFeo";
             this.UserSettinChangePasswordButtonFeo.Size = new System.Drawing.Size(113, 27);
@@ -4000,7 +4008,7 @@
             this.AccountSettingAccounTypeChangeButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingAccounTypeChangeButtonFeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingAccounTypeChangeButtonFeo.ForeColor = System.Drawing.Color.Black;
-            this.AccountSettingAccounTypeChangeButtonFeo.Location = new System.Drawing.Point(485, 33);
+            this.AccountSettingAccounTypeChangeButtonFeo.Location = new System.Drawing.Point(485, 63);
             this.AccountSettingAccounTypeChangeButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AccountSettingAccounTypeChangeButtonFeo.Name = "AccountSettingAccounTypeChangeButtonFeo";
             this.AccountSettingAccounTypeChangeButtonFeo.Size = new System.Drawing.Size(113, 28);
@@ -4015,7 +4023,7 @@
             this.UserSettinChangeUsernameButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.UserSettinChangeUsernameButtonFeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserSettinChangeUsernameButtonFeo.ForeColor = System.Drawing.Color.Black;
-            this.UserSettinChangeUsernameButtonFeo.Location = new System.Drawing.Point(-95, 92);
+            this.UserSettinChangeUsernameButtonFeo.Location = new System.Drawing.Point(-95, 122);
             this.UserSettinChangeUsernameButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserSettinChangeUsernameButtonFeo.Name = "UserSettinChangeUsernameButtonFeo";
             this.UserSettinChangeUsernameButtonFeo.Size = new System.Drawing.Size(114, 27);
@@ -4032,7 +4040,7 @@
             this.AccountProfileSettingsLabelUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountProfileSettingsLabelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountProfileSettingsLabelUsername.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountProfileSettingsLabelUsername.Location = new System.Drawing.Point(150, 128);
+            this.AccountProfileSettingsLabelUsername.Location = new System.Drawing.Point(150, 158);
             this.AccountProfileSettingsLabelUsername.Name = "AccountProfileSettingsLabelUsername";
             this.AccountProfileSettingsLabelUsername.Size = new System.Drawing.Size(0, 20);
             this.AccountProfileSettingsLabelUsername.TabIndex = 52;
@@ -4043,7 +4051,7 @@
             this.AccountSettingsFollowerListDomainUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsFollowerListDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsFollowerListDomainUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsFollowerListDomainUp.Location = new System.Drawing.Point(219, 268);
+            this.AccountSettingsFollowerListDomainUp.Location = new System.Drawing.Point(219, 298);
             this.AccountSettingsFollowerListDomainUp.Name = "AccountSettingsFollowerListDomainUp";
             this.AccountSettingsFollowerListDomainUp.Size = new System.Drawing.Size(229, 27);
             this.AccountSettingsFollowerListDomainUp.TabIndex = 51;
@@ -4055,7 +4063,7 @@
             this.AccountSettingsFollowingListDomaiUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsFollowingListDomaiUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsFollowingListDomaiUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsFollowingListDomaiUp.Location = new System.Drawing.Point(219, 307);
+            this.AccountSettingsFollowingListDomaiUp.Location = new System.Drawing.Point(219, 337);
             this.AccountSettingsFollowingListDomaiUp.Name = "AccountSettingsFollowingListDomaiUp";
             this.AccountSettingsFollowingListDomaiUp.Size = new System.Drawing.Size(229, 27);
             this.AccountSettingsFollowingListDomaiUp.TabIndex = 50;
@@ -4067,7 +4075,7 @@
             this.AccountSettingsFollowingTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsFollowingTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsFollowingTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsFollowingTextBox.Location = new System.Drawing.Point(149, 308);
+            this.AccountSettingsFollowingTextBox.Location = new System.Drawing.Point(149, 338);
             this.AccountSettingsFollowingTextBox.Name = "AccountSettingsFollowingTextBox";
             this.AccountSettingsFollowingTextBox.Size = new System.Drawing.Size(36, 27);
             this.AccountSettingsFollowingTextBox.TabIndex = 12;
@@ -4078,7 +4086,7 @@
             this.AccountSettingsFollowersTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsFollowersTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsFollowersTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsFollowersTextBox.Location = new System.Drawing.Point(149, 271);
+            this.AccountSettingsFollowersTextBox.Location = new System.Drawing.Point(149, 301);
             this.AccountSettingsFollowersTextBox.Name = "AccountSettingsFollowersTextBox";
             this.AccountSettingsFollowersTextBox.Size = new System.Drawing.Size(36, 27);
             this.AccountSettingsFollowersTextBox.TabIndex = 11;
@@ -4089,7 +4097,7 @@
             this.AccountSettingsAccountTypeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsAccountTypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsAccountTypeTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsAccountTypeTextBox.Location = new System.Drawing.Point(149, 225);
+            this.AccountSettingsAccountTypeTextBox.Location = new System.Drawing.Point(149, 255);
             this.AccountSettingsAccountTypeTextBox.Name = "AccountSettingsAccountTypeTextBox";
             this.AccountSettingsAccountTypeTextBox.ReadOnly = true;
             this.AccountSettingsAccountTypeTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4101,7 +4109,7 @@
             this.AccountSettingsEmailTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsEmailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsEmailTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsEmailTextBox.Location = new System.Drawing.Point(149, 186);
+            this.AccountSettingsEmailTextBox.Location = new System.Drawing.Point(149, 216);
             this.AccountSettingsEmailTextBox.Name = "AccountSettingsEmailTextBox";
             this.AccountSettingsEmailTextBox.ReadOnly = true;
             this.AccountSettingsEmailTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4113,7 +4121,7 @@
             this.AccountSettingsPasswordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsPasswordTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsPasswordTextBox.Location = new System.Drawing.Point(149, 149);
+            this.AccountSettingsPasswordTextBox.Location = new System.Drawing.Point(149, 179);
             this.AccountSettingsPasswordTextBox.Name = "AccountSettingsPasswordTextBox";
             this.AccountSettingsPasswordTextBox.ReadOnly = true;
             this.AccountSettingsPasswordTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4125,7 +4133,7 @@
             this.AccountSettingsUsernameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.AccountSettingsUsernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountSettingsUsernameTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountSettingsUsernameTextBox.Location = new System.Drawing.Point(149, 108);
+            this.AccountSettingsUsernameTextBox.Location = new System.Drawing.Point(149, 138);
             this.AccountSettingsUsernameTextBox.Name = "AccountSettingsUsernameTextBox";
             this.AccountSettingsUsernameTextBox.ReadOnly = true;
             this.AccountSettingsUsernameTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4136,7 +4144,7 @@
             this.AccountSettingsFollowersLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsFollowersLabel.AutoSize = true;
             this.AccountSettingsFollowersLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsFollowersLabel.Location = new System.Drawing.Point(52, 273);
+            this.AccountSettingsFollowersLabel.Location = new System.Drawing.Point(52, 303);
             this.AccountSettingsFollowersLabel.Name = "AccountSettingsFollowersLabel";
             this.AccountSettingsFollowersLabel.Size = new System.Drawing.Size(81, 20);
             this.AccountSettingsFollowersLabel.TabIndex = 6;
@@ -4147,7 +4155,7 @@
             this.AccountSettingsPasswordLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsPasswordLabel.AutoSize = true;
             this.AccountSettingsPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsPasswordLabel.Location = new System.Drawing.Point(54, 153);
+            this.AccountSettingsPasswordLabel.Location = new System.Drawing.Point(54, 183);
             this.AccountSettingsPasswordLabel.Name = "AccountSettingsPasswordLabel";
             this.AccountSettingsPasswordLabel.Size = new System.Drawing.Size(83, 20);
             this.AccountSettingsPasswordLabel.TabIndex = 5;
@@ -4158,7 +4166,7 @@
             this.AccountSettingsAccountTypeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsAccountTypeLabel.AutoSize = true;
             this.AccountSettingsAccountTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsAccountTypeLabel.Location = new System.Drawing.Point(26, 231);
+            this.AccountSettingsAccountTypeLabel.Location = new System.Drawing.Point(26, 261);
             this.AccountSettingsAccountTypeLabel.Name = "AccountSettingsAccountTypeLabel";
             this.AccountSettingsAccountTypeLabel.Size = new System.Drawing.Size(111, 20);
             this.AccountSettingsAccountTypeLabel.TabIndex = 4;
@@ -4169,7 +4177,7 @@
             this.AccountSettingsFollowingLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsFollowingLabel.AutoSize = true;
             this.AccountSettingsFollowingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsFollowingLabel.Location = new System.Drawing.Point(52, 311);
+            this.AccountSettingsFollowingLabel.Location = new System.Drawing.Point(52, 341);
             this.AccountSettingsFollowingLabel.Name = "AccountSettingsFollowingLabel";
             this.AccountSettingsFollowingLabel.Size = new System.Drawing.Size(79, 20);
             this.AccountSettingsFollowingLabel.TabIndex = 3;
@@ -4180,7 +4188,7 @@
             this.AccountSettingsEmalLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsEmalLabel.AutoSize = true;
             this.AccountSettingsEmalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsEmalLabel.Location = new System.Drawing.Point(77, 192);
+            this.AccountSettingsEmalLabel.Location = new System.Drawing.Point(77, 222);
             this.AccountSettingsEmalLabel.Name = "AccountSettingsEmalLabel";
             this.AccountSettingsEmalLabel.Size = new System.Drawing.Size(51, 20);
             this.AccountSettingsEmalLabel.TabIndex = 2;
@@ -4191,7 +4199,7 @@
             this.AccountSettingsUsernameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsUsernameLabel.AutoSize = true;
             this.AccountSettingsUsernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsUsernameLabel.Location = new System.Drawing.Point(54, 112);
+            this.AccountSettingsUsernameLabel.Location = new System.Drawing.Point(54, 142);
             this.AccountSettingsUsernameLabel.Name = "AccountSettingsUsernameLabel";
             this.AccountSettingsUsernameLabel.Size = new System.Drawing.Size(86, 20);
             this.AccountSettingsUsernameLabel.TabIndex = 1;
@@ -4202,7 +4210,7 @@
             this.AccountSettingsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountSettingsLabel.AutoSize = true;
             this.AccountSettingsLabel.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountSettingsLabel.Location = new System.Drawing.Point(100, 56);
+            this.AccountSettingsLabel.Location = new System.Drawing.Point(100, 86);
             this.AccountSettingsLabel.Name = "AccountSettingsLabel";
             this.AccountSettingsLabel.Size = new System.Drawing.Size(293, 40);
             this.AccountSettingsLabel.TabIndex = 0;
@@ -4213,7 +4221,7 @@
             this.ProfileSettingsChangeProfilePicButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ProfileSettingsChangeProfilePicButtonFeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsChangeProfilePicButtonFeo.ForeColor = System.Drawing.Color.Black;
-            this.ProfileSettingsChangeProfilePicButtonFeo.Location = new System.Drawing.Point(391, 18);
+            this.ProfileSettingsChangeProfilePicButtonFeo.Location = new System.Drawing.Point(391, 20);
             this.ProfileSettingsChangeProfilePicButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ProfileSettingsChangeProfilePicButtonFeo.Name = "ProfileSettingsChangeProfilePicButtonFeo";
             this.ProfileSettingsChangeProfilePicButtonFeo.Size = new System.Drawing.Size(125, 30);
@@ -4227,7 +4235,7 @@
             this.AccountProfileSettingsGoBackButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AccountProfileSettingsGoBackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountProfileSettingsGoBackButton.ForeColor = System.Drawing.Color.Black;
-            this.AccountProfileSettingsGoBackButton.Location = new System.Drawing.Point(395, 12);
+            this.AccountProfileSettingsGoBackButton.Location = new System.Drawing.Point(395, 14);
             this.AccountProfileSettingsGoBackButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AccountProfileSettingsGoBackButton.Name = "AccountProfileSettingsGoBackButton";
             this.AccountProfileSettingsGoBackButton.Size = new System.Drawing.Size(117, 30);
@@ -4241,7 +4249,7 @@
             // 
             this.ProfileSettingsProfilePicImageBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ProfileSettingsProfilePicImageBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ProfileSettingsProfilePicImageBox.Location = new System.Drawing.Point(386, 86);
+            this.ProfileSettingsProfilePicImageBox.Location = new System.Drawing.Point(386, 88);
             this.ProfileSettingsProfilePicImageBox.Name = "ProfileSettingsProfilePicImageBox";
             this.ProfileSettingsProfilePicImageBox.Size = new System.Drawing.Size(144, 101);
             this.ProfileSettingsProfilePicImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -4255,7 +4263,7 @@
             this.ProfileSettingsBirthdayTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.ProfileSettingsBirthdayTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsBirthdayTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ProfileSettingsBirthdayTextBox.Location = new System.Drawing.Point(144, 195);
+            this.ProfileSettingsBirthdayTextBox.Location = new System.Drawing.Point(144, 197);
             this.ProfileSettingsBirthdayTextBox.Name = "ProfileSettingsBirthdayTextBox";
             this.ProfileSettingsBirthdayTextBox.ReadOnly = true;
             this.ProfileSettingsBirthdayTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4268,7 +4276,7 @@
             this.ProfileSettingsGenderTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.ProfileSettingsGenderTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsGenderTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ProfileSettingsGenderTextBox.Location = new System.Drawing.Point(144, 153);
+            this.ProfileSettingsGenderTextBox.Location = new System.Drawing.Point(144, 155);
             this.ProfileSettingsGenderTextBox.Name = "ProfileSettingsGenderTextBox";
             this.ProfileSettingsGenderTextBox.ReadOnly = true;
             this.ProfileSettingsGenderTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4281,7 +4289,7 @@
             this.ProfileSettingsProfileTypeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.ProfileSettingsProfileTypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsProfileTypeTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ProfileSettingsProfileTypeTextBox.Location = new System.Drawing.Point(144, 107);
+            this.ProfileSettingsProfileTypeTextBox.Location = new System.Drawing.Point(144, 109);
             this.ProfileSettingsProfileTypeTextBox.Name = "ProfileSettingsProfileTypeTextBox";
             this.ProfileSettingsProfileTypeTextBox.ReadOnly = true;
             this.ProfileSettingsProfileTypeTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4294,7 +4302,7 @@
             this.ProfileSettingsNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.ProfileSettingsNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileSettingsNameTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ProfileSettingsNameTextBox.Location = new System.Drawing.Point(144, 63);
+            this.ProfileSettingsNameTextBox.Location = new System.Drawing.Point(144, 65);
             this.ProfileSettingsNameTextBox.Name = "ProfileSettingsNameTextBox";
             this.ProfileSettingsNameTextBox.ReadOnly = true;
             this.ProfileSettingsNameTextBox.Size = new System.Drawing.Size(178, 27);
@@ -4306,7 +4314,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(89, 201);
+            this.label1.Location = new System.Drawing.Point(89, 203);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 20);
             this.label1.TabIndex = 18;
@@ -4318,7 +4326,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(385, 58);
+            this.label2.Location = new System.Drawing.Point(385, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 20);
             this.label2.TabIndex = 17;
@@ -4330,7 +4338,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(71, 160);
+            this.label3.Location = new System.Drawing.Point(71, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 20);
             this.label3.TabIndex = 16;
@@ -4342,7 +4350,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(43, 112);
+            this.label5.Location = new System.Drawing.Point(43, 114);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(98, 20);
             this.label5.TabIndex = 14;
@@ -4354,7 +4362,7 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(82, 65);
+            this.label6.Location = new System.Drawing.Point(82, 67);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 20);
             this.label6.TabIndex = 13;
@@ -4366,7 +4374,7 @@
             this.ProfileSettingsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ProfileSettingsLabel.AutoSize = true;
             this.ProfileSettingsLabel.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProfileSettingsLabel.Location = new System.Drawing.Point(116, 4);
+            this.ProfileSettingsLabel.Location = new System.Drawing.Point(116, 6);
             this.ProfileSettingsLabel.Name = "ProfileSettingsLabel";
             this.ProfileSettingsLabel.Size = new System.Drawing.Size(252, 40);
             this.ProfileSettingsLabel.TabIndex = 1;
@@ -5052,6 +5060,7 @@
             this.DisplayPlaylistsFavoritePlaylist1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DisplayPlaylistsFavoritePlaylist1.TabIndex = 33;
             this.DisplayPlaylistsFavoritePlaylist1.TabStop = false;
+            this.DisplayPlaylistsFavoritePlaylist1.Visible = false;
             this.DisplayPlaylistsFavoritePlaylist1.Click += new System.EventHandler(this.DisplayPlaylistsFavoritePlaylist1_Click);
             // 
             // DisplayPlaylistsFollowedPlaylist3
@@ -5125,6 +5134,7 @@
             this.DisplayPlaylistsGlobalPlaylist1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DisplayPlaylistsGlobalPlaylist1.TabIndex = 27;
             this.DisplayPlaylistsGlobalPlaylist1.TabStop = false;
+            this.DisplayPlaylistsGlobalPlaylist1.Visible = false;
             this.DisplayPlaylistsGlobalPlaylist1.Click += new System.EventHandler(this.DisplayPlaylistsGlobalPlaylist1_Click);
             // 
             // DisplayPlaylistFavoritePlaylistLabel
@@ -5201,7 +5211,7 @@
             this.PlayPlaylistPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayPlaylistPanel.Location = new System.Drawing.Point(250, 0);
             this.PlayPlaylistPanel.Name = "PlayPlaylistPanel";
-            this.PlayPlaylistPanel.Size = new System.Drawing.Size(756, 611);
+            this.PlayPlaylistPanel.Size = new System.Drawing.Size(756, 621);
             this.PlayPlaylistPanel.TabIndex = 8;
             // 
             // PlayPlaylistChooseMultimediaButton
@@ -5215,14 +5225,15 @@
             this.PlayPlaylistChooseMultimediaButton.IconChar = FontAwesome.Sharp.IconChar.Bullseye;
             this.PlayPlaylistChooseMultimediaButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayPlaylistChooseMultimediaButton.IconSize = 50;
-            this.PlayPlaylistChooseMultimediaButton.Location = new System.Drawing.Point(94, 480);
+            this.PlayPlaylistChooseMultimediaButton.Location = new System.Drawing.Point(94, 485);
             this.PlayPlaylistChooseMultimediaButton.Name = "PlayPlaylistChooseMultimediaButton";
             this.PlayPlaylistChooseMultimediaButton.Rotation = 0D;
-            this.PlayPlaylistChooseMultimediaButton.Size = new System.Drawing.Size(273, 57);
+            this.PlayPlaylistChooseMultimediaButton.Size = new System.Drawing.Size(242, 72);
             this.PlayPlaylistChooseMultimediaButton.TabIndex = 52;
             this.PlayPlaylistChooseMultimediaButton.Text = "Choose Multimedia";
             this.PlayPlaylistChooseMultimediaButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PlayPlaylistChooseMultimediaButton.UseVisualStyleBackColor = true;
+            this.PlayPlaylistChooseMultimediaButton.Click += new System.EventHandler(this.PlayPlaylistChooseMultimediaButton_Click_1);
             // 
             // PlayPlaylistGoBackButton
             // 
@@ -5236,7 +5247,7 @@
             this.PlayPlaylistGoBackButton.IconChar = FontAwesome.Sharp.IconChar.Reply;
             this.PlayPlaylistGoBackButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayPlaylistGoBackButton.IconSize = 50;
-            this.PlayPlaylistGoBackButton.Location = new System.Drawing.Point(6, 66);
+            this.PlayPlaylistGoBackButton.Location = new System.Drawing.Point(6, 71);
             this.PlayPlaylistGoBackButton.Name = "PlayPlaylistGoBackButton";
             this.PlayPlaylistGoBackButton.Rotation = 0D;
             this.PlayPlaylistGoBackButton.Size = new System.Drawing.Size(63, 52);
@@ -5255,19 +5266,20 @@
             this.PlayPlaylistRandomButton.IconChar = FontAwesome.Sharp.IconChar.Random;
             this.PlayPlaylistRandomButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayPlaylistRandomButton.IconSize = 50;
-            this.PlayPlaylistRandomButton.Location = new System.Drawing.Point(429, 480);
+            this.PlayPlaylistRandomButton.Location = new System.Drawing.Point(379, 486);
             this.PlayPlaylistRandomButton.Name = "PlayPlaylistRandomButton";
             this.PlayPlaylistRandomButton.Rotation = 0D;
-            this.PlayPlaylistRandomButton.Size = new System.Drawing.Size(252, 52);
+            this.PlayPlaylistRandomButton.Size = new System.Drawing.Size(222, 72);
             this.PlayPlaylistRandomButton.TabIndex = 50;
             this.PlayPlaylistRandomButton.Text = "Play Random";
             this.PlayPlaylistRandomButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PlayPlaylistRandomButton.UseVisualStyleBackColor = true;
+            this.PlayPlaylistRandomButton.Click += new System.EventHandler(this.PlayPlaylistRandomButton_Click_1);
             // 
             // PlayPlaylistIsPrivate
             // 
             this.PlayPlaylistIsPrivate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayPlaylistIsPrivate.Location = new System.Drawing.Point(255, 91);
+            this.PlayPlaylistIsPrivate.Location = new System.Drawing.Point(255, 96);
             this.PlayPlaylistIsPrivate.Name = "PlayPlaylistIsPrivate";
             this.PlayPlaylistIsPrivate.Size = new System.Drawing.Size(224, 22);
             this.PlayPlaylistIsPrivate.TabIndex = 20;
@@ -5279,7 +5291,7 @@
             this.PlayPlaylistLabel.AutoSize = true;
             this.PlayPlaylistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayPlaylistLabel.ForeColor = System.Drawing.Color.White;
-            this.PlayPlaylistLabel.Location = new System.Drawing.Point(229, 139);
+            this.PlayPlaylistLabel.Location = new System.Drawing.Point(229, 144);
             this.PlayPlaylistLabel.Name = "PlayPlaylistLabel";
             this.PlayPlaylistLabel.Size = new System.Drawing.Size(306, 58);
             this.PlayPlaylistLabel.TabIndex = 0;
@@ -5289,7 +5301,7 @@
             // PlayPlaylistImageBox
             // 
             this.PlayPlaylistImageBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayPlaylistImageBox.Location = new System.Drawing.Point(210, 218);
+            this.PlayPlaylistImageBox.Location = new System.Drawing.Point(210, 223);
             this.PlayPlaylistImageBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayPlaylistImageBox.Name = "PlayPlaylistImageBox";
             this.PlayPlaylistImageBox.Size = new System.Drawing.Size(330, 200);
@@ -5303,7 +5315,7 @@
             this.PlayPlaylistMultTypeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.PlayPlaylistMultTypeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayPlaylistMultTypeTextBox.ForeColor = System.Drawing.Color.White;
-            this.PlayPlaylistMultTypeTextBox.Location = new System.Drawing.Point(361, 509);
+            this.PlayPlaylistMultTypeTextBox.Location = new System.Drawing.Point(361, 514);
             this.PlayPlaylistMultTypeTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayPlaylistMultTypeTextBox.Name = "PlayPlaylistMultTypeTextBox";
             this.PlayPlaylistMultTypeTextBox.ReadOnly = true;
@@ -5317,13 +5329,14 @@
             this.PlayPlaylistLoopCheckBox.AutoSize = true;
             this.PlayPlaylistLoopCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayPlaylistLoopCheckBox.ForeColor = System.Drawing.Color.White;
-            this.PlayPlaylistLoopCheckBox.Location = new System.Drawing.Point(363, 541);
+            this.PlayPlaylistLoopCheckBox.Location = new System.Drawing.Point(28, 184);
             this.PlayPlaylistLoopCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayPlaylistLoopCheckBox.Name = "PlayPlaylistLoopCheckBox";
             this.PlayPlaylistLoopCheckBox.Size = new System.Drawing.Size(91, 33);
             this.PlayPlaylistLoopCheckBox.TabIndex = 17;
             this.PlayPlaylistLoopCheckBox.Text = "Loop";
             this.PlayPlaylistLoopCheckBox.UseVisualStyleBackColor = true;
+            this.PlayPlaylistLoopCheckBox.Visible = false;
             // 
             // PlayPlaylistPlayerPanel
             // 
@@ -5336,7 +5349,7 @@
             this.PlayPlaylistPlayerPanel.Controls.Add(this.PlayPlaylistPreviousButton);
             this.PlayPlaylistPlayerPanel.Controls.Add(this.PlayPlaylistPauseButton);
             this.PlayPlaylistPlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PlayPlaylistPlayerPanel.Location = new System.Drawing.Point(0, 588);
+            this.PlayPlaylistPlayerPanel.Location = new System.Drawing.Point(0, 598);
             this.PlayPlaylistPlayerPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayPlaylistPlayerPanel.Name = "PlayPlaylistPlayerPanel";
             this.PlayPlaylistPlayerPanel.Size = new System.Drawing.Size(756, 23);
@@ -5423,7 +5436,7 @@
             // PlayPlaylistRandomButtonFeo
             // 
             this.PlayPlaylistRandomButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayPlaylistRandomButtonFeo.Location = new System.Drawing.Point(584, 238);
+            this.PlayPlaylistRandomButtonFeo.Location = new System.Drawing.Point(584, 243);
             this.PlayPlaylistRandomButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayPlaylistRandomButtonFeo.Name = "PlayPlaylistRandomButtonFeo";
             this.PlayPlaylistRandomButtonFeo.Size = new System.Drawing.Size(144, 45);
@@ -5436,7 +5449,7 @@
             // PlayPlaylistChooseMultimediaButtonFeo
             // 
             this.PlayPlaylistChooseMultimediaButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayPlaylistChooseMultimediaButtonFeo.Location = new System.Drawing.Point(591, 237);
+            this.PlayPlaylistChooseMultimediaButtonFeo.Location = new System.Drawing.Point(591, 242);
             this.PlayPlaylistChooseMultimediaButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayPlaylistChooseMultimediaButtonFeo.Name = "PlayPlaylistChooseMultimediaButtonFeo";
             this.PlayPlaylistChooseMultimediaButtonFeo.Size = new System.Drawing.Size(144, 58);
@@ -5449,7 +5462,7 @@
             // PlayPlaylistGoBackButtonFeo
             // 
             this.PlayPlaylistGoBackButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayPlaylistGoBackButtonFeo.Location = new System.Drawing.Point(586, 242);
+            this.PlayPlaylistGoBackButtonFeo.Location = new System.Drawing.Point(586, 247);
             this.PlayPlaylistGoBackButtonFeo.Name = "PlayPlaylistGoBackButtonFeo";
             this.PlayPlaylistGoBackButtonFeo.Size = new System.Drawing.Size(144, 42);
             this.PlayPlaylistGoBackButtonFeo.TabIndex = 2;
@@ -5463,7 +5476,7 @@
             this.PlayPlaylistShowMultimedia.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PlayPlaylistShowMultimedia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.PlayPlaylistShowMultimedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayPlaylistShowMultimedia.Location = new System.Drawing.Point(127, 436);
+            this.PlayPlaylistShowMultimedia.Location = new System.Drawing.Point(127, 441);
             this.PlayPlaylistShowMultimedia.Name = "PlayPlaylistShowMultimedia";
             this.PlayPlaylistShowMultimedia.ReadOnly = true;
             this.PlayPlaylistShowMultimedia.Size = new System.Drawing.Size(542, 27);
@@ -5486,30 +5499,76 @@
             // SearcUserPanel
             // 
             this.SearcUserPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
+            this.SearcUserPanel.Controls.Add(this.SearchUserGoBack);
+            this.SearcUserPanel.Controls.Add(this.SearchUserFollowButton);
             this.SearcUserPanel.Controls.Add(this.pictureBox7);
             this.SearcUserPanel.Controls.Add(this.label9);
             this.SearcUserPanel.Controls.Add(this.label8);
             this.SearcUserPanel.Controls.Add(this.SearchUserImage2);
             this.SearcUserPanel.Controls.Add(this.SearchUserImage1);
-            this.SearcUserPanel.Controls.Add(this.SearchUserFollowButton);
+            this.SearcUserPanel.Controls.Add(this.SearchUserFollowButtonFeo);
             this.SearcUserPanel.Controls.Add(this.SearchUserFollowers);
             this.SearcUserPanel.Controls.Add(this.SearchUserFollowing);
             this.SearcUserPanel.Controls.Add(this.SearcUserEmailTextBox);
             this.SearcUserPanel.Controls.Add(this.SearUserName);
             this.SearcUserPanel.Controls.Add(this.SearchUserLabel);
-            this.SearcUserPanel.Controls.Add(this.SearchUserGoBack);
-            this.SearcUserPanel.Location = new System.Drawing.Point(578, 115);
+            this.SearcUserPanel.Controls.Add(this.SearchUserGoBackFeo);
+            this.SearcUserPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SearcUserPanel.Location = new System.Drawing.Point(250, 0);
             this.SearcUserPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearcUserPanel.Name = "SearcUserPanel";
-            this.SearcUserPanel.Size = new System.Drawing.Size(404, 169);
+            this.SearcUserPanel.Size = new System.Drawing.Size(756, 621);
             this.SearcUserPanel.TabIndex = 15;
+            // 
+            // SearchUserGoBack
+            // 
+            this.SearchUserGoBack.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SearchUserGoBack.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SearchUserGoBack.FlatAppearance.BorderSize = 0;
+            this.SearchUserGoBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchUserGoBack.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.SearchUserGoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchUserGoBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SearchUserGoBack.IconChar = FontAwesome.Sharp.IconChar.Reply;
+            this.SearchUserGoBack.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SearchUserGoBack.IconSize = 50;
+            this.SearchUserGoBack.Location = new System.Drawing.Point(30, 42);
+            this.SearchUserGoBack.Name = "SearchUserGoBack";
+            this.SearchUserGoBack.Rotation = 0D;
+            this.SearchUserGoBack.Size = new System.Drawing.Size(63, 52);
+            this.SearchUserGoBack.TabIndex = 50;
+            this.SearchUserGoBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SearchUserGoBack.UseVisualStyleBackColor = true;
+            this.SearchUserGoBack.Click += new System.EventHandler(this.SearchUserGoBack_Click_1);
+            // 
+            // SearchUserFollowButton
+            // 
+            this.SearchUserFollowButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SearchUserFollowButton.FlatAppearance.BorderSize = 0;
+            this.SearchUserFollowButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchUserFollowButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.SearchUserFollowButton.Font = new System.Drawing.Font("Century Gothic", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchUserFollowButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SearchUserFollowButton.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
+            this.SearchUserFollowButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.SearchUserFollowButton.IconSize = 50;
+            this.SearchUserFollowButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.SearchUserFollowButton.Location = new System.Drawing.Point(275, 510);
+            this.SearchUserFollowButton.Name = "SearchUserFollowButton";
+            this.SearchUserFollowButton.Rotation = 0D;
+            this.SearchUserFollowButton.Size = new System.Drawing.Size(149, 51);
+            this.SearchUserFollowButton.TabIndex = 12;
+            this.SearchUserFollowButton.Text = "Follow";
+            this.SearchUserFollowButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SearchUserFollowButton.UseVisualStyleBackColor = true;
+            this.SearchUserFollowButton.Click += new System.EventHandler(this.SearchUserFollowButton_Click_1);
             // 
             // pictureBox7
             // 
             this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(122, -562);
+            this.pictureBox7.Location = new System.Drawing.Point(239, 127);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(209, 185);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -5521,7 +5580,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(320, 377);
+            this.label9.Location = new System.Drawing.Point(181, 479);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(79, 20);
             this.label9.TabIndex = 10;
@@ -5532,7 +5591,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(581, 382);
+            this.label8.Location = new System.Drawing.Point(442, 484);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(81, 20);
             this.label8.TabIndex = 9;
@@ -5541,10 +5600,10 @@
             // SearchUserImage2
             // 
             this.SearchUserImage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.SearchUserImage2.Location = new System.Drawing.Point(515, 480);
+            this.SearchUserImage2.Location = new System.Drawing.Point(375, 588);
             this.SearchUserImage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchUserImage2.Name = "SearchUserImage2";
-            this.SearchUserImage2.Size = new System.Drawing.Size(153, 112);
+            this.SearchUserImage2.Size = new System.Drawing.Size(156, 13);
             this.SearchUserImage2.TabIndex = 8;
             this.SearchUserImage2.TabStop = false;
             this.SearchUserImage2.Visible = false;
@@ -5552,29 +5611,30 @@
             // SearchUserImage1
             // 
             this.SearchUserImage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.SearchUserImage1.Location = new System.Drawing.Point(306, 480);
+            this.SearchUserImage1.Location = new System.Drawing.Point(166, 588);
             this.SearchUserImage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchUserImage1.Name = "SearchUserImage1";
-            this.SearchUserImage1.Size = new System.Drawing.Size(149, 112);
+            this.SearchUserImage1.Size = new System.Drawing.Size(152, 13);
             this.SearchUserImage1.TabIndex = 7;
             this.SearchUserImage1.TabStop = false;
             this.SearchUserImage1.Visible = false;
             // 
-            // SearchUserFollowButton
+            // SearchUserFollowButtonFeo
             // 
-            this.SearchUserFollowButton.Location = new System.Drawing.Point(423, 408);
-            this.SearchUserFollowButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.SearchUserFollowButton.Name = "SearchUserFollowButton";
-            this.SearchUserFollowButton.Size = new System.Drawing.Size(131, 38);
-            this.SearchUserFollowButton.TabIndex = 6;
-            this.SearchUserFollowButton.Text = "Follow";
-            this.SearchUserFollowButton.UseVisualStyleBackColor = true;
-            this.SearchUserFollowButton.Click += new System.EventHandler(this.SearchUserFollowButton_Click);
+            this.SearchUserFollowButtonFeo.Location = new System.Drawing.Point(593, 155);
+            this.SearchUserFollowButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SearchUserFollowButtonFeo.Name = "SearchUserFollowButtonFeo";
+            this.SearchUserFollowButtonFeo.Size = new System.Drawing.Size(131, 38);
+            this.SearchUserFollowButtonFeo.TabIndex = 6;
+            this.SearchUserFollowButtonFeo.Text = "Follow";
+            this.SearchUserFollowButtonFeo.UseVisualStyleBackColor = true;
+            this.SearchUserFollowButtonFeo.Visible = false;
+            this.SearchUserFollowButtonFeo.Click += new System.EventHandler(this.SearchUserFollowButton_Click);
             // 
             // SearchUserFollowers
             // 
             this.SearchUserFollowers.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchUserFollowers.Location = new System.Drawing.Point(569, 407);
+            this.SearchUserFollowers.Location = new System.Drawing.Point(430, 509);
             this.SearchUserFollowers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchUserFollowers.Name = "SearchUserFollowers";
             this.SearchUserFollowers.Size = new System.Drawing.Size(96, 45);
@@ -5583,7 +5643,7 @@
             // SearchUserFollowing
             // 
             this.SearchUserFollowing.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchUserFollowing.Location = new System.Drawing.Point(307, 406);
+            this.SearchUserFollowing.Location = new System.Drawing.Point(168, 508);
             this.SearchUserFollowing.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchUserFollowing.Name = "SearchUserFollowing";
             this.SearchUserFollowing.Size = new System.Drawing.Size(99, 45);
@@ -5592,7 +5652,7 @@
             // SearcUserEmailTextBox
             // 
             this.SearcUserEmailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearcUserEmailTextBox.Location = new System.Drawing.Point(306, 308);
+            this.SearcUserEmailTextBox.Location = new System.Drawing.Point(167, 410);
             this.SearcUserEmailTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearcUserEmailTextBox.Name = "SearcUserEmailTextBox";
             this.SearcUserEmailTextBox.Size = new System.Drawing.Size(360, 45);
@@ -5601,7 +5661,7 @@
             // SearUserName
             // 
             this.SearUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearUserName.Location = new System.Drawing.Point(306, 240);
+            this.SearUserName.Location = new System.Drawing.Point(167, 342);
             this.SearUserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearUserName.Name = "SearUserName";
             this.SearUserName.Size = new System.Drawing.Size(360, 45);
@@ -5610,24 +5670,25 @@
             // SearchUserLabel
             // 
             this.SearchUserLabel.AutoSize = true;
-            this.SearchUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchUserLabel.Font = new System.Drawing.Font("Century Gothic", 30F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchUserLabel.ForeColor = System.Drawing.Color.White;
-            this.SearchUserLabel.Location = new System.Drawing.Point(332, 149);
+            this.SearchUserLabel.Location = new System.Drawing.Point(150, 32);
             this.SearchUserLabel.Name = "SearchUserLabel";
-            this.SearchUserLabel.Size = new System.Drawing.Size(328, 58);
+            this.SearchUserLabel.Size = new System.Drawing.Size(377, 62);
             this.SearchUserLabel.TabIndex = 1;
-            this.SearchUserLabel.Text = "Search Users";
+            this.SearchUserLabel.Text = "Searched User";
             // 
-            // SearchUserGoBack
+            // SearchUserGoBackFeo
             // 
-            this.SearchUserGoBack.Location = new System.Drawing.Point(20, 26);
-            this.SearchUserGoBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.SearchUserGoBack.Name = "SearchUserGoBack";
-            this.SearchUserGoBack.Size = new System.Drawing.Size(96, 37);
-            this.SearchUserGoBack.TabIndex = 0;
-            this.SearchUserGoBack.Text = "Go Back";
-            this.SearchUserGoBack.UseVisualStyleBackColor = true;
-            this.SearchUserGoBack.Click += new System.EventHandler(this.SearchUserGoBack_Click);
+            this.SearchUserGoBackFeo.Location = new System.Drawing.Point(631, 128);
+            this.SearchUserGoBackFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SearchUserGoBackFeo.Name = "SearchUserGoBackFeo";
+            this.SearchUserGoBackFeo.Size = new System.Drawing.Size(51, 16);
+            this.SearchUserGoBackFeo.TabIndex = 0;
+            this.SearchUserGoBackFeo.Text = "Go Back";
+            this.SearchUserGoBackFeo.UseVisualStyleBackColor = true;
+            this.SearchUserGoBackFeo.Visible = false;
+            this.SearchUserGoBackFeo.Click += new System.EventHandler(this.SearchUserGoBack_Click);
             // 
             // UserProfileChangeInfoPanel
             // 
@@ -5659,7 +5720,7 @@
             this.UserProfileChangeInfoPanel.Location = new System.Drawing.Point(250, 0);
             this.UserProfileChangeInfoPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserProfileChangeInfoPanel.Name = "UserProfileChangeInfoPanel";
-            this.UserProfileChangeInfoPanel.Size = new System.Drawing.Size(756, 611);
+            this.UserProfileChangeInfoPanel.Size = new System.Drawing.Size(756, 621);
             this.UserProfileChangeInfoPanel.TabIndex = 16;
             // 
             // UserProfileChangeInfoConfirmButton
@@ -5673,7 +5734,7 @@
             this.UserProfileChangeInfoConfirmButton.IconChar = FontAwesome.Sharp.IconChar.CheckSquare;
             this.UserProfileChangeInfoConfirmButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.UserProfileChangeInfoConfirmButton.IconSize = 50;
-            this.UserProfileChangeInfoConfirmButton.Location = new System.Drawing.Point(275, 512);
+            this.UserProfileChangeInfoConfirmButton.Location = new System.Drawing.Point(275, 517);
             this.UserProfileChangeInfoConfirmButton.Name = "UserProfileChangeInfoConfirmButton";
             this.UserProfileChangeInfoConfirmButton.Rotation = 0D;
             this.UserProfileChangeInfoConfirmButton.Size = new System.Drawing.Size(290, 73);
@@ -5925,7 +5986,7 @@
             this.WelcomeLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.WelcomeLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.WelcomeLogo.Image = ((System.Drawing.Image)(resources.GetObject("WelcomeLogo.Image")));
-            this.WelcomeLogo.Location = new System.Drawing.Point(229, 97);
+            this.WelcomeLogo.Location = new System.Drawing.Point(229, 102);
             this.WelcomeLogo.Name = "WelcomeLogo";
             this.WelcomeLogo.Size = new System.Drawing.Size(291, 222);
             this.WelcomeLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -5937,7 +5998,7 @@
             this.WelcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WelcomeLabel.ForeColor = System.Drawing.Color.White;
-            this.WelcomeLabel.Location = new System.Drawing.Point(29, -84);
+            this.WelcomeLabel.Location = new System.Drawing.Point(29, -74);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(510, 55);
             this.WelcomeLabel.TabIndex = 0;
@@ -5974,7 +6035,7 @@
             this.WelcomePanel.Location = new System.Drawing.Point(250, 0);
             this.WelcomePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.WelcomePanel.Name = "WelcomePanel";
-            this.WelcomePanel.Size = new System.Drawing.Size(756, 611);
+            this.WelcomePanel.Size = new System.Drawing.Size(756, 621);
             this.WelcomePanel.TabIndex = 0;
             this.WelcomePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.WelcomePanel_Paint);
             // 
@@ -5984,7 +6045,7 @@
             this.LogInInvalidCredentialsTetxbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.LogInInvalidCredentialsTetxbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LogInInvalidCredentialsTetxbox.ForeColor = System.Drawing.Color.White;
-            this.LogInInvalidCredentialsTetxbox.Location = new System.Drawing.Point(222, 445);
+            this.LogInInvalidCredentialsTetxbox.Location = new System.Drawing.Point(222, 450);
             this.LogInInvalidCredentialsTetxbox.Name = "LogInInvalidCredentialsTetxbox";
             this.LogInInvalidCredentialsTetxbox.Size = new System.Drawing.Size(269, 15);
             this.LogInInvalidCredentialsTetxbox.TabIndex = 27;
@@ -5995,7 +6056,7 @@
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Italic);
             this.label28.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label28.Location = new System.Drawing.Point(74, 493);
+            this.label28.Location = new System.Drawing.Point(74, 498);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(302, 26);
             this.label28.TabIndex = 26;
@@ -6004,7 +6065,7 @@
             // PasswordLogInTextBox
             // 
             this.PasswordLogInTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PasswordLogInTextBox.Location = new System.Drawing.Point(246, 388);
+            this.PasswordLogInTextBox.Location = new System.Drawing.Point(246, 393);
             this.PasswordLogInTextBox.Name = "PasswordLogInTextBox";
             this.PasswordLogInTextBox.PasswordChar = '*';
             this.PasswordLogInTextBox.Size = new System.Drawing.Size(213, 22);
@@ -6014,7 +6075,7 @@
             // UserLogInTextBox
             // 
             this.UserLogInTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.UserLogInTextBox.Location = new System.Drawing.Point(246, 358);
+            this.UserLogInTextBox.Location = new System.Drawing.Point(246, 363);
             this.UserLogInTextBox.Name = "UserLogInTextBox";
             this.UserLogInTextBox.Size = new System.Drawing.Size(213, 22);
             this.UserLogInTextBox.TabIndex = 24;
@@ -6030,7 +6091,7 @@
             this.WelcomeCloseFyBuZz.IconChar = FontAwesome.Sharp.IconChar.FrownOpen;
             this.WelcomeCloseFyBuZz.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.WelcomeCloseFyBuZz.IconSize = 30;
-            this.WelcomeCloseFyBuZz.Location = new System.Drawing.Point(422, 518);
+            this.WelcomeCloseFyBuZz.Location = new System.Drawing.Point(422, 523);
             this.WelcomeCloseFyBuZz.Name = "WelcomeCloseFyBuZz";
             this.WelcomeCloseFyBuZz.Rotation = 0D;
             this.WelcomeCloseFyBuZz.Size = new System.Drawing.Size(262, 54);
@@ -6052,7 +6113,7 @@
             this.LogInLogInButton.IconChar = FontAwesome.Sharp.IconChar.IdCard;
             this.LogInLogInButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.LogInLogInButton.IconSize = 30;
-            this.LogInLogInButton.Location = new System.Drawing.Point(475, 349);
+            this.LogInLogInButton.Location = new System.Drawing.Point(484, 364);
             this.LogInLogInButton.Name = "LogInLogInButton";
             this.LogInLogInButton.Rotation = 0D;
             this.LogInLogInButton.Size = new System.Drawing.Size(171, 53);
@@ -6074,10 +6135,10 @@
             this.WelcomeRegisterButton.IconChar = FontAwesome.Sharp.IconChar.Edit;
             this.WelcomeRegisterButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.WelcomeRegisterButton.IconSize = 30;
-            this.WelcomeRegisterButton.Location = new System.Drawing.Point(139, 534);
+            this.WelcomeRegisterButton.Location = new System.Drawing.Point(139, 539);
             this.WelcomeRegisterButton.Name = "WelcomeRegisterButton";
             this.WelcomeRegisterButton.Rotation = 0D;
-            this.WelcomeRegisterButton.Size = new System.Drawing.Size(178, 39);
+            this.WelcomeRegisterButton.Size = new System.Drawing.Size(192, 44);
             this.WelcomeRegisterButton.TabIndex = 20;
             this.WelcomeRegisterButton.Text = "REGISTER";
             this.WelcomeRegisterButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -6092,7 +6153,7 @@
             this.PasswordMessageBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PasswordMessageBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic);
             this.PasswordMessageBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.PasswordMessageBox.Location = new System.Drawing.Point(96, 377);
+            this.PasswordMessageBox.Location = new System.Drawing.Point(96, 382);
             this.PasswordMessageBox.Name = "PasswordMessageBox";
             this.PasswordMessageBox.ReadOnly = true;
             this.PasswordMessageBox.Size = new System.Drawing.Size(128, 29);
@@ -6106,7 +6167,7 @@
             this.UserMessageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.UserMessageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic);
             this.UserMessageTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.UserMessageTextBox.Location = new System.Drawing.Point(93, 347);
+            this.UserMessageTextBox.Location = new System.Drawing.Point(93, 352);
             this.UserMessageTextBox.Name = "UserMessageTextBox";
             this.UserMessageTextBox.ReadOnly = true;
             this.UserMessageTextBox.Size = new System.Drawing.Size(144, 29);
@@ -6117,6 +6178,7 @@
             // 
             this.SideMenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(44)))));
             this.SideMenuPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SideMenuPanel.Controls.Add(this.button1);
             this.SideMenuPanel.Controls.Add(this.SideButtonAboutUs);
             this.SideMenuPanel.Controls.Add(this.AboutUsInfoTextPanel);
             this.SideMenuPanel.Controls.Add(this.AdminMenuButton);
@@ -6573,9 +6635,9 @@
             this.PlayerMultPanel.Controls.Add(this.PlaySongPlayButton);
             this.PlayerMultPanel.Controls.Add(this.PlaySongStopButton);
             this.PlayerMultPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PlayerMultPanel.Location = new System.Drawing.Point(250, 611);
+            this.PlayerMultPanel.Location = new System.Drawing.Point(250, 621);
             this.PlayerMultPanel.Name = "PlayerMultPanel";
-            this.PlayerMultPanel.Size = new System.Drawing.Size(756, 110);
+            this.PlayerMultPanel.Size = new System.Drawing.Size(756, 100);
             this.PlayerMultPanel.TabIndex = 18;
             this.PlayerMultPanel.Visible = false;
             // 
@@ -6659,7 +6721,7 @@
             // 
             this.PlaySongRateNumDomainUp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PlaySongRateNumDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlaySongRateNumDomainUp.Location = new System.Drawing.Point(693, 73);
+            this.PlaySongRateNumDomainUp.Location = new System.Drawing.Point(693, 68);
             this.PlaySongRateNumDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlaySongRateNumDomainUp.Maximum = new decimal(new int[] {
             5,
@@ -6692,7 +6754,7 @@
             this.PlaySongDownloadSongButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongDownloadSongButton.IconSize = 35;
             this.PlaySongDownloadSongButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PlaySongDownloadSongButton.Location = new System.Drawing.Point(262, 8);
+            this.PlaySongDownloadSongButton.Location = new System.Drawing.Point(262, 3);
             this.PlaySongDownloadSongButton.Name = "PlaySongDownloadSongButton";
             this.PlaySongDownloadSongButton.Rotation = 0D;
             this.PlaySongDownloadSongButton.Size = new System.Drawing.Size(172, 33);
@@ -6714,7 +6776,7 @@
             this.PlaysSongRateButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaysSongRateButton.IconSize = 35;
             this.PlaysSongRateButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PlaysSongRateButton.Location = new System.Drawing.Point(479, 64);
+            this.PlaysSongRateButton.Location = new System.Drawing.Point(479, 59);
             this.PlaysSongRateButton.Name = "PlaysSongRateButton";
             this.PlaysSongRateButton.Rotation = 0D;
             this.PlaysSongRateButton.Size = new System.Drawing.Size(205, 39);
@@ -6736,7 +6798,7 @@
             this.PlaySongLikeButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongLikeButton.IconSize = 35;
             this.PlaySongLikeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PlaySongLikeButton.Location = new System.Drawing.Point(478, 32);
+            this.PlaySongLikeButton.Location = new System.Drawing.Point(478, 27);
             this.PlaySongLikeButton.Name = "PlaySongLikeButton";
             this.PlaySongLikeButton.Rotation = 0D;
             this.PlaySongLikeButton.Size = new System.Drawing.Size(206, 39);
@@ -6758,7 +6820,7 @@
             this.InfoMediaButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.InfoMediaButton.IconSize = 35;
             this.InfoMediaButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.InfoMediaButton.Location = new System.Drawing.Point(479, 0);
+            this.InfoMediaButton.Location = new System.Drawing.Point(479, -5);
             this.InfoMediaButton.Name = "InfoMediaButton";
             this.InfoMediaButton.Rotation = 0D;
             this.InfoMediaButton.Size = new System.Drawing.Size(199, 39);
@@ -6767,6 +6829,7 @@
             this.InfoMediaButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.InfoMediaButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.InfoMediaButton.UseVisualStyleBackColor = true;
+            this.InfoMediaButton.Click += new System.EventHandler(this.InfoMediaButton_Click);
             // 
             // PlaySongPreviousSongButton
             // 
@@ -6777,7 +6840,7 @@
             this.PlaySongPreviousSongButton.IconChar = FontAwesome.Sharp.IconChar.Backward;
             this.PlaySongPreviousSongButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongPreviousSongButton.IconSize = 50;
-            this.PlaySongPreviousSongButton.Location = new System.Drawing.Point(40, 31);
+            this.PlaySongPreviousSongButton.Location = new System.Drawing.Point(40, 26);
             this.PlaySongPreviousSongButton.Name = "PlaySongPreviousSongButton";
             this.PlaySongPreviousSongButton.Rotation = 0D;
             this.PlaySongPreviousSongButton.Size = new System.Drawing.Size(57, 40);
@@ -6793,7 +6856,7 @@
             this.PlaySongSkipSongButton.IconChar = FontAwesome.Sharp.IconChar.Forward;
             this.PlaySongSkipSongButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongSkipSongButton.IconSize = 50;
-            this.PlaySongSkipSongButton.Location = new System.Drawing.Point(207, 30);
+            this.PlaySongSkipSongButton.Location = new System.Drawing.Point(207, 25);
             this.PlaySongSkipSongButton.Name = "PlaySongSkipSongButton";
             this.PlaySongSkipSongButton.Rotation = 0D;
             this.PlaySongSkipSongButton.Size = new System.Drawing.Size(57, 45);
@@ -6809,7 +6872,7 @@
             this.PlaySongPlayButton.IconChar = FontAwesome.Sharp.IconChar.Play;
             this.PlaySongPlayButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongPlayButton.IconSize = 50;
-            this.PlaySongPlayButton.Location = new System.Drawing.Point(157, 26);
+            this.PlaySongPlayButton.Location = new System.Drawing.Point(157, 21);
             this.PlaySongPlayButton.Name = "PlaySongPlayButton";
             this.PlaySongPlayButton.Rotation = 0D;
             this.PlaySongPlayButton.Size = new System.Drawing.Size(57, 51);
@@ -6825,7 +6888,7 @@
             this.PlaySongStopButton.IconChar = FontAwesome.Sharp.IconChar.Pause;
             this.PlaySongStopButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlaySongStopButton.IconSize = 50;
-            this.PlaySongStopButton.Location = new System.Drawing.Point(103, 28);
+            this.PlaySongStopButton.Location = new System.Drawing.Point(103, 23);
             this.PlaySongStopButton.Name = "PlaySongStopButton";
             this.PlaySongStopButton.Rotation = 0D;
             this.PlaySongStopButton.Size = new System.Drawing.Size(48, 46);
@@ -6860,7 +6923,7 @@
             this.RegisterPanel.Location = new System.Drawing.Point(250, 0);
             this.RegisterPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RegisterPanel.Name = "RegisterPanel";
-            this.RegisterPanel.Size = new System.Drawing.Size(756, 611);
+            this.RegisterPanel.Size = new System.Drawing.Size(756, 621);
             this.RegisterPanel.TabIndex = 19;
             // 
             // RegisterMessageTextBox
@@ -6884,7 +6947,7 @@
             this.RegisterRegisterButton.IconChar = FontAwesome.Sharp.IconChar.Running;
             this.RegisterRegisterButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.RegisterRegisterButton.IconSize = 50;
-            this.RegisterRegisterButton.Location = new System.Drawing.Point(275, 506);
+            this.RegisterRegisterButton.Location = new System.Drawing.Point(275, 511);
             this.RegisterRegisterButton.Name = "RegisterRegisterButton";
             this.RegisterRegisterButton.Rotation = 0D;
             this.RegisterRegisterButton.Size = new System.Drawing.Size(208, 52);
@@ -6906,7 +6969,7 @@
             this.GoBackRegisterButton.IconChar = FontAwesome.Sharp.IconChar.Reply;
             this.GoBackRegisterButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.GoBackRegisterButton.IconSize = 50;
-            this.GoBackRegisterButton.Location = new System.Drawing.Point(14, 60);
+            this.GoBackRegisterButton.Location = new System.Drawing.Point(14, 65);
             this.GoBackRegisterButton.Name = "GoBackRegisterButton";
             this.GoBackRegisterButton.Rotation = 0D;
             this.GoBackRegisterButton.Size = new System.Drawing.Size(63, 52);
@@ -6931,7 +6994,7 @@
             // 
             this.AgeRegisterDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AgeRegisterDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AgeRegisterDateTimePicker.Location = new System.Drawing.Point(288, 414);
+            this.AgeRegisterDateTimePicker.Location = new System.Drawing.Point(288, 419);
             this.AgeRegisterDateTimePicker.Name = "AgeRegisterDateTimePicker";
             this.AgeRegisterDateTimePicker.Size = new System.Drawing.Size(312, 26);
             this.AgeRegisterDateTimePicker.TabIndex = 20;
@@ -6945,7 +7008,7 @@
             this.ProfileTypeRegisterDomainUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.ProfileTypeRegisterDomainUp.Items.Add("creator");
             this.ProfileTypeRegisterDomainUp.Items.Add("viewer");
-            this.ProfileTypeRegisterDomainUp.Location = new System.Drawing.Point(288, 462);
+            this.ProfileTypeRegisterDomainUp.Location = new System.Drawing.Point(288, 467);
             this.ProfileTypeRegisterDomainUp.Name = "ProfileTypeRegisterDomainUp";
             this.ProfileTypeRegisterDomainUp.ReadOnly = true;
             this.ProfileTypeRegisterDomainUp.Size = new System.Drawing.Size(312, 26);
@@ -6960,7 +7023,7 @@
             this.GenderRegisterDomainUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.GenderRegisterDomainUp.Items.Add("M");
             this.GenderRegisterDomainUp.Items.Add("F");
-            this.GenderRegisterDomainUp.Location = new System.Drawing.Point(288, 364);
+            this.GenderRegisterDomainUp.Location = new System.Drawing.Point(288, 369);
             this.GenderRegisterDomainUp.Name = "GenderRegisterDomainUp";
             this.GenderRegisterDomainUp.ReadOnly = true;
             this.GenderRegisterDomainUp.Size = new System.Drawing.Size(312, 26);
@@ -6976,7 +7039,7 @@
             this.SubscriptionRegisterDomainUp.Items.Add("premium");
             this.SubscriptionRegisterDomainUp.Items.Add("standard");
             this.SubscriptionRegisterDomainUp.Items.Add("admin");
-            this.SubscriptionRegisterDomainUp.Location = new System.Drawing.Point(290, 280);
+            this.SubscriptionRegisterDomainUp.Location = new System.Drawing.Point(290, 285);
             this.SubscriptionRegisterDomainUp.Name = "SubscriptionRegisterDomainUp";
             this.SubscriptionRegisterDomainUp.ReadOnly = true;
             this.SubscriptionRegisterDomainUp.Size = new System.Drawing.Size(312, 26);
@@ -6989,7 +7052,7 @@
             this.PrivacyRegisterCheckBox.AutoSize = true;
             this.PrivacyRegisterCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PrivacyRegisterCheckBox.ForeColor = System.Drawing.Color.White;
-            this.PrivacyRegisterCheckBox.Location = new System.Drawing.Point(288, 324);
+            this.PrivacyRegisterCheckBox.Location = new System.Drawing.Point(288, 329);
             this.PrivacyRegisterCheckBox.Name = "PrivacyRegisterCheckBox";
             this.PrivacyRegisterCheckBox.Size = new System.Drawing.Size(141, 24);
             this.PrivacyRegisterCheckBox.TabIndex = 17;
@@ -7002,7 +7065,7 @@
             this.PasswordRegisterTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.PasswordRegisterTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordRegisterTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.PasswordRegisterTextBox.Location = new System.Drawing.Point(289, 236);
+            this.PasswordRegisterTextBox.Location = new System.Drawing.Point(289, 241);
             this.PasswordRegisterTextBox.Name = "PasswordRegisterTextBox";
             this.PasswordRegisterTextBox.Size = new System.Drawing.Size(312, 26);
             this.PasswordRegisterTextBox.TabIndex = 3;
@@ -7013,7 +7076,7 @@
             this.EmailRegisterTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.EmailRegisterTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailRegisterTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.EmailRegisterTextBox.Location = new System.Drawing.Point(289, 196);
+            this.EmailRegisterTextBox.Location = new System.Drawing.Point(289, 201);
             this.EmailRegisterTextBox.Name = "EmailRegisterTextBox";
             this.EmailRegisterTextBox.Size = new System.Drawing.Size(312, 26);
             this.EmailRegisterTextBox.TabIndex = 2;
@@ -7025,7 +7088,7 @@
             this.UsernameRegisterTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(116)))), ((int)(((byte)(90)))));
             this.UsernameRegisterTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsernameRegisterTextBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.UsernameRegisterTextBox.Location = new System.Drawing.Point(289, 155);
+            this.UsernameRegisterTextBox.Location = new System.Drawing.Point(289, 160);
             this.UsernameRegisterTextBox.Name = "UsernameRegisterTextBox";
             this.UsernameRegisterTextBox.Size = new System.Drawing.Size(312, 26);
             this.UsernameRegisterTextBox.TabIndex = 1;
@@ -7037,7 +7100,7 @@
             this.ProfileTypeRegisterLabel.AutoSize = true;
             this.ProfileTypeRegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileTypeRegisterLabel.ForeColor = System.Drawing.Color.White;
-            this.ProfileTypeRegisterLabel.Location = new System.Drawing.Point(118, 465);
+            this.ProfileTypeRegisterLabel.Location = new System.Drawing.Point(118, 470);
             this.ProfileTypeRegisterLabel.Name = "ProfileTypeRegisterLabel";
             this.ProfileTypeRegisterLabel.Size = new System.Drawing.Size(98, 20);
             this.ProfileTypeRegisterLabel.TabIndex = 9;
@@ -7049,7 +7112,7 @@
             this.EmailRegisterLabel.AutoSize = true;
             this.EmailRegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailRegisterLabel.ForeColor = System.Drawing.Color.White;
-            this.EmailRegisterLabel.Location = new System.Drawing.Point(172, 196);
+            this.EmailRegisterLabel.Location = new System.Drawing.Point(172, 201);
             this.EmailRegisterLabel.Name = "EmailRegisterLabel";
             this.EmailRegisterLabel.Size = new System.Drawing.Size(51, 20);
             this.EmailRegisterLabel.TabIndex = 8;
@@ -7061,7 +7124,7 @@
             this.PasswordRegisterLabel.AutoSize = true;
             this.PasswordRegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordRegisterLabel.ForeColor = System.Drawing.Color.White;
-            this.PasswordRegisterLabel.Location = new System.Drawing.Point(145, 239);
+            this.PasswordRegisterLabel.Location = new System.Drawing.Point(145, 244);
             this.PasswordRegisterLabel.Name = "PasswordRegisterLabel";
             this.PasswordRegisterLabel.Size = new System.Drawing.Size(83, 20);
             this.PasswordRegisterLabel.TabIndex = 7;
@@ -7073,7 +7136,7 @@
             this.AgeRegisterLabel.AutoSize = true;
             this.AgeRegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AgeRegisterLabel.ForeColor = System.Drawing.Color.White;
-            this.AgeRegisterLabel.Location = new System.Drawing.Point(145, 417);
+            this.AgeRegisterLabel.Location = new System.Drawing.Point(145, 422);
             this.AgeRegisterLabel.Name = "AgeRegisterLabel";
             this.AgeRegisterLabel.Size = new System.Drawing.Size(71, 20);
             this.AgeRegisterLabel.TabIndex = 6;
@@ -7085,7 +7148,7 @@
             this.SubscriptionRegisterLabel.AutoSize = true;
             this.SubscriptionRegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubscriptionRegisterLabel.ForeColor = System.Drawing.Color.White;
-            this.SubscriptionRegisterLabel.Location = new System.Drawing.Point(128, 277);
+            this.SubscriptionRegisterLabel.Location = new System.Drawing.Point(128, 282);
             this.SubscriptionRegisterLabel.Name = "SubscriptionRegisterLabel";
             this.SubscriptionRegisterLabel.Size = new System.Drawing.Size(102, 20);
             this.SubscriptionRegisterLabel.TabIndex = 5;
@@ -7097,7 +7160,7 @@
             this.PrivacyRegisterLabel.AutoSize = true;
             this.PrivacyRegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PrivacyRegisterLabel.ForeColor = System.Drawing.Color.White;
-            this.PrivacyRegisterLabel.Location = new System.Drawing.Point(153, 322);
+            this.PrivacyRegisterLabel.Location = new System.Drawing.Point(153, 327);
             this.PrivacyRegisterLabel.Name = "PrivacyRegisterLabel";
             this.PrivacyRegisterLabel.Size = new System.Drawing.Size(64, 20);
             this.PrivacyRegisterLabel.TabIndex = 4;
@@ -7109,7 +7172,7 @@
             this.GenderRegisterLabel.AutoSize = true;
             this.GenderRegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenderRegisterLabel.ForeColor = System.Drawing.Color.White;
-            this.GenderRegisterLabel.Location = new System.Drawing.Point(151, 368);
+            this.GenderRegisterLabel.Location = new System.Drawing.Point(151, 373);
             this.GenderRegisterLabel.Name = "GenderRegisterLabel";
             this.GenderRegisterLabel.Size = new System.Drawing.Size(64, 20);
             this.GenderRegisterLabel.TabIndex = 3;
@@ -7121,7 +7184,7 @@
             this.RegisterUsernameLabel.AutoSize = true;
             this.RegisterUsernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterUsernameLabel.ForeColor = System.Drawing.Color.White;
-            this.RegisterUsernameLabel.Location = new System.Drawing.Point(149, 161);
+            this.RegisterUsernameLabel.Location = new System.Drawing.Point(149, 166);
             this.RegisterUsernameLabel.Name = "RegisterUsernameLabel";
             this.RegisterUsernameLabel.Size = new System.Drawing.Size(86, 20);
             this.RegisterUsernameLabel.TabIndex = 2;
@@ -7133,7 +7196,7 @@
             this.RegisterLabel.AutoSize = true;
             this.RegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterLabel.ForeColor = System.Drawing.Color.White;
-            this.RegisterLabel.Location = new System.Drawing.Point(276, 85);
+            this.RegisterLabel.Location = new System.Drawing.Point(276, 90);
             this.RegisterLabel.Name = "RegisterLabel";
             this.RegisterLabel.Size = new System.Drawing.Size(220, 58);
             this.RegisterLabel.TabIndex = 0;
@@ -7143,23 +7206,24 @@
             // 
             this.wmpVideo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.wmpVideo.Enabled = true;
-            this.wmpVideo.Location = new System.Drawing.Point(12, 104);
+            this.wmpVideo.Location = new System.Drawing.Point(17, 115);
             this.wmpVideo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.wmpVideo.Name = "wmpVideo";
             this.wmpVideo.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpVideo.OcxState")));
-            this.wmpVideo.Size = new System.Drawing.Size(738, 324);
+            this.wmpVideo.Size = new System.Drawing.Size(723, 317);
             this.wmpVideo.TabIndex = 0;
             // 
             // PlayVideoGoBackButtonFeo
             // 
             this.PlayVideoGoBackButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayVideoGoBackButtonFeo.Location = new System.Drawing.Point(402, 254);
+            this.PlayVideoGoBackButtonFeo.Location = new System.Drawing.Point(402, 259);
             this.PlayVideoGoBackButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoGoBackButtonFeo.Name = "PlayVideoGoBackButtonFeo";
             this.PlayVideoGoBackButtonFeo.Size = new System.Drawing.Size(110, 33);
             this.PlayVideoGoBackButtonFeo.TabIndex = 4;
             this.PlayVideoGoBackButtonFeo.Text = "Go back";
             this.PlayVideoGoBackButtonFeo.UseVisualStyleBackColor = true;
+            this.PlayVideoGoBackButtonFeo.Visible = false;
             this.PlayVideoGoBackButtonFeo.Click += new System.EventHandler(this.PlayVideoGoBackButton_Click);
             // 
             // PlayVideoMessageLabel
@@ -7169,7 +7233,7 @@
             this.PlayVideoMessageLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayVideoMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayVideoMessageLabel.ForeColor = System.Drawing.Color.White;
-            this.PlayVideoMessageLabel.Location = new System.Drawing.Point(190, 438);
+            this.PlayVideoMessageLabel.Location = new System.Drawing.Point(190, 443);
             this.PlayVideoMessageLabel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoMessageLabel.Name = "PlayVideoMessageLabel";
             this.PlayVideoMessageLabel.ReadOnly = true;
@@ -7180,20 +7244,21 @@
             // PlayVideoRateVideoButtonFeo
             // 
             this.PlayVideoRateVideoButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayVideoRateVideoButtonFeo.Location = new System.Drawing.Point(400, 252);
+            this.PlayVideoRateVideoButtonFeo.Location = new System.Drawing.Point(400, 257);
             this.PlayVideoRateVideoButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoRateVideoButtonFeo.Name = "PlayVideoRateVideoButtonFeo";
             this.PlayVideoRateVideoButtonFeo.Size = new System.Drawing.Size(108, 25);
             this.PlayVideoRateVideoButtonFeo.TabIndex = 45;
             this.PlayVideoRateVideoButtonFeo.Text = "Rate";
             this.PlayVideoRateVideoButtonFeo.UseVisualStyleBackColor = true;
+            this.PlayVideoRateVideoButtonFeo.Visible = false;
             this.PlayVideoRateVideoButtonFeo.Click += new System.EventHandler(this.PlayVideoRateVideoButton_Click);
             // 
             // PlayVideoRateDomainUp
             // 
             this.PlayVideoRateDomainUp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PlayVideoRateDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayVideoRateDomainUp.Location = new System.Drawing.Point(667, 448);
+            this.PlayVideoRateDomainUp.Location = new System.Drawing.Point(667, 453);
             this.PlayVideoRateDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoRateDomainUp.Maximum = new decimal(new int[] {
             5,
@@ -7217,20 +7282,21 @@
             // PlayVideoAddToPlaylistButtonFeo
             // 
             this.PlayVideoAddToPlaylistButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayVideoAddToPlaylistButtonFeo.Location = new System.Drawing.Point(389, 254);
+            this.PlayVideoAddToPlaylistButtonFeo.Location = new System.Drawing.Point(389, 259);
             this.PlayVideoAddToPlaylistButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoAddToPlaylistButtonFeo.Name = "PlayVideoAddToPlaylistButtonFeo";
             this.PlayVideoAddToPlaylistButtonFeo.Size = new System.Drawing.Size(128, 29);
             this.PlayVideoAddToPlaylistButtonFeo.TabIndex = 5;
             this.PlayVideoAddToPlaylistButtonFeo.Text = "Add to Playlist";
             this.PlayVideoAddToPlaylistButtonFeo.UseVisualStyleBackColor = true;
+            this.PlayVideoAddToPlaylistButtonFeo.Visible = false;
             this.PlayVideoAddToPlaylistButtonFeo.Click += new System.EventHandler(this.PlayVideoAddToPlaylistButton_Click);
             // 
             // PlayVideoSelectPlDomainUp
             // 
             this.PlayVideoSelectPlDomainUp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PlayVideoSelectPlDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayVideoSelectPlDomainUp.Location = new System.Drawing.Point(216, 504);
+            this.PlayVideoSelectPlDomainUp.Location = new System.Drawing.Point(222, 519);
             this.PlayVideoSelectPlDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoSelectPlDomainUp.Name = "PlayVideoSelectPlDomainUp";
             this.PlayVideoSelectPlDomainUp.ReadOnly = true;
@@ -7242,7 +7308,7 @@
             // PlayVideoSelectPlButtonFeo
             // 
             this.PlayVideoSelectPlButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayVideoSelectPlButtonFeo.Location = new System.Drawing.Point(381, 244);
+            this.PlayVideoSelectPlButtonFeo.Location = new System.Drawing.Point(381, 249);
             this.PlayVideoSelectPlButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoSelectPlButtonFeo.Name = "PlayVideoSelectPlButtonFeo";
             this.PlayVideoSelectPlButtonFeo.Size = new System.Drawing.Size(117, 31);
@@ -7258,7 +7324,7 @@
             this.PlayVideoMessageAlertTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.PlayVideoMessageAlertTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayVideoMessageAlertTextBox.ForeColor = System.Drawing.Color.Silver;
-            this.PlayVideoMessageAlertTextBox.Location = new System.Drawing.Point(273, 437);
+            this.PlayVideoMessageAlertTextBox.Location = new System.Drawing.Point(267, 596);
             this.PlayVideoMessageAlertTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoMessageAlertTextBox.Name = "PlayVideoMessageAlertTextBox";
             this.PlayVideoMessageAlertTextBox.ReadOnly = true;
@@ -7268,36 +7334,39 @@
             // PlayVideoSkipButton
             // 
             this.PlayVideoSkipButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayVideoSkipButton.Location = new System.Drawing.Point(402, 246);
+            this.PlayVideoSkipButton.Location = new System.Drawing.Point(402, 251);
             this.PlayVideoSkipButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoSkipButton.Name = "PlayVideoSkipButton";
             this.PlayVideoSkipButton.Size = new System.Drawing.Size(106, 32);
             this.PlayVideoSkipButton.TabIndex = 47;
             this.PlayVideoSkipButton.Text = "Skip";
             this.PlayVideoSkipButton.UseVisualStyleBackColor = true;
+            this.PlayVideoSkipButton.Visible = false;
             this.PlayVideoSkipButton.Click += new System.EventHandler(this.PlayVideoSkipButton_Click);
             // 
             // PlayVideoPreviousButton
             // 
             this.PlayVideoPreviousButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayVideoPreviousButton.Location = new System.Drawing.Point(402, 246);
+            this.PlayVideoPreviousButton.Location = new System.Drawing.Point(402, 251);
             this.PlayVideoPreviousButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoPreviousButton.Name = "PlayVideoPreviousButton";
             this.PlayVideoPreviousButton.Size = new System.Drawing.Size(96, 34);
             this.PlayVideoPreviousButton.TabIndex = 48;
             this.PlayVideoPreviousButton.Text = "Previous";
             this.PlayVideoPreviousButton.UseVisualStyleBackColor = true;
+            this.PlayVideoPreviousButton.Visible = false;
             this.PlayVideoPreviousButton.Click += new System.EventHandler(this.PlayVideoPreviousButton_Click);
             // 
             // PlayVideoQueueFeo
             // 
             this.PlayVideoQueueFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayVideoQueueFeo.Location = new System.Drawing.Point(389, 252);
+            this.PlayVideoQueueFeo.Location = new System.Drawing.Point(389, 257);
             this.PlayVideoQueueFeo.Name = "PlayVideoQueueFeo";
             this.PlayVideoQueueFeo.Size = new System.Drawing.Size(102, 27);
             this.PlayVideoQueueFeo.TabIndex = 49;
             this.PlayVideoQueueFeo.Text = "Add Queue";
             this.PlayVideoQueueFeo.UseVisualStyleBackColor = true;
+            this.PlayVideoQueueFeo.Visible = false;
             this.PlayVideoQueueFeo.Click += new System.EventHandler(this.PlayVideoQueue_Click);
             // 
             // PlayVideoShowLyrics
@@ -7306,7 +7375,7 @@
             this.PlayVideoShowLyrics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.PlayVideoShowLyrics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayVideoShowLyrics.ForeColor = System.Drawing.Color.White;
-            this.PlayVideoShowLyrics.Location = new System.Drawing.Point(154, 383);
+            this.PlayVideoShowLyrics.Location = new System.Drawing.Point(154, 388);
             this.PlayVideoShowLyrics.Multiline = true;
             this.PlayVideoShowLyrics.Name = "PlayVideoShowLyrics";
             this.PlayVideoShowLyrics.ReadOnly = true;
@@ -7319,12 +7388,13 @@
             // PlayVideoLyricsFeo
             // 
             this.PlayVideoLyricsFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayVideoLyricsFeo.Location = new System.Drawing.Point(417, 249);
+            this.PlayVideoLyricsFeo.Location = new System.Drawing.Point(417, 254);
             this.PlayVideoLyricsFeo.Name = "PlayVideoLyricsFeo";
             this.PlayVideoLyricsFeo.Size = new System.Drawing.Size(101, 25);
             this.PlayVideoLyricsFeo.TabIndex = 51;
             this.PlayVideoLyricsFeo.Text = "Subtitles";
             this.PlayVideoLyricsFeo.UseVisualStyleBackColor = true;
+            this.PlayVideoLyricsFeo.Visible = false;
             this.PlayVideoLyricsFeo.Click += new System.EventHandler(this.PlayVideoLyrics_Click);
             // 
             // VideoRate
@@ -7333,7 +7403,7 @@
             this.VideoRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.VideoRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VideoRate.ForeColor = System.Drawing.Color.White;
-            this.VideoRate.Location = new System.Drawing.Point(459, 642);
+            this.VideoRate.Location = new System.Drawing.Point(28, 559);
             this.VideoRate.Name = "VideoRate";
             this.VideoRate.ReadOnly = true;
             this.VideoRate.Size = new System.Drawing.Size(120, 29);
@@ -7342,29 +7412,31 @@
             // PlayVideoLikeButtonFeo
             // 
             this.PlayVideoLikeButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayVideoLikeButtonFeo.Location = new System.Drawing.Point(412, 249);
+            this.PlayVideoLikeButtonFeo.Location = new System.Drawing.Point(412, 254);
             this.PlayVideoLikeButtonFeo.Name = "PlayVideoLikeButtonFeo";
             this.PlayVideoLikeButtonFeo.Size = new System.Drawing.Size(106, 37);
             this.PlayVideoLikeButtonFeo.TabIndex = 54;
             this.PlayVideoLikeButtonFeo.Text = "Like";
             this.PlayVideoLikeButtonFeo.UseVisualStyleBackColor = true;
+            this.PlayVideoLikeButtonFeo.Visible = false;
             this.PlayVideoLikeButtonFeo.Click += new System.EventHandler(this.PlayVideoLikeButton_Click);
             // 
             // PlayVideoFullScreenButtonFeo
             // 
             this.PlayVideoFullScreenButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayVideoFullScreenButtonFeo.Location = new System.Drawing.Point(394, 256);
+            this.PlayVideoFullScreenButtonFeo.Location = new System.Drawing.Point(394, 261);
             this.PlayVideoFullScreenButtonFeo.Name = "PlayVideoFullScreenButtonFeo";
             this.PlayVideoFullScreenButtonFeo.Size = new System.Drawing.Size(114, 31);
             this.PlayVideoFullScreenButtonFeo.TabIndex = 55;
             this.PlayVideoFullScreenButtonFeo.Text = "Fullscreen";
             this.PlayVideoFullScreenButtonFeo.UseVisualStyleBackColor = true;
+            this.PlayVideoFullScreenButtonFeo.Visible = false;
             this.PlayVideoFullScreenButtonFeo.Click += new System.EventHandler(this.PlayVideoFullScreenButton_Click);
             // 
             // PlayVideoVideoPlaying
             // 
             this.PlayVideoVideoPlaying.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayVideoVideoPlaying.Location = new System.Drawing.Point(429, 34);
+            this.PlayVideoVideoPlaying.Location = new System.Drawing.Point(94, -17);
             this.PlayVideoVideoPlaying.Name = "PlayVideoVideoPlaying";
             this.PlayVideoVideoPlaying.Size = new System.Drawing.Size(270, 22);
             this.PlayVideoVideoPlaying.TabIndex = 56;
@@ -7373,7 +7445,8 @@
             // PlayVideoVideoImageBox
             // 
             this.PlayVideoVideoImageBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayVideoVideoImageBox.Location = new System.Drawing.Point(65, 15);
+            this.PlayVideoVideoImageBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PlayVideoVideoImageBox.Location = new System.Drawing.Point(65, 20);
             this.PlayVideoVideoImageBox.Name = "PlayVideoVideoImageBox";
             this.PlayVideoVideoImageBox.Size = new System.Drawing.Size(312, 85);
             this.PlayVideoVideoImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -7383,19 +7456,20 @@
             // PlayVideoShareButtonFeo
             // 
             this.PlayVideoShareButtonFeo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayVideoShareButtonFeo.Location = new System.Drawing.Point(394, 247);
+            this.PlayVideoShareButtonFeo.Location = new System.Drawing.Point(394, 252);
             this.PlayVideoShareButtonFeo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoShareButtonFeo.Name = "PlayVideoShareButtonFeo";
             this.PlayVideoShareButtonFeo.Size = new System.Drawing.Size(92, 36);
             this.PlayVideoShareButtonFeo.TabIndex = 58;
             this.PlayVideoShareButtonFeo.Text = "Share";
             this.PlayVideoShareButtonFeo.UseVisualStyleBackColor = true;
+            this.PlayVideoShareButtonFeo.Visible = false;
             this.PlayVideoShareButtonFeo.Click += new System.EventHandler(this.PlayVideoShareButton_Click);
             // 
             // PlayVideoChooseUserDomainUp
             // 
             this.PlayVideoChooseUserDomainUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayVideoChooseUserDomainUp.Location = new System.Drawing.Point(11, 639);
+            this.PlayVideoChooseUserDomainUp.Location = new System.Drawing.Point(304, 561);
             this.PlayVideoChooseUserDomainUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoChooseUserDomainUp.Name = "PlayVideoChooseUserDomainUp";
             this.PlayVideoChooseUserDomainUp.Size = new System.Drawing.Size(171, 27);
@@ -7405,7 +7479,7 @@
             // 
             // PlayVideoChooseUserButton
             // 
-            this.PlayVideoChooseUserButton.Location = new System.Drawing.Point(208, 639);
+            this.PlayVideoChooseUserButton.Location = new System.Drawing.Point(496, 562);
             this.PlayVideoChooseUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PlayVideoChooseUserButton.Name = "PlayVideoChooseUserButton";
             this.PlayVideoChooseUserButton.Size = new System.Drawing.Size(75, 26);
@@ -7420,7 +7494,7 @@
             this.PlayVideoPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(39)))));
             this.PlayVideoPanel.Controls.Add(this.PlayVideoRateVideoButton);
             this.PlayVideoPanel.Controls.Add(this.PlayVideoLikeButton);
-            this.PlayVideoPanel.Controls.Add(this.iconButton10);
+            this.PlayVideoPanel.Controls.Add(this.PlayVideoInfoVideo);
             this.PlayVideoPanel.Controls.Add(this.PlayVideoFullScreenButton);
             this.PlayVideoPanel.Controls.Add(this.PlayVideoSelectPlButton);
             this.PlayVideoPanel.Controls.Add(this.PlayVideoShareButton);
@@ -7453,7 +7527,7 @@
             this.PlayVideoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayVideoPanel.Location = new System.Drawing.Point(250, 0);
             this.PlayVideoPanel.Name = "PlayVideoPanel";
-            this.PlayVideoPanel.Size = new System.Drawing.Size(756, 611);
+            this.PlayVideoPanel.Size = new System.Drawing.Size(756, 621);
             this.PlayVideoPanel.TabIndex = 14;
             this.PlayVideoPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PlayVideoPanel_Paint);
             // 
@@ -7469,7 +7543,7 @@
             this.PlayVideoRateVideoButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayVideoRateVideoButton.IconSize = 35;
             this.PlayVideoRateVideoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PlayVideoRateVideoButton.Location = new System.Drawing.Point(525, 439);
+            this.PlayVideoRateVideoButton.Location = new System.Drawing.Point(525, 444);
             this.PlayVideoRateVideoButton.Name = "PlayVideoRateVideoButton";
             this.PlayVideoRateVideoButton.Rotation = 0D;
             this.PlayVideoRateVideoButton.Size = new System.Drawing.Size(136, 39);
@@ -7478,6 +7552,7 @@
             this.PlayVideoRateVideoButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.PlayVideoRateVideoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PlayVideoRateVideoButton.UseVisualStyleBackColor = true;
+            this.PlayVideoRateVideoButton.Click += new System.EventHandler(this.PlayVideoRateVideoButton_Click_1);
             // 
             // PlayVideoLikeButton
             // 
@@ -7491,7 +7566,7 @@
             this.PlayVideoLikeButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayVideoLikeButton.IconSize = 35;
             this.PlayVideoLikeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PlayVideoLikeButton.Location = new System.Drawing.Point(378, 439);
+            this.PlayVideoLikeButton.Location = new System.Drawing.Point(368, 445);
             this.PlayVideoLikeButton.Name = "PlayVideoLikeButton";
             this.PlayVideoLikeButton.Rotation = 0D;
             this.PlayVideoLikeButton.Size = new System.Drawing.Size(132, 39);
@@ -7500,28 +7575,30 @@
             this.PlayVideoLikeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.PlayVideoLikeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PlayVideoLikeButton.UseVisualStyleBackColor = true;
+            this.PlayVideoLikeButton.Click += new System.EventHandler(this.PlayVideoLikeButton_Click_1);
             // 
-            // iconButton10
+            // PlayVideoInfoVideo
             // 
-            this.iconButton10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconButton10.FlatAppearance.BorderSize = 0;
-            this.iconButton10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton10.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton10.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.iconButton10.IconChar = FontAwesome.Sharp.IconChar.InfoCircle;
-            this.iconButton10.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
-            this.iconButton10.IconSize = 35;
-            this.iconButton10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton10.Location = new System.Drawing.Point(220, 439);
-            this.iconButton10.Name = "iconButton10";
-            this.iconButton10.Rotation = 0D;
-            this.iconButton10.Size = new System.Drawing.Size(135, 39);
-            this.iconButton10.TabIndex = 73;
-            this.iconButton10.Text = "Video Info";
-            this.iconButton10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton10.UseVisualStyleBackColor = true;
+            this.PlayVideoInfoVideo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PlayVideoInfoVideo.FlatAppearance.BorderSize = 0;
+            this.PlayVideoInfoVideo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PlayVideoInfoVideo.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.PlayVideoInfoVideo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayVideoInfoVideo.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.PlayVideoInfoVideo.IconChar = FontAwesome.Sharp.IconChar.InfoCircle;
+            this.PlayVideoInfoVideo.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.PlayVideoInfoVideo.IconSize = 35;
+            this.PlayVideoInfoVideo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PlayVideoInfoVideo.Location = new System.Drawing.Point(220, 444);
+            this.PlayVideoInfoVideo.Name = "PlayVideoInfoVideo";
+            this.PlayVideoInfoVideo.Rotation = 0D;
+            this.PlayVideoInfoVideo.Size = new System.Drawing.Size(135, 39);
+            this.PlayVideoInfoVideo.TabIndex = 73;
+            this.PlayVideoInfoVideo.Text = "Video Info";
+            this.PlayVideoInfoVideo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PlayVideoInfoVideo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.PlayVideoInfoVideo.UseVisualStyleBackColor = true;
+            this.PlayVideoInfoVideo.Click += new System.EventHandler(this.PlayVideoInfoVideo_Click);
             // 
             // PlayVideoFullScreenButton
             // 
@@ -7534,14 +7611,15 @@
             this.PlayVideoFullScreenButton.IconChar = FontAwesome.Sharp.IconChar.ExpandArrowsAlt;
             this.PlayVideoFullScreenButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayVideoFullScreenButton.IconSize = 30;
-            this.PlayVideoFullScreenButton.Location = new System.Drawing.Point(625, 64);
+            this.PlayVideoFullScreenButton.Location = new System.Drawing.Point(558, 7);
             this.PlayVideoFullScreenButton.Name = "PlayVideoFullScreenButton";
             this.PlayVideoFullScreenButton.Rotation = 0D;
-            this.PlayVideoFullScreenButton.Size = new System.Drawing.Size(128, 35);
+            this.PlayVideoFullScreenButton.Size = new System.Drawing.Size(178, 39);
             this.PlayVideoFullScreenButton.TabIndex = 72;
             this.PlayVideoFullScreenButton.Text = "Fullscreen";
             this.PlayVideoFullScreenButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PlayVideoFullScreenButton.UseVisualStyleBackColor = true;
+            this.PlayVideoFullScreenButton.Click += new System.EventHandler(this.PlayVideoFullScreenButton_Click_1);
             // 
             // PlayVideoSelectPlButton
             // 
@@ -7549,19 +7627,20 @@
             this.PlayVideoSelectPlButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayVideoSelectPlButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PlayVideoSelectPlButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.PlayVideoSelectPlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.PlayVideoSelectPlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayVideoSelectPlButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.PlayVideoSelectPlButton.IconChar = FontAwesome.Sharp.IconChar.Bullseye;
             this.PlayVideoSelectPlButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayVideoSelectPlButton.IconSize = 30;
-            this.PlayVideoSelectPlButton.Location = new System.Drawing.Point(553, 494);
+            this.PlayVideoSelectPlButton.Location = new System.Drawing.Point(558, 503);
             this.PlayVideoSelectPlButton.Name = "PlayVideoSelectPlButton";
             this.PlayVideoSelectPlButton.Rotation = 0D;
-            this.PlayVideoSelectPlButton.Size = new System.Drawing.Size(168, 36);
+            this.PlayVideoSelectPlButton.Size = new System.Drawing.Size(186, 42);
             this.PlayVideoSelectPlButton.TabIndex = 71;
             this.PlayVideoSelectPlButton.Text = "Choose Playlist";
             this.PlayVideoSelectPlButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PlayVideoSelectPlButton.UseVisualStyleBackColor = true;
+            this.PlayVideoSelectPlButton.Click += new System.EventHandler(this.PlayVideoSelectPlButton_Click_1);
             // 
             // PlayVideoShareButton
             // 
@@ -7574,14 +7653,15 @@
             this.PlayVideoShareButton.IconChar = FontAwesome.Sharp.IconChar.ShareAlt;
             this.PlayVideoShareButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayVideoShareButton.IconSize = 30;
-            this.PlayVideoShareButton.Location = new System.Drawing.Point(383, 63);
+            this.PlayVideoShareButton.Location = new System.Drawing.Point(404, 56);
             this.PlayVideoShareButton.Name = "PlayVideoShareButton";
             this.PlayVideoShareButton.Rotation = 0D;
-            this.PlayVideoShareButton.Size = new System.Drawing.Size(109, 37);
+            this.PlayVideoShareButton.Size = new System.Drawing.Size(123, 45);
             this.PlayVideoShareButton.TabIndex = 70;
             this.PlayVideoShareButton.Text = "Share";
             this.PlayVideoShareButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PlayVideoShareButton.UseVisualStyleBackColor = true;
+            this.PlayVideoShareButton.Click += new System.EventHandler(this.PlayVideoShareButton_Click_1);
             // 
             // PlayVideoAddToPlaylistButton
             // 
@@ -7589,19 +7669,20 @@
             this.PlayVideoAddToPlaylistButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayVideoAddToPlaylistButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PlayVideoAddToPlaylistButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.PlayVideoAddToPlaylistButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.PlayVideoAddToPlaylistButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayVideoAddToPlaylistButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.PlayVideoAddToPlaylistButton.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
             this.PlayVideoAddToPlaylistButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayVideoAddToPlaylistButton.IconSize = 30;
-            this.PlayVideoAddToPlaylistButton.Location = new System.Drawing.Point(41, 494);
+            this.PlayVideoAddToPlaylistButton.Location = new System.Drawing.Point(23, 504);
             this.PlayVideoAddToPlaylistButton.Name = "PlayVideoAddToPlaylistButton";
             this.PlayVideoAddToPlaylistButton.Rotation = 0D;
-            this.PlayVideoAddToPlaylistButton.Size = new System.Drawing.Size(159, 36);
+            this.PlayVideoAddToPlaylistButton.Size = new System.Drawing.Size(183, 38);
             this.PlayVideoAddToPlaylistButton.TabIndex = 69;
             this.PlayVideoAddToPlaylistButton.Text = "Add to Playlist";
             this.PlayVideoAddToPlaylistButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PlayVideoAddToPlaylistButton.UseVisualStyleBackColor = true;
+            this.PlayVideoAddToPlaylistButton.Click += new System.EventHandler(this.PlayVideoAddToPlaylistButton_Click_1);
             // 
             // PlayVideoQueue
             // 
@@ -7609,19 +7690,20 @@
             this.PlayVideoQueue.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayVideoQueue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PlayVideoQueue.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.PlayVideoQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.PlayVideoQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayVideoQueue.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.PlayVideoQueue.IconChar = FontAwesome.Sharp.IconChar.StumbleuponCircle;
             this.PlayVideoQueue.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayVideoQueue.IconSize = 30;
-            this.PlayVideoQueue.Location = new System.Drawing.Point(41, 435);
+            this.PlayVideoQueue.Location = new System.Drawing.Point(25, 447);
             this.PlayVideoQueue.Name = "PlayVideoQueue";
             this.PlayVideoQueue.Rotation = 0D;
-            this.PlayVideoQueue.Size = new System.Drawing.Size(152, 48);
+            this.PlayVideoQueue.Size = new System.Drawing.Size(163, 37);
             this.PlayVideoQueue.TabIndex = 68;
             this.PlayVideoQueue.Text = "Add Queue";
             this.PlayVideoQueue.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PlayVideoQueue.UseVisualStyleBackColor = true;
+            this.PlayVideoQueue.Click += new System.EventHandler(this.PlayVideoQueue_Click_1);
             // 
             // PlayVideoLyrics
             // 
@@ -7634,14 +7716,15 @@
             this.PlayVideoLyrics.IconChar = FontAwesome.Sharp.IconChar.ClosedCaptioning;
             this.PlayVideoLyrics.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.PlayVideoLyrics.IconSize = 30;
-            this.PlayVideoLyrics.Location = new System.Drawing.Point(500, 64);
+            this.PlayVideoLyrics.Location = new System.Drawing.Point(558, 56);
             this.PlayVideoLyrics.Name = "PlayVideoLyrics";
             this.PlayVideoLyrics.Rotation = 0D;
-            this.PlayVideoLyrics.Size = new System.Drawing.Size(112, 36);
+            this.PlayVideoLyrics.Size = new System.Drawing.Size(178, 46);
             this.PlayVideoLyrics.TabIndex = 67;
             this.PlayVideoLyrics.Text = "Subtitles";
             this.PlayVideoLyrics.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PlayVideoLyrics.UseVisualStyleBackColor = true;
+            this.PlayVideoLyrics.Click += new System.EventHandler(this.PlayVideoLyrics_Click_1);
             // 
             // PlayVideoGoBackButton
             // 
@@ -7661,6 +7744,7 @@
             this.PlayVideoGoBackButton.TabIndex = 62;
             this.PlayVideoGoBackButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PlayVideoGoBackButton.UseVisualStyleBackColor = true;
+            this.PlayVideoGoBackButton.Click += new System.EventHandler(this.PlayVideoGoBackButton_Click_1);
             // 
             // ProgressTimer
             // 
@@ -7683,7 +7767,7 @@
             this.SearchPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchPanel.Location = new System.Drawing.Point(250, 0);
             this.SearchPanel.Name = "SearchPanel";
-            this.SearchPanel.Size = new System.Drawing.Size(756, 611);
+            this.SearchPanel.Size = new System.Drawing.Size(756, 621);
             this.SearchPanel.TabIndex = 20;
             // 
             // SearchViewUserButton
@@ -7698,7 +7782,7 @@
             this.SearchViewUserButton.IconChar = FontAwesome.Sharp.IconChar.Search;
             this.SearchViewUserButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.SearchViewUserButton.IconSize = 30;
-            this.SearchViewUserButton.Location = new System.Drawing.Point(496, 519);
+            this.SearchViewUserButton.Location = new System.Drawing.Point(496, 524);
             this.SearchViewUserButton.Name = "SearchViewUserButton";
             this.SearchViewUserButton.Rotation = 0D;
             this.SearchViewUserButton.Size = new System.Drawing.Size(137, 59);
@@ -7721,7 +7805,7 @@
             this.SearchSelectMultButton.IconChar = FontAwesome.Sharp.IconChar.Search;
             this.SearchSelectMultButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
             this.SearchSelectMultButton.IconSize = 30;
-            this.SearchSelectMultButton.Location = new System.Drawing.Point(259, 519);
+            this.SearchSelectMultButton.Location = new System.Drawing.Point(259, 524);
             this.SearchSelectMultButton.Name = "SearchSelectMultButton";
             this.SearchSelectMultButton.Rotation = 0D;
             this.SearchSelectMultButton.Size = new System.Drawing.Size(168, 59);
@@ -7741,7 +7825,7 @@
             this.SearchSearchResultsDomainUp.FormattingEnabled = true;
             this.SearchSearchResultsDomainUp.HorizontalScrollbar = true;
             this.SearchSearchResultsDomainUp.ItemHeight = 29;
-            this.SearchSearchResultsDomainUp.Location = new System.Drawing.Point(259, 159);
+            this.SearchSearchResultsDomainUp.Location = new System.Drawing.Point(259, 164);
             this.SearchSearchResultsDomainUp.Name = "SearchSearchResultsDomainUp";
             this.SearchSearchResultsDomainUp.Size = new System.Drawing.Size(378, 323);
             this.SearchSearchResultsDomainUp.TabIndex = 53;
@@ -7757,7 +7841,7 @@
             this.SearchFilterPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.SearchFilterPanel.Location = new System.Drawing.Point(0, 96);
             this.SearchFilterPanel.Name = "SearchFilterPanel";
-            this.SearchFilterPanel.Size = new System.Drawing.Size(166, 515);
+            this.SearchFilterPanel.Size = new System.Drawing.Size(166, 525);
             this.SearchFilterPanel.TabIndex = 52;
             // 
             // OrFiltersSearch
@@ -7868,6 +7952,7 @@
             this.SearchGoBackButton.TabIndex = 51;
             this.SearchGoBackButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SearchGoBackButton.UseVisualStyleBackColor = true;
+            this.SearchGoBackButton.Click += new System.EventHandler(this.SearchGoBackButton_Click_1);
             // 
             // SearchSearchButton
             // 
@@ -7908,31 +7993,88 @@
             this.TimerSidePanel.Interval = 1;
             this.TimerSidePanel.Tick += new System.EventHandler(this.TimerSidePanel_Tick);
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.button1.FlatAppearance.BorderSize = 3;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Location = new System.Drawing.Point(0, 827);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(246, 65);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Search Multimedia";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // DisplayStartProfileLogOutButton
+            // 
+            this.DisplayStartProfileLogOutButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DisplayStartProfileLogOutButton.FlatAppearance.BorderSize = 0;
+            this.DisplayStartProfileLogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DisplayStartProfileLogOutButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.DisplayStartProfileLogOutButton.Font = new System.Drawing.Font("Century Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisplayStartProfileLogOutButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.DisplayStartProfileLogOutButton.IconChar = FontAwesome.Sharp.IconChar.UserTimes;
+            this.DisplayStartProfileLogOutButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.DisplayStartProfileLogOutButton.IconSize = 40;
+            this.DisplayStartProfileLogOutButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DisplayStartProfileLogOutButton.Location = new System.Drawing.Point(77, 1);
+            this.DisplayStartProfileLogOutButton.Name = "DisplayStartProfileLogOutButton";
+            this.DisplayStartProfileLogOutButton.Rotation = 0D;
+            this.DisplayStartProfileLogOutButton.Size = new System.Drawing.Size(228, 66);
+            this.DisplayStartProfileLogOutButton.TabIndex = 52;
+            this.DisplayStartProfileLogOutButton.Text = "Change Profile";
+            this.DisplayStartProfileLogOutButton.UseVisualStyleBackColor = true;
+            this.DisplayStartProfileLogOutButton.Click += new System.EventHandler(this.DisplayStartProfileLogOutButton_Click);
+            // 
+            // DisplayStartLogOutFybuzzButton
+            // 
+            this.DisplayStartLogOutFybuzzButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DisplayStartLogOutFybuzzButton.FlatAppearance.BorderSize = 0;
+            this.DisplayStartLogOutFybuzzButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DisplayStartLogOutFybuzzButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.DisplayStartLogOutFybuzzButton.Font = new System.Drawing.Font("Century Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisplayStartLogOutFybuzzButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.DisplayStartLogOutFybuzzButton.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
+            this.DisplayStartLogOutFybuzzButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(188)))), ((int)(((byte)(45)))));
+            this.DisplayStartLogOutFybuzzButton.IconSize = 40;
+            this.DisplayStartLogOutFybuzzButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DisplayStartLogOutFybuzzButton.Location = new System.Drawing.Point(305, 1);
+            this.DisplayStartLogOutFybuzzButton.Name = "DisplayStartLogOutFybuzzButton";
+            this.DisplayStartLogOutFybuzzButton.Rotation = 0D;
+            this.DisplayStartLogOutFybuzzButton.Size = new System.Drawing.Size(228, 66);
+            this.DisplayStartLogOutFybuzzButton.TabIndex = 53;
+            this.DisplayStartLogOutFybuzzButton.Text = "Log-Out";
+            this.DisplayStartLogOutFybuzzButton.UseVisualStyleBackColor = true;
+            this.DisplayStartLogOutFybuzzButton.Click += new System.EventHandler(this.DisplayStartLogOutFybuzzButton_Click);
+            // 
             // FyBuZz
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 721);
             this.Controls.Add(this.WelcomePanel);
-            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.DisplayStartPanel);
+            this.Controls.Add(this.PlayVideoPanel);
+            this.Controls.Add(this.SearchPanel);
+            this.Controls.Add(this.PlayPlaylistPanel);
+            this.Controls.Add(this.SearcUserPanel);
+            this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.CreateVideoPanel);
             this.Controls.Add(this.CreateSongPanel);
-            this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.AccountProfileSettingsPanel);
             this.Controls.Add(this.UserProfileChangeInfoPanel);
             this.Controls.Add(this.CreatePlaylistPanel);
             this.Controls.Add(this.AdminMenuPanel);
-            this.Controls.Add(this.PlayPlaylistPanel);
             this.Controls.Add(this.CreateProfilePanel);
-            this.Controls.Add(this.PlayVideoPanel);
             this.Controls.Add(this.PlaySongPanel);
             this.Controls.Add(this.PlayerMultPanel);
             this.Controls.Add(this.SideMenuPanel);
             this.Controls.Add(this.DisplayPlaylistPanel);
             this.Controls.Add(this.AddShowPanel);
-            this.Controls.Add(this.SearcUserPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximumSize = new System.Drawing.Size(1024, 768);
@@ -8097,7 +8239,6 @@
         private System.Windows.Forms.Panel DisplayStartPanel;
         private System.Windows.Forms.Button DisplayStartSearchButton;
         private System.Windows.Forms.Button DisplayStartLogOutButton;
-        private System.Windows.Forms.Button DisplayStartAdminMenuButton;
         private System.Windows.Forms.Button DisplayStartCloseButton;
         private System.Windows.Forms.Button DisplayStartLogOutProfileButton;
         private System.Windows.Forms.Button DisplayStartSettingsButton;
@@ -8302,10 +8443,10 @@
         private System.Windows.Forms.Panel SearcUserPanel;
         private System.Windows.Forms.TextBox SearUserName;
         private System.Windows.Forms.Label SearchUserLabel;
-        private System.Windows.Forms.Button SearchUserGoBack;
+        private System.Windows.Forms.Button SearchUserGoBackFeo;
         private System.Windows.Forms.PictureBox SearchUserImage2;
         private System.Windows.Forms.PictureBox SearchUserImage1;
-        private System.Windows.Forms.Button SearchUserFollowButton;
+        private System.Windows.Forms.Button SearchUserFollowButtonFeo;
         private System.Windows.Forms.TextBox SearchUserFollowers;
         private System.Windows.Forms.TextBox SearchUserFollowing;
         private System.Windows.Forms.TextBox SearcUserEmailTextBox;
@@ -8508,7 +8649,7 @@
         private System.Windows.Forms.Panel PlayVideoPanel;
         private FontAwesome.Sharp.IconButton PlayVideoRateVideoButton;
         private FontAwesome.Sharp.IconButton PlayVideoLikeButton;
-        private FontAwesome.Sharp.IconButton iconButton10;
+        private FontAwesome.Sharp.IconButton PlayVideoInfoVideo;
         private FontAwesome.Sharp.IconButton PlayVideoFullScreenButton;
         private FontAwesome.Sharp.IconButton PlayVideoSelectPlButton;
         private FontAwesome.Sharp.IconButton PlayVideoShareButton;
@@ -8594,5 +8735,10 @@
         private FontAwesome.Sharp.IconButton SearchGoBackButton;
         private FontAwesome.Sharp.IconButton SearchViewUserButton;
         private FontAwesome.Sharp.IconButton SearchSelectMultButton;
+        private FontAwesome.Sharp.IconButton SearchUserFollowButton;
+        private FontAwesome.Sharp.IconButton SearchUserGoBack;
+        private System.Windows.Forms.Button button1;
+        private FontAwesome.Sharp.IconButton DisplayStartLogOutFybuzzButton;
+        private FontAwesome.Sharp.IconButton DisplayStartProfileLogOutButton;
     }
 }
