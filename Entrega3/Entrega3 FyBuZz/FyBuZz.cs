@@ -6020,7 +6020,7 @@ namespace Entrega3_FyBuZz
                 }
             }
             PlayVideoChooseUserDomainUp.Visible = true;
-            PlayVideoChooseUserButton.Visible = true;
+            PlayVideoChooseUserButtonFeo.Visible = true;
 
             User user = OnLoginButtonClicked(UserLogInTextBox.Text, PasswordLogInTextBox.Text);
             foreach (String followedUser in user.FollowingList)
@@ -6736,6 +6736,14 @@ namespace Entrega3_FyBuZz
             
         }
 
-        
+        private void CreateSongPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void CreateVideoLoadVideoTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
